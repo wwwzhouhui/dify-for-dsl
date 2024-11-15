@@ -1,0 +1,342 @@
+app:
+  description: '本工作流主要是通过多模态发票模型实现火车票提取OCR提取，提取后在判断2个模型比对结果，作者：wwwzhouhui''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 发票比对专家-新版客运火车票2
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.2
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: document-extractor
+      id: 1731206171408-source-1731206199200-target
+      source: '1731206171408'
+      sourceHandle: source
+      target: '1731206199200'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: document-extractor
+        targetType: llm
+      id: 1731206199200-source-1731206210304-target
+      source: '1731206199200'
+      sourceHandle: source
+      target: '1731206210304'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: document-extractor
+        targetType: llm
+      id: 1731206199200-source-1731206267490-target
+      source: '1731206199200'
+      sourceHandle: source
+      target: '1731206267490'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1731206210304-source-1731206310442-target
+      source: '1731206210304'
+      sourceHandle: source
+      target: '1731206310442'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1731206267490-source-1731206310442-target
+      source: '1731206267490'
+      sourceHandle: source
+      target: '1731206310442'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: answer
+      id: 1731206310442-source-answer-target
+      source: '1731206310442'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - image
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: file
+          max_length: 48
+          options: []
+          required: true
+          type: file
+          variable: file
+      height: 90
+      id: '1731206171408'
+      position:
+        x: -485
+        y: 225
+      positionAbsolute:
+        x: -485
+        y: 225
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1731206310442.text#}}'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 103
+      id: answer
+      position:
+        x: 967
+        y: 181
+      positionAbsolute:
+        x: 967
+        y: 181
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_array_file: true
+        selected: false
+        title: 文档提取器
+        type: document-extractor
+        variable_selector:
+        - sys
+        - files
+      height: 94
+      id: '1731206199200'
+      position:
+        x: -131
+        y: 225
+      positionAbsolute:
+        x: -131
+        y: 225
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Qwen/Qwen2-VL-72B-Instruct
+          provider: openai_api_compatible
+        prompt_template:
+        - id: 74e1936e-8134-4426-8cb8-c090a834e09d
+          role: system
+          text: 请提取这张照片的内容，其中内容格式‘发票号码’、'开票日期’、'‘出发时间’、‘始发站’、‘终点站’、‘车次’、‘票价’、‘身份证号’、‘姓名’、‘电子客票号’、‘购买方名称’、‘统一社会信用代码’字段返回信息，返回的结果信息以json格式返回
+        selected: false
+        title: 发票提取模型1
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - '1731206171408'
+            - file
+          enabled: true
+      height: 98
+      id: '1731206210304'
+      position:
+        x: 279
+        y: 33
+      positionAbsolute:
+        x: 279
+        y: 33
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Qwen/Qwen2-VL-72B-Instruct
+          provider: openai_api_compatible
+        prompt_template:
+        - id: c916b5c3-8324-4fe8-8787-0a0d589d3f13
+          role: system
+          text: 请提取这张照片的内容，其中内容格式‘发票号码’、'开票日期’、'‘出发时间’、‘始发站’、‘终点站’、‘车次’、‘票价’、‘身份证号’、‘姓名’、‘电子客票号’、‘购买方名称’、‘统一社会信用代码’字段返回信息，返回的结果信息以json格式返回
+        - id: 36bcce9d-a41a-4c3d-9626-4a407cd828a2
+          role: user
+          text: '1'
+        selected: false
+        title: 发票提取模型2
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - '1731206171408'
+            - file
+          enabled: true
+      height: 98
+      id: '1731206267490'
+      position:
+        x: 254.62458422770857
+        y: 395.2233033797767
+      positionAbsolute:
+        x: 254.62458422770857
+        y: 395.2233033797767
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-ai/DeepSeek-V2.5
+          provider: siliconflow
+        prompt_template:
+        - id: cd2cff8b-9bfc-4d00-bb6f-1802663b1b02
+          role: system
+          text: "{\n  \"Role\": \"JSON 数据比对专家\",\n\n  \"Profile\": {\n    \"专长\":\
+            \ \"精确比较和分析 JSON 数据\",\n    \"经验\": \"多年处理各种结构化数据的丰富经验\",\n    \"技能\"\
+            : [\"准确识别差异\", \"使用颜色高亮标注\", \"详细的比对报告生成\"]\n  },\n\n  \"Goals\": [\n\
+            \    \"逐行比较两个 JSON 数据的内容\",\n    \"识别并标记所有存在的差异\",\n    \"使用颜色（红色）高亮显示不同之处\"\
+            ,\n    \"生成清晰、易读的比对结果报告\"\n  ],\n\n  \"Rules\": [\n    \"必须逐个键值对进行比较，不遗漏任何字段\"\
+            ,\n    \"只标注存在差异的部分，相同部分保持原样\",\n    \"使用红色作为差异标注的唯一颜色\",\n    \"对于数值型差异，需要考虑精度问题\"\
+            ,\n    \"对于字符串差异，需要考虑大小写和空白字符\",\n    \"保持 JSON 的结构完整性，不改变原有的格式和顺序\"\n\
+            \  ],\n\n  \"Workflows\": [\n    \"接收并解析两个待比对的 JSON 数据\",\n    \"确保两个\
+            \ JSON 数据结构一致，如果不一致，报告结构差异\",\n    \"逐一比对每个键值对：\",\n    \"  - 如果键不同，标记为新增或缺失\"\
+            ,\n    \"  - 如果值不同，使用红色高亮标注\",\n    \"生成详细的比对报告，包括：\",\n    \"  - 总体差异统计\"\
+            ,\n    \"  - 每个差异项的具体描述\",\n    \"  - 高亮显示的 JSON 数据\"\n  ],\n\n  \"OutputFormat\"\
+            : {\n    \"type\": \"json\",\n    \"structure\": {\n      \"summary\"\
+            : \"总体比对结果摘要\",\n      \"differences\": [\n        {\n          \"key\"\
+            : \"差异字段名\",\n          \"value1\": \"第一个 JSON 中的值\",\n          \"value2\"\
+            : \"第二个 JSON 中的值\",\n          \"highlightColor\": \"red\"\n        }\n\
+            \      ],\n      \"highlightedJSON\": \"包含红色高亮的完整 JSON 数据\"\n    }\n \
+            \ },\n\n  \"Examples\": [\n    {\n      \"input\": {\n        \"json1\"\
+            : {\n          \"价税合计（小写）\": \"263.00\",\n          \"收款人\": \"段欣冉\"\n\
+            \        },\n        \"json2\": {\n          \"价税合计（小写）\": \"213.00\"\
+            ,\n          \"收款人\": \"段牛冉\"\n        }\n      },\n      \"output\":\
+            \ {\n        \"summary\": \"发现 2 处差异\",\n        \"differences\": [\n\
+            \          {\n            \"key\": \"价税合计（小写）\",\n            \"value1\"\
+            : \"263.00\",\n            \"value2\": \"213.00\",\n            \"highlightColor\"\
+            : \"red\"\n          },\n          {\n            \"key\": \"收款人\",\n\
+            \            \"value1\": \"段欣冉\",\n            \"value2\": \"段牛冉\",\n\
+            \            \"highlightColor\": \"red\"\n          }\n        ],\n  \
+            \      \"highlightedJSON\": {\n          \"价税合计（小写）\": \"<red>263.00</red>\"\
+            ,\n          \"收款人\": \"<red>段欣冉</red>\"\n        }\n      }\n    }\n\
+            \  ]\n}"
+        - id: 0bc60692-adc4-4b9f-bb2e-e8936e430dcf
+          role: user
+          text: '{{#1731206210304.text#}}
+
+            {{#1731206267490.text#}}'
+        selected: true
+        title: 基于文本发票比对模型
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 98
+      id: '1731206310442'
+      position:
+        x: 583
+        y: 217
+      positionAbsolute:
+        x: 583
+        y: 217
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 469.53374570411427
+      y: 272.9638162315947
+      zoom: 0.5743491774985177

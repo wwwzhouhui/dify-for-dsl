@@ -1,0 +1,965 @@
+app:
+  description: '本工作流主要是通过多模态发票模型实现多种增值税发票判断OCR提取，作者：wwwzhouhui'
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 发票提取小工具整合版-变量聚合器
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.2
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: document-extractor
+      id: 1729851066338-source-1729851603790-target
+      selected: false
+      source: '1729851066338'
+      sourceHandle: source
+      target: '1729851603790'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: document-extractor
+        targetType: llm
+      id: 1729851603790-source-llm-target
+      selected: false
+      source: '1729851603790'
+      sourceHandle: source
+      target: llm
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: if-else
+      id: llm-source-1730191858003-target
+      selected: false
+      source: llm
+      sourceHandle: source
+      target: '1730191858003'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1730191858003-true-1730191979948-target
+      selected: false
+      source: '1730191858003'
+      sourceHandle: 'true'
+      target: '1730191979948'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1730191858003-98657baa-79e3-4af1-9b19-3daa149c0fab-17301921619230-target
+      selected: false
+      source: '1730191858003'
+      sourceHandle: 98657baa-79e3-4af1-9b19-3daa149c0fab
+      target: '17301921619230'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1730191858003-dafa44fc-1c33-4060-a68a-38c5850bda96-17301923168610-target
+      selected: false
+      source: '1730191858003'
+      sourceHandle: dafa44fc-1c33-4060-a68a-38c5850bda96
+      target: '17301923168610'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1730191858003-2d44a634-2764-4287-84a7-964fae566d5d-17301924021390-target
+      selected: false
+      source: '1730191858003'
+      sourceHandle: 2d44a634-2764-4287-84a7-964fae566d5d
+      target: '17301924021390'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1730191858003-e0a31ca5-21fa-4ec3-8c89-734c40116f8f-17301924991430-target
+      selected: false
+      source: '1730191858003'
+      sourceHandle: e0a31ca5-21fa-4ec3-8c89-734c40116f8f
+      target: '17301924991430'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1730191858003-fa4e8d8d-b178-415a-8c86-2d211b380df7-17301925812850-target
+      selected: false
+      source: '1730191858003'
+      sourceHandle: fa4e8d8d-b178-415a-8c86-2d211b380df7
+      target: '17301925812850'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 1730191979948-source-1730214844929-target
+      source: '1730191979948'
+      sourceHandle: source
+      target: '1730214844929'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 17301921619230-source-1730214844929-target
+      source: '17301921619230'
+      sourceHandle: source
+      target: '1730214844929'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 17301923168610-source-1730214844929-target
+      source: '17301923168610'
+      sourceHandle: source
+      target: '1730214844929'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 17301924021390-source-1730214844929-target
+      source: '17301924021390'
+      sourceHandle: source
+      target: '1730214844929'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 17301924991430-source-1730214844929-target
+      source: '17301924991430'
+      sourceHandle: source
+      target: '1730214844929'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 17301925812850-source-1730214844929-target
+      source: '17301925812850'
+      sourceHandle: source
+      target: '1730214844929'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: variable-aggregator
+        targetType: answer
+      id: 1730214844929-source-1730214939964-target
+      source: '1730214844929'
+      sourceHandle: source
+      target: '1730214939964'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 17306982748800-source-1730214844929-target
+      source: '17306982748800'
+      sourceHandle: source
+      target: '1730214844929'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1730191858003-3b6366ec-ad8e-476f-8918-bdd100359698-17306982748800-target
+      selected: false
+      source: '1730191858003'
+      sourceHandle: 3b6366ec-ad8e-476f-8918-bdd100359698
+      target: '17306982748800'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: answer
+      id: 1730191858003-false-1730192759530-target
+      source: '1730191858003'
+      sourceHandle: 'false'
+      target: '1730192759530'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - image
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: file
+          max_length: 48
+          options: []
+          required: true
+          type: file
+          variable: file
+      height: 90
+      id: '1729851066338'
+      position:
+        x: -126.67275943419787
+        y: 283
+      positionAbsolute:
+        x: -126.67275943419787
+        y: 283
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1729851066338'
+          - file
+        desc: 发票识别判断模型
+        memory:
+          query_prompt_template: ''
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 10
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Qwen/Qwen2-VL-72B-Instruct
+          provider: openai_api_compatible
+        prompt_template:
+        - id: 994d57b8-32bc-45cd-b30a-4a1481553627
+          role: system
+          text: '# Role: 发票识别专家
+
+
+            ## Profile
+
+            - 专长: 发票类型识别、图像分析、文字识别
+
+            - 经验: 多年处理各类发票和票据的经验
+
+            - 技能: 精准识别不同类型发票的特征
+
+
+            ## Goals
+
+            - 根据用户上传的发票图像准确识别发票类型
+
+            - 返回对应的发票类型代码
+
+
+            ## Rules
+
+            - 仔细分析发票上的所有视觉和文字信息
+
+            - 只返回指定的发票类型代码,不做其他解释
+
+            - 如果无法确定发票类型,返回 "无法识别"
+
+
+            ## Workflows
+
+            1. 接收用户上传的发票图像
+
+            2. 分析图像中的关键信息和特征
+
+            3. 对比不同类型发票的特征
+
+            4. 确定发票类型
+
+            5. 返回对应的类型代码
+
+
+            ## Output Format
+
+            发票类型代码:
+
+            - 0: 增值税电子发票
+
+            - 1: 电子发票(全电发票)
+
+            - 2: 增值税普通发票-卷票
+
+            - 3: 火车票
+
+            - 4: 新版火车票-铁路电子客票
+
+            - 5: 定额发票
+
+            - 6: 出租车发票
+
+
+            ## Examples
+
+            用户: [上传增值税电子普通发票图像]
+
+            特征: 电子版式,有"增值税电子普通发票"字样,含二维码,有密码区,有 "税局监制"字样
+
+            AI: 0
+
+
+            用户: [上传电子发票(普通发票)或电子发票(增值税专用发票)图像]
+
+            特征: 电子版式,有"电子发票"字样,发票号码长度有20位
+
+            AI: 1
+
+
+            用户: [上传增值税普通发票发票联图像]
+
+            特征: 纸质卷式,较窄,有"增值税普通发票"字样,通常为红色或蓝色
+
+            AI: 2
+
+
+            用户: [上传火车票图像]
+
+            特征: 磁性票,较小,包含乘车日期、车次、座位等信息
+
+            AI: 3
+
+
+            用户: [上传新版火车票-铁路电子客票图像]
+
+            特征: 电子版式,有"电子发票(铁路电子客票)"标志,包含乘车日期、车次、座位等信息，有发票号码，发票号码长度20位
+
+            AI: 4
+
+
+            用户: [上传定额发票图像]
+
+            特征: 小型纸质票据,预先印制金额,通常用于小额交易
+
+            AI: 5
+
+
+            用户: [上传出租车发票图像]
+
+            特征: 纸质卷式,较窄,有"通用机打发票字样"字样,有“车号”、“工号”、“单价”、“里程”、“等候”等字样
+
+            AI: 6
+
+
+            用户: [上传模糊不清的图像]
+
+            特征: 图像模糊,无法辨识关键信息
+
+            AI: 无法识别'
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - '1729851066338'
+            - file
+          enabled: true
+      height: 126
+      id: llm
+      position:
+        x: 147.32343750400685
+        y: 490.485528431516
+      positionAbsolute:
+        x: 147.32343750400685
+        y: 490.485528431516
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_array_file: true
+        selected: false
+        title: 文档提取器
+        type: document-extractor
+        variable_selector:
+        - sys
+        - files
+      height: 94
+      id: '1729851603790'
+      position:
+        x: 196.24916845541713
+        y: 263.8478876074853
+      positionAbsolute:
+        x: 196.24916845541713
+        y: 263.8478876074853
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: contains
+            id: aec2b72e-7d06-41ea-b86e-6d3c7e803811
+            value: '0'
+            varType: string
+            variable_selector:
+            - llm
+            - text
+          id: 'true'
+          logical_operator: or
+        - case_id: 98657baa-79e3-4af1-9b19-3daa149c0fab
+          conditions:
+          - comparison_operator: contains
+            id: 083411ab-178c-4461-b356-55fece233c6f
+            value: '1'
+            varType: string
+            variable_selector:
+            - llm
+            - text
+          id: 98657baa-79e3-4af1-9b19-3daa149c0fab
+          logical_operator: and
+        - case_id: dafa44fc-1c33-4060-a68a-38c5850bda96
+          conditions:
+          - comparison_operator: contains
+            id: 3ab9cfbc-791b-4d8f-a4ff-c8ebe3fb9d93
+            value: '2'
+            varType: string
+            variable_selector:
+            - llm
+            - text
+          id: dafa44fc-1c33-4060-a68a-38c5850bda96
+          logical_operator: and
+        - case_id: 2d44a634-2764-4287-84a7-964fae566d5d
+          conditions:
+          - comparison_operator: contains
+            id: 6ec008b1-ca33-489f-bcef-816dca204eb1
+            value: '3'
+            varType: string
+            variable_selector:
+            - llm
+            - text
+          id: 2d44a634-2764-4287-84a7-964fae566d5d
+          logical_operator: and
+        - case_id: e0a31ca5-21fa-4ec3-8c89-734c40116f8f
+          conditions:
+          - comparison_operator: contains
+            id: 180c7bdf-a872-4835-ba64-d149184e0000
+            value: '4'
+            varType: string
+            variable_selector:
+            - llm
+            - text
+          id: e0a31ca5-21fa-4ec3-8c89-734c40116f8f
+          logical_operator: and
+        - case_id: fa4e8d8d-b178-415a-8c86-2d211b380df7
+          conditions:
+          - comparison_operator: contains
+            id: 6a8b04c7-a0dc-4c01-8094-66df3eb6b1f7
+            value: '5'
+            varType: string
+            variable_selector:
+            - llm
+            - text
+          id: fa4e8d8d-b178-415a-8c86-2d211b380df7
+          logical_operator: and
+        - case_id: 3b6366ec-ad8e-476f-8918-bdd100359698
+          conditions:
+          - comparison_operator: contains
+            id: 13b675aa-cbd4-49b7-88e9-febbfd958bd5
+            value: '6'
+            varType: string
+            variable_selector:
+            - llm
+            - text
+          id: 3b6366ec-ad8e-476f-8918-bdd100359698
+          logical_operator: and
+        - case_id: 69b06cfd-295b-461b-8955-c99b68984e2a
+          conditions:
+          - comparison_operator: contains
+            id: a7485990-467e-42d8-947c-6b9dbca378b9
+            value: '100'
+            varType: string
+            variable_selector:
+            - llm
+            - text
+          id: 69b06cfd-295b-461b-8955-c99b68984e2a
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 条件分支
+        type: if-else
+      height: 462
+      id: '1730191858003'
+      position:
+        x: 549.6827186186486
+        y: 274.29449436703874
+      positionAbsolute:
+        x: 549.6827186186486
+        y: 274.29449436703874
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1729851066338'
+          - file
+        desc: 增值税专用发票普通发票提取模型
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Qwen/Qwen2-VL-72B-Instruct
+          provider: openai_api_compatible
+        prompt_template:
+        - id: fef27062-3a9f-4d92-8a59-0902e9c80e87
+          role: system
+          text: 请提取这张照片的内容，其中内容格式‘机器编号’、‘发票代码’、‘发票号码’、‘开票日期’、‘校 验 码’、‘购买方名称’、‘购买方纳税人识别号’、‘购买方地
+            址、电 话’、‘开户行及账号’、‘货物或应税劳务、服务名称’、‘规格型号’、‘单 位’、‘数 量’、‘单 价’、‘金 额’、‘税率’、‘税
+            额’、‘价税合计（大写）’、‘价税合计（小写）’、‘销售方名称’、‘销售方纳税人识别号’、‘销售方地 址、电 话’、‘销售方地 址、电 话’、‘开户行及账号’、‘备注’、‘收款人’、‘复核’、‘开票人’
+            字段返回信息，返回的结果信息以json格式返回
+        selected: false
+        title: 增值税专用发票普通发票
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - '1729851066338'
+            - file
+          enabled: true
+      height: 126
+      id: '1730191979948'
+      position:
+        x: 1221
+        y: 153
+      positionAbsolute:
+        x: 1221
+        y: 153
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1729851066338'
+          - file
+        desc: 电子发票(全电发票)提取模型
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Qwen/Qwen2-VL-72B-Instruct
+          provider: openai_api_compatible
+        prompt_template:
+        - id: fef27062-3a9f-4d92-8a59-0902e9c80e87
+          role: system
+          text: 请提取这张照片的内容，其中内容格式‘发票号码’、‘开票日期’、‘购买方信息名称’、‘购买方统一社会信用代码/纳税人识别号’、‘销售方信息名称’、‘销售方统一社会信用代码/纳税人识别号’、‘项目名称’、‘规格型号’、‘单
+            位’、‘数 量’、‘单 价’、‘金 额’、‘税率/征收率’、‘税 额’、‘合计’、‘价税合计（大写）’、‘价税合计（小写）’、‘备 注’ 字段返回信息，返回的结果信息以json格式返回
+        selected: false
+        title: 电子发票(全电发票)
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - '1729851066338'
+            - file
+          enabled: true
+      height: 126
+      id: '17301921619230'
+      position:
+        x: 1209.0000000000002
+        y: 321.9999999999999
+      positionAbsolute:
+        x: 1209.0000000000002
+        y: 321.9999999999999
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1729851066338'
+          - file
+        desc: 增值税普通发票-卷票提取模型
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Qwen/Qwen2-VL-72B-Instruct
+          provider: openai_api_compatible
+        prompt_template:
+        - id: fef27062-3a9f-4d92-8a59-0902e9c80e87
+          role: system
+          text: 请提取这张照片的内容，其中内容格式‘发票代码’、'发票号码’、'机打号码’、‘机器编号’、‘销售方名称’、‘纳税人识别号’、‘开票日期’、‘收款员’、‘购买方名称’、‘纳税人识别号’、‘项目’、‘单价’、‘数量’、‘金额’、‘合计金额（小写）’、‘合计金额（大写）’、‘校验码’字段返回信息，返回的结果信息以json格式返回
+        selected: false
+        title: 增值税普通发票-卷票
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - '1729851066338'
+            - file
+          enabled: true
+      height: 126
+      id: '17301923168610'
+      position:
+        x: 1209.0000000000002
+        y: 479.9999999999999
+      positionAbsolute:
+        x: 1209.0000000000002
+        y: 479.9999999999999
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1729851066338'
+          - file
+        desc: 火车票提取模型
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Qwen/Qwen2-VL-72B-Instruct
+          provider: openai_api_compatible
+        prompt_template:
+        - id: fef27062-3a9f-4d92-8a59-0902e9c80e87
+          role: system
+          text: 请提取这张照片的内容，其中内容格式‘始发站’、‘终点站’、‘车次’、‘出发时间’、‘票价’、‘身份证号’、‘姓名’字段返回信息，返回的结果信息以json格式返回
+        selected: false
+        title: 火车票
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - '1729851066338'
+            - file
+          enabled: true
+      height: 126
+      id: '17301924021390'
+      position:
+        x: 1214.0000000000002
+        y: 631.9999999999999
+      positionAbsolute:
+        x: 1214.0000000000002
+        y: 631.9999999999999
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1729851066338'
+          - file
+        desc: 新版火车票-铁路电子客票提取模型
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Qwen/Qwen2-VL-72B-Instruct
+          provider: openai_api_compatible
+        prompt_template:
+        - id: fef27062-3a9f-4d92-8a59-0902e9c80e87
+          role: system
+          text: 请提取这张照片的内容，其中内容格式‘发票号码’、'开票日期’、'‘出发时间’、‘始发站’、‘终点站’、‘车次’、‘票价’、‘身份证号’、‘姓名’、‘电子客票号’、‘购买方名称’、‘统一社会信用代码’字段返回信息，返回的结果信息以json格式返回
+        selected: false
+        title: 新版火车票-铁路电子客票
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - '1729851066338'
+            - file
+          enabled: true
+      height: 126
+      id: '17301924991430'
+      position:
+        x: 1209.0000000000002
+        y: 783.9999999999998
+      positionAbsolute:
+        x: 1209.0000000000002
+        y: 783.9999999999998
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1729851066338'
+          - file
+        desc: 定额发票提取模型
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Qwen/Qwen2-VL-72B-Instruct
+          provider: openai_api_compatible
+        prompt_template:
+        - id: fef27062-3a9f-4d92-8a59-0902e9c80e87
+          role: system
+          text: 请提取这张照片的内容，其中内容格式‘发票代码’、'发票号码’、'金额’字段返回信息，返回的结果信息以json格式返回
+        selected: false
+        title: 定额发票
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - '1729851066338'
+            - file
+          enabled: true
+      height: 126
+      id: '17301925812850'
+      position:
+        x: 1214.0000000000002
+        y: 938.3364999044305
+      positionAbsolute:
+        x: 1214.0000000000002
+        y: 938.3364999044305
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: 未识别出正确的发票信息，请重新输入
+        desc: ''
+        selected: false
+        title: 直接回复 2
+        type: answer
+        variables: []
+      height: 100
+      id: '1730192759530'
+      position:
+        x: 666.9385182590731
+        y: 1148.086786029122
+      positionAbsolute:
+        x: 666.9385182590731
+        y: 1148.086786029122
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        output_type: string
+        selected: false
+        title: 变量聚合器
+        type: variable-aggregator
+        variables:
+        - - '1730191979948'
+          - text
+        - - '17301921619230'
+          - text
+        - - '17301923168610'
+          - text
+        - - '17301924021390'
+          - text
+        - - '17301924991430'
+          - text
+        - - '17301925812850'
+          - text
+        - - '17306982748800'
+          - text
+      height: 269
+      id: '1730214844929'
+      position:
+        x: 1586.6429784410195
+        y: 455.35189817802376
+      positionAbsolute:
+        x: 1586.6429784410195
+        y: 455.35189817802376
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1730214844929.output#}}
+
+          {{#1729851066338.file#}}'
+        desc: ''
+        selected: false
+        title: 直接回复 2
+        type: answer
+        variables: []
+      height: 121
+      id: '1730214939964'
+      position:
+        x: 1890.6429784410195
+        y: 455.35189817802376
+      positionAbsolute:
+        x: 1890.6429784410195
+        y: 455.35189817802376
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1729851066338'
+          - file
+        desc: 出租车发票提取模型
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Qwen/Qwen2-VL-72B-Instruct
+          provider: openai_api_compatible
+        prompt_template:
+        - id: fef27062-3a9f-4d92-8a59-0902e9c80e87
+          role: system
+          text: 请提取这张照片的内容，其中内容格式‘发票代码’、'发票号码’、'单位’、'车号’、'工号’、'日期’、'时间’、'单价’、'里程’、'等候’、'金额’等字段返回信息，返回的结果信息以json格式返回
+        selected: false
+        title: 出租车发票
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - '1729851066338'
+            - file
+          enabled: true
+      height: 126
+      id: '17306982748800'
+      position:
+        x: 1214.0000000000002
+        y: 1083.5617314828105
+      positionAbsolute:
+        x: 1214.0000000000002
+        y: 1083.5617314828105
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: -581.2644639987291
+      y: -185.7145359079201
+      zoom: 0.7663099801038934
