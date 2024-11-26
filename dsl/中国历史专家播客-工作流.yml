@@ -1,0 +1,270 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: 中国历史专家播客-工作流
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.3
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: llm
+      id: 1732605362358-source-1732605368639-target
+      source: '1732605362358'
+      sourceHandle: source
+      target: '1732605368639'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: tool
+      id: 1732605368639-source-1732605537253-target
+      source: '1732605368639'
+      sourceHandle: source
+      target: '1732605537253'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: tool
+        targetType: end
+      id: 1732605537253-source-1732605556499-target
+      source: '1732605537253'
+      sourceHandle: source
+      target: '1732605556499'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - label: input
+          max_length: 48
+          options: []
+          required: true
+          type: text-input
+          variable: input
+      height: 89
+      id: '1732605362358'
+      position:
+        x: 80
+        y: 282
+      positionAbsolute:
+        x: 80
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: llama-3.2-90b-text-preview
+          provider: groq
+        prompt_template:
+        - id: 7bc28cb4-12de-49f3-9d2a-b0d4fc415252
+          role: system
+          text: '### 角色清晰
+
+
+            作为中国历史学者，您是一位深谙中国历史的学者，尤其擅长运用《资治通鉴》及其他二十四史等经典历史文献。您的任务是通过历史的视角，分析并解读当代事件。
+
+
+            ### 结构化交互
+
+
+            请按照以下步骤进行：
+
+
+            1.  **确认事件**：请用户提供具体的当代事件或问题。
+
+            2.  **历史背景**：从《资治通鉴》或其他二十四史中选择相关的历史事件或背景。
+
+            3.  **分析比较**：通过比较历史事件与当代事件，指出相似之处和不同之处。
+
+            4.  **解读与建议**：基于历史分析，提供对当代事件的解读和可能的建议。
+
+
+            ### 明确指导
+
+
+            1.  **信息请求**：请用户详细描述他们希望您分析的当代事件或问题。
+
+            2.  **反馈机制**：在每一步分析后，请用户确认信息是否准确，并询问是否需要进一步的解释或其他角度的分析。
+
+
+            ### 个性化体验
+
+
+            请确保您的分析尽可能与用户提供的具体事件或问题密切相关。例如，如果用户提到一个政治事件，您可以选择相关的历史政治事件进行比较。'
+        - id: 67465dba-cd9b-4c0c-b867-26ade80ac180
+          role: user
+          text: '{{#1732605362358.input#}}'
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '1732605368639'
+      position:
+        x: 384
+        y: 282
+      positionAbsolute:
+        x: 384
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        provider_id: audio
+        provider_name: audio
+        provider_type: builtin
+        selected: false
+        title: Text To Speech
+        tool_configurations:
+          model: tongyi#tts-1
+          voice#tongyi#tts-1: sambert-zhijia-v1
+        tool_label: Text To Speech
+        tool_name: tts
+        tool_parameters:
+          text:
+            type: mixed
+            value: '{{#1732605368639.text#}}'
+        type: tool
+      height: 115
+      id: '1732605537253'
+      position:
+        x: 688
+        y: 282
+      positionAbsolute:
+        x: 688
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1732605368639'
+          - text
+          variable: text
+        - value_selector:
+          - '1732605537253'
+          - files
+          variable: tts
+        selected: false
+        title: 结束
+        type: end
+      height: 115
+      id: '1732605556499'
+      position:
+        x: 992
+        y: 282
+      positionAbsolute:
+        x: 992
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        author: 周辉
+        desc: ''
+        height: 88
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"输入用户提问的信息，比如“请介绍一下司马迁的故事，内容字数不少500","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 88
+      id: '1732611353713'
+      position:
+        x: 90.32097394152647
+        y: 404.6428877560456
+      positionAbsolute:
+        x: 90.32097394152647
+        y: 404.6428877560456
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+    viewport:
+      x: 90.70667248811787
+      y: 161.44808376096591
+      zoom: 0.8705505632961241
