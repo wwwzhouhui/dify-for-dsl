@@ -67,4 +67,4 @@ https://aqma351r01f.feishu.cn/wiki/HF5FwMDQkiHoCokvbQAcZLu3nAg?table=tbleOWb4WgX
 
 ## 技术交流群
 
-![img](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Screenshot_20241115_094035_com.tencent.mm.jpg)
+![img](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20241126180700238.png)
