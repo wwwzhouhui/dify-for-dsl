@@ -36,6 +36,7 @@
 | 发票比对专家-新版客运火车票2.yml    | 调用多模态模型、文本模型                              |
 | 抓取获取36氪热榜文章内容 .yml       | 调用文本模型、http接口请求、jina-ai爬取网页信息、迭代 |
 | 中国历史专家播客.yml       | 调用文本模型、TEXT TO SPEECH工具组件使用 |
+| giteeKolors工作流.yaml       | 自定义第三方接口服务封装文生图、使用gitee Serverless API 接口+腾讯云OSS存储 |
 
 ## 更新说明
 
@@ -43,6 +44,7 @@
 
 2024年11月26日- version 0.0.2: 新增加中国历史专家播客 DSL文件
 
+2024年12月18日- version 0.0.2.1: 新增加giteeKolors工作流.yaml 提供第三方接口api源码，详细文档和代码看https://github.com/wwwzhouhui/dify-for-dsl/tree/main/dsl/difyforgitee
 ## 技术文档地址（飞书）:
 
 https://aqma351r01f.feishu.cn/wiki/HF5FwMDQkiHoCokvbQAcZLu3nAg?table=tbleOWb4WgXcxiHK&view=vewGwwbpzl
@@ -67,4 +69,4 @@ https://aqma351r01f.feishu.cn/wiki/HF5FwMDQkiHoCokvbQAcZLu3nAg?table=tbleOWb4WgX
 
 ## 技术交流群
 
-![img](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20241126180700238.png)
+![img](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Screenshot_20241218_163143_com.tencent.mm.jpg)
