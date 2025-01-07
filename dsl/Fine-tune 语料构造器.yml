@@ -1,0 +1,371 @@
+app:
+  description: '上传文件，基于文件内容，使用 SiliconCloud 128K 上下文的 Qwen2.5 模型，生成日常问答内容，JSONL 格式的语料数据
+
+    ⚠️ 注：
+
+    - 由于 Dify 限制，超过 80000 字符的文件内容会被截断
+
+    - 生成内容仅供参考，可能存在幻觉或内容错漏、格式错误，请注意甄别'
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: Fine-tune 语料构造器
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: document-extractor
+      id: 1735807686274-source-1735807758092-target
+      source: '1735807686274'
+      sourceHandle: source
+      target: '1735807758092'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: document-extractor
+        targetType: code
+      id: 1735807758092-source-1735807761855-target
+      source: '1735807758092'
+      sourceHandle: source
+      target: '1735807761855'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: llm
+      id: 1735807761855-source-1735807764975-target
+      source: '1735807761855'
+      sourceHandle: source
+      target: '1735807764975'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: end
+      id: 1735807764975-source-1735807769820-target
+      source: '1735807764975'
+      sourceHandle: source
+      target: '1735807769820'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: 语料文件
+          max_length: 10
+          options: []
+          required: true
+          type: file-list
+          variable: attachments
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - image
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: 触发词（训练中的 system prompt）
+          max_length: 48
+          options: []
+          required: true
+          type: text-input
+          variable: trigger
+      height: 115
+      id: '1735807686274'
+      position:
+        x: 23.436009400016985
+        y: 258
+      positionAbsolute:
+        x: 23.436009400016985
+        y: 258
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_array_file: true
+        selected: false
+        title: 文档提取器
+        type: document-extractor
+        variable_selector:
+        - '1735807686274'
+        - attachments
+      height: 91
+      id: '1735807758092'
+      position:
+        x: 334
+        y: 258
+      positionAbsolute:
+        x: 334
+        y: 258
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "def main(articleSections: list) -> dict:\n    try:\n        # 将列表项合并为字符串\n\
+          \        combined_text = \"\\n\".join(articleSections)\n        \n     \
+          \   # 截取前80000个字符\n        truncated_text = combined_text[:80000]\n    \
+          \    \n        return {\n            \"result\": truncated_text\n      \
+          \  }\n    except Exception as e:\n        # 错误处理\n        return {\n   \
+          \         \"result\": \"\"\n        }"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行
+        type: code
+        variables:
+        - value_selector:
+          - '1735807758092'
+          - text
+          variable: articleSections
+      height: 53
+      id: '1735807761855'
+      position:
+        x: 638
+        y: 258
+      positionAbsolute:
+        x: 638
+        y: 258
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            frequency_penalty: 0.5
+            max_tokens: 4096
+            temperature: 0.3
+          mode: chat
+          name: Qwen/Qwen2.5-72B-Instruct-128K
+          provider: siliconflow
+        prompt_template:
+        - id: b6913d40-d173-45d8-b012-98240d42a196
+          role: system
+          text: '【角色】
+
+            你是一位 LLM 大语言模型科学家，参考用户提供的内容，帮助用户构造符合规范的 Fine-tune（微调）数据
+
+
+            【任务】
+
+            - 对于给定的「内容」，你每次回列出 10 个通俗「问题」；
+
+            - 针对每个「问题」，引用「内容」原文及对内容的合理解释和演绎，做出「解答」；
+
+            - 并将「问题」「解答」整理为规范的 JSONL 格式
+
+
+            【要求】
+
+            1. 问题 **不要** 直接引用「内容」，应该贴近当代现实生活；
+
+            2. 问题应该是通俗白话，避免“假、大、空“；
+
+            3. 答案应忠于原文，对于原文的解释不能脱离原文的主旨、思想；
+
+
+            【输出规范】
+
+            * 输出规范的 JSONL，每行一条数据
+
+            * 每条数据应包含一个 message 数组，每个数组都应该包含 role 分别为 system、user 和 assistant 的三条记录
+
+            * 其中 role 为 system 的数据，作为训练中的 system prompt 格外重要，其 content 使用用户指定的「触发词」
+
+            * role 为 user 的数据对应列出的「问题」
+
+            * role 为 assistant 的数据则对应针对「问题」的「解答」
+
+            * 示例如下：
+
+            ```
+
+            {"messages": [{"role": "system", "content": "你是当代大儒"}, {"role": "user",
+            "content": "应该怎么学习？"}, {"role": "assistant", "content": "贤贤易色；事父母，能竭其力；事君，能致其身；与朋友交，言而有信。虽曰未学，吾必谓之学矣。"}]}
+
+            ```'
+        - id: 61530521-14cf-4eaf-8f06-a4bc89db3cb1
+          role: user
+          text: '「内容」
+
+            {{#1735807761855.result#}}
+
+            「触发词」
+
+            {{#1735807686274.trigger#}}'
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '1735807764975'
+      position:
+        x: 942
+        y: 258
+      positionAbsolute:
+        x: 942
+        y: 258
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1735807764975'
+          - text
+          variable: text
+        selected: false
+        title: 结束
+        type: end
+      height: 89
+      id: '1735807769820'
+      position:
+        x: 1246
+        y: 258
+      positionAbsolute:
+        x: 1246
+        y: 258
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        author: 周辉
+        desc: ''
+        height: 88
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"合并多个文档内容，并截取前
+          8W 字符","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 88
+      id: '1736218730242'
+      position:
+        x: 638
+        y: 327.1149647499365
+      positionAbsolute:
+        x: 638
+        y: 327.1149647499365
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+    - data:
+        author: 周辉
+        desc: ''
+        height: 88
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"设置较低的
+          Temperature，提高输出格式的稳定性","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 88
+      id: '1736218749712'
+      position:
+        x: 942
+        y: 362.39641422484544
+      positionAbsolute:
+        x: 942
+        y: 362.39641422484544
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+    viewport:
+      x: -35.981454284351
+      y: 86.37570298518972
+      zoom: 1.6624757922855755
