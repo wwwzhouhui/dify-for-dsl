@@ -1,0 +1,547 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 诗句封面+语音播报
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        sourceType: start
+        targetType: llm
+      id: 1736693758435-llm
+      source: '1736693758435'
+      sourceHandle: source
+      target: llm
+      targetHandle: target
+      type: custom
+    - data:
+        isInIteration: false
+        sourceType: http-request
+        targetType: code
+      id: 1736693844224-source-1736694050685-target
+      source: '1736693844224'
+      sourceHandle: source
+      target: '1736694050685'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: template-transform
+      id: 1736694050685-source-1736694293233-target
+      source: '1736694050685'
+      sourceHandle: source
+      target: '1736694293233'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: template-transform
+        targetType: answer
+      id: 1736694293233-source-answer-target
+      selected: false
+      source: '1736694293233'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: tool
+      id: llm-source-1736694608554-target
+      source: llm
+      sourceHandle: source
+      target: '1736694608554'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: tool
+        targetType: code
+      id: 1736694608554-source-1736694775201-target
+      source: '1736694608554'
+      sourceHandle: source
+      target: '1736694775201'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: answer
+      id: 1736694775201-source-answer-target
+      source: '1736694775201'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: tool
+      id: llm-source-1736695769672-target
+      source: llm
+      sourceHandle: source
+      target: '1736695769672'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: tool
+        targetType: code
+      id: 1736695769672-source-1736695833109-target
+      source: '1736695769672'
+      sourceHandle: source
+      target: '1736695833109'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: http-request
+      id: 1736695833109-source-1736693844224-target
+      source: '1736695833109'
+      sourceHandle: source
+      target: '1736693844224'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables: []
+      height: 54
+      id: '1736693758435'
+      position:
+        x: -4
+        y: 295
+      positionAbsolute:
+        x: -4
+        y: 295
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: '{{#sys.query#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 10
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-ai/DeepSeek-V2.5
+          provider: siliconflow
+        prompt_template:
+        - id: 29d22832-cc83-4249-ae12-ebcade1d3da1
+          role: system
+          text: '# Role: 唐诗宋词专家
+
+
+            ## Profile
+
+
+            - 专长: 精通唐诗宋词创作和鉴赏
+
+            - 知识储备: 熟知各朝代诗人的生平、风格和代表作品
+
+            - 创作能力: 能模仿不同诗人的风格进行创作
+
+
+            ## Rules
+
+
+            1. 严格遵循古典诗词的格律和韵律要求
+
+            2. 创作内容要符合指定诗人的风格特点
+
+            3. 不得抄袭已有的诗词作品
+
+            4. 回答要简洁明了,直接给出创作的诗句
+
+
+            ## Workflow
+
+
+            1. 理解用户提供的诗人名字
+
+            2. 回忆该诗人的创作风格和常用主题
+
+            3. 根据诗人特点,创作一首符合其风格的诗句
+
+            4. 直接输出创作的诗句,无需额外解释
+
+            5.用中文来回答
+
+
+            ## Initialization
+
+
+            作为一位博学多才的唐诗宋词专家,我随时准备为您创作优美的诗句。请告诉我您想要哪位诗人的作品风格,我会为您量身定制一首诗。'
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 98
+      id: llm
+      position:
+        x: 291
+        y: 304
+      positionAbsolute:
+        x: 291
+        y: 304
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1736694293233.output#}}
+
+          {{#1736694775201.result#}}'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 121
+      id: answer
+      position:
+        x: 1673
+        y: 261
+      positionAbsolute:
+        x: 1673
+        y: 261
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        authorization:
+          config:
+            api_key: 341955175059165819.0C7KtiQIRIsXxEKB9XHcHzUWGWA641FG
+            header: X-API-Key
+            type: custom
+          type: api-key
+        body:
+          data:
+          - id: key-value-35
+            key: ''
+            type: text
+            value: "{\n    \"width\": 1024,\n    \"height\": 1024,\n    \"backgroundColor\"\
+              : \"#ffffff\",\n    \"borderColor\": \"#ffffff\",\n    \"borderWidth\"\
+              : 0,\n    \"borderRadius\": 0,\n    \"borderTopLeftRadius\": 0,\n  \
+              \  \"borderTopRightRadius\": 0,\n    \"borderBottomLeftRadius\": 0,\n\
+              \    \"borderBottomRightRadius\": 0,\n    \"texts\": [\n        {\n\
+              \            \"x\": 224,\n            \"y\": 114,\n            \"text\"\
+              : \"{{#llm.text#}}\",\n            \"width\": 600,\n            \"font\"\
+              : \"Alibaba-PuHuiTi-Heavy\",\n            \"fontSize\": 70,\n      \
+              \      \"lineHeight\": 80,\n            \"lineSpacing\": 1.3,\n    \
+              \        \"color\": \"#FFA500\",\n            \"textAlign\": \"left\"\
+              ,\n            \"zIndex\": 1\n        },\n\t\t{\n            \"x\":\
+              \ 880,\n            \"y\": 1000,\n            \"text\": \"长按识别二维码，扫描获取源码\"\
+              ,\n            \"font\": \"jiangxizhuokai\",\n            \"fontSize\"\
+              : 22,\n            \"color\": \"#FFFFFF\",\n            \"width\": 580,\n\
+              \            \"textAlign\": \"center\",\n            \"zIndex\": 1\n\
+              \        }\n    ],\n    \"images\": [\n        {\n            \"x\"\
+              : 0,\n            \"y\": 0,\n            \"width\": 1024,\n        \
+              \    \"height\": 1024,\n            \"url\": \"{{#1736695833109.result#}}\"\
+              ,\n            \"borderColor\": \"#000000\",\n            \"borderWidth\"\
+              : 0,\n            \"borderRadius\": 0,\n            \"borderTopLeftRadius\"\
+              : 0,\n            \"borderTopRightRadius\": 0,\n            \"borderBottomLeftRadius\"\
+              : 0,\n            \"borderBottomRightRadius\": 0,\n            \"zIndex\"\
+              : 0\n        }\n    ],\n\t\"qrcodes\": [\n        {\n            \"\
+              x\": 808,\n            \"y\": 800,\n            \"size\": 200,\n   \
+              \         \"content\": \"https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/%E4%B8%8B%E8%BD%BD.png\"\
+              ,\n            \"foregroundColor\": \"#000\",\n            \"backgroundColor\"\
+              : \"#fff\",\n            \"zIndex\": 1\n        }\n    ]\n  }"
+          type: json
+        desc: ''
+        headers: Content-Type:application/json
+        method: post
+        params: ''
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 100
+        selected: false
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: HTTP 请求
+        type: http-request
+        url: https://api.imgrender.cn/open/v1/pics
+        variables: []
+      height: 135
+      id: '1736693844224'
+      position:
+        x: 1205
+        y: 550
+      positionAbsolute:
+        x: 1205
+        y: 550
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import json  \n  \ndef main(req: str) -> dict:  \n    # 解析JSON字符串（该字符串已经是请求体内容）\
+          \  \n    data = json.loads(req)  \n      \n    # 从解析后的数据中提取url  \n    url\
+          \ = data['data']['url']  \n      \n    # 创建并返回结果字典  \n    return {  \n \
+          \       \"result\": url  # 封面图片的URL  \n    }"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 获取封面图URl
+        type: code
+        variables:
+        - value_selector:
+          - '1736693844224'
+          - body
+          variable: req
+      height: 54
+      id: '1736694050685'
+      position:
+        x: 1505
+        y: 604
+      positionAbsolute:
+        x: 1505
+        y: 604
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        selected: false
+        template: '![封面图]({{ arg1 }})'
+        title: 模板转换
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1736694050685'
+          - result
+          variable: arg1
+      height: 54
+      id: '1736694293233'
+      position:
+        x: 1613
+        y: 528
+      positionAbsolute:
+        x: 1613
+        y: 528
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        provider_id: fe2f4c5a-3fc5-4265-80f6-824c803d07de
+        provider_name: siliconflowmakeaudioapi
+        provider_type: api
+        selected: false
+        title: generate-audio_post
+        tool_configurations: {}
+        tool_label: generate-audio_post
+        tool_name: generate-audio_post
+        tool_parameters:
+          input:
+            type: mixed
+            value: '{{#llm.text#}}'
+          model:
+            type: mixed
+            value: FunAudioLLM/CosyVoice2-0.5B
+          voice:
+            type: mixed
+            value: FunAudioLLM/CosyVoice2-0.5B:david
+        type: tool
+      height: 54
+      id: '1736694608554'
+      position:
+        x: 622
+        y: 295
+      positionAbsolute:
+        x: 622
+        y: 295
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "def main(arg1: str) -> str:\n    # 首先解析外层的 JSON 字符串\n    data = json.loads(arg1)\n\
+          \    filename=data['filename']\n    url=data['etag']\n    markdown_result\
+          \ = f\"<audio controls><source src='{url}' type='audio/mpeg'>{filename}</audio>\"\
+          \n    return {\"result\": markdown_result} "
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 文字转音频文件处理
+        type: code
+        variables:
+        - value_selector:
+          - '1736694608554'
+          - text
+          variable: arg1
+      height: 54
+      id: '1736694775201'
+      position:
+        x: 899
+        y: 295
+      positionAbsolute:
+        x: 899
+        y: 295
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        provider_id: 278e440f-d9d8-4bed-ac11-4deea13a56c8
+        provider_name: giteeapiKolors
+        provider_type: api
+        selected: false
+        title: Kolors文生图
+        tool_configurations: {}
+        tool_label: generateImage
+        tool_name: generateImage
+        tool_parameters:
+          prompt:
+            type: mixed
+            value: '{{#llm.text#}}'
+        type: tool
+      height: 54
+      id: '1736695769672'
+      position:
+        x: 542
+        y: 559
+      positionAbsolute:
+        x: 542
+        y: 559
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "def main(arg1: str) -> str:\n    import json\n    data = json.loads(arg1)\n\
+          \    filename=data['filename']\n    url=data['etag']\n    markdown_result\
+          \ =url\n    return {\"result\": markdown_result}"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 处理生成图片URL
+        type: code
+        variables:
+        - value_selector:
+          - '1736695769672'
+          - text
+          variable: arg1
+      height: 54
+      id: '1736695833109'
+      position:
+        x: 843
+        y: 564
+      positionAbsolute:
+        x: 843
+        y: 564
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: -235.91636498191133
+      y: 74.77289505759866
+      zoom: 0.8705505632961241
