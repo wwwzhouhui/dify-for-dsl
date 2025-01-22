@@ -40,6 +40,18 @@
 | Fine-tune 语料构造器.yml      | 调用文本模型                                             |
 | FLUX绘画机器人+多模态识别+语音播放.yml | 文本生成模型、多模态模型、文生图模型、文生语音模型                          |
 | 诗句封面+语音播报.yml | 文本生成模型、多模态模型、文生语音模型、http接口请求                               |
+| ai绘画整合comfyui_bizair.yml | http接口请求、comfui_bizair |
+
+### 部分视频链接地址
+
+| 视频名称                                                 | 链接地址                                                     | 视频源              |
+| -------------------------------------------------------- | ------------------------------------------------------------ | ------------------- |
+| dify案例分享-基于多模态模型的发票识别                    | https://www.bilibili.com/video/BV1H51xYbENj 、https://www.youtube.com/watch?v=rjMBui5IsOw、https://www.youtube.com/watch?v=rjMBui5IsOw | B站、油管、今日头条 |
+| dify案例分享-基于多模态模型的发票识别2                   | https://www.bilibili.com/video/BV1YgmzYxEhh、https://www.youtube.com/watch?v=ghehTQhdnss、https://www.toutiao.com/video/7433468877918437940/ | B站、油管、今日头条 |
+| dify案例分享-基于多模态模型的发票比对                    | https://www.bilibili.com/video/BV1YgmzYxEhh、https://www.youtube.com/watch?v=Id41hLyxwlE、https://www.toutiao.com/video/7435521963365237287/ | B站、油管、今日头条 |
+| dify案例分享-基于jina和http实现36氪新闻热榜文章          | https://www.bilibili.com/video/BV1YgmzYxEhh、https://www.youtube.com/watch?v=hrS-FTLtsGI | B站、油管           |
+| dify案例分享-文生图片OCR识别加语音播报，AI工作流一键搞定 | https://www.bilibili.com/video/BV13GcgezEVT、https://www.youtube.com/watch?v=Nq_5kDW0jO0&t=16s、https://www.toutiao.com/video/7458884426408182282/ | B站、油管、今日头条 |
+| dify案例分享-古诗词海报生成加语音播报                    | https://www.bilibili.com/video/BV1fVwPeqEz9、https://www.youtube.com/watch?v=M6aVZX51cO0、https://www.toutiao.com/video/7461152220034171429/ | B站、油管、今日头条 |
 
 ## 更新说明
 
@@ -51,8 +63,10 @@
 
 2025年1月7日- version 0.0.2.2:新增加Fine-tune 语料构造器.yml
 
-2025年1月12日-version 0.0.2.3:新增加FLUX绘画机器人+多模态识别+语音播放.yml
+2025年1月12日-version 0.0.2.3:新增加FLUX绘画机器人+多模态识别+语音播放.yml 提供第三方接口api源码，详细文档和代码看https://github.com/wwwzhouhui/dify-for-dsl/tree/main/dsl/difyforsiliconflow/
 2025年1月18日-version 0.0.2.4:新增加诗句封面+语音播报.yml
+
+2025年1月22日-version 0.0.2.5:新增加ai绘画整合comfyui_bizair.yml 提供第三方接口api源码，详细文档和代码看 https://github.com/wwwzhouhui/dify-for-dsl/tree/main/dsl/difyforsiliconflow/bizyair
 
 ## 技术文档地址（飞书）:
 

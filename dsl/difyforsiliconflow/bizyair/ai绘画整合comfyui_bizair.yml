@@ -1,0 +1,264 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: ai绘画整合comfyui_bizair
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: http-request
+        targetType: code
+      id: 1737344569502-source-1737344869983-target
+      source: '1737344569502'
+      sourceHandle: source
+      target: '1737344869983'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: answer
+      id: 1737344869983-source-1737344939986-target
+      source: '1737344869983'
+      sourceHandle: source
+      target: '1737344939986'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: http-request
+      id: 1737344556607-source-1737344569502-target
+      source: '1737344556607'
+      sourceHandle: source
+      target: '1737344569502'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - label: prompt
+          max_length: 48
+          options: []
+          required: true
+          type: text-input
+          variable: prompt
+        - allowed_file_extensions:
+          - .json
+          allowed_file_types:
+          - custom
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: workflowfile
+          max_length: 5
+          options: []
+          required: true
+          type: file
+          variable: workflowfile
+      height: 116
+      id: '1737344556607'
+      position:
+        x: -470.4
+        y: 133
+      positionAbsolute:
+        x: -470.4
+        y: 133
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data:
+          - id: key-value-28
+            key: prompt
+            type: text
+            value: '{{#1737344556607.prompt#}}'
+          - id: key-value-29
+            key: seed
+            type: text
+            value: '12345678'
+          - id: key-value-30
+            key: idx
+            type: text
+            value: '1'
+          - file:
+            - '1737344556607'
+            - workflowfile
+            id: key-value-124
+            key: workflowfile
+            type: file
+            value: ''
+          type: form-data
+        desc: ''
+        headers: ''
+        method: post
+        params: ''
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 100
+        selected: false
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: HTTP 请求
+        type: http-request
+        url: http://127.0.0.1:8082/comfyui_bizyairapi/
+        variables: []
+      height: 135
+      id: '1737344569502'
+      position:
+        x: 46.62464709562573
+        y: 97.55390493500889
+      positionAbsolute:
+        x: 46.62464709562573
+        y: 97.55390493500889
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "def main(arg1: str) -> str:\n    import json\n    data = json.loads(arg1)\n\
+          \    filename=data['filename']\n    url=data['etag']\n    markdown_result\
+          \ = f\"![{filename}]({url})\"\n    return {\"result\": markdown_result}"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行
+        type: code
+        variables:
+        - value_selector:
+          - '1737344569502'
+          - body
+          variable: arg1
+      height: 54
+      id: '1737344869983'
+      position:
+        x: 386.8923326357798
+        y: 103.29739670999408
+      positionAbsolute:
+        x: 386.8923326357798
+        y: 103.29739670999408
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1737344869983.result#}}'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 103
+      id: '1737344939986'
+      position:
+        x: 758.9480767056791
+        y: 103.29739670999408
+      positionAbsolute:
+        x: 758.9480767056791
+        y: 103.29739670999408
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        author: 周辉
+        desc: ''
+        height: 88
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"本工作流主要是通过http请求接口调用comfyui_bizair实现AI绘画功能","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 88
+      id: '1737522635720'
+      position:
+        x: -470.4
+        y: 276.38250709804504
+      positionAbsolute:
+        x: -470.4
+        y: 276.38250709804504
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+    viewport:
+      x: 522.8328881526828
+      y: 113.08131633256107
+      zoom: 1.0446606759553494
