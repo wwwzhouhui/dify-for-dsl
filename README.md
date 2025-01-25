@@ -69,7 +69,7 @@
 
 2025年1月22日-version 0.0.2.5:新增加ai绘画整合comfyui_bizair.yml 提供第三方接口api源码，详细文档和代码看 https://github.com/wwwzhouhui/dify-for-dsl/tree/main/dsl/difyforsiliconflow/bizyair
 
-2025年1月18日-version 0.0.2.6:新增加YouTube博主和自媒体运营专家工作流.yml
+2025年1月25日-version 0.0.2.6:新增加YouTube博主和自媒体运营专家工作流.yml
 
 ## 技术文档地址（飞书）:
 
