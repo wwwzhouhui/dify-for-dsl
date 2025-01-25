@@ -41,12 +41,13 @@
 | FLUX绘画机器人+多模态识别+语音播放.yml | 文本生成模型、多模态模型、文生图模型、文生语音模型                          |
 | 诗句封面+语音播报.yml | 文本生成模型、多模态模型、文生语音模型、http接口请求                               |
 | ai绘画整合comfyui_bizair.yml | http接口请求、comfui_bizair |
+| YouTube博主和自媒体运营专家工作流.yml | 文本生成模型 |
 
 ### 部分视频链接地址
 
 | 视频名称                                                 | 链接地址                                                     | 视频源              |
 | -------------------------------------------------------- | ------------------------------------------------------------ | ------------------- |
-| dify案例分享-基于多模态模型的发票识别                    | https://www.bilibili.com/video/BV1H51xYbENj 、https://www.youtube.com/watch?v=rjMBui5IsOw、https://www.youtube.com/watch?v=rjMBui5IsOw | B站、油管、今日头条 |
+| dify案例分享-基于多模态模型的发票识别                    | https://www.bilibili.com/video/BV1H51xYbENj 、https://www.youtube.com/watch?v=rjMBui5IsOw、https://www.toutiao.com/video/7435521963365237287/ | B站、油管、今日头条 |
 | dify案例分享-基于多模态模型的发票识别2                   | https://www.bilibili.com/video/BV1YgmzYxEhh、https://www.youtube.com/watch?v=ghehTQhdnss、https://www.toutiao.com/video/7433468877918437940/ | B站、油管、今日头条 |
 | dify案例分享-基于多模态模型的发票比对                    | https://www.bilibili.com/video/BV1YgmzYxEhh、https://www.youtube.com/watch?v=Id41hLyxwlE、https://www.toutiao.com/video/7435521963365237287/ | B站、油管、今日头条 |
 | dify案例分享-基于jina和http实现36氪新闻热榜文章          | https://www.bilibili.com/video/BV1YgmzYxEhh、https://www.youtube.com/watch?v=hrS-FTLtsGI | B站、油管           |
@@ -67,6 +68,8 @@
 2025年1月18日-version 0.0.2.4:新增加诗句封面+语音播报.yml
 
 2025年1月22日-version 0.0.2.5:新增加ai绘画整合comfyui_bizair.yml 提供第三方接口api源码，详细文档和代码看 https://github.com/wwwzhouhui/dify-for-dsl/tree/main/dsl/difyforsiliconflow/bizyair
+
+2025年1月18日-version 0.0.2.6:新增加YouTube博主和自媒体运营专家工作流.yml
 
 ## 技术文档地址（飞书）:
 
@@ -92,7 +95,7 @@ https://aqma351r01f.feishu.cn/wiki/HF5FwMDQkiHoCokvbQAcZLu3nAg?table=tbleOWb4WgX
 
 ## 技术交流群
 
-![img](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250118083946.jpg)
+![img](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/%25E5%25BE%25AE%25E4%25BF%25A1%25E5%259B%25BE%25E7%2589%2587_20250125215603.jpg)
 
 ## Star History
 

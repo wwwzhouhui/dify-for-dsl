@@ -1,0 +1,293 @@
+app:
+  description: ''
+  icon: clown_face
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: YouTube 博主和自媒体运营专家工作流
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: document-extractor
+      id: 1737731709313-source-1737731807786-target
+      source: '1737731709313'
+      sourceHandle: source
+      target: '1737731807786'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: document-extractor
+        targetType: llm
+      id: 1737731807786-source-1737731818200-target
+      source: '1737731807786'
+      sourceHandle: source
+      target: '1737731818200'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: end
+      id: 1737731818200-source-1737731985294-target
+      source: '1737731818200'
+      sourceHandle: source
+      target: '1737731985294'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: 请上传TXT文件格式视频字幕文件
+          max_length: 48
+          options: []
+          required: true
+          type: file
+          variable: srtfile
+      height: 89
+      id: '1737731709313'
+      position:
+        x: 80
+        y: 282
+      positionAbsolute:
+        x: 80
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: 提取字幕文件内容
+        is_array_file: false
+        selected: false
+        title: 文档提取器
+        type: document-extractor
+        variable_selector:
+        - '1737731709313'
+        - srtfile
+      height: 119
+      id: '1737731807786'
+      position:
+        x: 384
+        y: 282
+      positionAbsolute:
+        x: 384
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-ai/DeepSeek-V2.5
+          provider: siliconflow
+        prompt_template:
+        - id: 26856bc1-5e1d-47f6-acf6-850b97eedb16
+          role: system
+          text: '你是一名专业的,YouTuber博主和自媒体运营专家。
+
+            根据用户提供的字幕内容{{#1737731807786.text#}}
+
+            1.生成5个吸引人的视频标题;
+
+            2.生成中文的视频简介，要求在 150 字以内,视频简介分别需要中文和英文双语介绍；
+
+            3.对视频内容进行时间轴划分,时间轴内容需要提炼出5个重点时间线，时间轴需要有中文和英文双语时间线;
+
+            4.生成 10 个符合视频内容的标签；
+
+            最终生成的结果，格式如下：
+
+            标题：
+
+            视频简介：
+
+            《清晰思考》不仅是一本关于决策的书，它是一次对思考质量的全面提升。加拿大前情报专家Shane Parrish将他的经验和智慧凝练成文，教你如何在生活的每个瞬间做出清晰、理性的决策。本书详细指导你如何克服人性的弱点、培养强者思维、并实现高质量的决策。如果理解了这本书，你将获得全方位的思维训练；如果付诸实践，你将发现自己已经超越了80%的普通人，因为能够清晰思考本身就是一种稀缺能力，这将为你的未来铺路，赢得竞争优势。
+
+            “Clear Thinking” is not just a book about decision-making; it’s a comprehensive
+            guide to enhancing the quality of your thinking. Former Canadian intelligence
+            expert Shane Parrish distills his experience and insights to teach you
+            how to make clear and rational decisions in every moment of your life.
+            This book provides detailed guidance on overcoming human weaknesses, developing
+            a resilient mindset, and achieving high-quality decision-making. If you
+            grasp the concepts in this book, you will receive holistic mental training;
+            if you put them into practice, you will find yourself ahead of 80% of
+            the average population, as the ability to think clearly is a rare skill
+            that paves the way for your future and gives you a competitive edge.
+
+            时间轴：
+
+            00:00 本书主旨
+
+            01:22 一、克服生物本能
+
+            05:34 二、打造强者思维
+
+            09:57 三、设立高标准
+
+            11:15 四、实施高质量决策流程
+
+            20:06 总结 & 英文原版难度
+
+
+            Timeline:
+
+
+            00:00 Book Overview
+
+            01:22 Part 1: Overcoming Biological Instincts
+
+            05:34 Part 2: Building a Resilient Mindset
+
+            09:57 Part 3: Setting High Standards
+
+            11:15 Part 4: Implementing a High-Quality Decision-Making Process
+
+            20:06 Summary & Difficulty Level of the English Original
+
+            ......
+
+            标签 1 #标签 2 #标签 3......'
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '1737731818200'
+      position:
+        x: 687
+        y: 282
+      positionAbsolute:
+        x: 687
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: 生成视频描述信息
+        outputs:
+        - value_selector:
+          - '1737731818200'
+          - text
+          variable: name
+        selected: false
+        title: 结束
+        type: end
+      height: 117
+      id: '1737731985294'
+      position:
+        x: 991
+        y: 282
+      positionAbsolute:
+        x: 991
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        author: 周辉
+        desc: ''
+        height: 153
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"本工作流主要用途是用户上传TXT格式的字幕文件，工作流会自动将根据字幕文件的内容一键转换成
+          youtube等自媒体用到的标题、视频主要内容中英文）、视频时间轴（中英文），以及关键标签","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 359
+      height: 153
+      id: '1737812721002'
+      position:
+        x: 87.21932997780517
+        y: 405.92556286457216
+      positionAbsolute:
+        x: 87.21932997780517
+        y: 405.92556286457216
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 359
+    viewport:
+      x: -26.560070627879213
+      y: 97.96182921463895
+      zoom: 0.8549506474644019
