@@ -98,7 +98,7 @@ https://aqma351r01f.feishu.cn/wiki/HF5FwMDQkiHoCokvbQAcZLu3nAg?table=tbleOWb4WgX
 
 ## 技术交流群
 
-![img](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/%25E5%25BE%25AE%25E4%25BF%25A1%25E5%259B%25BE%25E7%2589%2587_20250125215603.jpg)
+![img](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250203152237.jpg)
 
 ## Star History
 
