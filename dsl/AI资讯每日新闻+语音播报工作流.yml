@@ -1,0 +1,389 @@
+app:
+  description: 本工作流主要功能是用户输需要的新闻资讯数量，借助craw4ai爬取www.aibase.com每日最新AI新闻资讯，结合大语言模型+TTS语音播报形成每日AI新闻+语音播报工作流
+  icon: ghost
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: AI资讯每日新闻+语音播报工作流
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: code
+      id: 1736414379726-source-1737530544739-target
+      source: '1736414379726'
+      sourceHandle: source
+      target: '1737530544739'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: llm
+      id: 1737530544739-source-1737530620810-target
+      source: '1737530544739'
+      sourceHandle: source
+      target: '1737530620810'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: tool
+        targetType: code
+      id: 1738552651385-source-1738552718729-target
+      source: '1738552651385'
+      sourceHandle: source
+      target: '1738552718729'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: answer
+      id: 1738552718729-source-answer-target
+      source: '1738552718729'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: template-transform
+      id: 1737530620810-source-1738553119261-target
+      source: '1737530620810'
+      sourceHandle: source
+      target: '1738553119261'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: template-transform
+        targetType: tool
+      id: 1738553119261-source-1738552651385-target
+      source: '1738553119261'
+      sourceHandle: source
+      target: '1738552651385'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - label: 新闻数量
+          max_length: 48
+          options:
+          - '2'
+          required: true
+          type: select
+          variable: item
+      height: 89
+      id: '1736414379726'
+      position:
+        x: -27.140103876667297
+        y: 247.38453878161886
+      positionAbsolute:
+        x: -27.140103876667297
+        y: 247.38453878161886
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        answer: '{{#1738553119261.output#}}
+
+          {{#1738552718729.result#}}'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 123
+      id: answer
+      position:
+        x: 1323.9280936455675
+        y: 506.70767087364436
+      positionAbsolute:
+        x: 1323.9280936455675
+        y: 506.70767087364436
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        code: "import requests\nimport json\ndef main(arg1: str) -> dict:\n    try:\n\
+          \        # 构造请求URL和参数\n        url = 'http://127.0.0.1:8086/news/'\n\
+          \        limit = arg1\n\n        # 发送GET请求\n        response = requests.get(url,\
+          \ params={'limit': limit})\n\n        # 检查响应状态码\n        if response.status_code\
+          \ == 200:\n            # 请求成功，处理结果\n            result = response.json()\n\
+          \n            # 提取新闻数据和新闻详情字符串\n            news_list = result.get('news',\
+          \ [])\n            newsdetail = result.get('newsdetail', \"\")\n\n     \
+          \       # 确保 news_list 是一个列表\n            if not isinstance(news_list, list):\n\
+          \                return {\"error\": \"服务端返回的新闻数据格式不正确，'news' 字段应为列表。\"}\n\
+          \n            # 格式化新闻数据（如果需要）\n            formatted_news = []\n       \
+          \     for news_item in news_list:\n                if isinstance(news_item,\
+          \ dict):  # 如果是字典，直接添加\n                    formatted_news.append(news_item)\n\
+          \                elif isinstance(news_item, str):  # 如果是字符串，尝试解析为字典\n  \
+          \                  try:\n                        news_dict = json.loads(news_item)\
+          \  # 使用 json.loads 解析字符串\n                        formatted_news.append(news_dict)\n\
+          \                    except Exception as e:\n                        print(f\"\
+          解析新闻数据时出错: {e}\")\n                else:\n                    print(\"无效的新闻数据格式\"\
+          )\n\n            # 返回格式化的新闻数据和新闻详情字符串\n            return {\"news\": formatted_news,\
+          \ \"newsdetail\": newsdetail}\n        else:\n            # 请求失败，返回错误信息\n\
+          \            return {\"error\": f\"请求失败，状态码: {response.status_code}\"}\n\
+          \n    except requests.exceptions.RequestException as e:\n        # 捕获请求异常\n\
+          \        return {\"error\": f\"请求出错: {str(e)}\"}"
+        code_language: python3
+        desc: ''
+        outputs:
+          news:
+            children: null
+            type: array[object]
+          newsdetail:
+            children: null
+            type: string
+        selected: false
+        title: 调用服务端crawl4ai获取每日AI资讯新闻
+        type: code
+        variables:
+        - value_selector:
+          - '1736414379726'
+          - item
+          variable: arg1
+      height: 53
+      id: '1737530544739'
+      position:
+        x: 284.0152220117407
+        y: 247.38453878161886
+      positionAbsolute:
+        x: 284.0152220117407
+        y: 247.38453878161886
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: internlm/internlm2_5-7b-chat
+          provider: siliconflow
+        prompt_template:
+        - id: 2cdb492c-3973-401d-913c-a8fee4c7fe0a
+          role: system
+          text: '请帮我对以下文章内容进行总结，包括用三个部分，摘要，文章要点
+
+            🏷文章要点用数字序号列出。
+
+            不要使用''**''加粗标题优化输出格式。'
+        - id: d2460303-5fe5-479b-b1c9-3d0f1c01f6dd
+          role: user
+          text: 文本内容：{{#1737530544739.news#}}
+        selected: true
+        title: 新闻总结助理
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '1737530620810'
+      position:
+        x: 615.0960566045045
+        y: 220.19946185117294
+      positionAbsolute:
+        x: 615.0960566045045
+        y: 220.19946185117294
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        provider_id: fe2f4c5a-3fc5-4265-80f6-824c803d07de
+        provider_name: siliconflowmakeaudioapi
+        provider_type: api
+        selected: false
+        title: 新闻详细内容转换语音播报
+        tool_configurations: {}
+        tool_label: generate-audio_post
+        tool_name: generate-audio_post
+        tool_parameters:
+          input:
+            type: mixed
+            value: '{{#1738553119261.output#}}'
+          model:
+            type: mixed
+            value: FunAudioLLM/CosyVoice2-0.5B
+          voice:
+            type: mixed
+            value: FunAudioLLM/CosyVoice2-0.5B:david
+        type: tool
+      height: 53
+      id: '1738552651385'
+      position:
+        x: 1430.6589861398134
+        y: 187.15743068817272
+      positionAbsolute:
+        x: 1430.6589861398134
+        y: 187.15743068817272
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        code: "def main(arg1: str) -> str:\n    # 首先解析外层的 JSON 字符串\n    data = json.loads(arg1)\n\
+          \    filename=data['filename']\n    url=data['etag']\n    markdown_result\
+          \ = f\"<audio controls><source src='{url}' type='audio/mpeg'>{filename}</audio>\"\
+          \n    return {\"result\": markdown_result} "
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 文字转音频文件处理
+        type: code
+        variables:
+        - value_selector:
+          - '1738552651385'
+          - text
+          variable: arg1
+      height: 53
+      id: '1738552718729'
+      position:
+        x: 764.2473856361112
+        y: 540.7478368173164
+      positionAbsolute:
+        x: 764.2473856361112
+        y: 540.7478368173164
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        selected: false
+        template: '{{ llmtext+"\n"+"下面新闻详细内容："+"\n"+newsdetail }}'
+        title: llm新闻总结信息+新闻详细信息合并
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1737530620810'
+          - text
+          variable: llmtext
+        - value_selector:
+          - '1737530544739'
+          - newsdetail
+          variable: newsdetail
+      height: 53
+      id: '1738553119261'
+      position:
+        x: 947.9912276567427
+        y: 220.19946185117294
+      positionAbsolute:
+        x: 947.9912276567427
+        y: 220.19946185117294
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        author: 周辉
+        desc: ''
+        height: 245
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"本工作流主要使用了LLM大语言模型+crawl4ai获取每日最新的新闻资讯，通过语音播报功能实现一个每日AI资讯新闻获取+语音播报的功能。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"
+          考虑生成语音的时效性新闻条码目前做成下拉选项选择2条新闻播报。2条新闻播报的时间大概在 5分钟左右。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 488
+      height: 245
+      id: '1738553820665'
+      position:
+        x: -52.46682494203276
+        y: 358.6119717633246
+      positionAbsolute:
+        x: -52.46682494203276
+        y: 358.6119717633246
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 488
+    viewport:
+      x: 41.25284483232349
+      y: 41.07067420123835
+      zoom: 0.7169776240079166

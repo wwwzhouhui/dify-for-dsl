@@ -1,0 +1,4 @@
+python -m playwright install --with-deps chromium
+
+关于安装crawl4ai 可以参考
+https://github.com/unclecode/crawl4ai

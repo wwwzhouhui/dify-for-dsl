@@ -39,9 +39,10 @@
 | giteeKolors工作流.yaml       | 自定义第三方接口服务封装文生图、使用gitee Serverless API 接口+腾讯云OSS存储 |
 | Fine-tune 语料构造器.yml      | 调用文本模型                                             |
 | FLUX绘画机器人+多模态识别+语音播放.yml | 文本生成模型、多模态模型、文生图模型、文生语音模型                          |
-| 诗句封面+语音播报.yml | 文本生成模型、多模态模型、文生语音模型、http接口请求                               |
-| ai绘画整合comfyui_bizair.yml | http接口请求、comfui_bizair |
-| YouTube博主和自媒体运营专家工作流.yml | 文本生成模型 |
+| 诗句封面+语音播报.yml | 文本生成模型、多模态模型、文生语音模型、http接口请求                       |
+| ai绘画整合comfyui_bizair.yml | http接口请求、comfui_bizair                             |
+| YouTube博主和自媒体运营专家工作流.yml | 文本生成模型                                             |
+| AI资讯每日新闻+语音播报工作流.yml | 文本生成模型、crawl4ai                                            |
 
 ### 部分视频链接地址
 
@@ -70,6 +71,8 @@
 2025年1月22日-version 0.0.2.5:新增加ai绘画整合comfyui_bizair.yml 提供第三方接口api源码，详细文档和代码看 https://github.com/wwwzhouhui/dify-for-dsl/tree/main/dsl/difyforsiliconflow/bizyair
 
 2025年1月25日-version 0.0.2.6:新增加YouTube博主和自媒体运营专家工作流.yml
+
+2025年2月3日-version 0.0.2.7:新增加AI资讯每日新闻+语音播报工作流.yml 提供第三方接口api源码，详细文档和代码看 https://github.com/wwwzhouhui/dify-for-dsl/tree/main/dsl/crawl4ai
 
 ## 技术文档地址（飞书）:
 
