@@ -42,7 +42,8 @@
 | 诗句封面+语音播报.yml | 文本生成模型、多模态模型、文生语音模型、http接口请求                       |
 | ai绘画整合comfyui_bizair.yml | http接口请求、comfui_bizair                             |
 | YouTube博主和自媒体运营专家工作流.yml | 文本生成模型                                             |
-| AI资讯每日新闻+语音播报工作流.yml | 文本生成模型、crawl4ai                                            |
+| AI资讯每日新闻+语音播报工作流.yml | 文本生成模型、crawl4ai                                    |
+| 即梦AI绘画.yml| http接口请求、jimeng-free-api                                          |
 
 ### 部分视频链接地址
 
@@ -57,22 +58,16 @@
 
 ## 更新说明
 
-2024年11月16日- version 0.0.1: 新创建dsl文件（包含发票提取小工具整合版、抓取获取36氪热榜文章内容、发票提取小工具整合版-循环迭代等工作流)
-
-2024年11月26日- version 0.0.2: 新增加中国历史专家播客 DSL文件
-
-2024年12月18日- version 0.0.2.1: 新增加giteeKolors工作流.yaml 提供第三方接口api源码，详细文档和代码看https://github.com/wwwzhouhui/dify-for-dsl/tree/main/dsl/difyforgitee
-
-2025年1月7日- version 0.0.2.2:新增加Fine-tune 语料构造器.yml
-
-2025年1月12日-version 0.0.2.3:新增加FLUX绘画机器人+多模态识别+语音播放.yml 提供第三方接口api源码，详细文档和代码看https://github.com/wwwzhouhui/dify-for-dsl/tree/main/dsl/difyforsiliconflow/
-2025年1月18日-version 0.0.2.4:新增加诗句封面+语音播报.yml
-
-2025年1月22日-version 0.0.2.5:新增加ai绘画整合comfyui_bizair.yml 提供第三方接口api源码，详细文档和代码看 https://github.com/wwwzhouhui/dify-for-dsl/tree/main/dsl/difyforsiliconflow/bizyair
-
-2025年1月25日-version 0.0.2.6:新增加YouTube博主和自媒体运营专家工作流.yml
-
+2025年2月4日-version 0.0.2.8:新增加即梦AI绘画.yml
 2025年2月3日-version 0.0.2.7:新增加AI资讯每日新闻+语音播报工作流.yml 提供第三方接口api源码，详细文档和代码看 https://github.com/wwwzhouhui/dify-for-dsl/tree/main/dsl/crawl4ai
+2025年1月25日-version 0.0.2.6:新增加YouTube博主和自媒体运营专家工作流.yml
+2025年1月22日-version 0.0.2.5:新增加ai绘画整合comfyui_bizair.yml 提供第三方接口api源码，详细文档和代码看 https://github.com/wwwzhouhui/dify-for-dsl/tree/main/dsl/difyforsiliconflow/bizyair
+2025年1月18日-version 0.0.2.4:新增加诗句封面+语音播报.yml
+2025年1月12日-version 0.0.2.3:新增加FLUX绘画机器人+多模态识别+语音播放.yml 提供第三方接口api源码，详细文档和代码看https://github.com/wwwzhouhui/dify-for-dsl/tree/main/dsl/difyforsiliconflow/
+2025年1月7日- version 0.0.2.2:新增加Fine-tune 语料构造器.yml
+2024年12月18日- version 0.0.2.1: 新增加giteeKolors工作流.yaml 提供第三方接口api源码，详细文档和代码看https://github.com/wwwzhouhui/dify-for-dsl/tree/main/dsl/difyforgitee
+2024年11月26日- version 0.0.2: 新增加中国历史专家播客 DSL文件
+2024年11月16日- version 0.0.1: 新创建dsl文件（包含发票提取小工具整合版、抓取获取36氪热榜文章内容、发票提取小工具整合版-循环迭代等工作流)
 
 ## 技术文档地址（飞书）:
 
@@ -87,6 +82,8 @@ https://aqma351r01f.feishu.cn/wiki/HF5FwMDQkiHoCokvbQAcZLu3nAg?table=tbleOWb4WgX
 1.[dify](https://github.com/langgenius/dify)
 
    Dify 是一个开源 LLM 应用程序开发平台。 Dify 的直观界面结合了 AI 工作流程、RAG 管道、代理功能、模型管理、可观察性功能等，让您快速从原型转向生产。
+2.[jimeng-free-api](https://github.com/LLM-Red-Team/jimeng-free-api)
+   Jimeng AI Free 服务 支持即梦超强图像生成能力（目前官方每日赠送 66 积分，可生成 66 次），零配置部署，多路 token 支持。 与 OpenAI 接口完全兼容
 
 ## 问题反馈
 
