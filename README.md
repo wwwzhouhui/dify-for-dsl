@@ -59,14 +59,23 @@
 ## 更新说明
 
 2025年2月4日-version 0.0.2.8:新增加即梦AI绘画.yml
+
 2025年2月3日-version 0.0.2.7:新增加AI资讯每日新闻+语音播报工作流.yml 提供第三方接口api源码，详细文档和代码看 https://github.com/wwwzhouhui/dify-for-dsl/tree/main/dsl/crawl4ai
+
 2025年1月25日-version 0.0.2.6:新增加YouTube博主和自媒体运营专家工作流.yml
+
 2025年1月22日-version 0.0.2.5:新增加ai绘画整合comfyui_bizair.yml 提供第三方接口api源码，详细文档和代码看 https://github.com/wwwzhouhui/dify-for-dsl/tree/main/dsl/difyforsiliconflow/bizyair
+
 2025年1月18日-version 0.0.2.4:新增加诗句封面+语音播报.yml
+
 2025年1月12日-version 0.0.2.3:新增加FLUX绘画机器人+多模态识别+语音播放.yml 提供第三方接口api源码，详细文档和代码看https://github.com/wwwzhouhui/dify-for-dsl/tree/main/dsl/difyforsiliconflow/
+
 2025年1月7日- version 0.0.2.2:新增加Fine-tune 语料构造器.yml
+
 2024年12月18日- version 0.0.2.1: 新增加giteeKolors工作流.yaml 提供第三方接口api源码，详细文档和代码看https://github.com/wwwzhouhui/dify-for-dsl/tree/main/dsl/difyforgitee
+
 2024年11月26日- version 0.0.2: 新增加中国历史专家播客 DSL文件
+
 2024年11月16日- version 0.0.1: 新创建dsl文件（包含发票提取小工具整合版、抓取获取36氪热榜文章内容、发票提取小工具整合版-循环迭代等工作流)
 
 ## 技术文档地址（飞书）:
