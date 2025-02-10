@@ -1,0 +1,235 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 自定义edgetts工作流
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: http-request
+      id: 1739156953706-source-1739156974731-target
+      source: '1739156953706'
+      sourceHandle: source
+      target: '1739156974731'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: http-request
+        targetType: code
+      id: 1739156974731-source-1739157745365-target
+      source: '1739156974731'
+      sourceHandle: source
+      target: '1739157745365'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: answer
+      id: 1739157745365-source-answer-target
+      source: '1739157745365'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables: []
+      height: 53
+      id: '1739156953706'
+      position:
+        x: -40
+        y: 282
+      positionAbsolute:
+        x: -40
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        answer: '{{#sys.query#}}
+
+          {{#1739157745365.result#}}'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 122
+      id: answer
+      position:
+        x: 959.6006955562395
+        y: 266
+      positionAbsolute:
+        x: 959.6006955562395
+        y: 266
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data:
+          - id: key-value-8
+            key: ''
+            type: text
+            value: "{\n    \"input_text\":\"{{#sys.query#}}\",\n    \"voice\": \"\
+              zh-CN-XiaoxiaoNeural\",\n    \"model\": \"tts-1\",\n    \"speed\": 1.0,\n\
+              \    \"response_format\": \"mp3\"\n}"
+          type: json
+        desc: ''
+        headers: ''
+        method: post
+        params: ''
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 100
+        selected: false
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: HTTP 请求
+        type: http-request
+        url: http://127.0.0.1:8080/edgetts/generate-tts/
+        variables: []
+      height: 135
+      id: '1739156974731'
+      position:
+        x: 263
+        y: 282
+      positionAbsolute:
+        x: 263
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        code: "def main(arg1: str) -> str:\n    # 首先解析外层的 JSON 字符串\n    data = json.loads(arg1)\n\
+          \    filename=data['filename']\n    url=data['etag']\n    markdown_result\
+          \ = f\"<audio controls><source src='{url}' type='audio/mpeg'>{filename}</audio>\"\
+          \n    return {\"result\": markdown_result} "
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行
+        type: code
+        variables:
+        - value_selector:
+          - '1739156974731'
+          - body
+          variable: arg1
+      height: 53
+      id: '1739157745365'
+      position:
+        x: 566
+        y: 282
+      positionAbsolute:
+        x: 566
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        author: 周辉
+        desc: ''
+        height: 88
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"使用自定义的TTS语音播报的工作流","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 88
+      id: '1739194558669'
+      position:
+        x: -35.736300499986726
+        y: 406.18673396019653
+      positionAbsolute:
+        x: -35.736300499986726
+        y: 406.18673396019653
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+    viewport:
+      x: 222.4954409031062
+      y: -92.19009875155416
+      zoom: 1.6647368032157754

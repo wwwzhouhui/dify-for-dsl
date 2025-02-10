@@ -1,0 +1,190 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 自带edgetts
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: tool
+      id: 1738911112498-source-1738916723971-target
+      source: '1738911112498'
+      sourceHandle: source
+      target: '1738916723971'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: tool
+        targetType: answer
+      id: 1738916723971-source-1738915493027-target
+      source: '1738916723971'
+      sourceHandle: source
+      target: '1738915493027'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - label: text
+          max_length: 256
+          options: []
+          required: true
+          type: text-input
+          variable: text
+      height: 89
+      id: '1738911112498'
+      position:
+        x: -105
+        y: 254
+      positionAbsolute:
+        x: -105
+        y: 254
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        answer: '{{#1738916723971.files#}}'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 103
+      id: '1738915493027'
+      position:
+        x: 566.1674246342023
+        y: 254
+      positionAbsolute:
+        x: 566.1674246342023
+        y: 254
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        provider_id: audio
+        provider_name: audio
+        provider_type: builtin
+        selected: false
+        title: Text To Speech
+        tool_configurations:
+          model: openai_api_compatible#tts-1
+          voice#gitee_ai#ChatTTS: null
+          voice#gitee_ai#FunAudioLLM-CosyVoice-300M: null
+          voice#gitee_ai#fish-speech-1.2-sft: null
+          voice#gitee_ai#speecht5_tts: null
+          voice#openai_api_compatible#tts-1: alloy
+          voice#siliconflow#fishaudio/fish-speech-1.4: null
+          voice#siliconflow#fishaudio/fish-speech-1.5: null
+          voice#tongyi#tts-1: null
+        tool_label: Text To Speech
+        tool_name: tts
+        tool_parameters:
+          text:
+            type: mixed
+            value: '{{#1738911112498.text#}}'
+        type: tool
+      height: 297
+      id: '1738916723971'
+      position:
+        x: 196
+        y: 254
+      positionAbsolute:
+        x: 196
+        y: 254
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        author: 周辉
+        desc: ''
+        height: 178
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"dify自带的TTS语音播报工具配置的工作流","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 435
+      height: 178
+      id: '1739194503738'
+      position:
+        x: -119.76128007867453
+        y: 559.2615088356799
+      positionAbsolute:
+        x: -119.76128007867453
+        y: 559.2615088356799
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 435
+    viewport:
+      x: 442.9805005079934
+      y: 45.671073105207256
+      zoom: 1.1771466885238864

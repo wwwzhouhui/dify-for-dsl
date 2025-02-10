@@ -57,6 +57,7 @@
 | dify案例分享-古诗词海报生成加语音播报                    | https://www.bilibili.com/video/BV1fVwPeqEz9、https://www.youtube.com/watch?v=M6aVZX51cO0、https://www.toutiao.com/video/7461152220034171429/ | B站、油管、今日头条 |
 
 ## 更新说明
+2025年2月10日-version 0.0.2.9:新增加自带edgetts.yml、自定义edgetts工作流.yml
 
 2025年2月4日-version 0.0.2.8:新增加即梦AI绘画.yml
 
@@ -91,6 +92,7 @@ https://aqma351r01f.feishu.cn/wiki/HF5FwMDQkiHoCokvbQAcZLu3nAg?table=tbleOWb4WgX
 1.[dify](https://github.com/langgenius/dify)
 
    Dify 是一个开源 LLM 应用程序开发平台。 Dify 的直观界面结合了 AI 工作流程、RAG 管道、代理功能、模型管理、可观察性功能等，让您快速从原型转向生产。
+
 2.[jimeng-free-api](https://github.com/LLM-Red-Team/jimeng-free-api)
    Jimeng AI Free 服务 支持即梦超强图像生成能力（目前官方每日赠送 66 积分，可生成 66 次），零配置部署，多路 token 支持。 与 OpenAI 接口完全兼容
 
@@ -104,7 +106,7 @@ https://aqma351r01f.feishu.cn/wiki/HF5FwMDQkiHoCokvbQAcZLu3nAg?table=tbleOWb4WgX
 
 ## 技术交流群
 
-![img](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250203152237.jpg)
+![Screenshot_20250210_222722_com.tencent.mm](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/Screenshot_20250210_222722_com.tencent.mm.jpg)
 
 ## Star History
 
