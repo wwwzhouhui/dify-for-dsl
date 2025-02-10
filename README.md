@@ -44,6 +44,7 @@
 | YouTube博主和自媒体运营专家工作流.yml | 文本生成模型                                             |
 | AI资讯每日新闻+语音播报工作流.yml | 文本生成模型、crawl4ai                                    |
 | 即梦AI绘画.yml| http接口请求、jimeng-free-api                                          |
+| 自带edgetts.yml、自定义edgetts工作流.yml| http接口请求、edgetts                                          |
 
 ### 部分视频链接地址
 
