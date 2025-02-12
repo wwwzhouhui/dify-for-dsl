@@ -1,0 +1,261 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 飞书表格
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables: []
+  environment_variables:
+  - description: ''
+    id: d21e5b00-f345-4164-bdcf-3ee84b97b4bb
+    name: fenshuurl
+    selector:
+    - env
+    - fenshuurl
+    value: https://aqma351r01f.feishu.cn/wiki/WUj4w82EliH91Gkr9bRcMUNAn8g
+    value_type: string
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: llm
+      id: 1739339708213-source-1739339721220-target
+      source: '1739339708213'
+      sourceHandle: source
+      target: '1739339721220'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: tool
+        targetType: answer
+      id: 1739339911352-source-answer-target
+      source: '1739339911352'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: code
+      id: 1739339721220-source-1739342547948-target
+      source: '1739339721220'
+      sourceHandle: source
+      target: '1739342547948'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: tool
+      id: 1739342547948-source-1739339911352-target
+      source: '1739342547948'
+      sourceHandle: source
+      target: '1739339911352'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables: []
+      height: 53
+      id: '1739339708213'
+      position:
+        x: 79
+        y: 282
+      positionAbsolute:
+        x: 79
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        answer: '{{#1739339721220.text#}}'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 103
+      id: answer
+      position:
+        x: 1368.7947944409411
+        y: 254.8115067593248
+      positionAbsolute:
+        x: 1368.7947944409411
+        y: 254.8115067593248
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: internlm/internlm2_5-7b-chat
+          provider: siliconflow
+        prompt_template:
+        - edition_type: basic
+          id: e1097455-6df8-450e-9f0e-236f104d0eda
+          role: system
+          text: '{{#sys.query#}}'
+        - id: cbcc5d1b-9600-4f13-b03c-5c961a59a187
+          role: user
+          text: ''
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '1739339721220'
+      position:
+        x: 383
+        y: 282
+      positionAbsolute:
+        x: 383
+        y: 282
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        provider_id: feishu_spreadsheet
+        provider_name: feishu_spreadsheet
+        provider_type: builtin
+        selected: false
+        title: 新增多行至工作表最后
+        tool_configurations:
+          length: 1
+        tool_label: 新增多行至工作表最后
+        tool_name: add_rows
+        tool_parameters:
+          sheet_id:
+            type: mixed
+            value: ''
+          sheet_name:
+            type: mixed
+            value: ''
+          spreadsheet_token:
+            type: mixed
+            value: '{{#env.fenshuurl#}}'
+          values:
+            type: mixed
+            value: '{{#1739342547948.result#}}'
+        type: tool
+      height: 89
+      id: '1739339911352'
+      position:
+        x: 1043
+        y: 263.42246569804604
+      positionAbsolute:
+        x: 1043
+        y: 263.42246569804604
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        code: "def main(arg1: str) -> dict:\n    # 将输入字符串转换为表格格式\n    str2 = arg1\n\
+          \    table = [[str2, \"\", \"\", \"\", \"\"]]\n    \n    # 将表格转换为字符串形式的嵌套列表，并添加转义字符\n\
+          \    result_str = str(table).replace(\"'\", '\"')  # 将单引号替换为双引号\n    \n\
+          \    # 返回结果\n    return {\n        \"result\": result_str,\n    }"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: llm大语言模型转换飞书输入
+        type: code
+        variables:
+        - value_selector:
+          - '1739339721220'
+          - text
+          variable: arg1
+      height: 53
+      id: '1739342547948'
+      position:
+        x: 712
+        y: 282
+      positionAbsolute:
+        x: 712
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    viewport:
+      x: -241.1450909209534
+      y: 43.93429788982155
+      zoom: 1.493758940755379
