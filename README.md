@@ -28,24 +28,25 @@
 
 ### DSL列表清单
 
-| DSL清单名称                         | 用到技术                                               |
-|---------------------------------|----------------------------------------------------|
-| FLUX绘画机器人.yml                   | 调用FLUX绘画模型、文本模型、http接口请求                           |
-| 增值税发票提取小工具chatflow.yml          | 调用多模态模型、文本模型、文件提取器                                 |
-| 发票提取小工具整合版-变量聚合器.yml            | 调用多模态模型、文本模型、文件提取器、IF流程判断                          |
-| 发票比对专家-新版客运火车票2.yml             | 调用多模态模型、文本模型                                       |
-| 抓取获取36氪热榜文章内容 .yml              | 调用文本模型、http接口请求、jina-ai爬取网页信息、迭代                   |
-| 中国历史专家播客.yml                    | 调用文本模型、TEXT TO SPEECH工具组件使用                        |
-| giteeKolors工作流.yaml             | 自定义第三方接口服务封装文生图、使用gitee Serverless API 接口+腾讯云OSS存储 |
-| Fine-tune 语料构造器.yml             | 调用文本模型                                             |
-| FLUX绘画机器人+多模态识别+语音播放.yml        | 文本生成模型、多模态模型、文生图模型、文生语音模型                          |
-| 诗句封面+语音播报.yml                   | 文本生成模型、多模态模型、文生语音模型、http接口请求                       |
-| ai绘画整合comfyui_bizair.yml        | http接口请求、comfui_bizair                             |
-| YouTube博主和自媒体运营专家工作流.yml        | 文本生成模型                                             |
-| AI资讯每日新闻+语音播报工作流.yml            | 文本生成模型、crawl4ai                                    |
-| 即梦AI绘画.yml                      | http接口请求、jimeng-free-api                           |
-| 自带edgetts.yml、自定义edgetts工作流.yml | http接口请求、edgetts                                   |
-| 飞书表格.yml                        | 文本生成模型、dify内置工具、飞书表格                               |
+| DSL清单名称                              | 用到技术                                                     |
+| ---------------------------------------- | ------------------------------------------------------------ |
+| FLUX绘画机器人.yml                       | 调用FLUX绘画模型、文本模型、http接口请求                     |
+| 增值税发票提取小工具chatflow.yml         | 调用多模态模型、文本模型、文件提取器                         |
+| 发票提取小工具整合版-变量聚合器.yml      | 调用多模态模型、文本模型、文件提取器、IF流程判断             |
+| 发票比对专家-新版客运火车票2.yml         | 调用多模态模型、文本模型                                     |
+| 抓取获取36氪热榜文章内容 .yml            | 调用文本模型、http接口请求、jina-ai爬取网页信息、迭代        |
+| 中国历史专家播客.yml                     | 调用文本模型、TEXT TO SPEECH工具组件使用                     |
+| giteeKolors工作流.yaml                   | 自定义第三方接口服务封装文生图、使用gitee Serverless API 接口+腾讯云OSS存储 |
+| Fine-tune 语料构造器.yml                 | 调用文本模型                                                 |
+| FLUX绘画机器人+多模态识别+语音播放.yml   | 文本生成模型、多模态模型、文生图模型、文生语音模型           |
+| 诗句封面+语音播报.yml                    | 文本生成模型、多模态模型、文生语音模型、http接口请求         |
+| ai绘画整合comfyui_bizair.yml             | http接口请求、comfui_bizair                                  |
+| YouTube博主和自媒体运营专家工作流.yml    | 文本生成模型                                                 |
+| AI资讯每日新闻+语音播报工作流.yml        | 文本生成模型、crawl4ai                                       |
+| 即梦AI绘画.yml                           | http接口请求、jimeng-free-api                                |
+| 自带edgetts.yml、自定义edgetts工作流.yml | http接口请求、edgetts                                        |
+| 飞书表格.yml                             | 文本生成模型、dify内置工具、飞书表格                         |
+| 儿童故事绘本.yml                         | 文本生成模型、http接口请求、jimeng-free-api、edgetts         |
 
 ### 部分视频链接地址
 
@@ -59,6 +60,9 @@
 | dify案例分享-古诗词海报生成加语音播报                    | https://www.bilibili.com/video/BV1fVwPeqEz9、https://www.youtube.com/watch?v=M6aVZX51cO0、https://www.toutiao.com/video/7461152220034171429/ | B站、油管、今日头条 |
 
 ## 更新说明
+
+2025年2月15日-version 0.0.2.11:新增加儿童故事绘本.yml
+
 2025年2月12日-version 0.0.2.10:新增加飞书表格.yml
 
 2025年2月10日-version 0.0.2.9:新增加自带edgetts.yml、自定义edgetts工作流.yml
@@ -110,7 +114,7 @@ https://aqma351r01f.feishu.cn/wiki/HF5FwMDQkiHoCokvbQAcZLu3nAg?table=tbleOWb4WgX
 
 ## 技术交流群
 
-![Screenshot_20250210_222722_com.tencent.mm](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/Screenshot_20250210_222722_com.tencent.mm.jpg)
+![Screenshot_20250215_090548_com.tencent.mm](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/Screenshot_20250215_090548_com.tencent.mm.jpg)
 
 ## Star History
 
