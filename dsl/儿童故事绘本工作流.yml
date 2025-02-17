@@ -1,0 +1,449 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 儿童故事绘本工作流
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: llm
+      id: 1738820318265-source-1738820355489-target
+      source: '1738820318265'
+      sourceHandle: source
+      target: '1738820355489'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1738820355489-source-1738820559172-target
+      source: '1738820355489'
+      sourceHandle: source
+      target: '1738820559172'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: http-request
+        targetType: code
+      id: 1738832929810-source-1738832999117-target
+      source: '1738832929810'
+      sourceHandle: source
+      target: '1738832999117'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: http-request
+      id: 1738820559172-source-1738832929810-target
+      source: '1738820559172'
+      sourceHandle: source
+      target: '1738832929810'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: answer
+      id: 1738832999117-source-answer-target
+      source: '1738832999117'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - label: 提示词
+          max_length: 256
+          options: []
+          required: true
+          type: text-input
+          variable: prompt
+        - label: 分镜数量
+          max_length: 48
+          options:
+          - '2'
+          - '3'
+          - '4'
+          - '5'
+          - '6'
+          - '1'
+          - '7'
+          required: true
+          type: select
+          variable: promptCount
+      height: 114
+      id: '1738820318265'
+      position:
+        x: 46.12178553319774
+        y: 268
+      positionAbsolute:
+        x: 46.12178553319774
+        y: 268
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: '{{#1738832999117.result#}}'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 101
+      id: answer
+      position:
+        x: 840.0443580160011
+        y: 487.26103684076145
+      positionAbsolute:
+        x: 840.0443580160011
+        y: 487.26103684076145
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: 根据用户输入提示词生成简短故事绘本
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: internlm3-8b-instruct
+          provider: openai_api_compatible
+        prompt_template:
+        - edition_type: basic
+          id: a00cb45d-af10-4c6f-8216-7f6f53bccc82
+          role: system
+          text: "根据主题\"{{#1738820318265.prompt#}}\"写一个短故事。要求：\n        1. 用简体中文写作\n\
+            \        2. 不要使用特殊字符、星号或markdown格式\n        3. 故事要有趣且富有想象力\n        4.\
+            \ 保持在200-300字之间\n        5. 分成3-4个自然段落\n        6. 使用简单明了的语言\n       \
+            \ 7. 避免使用括号、方括号或任何可能影响文本转语音的符号`\n      : `Write a short story based on\
+            \ the topic \"${topic}\". Requirements:\n        1. Write the story in\
+            \ English using only regular letters and basic punctuation\n        2.\
+            \ Do not use any special characters, asterisks, or markdown formatting\n\
+            \        3. Make it interesting and imaginative\n        4. Keep it between\
+            \ 200-300 words\n        5. Divide it into 3-4 natural paragraphs\n  \
+            \      6. Use simple and clear language\n        7. Avoid using parentheses,\
+            \ brackets, or any symbols that might interfere with text-to-speech"
+        selected: false
+        title: 生成故事绘本
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 124
+      id: '1738820355489'
+      position:
+        x: 348
+        y: 268
+      positionAbsolute:
+        x: 348
+        y: 268
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: 根据用户输入提示词输入的故事转换成N不同场景AI绘画提示词
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: llama-3.3-70b-versatile
+          provider: groq
+        prompt_template:
+        - edition_type: basic
+          id: 9f7a1c88-10d1-428a-a10f-44f75674d7db
+          role: system
+          text: '你是一个专业的儿童绘本插画师和AI绘画提示词专家，精通中英文双语。 请为这段文字{{#1738820355489.text#}}生成{{#1738820318265.promptCount#}}个不同场景的绘图提示词。
+
+            重要提示：
+
+            不要在提示词中使用角色名字，而是用具体的外观特征来描述角色。
+
+            例如：不要用"小白兔"这样的名字，而是描述"一只白色的小兔子，有着蓬松的毛发和红色的眼睛"。
+
+            生成的提示词中，text_snippet 必须是与画面相符的中文文本片段。
+
+            要求：
+
+            角色形象和风格的严格一致性：
+
+            用具体的视觉特征描述角色，而不是用名字。
+
+            主角的外观特征（服装、毛色、体型等）在所有场景中必须保持一致。
+
+            主角的性格特征要通过外观和动作来体现。
+
+            配角的设计风格要与主角协调统一。
+
+            场景连续性：
+
+            场景之间要有清晰的故事发展脉络。
+
+            环境元素的设计要前后呼应。
+
+            艺术风格的统一：
+
+            所有场景使用相同的绘画风格（如：水彩风格、插画风格等）。
+
+            色彩方案要保持一致。
+
+            光影效果要统一。
+
+            适合儿童绘本的表现方式：
+
+            画面要富有童趣和想象力。
+
+            构图要简单清晰。
+
+            情感表达要生动直观。
+
+            每个场景需要包含：
+
+            场景描述（中文，简短精炼）。
+
+            详细的中文提示词，提示词字符总长度不超过800个字，分段描述以下要素：
+
+            Character: 角色的具体外观特征、表情、动作描述（不使用角色名字）。
+
+            Scene: 场景环境、氛围、天气等。
+
+            Lighting: 光线效果、时间、色调。
+
+            Composition: 画面构图、视角、重点。
+
+            Style: 具体的艺术风格、绘画技法。
+
+            Additional: 其他重要细节。
+
+            对应的文本片段（中文）。
+
+            输出格式：
+
+            [
+
+            {
+
+            "description": "场景描述",
+
+            "prompt": "Character:\n[角色具体特征描述]\n\nScene:\n[场景描述]\n\nLighting:\n[光影描述]\n\nComposition:\n[构图描述]\n\nStyle:\n[风格描述]\n\nAdditional:\n[补充细节]",
+
+            "text_snippet": "对应的文本片段",
+
+            "importance": "场景重要性评分（1-5）"
+
+            },
+
+            ...
+
+            ] '
+        selected: false
+        title: AI绘画提示词专家
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 140
+      id: '1738820559172'
+      position:
+        x: 716
+        y: 268
+      positionAbsolute:
+        x: 716
+        y: 268
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data:
+          - id: key-value-5
+            key: ''
+            type: text
+            value: '{{#1738820559172.text#}}'
+          type: json
+        desc: ''
+        headers: Content-Type:application/json
+        method: post
+        params: ''
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: '4997'
+        selected: false
+        timeout:
+          connect: 300
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+          read: 300
+          write: 597
+        title: HTTP 请求
+        type: http-request
+        url: http://111.119.215.74:8080/jimeng/make_AI_picture_audio/
+        variables: []
+      height: 135
+      id: '1738832929810'
+      position:
+        x: 89.72684834493947
+        y: 519.146220837225
+      positionAbsolute:
+        x: 89.72684834493947
+        y: 519.146220837225
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "def main(arg1: str) -> dict:\n    import json\n\n    # 解析输入的 JSON 数据\n\
+          \    try:\n        data = json.loads(arg1)\n    except json.JSONDecodeError:\n\
+          \        return \"输入的字符串不是有效的 JSON 格式，请检查输入数据。\"\n\n    # 确保解析后的数据是一个列表\n\
+          \    if not isinstance(data, list):\n        return \"输入的数据格式不正确，请确保输入是一个\
+          \ JSON 数组对象。\"\n\n    # 初始化结果字符串\n    markdown_result = \"\"\n\n    # 遍历每条数据\n\
+          \    for item in data:\n        # 检查每条数据是否是字典，并且包含所需的字段\n        if not\
+          \ isinstance(item, dict) or not all(key in item for key in ('description',\
+          \ 'image_url', 'audio_url')):\n            markdown_result += \"数据格式不完整，缺少必要的字段（description,\
+          \ image_url, audio_url）。\\n\"\n            continue\n\n        # 提取字段值\n\
+          \        description = item['description']\n        image_url = item['image_url']\n\
+          \        audio_url = item['audio_url']\n\n        # 生成 Markdown 格式的文本\n\
+          \        markdown_result += f\"**描述:** {description}\\n\"\n        markdown_result\
+          \ += f\"![]({image_url})\\n\"  # Markdown image tag\n        markdown_result\
+          \ += f\"<audio controls><source src='{audio_url}' type='audio/mpeg'>音频</audio>\\\
+          n\"  # Markdown link for audio\n        markdown_result += \"\\n\"  # Add\
+          \ an empty line for separation\n\n    # 返回最终的 Markdown 字符串\n    return {\"\
+          result\": markdown_result}"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 处理http接口返回信息
+        type: code
+        variables:
+        - value_selector:
+          - '1738832929810'
+          - body
+          variable: arg1
+      height: 52
+      id: '1738832999117'
+      position:
+        x: 455.1688375816626
+        y: 526.9987195696087
+      positionAbsolute:
+        x: 455.1688375816626
+        y: 526.9987195696087
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        author: 周辉
+        desc: ''
+        height: 88
+        selected: true
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"本作品主要是用户输入提示词和分境数量，大语言模型会对提示词进行扩写，然后在转给另外一个大模型进行AI绘画提示词编写，调用服务端接口返回AI绘画以及","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 88
+      id: '1739793075339'
+      position:
+        x: 68.2490634711089
+        y: 704.5898963077941
+      positionAbsolute:
+        x: 68.2490634711089
+        y: 704.5898963077941
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+    viewport:
+      x: 201.20963357759422
+      y: -172.16085966924277
+      zoom: 1.1839103543267064

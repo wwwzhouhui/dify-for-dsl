@@ -61,11 +61,11 @@
 
 ## 更新说明
 
-2025年2月15日-version 0.0.2.11:新增加儿童故事绘本.yml
+2025年2月15日-version 0.0.2.11:新增加儿童故事绘本.yml 提供第三方接口api源码，详细文档和代码看 https://github.com/wwwzhouhui/dify-for-dsl/tree/main/dsl/jimeng
 
 2025年2月12日-version 0.0.2.10:新增加飞书表格.yml
 
-2025年2月10日-version 0.0.2.9:新增加自带edgetts.yml、自定义edgetts工作流.yml
+2025年2月10日-version 0.0.2.9:新增加自带edgetts.yml、自定义edgetts工作流.yml，详细文档和代码看 https://github.com/wwwzhouhui/dify-for-dsl/tree/main/dsl/edgetts
 
 2025年2月4日-version 0.0.2.8:新增加即梦AI绘画.yml
 
