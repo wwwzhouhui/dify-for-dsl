@@ -1,0 +1,463 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 智谱文生视频+tts语音播报5
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables: []
+  environment_variables:
+  - description: ''
+    id: b08e7ef7-5c3f-4b72-8f14-765d7055af9f
+    name: model
+    selector:
+    - env
+    - model
+    value: Lightricks/LTX-Video
+    value_type: string
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: answer
+      id: 1735537089833-source-answer-target
+      selected: false
+      source: '1735537089833'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: http-request
+        targetType: code
+      id: 1740016046906-source-1735537089833-target
+      source: '1740016046906'
+      sourceHandle: source
+      target: '1735537089833'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: llm
+      id: 1735530465219-source-1740019722202-target
+      source: '1735530465219'
+      sourceHandle: source
+      target: '1740019722202'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: http-request
+      id: 1740019722202-source-1740016046906-target
+      source: '1740019722202'
+      sourceHandle: source
+      target: '1740016046906'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: http-request
+        targetType: code
+      id: 1740020100626-source-1740020175759-target
+      source: '1740020100626'
+      sourceHandle: source
+      target: '1740020175759'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: answer
+      id: 1740020175759-source-answer-target
+      source: '1740020175759'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1740019722202-source-1740020329083-target
+      source: '1740019722202'
+      sourceHandle: source
+      target: '1740020329083'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: http-request
+      id: 1740020329083-source-1740020100626-target
+      source: '1740020329083'
+      sourceHandle: source
+      target: '1740020100626'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - label: 提示词
+          max_length: 256
+          options:
+          - Lightricks/LTX-Video
+          - tencent/HunyuanVideo
+          - genmo/mochi-1-preview
+          - tencent/HunyuanVideo-HD
+          required: true
+          type: text-input
+          variable: prompt
+      height: 88
+      id: '1735530465219'
+      position:
+        x: -334.45473059687845
+        y: 247.89160074821473
+      positionAbsolute:
+        x: -334.45473059687845
+        y: 247.89160074821473
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        answer: '{{#1735537089833.result#}}
+
+          {{#1740020175759.result#}}'
+        desc: ''
+        selected: true
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 120
+      id: answer
+      position:
+        x: 1232.1282446597788
+        y: 255.12596770241356
+      positionAbsolute:
+        x: 1232.1282446597788
+        y: 255.12596770241356
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        code: "def main(arg1: str) -> dict:\n    import json\n    data = json.loads(arg1)\n\
+          \    video_url = data['video_url']\n    filename = \"生成视频\"\n    markdown_result\
+          \ = f\"<video controls><source src='{video_url}' type='video/mp4'>{filename}</video>\"\
+          \n    return {\"result\": markdown_result}"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: ' 处理文生视频返回信息'
+        type: code
+        variables:
+        - value_selector:
+          - '1740016046906'
+          - body
+          variable: arg1
+      height: 52
+      id: '1735537089833'
+      position:
+        x: 864.9051356979865
+        y: 267.5
+      positionAbsolute:
+        x: 864.9051356979865
+        y: 267.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        author: 周辉
+        desc: ''
+        height: 189
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"本工作流主要应用到智谱的文生视频模型，使用llm大语言模型将用户中文转换成英文提示词，再将英文提示词使用http请求调用后端接口生成文生视频输出。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 325
+      height: 189
+      id: '1739947691208'
+      position:
+        x: -334.45473059687845
+        y: 365.7205788071683
+      positionAbsolute:
+        x: -334.45473059687845
+        y: 365.7205788071683
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 325
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data:
+          - id: key-value-9
+            key: ''
+            type: text
+            value: "{\n \"prompt\":\"{{#1740019722202.text#}}\",\n  \"with_audio\"\
+              :false\n}"
+          type: json
+        desc: ''
+        headers: ''
+        method: post
+        params: ''
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 100
+        selected: false
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: 获取智谱文生视频服务请求
+        type: http-request
+        url: http://127.0.0.1:8080/zhipuai/video/
+        variables: []
+      height: 133
+      id: '1740016046906'
+      position:
+        x: 529.5538520123627
+        y: 247.89160074821473
+      positionAbsolute:
+        x: 529.5538520123627
+        y: 247.89160074821473
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: 本工作流节点主要利用提示词扩写文生视频提示词
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: internlm3-8b-instruct
+          provider: openai_api_compatible
+        prompt_template:
+        - edition_type: basic
+          id: 47ddf41c-1f9d-4de2-8937-440696d050d7
+          role: system
+          text: '你是一个文生视频提示词专家,用户输入一段简短提示词 {{#1735530465219.prompt#}}，通过该提示词扩写符合即梦AI文生视频的提示词。可以参考下面的提示词。
+
+            举例：
+
+            一个小男孩在球场上提足球。
+
+            改写后的提示词：
+
+            画面中心是一个身着鲜艳蓝色足球服，搭配白色短裤的小男孩，足球服上印着金色的号码。他脚蹬黑色足球鞋，正奋力踢向脚下黑白相间的足球。足球场上是翠绿的草坪，草坪边缘有白色的边线。球场周围是绿色的围栏，围栏外是一排排蓝色的观众座椅。天空湛蓝如宝石，飘着几朵洁白似棉絮的云朵。小男孩表情专注且兴奋，眼神坚定地望向足球滚动的方向，画面洋溢着充满活力与激情的运动氛围。
+
+            '
+        selected: false
+        title: 文生视频提示词扩写
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 140
+      id: '1740019722202'
+      position:
+        x: 49.924948109275874
+        y: 209.8013225714376
+      positionAbsolute:
+        x: 49.924948109275874
+        y: 209.8013225714376
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data:
+          - id: key-value-1
+            key: ''
+            type: text
+            value: "{\n    \"input_text\":\"{{#1740020329083.text#}}\",\n    \"voice\"\
+              : \"zh-CN-XiaoxiaoNeural\",\n    \"model\": \"tts-1\",\n    \"speed\"\
+              : 1.0,\n    \"response_format\": \"mp3\"\n}"
+          type: json
+        desc: ''
+        headers: ''
+        method: post
+        params: ''
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 100
+        selected: false
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: 文生语音TTShttp请求
+        type: http-request
+        url: http://127.0.0.1:8080/edgetts/generate-tts/
+        variables: []
+      height: 133
+      id: '1740020100626'
+      position:
+        x: 563.875326535507
+        y: 463.5038627171929
+      positionAbsolute:
+        x: 563.875326535507
+        y: 463.5038627171929
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        code: "def main(arg1: str) -> str:\n    # 首先解析外层的 JSON 字符串\n    data = json.loads(arg1)\n\
+          \    filename=data['filename']\n    url=data['etag']\n    markdown_result\
+          \ = f\"<audio controls><source src='{url}' type='audio/mpeg'>{filename}</audio>\"\
+          \n    return {\"result\": markdown_result} "
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 文生语音TTShttp请求代码处理
+        type: code
+        variables:
+        - value_selector:
+          - '1740020100626'
+          - body
+          variable: arg1
+      height: 52
+      id: '1740020175759'
+      position:
+        x: 918.9931211817635
+        y: 463.5038627171929
+      positionAbsolute:
+        x: 918.9931211817635
+        y: 463.5038627171929
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.2
+          mode: chat
+          name: deepseek-R1
+          provider: volcengine_maas
+        prompt_template:
+        - edition_type: basic
+          id: 63735d68-d031-4277-84e7-ce9e43404ce7
+          role: system
+          text: 你是一个语言总结归纳专家，请将一段文生视频的提示{{#1740019722202.text#}} 改写成一段总结归纳的语言。
+        selected: false
+        title: 文生视频提示词总结llm
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 96
+      id: '1740020329083'
+      position:
+        x: 271.5072102272396
+        y: 497.82533724033726
+      positionAbsolute:
+        x: 271.5072102272396
+        y: 497.82533724033726
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    viewport:
+      x: -169.28532630919824
+      y: 99.25668381653219
+      zoom: 0.6798656351474868
