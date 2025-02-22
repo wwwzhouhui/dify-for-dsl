@@ -48,6 +48,7 @@
 | 飞书表格.yml                             | 文本生成模型、dify内置工具、飞书表格                         |
 | 儿童故事绘本.yml                         | 文本生成模型、http接口请求、jimeng-free-api、edgetts         |
 | 文生视频+tts语音播报.yml                 | 文本生成模型、http接口请求、edgetts、文本生成视频模型（接口调用） |
+| ai agent智能体.yml                       | 文本生成模型、联网搜索、获取当前系统时间、AI绘画、语音播报等智能体功能组合。 |
 
 ### 部分视频链接地址
 
@@ -62,6 +63,8 @@
 | dify案例分享- 儿童故事绘本                               | https://www.bilibili.com/video/BV1WCAgeNEsw、https://www.youtube.com/watch?v=QV2MjL6fMi4、https://www.toutiao.com/video/7471874756129505792/ | B站、油管、今日头条、微信视频号 |
 
 ## 更新说明
+
+2025年2月22 日-version 0.0.2.13:新增加ai agent智能体.yml
 
 2025年2月20 日-version 0.0.2.12:新增加文生视频+tts语音播报.yml 提供第三方接口api源码，详细文档和代码看 https://github.com/wwwzhouhui/dify-for-dsl/tree/main/dsl/zhipu
 
@@ -118,7 +121,7 @@ https://aqma351r01f.feishu.cn/wiki/HF5FwMDQkiHoCokvbQAcZLu3nAg?table=tbleOWb4WgX
 
 ## 技术交流群
 
-![Screenshot_20250215_090548_com.tencent.mm](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/Screenshot_20250215_090548_com.tencent.mm.jpg)
+![image-20250222162357817](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250222162357817.png)
 
 ## Star History
 
