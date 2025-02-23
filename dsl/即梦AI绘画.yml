@@ -16,7 +16,7 @@ workflow:
     selector:
     - env
     - jimengsessionid
-    value: 793cc9014636d267d996441da25262e1
+    value: xxxxxx
     value_type: string
   features:
     file_upload:
