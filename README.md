@@ -50,6 +50,7 @@
 | 文生视频+tts语音播报.yml                 | 文本生成模型、http接口请求、edgetts、文本生成视频模型（接口调用） |
 | ai agent智能体.yml                       | 文本生成模型、联网搜索、获取当前系统时间、AI绘画、语音播报等智能体功能组合。 |
 | excel表格提取+echarts展示.yml            | 文本生成模型、文档提取功能、echarts                          |
+| 学生成绩查询工作流（带数据库查询）.yml   | 文本生成模型、柱状图、数据库查询、http接口请求、table markdown |
 
 ### 部分视频链接地址
 
@@ -64,6 +65,8 @@
 | dify案例分享- 儿童故事绘本                               | https://www.bilibili.com/video/BV1WCAgeNEsw、https://www.youtube.com/watch?v=QV2MjL6fMi4、https://www.toutiao.com/video/7471874756129505792/ | B站、油管、今日头条、微信视频号 |
 
 ## 更新说明
+
+2025年2月27 日-version 0.0.2.15:新增加学生成绩查询工作流（带数据库查询）.yml
 
 2025年2月25 日-version 0.0.2.14:新增加excel表格提取+echarts展示.yml
 
