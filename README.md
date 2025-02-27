@@ -66,7 +66,7 @@
 
 ## 更新说明
 
-2025年2月27 日-version 0.0.2.15:新增加学生成绩查询工作流（带数据库查询）.yml
+2025年2月27 日-version 0.0.2.15:新增加学生成绩查询工作流（带数据库查询）.yml 提供第三方接口api源码 代码看 https://github.com/wwwzhouhui/dify-for-dsl/tree/main/dsl/db/student
 
 2025年2月25 日-version 0.0.2.14:新增加excel表格提取+echarts展示.yml
 
