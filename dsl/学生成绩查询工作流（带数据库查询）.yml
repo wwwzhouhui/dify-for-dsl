@@ -1,0 +1,708 @@
+app:
+  description: 本工作流主要介绍使用dify工作流和数据库查询整合的案例
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 学生成绩查询工作流（带数据库查询）
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables:
+  - description: 分页数量，最多显示多少行
+    id: 1d7aa0ed-014b-4644-9584-45b3c99e439e
+    name: limit
+    selector:
+    - conversation
+    - limit
+    value: '3'
+    value_type: string
+  - description: 1数据库存储的课程号
+    id: ac259667-58b4-40d3-97e0-a028b2663ed1
+    name: course_id
+    selector:
+    - conversation
+    - course_id
+    value: '1'
+    value_type: string
+  - description: 1001 是张三这个人额学生证ID
+    id: 1099b85c-c730-4027-8696-0cf815f898d4
+    name: student_id
+    selector:
+    - conversation
+    - student_id
+    value: '1001'
+    value_type: string
+  environment_variables:
+  - description: ''
+    id: cb0405e3-18ea-44c7-91e0-293c4fd5fb38
+    name: base_url
+    selector:
+    - env
+    - base_url
+    value: http://127.0.0.1:9090/
+    value_type: string
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        sourceType: start
+        targetType: llm
+      id: 1740632143521-llm
+      source: '1740632143521'
+      sourceHandle: source
+      target: llm
+      targetHandle: target
+      type: custom
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: if-else
+      id: llm-source-1740634251160-target
+      source: llm
+      sourceHandle: source
+      target: '1740634251160'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: answer
+      id: 1740634251160-false-1740634312789-target
+      selected: false
+      source: '1740634251160'
+      sourceHandle: 'false'
+      target: '1740634312789'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: code
+      id: 1740634251160-true-1740636026594-target
+      source: '1740634251160'
+      sourceHandle: 'true'
+      target: '1740636026594'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: answer
+      id: 1740634251160-060040ea-2780-45b2-9d82-43b4a348a99d-1740634312789-target
+      source: '1740634251160'
+      sourceHandle: 060040ea-2780-45b2-9d82-43b4a348a99d
+      target: '1740634312789'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: tool
+      id: 1740636026594-source-1740640600640-target
+      source: '1740636026594'
+      sourceHandle: source
+      target: '1740640600640'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: tool
+        targetType: answer
+      id: 1740640600640-source-1740634495719-target
+      source: '1740640600640'
+      sourceHandle: source
+      target: '1740634495719'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: code
+      id: 1740634251160-f0a6872e-7639-4bcf-9f57-42b8405e7db2-1740645177116-target
+      source: '1740634251160'
+      sourceHandle: f0a6872e-7639-4bcf-9f57-42b8405e7db2
+      target: '1740645177116'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: answer
+      id: 1740645177116-source-1740646969095-target
+      source: '1740645177116'
+      sourceHandle: source
+      target: '1740646969095'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: code
+      id: 1740634251160-acff276c-b01d-4caf-a41c-5c5b56c44016-1740647348150-target
+      source: '1740634251160'
+      sourceHandle: acff276c-b01d-4caf-a41c-5c5b56c44016
+      target: '1740647348150'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: answer
+      id: 1740647348150-source-1740647528305-target
+      source: '1740647348150'
+      sourceHandle: source
+      target: '1740647528305'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables: []
+      height: 52
+      id: '1740632143521'
+      position:
+        x: 44.39035099509192
+        y: 556.9218300469233
+      positionAbsolute:
+        x: 44.39035099509192
+        y: 556.9218300469233
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.1
+          mode: chat
+          name: internlm3-8b-instruct
+          provider: openai_api_compatible
+        prompt_template:
+        - id: 8da3ae0f-97ad-4be4-b912-f8fd54d62f46
+          role: system
+          text: '# Role: 教学考试系统查询专家
+
+            # Goal: 根据用户输入的信息，提取关键信息，并将查询归类到以下类别，并只返回类别编号:
+
+            # - 学生成绩 (类别编号: 1)
+
+            # - 平均分 (类别编号: 2)
+
+            # - 课程的排名 (类别编号: 3)
+
+            # - 查询不到 (类别编号: 0)
+
+            # Constraints:
+
+            - 1. 只能从用户输入中提取信息。
+
+            - 2. 必须将查询归类到预定义的类别。
+
+            - 3. 输出必须只包含类别编号。
+
+            - 4. 如果查询无法归类到 1, 2, 3，则返回 0。
+
+
+            ## Output Format
+
+            {{category_number}}
+
+
+            # Examples:
+
+            ## 学生成绩类 (类别编号: 1):
+
+            - 查询学生成绩
+
+            - 查询"张三"程序
+
+            - 查询该班级所有学生成绩
+
+
+            ## 平均分 (类别编号: 2):
+
+            - 查询班级平均分
+
+            - 查询某个人平均成绩
+
+
+            ## 课程的排名 (类别编号: 3):
+
+            - 查询课程的排名
+
+            - 查询数学课程排名
+
+
+            ## 查询不到 (类别编号: 0):
+
+            - 无法识别的查询
+
+
+            # 用户输入:
+
+            {{user_input}}
+
+
+            # 分析结果:
+
+            {{category_number}}'
+        - role: user
+          text: 请根据用户输入提示词{{#sys.query#}}进行判断
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 96
+      id: llm
+      position:
+        x: 366.21561974003555
+        y: 522.0779561943804
+      positionAbsolute:
+        x: 366.21561974003555
+        y: 522.0779561943804
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: contains
+            id: c0016bf9-a7cd-4b2c-9d8f-14fc5661977c
+            value: '1'
+            varType: string
+            variable_selector:
+            - llm
+            - text
+          id: 'true'
+          logical_operator: and
+        - case_id: f0a6872e-7639-4bcf-9f57-42b8405e7db2
+          conditions:
+          - comparison_operator: contains
+            id: 818a5c0f-21dc-4b13-9893-43572d726bca
+            value: '2'
+            varType: string
+            variable_selector:
+            - llm
+            - text
+          id: f0a6872e-7639-4bcf-9f57-42b8405e7db2
+          logical_operator: and
+        - case_id: acff276c-b01d-4caf-a41c-5c5b56c44016
+          conditions:
+          - comparison_operator: contains
+            id: 46a1f566-1cdc-4510-a1fd-8888ed09ad63
+            value: '3'
+            varType: string
+            variable_selector:
+            - llm
+            - text
+          id: acff276c-b01d-4caf-a41c-5c5b56c44016
+          logical_operator: and
+        - case_id: 060040ea-2780-45b2-9d82-43b4a348a99d
+          conditions:
+          - comparison_operator: contains
+            id: 07eeecbb-0f2d-4cf4-a57d-ab6f9bf04e5a
+            value: '0'
+            varType: string
+            variable_selector:
+            - llm
+            - text
+          id: 060040ea-2780-45b2-9d82-43b4a348a99d
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 条件分支
+        type: if-else
+      height: 268
+      id: '1740634251160'
+      position:
+        x: 680
+        y: 424
+      positionAbsolute:
+        x: 680
+        y: 424
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: 没有查询到学习系统相关接口信息，请重新输入。
+        desc: ''
+        selected: false
+        title: 未获取信息回复
+        type: answer
+        variables: []
+      height: 114
+      id: '1740634312789'
+      position:
+        x: 1083.8215646551178
+        y: 747.0254706110104
+      positionAbsolute:
+        x: 1083.8215646551178
+        y: 747.0254706110104
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: '{{#1740640600640.files#}}'
+        desc: ''
+        selected: false
+        title: 学生成绩接口回复
+        type: answer
+        variables: []
+      height: 101
+      id: '1740634495719'
+      position:
+        x: 1893.9323116542814
+        y: 390.0104990159092
+      positionAbsolute:
+        x: 1893.9323116542814
+        y: 390.0104990159092
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "import requests\nimport json\n\ndef main(student_id: int, base_url:\
+          \ str = 'http://127.0.0.1:9090') -> dict:\n    \"\"\"\n    测试获取学生成绩接口。\n\
+          \    \n    :param student_id: 学生ID\n    :param base_url: API基础URL，默认为'http://127.0.0.1:9090'\n\
+          \    :return: 包含成绩数据或错误信息的字典\n    \"\"\"\n    # 设置请求的URL\n    url = f'{base_url}/db/student/{student_id}/scores'\n\
+          \    \n    try:\n        # 发送GET请求\n        response = requests.get(url)\n\
+          \        \n        # 检查响应状态码\n        if response.status_code == 200:\n\
+          \            scores = response.json()\n            formatted_scores = [\n\
+          \                {\n                    \"student_name\": score.get(\"student_name\"\
+          ),\n                    \"course_name\": score.get(\"course_name\"),\n \
+          \                   \"score\": score.get(\"score\"),\n                 \
+          \   \"exam_date\": score.get(\"exam_date\")\n                }\n       \
+          \         for score in scores\n            ]\n            \n           \
+          \ # 构造分号分隔的字符串\n            scores_list = [str(score.get(\"score\", \"\"\
+          )) for score in scores]  # 提取分数\n            courses_list = [score.get(\"\
+          course_name\", \"\") for score in scores]  # 提取课程名称\n            \n    \
+          \        # 构造返回值\n            score = \";\".join(scores_list)  # 分数和课程名称合并\n\
+          \            x_axis_data = \";\".join(courses_list)  # X轴数据（科目名称）\n    \
+          \        \n            # 返回成功结果\n            return {\n                \"\
+          status\": \"success\",\n                \"message\": f\"学生成绩获取成功，共{len(scores)}条记录。\"\
+          ,\n                \"data\": formatted_scores,\n                \"score\"\
+          : score,\n                \"x_axis_data\": x_axis_data\n            }\n\
+          \        else:\n            # 返回错误信息\n            error_detail = response.json().get(\"\
+          detail\", \"未知错误\")\n            return {\n                \"status\": \"\
+          error\",\n                \"message\": f\"获取学生成绩失败：{error_detail}\",\n \
+          \               \"data\": None,\n                \"score\": \"\",\n    \
+          \            \"x_axis_data\": \"\"\n            }\n    except Exception\
+          \ as e:\n        # 捕获异常并返回错误信息\n        return {\n            \"status\"\
+          : \"error\",\n            \"message\": f\"请求过程中发生异常：{str(e)}\",\n      \
+          \      \"data\": None,\n            \"score\": \"\",\n            \"x_axis_data\"\
+          : \"\"\n        }"
+        code_language: python3
+        desc: ''
+        outputs:
+          data:
+            children: null
+            type: array[object]
+          message:
+            children: null
+            type: string
+          score:
+            children: null
+            type: string
+          status:
+            children: null
+            type: string
+          x_axis_data:
+            children: null
+            type: string
+        selected: false
+        title: 学生成绩接口
+        type: code
+        variables:
+        - value_selector:
+          - conversation
+          - student_id
+          variable: student_id
+        - value_selector:
+          - env
+          - base_url
+          variable: base_url
+      height: 52
+      id: '1740636026594'
+      position:
+        x: 1135.3006506211987
+        y: 354.97030449077306
+      positionAbsolute:
+        x: 1135.3006506211987
+        y: 354.97030449077306
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        desc: ''
+        provider_id: chart
+        provider_name: chart
+        provider_type: builtin
+        selected: false
+        title: 柱状图
+        tool_configurations: {}
+        tool_label: 柱状图
+        tool_name: bar_chart
+        tool_parameters:
+          data:
+            type: mixed
+            value: '{{#1740636026594.score#}}'
+          x_axis:
+            type: mixed
+            value: '{{#1740636026594.x_axis_data#}}'
+        type: tool
+      height: 52
+      id: '1740640600640'
+      position:
+        x: 1565.3748418718305
+        y: 395.74020002784687
+      positionAbsolute:
+        x: 1565.3748418718305
+        y: 395.74020002784687
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "import requests\n\ndef main(base_url: str = 'http://127.0.0.1:9090')\
+          \ -> dict:\n    \"\"\"\n    测试获取班级平均分接口。\n    \n    :param base_url: API基础URL，默认为'http://127.0.0.1:9090'\n\
+          \    :return: 包含班级平均分数据或错误信息的字典\n    \"\"\"\n    # 设置请求的URL\n    url = f'{base_url}/db/class/average-scores'\n\
+          \    \n    try:\n        # 发送GET请求\n        response = requests.get(url)\n\
+          \        \n        # 检查响应状态码\n        if response.status_code == 200:\n\
+          \            averages = response.json()\n            \n            # 如果数据为空，返回无数据提示\n\
+          \            if not averages:\n                markdown_result = \"无数据可显示。\\\
+          n\"\n            else:\n                # 定义表头\n                markdown_result\
+          \ = \"| 班级名称 | 课程名称 | 平均分 |\\n\"\n                markdown_result += \"\
+          |----------|----------|--------|\\n\"\n                \n              \
+          \  # 添加表格内容\n                for avg in averages:\n                    class_name\
+          \ = avg.get(\"class_name\", \"\")\n                    course_name = avg.get(\"\
+          course_name\", \"\")\n                    avg_score = avg.get(\"avg_score\"\
+          , \"\")\n                    markdown_result += f\"| {class_name} | {course_name}\
+          \ | {avg_score} |\\n\"\n            \n            # 返回成功结果\n           \
+          \ return {\n                \"status\": \"success\",\n                \"\
+          message\": f\"班级平均分获取成功，共{len(averages)}条记录。\",\n                \"data\"\
+          : markdown_result\n            }\n        else:\n            # 返回错误信息\n\
+          \            error_detail = response.json().get(\"detail\", \"未知错误\")\n\
+          \            return {\n                \"status\": \"error\",\n        \
+          \        \"message\": f\"获取班级平均分失败：{error_detail}\",\n                \"\
+          data\": None\n            }\n    except Exception as e:\n        # 捕获异常并返回错误信息\n\
+          \        return {\n            \"status\": \"error\",\n            \"message\"\
+          : f\"请求过程中发生异常：{str(e)}\",\n            \"data\": None\n        }"
+        code_language: python3
+        desc: ''
+        outputs:
+          data:
+            children: null
+            type: string
+          message:
+            children: null
+            type: string
+          status:
+            children: null
+            type: string
+        selected: true
+        title: 班级平均分接口
+        type: code
+        variables:
+        - value_selector:
+          - env
+          - base_url
+          variable: base_url
+      height: 52
+      id: '1740645177116'
+      position:
+        x: 1135.3006506211987
+        y: 480.4127096641655
+      positionAbsolute:
+        x: 1135.3006506211987
+        y: 480.4127096641655
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: '{{#1740645177116.data#}}'
+        desc: ''
+        selected: false
+        title: 班级平均分接口回复
+        type: answer
+        variables: []
+      height: 101
+      id: '1740646969095'
+      position:
+        x: 1755.1834115422218
+        y: 544.0794193664866
+      positionAbsolute:
+        x: 1755.1834115422218
+        y: 544.0794193664866
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "import requests\n\ndef main(course_id: int, limit: int, base_url: str\
+          \ = 'http://127.0.0.1:9090') -> dict:\n    \"\"\"\n    测试获取课程排名接口。\n\
+          \    \n    :param course_id: 课程ID\n    :param limit: 获取的排名人数\n    :param\
+          \ base_url: API基础URL，默认为'http://127.0.0.1:9090'\n    :return: 包含课程排名数据或错误信息的字典\n\
+          \    \"\"\"\n    # 设置请求的URL\n    url = f'{base_url}/db/course/{course_id}/top-students?limit={limit}'\n\
+          \    \n    try:\n        # 发送GET请求\n        response = requests.get(url)\n\
+          \        \n        # 检查响应状态码\n        if response.status_code == 200:\n\
+          \            rankings = response.json()\n            \n            # 如果数据为空，返回无数据提示\n\
+          \            if not rankings:\n                markdown_result = \"无数据可显示。\\\
+          n\"\n            else:\n                # 定义表头\n                markdown_result\
+          \ = \"| 排名 | 学生姓名 | 分数 |\\n\"\n                markdown_result += \"|------|----------|------|\\\
+          n\"\n                \n                # 添加表格内容\n                for rank\
+          \ in rankings:\n                    student_name = rank.get(\"student_name\"\
+          , \"\")\n                    score = rank.get(\"score\", \"\")\n       \
+          \             rank_num = rank.get(\"rank\", \"\")\n                    markdown_result\
+          \ += f\"| {rank_num} | {student_name} | {score} |\\n\"\n            \n \
+          \           # 返回成功结果\n            return {\n                \"status\":\
+          \ \"success\",\n                \"message\": f\"课程排名获取成功，共{len(rankings)}条记录。\"\
+          ,\n                \"data\": markdown_result\n            }\n        else:\n\
+          \            # 返回错误信息\n            error_detail = response.json().get(\"\
+          detail\", \"未知错误\")\n            return {\n                \"status\": \"\
+          error\",\n                \"message\": f\"获取课程排名失败：{error_detail}\",\n \
+          \               \"data\": None\n            }\n    except Exception as e:\n\
+          \        # 捕获异常并返回错误信息\n        return {\n            \"status\": \"error\"\
+          ,\n            \"message\": f\"请求过程中发生异常：{str(e)}\",\n            \"data\"\
+          : None\n        }"
+        code_language: python3
+        desc: ''
+        outputs:
+          data:
+            children: null
+            type: string
+          message:
+            children: null
+            type: string
+          status:
+            children: null
+            type: string
+        selected: false
+        title: 课程排名接口
+        type: code
+        variables:
+        - value_selector:
+          - conversation
+          - course_id
+          variable: course_id
+        - value_selector:
+          - conversation
+          - limit
+          variable: limit
+        - value_selector:
+          - env
+          - base_url
+          variable: base_url
+      height: 52
+      id: '1740647348150'
+      position:
+        x: 1135.3006506211987
+        y: 609.1712607230342
+      positionAbsolute:
+        x: 1135.3006506211987
+        y: 609.1712607230342
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: '{{#1740647348150.data#}}'
+        desc: ''
+        selected: false
+        title: 课程排名接口回复
+        type: answer
+        variables: []
+      height: 101
+      id: '1740647528305'
+      position:
+        x: 1523.7912328277332
+        y: 684.0343661696047
+      positionAbsolute:
+        x: 1523.7912328277332
+        y: 684.0343661696047
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: -795.0331893183767
+      y: 157.65545924308458
+      zoom: 0.7578583064483521
