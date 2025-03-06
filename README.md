@@ -52,6 +52,7 @@
 | excel表格提取+echarts展示.yml            | 文本生成模型、文档提取功能、echarts                          |
 | 学生成绩查询工作流（带数据库查询）.yml   | 文本生成模型、柱状图、数据库查询、http接口请求、table markdown |
 | 知识库检索工作流.yml                     | 文本生成模型、知识库RAG、知识检索                            |
+| AI绘画+飞书+企业微信整合.yml             | http接口请求、jimeng-free-api、飞书表格、企业微信            |
 
 ### 部分视频链接地址
 
@@ -66,6 +67,8 @@
 | dify案例分享- 儿童故事绘本                               | https://www.bilibili.com/video/BV1WCAgeNEsw、https://www.youtube.com/watch?v=QV2MjL6fMi4、https://www.toutiao.com/video/7471874756129505792/ | B站、油管、今日头条、微信视频号 |
 
 ## 更新说明
+
+2025年3月7 日-version 0.0.2.17 :新增加AI绘画+飞书+企业微信整合.yml
 
 2025年3月3 日-version 0.0.2.16 :新增加知识库检索工作流.yml
 
@@ -130,7 +133,7 @@ https://aqma351r01f.feishu.cn/wiki/HF5FwMDQkiHoCokvbQAcZLu3nAg?table=tbleOWb4WgX
 
 ## 技术交流群
 
-![微信图片_20250302170110](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250302170110.jpg)
+![image-20250307001013508](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250307001013508.png)
 
 ## Star History
 

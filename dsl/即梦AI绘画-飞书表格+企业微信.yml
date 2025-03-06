@@ -1,0 +1,425 @@
+app:
+  description: 即梦AI绘画-飞书表格+企业微信
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 即梦AI绘画-飞书表格+企业微信
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables: []
+  environment_variables:
+  - description: ''
+    id: 9be7396a-130f-4abc-b1c2-1095d4b3f086
+    name: fenshuurl
+    selector:
+    - env
+    - fenshuurl
+    value: https://aqma351r01f.feishu.cn/wiki/WUj4w82EliH91Gkr9bRcMUNAn8g
+    value_type: string
+  - description: ''
+    id: fc381655-2465-4c81-b732-3447c700efbf
+    name: jimengsessionid
+    selector:
+    - env
+    - jimengsessionid
+    value: 793cc9014636d267d996441da25262e1
+    value_type: string
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: http-request
+      id: 1738645729564-source-1738645745761-target
+      source: '1738645729564'
+      sourceHandle: source
+      target: '1738645745761'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: http-request
+        targetType: code
+      id: 1738645745761-source-1738646610237-target
+      source: '1738645745761'
+      sourceHandle: source
+      target: '1738646610237'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: answer
+      id: 1738646610237-source-answer-target
+      selected: false
+      source: '1738646610237'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: tool
+      id: 1739418278701-source-1739418327443-target
+      source: '1739418278701'
+      sourceHandle: source
+      target: '1739418327443'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: http-request
+        targetType: code
+      id: 1738645745761-source-1739418278701-target
+      source: '1738645745761'
+      sourceHandle: source
+      target: '1739418278701'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: tool
+      id: 1738646610237-source-1741270857596-target
+      source: '1738646610237'
+      sourceHandle: source
+      target: '1741270857596'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - label: 提示词
+          max_length: 256
+          options: []
+          required: true
+          type: text-input
+          variable: prompt
+      height: 89
+      id: '1738645729564'
+      position:
+        x: -49.74377171470064
+        y: 289.70154419803066
+      positionAbsolute:
+        x: -49.74377171470064
+        y: 289.70154419803066
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1738646610237.result#}}'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 103
+      id: answer
+      position:
+        x: 885
+        y: 171.163672593834
+      positionAbsolute:
+        x: 885
+        y: 171.163672593834
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data:
+          - id: key-value-7
+            key: ''
+            type: text
+            value: '{
+
+              "model":"jimeng-2.1",
+
+              "prompt":"{{#1738645729564.prompt#}}",
+
+              "negativePrompt":"",
+
+              "width":1024,
+
+              "height":1024,
+
+              "sample_strength":0.5
+
+              }'
+          type: json
+        desc: ''
+        headers: Authorization:Bearer {{#env.jimengsessionid#}}
+        method: post
+        params: ''
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 100
+        selected: false
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: HTTP 请求
+        type: http-request
+        url: https://jimeng.duckcloud.fun/v1/images/generations
+        variables: []
+      height: 135
+      id: '1738645745761'
+      position:
+        x: 241
+        y: 279.91600083586036
+      positionAbsolute:
+        x: 241
+        y: 279.91600083586036
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "def main(arg1: str) -> str:\n    import json\n\n    # 解析输入的 JSON 数据\n\
+          \    try:\n        data = json.loads(arg1)\n    except json.JSONDecodeError:\n\
+          \        return \"输入的字符串不是有效的 JSON 格式，请检查输入数据。\"\n\n    # 确保解析后的数据包含 'data'\
+          \ 键\n    if not isinstance(data, dict) or 'data' not in data:\n        return\
+          \ \"输入的数据格式不正确，请确保输入是一个包含 'data' 键的 JSON 对象。\"\n\n    # 获取 'data' 键对应的数组数据\n\
+          \    image_data = data.get('data', [])\n\n    # 确保 'data' 键的值是一个列表\n   \
+          \ if not isinstance(image_data, list):\n        return \"输入的数据中 'data' 键的值不是一个数组，请确保其值是一个\
+          \ JSON 数组对象。\"\n\n    # 初始化结果字符串\n    markdown_result = \"\"\n\n    # 遍历每条图片数据\n\
+          \    for index, item in enumerate(image_data, start=1):\n        # 检查每条数据是否是字典，并且包含\
+          \ 'url' 字段\n        if not isinstance(item, dict) or 'url' not in item:\n\
+          \            markdown_result += f\"图片第{index}条内容：无法提取 URL（缺少 'url' 字段）\\\
+          n\"\n            continue\n\n        # 提取 URL 并生成 Markdown 格式的图片链接\n   \
+          \     url = item['url']\n        markdown_result += f\"![图片{index}]({url})\\\
+          n\"\n\n    # 返回最终的 Markdown 字符串\n    return {\"result\": markdown_result}"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行
+        type: code
+        variables:
+        - value_selector:
+          - '1738645745761'
+          - body
+          variable: arg1
+      height: 53
+      id: '1738646610237'
+      position:
+        x: 557.9217121397453
+        y: 270.4377171470063
+      positionAbsolute:
+        x: 557.9217121397453
+        y: 270.4377171470063
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "def main(arg1: str,arg2: str) -> dict:\n    import json\n\n    # 解析输入的\
+          \ JSON 数据\n    try:\n        data = json.loads(arg1)\n    except json.JSONDecodeError:\n\
+          \        return {\"result\": \"输入的字符串不是有效的 JSON 格式，请检查输入数据。\"}\n\n    #\
+          \ 确保解析后的数据包含 'data' 键\n    if not isinstance(data, dict) or 'data' not in\
+          \ data:\n        return {\"result\": \"输入的数据格式不正确，请确保输入是一个包含 'data' 键的 JSON\
+          \ 对象。\"}\n\n    # 获取 'data' 键对应的数组数据\n    image_data = data.get('data',\
+          \ [])\n\n    # 确保 'data' 键的值是一个列表\n    if not isinstance(image_data, list):\n\
+          \        return {\"result\": \"输入的数据中 'data' 键的值不是一个数组，请确保其值是一个 JSON 数组对象。\"\
+          }\n\n    # 初始化结果字符串\n    strn = \"\"\n\n    # 遍历每条图片数据\n    for index, item\
+          \ in enumerate(image_data, start=1):\n        # 检查每条数据是否是字典，并且包含 'url' 字段\n\
+          \        if not isinstance(item, dict) or 'url' not in item:\n         \
+          \   strn += f\"图片第{index}条内容：无法提取 URL（缺少 'url' 字段）\\n\"\n            continue\n\
+          \n        # 提取 URL 并生成 Markdown 格式的图片链接\n        url = item['url']\n   \
+          \     strn += url + \"\\n\"\n\n    # 将输入字符串转换为表格格式\n    str2 = strn\n  \
+          \  table = [[arg2, str2, \"\", \"\", \"\"]]\n\n    # 将表格转换为字符串形式的嵌套列表，并添加转义字符\n\
+          \    result_str = str(table).replace(\"'\", '\"')  # 将单引号替换为双引号\n\n    #\
+          \ 返回结果\n    return {\n        \"result\": result_str,\n    }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 处理即梦AI图片
+        type: code
+        variables:
+        - value_selector:
+          - '1738645745761'
+          - body
+          variable: arg1
+        - value_selector:
+          - '1738645729564'
+          - prompt
+          variable: arg2
+      height: 53
+      id: '1739418278701'
+      position:
+        x: 551.078213775693
+        y: 419.46263028820374
+      positionAbsolute:
+        x: 551.078213775693
+        y: 419.46263028820374
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        provider_id: feishu_spreadsheet
+        provider_name: feishu_spreadsheet
+        provider_type: builtin
+        selected: false
+        title: 新增多行至工作表最后
+        tool_configurations:
+          length: 1
+        tool_label: 新增多行至工作表最后
+        tool_name: add_rows
+        tool_parameters:
+          sheet_id:
+            type: mixed
+            value: ''
+          spreadsheet_token:
+            type: mixed
+            value: '{{#env.fenshuurl#}}'
+          values:
+            type: mixed
+            value: '{{#1739418278701.result#}}'
+        type: tool
+      height: 89
+      id: '1739418327443'
+      position:
+        x: 911.612035050827
+        y: 419.46263028820374
+      positionAbsolute:
+        x: 911.612035050827
+        y: 419.46263028820374
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        provider_id: wecom
+        provider_name: wecom
+        provider_type: builtin
+        selected: false
+        title: 发送群消息
+        tool_configurations:
+          hook_key: 81620a86-d986-4509-ac0f-ac93aa7a9d4f
+          message_type: markdown
+        tool_label: 发送群消息
+        tool_name: wecom_group_bot
+        tool_parameters:
+          content:
+            type: mixed
+            value: '{{#1738646610237.result#}}'
+        type: tool
+      height: 115
+      id: '1741270857596'
+      position:
+        x: 889.5124565705987
+        y: 299.7544170246875
+      positionAbsolute:
+        x: 889.5124565705987
+        y: 299.7544170246875
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        author: 周辉
+        desc: ''
+        height: 132
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"本工作流主要整合了即梦AI绘画功能，另外整合飞书保存绘画和聊天信息已经发送信息给企业微信功能。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 425
+      height: 132
+      id: '1741274824240'
+      position:
+        x: -55.585670754134696
+        y: 441.84855350117334
+      positionAbsolute:
+        x: -55.585670754134696
+        y: 441.84855350117334
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 425
+    viewport:
+      x: 207.28402512210326
+      y: -61.60399710286913
+      zoom: 0.9225099364294117
