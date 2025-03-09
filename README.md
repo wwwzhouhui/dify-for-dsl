@@ -53,6 +53,7 @@
 | 学生成绩查询工作流（带数据库查询）.yml   | 文本生成模型、柱状图、数据库查询、http接口请求、table markdown |
 | 知识库检索工作流.yml                     | 文本生成模型、知识库RAG、知识检索                            |
 | AI绘画+飞书+企业微信整合.yml             | http接口请求、jimeng-free-api、飞书表格、企业微信            |
+| API文档生成代码.yml                      | jina-ai、文档提取功能、文本生成模型                          |
 
 ### 部分视频链接地址
 
@@ -67,6 +68,8 @@
 | dify案例分享- 儿童故事绘本                               | https://www.bilibili.com/video/BV1WCAgeNEsw、https://www.youtube.com/watch?v=QV2MjL6fMi4、https://www.toutiao.com/video/7471874756129505792/ | B站、油管、今日头条、微信视频号 |
 
 ## 更新说明
+
+2025年3月9 日-version 0.0.2.18 :新增加API文档生成代码.yml
 
 2025年3月7 日-version 0.0.2.17 :新增加AI绘画+飞书+企业微信整合.yml
 

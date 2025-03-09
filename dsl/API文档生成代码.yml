@@ -1,0 +1,448 @@
+app:
+  description: 本工作流主要功能是用户输入API文档，更加用户API 接口文档结合大语言模型实现接口文档代码的代码实现编写。
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: API文档生成代码
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: end
+      id: 1740959206418-source-1740959831740-target
+      selected: false
+      source: '1740959206418'
+      sourceHandle: source
+      target: '1740959831740'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: document-extractor
+        targetType: variable-aggregator
+      id: 1740959162304-source-1740960349832-target
+      selected: false
+      source: '1740959162304'
+      sourceHandle: source
+      target: '1740960349832'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: variable-aggregator
+        targetType: llm
+      id: 1740960349832-source-1740959206418-target
+      selected: false
+      source: '1740960349832'
+      sourceHandle: source
+      target: '1740959206418'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: if-else
+      id: 1740959153996-source-1740961058395-target
+      selected: false
+      source: '1740959153996'
+      sourceHandle: source
+      target: '1740961058395'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: tool
+      id: 1740961058395-true-1741521838680-target
+      selected: false
+      source: '1740961058395'
+      sourceHandle: 'true'
+      target: '1741521838680'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: tool
+        targetType: variable-aggregator
+      id: 1741521838680-source-1740960349832-target
+      selected: false
+      source: '1741521838680'
+      sourceHandle: source
+      target: '1740960349832'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: document-extractor
+      id: 1740961058395-false-1740959162304-target
+      source: '1740961058395'
+      sourceHandle: 'false'
+      target: '1740959162304'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          label: API本地文档（二选一）
+          max_length: 48
+          options: []
+          required: false
+          type: file
+          variable: file
+        - label: API文档Url（二选一）
+          max_length: 256
+          options: []
+          required: false
+          type: text-input
+          variable: api_url
+        - label: 额外说明
+          max_length: 32768
+          options: []
+          required: false
+          type: paragraph
+          variable: other
+        - label: 编程语言
+          max_length: 48
+          options:
+          - curl
+          - python
+          - java
+          - golang
+          - nodejs
+          required: true
+          type: select
+          variable: language
+      height: 167
+      id: '1740959153996'
+      position:
+        x: -117.00904402068063
+        y: -307.9675377835533
+      positionAbsolute:
+        x: -117.00904402068063
+        y: -307.9675377835533
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        is_array_file: false
+        selected: false
+        title: 文档提取器
+        type: document-extractor
+        variable_selector:
+        - '1740959153996'
+        - file
+      height: 91
+      id: '1740959162304'
+      position:
+        x: 581.5125310390971
+        y: -54.7264056171921
+      positionAbsolute:
+        x: 581.5125310390971
+        y: -54.7264056171921
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0
+          mode: chat
+          name: Qwen/QwQ-32B-Preview
+          provider: siliconflow
+        prompt_template:
+        - id: 4f198d1a-4dc6-4e17-b180-e01077e73e1d
+          role: system
+          text: '# 你是一个软件工程师，帮助用户解读API文档并直接生成代码。
+
+            ## 工作流程
+
+            1. 根据用户的要求解读API文档
+
+            2. 简要想用户介绍API文档中涉及到的接口
+
+            3. 根据用户的要求使用{{#1740959153996.language#}}编写测试代码
+
+
+            ## 工作要求
+
+            1. 如果在输入的接口文档找没有找到接口，请向用户澄清。
+
+            2. 如果输入的接口文档中找到了多个接口，请向用户澄清具体是哪个接口。
+
+            3. 如果文档中涉及到了api-key或认证相关内容，可以使用用户提供加入到接口中。
+
+            4. 如果文档中提及了某些必须传入的参数和认证用的api-key，而用户没有提供，请告知用户未生成代码的具体原因，并询问用户该如何处理必需的参数。如：按照API文档的描述，在调用XX接口时，需要提供XX参数，并询问用户该如何处理？
+
+            5. 请注意API文档中描述的输入和输出参数的格式，严格按照文档中描述的格式组织代码。
+
+
+            ## 输出格式
+
+            1. 编写测试代码
+
+            2. 解释每个输入参数和输出参数具体的含义
+
+            '
+        - id: 9ccbaf93-5d5e-46e8-8771-89c0d1ea226a
+          role: user
+          text: '接口文档内容如下{{#1740960349832.output#}}。
+
+            请使用 {{#1740959153996.language#}} 编写代码
+
+            用户要求：{{#1740959153996.other#}}'
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '1740959206418'
+      position:
+        x: 1235.8019824263738
+        y: -282.59074763000916
+      positionAbsolute:
+        x: 1235.8019824263738
+        y: -282.59074763000916
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1740959206418'
+          - text
+          variable: text
+        selected: false
+        title: 结束
+        type: end
+      height: 89
+      id: '1740959831740'
+      position:
+        x: 1547.51886675141
+        y: -276.78885604946225
+      positionAbsolute:
+        x: 1547.51886675141
+        y: -276.78885604946225
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        advanced_settings:
+          group_enabled: false
+          groups:
+          - groupId: 5558f841-272f-4848-8e4c-dd1b90994a2e
+            group_name: Group1
+            output_type: string
+            variables:
+            - - '1740960303022'
+              - text
+            - - '1740959162304'
+              - text
+        desc: ''
+        output_type: string
+        selected: false
+        title: 变量聚合器
+        type: variable-aggregator
+        variables:
+        - - '1740959162304'
+          - text
+        - - '1741521838680'
+          - text
+      height: 129
+      id: '1740960349832'
+      position:
+        x: 894.0894802792027
+        y: -282.59074763000916
+      positionAbsolute:
+        x: 894.0894802792027
+        y: -282.59074763000916
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: not empty
+            id: 5c574fe3-fe2b-4007-9394-99a402dcdaf7
+            value: ''
+            varType: string
+            variable_selector:
+            - '1740959153996'
+            - api_url
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 条件分支
+        type: if-else
+      height: 125
+      id: '1740961058395'
+      position:
+        x: 212.61557370362362
+        y: -307.9675377835533
+      positionAbsolute:
+        x: 212.61557370362362
+        y: -307.9675377835533
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        provider_id: jina
+        provider_name: jina
+        provider_type: builtin
+        selected: false
+        title: 获取单页面
+        tool_configurations:
+          gather_all_images_at_the_end: 1
+          gather_all_links_at_the_end: 1
+          image_caption: 1
+          max_retries: 3
+          no_cache: 1
+          proxy_server: null
+          remove_selector: null
+          retain_images: 1
+          summary: 0
+          target_selector: null
+          wait_for_selector: null
+          with_iframe: 1
+          with_shadow_dom: 1
+        tool_label: 获取单页面
+        tool_name: jina_reader
+        tool_parameters:
+          request_params:
+            type: mixed
+            value: ''
+          url:
+            type: mixed
+            value: '{{#1740959153996.api_url#}}'
+        type: tool
+      height: 401
+      id: '1741521838680'
+      position:
+        x: 568.4426858068268
+        y: -586.9359756227387
+      positionAbsolute:
+        x: 568.4426858068268
+        y: -586.9359756227387
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        author: 周辉
+        desc: ''
+        height: 134
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"本工作流主要功能是用户输入","type":"text","version":1},{"detail":0,"format":1,"mode":"normal","style":"","text":"API文档","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"，更加用户API
+          接口文档结合大语言模型实现接口文档代码的代码实现编写","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 326
+      height: 134
+      id: '1741525545427'
+      position:
+        x: -122.25927274227365
+        y: -131.57080437156134
+      positionAbsolute:
+        x: -122.25927274227365
+        y: -131.57080437156134
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 326
+    viewport:
+      x: -956.8168306697382
+      y: 809.6372708698741
+      zoom: 1.0897521093993958
