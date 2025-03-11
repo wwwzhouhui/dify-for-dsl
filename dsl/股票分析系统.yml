@@ -16,7 +16,7 @@ workflow:
     selector:
     - env
     - apikey
-    value: zhouhuixxxxxx
+    value: zhouhui11224555
     value_type: string
   features:
     file_upload:
@@ -68,6 +68,7 @@ workflow:
         sourceType: start
         targetType: if-else
       id: 1741660271061-source-1741660654730-target
+      selected: false
       source: '1741660271061'
       sourceHandle: source
       target: '1741660654730'
@@ -79,6 +80,7 @@ workflow:
         sourceType: if-else
         targetType: answer
       id: 1741660654730-false-17416607292670-target
+      selected: false
       source: '1741660654730'
       sourceHandle: 'false'
       target: '17416607292670'
@@ -87,31 +89,10 @@ workflow:
       zIndex: 0
     - data:
         isInIteration: false
-        sourceType: if-else
-        targetType: variable-aggregator
-      id: 1741660654730-true-1741661741635-target
-      source: '1741660654730'
-      sourceHandle: 'true'
-      target: '1741661741635'
-      targetHandle: target
-      type: custom
-      zIndex: 0
-    - data:
-        isInIteration: false
-        sourceType: variable-aggregator
-        targetType: http-request
-      id: 1741661741635-source-1741660778252-target
-      source: '1741661741635'
-      sourceHandle: source
-      target: '1741660778252'
-      targetHandle: target
-      type: custom
-      zIndex: 0
-    - data:
-        isInIteration: false
         sourceType: http-request
         targetType: code
       id: 1741660778252-source-1741663437132-target
+      selected: false
       source: '1741660778252'
       sourceHandle: source
       target: '1741663437132'
@@ -123,6 +104,7 @@ workflow:
         sourceType: code
         targetType: if-else
       id: 1741663437132-source-1741670198264-target
+      selected: false
       source: '1741663437132'
       sourceHandle: source
       target: '1741670198264'
@@ -134,6 +116,7 @@ workflow:
         sourceType: if-else
         targetType: llm
       id: 1741670198264-true-1741669644195-target
+      selected: false
       source: '1741670198264'
       sourceHandle: 'true'
       target: '1741669644195'
@@ -145,6 +128,7 @@ workflow:
         sourceType: if-else
         targetType: llm
       id: 1741670198264-6c1dbd89-ad21-4925-89f3-5b690a144fa0-17416703386570-target
+      selected: false
       source: '1741670198264'
       sourceHandle: 6c1dbd89-ad21-4925-89f3-5b690a144fa0
       target: '17416703386570'
@@ -156,6 +140,7 @@ workflow:
         sourceType: if-else
         targetType: llm
       id: 1741670198264-ccf046c0-1736-4991-ac66-a626d63b2fd6-17416704837760-target
+      selected: false
       source: '1741670198264'
       sourceHandle: ccf046c0-1736-4991-ac66-a626d63b2fd6
       target: '17416704837760'
@@ -167,6 +152,7 @@ workflow:
         sourceType: if-else
         targetType: llm
       id: 1741670198264-false-17416706257040-target
+      selected: false
       source: '1741670198264'
       sourceHandle: 'false'
       target: '17416706257040'
@@ -178,6 +164,7 @@ workflow:
         sourceType: llm
         targetType: answer
       id: 1741669644195-source-answer-target
+      selected: false
       source: '1741669644195'
       sourceHandle: source
       target: answer
@@ -189,6 +176,7 @@ workflow:
         sourceType: llm
         targetType: answer
       id: 17416703386570-source-1741698137000-target
+      selected: false
       source: '17416703386570'
       sourceHandle: source
       target: '1741698137000'
@@ -200,6 +188,7 @@ workflow:
         sourceType: llm
         targetType: answer
       id: 17416704837760-source-1741698182821-target
+      selected: false
       source: '17416704837760'
       sourceHandle: source
       target: '1741698182821'
@@ -211,9 +200,32 @@ workflow:
         sourceType: llm
         targetType: answer
       id: 17416706257040-source-1741698215893-target
+      selected: false
       source: '17416706257040'
       sourceHandle: source
       target: '1741698215893'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: code
+      id: 1741660654730-true-1741711639874-target
+      source: '1741660654730'
+      sourceHandle: 'true'
+      target: '1741711639874'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: http-request
+      id: 1741711639874-source-1741660778252-target
+      source: '1741711639874'
+      sourceHandle: source
+      target: '1741660778252'
       targetHandle: target
       type: custom
       zIndex: 0
@@ -229,6 +241,8 @@ workflow:
           options:
           - ''
           - 000568
+          - '002657'
+          - '000050'
           - 000599
           - '600031'
           - '600050'
@@ -260,19 +274,19 @@ workflow:
           required: true
           type: select
           variable: marketType
-      height: 201
+      height: 202
       id: '1741660271061'
       position:
-        x: -461.20302504540143
-        y: 295
+        x: 32.5483009607201
+        y: 301
       positionAbsolute:
-        x: -461.20302504540143
-        y: 295
+        x: 32.5483009607201
+        y: 301
       selected: false
       sourcePosition: right
       targetPosition: left
       type: custom
-      width: 243
+      width: 244
     - data:
         answer: '{{#1741669644195.text#}}'
         desc: ''
@@ -283,16 +297,16 @@ workflow:
       height: 103
       id: answer
       position:
-        x: 983.302879033193
-        y: 400.0322588894754
+        x: 2158
+        y: 456
       positionAbsolute:
-        x: 983.302879033193
-        y: 400.0322588894754
-      selected: true
+        x: 2158
+        y: 456
+      selected: false
       sourcePosition: right
       targetPosition: left
       type: custom
-      width: 243
+      width: 244
     - data:
         cases:
         - case_id: 'true'
@@ -320,11 +334,11 @@ workflow:
       height: 152
       id: '1741660654730'
       position:
-        x: 59
-        y: 256.7969749545986
+        x: 334
+        y: 301
       positionAbsolute:
-        x: 59
-        y: 256.7969749545986
+        x: 334
+        y: 301
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -337,19 +351,19 @@ workflow:
         title: 错误提示回复
         type: answer
         variables: []
-      height: 99
+      height: 100
       id: '17416607292670'
       position:
-        x: 426
-        y: 310
+        x: 638
+        y: 301
       positionAbsolute:
-        x: 426
-        y: 310
+        x: 638
+        y: 301
       selected: false
       sourcePosition: right
       targetPosition: left
       type: custom
-      width: 243
+      width: 244
     - data:
         authorization:
           config: null
@@ -359,7 +373,7 @@ workflow:
           - id: key-value-1
             key: ''
             type: text
-            value: "{\n  \"stock_code\":\"{{#1741661741635.output#}}\",\n  \"market_type\"\
+            value: "{\n  \"stock_code\":\"{{#1741711639874.output#}}\",\n  \"market_type\"\
               :\"{{#1741660271061.marketType#}}\"\n }"
           type: json
         desc: ''
@@ -379,45 +393,21 @@ workflow:
           max_write_timeout: 0
         title: 请求股票接口
         type: http-request
-        url: http://127.0.0.1:8085/analyze-stock/
+        url: http://111.119.215.74:8080/akshare/analyze-stock/
         variables: []
-      height: 110
+      height: 136
       id: '1741660778252'
       position:
-        x: -156.68063521531005
-        y: 552.624200363211
+        x: 942
+        y: 456
       positionAbsolute:
-        x: -156.68063521531005
-        y: 552.624200363211
-      selected: false
+        x: 942
+        y: 456
+      selected: true
       sourcePosition: right
       targetPosition: left
       type: custom
       width: 244
-    - data:
-        desc: ''
-        output_type: string
-        selected: false
-        title: 变量聚合器
-        type: variable-aggregator
-        variables:
-        - - '1741660271061'
-          - stockcode1
-        - - '1741660271061'
-          - stockcode2
-      height: 129
-      id: '1741661741635'
-      position:
-        x: -470.3102293064708
-        y: 561.1226461308366
-      positionAbsolute:
-        x: -470.3102293064708
-        y: 561.1226461308366
-      selected: false
-      sourcePosition: right
-      targetPosition: left
-      type: custom
-      width: 243
     - data:
         code: "import json\ndef main(arg1: str) -> str: # 修改返回类型为 str\n# 修正后的代码（修复缩进问题）\n\
           \    data = json.loads(arg1)\n    technical_summary = data['technical_summary']\n\
@@ -446,19 +436,19 @@ workflow:
           - '1741660778252'
           - body
           variable: arg1
-      height: 53
+      height: 54
       id: '1741663437132'
       position:
-        x: 125.28911433067617
-        y: 552.624200363211
+        x: 1246
+        y: 456
       positionAbsolute:
-        x: 125.28911433067617
-        y: 552.624200363211
+        x: 1246
+        y: 456
       selected: false
       sourcePosition: right
       targetPosition: left
       type: custom
-      width: 243
+      width: 244
     - data:
         context:
           enabled: false
@@ -474,7 +464,7 @@ workflow:
         - edition_type: basic
           id: 12b5ec7e-4db6-4b84-90ab-e0de3a45e97a
           role: system
-          text: "分析A股  {{#1741661741635.output#}}：\n 技术指标概要：\n{{#1741663437132.technical_summary#}}\n\
+          text: "分析A股  {{#1741711639874.output#}}：\n 技术指标概要：\n{{#1741663437132.technical_summary#}}\n\
             近14日交易数据：\n{{#1741663437132.recent_data#}}\n请提供：\n1. 趋势分析（包含支撑位和压力位）\n\
             2. 成交量分析及其含义\n3. 风险评估（包含波动率分析）\n4. 短期和中期目标价位\n5. 关键技术位分析\n6. 具体交易建议（包含止损位）\n\
             请基于技术指标和A股市场特点进行分析，给出具体数据支持。"
@@ -484,19 +474,19 @@ workflow:
         variables: []
         vision:
           enabled: false
-      height: 125
+      height: 126
       id: '1741669644195'
       position:
-        x: 686.8830642398734
-        y: 405.0151252270069
+        x: 1854
+        y: 456
       positionAbsolute:
-        x: 686.8830642398734
-        y: 405.0151252270069
+        x: 1854
+        y: 456
       selected: false
       sourcePosition: right
       targetPosition: left
       type: custom
-      width: 243
+      width: 244
     - data:
         cases:
         - case_id: 'true'
@@ -539,11 +529,11 @@ workflow:
       height: 266
       id: '1741670198264'
       position:
-        x: 398.08608928527474
-        y: 552.624200363211
+        x: 1550
+        y: 456
       positionAbsolute:
-        x: 398.08608928527474
-        y: 552.624200363211
+        x: 1550
+        y: 456
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -565,8 +555,9 @@ workflow:
           id: 12b5ec7e-4db6-4b84-90ab-e0de3a45e97a
           role: system
           text: ''
-        - role: user
-          text: "分析港股 {{#1741661741635.output#}}：\n 技术指标概要：\n{{#1741663437132.technical_summary#}}\n\
+        - id: e758d19f-6c21-4ca6-8d8d-e4f3387c5c8f
+          role: user
+          text: "分析港股 {{#1741711639874.output#}}：\n 技术指标概要：\n{{#1741663437132.technical_summary#}}\n\
             近14日交易数据：\n{{#1741663437132.recent_data#}}\n请提供：\n1. 趋势分析（包含支撑位和压力位,港币计价）\n\
             2. 成交量分析及其含义\n3. 风险评估（包含波动率和港股市场特有风险）\n4. 短期和中期目标价位（港币）\n5. 关键技术位分析\n\
             6. 具体交易建议（包含止损位）\n请基于技术指标和港股市场特点进行分析，给出具体数据支持。"
@@ -576,19 +567,19 @@ workflow:
         variables: []
         vision:
           enabled: false
-      height: 125
+      height: 126
       id: '17416703386570'
       position:
-        x: 686.8830642398734
-        y: 536.1100695020885
+        x: 1854
+        y: 622
       positionAbsolute:
-        x: 686.8830642398734
-        y: 536.1100695020885
+        x: 1854
+        y: 622
       selected: false
       sourcePosition: right
       targetPosition: left
       type: custom
-      width: 243
+      width: 244
     - data:
         context:
           enabled: false
@@ -604,7 +595,7 @@ workflow:
         - edition_type: basic
           id: 12b5ec7e-4db6-4b84-90ab-e0de3a45e97a
           role: system
-          text: "分析美股 {{#1741661741635.output#}}：\n 技术指标概要：\n{{#1741663437132.technical_summary#}}\n\
+          text: "分析美股 {{#1741711639874.output#}}：\n 技术指标概要：\n{{#1741663437132.technical_summary#}}\n\
             近14日交易数据：\n{{#1741663437132.recent_data#}}\n请提供：\n1. 趋势分析（包含支撑位和压力位，美元计价）\n\
             2. 成交量分析及其含义\n3. 风险评估（包含波动率和美股市场特有风险）\n4. 短期和中期目标价位（美元）\n5. 关键技术位分析\n\
             6. 具体交易建议（包含止损位）\n请基于技术指标和美股市场特点进行分析，给出具体数据支持。"
@@ -614,19 +605,19 @@ workflow:
         variables: []
         vision:
           enabled: false
-      height: 125
+      height: 126
       id: '17416704837760'
       position:
-        x: 697.710289648486
-        y: 656.7364740465711
+        x: 1854
+        y: 788
       positionAbsolute:
-        x: 697.710289648486
-        y: 656.7364740465711
+        x: 1854
+        y: 788
       selected: false
       sourcePosition: right
       targetPosition: left
       type: custom
-      width: 243
+      width: 244
     - data:
         context:
           enabled: false
@@ -642,7 +633,7 @@ workflow:
         - edition_type: basic
           id: 12b5ec7e-4db6-4b84-90ab-e0de3a45e97a
           role: system
-          text: "分析基金 {{#1741661741635.output#}}：\n 技术指标概要：\n{{#1741663437132.technical_summary#}}\n\
+          text: "分析基金 {{#1741711639874.output#}}：\n 技术指标概要：\n{{#1741663437132.technical_summary#}}\n\
             近14日交易数据：\n{{#1741663437132.recent_data#}}\n请提供：\n1. 净值走势分析（包含支撑位和压力位）\n\
             2. 成交量分析及其对净值的影响\n3. 风险评估（包含波动率和折溢价分析）\n4. 短期和中期净值预测\n5. 关键技术位分析\n6. 申购赎回建议（包含止损位）\n\
             请基于技术指标和市场表现进行分析，给出具体数据支持。"
@@ -652,19 +643,19 @@ workflow:
         variables: []
         vision:
           enabled: false
-      height: 97
+      height: 98
       id: '17416706257040'
       position:
-        x: 697.710289648486
-        y: 814.6552748794376
+        x: 1854
+        y: 954
       positionAbsolute:
-        x: 697.710289648486
-        y: 814.6552748794376
+        x: 1854
+        y: 954
       selected: false
       sourcePosition: right
       targetPosition: left
       type: custom
-      width: 243
+      width: 244
     - data:
         author: 周辉
         desc: ''
@@ -679,11 +670,11 @@ workflow:
       height: 131
       id: '1741695699375'
       position:
-        x: -444.6893632125393
-        y: 711.4377070405249
+        x: 38.16777964460357
+        y: 622
       positionAbsolute:
-        x: -444.6893632125393
-        y: 711.4377070405249
+        x: 38.16777964460357
+        y: 622
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -699,16 +690,16 @@ workflow:
       height: 103
       id: '1741698137000'
       position:
-        x: 988.1149792147985
-        y: 530.6090751362041
+        x: 2158
+        y: 622
       positionAbsolute:
-        x: 988.1149792147985
-        y: 530.6090751362041
+        x: 2158
+        y: 622
       selected: false
       sourcePosition: right
       targetPosition: left
       type: custom
-      width: 243
+      width: 244
     - data:
         answer: ' {{#17416704837760.text#}}'
         desc: ''
@@ -719,16 +710,16 @@ workflow:
       height: 103
       id: '1741698182821'
       position:
-        x: 996.536154532608
-        y: 656.7364740465711
+        x: 2158
+        y: 788
       positionAbsolute:
-        x: 996.536154532608
-        y: 656.7364740465711
+        x: 2158
+        y: 788
       selected: false
       sourcePosition: right
       targetPosition: left
       type: custom
-      width: 243
+      width: 244
     - data:
         answer: '{{#17416706257040.text#}}'
         desc: ''
@@ -739,17 +730,53 @@ workflow:
       height: 103
       id: '1741698215893'
       position:
-        x: 1004.4546026495227
-        y: 808.7610597916286
+        x: 2158
+        y: 940
       positionAbsolute:
-        x: 1004.4546026495227
-        y: 808.7610597916286
+        x: 2158
+        y: 940
       selected: false
       sourcePosition: right
       targetPosition: left
       type: custom
-      width: 243
+      width: 244
+    - data:
+        code: "def main(arg1: str, arg2: str) -> dict:\n    # 检查 arg1 是否有值\n    if\
+          \ arg1:\n        result = arg1\n    # 如果 arg1 没有值，则检查 arg2\n    elif arg2:\n\
+          \        result = arg2\n    else:\n        # 如果两个参数都没有值，可以根据需要进行处理，这里选择返回空字符串\n\
+          \        result = \"\"\n    # 将结果封装成字典\n    return {'output': result}"
+        code_language: python3
+        desc: ''
+        outputs:
+          output:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行2个输入值合并
+        type: code
+        variables:
+        - value_selector:
+          - '1741660271061'
+          - stockcode1
+          variable: arg1
+        - value_selector:
+          - '1741660271061'
+          - stockcode2
+          variable: arg2
+      height: 54
+      id: '1741711639874'
+      position:
+        x: 631.2045307714131
+        y: 469.7301778750681
+      positionAbsolute:
+        x: 631.2045307714131
+        y: 469.7301778750681
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
     viewport:
-      x: -280.11312719047635
-      y: -56.84596509623066
-      zoom: 0.9885140126953494
+      x: 124.99218234652903
+      y: 13.158016708250557
+      zoom: 0.8324449805019046
