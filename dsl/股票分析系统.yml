@@ -16,7 +16,7 @@ workflow:
     selector:
     - env
     - apikey
-    value: zhouhui11224555
+    value: zhouhuixxxx
     value_type: string
   features:
     file_upload:
@@ -393,7 +393,7 @@ workflow:
           max_write_timeout: 0
         title: 请求股票接口
         type: http-request
-        url: http://111.119.215.74:8080/akshare/analyze-stock/
+        url: http://127.0.0.1:8085/analyze-stock/
         variables: []
       height: 136
       id: '1741660778252'
