@@ -1,0 +1,28 @@
+# 本地打包使用国内镜像源加速下载， 默认不使用，影响github actions 
+# --index-url https://pypi.tuna.tsinghua.edu.cn/simple
+
+# 基础科学计算和数据处理库
+numpy==2.1.2
+pandas==2.2.2
+pyarrow==19.0.1
+scipy==1.15.1
+
+# 数据获取和分析库
+akshare==1.16.42
+tqdm==4.67.1
+
+# 网络和API请求
+requests==2.32.3
+
+# 日志和系统工具
+loguru==0.7.2
+
+# 其他依赖
+beautifulsoup4==4.12.3
+html5lib==1.1
+lxml==4.9.4
+jsonpath==0.82.2
+openpyxl==3.1.5
+uvicorn== 0.34.0
+fastapi== 0.115.6
+prettytable==3.15.1

@@ -54,6 +54,7 @@
 | 知识库检索工作流.yml                     | 文本生成模型、知识库RAG、知识检索                            |
 | AI绘画+飞书+企业微信整合.yml             | http接口请求、jimeng-free-api、飞书表格、企业微信            |
 | API文档生成代码.yml                      | jina-ai、文档提取功能、文本生成模型                          |
+| 股票分析系统.yml                         | http接口请求、文本生成模型、Akshare股票数据接口、条件分支、变量聚合器 |
 
 ### 部分视频链接地址
 
@@ -68,6 +69,8 @@
 | dify案例分享- 儿童故事绘本                               | https://www.bilibili.com/video/BV1WCAgeNEsw、https://www.youtube.com/watch?v=QV2MjL6fMi4、https://www.toutiao.com/video/7471874756129505792/ | B站、油管、今日头条、微信视频号 |
 
 ## 更新说明
+
+2025年3月11 日-version 0.0.2.19 :新增加股票分析系统.yml 提供第三方接口api源码 代码看 https://github.com/wwwzhouhui/dify-for-dsl/tree/main/dsl/akshare/stock_analysis_api.py
 
 2025年3月9 日-version 0.0.2.18 :新增加API文档生成代码.yml
 
@@ -125,6 +128,14 @@ https://aqma351r01f.feishu.cn/wiki/HF5FwMDQkiHoCokvbQAcZLu3nAg?table=tbleOWb4WgX
 
 2.[jimeng-free-api](https://github.com/LLM-Red-Team/jimeng-free-api)
    Jimeng AI Free 服务 支持即梦超强图像生成能力（目前官方每日赠送 66 积分，可生成 66 次），零配置部署，多路 token 支持。 与 OpenAI 接口完全兼容
+
+3.[akshare](https://github.com/akfamily/akshare) 
+
+  开源财经数据接口库
+
+4.[stock-scanner](https://github.com/lanzhihong6/stock-scanner)
+
+   股票分析系统 (Stock Analysis System)
 
 ## 问题反馈
 
