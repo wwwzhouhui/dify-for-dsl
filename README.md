@@ -147,7 +147,7 @@ https://aqma351r01f.feishu.cn/wiki/HF5FwMDQkiHoCokvbQAcZLu3nAg?table=tbleOWb4WgX
 
 ## 技术交流群
 
-![image-20250307001013508](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250307001013508.png)
+![Screenshot_20250312_130900_com.tencent.mm](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Screenshot_20250312_130900_com.tencent.mm.jpg)
 
 ## Star History
 
