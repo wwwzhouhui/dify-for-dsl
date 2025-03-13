@@ -1,0 +1,379 @@
+app:
+  description: 本工作流主要利用大语言模型代码生成能力通过用户输入的表格自动生成对应的HTML代码并在最后渲染出统计图等功能。
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 大模型表格解析自动生成代码生成统计图
+  use_icon_as_answer_icon: true
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables: []
+  environment_variables:
+  - description: ''
+    id: 08c373b3-8019-4349-b016-57242eeedac7
+    name: apiurl
+    selector:
+    - env
+    - apiurl
+    value: http://192.168.1.1:8080/generate-html/
+    value_type: string
+  - description: ''
+    id: ad572f95-3e7e-441c-a888-7e51b74bd437
+    name: apikey
+    selector:
+    - env
+    - apikey
+    value: sk-zhouhuixxxxx
+    value_type: string
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: document-extractor
+      id: 1741751677458-source-1741751683774-target
+      source: '1741751677458'
+      sourceHandle: source
+      target: '1741751683774'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: document-extractor
+        targetType: llm
+      id: 1741751683774-source-llm-target
+      source: '1741751683774'
+      sourceHandle: source
+      target: llm
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: code
+      id: llm-source-1741838758251-target
+      source: llm
+      sourceHandle: source
+      target: '1741838758251'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: answer
+      id: 1741838758251-source-answer-target
+      source: '1741838758251'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: file
+          max_length: 5
+          options: []
+          required: true
+          type: file-list
+          variable: file
+        - label: 图标类型（柱状图、线性图表、饼图、雷达图、气泡图、双Y轴图、散点图）
+          max_length: 48
+          options:
+          - 柱状图
+          - 线性图表
+          - 饼图
+          - 雷达图
+          - 气泡图
+          - 双Y轴图
+          - 散点图
+          required: true
+          type: select
+          variable: tpye
+      height: 115
+      id: '1741751677458'
+      position:
+        x: -59
+        y: 293
+      positionAbsolute:
+        x: -59
+        y: 293
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: '{{#sys.query#}}请根据用户上传的excle表格{{#1741751683774.text#}}将表格以html和
+            chart.js生成{{#1741751677458.tpye#}}要求只生成html和chart.js 等在浏览器直接运行的代码，其他解释内容不要输出。'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 10
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-V3
+          provider: volcengine_maas
+        prompt_template:
+        - edition_type: basic
+          id: 7729ac17-bbf7-4f97-aa30-8f1971d0027e
+          role: system
+          text: "# Role: Excel表格数据可视化代码生成专家\n\n## Profile\n- 专长: 将Excel表格数据转换为HTML和Chart.js可视化代码\n\
+            - 目标: 生成准确反映原始数据的交互式图表\n\n## Background\n您是一位精通数据可视化的编程专家，能够将Excel表格数据精确转换为使用HTML和Chart.js的交互式图表。\n\
+            \n## Skills\n- 精通HTML、JavaScript和Chart.js库\n- 能够处理多列Excel数据，保留原始列名和数据项名称\n\
+            - 可以生成多种类型的图表，如柱状图、线性图表、饼图、面积图、雷达图、气泡图、双Y轴图、散点图等\n\n## Responsibilities\n\
+            1. 解析用户提供的Excel表格数据，包括列名和具体数据项\n2. 根据用户指定的图表类型，生成相应的HTML和Chart.js代码\n\
+            3. 确保生成的代码完整展示所有原始数据，包括准确的列名和数据项名称\n4. 优化代码以实现最佳的可视化效果，同时保持数据的原始结构和含义\n\
+            \n## Workflow\n1. 接收用户上传的Excel表格数据和指定的图表类型\n2. 分析Excel数据结构（列数、行数、列标题、具体数据项）\n\
+            3. 选择适合的Chart.js图表类型和配置\n4. 生成完整的HTML文档，包含必要的Chart.js库引用\n5. 创建canvas元素和对应的JavaScript代码\n\
+            6. 使用原始Excel数据填充图表配置\n7. 在HTML中添加一个表格元素，完整展示原始Excel数据内容\n8. 确保所有列名和数据项名称在图表和表格中得到准确反映\n\
+            \n## Guidelines\n1. 只输出可直接运行的HTML代码，不包括其他说明或注释\n2. 使用最新版本的Chart.js库（CDN链接）\n\
+            3. 将Excel的列名用作图表的标签或图例\n4. 在数据集中使用Excel的原始数据项名称\n5. 根据数据特性自动选择合适的颜色方案\n\
+            6. 为图表添加适当的标题，反映数据内容\n7. 确保生成的图表具有响应式设计，适应不同屏幕大小\n\n## Output Format\n\
+            ```html\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"\
+            UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"\
+            >\n    <title>Excel数据可视化</title>\n    <script src=\"https://cdn.jsdelivr.net/npm/chart.js\"\
+            ></script>\n    <style>\n        table {\n            width: 100%;\n \
+            \           border-collapse: collapse;\n            margin-bottom: 20px;\n\
+            \        }\n        table, th, td {\n            border: 1px solid #ddd;\n\
+            \        }\n        th, td {\n            padding: 8px;\n            text-align:\
+            \ left;\n        }\n        th {\n            background-color: #f2f2f2;\n\
+            \        }\n        .chart-container {\n            max-width: 800px;\n\
+            \            margin: auto;\n        }\n    </style>\n</head>\n<body>\n\
+            \    <h1 style=\"text-align: center;\">Excel数据可视化</h1>\n\n    <!-- 原始表格\
+            \ -->\n    <h2 style=\"text-align: center;\">原始数据表</h2>\n    <table>\n\
+            \        <thead>\n            <tr>\n                <!-- Excel列名将插入此处\
+            \ -->\n            </tr>\n        </thead>\n        <tbody>\n        \
+            \    <!-- Excel数据行将插入此处 -->\n        </tbody>\n    </table>\n\n    <!--\
+            \ 图表容器 -->\n    <div class=\"chart-container\">\n        <canvas id=\"\
+            myChart\"></canvas>\n    </div>\n\n    <script>\n        // 这里是Chart.js配置和数据，使用Excel的原始列名和数据项名称\n\
+            \    </script>\n</body>\n</html>"
+        - id: 2fe2bc50-631c-4afb-a509-b7a2de4f85b6
+          role: user
+          text: ''
+        selected: false
+        title: 大语言模型生成html代码
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: llm
+      position:
+        x: 548.2634662419989
+        y: 293
+      positionAbsolute:
+        x: 548.2634662419989
+        y: 293
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: " {{#llm.text#}}\n  {{#1741838758251.markdown_result#}}"
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 120
+      id: answer
+      position:
+        x: 1196.5799984781631
+        y: 293
+      positionAbsolute:
+        x: 1196.5799984781631
+        y: 293
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_array_file: true
+        selected: false
+        title: 文档提取器
+        type: document-extractor
+        variable_selector:
+        - '1741751677458'
+        - file
+      height: 91
+      id: '1741751683774'
+      position:
+        x: 241
+        y: 293
+      positionAbsolute:
+        x: 241
+        y: 293
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import json\nimport re\nimport time\nimport requests\n\ndef main(json_html:\
+          \ str, apikey: str,apiurl: str,strtype: str) -> dict:\n    try:\n      \
+          \  # 去除输入字符串中的 ```html 和 ``` 标记\n        html_content = re.sub(r'^```html\\\
+          s*|\\s*```$', '', json_html, flags=re.DOTALL).strip()\n        \n      \
+          \  # 生成时间戳，确保文件名唯一\n        timestamp = int(time.time())\n        filename\
+          \ = f\"{strtype}_{timestamp}.html\"\n        \n        # API端点（假设本地运行）\n\
+          \        url = f\"{apiurl}\"\n        \n        # 请求数据\n        payload\
+          \ = {\n            \"html_content\": html_content,\n            \"filename\"\
+          : filename  # 使用传入的文件名\n        }\n        \n        # 设置请求头（包含认证token）\n\
+          \        headers = {\n            \"Authorization\": f\"Bearer {apikey}\"\
+          ,  # 替换为实际的认证token\n            \"Content-Type\": \"application/json\"\n\
+          \        }\n        \n        try:\n            # 发送POST请求\n           \
+          \ response = requests.post(url, json=payload, headers=headers)\n       \
+          \     \n            # 检查响应状态\n            if response.status_code == 200:\n\
+          \                result = response.json()\n                html_url = result.get(\"\
+          html_url\", \"\")\n                generated_filename = result.get(\"filename\"\
+          , \"\")\n                \n                # 返回结果\n                return\
+          \ {\n                    \"html_url\": html_url,\n                    \"\
+          filename\": generated_filename,\n                    \"markdown_result\"\
+          :  f\"[点击查看]({html_url})\"\n                }\n            else:\n     \
+          \           raise Exception(f\"HTTP Error: {response.status_code}, Message:\
+          \ {response.text}\")\n        \n        except requests.exceptions.RequestException\
+          \ as e:\n            raise Exception(f\"Request failed: {str(e)}\")\n  \
+          \  \n    except Exception as e:\n        return {\n            \"error\"\
+          : f\"Error: {str(e)}\"\n        }"
+        code_language: python3
+        desc: ''
+        outputs:
+          filename:
+            children: null
+            type: string
+          html_url:
+            children: null
+            type: string
+          markdown_result:
+            children: null
+            type: string
+        selected: false
+        title: 代码处理生成html调用
+        type: code
+        variables:
+        - value_selector:
+          - llm
+          - text
+          variable: json_html
+        - value_selector:
+          - env
+          - apikey
+          variable: apikey
+        - value_selector:
+          - env
+          - apiurl
+          variable: apiurl
+        - value_selector:
+          - '1741751677458'
+          - tpye
+          variable: strtype
+      height: 53
+      id: '1741838758251'
+      position:
+        x: 853
+        y: 293
+      positionAbsolute:
+        x: 853
+        y: 293
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        author: 周辉
+        desc: ''
+        height: 146
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"本工作流主要利用大语言模型代码生成能力通过用户输入的表格自动生成对应的HTML代码并在最后渲染出统计图等功能。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 373
+      height: 146
+      id: '1741851615864'
+      position:
+        x: -59
+        y: 402.51139084999863
+      positionAbsolute:
+        x: -59
+        y: 402.51139084999863
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 373
+    viewport:
+      x: 39.1609980089072
+      y: -39.14721012184879
+      zoom: 1.1533915300902233
