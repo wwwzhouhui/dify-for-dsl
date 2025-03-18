@@ -56,6 +56,7 @@
 | API文档生成代码.yml                      | jina-ai、文档提取功能、文本生成模型                          |
 | 股票分析系统.yml                         | http接口请求、文本生成模型、Akshare股票数据接口、条件分支、变量聚合器 |
 | 大模型表格解析自动生成代码生成统计图.yml | http接口请求、文档提取功能、文本生成模型                     |
+| 儿童故事绘本文生视频语音合成版 .yml      | http接口请求、文本生成模型、文生图模型、edgetts、ffmpeg      |
 
 ### 部分视频链接地址
 
@@ -70,6 +71,8 @@
 | dify案例分享- 儿童故事绘本                               | https://www.bilibili.com/video/BV1WCAgeNEsw、https://www.youtube.com/watch?v=QV2MjL6fMi4、https://www.toutiao.com/video/7471874756129505792/ | B站、油管、今日头条、微信视频号 |
 
 ## 更新说明
+
+2025年3月18 日-version 0.0.2.21 :儿童故事绘本文生视频语音合成版 .yml 提供第三方接口api源码 代码看 https://github.com/wwwzhouhui/dify-for-dsl/tree/main/dsl/story/storymain.py
 
 2025年3月13 日-version 0.0.2.20 :大模型表格解析自动生成代码生成统计图.yml 提供第三方接口api源码 代码看 https://github.com/wwwzhouhui/dify-for-dsl/tree/main/dsl/makehtml/makehtmlapi.py
 
@@ -140,6 +143,10 @@ https://aqma351r01f.feishu.cn/wiki/HF5FwMDQkiHoCokvbQAcZLu3nAg?table=tbleOWb4WgX
 
    股票分析系统 (Stock Analysis System)
 
+5.[story-flicks](https://github.com/alecm20/story-flicks)
+
+  使用AI大模型，一键生成高清故事短视频
+
 ## 问题反馈
 
 如有问题，请在GitHub Issue中提交，在提交问题之前，请先查阅以往的issue是否能解决你的问题
@@ -150,7 +157,7 @@ https://aqma351r01f.feishu.cn/wiki/HF5FwMDQkiHoCokvbQAcZLu3nAg?table=tbleOWb4WgX
 
 ## 技术交流群
 
-![Screenshot_20250312_130900_com.tencent.mm](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Screenshot_20250312_130900_com.tencent.mm.jpg)
+![Screenshot_20250319_004242_com.tencent.mm](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/Screenshot_20250319_004242_com.tencent.mm.jpg)
 
 ## Star History
 

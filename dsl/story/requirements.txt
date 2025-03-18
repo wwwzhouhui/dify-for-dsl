@@ -1,0 +1,17 @@
+uvicorn== 0.34.0
+fastapi== 0.115.6
+python-multipart==0.0.6
+pydantic==2.5.2
+pydantic-settings==2.1.0
+python-dotenv==1.0.0
+openai==1.59.7
+dashscope==1.22.0
+edge_tts==6.1.19
+loguru==0.7.2
+numpy==2.1.2
+moviepy==2.1.1
+decorator==4.4.2
+imageio-ffmpeg==0.4.9
+requests==2.31.0
+Pillow==10.0.0
+cos-python-sdk-v5==1.9.33
