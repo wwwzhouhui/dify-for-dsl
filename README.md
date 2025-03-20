@@ -58,6 +58,7 @@
 | 股票分析系统-Gordon修改版.yml             | 增加用户输入文本参数提取 http接口请求、文本生成模型、Akshare股票数据接口、条件分支、变量聚合器 |
 | 大模型表格解析自动生成代码生成统计图.yml | http接口请求、文档提取功能、文本生成模型                     |
 | 儿童故事绘本文生视频语音合成版 .yml      | http接口请求、文本生成模型、文生图模型、edgetts、ffmpeg      |
+| gemini-2.0-flash-exp-image-generation-文生图智能体.yml | 问题分类器、条件分支、自定义工具、变量赋值 |
 
 ### 部分视频链接地址
 
@@ -72,6 +73,8 @@
 | dify案例分享- 儿童故事绘本                               | https://www.bilibili.com/video/BV1WCAgeNEsw、https://www.youtube.com/watch?v=QV2MjL6fMi4、https://www.toutiao.com/video/7471874756129505792/ | B站、油管、今日头条、微信视频号 |
 
 ## 更新说明
+
+2025年3月20 日-version 0.0.2.23 :gemini-2.0-flash-exp-image-generation-文生图智能体.yml 提供第三方接口api源码 代码看 https://github.com/wwwzhouhui/dify-for-dsl/tree/main/dsl/google/gemini2/image-generation-server.py
 
 2025年3月18 日-version 0.0.2.21 :儿童故事绘本文生视频语音合成版 .yml 提供第三方接口api源码 代码看 https://github.com/wwwzhouhui/dify-for-dsl/tree/main/dsl/story/storymain.py
 

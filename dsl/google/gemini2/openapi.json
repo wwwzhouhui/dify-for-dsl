@@ -1,0 +1,100 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Gemini Image Generation API",
+    "description": "提供图像生成和编辑功能的API接口",
+    "version": "v1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://111.119.215.74:8080",
+      "description": "默认服务器"
+    }
+  ],
+  "paths": {
+    "/gemini/generate-image": {
+      "post": {
+        "summary": "生成图像",
+        "description": "根据文本提示生成图像",
+        "operationId": "generateImage",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GenerateImageRequest"
+              }
+            }
+          }
+        },
+        "tags": ["图像生成"]
+      }
+    },
+    "/gemini/generate-editimage": {
+      "post": {
+        "summary": "编辑图像",
+        "description": "根据文本提示和原始图像URL编辑图像",
+        "operationId": "editImage",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EditImageRequest"
+              }
+            }
+          }
+        },
+        "tags": ["图像编辑"]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "GenerateImageRequest": {
+        "type": "object",
+        "required": ["prompt", "model", "api_key"],
+        "properties": {
+          "prompt": {
+            "type": "string",
+            "description": "用于生成图像的文本提示"
+          },
+          "model": {
+            "type": "string",
+            "description": "使用的模型名称",
+            "default": "gemini-2.0-flash-exp-image-generation"
+          },
+          "api_key": {
+            "type": "string",
+            "description": "API密钥",
+            "default": "default-api-key"
+          }
+        }
+      },
+      "EditImageRequest": {
+        "type": "object",
+        "required": ["prompt", "image_url", "model", "api_key"],
+        "properties": {
+          "prompt": {
+            "type": "string",
+            "description": "用于编辑图像的文本提示"
+          },
+          "image_url": {
+            "type": "string",
+            "description": "需要编辑的原始图像URL"
+          },
+          "model": {
+            "type": "string",
+            "description": "使用的模型名称",
+            "default": "gemini-2.0-flash-exp-image-generation"
+          },
+          "api_key": {
+            "type": "string",
+            "description": "API密钥",
+            "default": "default-api-key"
+          }
+        }
+      }
+    }
+  }
+}
