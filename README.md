@@ -28,37 +28,38 @@
 
 ### DSL列表清单
 
-| DSL清单名称                              | 用到技术                                                     |
-| ---------------------------------------- | ------------------------------------------------------------ |
-| FLUX绘画机器人.yml                       | 调用FLUX绘画模型、文本模型、http接口请求                     |
-| 增值税发票提取小工具chatflow.yml         | 调用多模态模型、文本模型、文件提取器                         |
-| 发票提取小工具整合版-变量聚合器.yml      | 调用多模态模型、文本模型、文件提取器、IF流程判断             |
-| 发票比对专家-新版客运火车票2.yml         | 调用多模态模型、文本模型                                     |
-| 抓取获取36氪热榜文章内容 .yml            | 调用文本模型、http接口请求、jina-ai爬取网页信息、迭代        |
-| 中国历史专家播客.yml                     | 调用文本模型、TEXT TO SPEECH工具组件使用                     |
-| giteeKolors工作流.yaml                   | 自定义第三方接口服务封装文生图、使用gitee Serverless API 接口+腾讯云OSS存储 |
-| Fine-tune 语料构造器.yml                 | 调用文本模型                                                 |
-| FLUX绘画机器人+多模态识别+语音播放.yml   | 文本生成模型、多模态模型、文生图模型、文生语音模型           |
-| 诗句封面+语音播报.yml                    | 文本生成模型、多模态模型、文生语音模型、http接口请求         |
-| ai绘画整合comfyui_bizair.yml             | http接口请求、comfui_bizair                                  |
-| YouTube博主和自媒体运营专家工作流.yml    | 文本生成模型                                                 |
-| AI资讯每日新闻+语音播报工作流.yml        | 文本生成模型、crawl4ai                                       |
-| 即梦AI绘画.yml                           | http接口请求、jimeng-free-api                                |
-| 自带edgetts.yml、自定义edgetts工作流.yml | http接口请求、edgetts                                        |
-| 飞书表格.yml                             | 文本生成模型、dify内置工具、飞书表格                         |
-| 儿童故事绘本.yml                         | 文本生成模型、http接口请求、jimeng-free-api、edgetts         |
-| 文生视频+tts语音播报.yml                 | 文本生成模型、http接口请求、edgetts、文本生成视频模型（接口调用） |
-| ai agent智能体.yml                       | 文本生成模型、联网搜索、获取当前系统时间、AI绘画、语音播报等智能体功能组合。 |
-| excel表格提取+echarts展示.yml            | 文本生成模型、文档提取功能、echarts                          |
-| 学生成绩查询工作流（带数据库查询）.yml   | 文本生成模型、柱状图、数据库查询、http接口请求、table markdown |
-| 知识库检索工作流.yml                     | 文本生成模型、知识库RAG、知识检索                            |
-| AI绘画+飞书+企业微信整合.yml             | http接口请求、jimeng-free-api、飞书表格、企业微信            |
-| API文档生成代码.yml                      | jina-ai、文档提取功能、文本生成模型                          |
-| 股票分析系统.yml                         | http接口请求、文本生成模型、Akshare股票数据接口、条件分支、变量聚合器 |
-| 股票分析系统-Gordon修改版.yml             | 增加用户输入文本参数提取 http接口请求、文本生成模型、Akshare股票数据接口、条件分支、变量聚合器 |
-| 大模型表格解析自动生成代码生成统计图.yml | http接口请求、文档提取功能、文本生成模型                     |
-| 儿童故事绘本文生视频语音合成版 .yml      | http接口请求、文本生成模型、文生图模型、edgetts、ffmpeg      |
-| gemini-2.0-flash-exp-image-generation-文生图智能体.yml | 问题分类器、条件分支、自定义工具、变量赋值 |
+| DSL清单名称                              | 工作流显示                         | 用到技术                                                     | 更新时间                                                 | 作者                                       | 适用dify版本                               |
+| ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------------------------------------- |
+| FLUX绘画机器人.yml                       | ![image-20250323090547121](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323090547121.png) | 调用FLUX绘画模型、文本模型、http接口请求                     | 2024年11月16日          | wwwzhouhui           | 0.15.3               |
+| 增值税发票提取小工具chatflow.yml         | ![image-20250323090514862](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323090514862.png) | 调用多模态模型、文本模型、文件提取器                         | 2024年11月16日              | wwwzhouhui               | 0.15.3                   |
+| 发票提取小工具整合版-变量聚合器.yml      | ![image-20250323090446623](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323090446623.png) | 调用多模态模型、文本模型、文件提取器、IF流程判断             | 2024年11月16日  | wwwzhouhui   | 0.15.3       |
+| 发票比对专家-新版客运火车票2.yml         | ![image-20250323090415346](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323090415346.png) | 调用多模态模型、文本模型                                     | 2024年11月16日                          | wwwzhouhui                           | 0.15.3                               |
+| 抓取获取36氪热榜文章内容 .yml            | ![image-20250323090341369](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323090341369.png) | 调用文本模型、http接口请求、jina-ai爬取网页信息、迭代        | 2024年11月16日 | wwwzhouhui | 0.15.3  |
+| 中国历史专家播客.yml                     | ![image-20250323090253917](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323090253917.png) | 调用文本模型、TEXT TO SPEECH工具组件使用                     | 2024年11月26日          | wwwzhouhui           | 0.15.3               |
+| giteeKolors工作流.yaml                   | ![image-20250323090209808](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323090209808.png) | 自定义第三方接口服务封装文生图、使用gitee Serverless API 接口+腾讯云OSS存储 | 2024年12月18日 | wwwzhouhui | 0.15.3 |
+| Fine-tune 语料构造器.yml                 | ![image-20250323085757187](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323085757187.png) | 调用文本模型                                                 | 2025年1月7日                                        | wwwzhouhui                                       | 0.15.3                                           |
+| FLUX绘画机器人+多模态识别+语音播放.yml   | ![image-20250323085720140](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323085720140.png) | 文本生成模型、多模态模型、文生图模型、文生语音模型           | 2025年1月12日 | wwwzhouhui | 0.15.3     |
+| 诗句封面+语音播报.yml                    | ![image-20250323085615684](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323085615684.png) | 文本生成模型、多模态模型、文生语音模型、http接口请求         | 2025年1月18日 | wwwzhouhui | 0.15.3   |
+| ai绘画整合comfyui_bizair.yml             |              | http接口请求、comfui_bizair                                  | 2025年1月22日                        | wwwzhouhui                        | 0.15.3                            |
+| YouTube博主和自媒体运营专家工作流.yml    | ![image-20250323085542505](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323085542505.png) | 文本生成模型                                                 | 2025年1月25日                                       | wwwzhouhui                                       | 0.15.3                                           |
+| AI资讯每日新闻+语音播报工作流.yml        | ![image-20250323085517148](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323085517148.png) | 文本生成模型、crawl4ai                                       | 2025年2月3日                              | wwwzhouhui                             | 0.15.3                                 |
+| 即梦AI绘画.yml                           | ![image-20250323085448044](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323085448044.png) | http接口请求、jimeng-free-api                                | 2025年2月4日                       | wwwzhouhui                      | 0.15.3                          |
+| 自定义edgetts工作流.yml | ![image-20250323085251381](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323085251381.png) | http接口请求、edgetts                                        | 2025年2月10日                              | wwwzhouhui                              | 0.15.3                                  |
+| 自带edgetts.yml | ![image-20250323085421648](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323085421648.png) | http接口请求、edgetts | 2025年2月10日 | wwwzhouhui | 0.15.3 |
+| 飞书表格.yml                             | ![image-20250323085225985](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323085225985.png) | 文本生成模型、dify内置工具、飞书表格                         | 2025年2月12日               | wwwzhouhui               | 0.15.3                   |
+| 儿童故事绘本.yml                         | ![image-20250323085154185](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323085154185.png) | 文本生成模型、http接口请求、jimeng-free-api、edgetts         | 2025年2月15日 | wwwzhouhui | 0.15.3   |
+| 文生视频+tts语音播报.yml                 | ![image-20250323085121044](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323085121044.png) | 文本生成模型、http接口请求、edgetts、文本生成视频模型（接口调用） | 2025年2月20 日 | wwwzhouhui | 0.15.3 |
+| ai agent智能体.yml                       | ![image-20250323085050777](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323085050777.png) | 文本生成模型、联网搜索、获取当前系统时间、AI绘画、语音播报等智能体功能组合。 | 2025年2月22 日 | wwwzhouhui | 0.15.3 |
+| excel表格提取+echarts展示.yml            | ![image-20250323085005332](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323085005332.png) | 文本生成模型、文档提取功能、echarts                          | 2025年2月25 日               | wwwzhouhui                | 0.15.3                    |
+| 学生成绩查询工作流（带数据库查询）.yml   | ![image-20250323084936593](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323084936593.png) | 文本生成模型、柱状图、数据库查询、http接口请求、table markdown | 2025年2月27 日 | wwwzhouhui | 0.15.3 |
+| 知识库检索工作流.yml                     | ![image-20250323084900900](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323084900900.png) | 文本生成模型、知识库RAG、知识检索                            | 2025年3月3 日                  | wwwzhouhui                  | 0.15.3                      |
+| AI绘画+飞书+企业微信整合.yml             | ![image-20250323084834734](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323084834734.png) | http接口请求、jimeng-free-api、飞书表格、企业微信            | 2025年3月7 日  | wwwzhouhui  | 0.15.3      |
+| API文档生成代码.yml                      | ![image-20250323084807347](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323084807347.png) | jina-ai、文档提取功能、文本生成模型                          | 2025年3月9 日                | wwwzhouhui                | 0.15.3                  |
+| 股票分析系统.yml                         | ![image-20250323084739019](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323084739019.png) | http接口请求、文本生成模型、Akshare股票数据接口、条件分支、变量聚合器 | 2025年3月11 日 | wwwzhouhui | 0.15.3 |
+| 股票分析系统-Gordon修改版.yml             | ![image-20250323084643251](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323084643251.png) | 增加用户输入文本参数提取 http接口请求、文本生成模型、Akshare股票数据接口、条件分支、变量聚合器 | 2025年3月18 | Gordon | 0.15.3 |
+| 大模型表格解析自动生成代码生成统计图.yml | ![image-20250323084556331](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323084556331.png) | http接口请求、文档提取功能、文本生成模型                     | 2025年3月13            | wwwzhouhui  | 0.15.3               |
+| 儿童故事绘本文生视频语音合成版 .yml      | ![image-20250323084414060](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323084414060.png) | http接口请求、文本生成模型、文生图模型、edgetts、ffmpeg      | 2025年3月18 | wwwzhouhui | 0.15.3 |
+| gemini-2.0-flash-exp-image-generation-文生图智能体.yml | ![image-20250323084256259](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323084256259.png) | 问题分类器、条件分支、自定义工具、变量赋值 | 2025年3月20日 | wwwzhouhui | 0.15.3 |
 
 ### 部分视频链接地址
 
@@ -75,6 +76,8 @@
 ## 更新说明
 
 2025年3月20 日-version 0.0.2.23 :gemini-2.0-flash-exp-image-generation-文生图智能体.yml 提供第三方接口api源码 代码看 https://github.com/wwwzhouhui/dify-for-dsl/tree/main/dsl/google/gemini2/image-generation-server.py
+
+2025年3月19 日-version 0.0.2.22 :股票分析系统-Gordon修改版.yml 
 
 2025年3月18 日-version 0.0.2.21 :儿童故事绘本文生视频语音合成版 .yml 提供第三方接口api源码 代码看 https://github.com/wwwzhouhui/dify-for-dsl/tree/main/dsl/story/storymain.py
 

@@ -113,8 +113,8 @@ async def generate_image(request: GenerateImageRequest):
                     file_path = os.path.join(output_path, filename)
                     
                     # 解码并保存图片
-                    decoded_data = base64.b64decode(part.inline_data.data)
-                    image = Image.open(BytesIO(decoded_data))
+                    #decoded_data = base64.b64decode(part.inline_data.data)
+                    image = Image.open(BytesIO(part.inline_data.data))
                     image.save(file_path)
                     
                     # 上传到腾讯云COS
@@ -175,8 +175,8 @@ async def generate_edit_image(request: EditImageRequest):
                     file_path = os.path.join(output_path, filename)
                     
                     # 解码并保存图片
-                    decoded_data = base64.b64decode(part.inline_data.data)
-                    image = Image.open(BytesIO(decoded_data))
+                    #decoded_data = base64.b64decode(part.inline_data.data)
+                    image = Image.open(BytesIO(part.inline_data.data))
                     image.save(file_path)
                     
                     # 上传到腾讯云COS
