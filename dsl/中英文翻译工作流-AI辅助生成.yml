@@ -1,0 +1,130 @@
+app:
+  description: '中英文互译助手，支持中文翻译英文、英文翻译中文'
+  icon: 🌐
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 中英文翻译工作流
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.2
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      enabled: false
+    opening_statement: '请输入需要翻译的文本，我会自动识别语言并进行翻译。'
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: llm
+      id: 1729851066338-source-1729851066339-target
+      source: '1729851066338'
+      sourceHandle: source
+      target: '1729851066339'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: answer
+      id: 1729851066339-source-1729851066340-target
+      source: '1729851066339'
+      sourceHandle: source
+      target: '1729851066340'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - label: 待翻译文本
+          max_length: 2000
+          options: []
+          required: true
+          type: paragraph
+          variable: text
+      height: 89
+      id: '1729851066338'
+      position:
+        x: 92
+        y: 292
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-3.5-turbo
+          provider: openai
+        prompt_template:
+        - id: system-001
+          role: system
+          text: |
+            你是一个专业的翻译助手，负责中英文互译。请遵循以下规则：
+            1. 自动识别输入语言，如果是中文则翻译成英文，如果是英文则翻译成中文
+            2. 保持原文的语气和风格
+            3. 确保翻译准确、自然、地道
+            4. 对于专业术语要准确把握
+            5. 如果遇到不确定的内容，在翻译后用括号标注说明
+            6. 输出格式：
+               原文：[原始文本]
+               译文：[翻译结果]
+        - id: user-001
+          role: user
+          text: "{{#1729851066338.text#}}"
+        selected: false
+        title: 翻译处理
+        type: llm
+        variables: []
+      height: 98
+      id: '1729851066339'
+      position:
+        x: 384
+        y: 292
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: "{{#1729851066339.text#}}"
+        desc: ''
+        selected: false
+        title: 翻译结果
+        type: answer
+        variables: []
+      height: 102
+      id: '1729851066340'
+      position:
+        x: 676
+        y: 292
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
