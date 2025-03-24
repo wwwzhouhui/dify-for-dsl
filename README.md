@@ -60,7 +60,7 @@
 | 大模型表格解析自动生成代码生成统计图.yml | ![image-20250323084556331](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323084556331.png) | http接口请求、文档提取功能、文本生成模型                     | 2025年3月13            | wwwzhouhui  | 0.15.3               |
 | 儿童故事绘本文生视频语音合成版 .yml      | ![image-20250323084414060](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323084414060.png) | http接口请求、文本生成模型、文生图模型、edgetts、ffmpeg      | 2025年3月18 | wwwzhouhui | 0.15.3 |
 | gemini-2.0-flash-exp-image-generation-文生图智能体.yml | ![image-20250323084256259](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323084256259.png) | 问题分类器、条件分支、自定义工具、变量赋值 | 2025年3月20日 | wwwzhouhui | 0.15.3 |
-| 中英文翻译工作流-AI辅助生成.yml |  | llm大语言模型 | 2025年3月23日 | wwwzhouhui+trae | 0.15.3 |
+| 中英文翻译工作流-AI辅助生成.yml | ![image-20250323180346219](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323180346219.png) | llm大语言模型 | 2025年3月23日 | wwwzhouhui+trae | 0.15.3 |
 
 ### 部分视频链接地址
 
@@ -167,7 +167,7 @@ https://aqma351r01f.feishu.cn/wiki/HF5FwMDQkiHoCokvbQAcZLu3nAg?table=tbleOWb4WgX
 
 ## 技术交流群
 
-![Screenshot_20250319_004242_com.tencent.mm](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/Screenshot_20250319_004242_com.tencent.mm.jpg)
+![image-20250324202253438](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250324202253438.png)
 
 ## Star History
 
