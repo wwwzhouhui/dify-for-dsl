@@ -320,6 +320,15 @@ class LLMService:
         response = text_client.chat.completions.create(**completion_params)
         try:
             content = response.choices[0].message.content
+            logger.info(content)
+            # 清理返回内容中的markdown标记和多余的换行符
+            content = content.strip()
+            if content.startswith('```json'):
+                content = content[7:]
+            if content.endswith('```'):
+                content = content[:-3]
+            content = content.strip()
+
             result = json.loads(content)
             return result
         except Exception as e:
