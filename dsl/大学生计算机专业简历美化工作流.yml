@@ -1,0 +1,433 @@
+app:
+  description: 学生可以通过这个简历美化工作流给出简历编写的合理化意见和建议
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 大学生计算机专业简历美化工作流
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        sourceType: llm
+        targetType: answer
+      id: llm-answer
+      source: llm
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+    - data:
+        isInIteration: false
+        sourceType: document-extractor
+        targetType: llm
+      id: 1742961475478-source-llm-target
+      source: '1742961475478'
+      sourceHandle: source
+      target: llm
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: answer
+      id: 1742965550311-source-1742965640560-target
+      source: '1742965550311'
+      sourceHandle: source
+      target: '1742965640560'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: template-transform
+      id: 1742961448129-source-1742968539723-target
+      source: '1742961448129'
+      sourceHandle: source
+      target: '1742968539723'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: template-transform
+        targetType: if-else
+      id: 1742968539723-source-1742968594787-target
+      source: '1742968539723'
+      sourceHandle: source
+      target: '1742968594787'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: answer
+      id: 1742968594787-false-1742968639246-target
+      source: '1742968594787'
+      sourceHandle: 'false'
+      target: '1742968639246'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: document-extractor
+      id: 1742968594787-true-1742961475478-target
+      source: '1742968594787'
+      sourceHandle: 'true'
+      target: '1742961475478'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1742968594787-13435cdc-eeee-4ded-a218-0b17fe74d1b4-1742965550311-target
+      source: '1742968594787'
+      sourceHandle: 13435cdc-eeee-4ded-a218-0b17fe74d1b4
+      target: '1742965550311'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - image
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: 简历文件(pdf 或图片类型(png、jpeg、jpg、bmp、tiff)
+          max_length: 48
+          options: []
+          required: true
+          type: file
+          variable: file
+      height: 90
+      id: '1742961448129'
+      position:
+        x: -952.316238314301
+        y: 226.93949927835763
+      positionAbsolute:
+        x: -952.316238314301
+        y: 226.93949927835763
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: '{{#sys.query#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 10
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: internlm3-8b-instruct
+          provider: openai_api_compatible
+        prompt_template:
+        - id: ddb2f753-fdc0-4ead-a631-556ac0c2264b
+          role: system
+          text: "# 角色：资深简历优化顾问\n\n## 背景\n你是一位专注于计算机专业应届毕业生简历优化的资深顾问，拥有丰富的IT行业招聘经验和简历筛选经验。你熟悉STAR法则（情境-任务-行动-结果）并善于运用它来优化简历内容。\n\
+            \n## 技能\n- 精通计算机行业各细分领域的职位要求和技能匹配\n- 擅长识别简历中的优势和不足\n- 能够提供针对性的改进建议\n-\
+            \ 熟练运用STAR法则优化项目和经历描述\n- 了解HR和技术面试官的筛选思维\n\n## 目标\n帮助计算机专业应届毕业生优化简历，提高简历的竞争力和通过率。\n\
+            \n## 约束\n- 建议必须具体且可操作\n- 不提供虚假信息或鼓励夸大事实\n- 保持专业、客观的评价态度\n- 关注简历的整体结构和细节表达\n\
+            \n## 输出格式\n1. **整体评估**：简历的总体印象和主要优缺点\n2. **结构分析**：简历各部分的组织和布局评价\n3. **内容优化**：\n\
+            \   - 个人信息部分建议\n   - 教育背景优化\n   - 专业技能呈现方式\n   - 项目经历STAR优化\n   - 实习/工作经验改进\n\
+            \   - 其他活动/奖项呈现\n4. **语言表达**：用词、句式和专业术语使用建议\n5. **视觉呈现**：排版、字体和格式建议\n\
+            6. **针对性建议**：根据目标职位的定制化建议\n\n## 工作流程\n1. 分析提供的简历内容\n2. 识别关键优势和不足\n3. 应用STAR法则评估项目和经验描述\n\
+            4. 提供分类详细的改进建议\n5. 总结关键改进点和下一步行动"
+        - id: 001aeaf8-60f2-47e7-835d-c9ff2c94633e
+          role: user
+          text: 请根据用户传入的{{#1742961475478.text#}}给出合理的简历修改意见
+        selected: false
+        title: 文本类模型简历编写专家
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 98
+      id: llm
+      position:
+        x: 492.60907510824643
+        y: 199.51832402578287
+      positionAbsolute:
+        x: 492.60907510824643
+        y: 199.51832402578287
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#llm.text#}}'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 103
+      id: answer
+      position:
+        x: 912.1055254298418
+        y: 191.56136976809307
+      positionAbsolute:
+        x: 912.1055254298418
+        y: 191.56136976809307
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_array_file: false
+        selected: false
+        title: 文档提取器
+        type: document-extractor
+        variable_selector:
+        - '1742961448129'
+        - file
+      height: 92
+      id: '1742961475478'
+      position:
+        x: 138.40605007216425
+        y: 191.56136976809307
+      positionAbsolute:
+        x: 138.40605007216425
+        y: 191.56136976809307
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1742961448129'
+          - file
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gemini-2.0-flash-exp
+          provider: google
+        prompt_template:
+        - id: b7a48cbc-70dd-46de-8cf3-13d51b6c208f
+          role: system
+          text: ''
+        - id: da8aed39-02f6-4dad-a2ce-47f13a480f0a
+          role: user
+          text: "# 角色：资深简历优化顾问\n\n## 背景\n你是一位专注于计算机专业应届毕业生简历优化的资深顾问，拥有丰富的IT行业招聘经验和简历筛选经验。你熟悉STAR法则（情境-任务-行动-结果）并善于运用它来优化简历内容。\n\
+            \n## 技能\n- 精通计算机行业各细分领域的职位要求和技能匹配\n- 擅长识别简历中的优势和不足\n- 能够提供针对性的改进建议\n-\
+            \ 熟练运用STAR法则优化项目和经历描述\n- 了解HR和技术面试官的筛选思维\n\n## 目标\n帮助计算机专业应届毕业生优化简历，提高简历的竞争力和通过率。\n\
+            \n## 约束\n- 建议必须具体且可操作\n- 不提供虚假信息或鼓励夸大事实\n- 保持专业、客观的评价态度\n- 关注简历的整体结构和细节表达\n\
+            \n## 输出格式\n1. **整体评估**：简历的总体印象和主要优缺点\n2. **结构分析**：简历各部分的组织和布局评价\n3. **内容优化**：\n\
+            \   - 个人信息部分建议\n   - 教育背景优化\n   - 专业技能呈现方式\n   - 项目经历STAR优化\n   - 实习/工作经验改进\n\
+            \   - 其他活动/奖项呈现\n4. **语言表达**：用词、句式和专业术语使用建议\n5. **视觉呈现**：排版、字体和格式建议\n\
+            6. **针对性建议**：根据目标职位的定制化建议\n\n## 工作流程\n1. 分析提供的简历内容\n2. 识别关键优势和不足\n3. 应用STAR法则评估项目和经验描述\n\
+            4. 提供分类详细的改进建议\n5. 总结关键改进点和下一步行动"
+        selected: false
+        title: 图片类模型简历编写专家
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - '1742961448129'
+            - file
+          enabled: true
+      height: 98
+      id: '1742965550311'
+      position:
+        x: 138.40605007216425
+        y: 341.8853962474598
+      positionAbsolute:
+        x: 138.40605007216425
+        y: 341.8853962474598
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1742965550311.text#}}'
+        desc: ''
+        selected: false
+        title: 直接回复 2
+        type: answer
+        variables: []
+      height: 103
+      id: '1742965640560'
+      position:
+        x: 492.60907510824643
+        y: 351.9934324973671
+      positionAbsolute:
+        x: 492.60907510824643
+        y: 351.9934324973671
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        selected: false
+        template: '{{ filetype }}'
+        title: 模板转换
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1742961448129'
+          - file
+          - mime_type
+          variable: filetype
+      height: 54
+      id: '1742968539723'
+      position:
+        x: -591.316238314301
+        y: 226.93949927835763
+      positionAbsolute:
+        x: -591.316238314301
+        y: 226.93949927835763
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: fb25ea2e-3464-46ee-9db5-57211a428420
+            value: application/pdf
+            varType: string
+            variable_selector:
+            - '1742968539723'
+            - output
+          id: 'true'
+          logical_operator: and
+        - case_id: 13435cdc-eeee-4ded-a218-0b17fe74d1b4
+          conditions:
+          - comparison_operator: contains
+            id: 8d6de332-86eb-4b9a-84c1-b67439d6864b
+            value: image
+            varType: string
+            variable_selector:
+            - '1742968539723'
+            - output
+          id: 13435cdc-eeee-4ded-a218-0b17fe74d1b4
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 条件分支
+        type: if-else
+      height: 174
+      id: '1742968594787'
+      position:
+        x: -288.316238314301
+        y: 226.93949927835763
+      positionAbsolute:
+        x: -288.316238314301
+        y: 226.93949927835763
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: 您输入的文件类型不是pdf和图片，请重新上传
+        desc: ''
+        selected: false
+        title: 直接回复 3
+        type: answer
+        variables: []
+      height: 116
+      id: '1742968639246'
+      position:
+        x: 138.40605007216425
+        y: 510.89613890756266
+      positionAbsolute:
+        x: 138.40605007216425
+        y: 510.89613890756266
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 195.9285854824642
+      y: 27.491310447788464
+      zoom: 0.8203353532409451
