@@ -1,0 +1,87 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Markdown to DOCX Conversion API",
+    "description": "将 Markdown 文本转换为 DOCX 文档的 API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8089",
+      "description": "本地开发服务器"
+    }
+  ],
+  "paths": {
+    "/office/word/convert": {
+      "post": {
+        "summary": "将 Markdown 转换为 DOCX",
+        "description": "接收 Markdown 文本内容并转换为 DOCX 文档",
+        "operationId": "convertMarkdownToDocx",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "description": "Markdown 格式的文本内容"
+              },
+              "example": "# 测试标题\n## 二级标题\n这是一段测试文本。\n\n- 列表项1\n- 列表项2\n\n**粗体文本**\n*斜体文本*"
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "转换成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "download_url": {
+                      "type": "string",
+                      "description": "生成的 DOCX 文件下载链接",
+                      "format": "uri"
+                    }
+                  },
+                  "required": ["download_url"]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "请求格式错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "错误信息描述"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "服务器内部错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "错误信息描述"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

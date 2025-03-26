@@ -1,0 +1,5 @@
+uvicorn== 0.34.0
+fastapi== 0.115.6
+Spire.Doc==13.1.0
+pydantic==2.6.1
+requests==2.31.0
