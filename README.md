@@ -78,6 +78,8 @@
 
 ## 更新说明
 
+2025年3月27 日-version 0.0.2.27 :对抗测试方案.md  周易大师.yml
+
 2025年3月26 日-version 0.0.2.26 :大学生计算机专业简历美化工作流.yml
 
 2025年3月25 日-version 0.0.2.25 :文生Word_Http_Post.yml、文生Word_Agent.yml 提供第三方接口api源码 代码看 https://github.com/wwwzhouhui/dify-for-dsl/tree/main/dsl/office/word/md_to_docx_server.py
