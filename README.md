@@ -63,6 +63,7 @@
 | 中英文翻译工作流-AI辅助生成.yml | ![image-20250323180346219](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323180346219.png) | llm大语言模型 | 2025年3月23日 | wwwzhouhui+trae | 0.15.3 |
 | 文生Word_Http_Post.yml 、文生Word_Agent.yml | ![image-20250326223908260](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250326223908260.png) | ai agent、自定义workflow、http请求 | 2025年3月25日 | wwwzhouhui+jenal | 0.15.3 or 1.1.2 |
 | 大学生计算机专业简历美化工作流.yml | ![image-20250326223949931](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250326223949931.png) | 模版转换、文本模型、多模态模型、文档提取器 | 2025年3月26日 | wwwzhouhui | 0.15.3 |
+| 周易大师.yml | ![image-20250326223949931](assets\周易大师..jpg) | 周易大师 | 2025年3月26日 | gordon | 0.0.1 |
 
 ### 部分视频链接地址
 
