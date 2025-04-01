@@ -1,0 +1,311 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 免费即梦文生视频
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables: []
+  environment_variables:
+  - description: ''
+    id: a2fa5614-7bc6-4c31-adbd-af54487d5d95
+    name: apikey
+    selector:
+    - env
+    - apikey
+    value: sk-zhouhui1122444
+    value_type: string
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: answer
+      id: 1735537089833-source-answer-target
+      selected: false
+      source: '1735537089833'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: http-request
+        targetType: code
+      id: 1740016046906-source-1735537089833-target
+      source: '1740016046906'
+      sourceHandle: source
+      target: '1735537089833'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: llm
+      id: 1735530465219-source-1740019722202-target
+      source: '1735530465219'
+      sourceHandle: source
+      target: '1740019722202'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: http-request
+      id: 1740019722202-source-1740016046906-target
+      source: '1740019722202'
+      sourceHandle: source
+      target: '1740016046906'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - label: 提示词
+          max_length: 256
+          options:
+          - Lightricks/LTX-Video
+          - tencent/HunyuanVideo
+          - genmo/mochi-1-preview
+          - tencent/HunyuanVideo-HD
+          required: true
+          type: text-input
+          variable: prompt
+      height: 88
+      id: '1735530465219'
+      position:
+        x: -334.45473059687845
+        y: 247.89160074821473
+      positionAbsolute:
+        x: -334.45473059687845
+        y: 247.89160074821473
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        answer: '{{#1735537089833.result#}}
+
+          '
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 101
+      id: answer
+      position:
+        x: 1240.2797577206302
+        y: 235.06322565716414
+      positionAbsolute:
+        x: 1240.2797577206302
+        y: 235.06322565716414
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        code: "def main(arg1: str) -> dict:\n    import json\n    data = json.loads(arg1)\n\
+          \    video_url = data['video_url']\n    filename = \"生成视频\"\n    markdown_result\
+          \ = f\"<video controls><source src='{video_url}' type='video/mp4'>{filename}</video>\"\
+          \n    return {\"result\": markdown_result}"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: ' 处理文生视频返回信息'
+        type: code
+        variables:
+        - value_selector:
+          - '1740016046906'
+          - body
+          variable: arg1
+      height: 52
+      id: '1735537089833'
+      position:
+        x: 864.9051356979865
+        y: 235.06322565716414
+      positionAbsolute:
+        x: 864.9051356979865
+        y: 235.06322565716414
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        author: 周辉
+        desc: ''
+        height: 189
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"本工作流主要应用到即梦逆向的文生视频模型，使用llm大语言模型将用户中文转换成英文提示词，再将英文提示词使用http请求调用后端接口生成文生视频输出。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 325
+      height: 189
+      id: '1739947691208'
+      position:
+        x: -334.45473059687845
+        y: 365.7205788071683
+      positionAbsolute:
+        x: -334.45473059687845
+        y: 365.7205788071683
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 325
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data:
+          - id: key-value-9
+            key: ''
+            type: text
+            value: "{\n \"prompt\":\"{{#1740019722202.text#}}\",\n \"aspect_ratio\"\
+              :\"16:9\",\n \"duration_ms\": 5000,\n \"fps\":24\n}"
+          type: json
+        desc: ''
+        headers: 'Authorization:Bearer {{#env.apikey#}}
+
+          Content-Type:application/json'
+        method: post
+        params: ''
+        retry_config:
+          max_retries: 3
+          retry_enabled: false
+          retry_interval: 100
+        selected: false
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: 获取即梦文生视频服务请求
+        type: http-request
+        url: http://192.168.1.5:8080/jimeng/generate_video/
+        variables: []
+      height: 108
+      id: '1740016046906'
+      position:
+        x: 514.5538520123627
+        y: 226.89160074821473
+      positionAbsolute:
+        x: 514.5538520123627
+        y: 226.89160074821473
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: 本工作流节点主要利用提示词扩写文生视频提示词
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: internlm3-8b-instruct
+          provider: openai_api_compatible
+        prompt_template:
+        - edition_type: basic
+          id: 47ddf41c-1f9d-4de2-8937-440696d050d7
+          role: system
+          text: '你是一个文生视频提示词专家,用户输入一段简短提示词 {{#1735530465219.prompt#}}，通过该提示词扩写符合即梦AI文生视频的提示词。可以参考下面的提示词。
+
+            举例：
+
+            一个小男孩在球场上提足球。
+
+            改写后的提示词：
+
+            画面中心是一个身着鲜艳蓝色足球服，搭配白色短裤的小男孩，足球服上印着金色的号码。他脚蹬黑色足球鞋，正奋力踢向脚下黑白相间的足球。足球场上是翠绿的草坪，草坪边缘有白色的边线。球场周围是绿色的围栏，围栏外是一排排蓝色的观众座椅。天空湛蓝如宝石，飘着几朵洁白似棉絮的云朵。小男孩表情专注且兴奋，眼神坚定地望向足球滚动的方向，画面洋溢着充满活力与激情的运动氛围。
+
+            '
+        selected: false
+        title: 文生视频提示词扩写
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 140
+      id: '1740019722202'
+      position:
+        x: 76.6728454941628
+        y: 235.06322565716414
+      positionAbsolute:
+        x: 76.6728454941628
+        y: 235.06322565716414
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    viewport:
+      x: 508.80480737929736
+      y: 85.07880807669062
+      zoom: 1.104089502502736
