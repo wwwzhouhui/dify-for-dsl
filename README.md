@@ -64,7 +64,7 @@
 | 文生Word_Http_Post.yml 、文生Word_Agent.yml | ![image-20250326223908260](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250326223908260.png) | ai agent、自定义workflow、http请求 | 2025年3月25日 | wwwzhouhui+jenal | 0.15.3 or 1.1.2 |
 | 大学生计算机专业简历美化工作流.yml | ![image-20250326223949931](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250326223949931.png) | 模版转换、文本模型、多模态模型、文档提取器 | 2025年3月26日 | wwwzhouhui | 0.15.3 |
 | 周易大师.yml | ![image-20250326223949931](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/%E5%91%A8%E6%98%93%E5%A4%A7%E5%B8%88..jpg) | 周易大师 | 2025年3月26日 | gordon | 0.0.1 |
-| 免费即梦文生视频.yml | ![image-20250401145310390](C:/Users/wwwzh/AppData/Roaming/Typora/typora-user-images/image-20250401145310390.png) | 文本模型、http接口请求、 逆向即梦文生视频fastapi接口实现 | 2025年4月1日 | wwwzhouhui | 0.15.3 |
+| 免费即梦文生视频.yml | ![image-20250401145310390](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250401145310390.png) | 文本模型、http接口请求、 逆向即梦文生视频fastapi接口实现 | 2025年4月1日 | wwwzhouhui | 0.15.3 |
 
 ### 部分视频链接地址
 
