@@ -90,7 +90,7 @@
 
 ## 更新说明
 
-2025年4月2 日-version 0.0.3.01：增加免费即梦文生视频mcp-server,代码详见
+2025年4月2 日-version 0.0.3.01：增加免费即梦文生视频mcp-server,代码详见 https://github.com/wwwzhouhui/dify-for-dsl/tree/main/mcp/fastapi-mcp-server/jimeng/jimeng_video_service.py
 
 2025年4月1 日-version 0.0.2.28 :免费即梦文生视频.yml 提供第三方接口api源码 代码看  https://github.com/wwwzhouhui/dify-for-dsl/tree/main/dsl/jimeng/jimeng_video_service.py  详细操作可以看文档说明即梦文生视频逆向接口部署使用.md
 
