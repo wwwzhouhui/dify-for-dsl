@@ -78,7 +78,19 @@
 | dify案例分享-古诗词海报生成加语音播报                    | https://www.bilibili.com/video/BV1fVwPeqEz9、https://www.youtube.com/watch?v=M6aVZX51cO0、https://www.toutiao.com/video/7461152220034171429/ | B站、油管、今日头条             |
 | dify案例分享- 儿童故事绘本                               | https://www.bilibili.com/video/BV1WCAgeNEsw、https://www.youtube.com/watch?v=QV2MjL6fMi4、https://www.toutiao.com/video/7471874756129505792/ | B站、油管、今日头条、微信视频号 |
 
+###  mcp-server
+
+| mcp-server名称  | 界面显示                                                     | 用到技术    | 更新时间     | 作者       | mcp client    |
+| --------------- | ------------------------------------------------------------ | ----------- | ------------ | ---------- | ------------- |
+| 即梦ai 文生视频 | ![image-20250402133331455](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250402133331455.png) | fastapi-mcp | 2025年4月2日 | wwwzhouhui | Cherry Studio |
+|                 |                                                              |             |              |            |               |
+|                 |                                                              |             |              |            |               |
+
+
+
 ## 更新说明
+
+2025年4月2 日-version 0.0.3.01：增加免费即梦文生视频mcp-server,代码详见
 
 2025年4月1 日-version 0.0.2.28 :免费即梦文生视频.yml 提供第三方接口api源码 代码看  https://github.com/wwwzhouhui/dify-for-dsl/tree/main/dsl/jimeng/jimeng_video_service.py  详细操作可以看文档说明即梦文生视频逆向接口部署使用.md
 

@@ -1,0 +1,6 @@
+uvicorn== 0.34.0
+fastapi== 0.115.6
+loguru==0.7.2
+cos-python-sdk-v5==1.9.33
+fastapi-mcp== 0.1.4
+mcp-proxy==0.5.1
