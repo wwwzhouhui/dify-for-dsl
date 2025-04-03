@@ -24,7 +24,7 @@ app = FastAPI(
 )
 
 # 读取配置文件
-config = configparser.ConfigParser()
+config = configparser.RawConfigParser()
 # 在读取配置文件部分添加 COS 配置
 #windows 路径(改成你直接的程序目录)
 #config.read('e:\\work\\code\\2024pythontest\\jimeng\\config.ini', encoding='utf-8')
