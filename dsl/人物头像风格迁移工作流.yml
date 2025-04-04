@@ -1,0 +1,261 @@
+app:
+  description: 本工作流可以支持图片的头像风格迁移，使用方法用户上传2张照片（人物照片）一张是原图，一张是需要换的图。通过该工作流可以实现原图的照片头像风格迁移功能
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: 人物头像风格迁移工作流
+  use_icon_as_answer_icon: false
+dependencies: []
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables: []
+  environment_variables:
+  - description: ''
+    id: aca98574-2cdd-49a5-9487-f77e376083bf
+    name: apikey
+    selector:
+    - env
+    - apikey
+    value: sk-zhouhui111111
+    value_type: string
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 500
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 100
+        video_file_size_limit: 500
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: end
+      id: 1743570367939-source-1743570676679-target
+      source: '1743570367939'
+      sourceHandle: source
+      target: '1743570676679'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: http-request
+      id: 1743566135254-source-1743759680196-target
+      source: '1743566135254'
+      sourceHandle: source
+      target: '1743759680196'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: http-request
+        targetType: code
+      id: 1743759680196-source-1743570367939-target
+      source: '1743759680196'
+      sourceHandle: source
+      target: '1743570367939'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - image
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: 原图片
+          max_length: 48
+          options: []
+          required: true
+          type: file
+          variable: source_image
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - image
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: 替换的图片
+          max_length: 48
+          options: []
+          required: true
+          type: file
+          variable: target_image
+      height: 115
+      id: '1743566135254'
+      position:
+        x: 80
+        y: 282
+      positionAbsolute:
+        x: 80
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        code: "import json\n\ndef main(json_str: str) -> str:\n    \"\"\"\n    解析换脸\
+          \ API 返回的 JSON 结果并生成 Markdown 格式图片链接\n    :param json_str: JSON 字符串\n  \
+          \  :return: 包含处理结果的字典\n    \"\"\"\n    try:\n        # 解析 JSON 数据\n    \
+          \    data = json.loads(json_str)\n        \n        # 从 image_url 中提取文件名\n\
+          \        filename = data['image_url'].split('/')[-1]\n        \n       \
+          \ # 生成 Markdown 格式的图片链接\n        markdown_result = f\"![{filename}]({data['image_url']})\"\
+          \n        \n        return {\"result\": markdown_result}\n    except json.JSONDecodeError:\n\
+          \        return {\"error\": \"JSON 解析错误\"}\n    except KeyError:\n     \
+          \   return {\"error\": \"JSON 格式不正确\"}"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行
+        type: code
+        variables:
+        - value_selector:
+          - '1743759680196'
+          - body
+          variable: json_str
+      height: 53
+      id: '1743570367939'
+      position:
+        x: 686
+        y: 282
+      positionAbsolute:
+        x: 686
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1743570367939'
+          - result
+          variable: result
+        selected: false
+        title: 结束
+        type: end
+      height: 89
+      id: '1743570676679'
+      position:
+        x: 989
+        y: 282
+      positionAbsolute:
+        x: 989
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data:
+          - file:
+            - '1743566135254'
+            - source_image
+            id: key-value-1
+            key: source_image
+            type: file
+            value: ''
+          - file:
+            - '1743566135254'
+            - target_image
+            id: key-value-2
+            key: target_image
+            type: file
+            value: ''
+          type: form-data
+        desc: ''
+        headers: Authorization:Bearer {{#env.apikey#}}
+        method: post
+        params: ''
+        retry_config:
+          max_retries: 3
+          retry_enabled: false
+          retry_interval: 100
+        selected: false
+        timeout:
+          connect: 30
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+          read: 30
+          write: 26
+        title: HTTP 请求
+        type: http-request
+        url: http://192.168.1.4:8080/beartAI/face-swap
+        variables: []
+      height: 109
+      id: '1743759680196'
+      position:
+        x: 381.5619726833686
+        y: 282
+      positionAbsolute:
+        x: 381.5619726833686
+        y: 282
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    viewport:
+      x: -255.98240977406977
+      y: 44.16050716683134
+      zoom: 0.8203353532409454
