@@ -65,7 +65,7 @@
 | 大学生计算机专业简历美化工作流.yml | ![image-20250326223949931](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250326223949931.png) | 模版转换、文本模型、多模态模型、文档提取器 | 2025年3月26日 | wwwzhouhui | 0.15.3 |
 | 周易大师.yml | ![image-20250326223949931](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/%E5%91%A8%E6%98%93%E5%A4%A7%E5%B8%88..jpg) | 周易大师 | 2025年3月26日 | gordon | 0.0.1 |
 | 免费即梦文生视频.yml | ![image-20250401145310390](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250401145310390.png) | 文本模型、http接口请求、 逆向即梦文生视频fastapi接口实现 | 2025年4月1日 | wwwzhouhui | 0.15.3 |
-| 人物头像风格迁移工作流.yml |  | http接口请求、逆向人物头像风格迁移fastapi接口实现 | 2025年4月4日 | wwwzhouhui | 1.1.3 |
+| 人物头像风格迁移工作流.yml | ![image-20250404205912304](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250404205912304.png) | http接口请求、逆向人物头像风格迁移fastapi接口实现 | 2025年4月4日 | wwwzhouhui | 1.1.3 |
 
 ### 部分视频链接地址
 
@@ -90,6 +90,8 @@
 
 
 ## 更新说明
+
+2025年4月3 日-version 0.0.3.02：增加人物头像风格迁移工作流.yml以及代码详见https://github.com/wwwzhouhui/dify-for-dsl/tree/main/dsl/beartAI/beartAI_face_swap.py
 
 2025年4月2 日-version 0.0.3.01：增加免费即梦文生视频mcp-server,代码详见 https://github.com/wwwzhouhui/dify-for-dsl/tree/main/mcp/fastapi-mcp-server/jimeng/jimeng_video_service.py
 
