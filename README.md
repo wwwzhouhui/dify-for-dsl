@@ -93,7 +93,9 @@
 
 ## 更新说明
 
-2025年4月9 日-version 0.0.3.04：增加学生成绩查询Chatflow支持test2sql.yml
+2025年4月9 日-version 0.0.3.04：增加学生成绩查询Chatflow支持test2sql.yml，student_scores.sql 建表语句详见
+
+ https://github.com/wwwzhouhui/dify-for-dsl/tree/main/dsl/db/test2sql/student_scores.sql
 
 2025年4月7 日-version 0.0.3.03：增加dify-mcp-sse+Zapier MCP新闻检索邮件发送.yml
 
