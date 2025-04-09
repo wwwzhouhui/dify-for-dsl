@@ -67,6 +67,7 @@
 | 免费即梦文生视频.yml | ![image-20250401145310390](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250401145310390.png) | 文本模型、http接口请求、 逆向即梦文生视频fastapi接口实现 | 2025年4月1日 | wwwzhouhui | 0.15.3 |
 | 人物头像风格迁移工作流.yml | ![image-20250404205912304](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250404205912304.png) | http接口请求、逆向人物头像风格迁移fastapi接口实现 | 2025年4月4日 | wwwzhouhui | 1.1.3 |
 | dify-mcp-sse+Zapier MCP新闻检索邮件发送.yml | ![image-20250407220011943](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250407220011943.png) | mcp-sse、Zapier MCP | 2025年4月7日 | wwwzhouhui | 1.1.3 |
+| 学生成绩查询Chatflow支持test2sql.yml | ![image-20250409155549478](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250409155549478.png) | 时间工具、ECharts图表生成、database、llm | 2025年4月9日 | wwwzhouhui | 1.1.3 |
 
 ### 部分视频链接地址
 
@@ -91,6 +92,8 @@
 
 
 ## 更新说明
+
+2025年4月9 日-version 0.0.3.04：增加学生成绩查询Chatflow支持test2sql.yml
 
 2025年4月7 日-version 0.0.3.03：增加dify-mcp-sse+Zapier MCP新闻检索邮件发送.yml
 
