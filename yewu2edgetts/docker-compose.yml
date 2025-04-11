@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  edge-tts-web:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: edge-tts-web
+    restart: unless-stopped
+    ports:
+      - "8005:8005"
+    volumes:
+      - ./static/audio:/app/static/audio
+      - ./tts.log:/app/tts.log
+    environment:
+      - TZ=Asia/Shanghai
+      # 可选环境变量
+      - LOG_LEVEL=INFO
+      - MAX_AUDIO_AGE=1800  # 音频文件保存时间（秒）
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8005/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s

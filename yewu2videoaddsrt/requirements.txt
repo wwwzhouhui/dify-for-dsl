@@ -1,0 +1,11 @@
+certifi==2024.8.30
+Flask
+Flask-Cors
+google-ai-generativelanguage
+google-generativeai
+requests
+waitress
+Werkzeug
+audioop-lts
+srt
+uvicorn

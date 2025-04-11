@@ -1,0 +1,50 @@
+#version: '3'  # Docker Compose 文件版本
+
+services:
+  geekaiapp:
+    build: .
+    volumes:
+      - .:/app
+    working_dir: /app
+    #    command: python geekaiapp/g_jiekou.py
+    ports:
+      - "15001:15001"
+#      - '${PORT:-15001}:15001'
+    env_file:
+      - .env
+  #    environment: # optionally define in -e argument when running docker command
+  #      MICROSOFT_API_KEY: ${MICROSOFT_API_KEY:-xxxx}
+  #      MICROSOFT_BASE_URL: ${MICROSOFT_BASE_URL:-https://edge-tts.g1cloudflare.workers.dev/v1}
+  #      ALIYUNCS_API_KEY: ${ALIYUNCS_API_KEY:-xxxx}
+  #      ALIYUNCS_BASE_URL: ${ALIYUNCS_BASE_URL:-https://dashscope.aliyuncs.com/compatible-mode/v1}
+  #      ALIYUNCS_MODEL: ${ALIYUNCS_MODEL:-qwen-max}
+  #      TENCENT_REGION: ${TENCENT_REGION:-ap-nanjing}
+  #      TENCENT_SECRET_ID: ${TENCENT_REGION:-xxxx}
+  #      TENCENT_SECRET_KEY: ${TENCENT_SECRET_KEY:-xxxx}
+  #      TENCENT_BUCKET: ${TENCENT_BUCKET:-dify-1305874767}
+  #      SILICONFLOW_API_URL: ${SILICONFLOW_API_URL:-https://api.siliconflow.cn/v1}
+  #      SILICONFLOW_AUTH_TOEKN: ${SILICONFLOW_AUTH_TOEKN:-xxxxx}
+  #      SILICONFLOW_AUDIOMODEL: ${SILICONFLOW_AUDIOMODEL:-FunAudioLLM/CosyVoice2-0.5B}
+  #      SILICONFLOW_VOICE: ${SILICONFLOW_VOICE:-FunAudioLLM/CosyVoice2-0.5B:david}
+  #      SILICONFLOW_VIDEOMODEL: ${SILICONFLOW_VIDEOMODEL:-Lightricks/LTX-Video}
+  #      ZHIPU_API_KEY: ${ZHIPU_API_KEY:-xxxx}
+  #      ZHIPU_API_URL: ${ZHIPU_API_URL:-https://open.bigmodel.cn/api/paas/v4}
+  #      IMAGE_GENERATION_URL: ${IMAGE_GENERATION_URL:-https://jimeng.duckcloud.fun/v1/images/generations}
+  #      IMAGE_API_KEY: ${IMAGE_API_KEY:-xxxxx}
+  #      COMFYUI_ENDPOIT: ${COMFYUI_ENDPOIT:-127.0.0.1:8188}
+  #      PORT: ${PORT:-15001}
+  #      IP: ${IP:-http://localhost:15001/}
+  #      IP_TTS: ${IP_TTS:-static/tts}
+  #      IP_IMG: ${IP_IMG:-static/imgs}
+  #      IP_MD: ${IP_MD:-static/markdown}
+  #      IP_HTML: ${IP_HTML:-static/html}
+  jimeng_video_service:
+    build: .
+    volumes:
+      - .:/app
+    working_dir: /app
+    #    command: python geekaiapp/g_jiekou.py
+    ports:
+      - "15123:15123"
+    env_file:
+      - .env

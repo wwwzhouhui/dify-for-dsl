@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeminiAI视频解说/总结/转录</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.net/bootstrap/5.3.2/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.net/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.staticfile.net/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        .accordion-button::after {
+            position: absolute;
+            left: 0;
+            margin-left: 0;
+        }
+
+        .btn[disabled] {
+            cursor: not-allowed;
+            pointer-events: auto;
+        }
+    </style>
+</head>
+<body>
+<div class=" px-5  mx-5 ">
+    <h1 class="text-center py-3">GeminiAI视频解说/总结/转录</h1>
+    <div class="alert alert-light">
+        <div class="row row-cols-3 my-2">
+            <div>
+                <div class="input-group">
+                    <label for="model" class="input-group-text text-muted">模型</label>
+                    <select class="form-select" id="model">
+                        <option value="gemini-1.5-flash">gemini-1.5-flash</option>
+                        <option value="gemini-1.5-pro">gemini-1.5-pro</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <div class="input-group">
+                    <label for="api-key" class="input-group-text text-muted">Gemini Key</label>
+                    <input type="text" class="form-control" id="api-key">
+                </div>
+            </div>
+            <div>
+                <div class="input-group">
+                    <label for="api-key" class="input-group-text text-muted">代理</label>
+                    <input type="text" class="form-control" id="proxy" value="http://127.0.0.1:7897">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane"
+                    type="button" role="tab">创建视频解说
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link " id="zongjie-tab" data-bs-toggle="tab" data-bs-target="#zongjie-tab-pane"
+                    type="button" role="tab">视频总结
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link " id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane"
+                    type="button" role="tab">字幕翻译&音视频转录
+            </button>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+
+        <div class="tab-pane fade show active" id="profile-tab-pane" role="tabpanel">
+            <button class="btn btn-light my-2" data-bs-toggle="collapse" href="#collapseExample" role="button">
+                <img src="https://cdn.staticfile.net/bootstrap-icons/1.11.3/icons/pencil.svg" height="14">
+                修改解说文案生成提示词
+            </button>
+
+            <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                    <textarea onchange="update_prompt(this,'prompt_jieshuo')" id="prompt_jieshuo" class="form-control"
+                              style="min-height:200px">{{ prompt_jieshuo }}</textarea>
+                </div>
+            </div>
+
+            <div id="droparea" class="my-2 d-flex align-items-center justify-content-center position-relative border"
+                 style="height:400px">
+                <video controls id="video" class="h-100 mw-100 position-relative" style="z-index:1" hidden></video>
+
+
+                <div style="z-index:0;position:absolute;width:400px;height:200px;left:50%;margin-left:-200px;top:100px;border:2px dashed #ddd"
+                     id="drop" class="d-flex align-items-center justify-content-center ">
+                    拖拽视频到此处或点击上传视频
+                    <input accept="video/*" type="file"
+                           onchange="upload_video(this,$('#video'),$('#close'),$('#tijiao-btn'))"
+                           style="position:absolute;left:0;right:0;top:0;bottom:0;opacity:0;cursor:pointer">
+                </div>
+                <button type="button" id="close" onclick="deletevideo(this)" style="z-index:9"
+                        class="position-absolute top-0 end-0  btn btn-close" hidden></button>
+            </div>
+
+            <div class="my-2 row d-flex align-items-center">
+                <div class="col-md-2">
+                    <div class="input-group">
+
+                        <label for="pitch" class="input-group-text ">音调</label>
+                        <input type="number" min="-50" max="50" class="form-control" value="0" id="pitch">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <label for="rate" class="input-group-text ">语速</label>
+                        <input type="number" value="50" min="-90" max="100" class="form-control" id="rate"/>
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <div class="input-group">
+                        <label for="role" class="input-group-text ">配音角色</label>
+                        <select class="form-control" id="role">
+                            <option value="zh-HK-HiuGaaiNeural">zh-HK-HiuGaaiNeural</option>
+                            <option value="zh-HK-HiuMaanNeural">zh-HK-HiuMaanNeural</option>
+                            <option value="zh-HK-WanLungNeural">zh-HK-WanLungNeural</option>
+                            <option value="zh-CN-XiaoxiaoNeural">zh-CN-XiaoxiaoNeural</option>
+                            <option value="zh-CN-XiaoyiNeural">zh-CN-XiaoyiNeural</option>
+                            <option value="zh-CN-YunjianNeural">zh-CN-YunjianNeural</option>
+                            <option value="zh-CN-YunxiNeural">zh-CN-YunxiNeural</option>
+                            <option value="zh-CN-YunxiaNeural">zh-CN-YunxiaNeural</option>
+                            <option value="zh-CN-YunyangNeural">zh-CN-YunyangNeural</option>
+                            <option value="zh-CN-liaoning-XiaobeiNeural">zh-CN-liaoning-XiaobeiNeural</option>
+                            <option value="zh-TW-HsiaoChenNeural">zh-TW-HsiaoChenNeural</option>
+                            <option value="zh-TW-YunJheNeural">zh-TW-YunJheNeural</option>
+                            <option value="zh-TW-HsiaoYuNeural">zh-TW-HsiaoYuNeural</option>
+                            <option value="zh-CN-shaanxi-XiaoniNeural">zh-CN-shaanxi-XiaoniNeural</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" checked id="insert">
+                        <label class="form-check-label" for="insert">
+                            嵌入解说字幕
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-check" title="不选中的话可以中途修改文案">
+                        <input class="form-check-input" type="checkbox" value="" checked id="autoend">
+                        <label class="form-check-label" for="autoend">
+                            一键生成不暂停
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="my-2 text-center">
+                <button class="btn btn-danger" id='tijiao-btn' onclick="tijiaojieshuo(this)">提交生成解说文案</button>
+                <button class="btn btn-primary" id='tijiao-btn2' onclick="jieshuo_2(this)" disabled>继续生成短视频</button>
+            </div>
+
+
+            <div id="wrap" class="my-2" hidden>
+                <video hidden controls style="max-width: 100%;max-height: 400px" id="resultvideo"></video>
+                <div class="my-2">
+                    <strong>高能片段裁剪区域:</strong>
+                    <span id="time-list"></span>
+                </div>
+                <div class="my-2">
+                    <strong>解说文案</strong>
+                    <span style="font-size:12px">(开始操作前取消<code>一键生成不暂停</code>后，可在此修改解说文案再<code>继续生成短视频</code>)</span>
+                </div>
+                <textarea style="height:300px" id="result-textarea" class="my-2 p-1 form-control w-100"></textarea>
+            </div>
+
+        </div>
+        <div class="tab-pane fade " id="zongjie-tab-pane" role="tabpanel">
+            <button class="btn btn-light" data-bs-toggle="collapse" href="#collapseOneZongjie" role="button">
+                <img src="https://cdn.staticfile.net/bootstrap-icons/1.11.3/icons/pencil.svg" height="14">
+                修改提示词
+            </button>
+            <div class="collapse" id="collapseOneZongjie">
+                <h3 class="fs-6 text-muted">用于总结视频内容的提示词</h3>
+                <textarea
+                        style="min-height:200px"
+                        onchange="update_prompt(this,'prompt_zongjie')"
+                        id="prompt_zongjie"
+                        class="form-control">{{ prompt_zongjie }}
+                </textarea>
+            </div>
+
+            <form id="zongjie-form">
+                <div id="droparea2"
+                     class="my-2 d-flex align-items-center justify-content-center position-relative border"
+                     style="height:400px">
+                    <video controls id="video2" class="h-100 mw-100 position-relative" style="z-index:1" hidden></video>
+
+                    <div style="z-index:0;position:absolute;width:400px;height:200px;left:50%;margin-left:-200px;top:100px;border:2px dashed #ddd"
+                         id="drop2" class="d-flex align-items-center justify-content-center ">
+                        拖拽视频到此处或点击上传视频
+                        <input accept="video/*" type="file"
+                               onchange="upload_video(this,$('#video2'),$('#close2'),$('#zongjie-button'))"
+                               style="position:absolute;left:0;right:0;top:0;bottom:0;opacity:0;cursor:pointer">
+                    </div>
+                    <button type="button" id="close2" onclick="zongjie_deletevideo(this)" style="z-index:9"
+                            class="position-absolute top-0 end-0  btn btn-close" hidden></button>
+                </div>
+                <textarea class="form-control shadow w-75" style="min-height: 250px;margin:10px auto"
+                          id="zongjie-result" hidden></textarea>
+
+                <div class="row mt-4">
+                    <div class="col-md-12 text-center">
+                        <button class="btn btn-danger btn-lg" type="submit" onclick="zongjie_submit(this)"
+                                id="zongjie-button">提交总结
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="tab-pane fade " id="home-tab-pane" role="tabpanel">
+            <button class="btn btn-light" data-bs-toggle="collapse" href="#collapseOne" role="button">
+                <img src="https://cdn.staticfile.net/bootstrap-icons/1.11.3/icons/pencil.svg" height="14">
+                修改提示词
+            </button>
+            <div class="collapse" id="collapseOne">
+                <div class="row">
+                    <div class="col-4">
+                        <h3 class="fs-6 text-muted">用于上传字幕时翻译到目标语言的三步反思提示词</h3>
+                        <textarea style="min-height:200px" id="prompt_trans"
+                                  onchange="update_prompt(this,'prompt_trans')" class="form-control"
+                                  row="10">{{ prompt_trans }}</textarea>
+                    </div>
+                    <div class="col-4">
+                        <h3 class="fs-6 text-muted">用于上传音视频文件进行转录但不翻译的提示词</h3>
+                        <textarea style="min-height:200px" onchange="update_prompt(this,'prompt_recogn')" row="10"
+                                  id="prompt_recogn" class="form-control">{{ prompt_recogn }}</textarea>
+
+                    </div>
+                    <div class="col-4">
+                        <h3 class="fs-6 text-muted">用于提示转录结果需要翻译的提示词</h3>
+                        <textarea style="min-height:200px" onchange="update_prompt(this,'prompt_recogn_trans')" row="10"
+                                  id="prompt_recogn_trans" class="form-control">{{ prompt_recogn_trans }}</textarea>
+                    </div>
+                </div>
+            </div>
+
+            <form id="translate-form">
+                <div class="row mt-4">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <label for="subtitle-language" class="input-group-text">翻译到的目标语言</label>
+
+                            <select class="form-select" id="subtitle-language">
+                                <option value="-">选择目标语言</option>
+                                <option value="简体中文">简体中文</option>
+                                <option value="英语">英语</option>
+                                <option value="日语">日语</option>
+                                <option value="韩语">韩语</option>
+                                <option value="法语">法语</option>
+                                <option value="德语">德语</option>
+                                <option value="葡萄牙语">葡萄牙语</option>
+                                <option value="西班牙语">西班牙语</option>
+                                <option value="泰国语">泰国语</option>
+                                <option value="越南语">越南语</option>
+                                <option value="阿拉伯语">阿拉伯语</option>
+                                <option value="荷兰语">荷兰语</option>
+                                <option value="俄语">俄语</option>
+                                <option value="匈牙利语">匈牙利语</option>
+                                <option value="波兰语">波兰语</option>
+                                <option value="捷克语">捷克语</option>
+                                <option value="瑞典语">瑞典语</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <label for="api-key" class="input-group-text ">同时翻译行</label>
+                            <input type="text" class="form-control" value="50" id="piliang">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <label for="api-key" class="input-group-text ">翻译后暂停秒</label>
+                            <input type="text" class="form-control" value="10" id="waitsec">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <div class="input-group ">
+                            <textarea placeholder="SRT字幕和音视频只可二选一，选择音视频将转录为字幕，如果同时选择了目标语言，会将转录结果翻译后返回"
+                                      class="form-control w-100" id="source-srt" rows="10"></textarea>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <button class="btn btn-outline-primary btn-sm text-nowrap" type="button" id="load-srt">
+                                上传原SRT字幕翻译
+                            </button>
+                            <div id="upload_label_wrap" class=" position-relative d-flex justify-content-end ">
+                                <label id="upload_label" for="upload"
+                                       class=" position-absolute btn btn-outline-primary btn-sm   end-0  ">上传音视频转录为字幕</label>
+                                <input onchange="upload_audio(this)"
+                                       class="form-control opacity-0 position-relative w-50"
+                                       style="z-index:-1" accept="audio/*,video/*" type="file" id="upload">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6 text-end">
+                        <textarea placeholder="在此显示翻译后的结果" class="form-control w-100" id="target-srt"
+                                  rows="10"></textarea>
+                        <button class="btn btn-outline-primary btn-sm" type="button" id="download-srt">下载翻译结果为SRT字幕文件
+                        </button>
+                    </div>
+                </div>
+                <div id="result_tips" class="text-primary text-center"></div>
+                <div class="row mt-4">
+                    <div class="col-md-12 text-center">
+                        <button class="btn btn-danger btn-lg" type="submit" id="submit-button">提交处理</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="my-5 w-auto text-center">
+        <a href="https://pyvideotrans.com/gemini.html" class="btn btn-link text-muted text-decoration-none"
+           target="_blank">点击查看如何获取 Gemini Key</a>
+    </div>
+</div>
+
+<script>
+
+    window.audio_file = null;
+    // 上传视频后服务器返回的临时存储位置
+    window.video_url = null;
+
+    function deletevideo(el) {
+        $("#video").removeAttr('src').attr('hidden', true);
+        $("#close").attr('hidden', true);
+        $('#wrap').attr('hidden', true)
+        $('#result-textarea').val('');
+        $('#time-list').text('');
+        $('#resultvideo').attr('hidden', true).removeAttr('src');
+    }
+
+    function zongjie_deletevideo(el) {
+        $("#video2").removeAttr('src').attr('hidden', true);
+        $("#close2").attr('hidden', true);
+        $('#zongjie-result').attr('hidden', true)
+    }
+
+    function upload_video(e, $video, $close, $btn) {
+        const file = e.files[0]; // 获取选择的文件
+
+        if (!file) {
+            alert('必须选择视频上传')
+            return;
+        }
+        $btn.text('上传视频中').prop('disabled', true)
+        window.video_url = null;
+        let reader = new FileReader();
+        reader.onload = function (e) {
+
+
+            $video.attr("src", e.target.result);
+            $video.removeAttr("hidden");
+            $video.get(0).play();
+            $close.removeAttr("hidden");
+        };
+        reader.readAsDataURL(file);
+        const formData = new FormData();
+        formData.append('audio', file, file.name); //  'audio'对应Flask后端接收的参数名
+        $.ajax({
+            url: '/upload_video', // Flask 后端路由
+            type: 'POST',
+            data: formData,
+            processData: false, // 阻止 jQuery 对数据进行处理
+            contentType: false, // 阻止 jQuery 设置 Content-Type
+            success: function (response) {
+                $btn.text('提交处理').prop('disabled', false)
+                if (response.code !== 0) {
+                    return alert(response.msg);
+                }
+                window.video_url = response.data;
+                // 上传成功后的处理，例如显示成功消息
+            },
+            error: function (xhr, status, error) {
+                $btn.text('提交处理').prop('disabled', false)
+                alert(error);
+                console.error('File upload failed:', error);
+                // 上传失败后的处理，例如显示错误消息
+            }
+        });
+    }
+
+    function upload_audio(e) {
+        const file = e.files[0]; // 获取选择的文件
+
+        if (!file) {
+            alert('必须选择音视频上传')
+            return;
+        }
+        window.audio_file = null;
+
+        const formData = new FormData();
+        formData.append('audio', file); //  'audio'对应Flask后端接收的参数名
+        $('#submit-button').text('上传音视频中...').attr('disabled', true);
+        $.ajax({
+            url: '/upload', // Flask 后端路由
+            type: 'POST',
+            data: formData,
+            processData: false, // 阻止 jQuery 对数据进行处理
+            contentType: false, // 阻止 jQuery 设置 Content-Type
+            success: function (response) {
+                $('#submit-button').text('提交处理').removeAttr('disabled');
+                if (response.code !== 0) {
+                    return alert(response.msg);
+                }
+                window.audio_file = response.data;
+                $('#upload_label').addClass('text-primary').text('已上传音频文件！');
+                $('#source-srt').val('');
+                $('#target-srt').val('');
+                console.log('File uploaded successfully:', response);
+                // 上传成功后的处理，例如显示成功消息
+            },
+            error: function (xhr, status, error) {
+                $('#submit-button').text('提交处理').removeAttr('disabled');
+                alert(error);
+                console.error('File upload failed:', error);
+                // 上传失败后的处理，例如显示错误消息
+            }
+        });
+    }
+
+    function update_prompt(e, id) {
+        if (!e.value.trim()) {
+            return alert('提示词不可为空');
+        }
+
+
+        $.ajax({
+            url: '/update_prompt',
+            type: 'POST',
+            data: {value: e.value, id: id},
+            contentType: 'application/x-www-form-urlencoded',
+            success: function (response) {
+                console.log(response)
+            }
+        })
+    }
+
+    function tijiaojieshuo(el) {
+        var formData = {
+            'model_name': $('#model').val(),
+            'api_key': $('#api-key').val(),
+            'proxy': $('#proxy').val().trim(),
+            "video_file": window.video_url,
+            "role": $("#role").val(),
+            "rate": $("#rate").val(),
+            "pitch": $("#pitch").val(),
+            "autoend": $('#autoend').prop('checked') ? 1 : 0,
+            "insert": $('#insert').prop('checked') ? 1 : 0
+        };
+        if (!formData['api_key']) {
+
+<!--            return alert('必须填写Api Key');-->
+        }
+        if (formData['proxy'] && formData['proxy'].substr(0, 4) != 'http') {
+
+            return alert('代理必须以http开头');
+        }
+        if (!formData['video_file']) {
+            return alert('必须上传视频')
+        }
+        $(el).text('处理中').prop('disabled', true)
+        $('#tijiao-btn2').prop('disabled', true)
+        $('#wrap').prop('hidden', true)
+        $('#result-textarea').text('');
+        $('#time-list').text('');
+        $('#resultvideo').removeAttr('src').attr('hidden');
+
+        $.ajax({
+            url: '/jieshuo',
+            type: 'POST',
+            data: JSON.stringify(formData),
+            contentType: 'application/json',
+            timeout: 7200000,
+            success: function (response) {
+                console.log(response)
+                // 启用提交按钮
+
+                if (response.code === 0) {
+                    $('#wrap').removeAttr('hidden')
+                    $('#result-textarea').val(response.data['srt']);
+                    $('#time-list').text(response.data['timelist']);
+                    if (formData['autoend']) {
+                        $(el).text('提交处理').prop('disabled', false);
+                        $('#resultvideo').removeAttr('hidden').attr('src', response.url);
+                    } else {
+                        $(el).text('文案已生成')
+                        $('#tijiao-btn2').prop('disabled', false);
+                    }
+                } else {
+                    // 显示错误信息
+                    alert(response.msg);
+                    $(el).text('提交处理').prop('disabled', false);
+                }
+            },
+            error: function (xhr, status, error) {
+                $(el).text('提交处理').prop('disabled', false);
+                // 启用提交按钮
+                alert('请求错误！' + error);
+            }
+        });
+
+    }
+
+
+    function jieshuo_2(el) {
+        var formData = {
+            "srt": $('#result-textarea').val().trim(),
+            "timelist": $('#time-list').text().trim(),
+            "video_file": window.video_url,
+            "role": $("#role").val(),
+            "rate": $("#rate").val(),
+            "pitch": $("#pitch").val(),
+            "insert": $('#insert').prop('checked') ? 1 : 0
+
+        };
+        $(el).text('生成短视频中..').prop('disabled', true)
+        $.ajax({
+            url: '/gocreate',
+            type: 'POST',
+            data: JSON.stringify(formData),
+            contentType: 'application/json',
+            timeout: 7200000,
+            success: function (response) {
+                console.log(response)
+                // 启用提交按钮
+                if (response.code === 0) {
+                    $('#resultvideo').removeAttr('hidden').attr('src', response.url);
+                    $(el).text('继续生成短视频').prop('disabled', true);
+                    $('#tijiao-btn').text('提交生成文案').prop('disabled', false);
+                } else {
+                    // 显示错误信息
+                    $(el).text('继续生成短视频').prop('disabled', false);
+                    alert(response.msg);
+                }
+            },
+            error: function (xhr, status, error) {
+                $(el).text('继续生成短视频').prop('disabled', false);
+                alert('请求错误！' + error);
+            }
+        });
+
+    }
+
+    function zongjie_submit(el) {
+        var formData = {
+            'model_name': $('#model').val(),
+            'api_key': $('#api-key').val(),
+            'proxy': $('#proxy').val().trim(),
+            "video_file": window.video_url,
+        };
+        if (!formData['api_key']) {
+<!--            return alert('必须填写Api Key');-->
+        }
+        if (formData['proxy'] && formData['proxy'].substr(0, 4) !== 'http') {
+
+            return alert('代理必须以http开头');
+        }
+        if (!formData['video_file']) {
+            return alert('必须上传视频')
+        }
+        $(el).text('处理中').prop('disabled', true)
+        $('#zongjie-button').prop('disabled', true)
+        $('#zongjie-result').val('');
+
+        $.ajax({
+            url: '/zongjie',
+            type: 'POST',
+            data: JSON.stringify(formData),
+            contentType: 'application/json',
+            timeout: 7200000,
+            success: function (response) {
+                console.log(response)
+                // 启用提交按钮
+                if (response.code === 0) {
+                    $('#zongjie-result').removeAttr('hidden').val(response.data);
+                    $(el).text('提交处理').prop('disabled', false);
+                } else {
+                    // 显示错误信息
+                    alert(response.msg);
+                    $(el).text('提交处理').prop('disabled', false);
+                }
+            },
+            error: function (xhr, status, error) {
+                $(el).text('提交处理').prop('disabled', false);
+                // 启用提交按钮
+                alert('请求错误！' + error);
+            }
+        });
+    }
+
+
+    function dropfun($drop, $video, $close) {
+        $drop.on("dragover", function (event) {
+            event.preventDefault();
+            $drop.css("border", "4px dashed blue"); // 添加蓝色边框
+        });
+
+        $drop.on("drop", function (event) {
+            event.preventDefault();
+            $drop.css("border", "1px solid #ddd");
+            window.video_url = null;
+            let files = event.originalEvent.dataTransfer.files;
+            if (files.length > 0 && files[0].type.startsWith("video/")) {
+                let file = files[0];
+                let reader = new FileReader();
+                reader.onload = function (e) {
+                    $video.attr("src", e.target.result);
+                    $video.removeAttr("hidden");
+                    $video.get(0).play(); // 立即播放视频
+                    $close.removeAttr("hidden");
+
+                    let formData = new FormData();
+                    formData.append("audio", file, file.name); // 指定文件名称
+
+                    $.ajax({
+                        url: "/upload_video",
+                        type: "POST",
+                        data: formData, // 发送文件数据
+                        processData: false,
+                        contentType: false,
+                        success: function (res) {
+                            if (res.code === 0) {
+                                window.video_url = res.data;
+                            } else {
+                                alert(res.msg);
+                            }
+                        },
+                        error: function (err) {
+                            alert("上传失败");
+                        }
+                    });
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+
+    }
+
+    $(document).ready(function () {
+
+        dropfun($("#drop"), $("#video"), $("#close"));
+        dropfun($("#drop2"), $("#video2"), $("#close2"));
+
+
+        // 视频解说end
+
+
+        let proxy = localStorage.getItem('proxy')
+        let api_key = localStorage.getItem('api_key')
+        if (proxy) {
+            $('#proxy').val(proxy)
+        }
+        if (api_key) {
+            $('#api-key').val(api_key)
+        }
+        // 文件选择器
+        $('#load-srt').on('click', function () {
+            $('#source-srt').val(''); // 清空文本框
+            var fileInput = $('<input type="file" accept=".srt">');
+            fileInput.on('change', function (e) {
+                var file = e.target.files[0];
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#source-srt').val(e.target.result);
+                };
+                reader.readAsText(file);
+            });
+            fileInput.trigger('click');
+        });
+
+        // 下载翻译结果 SRT 文件
+        $('#download-srt').on('click', function () {
+            var targetSrt = $('#target-srt').val().trim();
+            if (!targetSrt) {
+                return alert('翻译结果为空，无需下载');
+            }
+            var blob = new Blob([targetSrt], {type: 'text/plain'});
+            var url = window.URL.createObjectURL(blob);
+            var link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', 'translation.srt');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+
+        // 提交表单
+        $('#translate-form').on('submit', function (event) {
+            event.preventDefault(); // 阻止表单默认提交行为
+
+            var formData = {
+                'language': $('#subtitle-language').val(),
+                'model_name': $('#model').val(),
+                'api_key': $('#api-key').val(),
+                'proxy': $('#proxy').val().trim(),
+                'text': $('#source-srt').val().trim(),
+                'piliang': $('#piliang').val(),
+                'waitsec': $('#waitsec').val(),
+                "audio_file": window.audio_file
+            };
+
+            if (!formData['text'] && !formData['audio_file']) {
+                return alert('必须输入srt字幕或上传音视频文件');
+            }
+            if (!formData['api_key']) {
+
+<!--                return alert('必须填写Api Key');-->
+            }
+            if (formData['proxy'] && formData['proxy'].substr(0, 4) != 'http') {
+
+                return alert('代理必须以http开头');
+            }
+
+            if (formData['text'] && formData['audio_file']) {
+                if (!confirm('同时上传了SRT字幕和音视频，将只对SRT字幕进行翻译，不转录音视频，若需转录请删掉原始SRT字幕，是否继续？')) {
+
+                    return;
+                }
+                formData['audio_file'] = '';
+            }
+            if (formData['text'] && formData['language'] == '-') {
+                return alert('存在原始SRT字幕情况下必须选择目标语言');
+            }
+
+            formData['proxy'] && localStorage.setItem('proxy', formData['proxy']);
+            localStorage.setItem('api_key', formData['api_key']);
+
+            // 禁用提交按钮
+            $('#result_tips').text('')
+            $('#submit-button').prop('disabled', true).text((formData['text'] ? '翻译' : '转录') + '中请等待...');
+            $('#target-srt').val('');
+
+            $.ajax({
+                url: '/api',
+                type: 'POST',
+                data: JSON.stringify(formData),
+                contentType: 'application/json',
+                success: function (response) {
+                    // 启用提交按钮
+                    $('#submit-button').text('提交处理').prop('disabled', false);
+
+                    if (response.code === 0) {
+                        // 填充翻译结果
+                        if (formData['text']) {
+                            $('#result_tips').text('当前为字幕翻译结果')
+                        } else {
+                            $('#result_tips').text('当前为音视频转录结果' + (formData['audio_file'] ? `，并翻译为${formData["language"]}` : ''))
+                        }
+
+                        if (Array.isArray(response.data) && response.data.length == 2) {
+                            $('#source-srt').val(response.data[0]);
+                            $('#target-srt').val(response.data[1]);
+                        } else {
+                            $('#target-srt').val(response.data);
+                        }
+                    } else {
+                        // 显示错误信息
+                        alert(response.msg);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    // 启用提交按钮
+                    $('#submit-button').text('提交处理').prop('disabled', false);
+                    alert('请求错误！' + error);
+                }
+            });
+        });
+    });
+
+</script>
+</body>
+</html>

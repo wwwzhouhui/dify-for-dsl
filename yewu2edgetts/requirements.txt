@@ -1,0 +1,45 @@
+# Web服务
+fastapi>=0.68.0,<1.0.0
+uvicorn>=0.15.0,<1.0.0
+python-multipart>=0.0.5
+pydantic>=1.8.2,<2.0.0
+starlette>=0.14.2,<1.0.0
+
+# Edge TTS
+edge-tts>=6.1.19
+
+# 音频处理
+mutagen>=1.47.0
+
+# 网络和安全
+aiohttp>=3.8.0,<4.0.0
+certifi>=2023.11.17
+python-jose[cryptography]>=3.3.0
+passlib[bcrypt]>=1.7.4
+
+# 文件处理
+python-magic>=0.4.27
+aiofiles>=0.8.0
+
+# 工具包
+python-dateutil>=2.8.2
+pytz>=2023.3
+
+# 开发工具
+black>=22.3.0
+isort>=5.10.1
+mypy>=0.982
+pylint>=2.15.5
+pytest>=7.0.0
+pytest-asyncio>=0.18.0
+coverage>=6.0.0
+
+# 类型提示
+typing-extensions>=4.0.0
+types-requests>=2.28.11.2
+types-python-dateutil>=2.8.19
+types-pytz>=2023.3
+
+# 可选依赖
+colorama>=0.4.6; platform_system == "Windows"  # Windows 控制台颜色支持
+watchfiles>=0.18.0  # 开发时的文件监控

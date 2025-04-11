@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文字转语音带字幕</title>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .custom-select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 0.5rem center;
+            background-repeat: no-repeat;
+            background-size: 1.5em 1.5em;
+        }
+        
+        .voice-button:hover {
+            background-color: #f3f4f6;
+            transition: background-color 0.2s;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-purple-50 to-white">
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <h1 class="text-4xl font-bold text-center mb-2">文字转语音</h1>
+        <p class="text-gray-600 text-center mb-8 text-sm">
+            一款免费的文本转语音工具，提供语音合成服务，支持多种语言，包括中文、英语、日语、韩语、法语、德语、西班牙语、阿拉伯语等74种语言，318种声音。
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Left Panel -->
+            <div class="bg-white rounded-xl shadow-sm p-6">
+                <!-- Language Selector -->
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">语言</label>
+                    <select id="languageSelect" class="w-full rounded-lg border border-gray-300 p-2 custom-select focus:border-purple-500 focus:ring focus:ring-purple-500">
+                        <option value="zh-CN">中文</option>
+                        <option value="en-US">英语 (美国)</option>
+                        <option value="en-GB">英语 (英国)</option>
+                        <option value="ja-JP">日语</option>
+                    </select>
+                </div>
+
+                <!-- Gender Selector -->
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">性别</label>
+                    <div class="flex gap-4">
+                        <button id="maleBtn" class="flex-1 py-2 px-4 rounded-lg bg-purple-600 text-white" data-gender="male">男性</button>
+                        <button id="femaleBtn" class="flex-1 py-2 px-4 rounded-lg bg-gray-100 text-gray-700" data-gender="female">女性</button>
+                    </div>
+                </div>
+
+                <!-- 添加声音选项区域 -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">声音选项</label>
+                    <div id="voiceList" class="space-y-2 max-h-[400px] overflow-y-auto">
+                        <!-- 声音选项会通过JavaScript动态生成 -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel -->
+            <div class="md:col-span-2 space-y-6">
+                <!-- Text Input Area -->
+                <div class="bg-white rounded-xl shadow-sm p-6 flex flex-col">
+                    <textarea id="textInput" placeholder="在此输入文字..." class="flex-1 w-full p-4 rounded-lg border border-gray-300 focus:border-purple-500 focus:ring-purple-500 resize-none mb-4 min-h-[200px]"></textarea>
+
+                    <div class="flex items-center gap-4 mb-4">
+                        <!-- Auto Play Toggle -->
+                        <label class="flex items-center gap-2">
+                            <input id="autoplayToggle" type="checkbox" checked class="rounded text-purple-600 focus:ring-purple-500">
+                            <span class="text-sm text-gray-600">自动播放</span>
+                        </label>
+
+                        <!-- Speed Control -->
+                        <div class="flex items-center gap-2">
+                            <span class="text-sm text-gray-600">语速:</span>
+                            <div class="flex gap-1">
+                                <button class="speed-btn px-2 py-1 text-sm rounded bg-gray-100 text-gray-700" data-speed="0.25">0.25x</button>
+                                <button class="speed-btn px-2 py-1 text-sm rounded bg-gray-100 text-gray-700" data-speed="0.5">0.5x</button>
+                                <button class="speed-btn px-2 py-1 text-sm rounded bg-gray-100 text-gray-700" data-speed="0.75">0.75x</button>
+                                <button class="speed-btn px-2 py-1 text-sm rounded bg-purple-600 text-white" data-speed="1">1x</button>
+                                <button class="speed-btn px-2 py-1 text-sm rounded bg-gray-100 text-gray-700" data-speed="1.25">1.25x</button>
+                                <button class="speed-btn px-2 py-1 text-sm rounded bg-gray-100 text-gray-700" data-speed="1.5">1.5x</button>
+                                <button class="speed-btn px-2 py-1 text-sm rounded bg-gray-100 text-gray-700" data-speed="1.75">1.75x</button>
+                                <button class="speed-btn px-2 py-1 text-sm rounded bg-gray-100 text-gray-700" data-speed="2">2x</button>
+                                <button class="speed-btn px-2 py-1 text-sm rounded bg-gray-100 text-gray-700" data-speed="3">3x</button>
+                                <button class="speed-btn px-2 py-1 text-sm rounded bg-gray-100 text-gray-700" data-speed="4">4x</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 生成按钮 -->
+                    <button id="generateBtn" class="w-full bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700 transition-colors flex items-center justify-center gap-2">
+                        <svg id="generateSpinner" class="animate-spin h-5 w-5 text-white hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        <span id="generateBtnText">开始生成音频</span>
+                    </button>
+                </div>
+
+                <!-- Audio Files List -->
+                <div id="audioList" class="space-y-2">
+                    <!-- 音频项会通过JavaScript动态生成 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 修改全局状态管理
+        const state = {
+            selectedLanguage: 'zh-CN',
+            selectedGender: 'male',
+            selectedVoice: null,
+            selectedSpeed: 1,
+            autoplay: true,
+            userId: generateUserId()
+        };
+
+        // 修改 API 端点配置
+        const API_ENDPOINTS = {
+            VOICES: '/api/voices',
+            GENERATE: '/api/generate',
+            DELETE: '/api/audio/',
+            LIST_AUDIO: '/api/audio',
+            SUBTITLE: '/api/subtitle'
+        };
+
+        // 添加生成用户ID的函数
+        function generateUserId() {
+            let userId = localStorage.getItem('tts_user_id');
+            if (!userId) {
+                userId = 'user_' + Math.random().toString(36).substr(2, 9);
+                localStorage.setItem('tts_user_id', userId);
+            }
+            return userId;
+        }
+
+        // 修改获取声音列表函数
+        async function fetchVoices() {
+            try {
+                console.log(`Fetching voices for language: ${state.selectedLanguage}, gender: ${state.selectedGender}`);
+                const response = await fetch(`${API_ENDPOINTS.VOICES}?language=${state.selectedLanguage}&gender=${state.selectedGender}`);
+                
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    console.error('API Error:', errorText);
+                    throw new Error(`API returned ${response.status}: ${errorText}`);
+                }
+                
+                const voices = await response.json();
+                console.log('Received voices:', voices);
+                
+                if (voices && voices.length > 0) {
+                    renderVoiceList(voices);
+                } else {
+                    document.getElementById('voiceList').innerHTML = '<div class="text-gray-500 text-sm text-center py-4">暂无可用声音</div>';
+                }
+            } catch (error) {
+                console.error('获取声音列表失败:', error);
+                document.getElementById('voiceList').innerHTML = `
+                    <div class="text-red-500 text-sm text-center py-4">
+                        获取声音列表失败: ${error.message}
+                    </div>`;
+            }
+        }
+
+        // 修改渲染声音列表函数
+        function renderVoiceList(voices) {
+            const voiceList = document.getElementById('voiceList');
+            if (!voices || voices.length === 0) {
+                voiceList.innerHTML = '<div class="text-gray-500 text-sm text-center py-4">暂无可用声音</div>';
+                return;
+            }
+            
+            // 如果没有选中的声音，默认选择第一个
+            if (!state.selectedVoice && voices.length > 0) {
+                state.selectedVoice = voices[0].id;
+            }
+            
+            voiceList.innerHTML = voices.map(voice => `
+                <button class="voice-button w-full flex items-center p-3 rounded-lg border text-left transition-colors ${state.selectedVoice === voice.id ? 'bg-purple-50 border-purple-500' : 'border-gray-200'}" data-voice-id="${voice.id}">
+                    <div class="flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${state.selectedVoice === voice.id ? 'text-purple-500' : 'text-gray-500'}">
+                            <path d="M2 18v3c0 .6.4 1 1 1h4v-3h3v-3h2l1.4-1.4a6.5 6.5 0 1 0-4-4Z"></path>
+                            <circle cx="16.5" cy="7.5" r=".5"></circle>
+                        </svg>
+                        <span class="text-sm ${state.selectedVoice === voice.id ? 'text-purple-700 font-medium' : 'text-gray-600'}">${voice.name}</span>
+                    </div>
+                </button>
+            `).join('');
+        }
+
+        // 显示错误提示
+        function showError(message) {
+            const notification = document.createElement('div');
+            notification.className = 'fixed top-4 right-4 bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded shadow-lg';
+            notification.innerHTML = `
+                <div class="flex items-center">
+                    <div class="py-1"><svg class="h-6 w-6 text-red-500 mr-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg></div>
+                    <div>${message}</div>
+                </div>
+            `;
+            document.body.appendChild(notification);
+            setTimeout(() => notification.remove(), 3000);
+        }
+
+        // 添加防抖函数
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // 添加音频缓存
+        const audioCache = new Map();
+
+        // 修改音频播放相关代码
+        async function playAudio(url, button) {
+            try {
+                let audio;
+                if (audioCache.has(url)) {
+                    audio = audioCache.get(url);
+                } else {
+                    audio = new Audio(url);
+                    audioCache.set(url, audio);
+                    
+                    // 添加错误处理
+                    audio.addEventListener('error', (e) => {
+                        console.error('Audio playback error:', e);
+                        showError('播放音频失败，请重试');
+                        button.innerHTML = getPlayButtonHTML(false);
+                    });
+                }
+                
+                if (currentAudio && currentAudio !== audio) {
+                    currentAudio.pause();
+                    if (currentPlayBtn) {
+                        currentPlayBtn.innerHTML = getPlayButtonHTML(false);
+                    }
+                }
+                
+                if (audio.paused) {
+                    await audio.play();
+                    button.innerHTML = getPlayButtonHTML(true);
+                } else {
+                    audio.pause();
+                    button.innerHTML = getPlayButtonHTML(false);
+                }
+                
+                currentAudio = audio;
+                currentPlayBtn = button;
+                
+            } catch (error) {
+                console.error('播放音频失败:', error);
+                showError('播放音频失败，请重试');
+                button.innerHTML = getPlayButtonHTML(false);
+            }
+        }
+
+        // 修改生成音频函数，添加输入验证
+        async function generateAudio() {
+            const text = document.getElementById('textInput').value.trim();
+            if (!text) {
+                showError('请输入要转换的文字');
+                return;
+            }
+            if (!state.selectedVoice) {
+                showError('请选择一个声音');
+                return;
+            }
+            
+            const generateBtn = document.getElementById('generateBtn');
+            const generateSpinner = document.getElementById('generateSpinner');
+            const generateBtnText = document.getElementById('generateBtnText');
+            
+            try {
+                generateBtn.disabled = true;
+                generateSpinner.classList.remove('hidden');
+                generateBtnText.textContent = '生成中...';
+                
+                const response = await fetch(API_ENDPOINTS.GENERATE, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        text,
+                        voice_id: state.selectedVoice,
+                        speed: state.selectedSpeed,
+                        autoplay: state.autoplay,
+                        user_id: state.userId
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (!response.ok) {
+                    throw new Error(result.detail?.error || result.detail?.message || result.detail || '生成音频失败');
+                }
+                
+                if (result.success) {
+                    addAudioToList(result.audio);
+                    if (state.autoplay) {
+                        const audioElement = document.querySelector(`[data-audio-url="${result.audio.url}"]`);
+                        if (audioElement) {
+                            await playAudio(result.audio.url, audioElement);
+                        }
+                    }
+                } else {
+                    throw new Error(result.message || '生成音频失败');
+                }
+            } catch (error) {
+                console.error('生成音频失败:', error);
+                showError(error.message || '生成音频失败，请稍后重试');
+            } finally {
+                generateBtn.disabled = false;
+                generateSpinner.classList.add('hidden');
+                generateBtnText.textContent = '开始生成音频';
+            }
+        }
+
+        // 修改 addAudioToList 函数
+        function addAudioToList(audio) {
+            const audioList = document.getElementById('audioList');
+            const audioItem = document.createElement('div');
+            audioItem.className = 'flex items-center justify-between p-3 bg-gray-50 rounded-lg';
+            audioItem.innerHTML = `
+                <div class="flex items-center gap-3">
+                    <button class="play-btn p-2 rounded-full hover:bg-gray-200" data-audio-url="${audio.url}">
+                        ${getPlayButtonHTML(false)}
+                    </button>
+                    <div>
+                        <div class="text-sm font-medium">${audio.name}</div>
+                        <div class="text-xs text-gray-500">${audio.duration} · ${audio.size}</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button class="download-btn p-2 rounded-full hover:bg-gray-200" data-audio-url="${audio.url}" title="下载音频">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-600">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                    </button>
+                    <button class="subtitle-btn flex items-center gap-1 px-3 py-1 rounded-lg bg-purple-50 hover:bg-purple-100 text-purple-600 border border-purple-200" data-audio-id="${audio.id}" title="下载字幕">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                            <line x1="3" y1="9" x2="21" y2="9"></line>
+                            <line x1="3" y1="15" x2="21" y2="15"></line>
+                            <path d="M14 4h7"></path>
+                        </svg>
+                        <span class="text-xs font-medium">字幕</span>
+                    </button>
+                    <button class="delete-btn p-2 rounded-full hover:bg-gray-200" data-audio-id="${audio.id}" title="删除">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-600">
+                            <path d="M3 6h18"></path>
+                            <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                            <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                        </svg>
+                    </button>
+                </div>
+            `;
+            audioList.prepend(audioItem);
+        }
+
+        // 修改获取音频列表函数
+        async function fetchAudioList() {
+            try {
+                const response = await fetch(`${API_ENDPOINTS.LIST_AUDIO}/${state.userId}`);
+                const audioFiles = await response.json();
+                document.getElementById('audioList').innerHTML = '';  // 清空现有列表
+                audioFiles.forEach(audio => addAudioToList(audio));
+            } catch (error) {
+                console.error('获取音频列表失败:', error);
+            }
+        }
+
+        // 使用防抖处理语音列表获取
+        const debouncedFetchVoices = debounce(fetchVoices, 300);
+
+        // 修改事件监听器，使用事件委托
+        document.addEventListener('DOMContentLoaded', () => {
+            // 改语言选择的事件监听器
+            document.getElementById('languageSelect').addEventListener('change', (e) => {
+                state.selectedLanguage = e.target.value;
+                state.selectedVoice = null;  // 切换语言时重置选中的声音
+                fetchVoices();
+            });
+
+            // 性别选择
+            document.querySelectorAll('[data-gender]').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    // 更新按钮样式
+                    document.querySelectorAll('[data-gender]').forEach(b => {
+                        if (b === e.target) {
+                            b.classList.remove('bg-gray-100', 'text-gray-700');
+                            b.classList.add('bg-purple-600', 'text-white');
+                        } else {
+                            b.classList.remove('bg-purple-600', 'text-white');
+                            b.classList.add('bg-gray-100', 'text-gray-700');
+                        }
+                    });
+                    
+                    // 重置选中的声音并更新列表
+                    state.selectedVoice = null;
+                    state.selectedGender = e.target.dataset.gender;
+                    fetchVoices();
+                });
+            });
+
+            // 声音选择
+            document.getElementById('voiceList').addEventListener('click', (e) => {
+                const voiceBtn = e.target.closest('.voice-button');
+                if (!voiceBtn) return;
+                
+                const voiceId = voiceBtn.dataset.voiceId;
+                if (voiceId === state.selectedVoice) return; // 如果点击已选中的声音，不做任何操作
+                
+                state.selectedVoice = voiceId;
+                
+                // 更新所声音按钮的样式
+                document.querySelectorAll('.voice-button').forEach(btn => {
+                    const isSelected = btn.dataset.voiceId === state.selectedVoice;
+                    btn.classList.toggle('bg-purple-50', isSelected);
+                    btn.classList.toggle('border-purple-500', isSelected);
+                    btn.classList.toggle('border-gray-200', !isSelected);
+                    
+                    const iconElement = btn.querySelector('svg');
+                    const textElement = btn.querySelector('span');
+                    
+                    iconElement.classList.toggle('text-purple-500', isSelected);
+                    iconElement.classList.toggle('text-gray-500', !isSelected);
+                    
+                    textElement.classList.toggle('text-purple-700', isSelected);
+                    textElement.classList.toggle('font-medium', isSelected);
+                    textElement.classList.toggle('text-gray-600', !isSelected);
+                });
+            });
+
+            // 修语速选择的事件处理
+            document.querySelectorAll('.speed-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    // 更新状态
+                    state.selectedSpeed = parseFloat(e.target.dataset.speed);
+                    
+                    // 更新按钮样式
+                    document.querySelectorAll('.speed-btn').forEach(b => {
+                        if (b === e.target) {
+                            b.classList.remove('bg-gray-100', 'text-gray-700');
+                            b.classList.add('bg-purple-600', 'text-white');
+                        } else {
+                            b.classList.remove('bg-purple-600', 'text-white');
+                            b.classList.add('bg-gray-100', 'text-gray-700');
+                        }
+                    });
+                });
+            });
+
+            // 自动播放开关
+            document.getElementById('autoplayToggle').addEventListener('change', (e) => {
+                state.autoplay = e.target.checked;
+            });
+
+            // 生成按钮
+            document.getElementById('generateBtn').addEventListener('click', generateAudio);
+
+            // 使用事件委托处理音频操作
+            document.getElementById('audioList').addEventListener('click', async (e) => {
+                const target = e.target.closest('button');
+                if (!target) return;
+                
+                try {
+                    if (target.classList.contains('play-btn')) {
+                        await playAudio(target.dataset.audioUrl, target);
+                    } else if (target.classList.contains('download-btn')) {
+                        window.open(target.dataset.audioUrl, '_blank');
+                    } else if (target.classList.contains('subtitle-btn')) {
+                        await downloadSubtitle(target.dataset.audioId);
+                    } else if (target.classList.contains('delete-btn')) {
+                        await deleteAudio(target);
+                    }
+                } catch (error) {
+                    console.error('操作失败:', error);
+                    showError('操作失败，请重试');
+                }
+            });
+
+            // 初始加载声音列表和音频列表
+            fetchVoices();
+            fetchAudioList();
+        });
+
+        // 在 script 标签中添加全局音频控制
+        let currentAudio = null;  // 当前播放的音频对象
+        let currentPlayBtn = null;  // 当前播放按钮
+
+        // 修改音频列表中的播放按钮 HTML
+        function getPlayButtonHTML(isPlaying) {
+            return isPlaying ? `
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-600">
+                    <rect x="6" y="4" width="4" height="16"></rect>
+                    <rect x="14" y="4" width="4" height="16"></rect>
+                </svg>
+            ` : `
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-600">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+            `;
+        }
+
+        // 添加下载字幕的函数
+        async function downloadSubtitle(audioId) {
+            try {
+                // 添加延迟和重试机制
+                let retries = 3;
+                let success = false;
+                
+                while (retries > 0 && !success) {
+                    try {
+                        // 等待一小段时间
+                        await new Promise(resolve => setTimeout(resolve, 500));
+                        
+                        const response = await fetch(`${API_ENDPOINTS.SUBTITLE}/${audioId}`);
+                        if (!response.ok) {
+                            if (response.status === 404) {
+                                if (retries === 1) {
+                                    showError('字幕文件不存在');
+                                    return;
+                                }
+                            } else {
+                                throw new Error('下载失败');
+                            }
+                        } else {
+                            const blob = await response.blob();
+                            const url = window.URL.createObjectURL(blob);
+                            const a = document.createElement('a');
+                            a.href = url;
+                            a.download = audioId + '.srt';
+                            document.body.appendChild(a);
+                            a.click();
+                            window.URL.revokeObjectURL(url);
+                            document.body.removeChild(a);
+                            success = true;
+                            break;
+                        }
+                    } catch (error) {
+                        console.error(`尝试 ${4-retries}/3 失败:`, error);
+                    }
+                    retries--;
+                }
+                
+                if (!success) {
+                    showError('下载字幕失败，请稍后重试');
+                }
+            } catch (error) {
+                console.error('下载字幕失败:', error);
+                showError('下载字幕失败，请稍后重试');
+            }
+        }
+
+        // 添加删除音频的函数
+        async function deleteAudio(button) {
+            try {
+                const audioId = button.dataset.audioId;
+                const response = await fetch(`${API_ENDPOINTS.DELETE}${audioId}`, {
+                    method: 'DELETE'
+                });
+                
+                if (!response.ok) {
+                    throw new Error('删除失败');
+                }
+                
+                // 如果删除的是正在播放的音频，停止播放
+                if (currentAudio && currentPlayBtn && currentPlayBtn.closest('.flex') === button.closest('.flex')) {
+                    currentAudio.pause();
+                    currentAudio = null;
+                    currentPlayBtn = null;
+                }
+                
+                // 从界面移除音频项
+                button.closest('.flex').remove();
+                
+            } catch (error) {
+                console.error('删除音频失败:', error);
+                showError('删除音频失败，请重试');
+            }
+        }
+    </script>
+</body>
+</html>
