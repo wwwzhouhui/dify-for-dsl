@@ -92,6 +92,27 @@
 
 
 ## 更新说明
+2025年4月11 日-version 0.0.3.05：
+新增docker部署：docker-compose up --build，
+
+汇总功能性接口[g_jiekou.py](geekaiapp/g_jiekou.py)，
+
+拆分部分业务独立运行：
+
+1.[yewu2edgetts](yewu2edgetts)文字转语音
+
+
+2.[yewu2excelhtml](yewu2excelhtml)数据可视化md转文档
+
+3.[yewu2googleimgtxt](yewu2googleimgtxt)Gemini文生图，图+文生图，连载
+
+4.[yewu2jmvideo](yewu2jmvideo)即梦AI文生视频
+
+5.[yewu2story](yewu2story)文生音频+图片=动漫人物连载
+
+6.[yewu2videoaddsrt](yewu2videoaddsrt)视频加字幕+音频可编辑（支持软硬字幕）
+
+apikey值配置参考以往文章即可。
 
 2025年4月9 日-version 0.0.3.04：增加学生成绩查询Chatflow支持text2sql.yml，student_scores.sql 建表语句详见
 
