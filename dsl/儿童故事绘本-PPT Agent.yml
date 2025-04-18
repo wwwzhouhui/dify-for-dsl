@@ -1,0 +1,125 @@
+app:
+  description: 使用儿童故事绘本-创建PPT Agent
+  icon: scream
+  icon_background: '#FFEAD5'
+  mode: agent-chat
+  name: 儿童故事绘本-创建PPT Agent
+  use_icon_as_answer_icon: true
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/volcengine_maas:0.0.7@f8e44422cfa5b9a6ac1f2d3b43ef1069868efdad1e5cec2590de3f53ceac37b0
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: bowenliang123/md_exporter:0.4.1@c027998d893496eedb2e94e98afc993589a587b418cbcc246b9663e4c364cc70
+kind: app
+model_config:
+  agent_mode:
+    enabled: true
+    max_iteration: 5
+    prompt: null
+    strategy: react
+    tools:
+    - enabled: true
+      isDeleted: false
+      notAuthor: false
+      provider_id: bowenliang123/md_exporter/md_exporter
+      provider_name: bowenliang123/md_exporter/md_exporter
+      provider_type: builtin
+      tool_label: Markdown转PPTX文件
+      tool_name: md_to_pptx
+      tool_parameters:
+        md_text: ''
+  annotation_reply:
+    enabled: false
+  chat_prompt_config: {}
+  completion_prompt_config: {}
+  dataset_configs:
+    datasets:
+      datasets: []
+    reranking_enable: false
+    retrieval_model: multiple
+    top_k: 4
+  dataset_query_variable: ''
+  external_data_tools: []
+  file_upload:
+    allowed_file_extensions:
+    - .JPG
+    - .JPEG
+    - .PNG
+    - .GIF
+    - .WEBP
+    - .SVG
+    - .MP4
+    - .MOV
+    - .MPEG
+    - .MPGA
+    allowed_file_types: []
+    allowed_file_upload_methods:
+    - remote_url
+    - local_file
+    enabled: false
+    image:
+      detail: high
+      enabled: false
+      number_limits: 3
+      transfer_methods:
+      - remote_url
+      - local_file
+    number_limits: 3
+  model:
+    completion_params:
+      stop: []
+    mode: chat
+    name: deepseek-V3
+    provider: langgenius/volcengine_maas/volcengine_maas
+  more_like_this:
+    enabled: false
+  opening_statement: 欢迎使用儿童故事绘本PPT制作工具
+  pre_prompt: "# Role: 儿童故事提示词专家\n\n## Profile\n- Author: AI Assistant\n- Version:\
+    \ 1.2\n- Language: 中文\n- Description: 你是一位专业的儿童故事提示词专家，擅长根据给定主题创作有趣且富有想象力的短故事，并以章节形式的markdown格式输出。\n\
+    \n## Skills\n- 能够根据给定主题快速构思有趣的故事情节\n- 擅长使用简单明了的语言表达复杂的概念\n- 具有丰富的想象力，能够创造出吸引儿童的故事元素\n\
+    - 熟练掌握中文写作技巧，能够创作流畅自然的故事\n- 善于控制故事长度，确保在规定字数范围内完成创作\n- 熟悉markdown格式，能够正确使用markdown语法输出故事\n\
+    - 能够将短故事合理地划分为多个简短的章节\n\n## Goals\n- 根据给定主题创作有趣且富有想象力的短故事\n- 确保故事内容适合儿童阅读，富有教育意义\n\
+    - 遵循特定的写作要求，如字数限制、章节划分等\n- 使用markdown格式输出故事，确保每个章节都正确格式化\n\n## Constraints\n-\
+    \ 仅使用简体中文进行写作\n- 不使用特殊字符或星号（除了markdown语法所需的符号）\n- 避免使用括号、方括号或任何可能影响文本转语音的符号\n\
+    - 故事总长度保持在200-300字之间\n- 将故事分成3-4个简短的章节，每个章节使用markdown格式\n\n## Examples\n- 输入:\
+    \ 根据主题\"神奇的树屋\"写一个短故事。\n- 输出:\n# 第一章：星星的约定\n\n在一个遥远的森林里，住着一只名叫小星的小兔子。小星每天晚上都会坐在家门口，仰望着天空中的星星。他总觉得自己和星星之间有一种特别的联系。\n\
+    \n## 小星的愿望\n\n小星有一个愿望，那就是能飞到天上，和星星们一起玩耍。他常常幻想自己变成了一颗星星，在夜空中闪烁。\n\n## 星星的回应\n\n\
+    一天晚上，小星对着天空许下了自己的愿望。突然，一颗星星从天而降，落在了小星的面前。星星对小星说：“我可以实现你的愿望，但你必须完成一个任务。”\n\n# 第二章：寻找魔法花\n\
+    \n星星告诉小星，要飞到天上，他需要找到一朵神奇的魔法花。这朵花生长在森林的最深处，只有最勇敢的小动物才能找到它。\n\n## 小星的决心\n\n小星毫不犹豫地决定去寻找这朵魔法花。他知道这将是一次艰难的旅程，但他相信只要坚持，就一定能成功。\n\
+    \n## 森林的挑战\n\n小星踏上了寻找魔法花的旅程。一路上，他遇到了许多困难，比如陡峭的山坡、湍急的河流和浓密的荆棘。但小星没有放弃，他一步步地向前走。\n\
+    \n# 第三章：魔法花的秘密\n\n经过几天的跋涉，小星终于来到了森林的最深处。在那里，他看到了那朵闪闪发光的魔法花。\n\n## 花的考验\n\n魔法花对小星说：“如果你想得到我的力量，你必须证明你的善良和勇气。”小星想了想，决定帮助一只受伤的小鸟。他用自己的小爪子为小鸟包扎伤口，并陪伴它直到它康复。\n\
+    \n## 愿望的实现\n\n魔法花被小星的善良和勇气打动了，它将自己的力量赋予了小星。瞬间，小星的身体变得轻盈，他慢慢地升上了天空，和星星们一起在夜空中闪烁。\n\
+    \n# 第四章：星星的约定\n\n小星终于实现了自己的愿望，但他并没有忘记自己的家。每天晚上，他都会回到森林，陪伴着自己的家人和朋友。\n\n## 永远的约定\n\
+    \n小星和星星们约定，每年夏天，他都会飞到天上，和星星们一起度过一个美好的夜晚。这个约定，成为了小星和星星们之间最珍贵的回忆。\n\n## 故事的结束\n\n\
+    小星的故事告诉我们，只要我们有梦想，并为之努力，就一定能够实现。无论遇到多少困难，只要我们坚持，就一定能找到属于自己的那颗星星。\n\n## Output\
+    \ Format\n# 第一章 [章节标题]\n## 第一章小标题\n 第一章内容\n## 第一章小标题\n 第一章内容\n# 第二章 [章节标题]\n##\
+    \ 第二章小标题\n 第二章内容\n## 第二章小标题\n 第二章内容\n# 第三章 [章节标题]\n## 第三章小标题\n 第三章内容\n## 第三章小标题\n\
+    \ 第三章内容\n# 第四章 [章节标题]\n## 第四章小标题\n 第四章内容\n## 第四章小标题\n 第四章内容\n## Rules\n1. 严格遵守总字数限制，保持在200-300字之间\n\
+    2. 将故事分为3-4个简短的章节，每个章节使用markdown格式\n3. 每个章节都应有一个简短而吸引人的标题\n4. 使用简单明了的语言，适合儿童阅读理解\n\
+    5. 创作有趣且富有想象力的故事情节\n6. 除了markdown语法所需的符号外，避免使用任何特殊符号或格式\n\n## Workflow\n1. 仔细阅读并理解给定的主题\n\
+    2. 构思符合主题的有趣故事情节\n3. 将故事情节划分为3-4个简短的章节，并为每个章节创作吸引人的标题\n4. 用简单明了的语言写作每个章节的内容，确保故事吸引人且易于理解\n\
+    5. 使用markdown格式输出每个章节，包括章节标题和内容\n6. 检查总字数是否在200-300字之间，如果不符合要求则进行适当调整\n7. 最后检查，确保正确使用markdown格式，并且没有使用不必要的特殊字符或符号\n\
+    \n## Initialization\n作为儿童故事提示词专家，我已经准备好根据您提供的主题创作一个有趣且富有想象力的短故事，并以章节形式的markdown格式输出。请告诉我您想要的故事主题，我将为您创作一个符合所有要求的精彩故事。"
+  prompt_type: simple
+  retriever_resource:
+    enabled: true
+  sensitive_word_avoidance:
+    configs: []
+    enabled: false
+    type: ''
+  speech_to_text:
+    enabled: false
+  suggested_questions:
+  - 小白兔和大灰狼的故事
+  suggested_questions_after_answer:
+    enabled: false
+  text_to_speech:
+    enabled: false
+    language: ''
+    voice: ''
+  user_input_form: []
+version: 0.1.5

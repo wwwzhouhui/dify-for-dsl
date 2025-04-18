@@ -1,0 +1,336 @@
+app:
+  description: 本工作流流(chatflow)可以实现大语言模型创建内容后调用agent 从而实现PPT的制作功能
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 儿童故事绘本-创建PPT chatflow
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.12@721cf03c692aad2ab58c7c138c66be7c59819bd3d2a073e1c1b3c9ff83c0c0e8
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: stvlynn/ppt:0.0.1@fbf0073c3a584d79200a56776d1b60e3956d493956dcadfc75c87098b5e1fd95
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 500
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 100
+        video_file_size_limit: 500
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        sourceType: start
+        targetType: llm
+      id: 1744549397723-llm
+      source: '1744549397723'
+      sourceHandle: source
+      target: llm
+      targetHandle: target
+      type: custom
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: tool
+      id: llm-source-1744558260933-target
+      source: llm
+      sourceHandle: source
+      target: '1744558260933'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: answer
+      id: 1744558260933-source-answer-target
+      source: '1744558260933'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - label: 提示词
+          max_length: 48
+          options: []
+          required: true
+          type: text-input
+          variable: prompt
+      height: 89
+      id: '1744549397723'
+      position:
+        x: 80
+        y: 282
+      positionAbsolute:
+        x: 80
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: '{{#sys.query#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 10
+        model:
+          completion_params: {}
+          mode: chat
+          name: gemini-2.0-flash-lite
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 95a59b37-fb89-4555-b789-73fa98a8d870
+          role: system
+          text: "# Role: 儿童故事提示词专家\n\n## Profile\n- Author: AI Assistant\n- Version:\
+            \ 1.2\n- Language: 中文\n- Description: 你是一位专业的儿童故事提示词专家，擅长根据给定主题创作有趣且富有想象力的短故事，并以章节形式的markdown格式输出。\n\
+            \n## Skills\n- 能够根据给定主题快速构思有趣的故事情节\n- 擅长使用简单明了的语言表达复杂的概念\n- 具有丰富的想象力，能够创造出吸引儿童的故事元素\n\
+            - 熟练掌握中文写作技巧，能够创作流畅自然的故事\n- 善于控制故事长度，确保在规定字数范围内完成创作\n- 熟悉markdown格式，能够正确使用markdown语法输出故事\n\
+            - 能够将短故事合理地划分为多个简短的章节\n\n## Goals\n- 根据给定主题创作有趣且富有想象力的短故事\n- 确保故事内容适合儿童阅读，富有教育意义\n\
+            - 遵循特定的写作要求，如字数限制、章节划分等\n- 使用markdown格式输出故事，确保每个章节都正确格式化\n\n## Constraints\n\
+            - 仅使用简体中文进行写作\n- 不使用特殊字符或星号（除了markdown语法所需的符号）\n- 避免使用括号、方括号或任何可能影响文本转语音的符号\n\
+            - 故事总长度保持在200-300字之间\n- 将故事分成3-4个简短的章节，每个章节使用markdown格式\n\n## Examples\n\
+            - 输入: 根据主题\"神奇的树屋\"写一个短故事。\n- 输出:\n# 第一章：星星的约定\n\n在一个遥远的森林里，住着一只名叫小星的小兔子。小星每天晚上都会坐在家门口，仰望着天空中的星星。他总觉得自己和星星之间有一种特别的联系。\n\
+            \n## 小星的愿望\n\n小星有一个愿望，那就是能飞到天上，和星星们一起玩耍。他常常幻想自己变成了一颗星星，在夜空中闪烁。\n\n## 星星的回应\n\
+            \n一天晚上，小星对着天空许下了自己的愿望。突然，一颗星星从天而降，落在了小星的面前。星星对小星说：“我可以实现你的愿望，但你必须完成一个任务。”\n\
+            \n# 第二章：寻找魔法花\n\n星星告诉小星，要飞到天上，他需要找到一朵神奇的魔法花。这朵花生长在森林的最深处，只有最勇敢的小动物才能找到它。\n\
+            \n## 小星的决心\n\n小星毫不犹豫地决定去寻找这朵魔法花。他知道这将是一次艰难的旅程，但他相信只要坚持，就一定能成功。\n\n## 森林的挑战\n\
+            \n小星踏上了寻找魔法花的旅程。一路上，他遇到了许多困难，比如陡峭的山坡、湍急的河流和浓密的荆棘。但小星没有放弃，他一步步地向前走。\n\n\
+            # 第三章：魔法花的秘密\n\n经过几天的跋涉，小星终于来到了森林的最深处。在那里，他看到了那朵闪闪发光的魔法花。\n\n## 花的考验\n\
+            \n魔法花对小星说：“如果你想得到我的力量，你必须证明你的善良和勇气。”小星想了想，决定帮助一只受伤的小鸟。他用自己的小爪子为小鸟包扎伤口，并陪伴它直到它康复。\n\
+            \n## 愿望的实现\n\n魔法花被小星的善良和勇气打动了，它将自己的力量赋予了小星。瞬间，小星的身体变得轻盈，他慢慢地升上了天空，和星星们一起在夜空中闪烁。\n\
+            \n# 第四章：星星的约定\n\n小星终于实现了自己的愿望，但他并没有忘记自己的家。每天晚上，他都会回到森林，陪伴着自己的家人和朋友。\n\n\
+            ## 永远的约定\n\n小星和星星们约定，每年夏天，他都会飞到天上，和星星们一起度过一个美好的夜晚。这个约定，成为了小星和星星们之间最珍贵的回忆。\n\
+            \n## 故事的结束\n\n小星的故事告诉我们，只要我们有梦想，并为之努力，就一定能够实现。无论遇到多少困难，只要我们坚持，就一定能找到属于自己的那颗星星。\n\
+            \n## Output Format\n# 第一章 [章节标题]\n## 第一章小标题\n 第一章内容\n## 第一章小标题\n 第一章内容\n\
+            # 第二章 [章节标题]\n## 第二章小标题\n 第二章内容\n## 第二章小标题\n 第二章内容\n# 第三章 [章节标题]\n## 第三章小标题\n\
+            \ 第三章内容\n## 第三章小标题\n 第三章内容\n# 第四章 [章节标题]\n## 第四章小标题\n 第四章内容\n## 第四章小标题\n\
+            \ 第四章内容\n## Rules\n1. 严格遵守总字数限制，保持在200-300字之间\n2. 将故事分为3-4个简短的章节，每个章节使用markdown格式\n\
+            3. 每个章节都应有一个简短而吸引人的标题\n4. 使用简单明了的语言，适合儿童阅读理解\n5. 创作有趣且富有想象力的故事情节\n6. 除了markdown语法所需的符号外，避免使用任何特殊符号或格式\n\
+            \n## Workflow\n1. 仔细阅读并理解给定的主题\n2. 构思符合主题的有趣故事情节\n3. 将故事情节划分为3-4个简短的章节，并为每个章节创作吸引人的标题\n\
+            4. 用简单明了的语言写作每个章节的内容，确保故事吸引人且易于理解\n5. 使用markdown格式输出每个章节，包括章节标题和内容\n6.\
+            \ 检查总字数是否在200-300字之间，如果不符合要求则进行适当调整\n7. 最后检查，确保正确使用markdown格式，并且没有使用不必要的特殊字符或符号\n\
+            \n## Initialization\n作为儿童故事提示词专家，我已经准备好根据您提供的主题创作一个有趣且富有想象力的短故事，并以章节形式的markdown格式输出。请告诉我您想要的故事主题，我将为您创作一个符合所有要求的精彩故事。"
+        - id: 6d86d884-b37c-405f-aa83-b583999b60b5
+          role: user
+          text: 请根据用户输入的{{#1744549397723.prompt#}} 编写儿童故事
+        selected: true
+        title: 儿童故事
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: llm
+      position:
+        x: 381.7411011265922
+        y: 282
+      positionAbsolute:
+        x: 381.7411011265922
+        y: 282
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        answer: '{{#llm.text#}}
+
+          {{#1744558260933.files#}}'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 123
+      id: answer
+      position:
+        x: 982.0810454637553
+        y: 282
+      positionAbsolute:
+        x: 982.0810454637553
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: The Markdown content to be converted to PowerPoint presentation
+            ja_JP: The Markdown content to be converted to PowerPoint presentation
+            pt_BR: O conteúdo Markdown a ser convertido para apresentação PowerPoint
+            zh_Hans: 要转换为PowerPoint演示文稿的Markdown内容
+          label:
+            en_US: Markdown Content
+            ja_JP: Markdown Content
+            pt_BR: Conteúdo Markdown
+            zh_Hans: Markdown内容
+          llm_description: The Markdown content that will be converted to a PowerPoint
+            presentation
+          max: null
+          min: null
+          name: markdown_content
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: The title of the PowerPoint presentation
+            ja_JP: The title of the PowerPoint presentation
+            pt_BR: O título da apresentação PowerPoint
+            zh_Hans: PowerPoint演示文稿的标题
+          label:
+            en_US: Presentation Title
+            ja_JP: Presentation Title
+            pt_BR: Título da Apresentação
+            zh_Hans: 演示文稿标题
+          llm_description: The title that will be used for the PowerPoint presentation
+          max: null
+          min: null
+          name: title
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: The theme/design to use for the presentation (default is 'default')
+            ja_JP: The theme/design to use for the presentation (default is 'default')
+            pt_BR: O tema/design a ser usado para a apresentação (padrão é 'default')
+            zh_Hans: 演示文稿使用的主题/设计（默认为'default'）
+          label:
+            en_US: Presentation Theme
+            ja_JP: Presentation Theme
+            pt_BR: Tema da Apresentação
+            zh_Hans: 演示文稿主题
+          llm_description: The visual theme to apply to the presentation slides
+          max: null
+          min: null
+          name: theme
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        params:
+          markdown_content: ''
+          theme: ''
+          title: ''
+        provider_id: stvlynn/ppt/ppt
+        provider_name: stvlynn/ppt/ppt
+        provider_type: builtin
+        selected: false
+        title: Markdown转PPTX转换器
+        tool_configurations: {}
+        tool_label: Markdown转PPTX转换器
+        tool_name: markdown_to_pptx_converter
+        tool_parameters:
+          markdown_content:
+            type: mixed
+            value: '{{#llm.text#}}'
+          theme:
+            type: mixed
+            value: '{{#1744549397723.prompt#}}'
+          title:
+            type: mixed
+            value: '{{#1744549397723.prompt#}}'
+        type: tool
+      height: 53
+      id: '1744558260933'
+      position:
+        x: 677.2588988734077
+        y: 282
+      positionAbsolute:
+        x: 677.2588988734077
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    viewport:
+      x: -371.08104546375534
+      y: -12
+      zoom: 1
