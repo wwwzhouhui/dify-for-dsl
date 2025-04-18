@@ -74,6 +74,7 @@ curl --location 'http://your-api-domain/api/jimeng/generate_video' \
 curl --location 'http://your-api-domain/api/jimeng/img' \
 --header 'Content-Type: application/json' \
 --data '{
+    "image_generation_url":"http://10.8.50.42:8000/v1/images/generations",
     "image_api_key": "your-api-key",
     "model": "stable-diffusion-xl",
     "prompt": "中国山水画风格的老虎",
