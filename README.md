@@ -237,6 +237,44 @@ https://aqma351r01f.feishu.cn/wiki/HF5FwMDQkiHoCokvbQAcZLu3nAg?table=tbleOWb4WgX
     对应的源码
     <img src="https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/cfbdbf9f-5271-4593-af35-1dd0c14d8b12.png" alt="示例图片" width="400">
 </details>
+<details>
+<summary>80端口被占用修改其他端口</summary>
+     问题默认dify使用的是80端口。但是有的小伙伴服务器80端口被占用了，只能通过修改端口问题实现访问dify的访问。<br>
+    我们修改.env配置<br>
+    源配置信息<br>
+    EXPOSE_NGINX_PORT=80<br>
+    EXPOSE_NGINX_SSL_PORT=443<br>
+    修改后<br>
+    EXPOSE_NGINX_PORT=88<br>
+    EXPOSE_NGINX_SSL_PORT=8443<br>
+    这里我们需要把80（http）和443（https）修改服务器未被使用端口，我这里修改成88 和4443端口<br>
+<img src="https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250419164431488.png" ><br>
+    修改后的效果 dify访问地址变成http://101.126.84.227:88/<br>
+    <img src="https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250419163321317.png" >
+</details>
+
+<details>
+<summary>应用端口不是80分享修改端口配置</summary>
+     对外访问的API接口地址是http://101.126.84.227/v1，分享后访问失败<br>
+<img src="https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250419164757901.png" ><br>
+    解决我们修改.env配置<br>
+    源配置信息默认是空的<br>
+    # Service API Url,<br>
+	# used to display Service API Base Url to the front-end.<br>
+	# If empty, it is the same domain.<br>
+	# Example: https://api.dify.ai<br>
+	SERVICE_API_URL=<br>
+     修改后<br>
+    # Service API Url,<br>
+	# used to display Service API Base Url to the front-end.<br>
+	# If empty, it is the same domain.<br>
+	# Example: https://api.dify.ai<br>
+	SERVICE_API_URL=http://101.126.84.227:88<br>
+    这里我们需要填写服务器对外访问地址+端口号http://101.126.84.227:88<br>
+    <img src="https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250419170233151.png" >
+    修改后重启，重启后我们访问web应用<br>
+    <img src="https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250419170415108.png" >
+</details>
 
 ## 技术交流群
 
