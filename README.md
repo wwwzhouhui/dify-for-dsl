@@ -70,6 +70,7 @@
 | 学生成绩查询Chatflow支持text2sql.yml | ![image-20250409155549478](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250409155549478.png) | 时间工具、ECharts图表生成、database、llm | 2025年4月9日 | wwwzhouhui | 1.1.3 |
 | 儿童故事绘本-PPT Agent.yml | ![image-20250414220712520](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250414220712520.png) | llm、markdown转PPTX 转换器 | 2025年4月14日 | wwwzhouhui | 1.1.3 |
 | 儿童故事绘本-PPT chatflow.yml | ![image-20250414220809839](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250414220809839.png) | agent、markdown转换器 | 2025年4月14日 | wwwzhouhui | 1.1.3 |
+| 提示词生成器chatflow.yml | ![image-20250419131519060](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250419131519060.png) | llm、条件判断器 | 2025年4月19日 | wwwzhouhui | 1.1.3 |
 
 ### 部分视频链接地址
 
@@ -94,6 +95,8 @@
 
 
 ## 更新说明
+2025年4月19 日-version 0.0.3.07：增加提示词生成器chatflow.yml
+
 2025年4月14 日-version 0.0.3.06：增加儿童故事绘本-PPT Agent.yml、儿童故事绘本-PPT chatflow.yml
 
 2025年4月11 日-version 0.0.3.05：
@@ -217,17 +220,27 @@ https://aqma351r01f.feishu.cn/wiki/HF5FwMDQkiHoCokvbQAcZLu3nAg?table=tbleOWb4WgX
 
   使用AI大模型，一键生成高清故事短视频
 
+6.[prompt-optimizer](https://github.com/linshenkx/prompt-optimizer)
+
+  一款提示词优化器，助力于编写高质量的提示词
+
 ## 问题反馈
 
 如有问题，请在GitHub Issue中提交，在提交问题之前，请先查阅以往的issue是否能解决你的问题
 
 ## 常见问题汇总
 
-
+<details>
+<summary>http请求节点超时时间及请求体大小限制的配置调整</summary>
+     修改docker-compose.yaml<br>
+<img src="https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250409115803027.png" alt="示例图片" width="400"><br>
+    对应的源码
+    <img src="https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/cfbdbf9f-5271-4593-af35-1dd0c14d8b12.png" alt="示例图片" width="400">
+</details>
 
 ## 技术交流群
 
-![image-20250413160315630](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250413160315630.png.png)
+![image-20250419131859224](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250419131859224.png)
 
 ## Star History
 

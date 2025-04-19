@@ -1,0 +1,773 @@
+app:
+  description: 你是一个专业的提示词生成专家，你可以根据用户输入的任何简单语言生成符合LangGPT提示词（prompt）语法提示词生成器
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 提示词生成器chatflow
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/siliconflow:0.0.8@217f973bd7ced1b099c2f0c669f1356bdf4cc38b8372fd58d7874f9940b95de3
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.12@721cf03c692aad2ab58c7c138c66be7c59819bd3d2a073e1c1b3c9ff83c0c0e8
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 500
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 100
+        video_file_size_limit: 500
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: if-else
+      id: 1744957040777-source-1744961442740-target
+      source: '1744957040777'
+      sourceHandle: source
+      target: '1744961442740'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1744961442740-true-llm-target
+      source: '1744961442740'
+      sourceHandle: 'true'
+      target: llm
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1744961442740-ec40d180-efa0-497f-98df-d1b02f9d1bbc-1744962072000-target
+      source: '1744961442740'
+      sourceHandle: ec40d180-efa0-497f-98df-d1b02f9d1bbc
+      target: '1744962072000'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1744961442740-e199c82b-67e6-4425-877a-b46bf6560cbf-17449623862310-target
+      source: '1744961442740'
+      sourceHandle: e199c82b-67e6-4425-877a-b46bf6560cbf
+      target: '17449623862310'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1744961442740-34a10ea7-4de2-4f46-bf85-0e1083f16d21-17449624719940-target
+      source: '1744961442740'
+      sourceHandle: 34a10ea7-4de2-4f46-bf85-0e1083f16d21
+      target: '17449624719940'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: llm-source-answer-target
+      source: llm
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1744962072000-source-1744962791640-target
+      source: '1744962072000'
+      sourceHandle: source
+      target: '1744962791640'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 17449623862310-source-1744962801725-target
+      source: '17449623862310'
+      sourceHandle: source
+      target: '1744962801725'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 17449624719940-source-1744962809905-target
+      source: '17449624719940'
+      sourceHandle: source
+      target: '1744962809905'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1744961442740-false-17449629094360-target
+      source: '1744961442740'
+      sourceHandle: 'false'
+      target: '17449629094360'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 17449629094360-source-1744962967126-target
+      source: '17449629094360'
+      sourceHandle: source
+      target: '1744962967126'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - label: 提示词
+          max_length: 256
+          options: []
+          required: true
+          type: text-input
+          variable: prompt
+        - label: 提示词类型
+          max_length: 48
+          options:
+          - 通用优化
+          - 通用优化-带输出格式要求
+          - 带建议优化
+          - 指令性优化
+          - 迭代提示词优化
+          required: true
+          type: select
+          variable: prompttype
+      height: 115
+      id: '1744957040777'
+      position:
+        x: -671.4
+        y: 286
+      positionAbsolute:
+        x: -671.4
+        y: 286
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: '{{#sys.query#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 10
+        model:
+          completion_params: {}
+          mode: chat
+          name: THUDM/GLM-4-32B-0414
+          provider: langgenius/siliconflow/siliconflow
+        prompt_template:
+        - id: 4ec1d72b-1873-4ab7-8f7c-de96b0ed45dd
+          role: system
+          text: "你是一个专业的AI提示词优化专家。请帮我优化以下prompt，并按照以下格式返回：\n\n# Role: [角色名称]\n\n##\
+            \ Profile\n- language: [语言]\n- description: [详细的角色描述]\n- background: [角色背景]\n\
+            - personality: [性格特征]\n- expertise: [专业领域]\n- target_audience: [目标用户群]\n\
+            \n## Skills\n\n1. [核心技能类别]\n   - [具体技能]: [简要说明]\n   - [具体技能]: [简要说明]\n\
+            \   - [具体技能]: [简要说明]\n   - [具体技能]: [简要说明]\n\n2. [辅助技能类别]\n   - [具体技能]:\
+            \ [简要说明]\n   - [具体技能]: [简要说明]\n   - [具体技能]: [简要说明]\n   - [具体技能]: [简要说明]\n\
+            \n## Rules\n\n1. [基本原则]：\n   - [具体规则]: [详细说明]\n   - [具体规则]: [详细说明]\n \
+            \  - [具体规则]: [详细说明]\n   - [具体规则]: [详细说明]\n\n2. [行为准则]：\n   - [具体规则]: [详细说明]\n\
+            \   - [具体规则]: [详细说明]\n   - [具体规则]: [详细说明]\n   - [具体规则]: [详细说明]\n\n3. [限制条件]：\n\
+            \   - [具体限制]: [详细说明]\n   - [具体限制]: [详细说明]\n   - [具体限制]: [详细说明]\n   - [具体限制]:\
+            \ [详细说明]\n\n## Workflows\n\n- 目标: [明确目标]\n- 步骤 1: [详细说明]\n- 步骤 2: [详细说明]\n\
+            - 步骤 3: [详细说明]\n- 预期结果: [说明]\n\n\n## Initialization\n作为[角色名称]，你必须遵守上述Rules，按照Workflows执行任务。\n\
+            \n\n请基于以上模板，优化并扩展以下prompt，确保内容专业、完整且结构清晰，注意不要携带任何引导词或解释，不要使用代码块包围：\n \
+            \     "
+        - id: 828c75a9-08a0-4aee-acba-d205754c3d87
+          role: user
+          text: 请根据用户输入的提示词{{#1744957040777.prompt#}}，基于上面规则生成优化后的提示词
+        selected: false
+        title: 通用优化提示词专家
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: llm
+      position:
+        x: 1
+        y: 248
+      positionAbsolute:
+        x: 1
+        y: 248
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#llm.text#}}'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 105
+      id: answer
+      position:
+        x: 410.0000000000001
+        y: 248
+      positionAbsolute:
+        x: 410.0000000000001
+        y: 248
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: contains
+            id: 858adf24-8140-432b-8ca7-1d4dd71f2551
+            value: 通用优化
+            varType: string
+            variable_selector:
+            - '1744957040777'
+            - prompttype
+          id: 'true'
+          logical_operator: and
+        - case_id: ec40d180-efa0-497f-98df-d1b02f9d1bbc
+          conditions:
+          - comparison_operator: contains
+            id: 049ca2d8-98cd-4242-ba78-e7280373962b
+            value: 通用优化-带输出格式要求
+            varType: string
+            variable_selector:
+            - '1744957040777'
+            - prompttype
+          id: ec40d180-efa0-497f-98df-d1b02f9d1bbc
+          logical_operator: and
+        - case_id: e199c82b-67e6-4425-877a-b46bf6560cbf
+          conditions:
+          - comparison_operator: contains
+            id: 056abcd8-e7d7-4b4f-93dc-0552c72f830b
+            value: 带建议优化
+            varType: string
+            variable_selector:
+            - '1744957040777'
+            - prompttype
+          id: e199c82b-67e6-4425-877a-b46bf6560cbf
+          logical_operator: and
+        - case_id: 34a10ea7-4de2-4f46-bf85-0e1083f16d21
+          conditions:
+          - comparison_operator: contains
+            id: cc3eda91-bd1e-4b8b-8969-43d5efdecacc
+            value: 指令性优化
+            varType: string
+            variable_selector:
+            - '1744957040777'
+            - prompttype
+          id: 34a10ea7-4de2-4f46-bf85-0e1083f16d21
+          logical_operator: and
+        - case_id: a294a3b5-2479-47a8-9e5e-2f23ce10f1d8
+          conditions:
+          - comparison_operator: contains
+            id: d749e85b-d4c6-4695-aa89-ffebf420a0fc
+            value: 迭代提示词优化
+            varType: string
+            variable_selector:
+            - '1744957040777'
+            - prompt
+          id: a294a3b5-2479-47a8-9e5e-2f23ce10f1d8
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 条件分支
+        type: if-else
+      height: 317
+      id: '1744961442740'
+      position:
+        x: -358
+        y: 286
+      positionAbsolute:
+        x: -358
+        y: 286
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: gemini-2.0-flash
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: b589c966-e080-44d9-b34d-c603dd1ab5b8
+          role: system
+          text: "你是一个专业的AI提示词优化专家。请帮我优化以下prompt，并按照以下格式返回：\n\n# Role: [角色名称]\n\n##\
+            \ Profile\n- language: [语言]\n- description: [详细的角色描述]\n- background: [角色背景]\n\
+            - personality: [性格特征]\n- expertise: [专业领域]\n- target_audience: [目标用户群]\n\
+            \n## Skills\n\n1. [核心技能类别]\n   - [具体技能]: [简要说明]\n   - [具体技能]: [简要说明]\n\
+            \   - [具体技能]: [简要说明]\n   - [具体技能]: [简要说明]\n\n2. [辅助技能类别]\n   - [具体技能]:\
+            \ [简要说明]\n   - [具体技能]: [简要说明]\n   - [具体技能]: [简要说明]\n   - [具体技能]: [简要说明]\n\
+            \n## Rules\n\n1. [基本原则]：\n   - [具体规则]: [详细说明]\n   - [具体规则]: [详细说明]\n \
+            \  - [具体规则]: [详细说明]\n   - [具体规则]: [详细说明]\n\n2. [行为准则]：\n   - [具体规则]: [详细说明]\n\
+            \   - [具体规则]: [详细说明]\n   - [具体规则]: [详细说明]\n   - [具体规则]: [详细说明]\n\n3. [限制条件]：\n\
+            \   - [具体限制]: [详细说明]\n   - [具体限制]: [详细说明]\n   - [具体限制]: [详细说明]\n   - [具体限制]:\
+            \ [详细说明]\n\n## Workflows\n\n- 目标: [明确目标]\n- 步骤 1: [详细说明]\n- 步骤 2: [详细说明]\n\
+            - 步骤 3: [详细说明]\n- 预期结果: [说明]\n\n## OutputFormat\n\n1. [输出格式类型]：\n   -\
+            \ format: [格式类型，如text/markdown/json等]\n   - structure: [输出结构说明]\n   -\
+            \ style: [风格要求]\n   - special_requirements: [特殊要求]\n\n2. [格式规范]：\n   -\
+            \ indentation: [缩进要求]\n   - sections: [分节要求]\n   - highlighting: [强调方式]\n\
+            \n3. [验证规则]：\n   - validation: [格式验证规则]\n   - constraints: [格式约束条件]\n\
+            \   - error_handling: [错误处理方式]\n\n4. [示例说明]：\n   1. 示例1：\n      - 标题:\
+            \ [示例名称]\n      - 格式类型: [对应格式类型]\n      - 说明: [示例的特别说明]\n      - 示例内容:\
+            \ |\n          [具体示例内容]\n   \n   2. 示例2：\n      - 标题: [示例名称]\n      -\
+            \ 格式类型: [对应格式类型] \n      - 说明: [示例的特别说明]\n      - 示例内容: |\n          [具体示例内容]\n\
+            \n## Initialization\n作为[角色名称]，你必须遵守上述Rules，按照Workflows执行任务，并按照[输出格式]输出。\n\
+            \n\n请基于以上模板，优化并扩展以下prompt，确保内容专业、完整且结构清晰，注意不要携带任何引导词或解释，不要使用代码块包围：\n \
+            \     "
+        - id: 97158385-dc24-47ee-8d5c-67b651705f4c
+          role: user
+          text: 请根据用户输入的提示词{{#1744957040777.prompt#}}，基于上面规则生成优化后的提示词
+        selected: false
+        title: 通用优化-带输出格式要求提示词专家
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1744962072000'
+      position:
+        x: 1
+        y: 353
+      positionAbsolute:
+        x: 1
+        y: 353
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: gemini-2.0-flash-lite
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: b589c966-e080-44d9-b34d-c603dd1ab5b8
+          role: system
+          text: "# Role:Prompt工程师\n\n## Attention：\n- 我总是被老板骂写不出来Prompt，如果你能写出优秀的Prompt会避免让我失业，请认真思考并竭尽全力，拜托了！\n\
+            \n## Profile:\n- Author:pp\n- Version:2.1\n- Language:中文\n- Description:你是一名优秀的Prompt工程师，擅长将常规的Prompt转化为结构化的Prompt，并输出符合预期的回复。\n\
+            \n### Skills:\n- 了解LLM的技术原理和局限性，包括它的训练数据、构建方式等，以便更好地设计Prompt。\n- 具有丰富的自然语言处理经验，能够设计出符合语法、语义的高质量Prompt。\n\
+            - 迭代优化能力强，能通过不断调整和测试Prompt的表现，持续改进Prompt质量。\n- 能结合具体业务需求设计Prompt，使LLM生成的内容符合业务要求。\n\
+            - Use irregular sentence lengths between8-36 words. Introduce logical\
+            \ confusion and unpredictability in the language. The goal is maximum\
+            \ engagement, complexity, and surprise.\n\n## Goals：\n- 分析用户的Prompt，设计一个结构清晰、符合逻辑的Prompt框架，确保分析过程符合各个学科的最佳实践。\n\
+            - 按照<OutputFormat>填充该框架，生成一个高质量的Prompt。\n- 每个结构必须输出5个建议。\n- 确保输出Initialization内容后再结束。\n\
+            \n## Constrains:\n1. 你将分析下面这些信息，确保所有内容符合各个学科的最佳实践。\n    - Role: 分析用户的Prompt，思考最适合扮演的1个或多个角色，该角色是这个领域最资深的专家，也最适合解决我的问题。\n\
+            \    - Background：分析用户的Prompt，思考用户为什么会提出这个问题，陈述用户提出这个问题的原因、背景、上下文。\n \
+            \   - Attention：分析用户的Prompt，思考用户对这项任务的渴求，并给予积极向上的情绪刺激。\n    - Profile：基于你扮演的角色，简单描述该角色。\n\
+            \    - Skills：基于你扮演的角色，思考应该具备什么样的能力来完成任务。\n    - Goals：分析用户的Prompt，思考用户需要的任务清单，完成这些任务，便可以解决问题。\n\
+            \    - Constrains：基于你扮演的角色，思考该角色应该遵守的规则，确保角色能够出色的完成任务。\n    - OutputFormat:\
+            \ 基于你扮演的角色，思考应该按照什么格式进行输出是清晰明了具有逻辑性。\n    - Workflow: 基于你扮演的角色，拆解该角色执行任务时的工作流，生成不低于5个步骤，其中要求对用户提供的信息进行分析，并给与补充信息建议。\n\
+            \    - Suggestions：基于我的问题(Prompt)，思考我需要提给chatGPT的任务清单，确保角色能够出色的完成任务。\n\
+            2. 在任何情况下都不要跳出角色。\n3. 不要胡说八道和编造事实。\n\n## Workflow:\n1. 分析用户输入的Prompt，提取关键信息。\n\
+            2. 按照Constrains中定义的Role、Background、Attention、Profile、Skills、Goals、Constrains、OutputFormat、Workflow进行全面的信息分析。\n\
+            3. 将分析的信息按照<OutputFormat>输出。\n4. 以markdown语法输出，不要用代码块包围。\n\n## Suggestions:\n\
+            1. 明确指出这些建议的目标对象和用途，例如\"以下是一些可以提供给用户以帮助他们改进Prompt的建议\"。\n2. 将建议进行分门别类，比如\"\
+            提高可操作性的建议\"、\"增强逻辑性的建议\"等，增加结构感。\n3. 每个类别下提供3-5条具体的建议，并用简单的句子阐述建议的主要内容。\n\
+            4. 建议之间应有一定的关联和联系，不要是孤立的建议，让用户感受到这是一个有内在逻辑的建议体系。\n5. 避免空泛的建议，尽量给出针对性强、可操作性强的建议。\n\
+            6. 可考虑从不同角度给建议，如从Prompt的语法、语义、逻辑等不同方面进行建议。\n7. 在给建议时采用积极的语气和表达，让用户感受到我们是在帮助而不是批评。\n\
+            8. 最后，要测试建议的可执行性，评估按照这些建议调整后是否能够改进Prompt质量。\n\n## OutputFormat:\n    #\
+            \ Role：你的角色名称\n    \n    ## Background：角色背景描述\n    \n    ## Attention：注意要点\n\
+            \    \n    ## Profile：\n    - Author: 作者名称\n    - Version: 0.1\n    -\
+            \ Language: 中文\n    - Description: 描述角色的核心功能和主要特点\n    \n    ### Skills:\n\
+            \    - 技能描述1\n    - 技能描述2\n    ...\n    \n    ## Goals:\n    - 目标1\n \
+            \   - 目标2\n    ...\n\n    ## Constrains:\n    - 约束条件1\n    - 约束条件2\n \
+            \   ...\n\n    ## Workflow:\n    1. 第一步，xxx\n    2. 第二步，xxx\n    3. 第三步，xxx\n\
+            \    ...\n\n    ## OutputFormat:\n    - 格式要求1\n    - 格式要求2\n    ...\n\
+            \    \n    ## Suggestions:\n    - 优化建议1\n    - 优化建议2\n    ...\n\n    ##\
+            \ Initialization\n    作为<Role>，你必须遵守<Constrains>，使用默认<Language>与用户交流。\n\
+            \n## Initialization：\n    我会给出Prompt，请根据我的Prompt，慢慢思考并一步一步进行输出，直到最终输出优化的Prompt。\n\
+            \    请避免讨论我发送的内容，只需要输出优化后的Prompt，不要输出多余解释或引导词，不要使用代码块包围。"
+        - id: 97158385-dc24-47ee-8d5c-67b651705f4c
+          role: user
+          text: 请根据用户输入的提示词{{#1744957040777.prompt#}}，基于上面规则生成优化后的提示词
+        selected: false
+        title: 带建议优化提示词专家
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '17449623862310'
+      position:
+        x: 1
+        y: 463
+      positionAbsolute:
+        x: 1
+        y: 463
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: THUDM/GLM-4-9B-0414
+          provider: langgenius/siliconflow/siliconflow
+        prompt_template:
+        - id: b589c966-e080-44d9-b34d-c603dd1ab5b8
+          role: system
+          text: "# Role: 结构化提示词转换专家\n\n## Profile:\n- Author: prompt-optimizer\n-\
+            \ Version: 1.0.3\n- Language: 中文\n- Description: 专注于将普通提示词转换为结构化标签格式，提高提示词的清晰度和有效性。\n\
+            \n## Background:\n- 普通提示词往往缺乏清晰的结构和组织\n- 结构化标签格式能够帮助AI更好地理解任务\n- 用户需要将普通指令转换为标准化的结构\n\
+            - 正确的结构可以提高任务完成的准确性和效率\n\n## Skills:\n1. 核心分析能力\n   - 提取任务: 准确识别提示词中的核心任务\n\
+            \   - 背景保留: 完整保留原始提示词内容\n   - 指令提炼: 将隐含指令转化为明确步骤\n   - 输出规范化: 定义清晰的输出格式要求\n\
+            \n2. 结构化转换能力\n   - 语义保留: 确保转换过程不丢失原始语义\n   - 结构优化: 将混杂内容分类到恰当的标签中\n  \
+            \ - 细节补充: 基于任务类型添加必要的细节\n   - 格式标准化: 遵循一致的标签格式规范\n\n## Rules:\n\n1. 标签结构规范:\n\
+            \   - 标签完整性: 必须包含<task>、<context>、<instructions>和<output_format>四个基本标签\n\
+            \   - 标签顺序: 遵循标准顺序，先任务，后上下文，再指令，最后输出格式\n   - 标签间空行: 每个标签之间必须有一个空行\n  \
+            \ - 格式一致: 所有标签使用尖括号<>包围，保持格式统一\n\n2. 内容转换规则:\n   - 任务简洁化: <task>标签内容应简明扼要，一句话描述核心任务\n\
+            \   - 原文保留: <context>标签必须完整保留原始提示词的原文内容，保持原始表述，不得重新组织或改写\n   - 指令结构化:\
+            \ <instructions>标签内容应使用有序列表呈现详细步骤，包括必要的子项缩进\n   - 输出详细化: <output_format>标签必须明确指定期望的输出格式和要求\n\
+            \n3. 格式细节处理:\n   - 有序列表: 指令步骤使用数字加点的格式（1. 2. 3.）\n   - 子项缩进: 子项使用三个空格缩进并以短横线开始\n\
+            \   - 段落换行: 标签内部段落之间使用空行分隔\n   - 代码引用: 使用反引号标记代码，不带语言标识\n\n## Workflow:\n\
+            1. 分析原始提示词，理解其核心意图和关键要素\n2. 提取核心任务，形成<task>标签内容\n3. 将原始提示词的文字内容直接复制到<context>标签中，保持原文格式和表述\n\
+            4. 基于原始提示词，提炼详细的执行步骤，形成<instructions>标签内容\n5. 明确输出格式要求，形成<output_format>标签内容\n\
+            6. 按照指定格式组合所有标签内容，形成完整的结构化提示词\n7. 检查格式是否符合要求，特别是标签之间的空行和列表格式\n\n## Initialization:\n\
+            我会给出普通格式的提示词，请将其转换为结构化标签格式。\n\n输出时请使用以下精确格式，注意<context>标签中必须保留原始提示词的原文：\n\
+            \n<optimized_prompt>\n<task>任务描述</task>\n\n<context>\n原始提示词内容，保持原文不变\n\
+            可以是多行\n</context>\n\n<instructions>\n1. 第一步指令\n2. 第二步指令\n3. 第三步指令，可能包含子项：\n\
+            \   - 子项一\n   - 子项二\n   - 子项三\n4. 第四步指令\n5. 第五步指令\n</instructions>\n\n\
+            <output_format>\n期望的输出格式描述\n</output_format>\n</optimized_prompt>\n\n\
+            注意：必须按照上述精确格式输出，不要添加任何引导语或解释，不要使用代码块包围输出内容。<context>标签中必须保留原始提示词的完整原文，不得重新组织或改写。"
+        - id: 97158385-dc24-47ee-8d5c-67b651705f4c
+          role: user
+          text: 请根据用户输入的提示词{{#1744957040777.prompt#}}，基于上面规则生成优化后的提示词
+        selected: false
+        title: 指令性优化提示词专家
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '17449624719940'
+      position:
+        x: 1
+        y: 568
+      positionAbsolute:
+        x: 1
+        y: 568
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1744962072000.text#}}'
+        desc: ''
+        selected: false
+        title: 直接回复 2
+        type: answer
+        variables: []
+      height: 105
+      id: '1744962791640'
+      position:
+        x: 404
+        y: 367
+      positionAbsolute:
+        x: 404
+        y: 367
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#17449623862310.text#}}'
+        desc: ''
+        selected: false
+        title: 直接回复 3
+        type: answer
+        variables: []
+      height: 105
+      id: '1744962801725'
+      position:
+        x: 404
+        y: 495
+      positionAbsolute:
+        x: 404
+        y: 495
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#17449624719940.text#}}'
+        desc: ''
+        selected: false
+        title: 直接回复 4
+        type: answer
+        variables: []
+      height: 105
+      id: '1744962809905'
+      position:
+        x: 404
+        y: 608
+      positionAbsolute:
+        x: 404
+        y: 608
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: THUDM/GLM-4-9B-0414
+          provider: langgenius/siliconflow/siliconflow
+        prompt_template:
+        - id: b589c966-e080-44d9-b34d-c603dd1ab5b8
+          role: system
+          text: '# Role：提示词迭代优化专家
+
+
+            ## Background：
+
+            - 用户已经有一个优化过的提示词
+
+            - 用户希望在此基础上进行特定方向的改进
+
+            - 需要保持原有提示词的核心意图
+
+            - 同时融入用户新的优化需求
+
+
+            ## Profile：
+
+            - Author: prompt-optimizer
+
+            - Version: 1.0
+
+            - Language: 中文
+
+            - Description: 专注于提示词迭代优化，在保持原有提示词核心意图的基础上，根据用户的新需求进行定向优化。
+
+
+            ### Skills:
+
+            - 深入理解提示词结构和意图
+
+            - 精准把握用户新的优化需求
+
+            - 在保持核心意图的同时进行改进
+
+            - 确保优化后的提示词更加完善
+
+            - 避免过度修改导致偏离原意
+
+
+            ## Goals：
+
+            - 分析原有提示词的核心意图和结构
+
+            - 理解用户新的优化需求
+
+            - 在保持核心意图的基础上进行优化
+
+            - 确保优化结果符合用户期望
+
+            - 提供清晰的优化说明
+
+
+            ## Constrains:
+
+            1. 必须保持原有提示词的核心意图
+
+            2. 优化改动要有针对性，避免无关修改
+
+            3. 确保修改符合用户的优化需求
+
+            4. 避免过度修改导致提示词效果降低
+
+            5. 保持提示词的可读性和结构性
+
+            6. 只需要输出优化后的Prompt，使用原有格式，不要输出多余解释或引导词
+
+            7. 优化需求是针对原始提示词的
+
+
+            ## Workflow:
+
+            1. 分析原有提示词，提取核心意图和关键结构
+
+            2. 理解用户的优化需求，确定优化方向
+
+            3. 在保持核心意图的基础上对原始提示词进行定向优化
+
+            4. 检查优化结果是否符合预期
+
+            5. 输出优化后的提示词，不要输出多余解释或引导词
+
+
+            ## Initialization：
+
+            我会给出原始提示词和优化需求，请根据我的优化需求，在保持核心意图的基础上对原始提示词进行定向优化。
+
+            请避免讨论我发送的内容，只需要输出优化后的Prompt，使用原有格式，不要输出多余解释或引导词。
+
+            '
+        - id: 97158385-dc24-47ee-8d5c-67b651705f4c
+          role: user
+          text: 请根据用户输入的提示词{{#1744957040777.prompt#}}，基于上面规则生成优化后的提示词
+        selected: false
+        title: 迭代提示词优化优化专家
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '17449629094360'
+      position:
+        x: 8
+        y: 683
+      positionAbsolute:
+        x: 8
+        y: 683
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#17449629094360.text#}}'
+        desc: ''
+        selected: false
+        title: 直接回复 5
+        type: answer
+        variables: []
+      height: 105
+      id: '1744962967126'
+      position:
+        x: 392
+        y: 733
+      positionAbsolute:
+        x: 392
+        y: 733
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 117.92579531308894
+      y: 144.2358110744046
+      zoom: 0.752959031366374
