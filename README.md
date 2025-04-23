@@ -71,6 +71,7 @@
 | 儿童故事绘本-PPT Agent.yml | ![image-20250414220712520](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250414220712520.png) | llm、markdown转PPTX 转换器 | 2025年4月14日 | wwwzhouhui | 1.1.3 |
 | 儿童故事绘本-PPT chatflow.yml | ![image-20250414220809839](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250414220809839.png) | agent、markdown转换器 | 2025年4月14日 | wwwzhouhui | 1.1.3 |
 | 提示词生成器chatflow.yml | ![image-20250419131519060](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250419131519060.png) | llm、条件判断器 | 2025年4月19日 | wwwzhouhui | 1.1.3 |
+| 软件开发类合同审查chatflow.yml | ![image-20250423120822891](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250423120822891.png) | llm、文档提取器、markdown转换器、企业微信 | 2025年4月23日 | wwwzhouhui | 1.1.3 |
 
 ### 部分视频链接地址
 
@@ -95,6 +96,8 @@
 
 
 ## 更新说明
+2025年4月23 日-version 0.0.3.08：增加软件开发类合同审查chatflow.yml
+
 2025年4月19 日-version 0.0.3.07：增加提示词生成器chatflow.yml
 
 2025年4月14 日-version 0.0.3.06：增加儿童故事绘本-PPT Agent.yml、儿童故事绘本-PPT chatflow.yml
@@ -274,6 +277,14 @@ https://aqma351r01f.feishu.cn/wiki/HF5FwMDQkiHoCokvbQAcZLu3nAg?table=tbleOWb4WgX
     <img src="https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250419170233151.png" >
     修改后重启，重启后我们访问web应用<br>
     <img src="https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250419170415108.png" >
+</details>
+<details>
+<summary>文档提取器不支持 doc文件上传</summary>
+     文档提取器不支持doc文件<br>
+<img src="https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250423110402835.png" ><br>
+    如果用户输入doc 文件上传会报错<br>
+    <img src="https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250423110443749.png" >
+    建议用wps或者office 转一下变成docx文件<br>
 </details>
 
 ## 技术交流群

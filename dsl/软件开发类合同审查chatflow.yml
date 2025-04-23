@@ -1,0 +1,440 @@
+app:
+  description: 本工作流主要是解决用户上传的文本类软件开发合同审查风险，提出审查意见，生成审查报告
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 软件开发类合同审查chatflow
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/siliconflow:0.0.8@217f973bd7ced1b099c2f0c669f1356bdf4cc38b8372fd58d7874f9940b95de3
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: bowenliang123/md_exporter:0.4.1@c027998d893496eedb2e94e98afc993589a587b418cbcc246b9663e4c364cc70
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/wecom:0.0.2@13392834d29569db50915818a9bc93dae67260b29a98885945ecc35dc0e8aab4
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 500
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 100
+        video_file_size_limit: 500
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: document-extractor
+      id: 1745372262597-source-1745372422791-target
+      source: '1745372262597'
+      sourceHandle: source
+      target: '1745372422791'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: document-extractor
+        targetType: llm
+      id: 1745372422791-source-llm-target
+      source: '1745372422791'
+      sourceHandle: source
+      target: llm
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: tool
+      id: llm-source-1745372583302-target
+      source: llm
+      sourceHandle: source
+      target: '1745372583302'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: answer
+      id: 1745372583302-source-answer-target
+      source: '1745372583302'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: tool
+      id: 1745372583302-source-1745373309922-target
+      source: '1745372583302'
+      sourceHandle: source
+      target: '1745373309922'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: 合同审查文件
+          max_length: 48
+          options: []
+          required: true
+          type: file
+          variable: file
+      height: 88
+      id: '1745372262597'
+      position:
+        x: -333
+        y: 290
+      positionAbsolute:
+        x: -333
+        y: 290
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: ''
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 10
+        model:
+          completion_params: {}
+          mode: chat
+          name: THUDM/GLM-4-32B-0414
+          provider: langgenius/siliconflow/siliconflow
+        prompt_template:
+        - id: 5f1efad3-e4e1-4c55-8836-49a4d2df5c50
+          role: system
+          text: "Role: 法律顾问、风险管理专家和行为心理学家的复合角色\n\nauthor: 周辉\n\nBackground: 在商业活动中，合同是保障各方权益的重要法律文书。然而，合同中常常存在显性和隐性的风险，需要从法律、风险管理和心理学的多个维度进行分析和评估。\n\
+            \nProfile: \n- 拥有丰富的商业合同审查经验的法律专家\n- 具备系统性风险评估能力的风险管理顾问\n- 精通人性分析的行为心理学家\n\
+            \nSkills:\n- 专业的法律分析能力\n- 系统的风险识别和评估能力\n- 深入的心理动机分析能力\n- 精准的合同漏洞识别能力\n\
+            - 实用的解决方案制定能力\n\nGoals:\n1. 全面审查合同条款，识别潜在法律风险\n2. 分析合同背后的心理动机和可能的陷阱\n\
+            3. 提供具体的修改建议和防范措施\n\nWorkflow:\n1. 法律层面分析\n   - 检查合同条款的合法性\n   - 识别权利义务是否对等\n\
+            \   - 评估违约责任设置是否合理\n   - 审查争议解决机制的有效性\n\n2. 风险管理分析\n   - 识别商业风险点\n   -\
+            \ 评估履约风险\n   - 分析财务风险\n   - 考察操作风险\n\n3. 心理动机分析\n   - 解析对方的潜在意图\n   -\
+            \ 评估可能的欺诈倾向\n   - 分析权力动态关系\n   - 预测可能的不诚信行为\n\nOutputFormat:\n1. 风险评估报告\n\
+            \   - 法律风险清单\n   - 商业风险点列表\n   - 心理风险提示\n   - 具体修改建议\n\n2. 防范建议\n   -\
+            \ 条款修改建议\n   - 风险控制措施\n   - 谈判策略建议\n\nConstrains:\n1. 保持客观中立的分析态度\n2.\
+            \ 基于事实和专业知识提供建议\n3. 考虑建议的可操作性\n4. 确保分析的全面性和系统性\n5. 首次回复直接输出Initialization信息，不做多余解释\n\
+            \nInitialization:\n我是周辉的合同风险顾问，专注于从法律、风险管理和心理学三个维度为您分析合同中的潜在风险。请提供您需要审查的合同内容，我将为您进行全面的分析和评估。\n\
+            \n为了更好地服务于您，请确保提供：\n1. 完整的合同文本\n2. 合同签订的背景信息\n3. 您特别关注的问题或条款"
+        - id: 580337bf-2217-4080-8bb1-cd1d8a2162f8
+          role: user
+          text: 请根据用户上传的合同{{#1745372422791.text#}}对该合同内容进行审查，提供合同评审的风险点
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 88
+      id: llm
+      position:
+        x: 347
+        y: 290
+      positionAbsolute:
+        x: 347
+        y: 290
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        answer: "{{#llm.text#}}\n <br>\n{{#1745372583302.files#}}"
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 122
+      id: answer
+      position:
+        x: 1066
+        y: 290
+      positionAbsolute:
+        x: 1066
+        y: 290
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        is_array_file: false
+        selected: false
+        title: 文档提取器
+        type: document-extractor
+        variable_selector:
+        - '1745372262597'
+        - file
+      height: 90
+      id: '1745372422791'
+      position:
+        x: 2
+        y: 290
+      positionAbsolute:
+        x: 2
+        y: 290
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Markdown text
+            ja_JP: Markdown text
+            pt_BR: Markdown text
+            zh_Hans: Markdown格式文本
+          label:
+            en_US: Markdown text
+            ja_JP: Markdown text
+            pt_BR: Markdown text
+            zh_Hans: Markdown格式文本
+          llm_description: ''
+          max: null
+          min: null
+          name: md_text
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        params:
+          md_text: ''
+        provider_id: bowenliang123/md_exporter/md_exporter
+        provider_name: bowenliang123/md_exporter/md_exporter
+        provider_type: builtin
+        selected: false
+        title: Markdown转Docx文件
+        tool_configurations: {}
+        tool_label: Markdown转Docx文件
+        tool_name: md_to_docx
+        tool_parameters:
+          md_text:
+            type: mixed
+            value: '{{#llm.text#}}'
+        type: tool
+      height: 52
+      id: '1745372583302'
+      position:
+        x: 709
+        y: 290
+      positionAbsolute:
+        x: 709
+        y: 290
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: Wecom Group bot webhook key
+            ja_JP: Wecom Group bot webhook key
+            pt_BR: Wecom Group bot webhook key
+            zh_Hans: 群机器人webhook的key
+          label:
+            en_US: Wecom Group bot webhook key
+            ja_JP: Wecom Group bot webhook key
+            pt_BR: Wecom Group bot webhook key
+            zh_Hans: 群机器人webhook的key
+          llm_description: ''
+          max: null
+          min: null
+          name: hook_key
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: secret-input
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Content to sent to the group.
+            ja_JP: Content to sent to the group.
+            pt_BR: Content to sent to the group.
+            zh_Hans: 群消息文本
+          label:
+            en_US: content
+            ja_JP: content
+            pt_BR: content
+            zh_Hans: 消息内容
+          llm_description: Content of the message
+          max: null
+          min: null
+          name: content
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: text
+          form: form
+          human_description:
+            en_US: Wecom Group bot message type
+            ja_JP: Wecom Group bot message type
+            pt_BR: Wecom Group bot message type
+            zh_Hans: 群机器人webhook的消息类型
+          label:
+            en_US: Wecom Group bot message type
+            ja_JP: Wecom Group bot message type
+            pt_BR: Wecom Group bot message type
+            zh_Hans: 群机器人webhook的消息类型
+          llm_description: ''
+          max: null
+          min: null
+          name: message_type
+          options:
+          - label:
+              en_US: Text
+              ja_JP: Text
+              pt_BR: Text
+              zh_Hans: 文本
+            value: text
+          - label:
+              en_US: Markdown
+              ja_JP: Markdown
+              pt_BR: Markdown
+              zh_Hans: Markdown
+            value: markdown
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: select
+        params:
+          content: ''
+          hook_key: ''
+          message_type: ''
+        provider_id: langgenius/wecom/wecom
+        provider_name: langgenius/wecom/wecom
+        provider_type: builtin
+        selected: false
+        title: 发送群消息
+        tool_configurations:
+          hook_key: 81620a86-d986-4509-ac0f-ac93aa7a9d4f
+          message_type: text
+        tool_label: 发送群消息
+        tool_name: wecom_group_bot
+        tool_parameters:
+          content:
+            type: mixed
+            value: '{{#llm.text#}}'
+        type: tool
+      height: 114
+      id: '1745373309922'
+      position:
+        x: 1066
+        y: 451
+      positionAbsolute:
+        x: 1066
+        y: 451
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    viewport:
+      x: 250.84515233305274
+      y: 79.18744200858177
+      zoom: 0.7348672401405871
