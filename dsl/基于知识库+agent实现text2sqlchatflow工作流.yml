@@ -1,0 +1,477 @@
+app:
+  description: 本工作流主要是基于知识库SQL语句，然后使用aigent实现text2sql的工作流，从而实现更容易实现一个text2sql的解决方案
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 基于知识库+agent实现text2sqlchatflow工作流
+  use_icon_as_answer_icon: true
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/siliconflow:0.0.8@217f973bd7ced1b099c2f0c669f1356bdf4cc38b8372fd58d7874f9940b95de3
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 500
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 100
+        video_file_size_limit: 500
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: knowledge-retrieval
+      id: 1745388809909-source-1745388821686-target
+      source: '1745388809909'
+      sourceHandle: source
+      target: '1745388821686'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: agent
+      id: 1745388821686-source-1745388903625-target
+      source: '1745388821686'
+      sourceHandle: source
+      target: '1745388903625'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: agent
+        targetType: answer
+      id: 1745388903625-source-answer-target
+      source: '1745388903625'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables: []
+      height: 52
+      id: '1745388809909'
+      position:
+        x: 80
+        y: 282
+      positionAbsolute:
+        x: 80
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        answer: '{{#1745388903625.text#}}'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 103
+      id: answer
+      position:
+        x: 1036
+        y: 275
+      positionAbsolute:
+        x: 1036
+        y: 275
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        dataset_ids:
+        - b7bdaa0d-fdef-4e35-85ab-3146ef7982a6
+        desc: ''
+        multiple_retrieval_config:
+          reranking_enable: true
+          reranking_mode: reranking_model
+          reranking_model:
+            model: BAAI/bge-reranker-v2-m3
+            provider: langgenius/siliconflow/siliconflow
+          top_k: 4
+        query_variable_selector:
+        - '1745388809909'
+        - sys.query
+        retrieval_mode: multiple
+        selected: false
+        title: 知识检索
+        type: knowledge-retrieval
+      height: 90
+      id: '1745388821686'
+      position:
+        x: 383
+        y: 282
+      positionAbsolute:
+        x: 383
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        agent_parameters:
+          instruction:
+            type: constant
+            value: 请根据用户输入的{{#sys.query#}}语句和{{#1745388821686.result#}}相关内容实现SQL语句查询
+          model:
+            type: constant
+            value:
+              completion_params: {}
+              mode: chat
+              model: ep-20250205144300-jv6dk
+              model_type: llm
+              provider: langgenius/openai_api_compatible/openai_api_compatible
+              type: model-selector
+          query:
+            type: constant
+            value: '{{#sys.query#}}'
+          tools:
+            type: constant
+            value:
+            - enabled: true
+              extra:
+                description: ''
+              parameters:
+                db_uri:
+                  auto: 1
+                  value: null
+                query:
+                  auto: 1
+                  value: null
+              provider_name: hjlarry/database/database
+              schemas:
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: The SQL query string.
+                  ja_JP: The SQL query string.
+                  pt_BR: The SQL query string.
+                  zh_Hans: SQL 查询语句。
+                label:
+                  en_US: SQL Query
+                  ja_JP: SQL Query
+                  pt_BR: SQL Query
+                  zh_Hans: SQL 查询语句
+                llm_description: The SQL query string.
+                max: null
+                min: null
+                name: query
+                options: []
+                placeholder: null
+                precision: null
+                required: true
+                scope: null
+                template: null
+                type: string
+              - auto_generate: null
+                default: json
+                form: form
+                human_description:
+                  en_US: Choose the output format.
+                  ja_JP: Choose the output format.
+                  pt_BR: Choose the output format.
+                  zh_Hans: 选择输出格式。
+                label:
+                  en_US: Output format
+                  ja_JP: Output format
+                  pt_BR: Output format
+                  zh_Hans: 输出格式
+                llm_description: ''
+                max: null
+                min: null
+                name: format
+                options:
+                - label:
+                    en_US: JSON
+                    ja_JP: JSON
+                    pt_BR: JSON
+                    zh_Hans: JSON
+                  value: json
+                - label:
+                    en_US: CSV
+                    ja_JP: CSV
+                    pt_BR: CSV
+                    zh_Hans: CSV
+                  value: csv
+                - label:
+                    en_US: YAML
+                    ja_JP: YAML
+                    pt_BR: YAML
+                    zh_Hans: YAML
+                  value: yaml
+                - label:
+                    en_US: Markdown
+                    ja_JP: Markdown
+                    pt_BR: Markdown
+                    zh_Hans: Markdown
+                  value: md
+                - label:
+                    en_US: Excel
+                    ja_JP: Excel
+                    pt_BR: Excel
+                    zh_Hans: Excel
+                  value: xlsx
+                - label:
+                    en_US: HTML
+                    ja_JP: HTML
+                    pt_BR: HTML
+                    zh_Hans: HTML
+                  value: html
+                placeholder: null
+                precision: null
+                required: false
+                scope: null
+                template: null
+                type: select
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: Optional, Filling in this field will overwrite the database
+                    connection entered during authorization.
+                  ja_JP: Optional, Filling in this field will overwrite the database
+                    connection entered during authorization.
+                  pt_BR: Optional, Filling in this field will overwrite the database
+                    connection entered during authorization.
+                  zh_Hans: 选填，填写后将覆盖授权时填写的数据库连接。
+                label:
+                  en_US: DB URI
+                  ja_JP: DB URI
+                  pt_BR: DB URI
+                  zh_Hans: DB URI
+                llm_description: ''
+                max: null
+                min: null
+                name: db_uri
+                options: []
+                placeholder: null
+                precision: null
+                required: false
+                scope: null
+                template: null
+                type: string
+              settings:
+                format:
+                  value: json
+              tool_label: SQL Execute
+              tool_name: sql_execute
+              type: builtin
+            - enabled: true
+              extra:
+                description: ''
+              parameters:
+                db_uri:
+                  auto: 1
+                  value: null
+                query:
+                  auto: 1
+                  value: null
+                tables:
+                  auto: 1
+                  value: null
+              provider_name: hjlarry/database/database
+              schemas:
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: The user query.
+                  ja_JP: The user query.
+                  pt_BR: The user query.
+                  zh_Hans: 用户的问题。
+                label:
+                  en_US: Query string
+                  ja_JP: Query string
+                  pt_BR: Query string
+                  zh_Hans: 查询语句
+                llm_description: The user query.
+                max: null
+                min: null
+                name: query
+                options: []
+                placeholder: null
+                precision: null
+                required: true
+                scope: null
+                template: null
+                type: string
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: Specify which tables to provide to LLM as context. If not
+                    specified, all tables will be used. Multi tables use comma to
+                    separate.
+                  ja_JP: Specify which tables to provide to LLM as context. If not
+                    specified, all tables will be used. Multi tables use comma to
+                    separate.
+                  pt_BR: Specify which tables to provide to LLM as context. If not
+                    specified, all tables will be used. Multi tables use comma to
+                    separate.
+                  zh_Hans: 指定哪些表用于提供给LLM作为上下文，如不指定，则使用所有表。多张表用半角逗号隔开。
+                label:
+                  en_US: Tables
+                  ja_JP: Tables
+                  pt_BR: Tables
+                  zh_Hans: 表
+                llm_description: Specify which tables schema do you want to get as
+                  model context. Multi tables use comma to separate. Leave it blank
+                  if you want to get all tables schema.
+                max: null
+                min: null
+                name: tables
+                options: []
+                placeholder: null
+                precision: null
+                required: false
+                scope: null
+                template: null
+                type: string
+              - auto_generate: null
+                default: null
+                form: form
+                human_description:
+                  en_US: Choose the model.
+                  ja_JP: Choose the model.
+                  pt_BR: Choose the model.
+                  zh_Hans: 选择模型。
+                label:
+                  en_US: Model
+                  ja_JP: Model
+                  pt_BR: Model
+                  zh_Hans: 模型
+                llm_description: ''
+                max: null
+                min: null
+                name: model
+                options: []
+                placeholder: null
+                precision: null
+                required: true
+                scope: llm
+                template: null
+                type: model-selector
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: Optional, Filling in this field will overwrite the database
+                    connection entered during authorization.
+                  ja_JP: Optional, Filling in this field will overwrite the database
+                    connection entered during authorization.
+                  pt_BR: Optional, Filling in this field will overwrite the database
+                    connection entered during authorization.
+                  zh_Hans: 选填，填写后将覆盖授权时填写的数据库连接。
+                label:
+                  en_US: DB URI
+                  ja_JP: DB URI
+                  pt_BR: DB URI
+                  zh_Hans: DB URI
+                llm_description: ''
+                max: null
+                min: null
+                name: db_uri
+                options: []
+                placeholder: null
+                precision: null
+                required: false
+                scope: null
+                template: null
+                type: secret-input
+              settings:
+                model:
+                  value:
+                    completion_params: {}
+                    mode: chat
+                    model: deepseek-V3
+                    model_type: llm
+                    provider: langgenius/volcengine_maas/volcengine_maas
+                    type: model-selector
+              tool_label: Text to SQL
+              tool_name: text2sql
+              type: builtin
+        agent_strategy_label: ReAct
+        agent_strategy_name: ReAct
+        agent_strategy_provider_name: langgenius/agent/agent
+        desc: ''
+        output_schema: null
+        plugin_unique_identifier: langgenius/agent:0.0.14@26958a0e80a10655ce73812bdb7c35a66ce7b16f5ac346d298bda17ff85efd1e
+        selected: false
+        title: Agent
+        type: agent
+      height: 196
+      id: '1745388903625'
+      position:
+        x: 700
+        y: 282
+      positionAbsolute:
+        x: 700
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    viewport:
+      x: -323
+      y: -19
+      zoom: 1

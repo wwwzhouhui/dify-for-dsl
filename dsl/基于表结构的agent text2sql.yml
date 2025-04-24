@@ -1,0 +1,129 @@
+app:
+  description: 基于表结构的agent text2sql
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: agent-chat
+  name: 基于表结构的agent text2sql
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: hjlarry/database:0.0.4@3a0b78c887a9321a78fca56f4c68ca85434a298032d34964d92b61e322977938
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/volcengine_maas:0.0.7@f8e44422cfa5b9a6ac1f2d3b43ef1069868efdad1e5cec2590de3f53ceac37b0
+kind: app
+model_config:
+  agent_mode:
+    enabled: true
+    max_iteration: 5
+    prompt: null
+    strategy: react
+    tools:
+    - enabled: true
+      notAuthor: false
+      provider_id: hjlarry/database/database
+      provider_name: hjlarry/database/database
+      provider_type: builtin
+      tool_label: SQL Execute
+      tool_name: sql_execute
+      tool_parameters:
+        db_uri: ''
+        format: ''
+        query: ''
+    - enabled: true
+      notAuthor: false
+      provider_id: hjlarry/database/database
+      provider_name: hjlarry/database/database
+      provider_type: builtin
+      tool_label: Text to SQL
+      tool_name: text2sql
+      tool_parameters:
+        db_uri: null
+        model:
+          completion_params: {}
+          mode: chat
+          model: deepseek-V3
+          model_type: llm
+          provider: langgenius/volcengine_maas/volcengine_maas
+          type: model-selector
+        query: null
+        tables: null
+  annotation_reply:
+    enabled: false
+  chat_prompt_config: {}
+  completion_prompt_config: {}
+  dataset_configs:
+    datasets:
+      datasets: []
+    reranking_enable: false
+    retrieval_model: multiple
+    top_k: 4
+  dataset_query_variable: ''
+  external_data_tools: []
+  file_upload:
+    allowed_file_extensions:
+    - .JPG
+    - .JPEG
+    - .PNG
+    - .GIF
+    - .WEBP
+    - .SVG
+    - .MP4
+    - .MOV
+    - .MPEG
+    - .MPGA
+    allowed_file_types: []
+    allowed_file_upload_methods:
+    - remote_url
+    - local_file
+    enabled: false
+    image:
+      detail: high
+      enabled: false
+      number_limits: 3
+      transfer_methods:
+      - remote_url
+      - local_file
+    number_limits: 3
+  model:
+    completion_params:
+      stop: []
+    mode: chat
+    name: deepseek-V3
+    provider: langgenius/volcengine_maas/volcengine_maas
+  more_like_this:
+    enabled: false
+  opening_statement: ''
+  pre_prompt: "-- 创建学生成绩表\nCREATE TABLE `student_scores` (\n  `id` bigint NOT NULL\
+    \ AUTO_INCREMENT COMMENT '主键ID',\n  `student_id` varchar(20) NOT NULL COMMENT\
+    \ '学号',\n  `student_name` varchar(50) NOT NULL COMMENT '学生姓名',\n  `class_name`\
+    \ varchar(50) NOT NULL COMMENT '班级名称',\n  `subject` varchar(50) NOT NULL COMMENT\
+    \ '科目名称',\n  `score` decimal(5,2) NOT NULL COMMENT '分数',\n  `exam_date` date NOT\
+    \ NULL COMMENT '考试日期',\n  `semester` varchar(20) NOT NULL COMMENT '学期',\n  `grade`\
+    \ varchar(20) NOT NULL COMMENT '年级',\n  `created_at` datetime NOT NULL DEFAULT\
+    \ CURRENT_TIMESTAMP COMMENT '创建时间',\n  `updated_at` datetime NOT NULL DEFAULT\
+    \ CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',\n  PRIMARY KEY\
+    \ (`id`),\n  KEY `idx_student_id` (`student_id`),\n  KEY `idx_exam_date` (`exam_date`),\n\
+    \  KEY `idx_subject` (`subject`),\n  KEY `idx_class` (`class_name`)\n) ENGINE=InnoDB\
+    \ DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='学生成绩信息表';"
+  prompt_type: simple
+  retriever_resource:
+    enabled: true
+  sensitive_word_avoidance:
+    configs: []
+    enabled: false
+    type: ''
+  speech_to_text:
+    enabled: false
+  suggested_questions: []
+  suggested_questions_after_answer:
+    enabled: false
+  text_to_speech:
+    enabled: false
+    language: ''
+    voice: ''
+  user_input_form: []
+version: 0.1.5
