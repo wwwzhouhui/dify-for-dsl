@@ -1,0 +1,747 @@
+app:
+  description: 使用dAI-Agent实现魔搭社区MCP-Server工作流
+  icon: heart_eyes
+  icon_background: '#E0EAFF'
+  mode: advanced-chat
+  name: 魔搭社区MCP-Server
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.11@410445eba2fa0f693d26dea2c3b9ffe51ad0777e021146ff877af6098412efc7
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 500
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 100
+        video_file_size_limit: 500
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInLoop: false
+        sourceType: agent
+        targetType: answer
+      id: 1745638786600-source-answer-target
+      source: '1745638786600'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: question-classifier
+      id: 1745638761957-source-1745644550052-target
+      source: '1745638761957'
+      sourceHandle: source
+      target: '1745644550052'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: agent
+      id: 1745644550052-1-1745638786600-target
+      source: '1745644550052'
+      sourceHandle: '1'
+      target: '1745638786600'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: agent
+      id: 1745644550052-2-1745644910913-target
+      source: '1745644550052'
+      sourceHandle: '2'
+      target: '1745644910913'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: agent
+        targetType: answer
+      id: 1745644910913-source-1745645036074-target
+      source: '1745644910913'
+      sourceHandle: source
+      target: '1745645036074'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: agent
+      id: 1745644550052-1745645475606-1745645505201-target
+      source: '1745644550052'
+      sourceHandle: '1745645475606'
+      target: '1745645505201'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: agent
+        targetType: answer
+      id: 1745645505201-source-1745645594040-target
+      source: '1745645505201'
+      sourceHandle: source
+      target: '1745645594040'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: agent
+      id: 1745644550052-1745645796845-1745645830732-target
+      source: '1745644550052'
+      sourceHandle: '1745645796845'
+      target: '1745645830732'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: agent
+        targetType: answer
+      id: 1745645830732-source-1745645919618-target
+      source: '1745645830732'
+      sourceHandle: source
+      target: '1745645919618'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables: []
+      height: 53
+      id: '1745638761957'
+      position:
+        x: -763
+        y: 282
+      positionAbsolute:
+        x: -763
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1745638786600.text#}}'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 105
+      id: answer
+      position:
+        x: 679.8393800126044
+        y: 108
+      positionAbsolute:
+        x: 679.8393800126044
+        y: 108
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        agent_parameters:
+          instruction:
+            type: constant
+            value: 请根据用户输入的{{#sys.query#}} 使用amap-maps 实现查询
+          mcp_server:
+            type: constant
+            value: https://mcp.api-inference.modelscope.cn/sse/xxxxxxx
+          model:
+            type: constant
+            value:
+              completion_params: {}
+              mode: chat
+              model: deepseek-V3
+              model_type: llm
+              provider: langgenius/volcengine_maas/volcengine_maas
+              type: model-selector
+          query:
+            type: constant
+            value: '{{#sys.query#}} '
+          tools:
+            type: constant
+            value:
+            - enabled: true
+              extra:
+                description: ''
+              parameters:
+                localtime:
+                  auto: 1
+                  value: null
+                timezone:
+                  auto: 1
+                  value: null
+              provider_name: time
+              schemas:
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: localtime, such as 2024-1-1 0:0:0
+                  ja_JP: localtime, such as 2024-1-1 0:0:0
+                  pt_BR: localtime, such as 2024-1-1 0:0:0
+                  zh_Hans: 本地时间, 比如2024-1-1 0:0:0
+                label:
+                  en_US: localtime
+                  ja_JP: localtime
+                  pt_BR: localtime
+                  zh_Hans: 本地时间
+                llm_description: null
+                max: null
+                min: null
+                name: localtime
+                options: []
+                placeholder: null
+                precision: null
+                required: true
+                scope: null
+                template: null
+                type: string
+              - auto_generate: null
+                default: Asia/Shanghai
+                form: llm
+                human_description:
+                  en_US: Timezone, such as Asia/Shanghai
+                  ja_JP: Timezone, such as Asia/Shanghai
+                  pt_BR: Timezone, such as Asia/Shanghai
+                  zh_Hans: 时区, 比如Asia/Shanghai
+                label:
+                  en_US: Timezone
+                  ja_JP: Timezone
+                  pt_BR: Timezone
+                  zh_Hans: 时区
+                llm_description: null
+                max: null
+                min: null
+                name: timezone
+                options: []
+                placeholder: null
+                precision: null
+                required: false
+                scope: null
+                template: null
+                type: string
+              settings: {}
+              tool_label: 获取时间戳
+              tool_name: localtime_to_timestamp
+              type: builtin
+        agent_strategy_label: MCP FunctionCalling
+        agent_strategy_name: function_calling
+        agent_strategy_provider_name: hjlarry/agent/mcp_agent
+        desc: 高德地图Agent
+        output_schema: null
+        plugin_unique_identifier: hjlarry/agent:0.0.1@f42a5a80b1c77fd0655c755b70ad08da47ceb1acc3638cf13a0eb9ed42b3a128
+        selected: false
+        title: 高德地图Agent
+        type: agent
+      height: 225
+      id: '1745638786600'
+      position:
+        x: 293
+        y: 108
+      positionAbsolute:
+        x: 293
+        y: 108
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        classes:
+        - id: '1'
+          name: 城市的天气、地图经纬度、IP 地址、查询关键词搜或者周边搜获、骑行路径规划、驾车路径规划、公交路径规划 、距离测量 、周边搜
+        - id: '2'
+          name: 查询全部菜谱、今天有什么好吃的、智能推荐一周菜谱、查询菜谱
+        - id: '1745645475606'
+          name: 今天有什么最新新闻
+        - id: '1745645796845'
+          name: 每日一题
+        desc: ''
+        instructions: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: internlm3-latest
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        query_variable_selector:
+        - '1745638761957'
+        - sys.query
+        selected: false
+        title: 问题分类器
+        topics: []
+        type: question-classifier
+        vision:
+          enabled: false
+      height: 311
+      id: '1745644550052'
+      position:
+        x: -290
+        y: 262.82519789606357
+      positionAbsolute:
+        x: -290
+        y: 262.82519789606357
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        agent_parameters:
+          instruction:
+            type: constant
+            value: 请根据用户输入的{{#sys.query#}} 使用howtocook-mcp实现查询
+          mcp_server:
+            type: constant
+            value: https://mcp.api-inference.modelscope.cn/sse/xxxxx
+          model:
+            type: constant
+            value:
+              completion_params: {}
+              mode: chat
+              model: deepseek-V3
+              model_type: llm
+              provider: langgenius/volcengine_maas/volcengine_maas
+              type: model-selector
+          query:
+            type: constant
+            value: '{{#sys.query#}}'
+          tools:
+            type: constant
+            value:
+            - enabled: true
+              extra:
+                description: ''
+              parameters:
+                localtime:
+                  auto: 1
+                  value: null
+                timezone:
+                  auto: 1
+                  value: null
+              provider_name: time
+              schemas:
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: localtime, such as 2024-1-1 0:0:0
+                  ja_JP: localtime, such as 2024-1-1 0:0:0
+                  pt_BR: localtime, such as 2024-1-1 0:0:0
+                  zh_Hans: 本地时间, 比如2024-1-1 0:0:0
+                label:
+                  en_US: localtime
+                  ja_JP: localtime
+                  pt_BR: localtime
+                  zh_Hans: 本地时间
+                llm_description: null
+                max: null
+                min: null
+                name: localtime
+                options: []
+                placeholder: null
+                precision: null
+                required: true
+                scope: null
+                template: null
+                type: string
+              - auto_generate: null
+                default: Asia/Shanghai
+                form: llm
+                human_description:
+                  en_US: Timezone, such as Asia/Shanghai
+                  ja_JP: Timezone, such as Asia/Shanghai
+                  pt_BR: Timezone, such as Asia/Shanghai
+                  zh_Hans: 时区, 比如Asia/Shanghai
+                label:
+                  en_US: Timezone
+                  ja_JP: Timezone
+                  pt_BR: Timezone
+                  zh_Hans: 时区
+                llm_description: null
+                max: null
+                min: null
+                name: timezone
+                options: []
+                placeholder: null
+                precision: null
+                required: false
+                scope: null
+                template: null
+                type: string
+              settings: {}
+              tool_label: 获取时间戳
+              tool_name: localtime_to_timestamp
+              type: builtin
+        agent_strategy_label: MCP FunctionCalling
+        agent_strategy_name: function_calling
+        agent_strategy_provider_name: hjlarry/agent/mcp_agent
+        desc: 今天有什么好吃的Agent
+        output_schema: null
+        plugin_unique_identifier: hjlarry/agent:0.0.1@f42a5a80b1c77fd0655c755b70ad08da47ceb1acc3638cf13a0eb9ed42b3a128
+        selected: false
+        title: 好吃的推荐Agent
+        type: agent
+      height: 225
+      id: '1745644910913'
+      position:
+        x: 283
+        y: 368
+      positionAbsolute:
+        x: 283
+        y: 368
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1745644910913.text#}}'
+        desc: ''
+        selected: false
+        title: 直接回复 2
+        type: answer
+        variables: []
+      height: 105
+      id: '1745645036074'
+      position:
+        x: 679.8393800126044
+        y: 349.8393800126042
+      positionAbsolute:
+        x: 679.8393800126044
+        y: 349.8393800126042
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        agent_parameters:
+          instruction:
+            type: constant
+            value: 请根据用户输入的{{#sys.query#}} 使用tavily-mcp实现查询
+          mcp_server:
+            type: constant
+            value: https://mcp.api-inference.modelscope.cn/sse/xxxxx
+          model:
+            type: constant
+            value:
+              completion_params: {}
+              mode: chat
+              model: deepseek-V3
+              model_type: llm
+              provider: langgenius/volcengine_maas/volcengine_maas
+              type: model-selector
+          query:
+            type: constant
+            value: '{{#sys.query#}}'
+          tools:
+            type: constant
+            value:
+            - enabled: true
+              extra:
+                description: ''
+              parameters:
+                localtime:
+                  auto: 1
+                  value: null
+                timezone:
+                  auto: 1
+                  value: null
+              provider_name: time
+              schemas:
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: localtime, such as 2024-1-1 0:0:0
+                  ja_JP: localtime, such as 2024-1-1 0:0:0
+                  pt_BR: localtime, such as 2024-1-1 0:0:0
+                  zh_Hans: 本地时间, 比如2024-1-1 0:0:0
+                label:
+                  en_US: localtime
+                  ja_JP: localtime
+                  pt_BR: localtime
+                  zh_Hans: 本地时间
+                llm_description: null
+                max: null
+                min: null
+                name: localtime
+                options: []
+                placeholder: null
+                precision: null
+                required: true
+                scope: null
+                template: null
+                type: string
+              - auto_generate: null
+                default: Asia/Shanghai
+                form: llm
+                human_description:
+                  en_US: Timezone, such as Asia/Shanghai
+                  ja_JP: Timezone, such as Asia/Shanghai
+                  pt_BR: Timezone, such as Asia/Shanghai
+                  zh_Hans: 时区, 比如Asia/Shanghai
+                label:
+                  en_US: Timezone
+                  ja_JP: Timezone
+                  pt_BR: Timezone
+                  zh_Hans: 时区
+                llm_description: null
+                max: null
+                min: null
+                name: timezone
+                options: []
+                placeholder: null
+                precision: null
+                required: false
+                scope: null
+                template: null
+                type: string
+              settings: {}
+              tool_label: 获取时间戳
+              tool_name: localtime_to_timestamp
+              type: builtin
+        agent_strategy_label: MCP FunctionCalling
+        agent_strategy_name: function_calling
+        agent_strategy_provider_name: hjlarry/agent/mcp_agent
+        desc: Tavily智搜Agent最新新闻
+        output_schema: null
+        plugin_unique_identifier: hjlarry/agent:0.0.1@f42a5a80b1c77fd0655c755b70ad08da47ceb1acc3638cf13a0eb9ed42b3a128
+        selected: false
+        title: Tavily智搜Agent
+        type: agent
+      height: 225
+      id: '1745645505201'
+      position:
+        x: 287.1079000017437
+        y: 673
+      positionAbsolute:
+        x: 287.1079000017437
+        y: 673
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1745645505201.text#}}'
+        desc: ''
+        selected: false
+        title: 直接回复 3
+        type: answer
+        variables: []
+      height: 105
+      id: '1745645594040'
+      position:
+        x: 665.4958805289241
+        y: 658.7133905322862
+      positionAbsolute:
+        x: 665.4958805289241
+        y: 658.7133905322862
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        agent_parameters:
+          instruction:
+            type: constant
+            value: 请根据用户输入的{{#sys.query#}} 使用leetcode-mcp-server实现查询
+          mcp_server:
+            type: constant
+            value: https://mcp.api-inference.modelscope.cn/sse/xxxxx
+          model:
+            type: constant
+            value:
+              completion_params: {}
+              mode: chat
+              model: deepseek-V3
+              model_type: llm
+              provider: langgenius/volcengine_maas/volcengine_maas
+              type: model-selector
+          query:
+            type: constant
+            value: '{{#sys.query#}}'
+          tools:
+            type: constant
+            value:
+            - enabled: true
+              extra:
+                description: ''
+              parameters:
+                localtime:
+                  auto: 1
+                  value: null
+                timezone:
+                  auto: 1
+                  value: null
+              provider_name: time
+              schemas:
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: localtime, such as 2024-1-1 0:0:0
+                  ja_JP: localtime, such as 2024-1-1 0:0:0
+                  pt_BR: localtime, such as 2024-1-1 0:0:0
+                  zh_Hans: 本地时间, 比如2024-1-1 0:0:0
+                label:
+                  en_US: localtime
+                  ja_JP: localtime
+                  pt_BR: localtime
+                  zh_Hans: 本地时间
+                llm_description: null
+                max: null
+                min: null
+                name: localtime
+                options: []
+                placeholder: null
+                precision: null
+                required: true
+                scope: null
+                template: null
+                type: string
+              - auto_generate: null
+                default: Asia/Shanghai
+                form: llm
+                human_description:
+                  en_US: Timezone, such as Asia/Shanghai
+                  ja_JP: Timezone, such as Asia/Shanghai
+                  pt_BR: Timezone, such as Asia/Shanghai
+                  zh_Hans: 时区, 比如Asia/Shanghai
+                label:
+                  en_US: Timezone
+                  ja_JP: Timezone
+                  pt_BR: Timezone
+                  zh_Hans: 时区
+                llm_description: null
+                max: null
+                min: null
+                name: timezone
+                options: []
+                placeholder: null
+                precision: null
+                required: false
+                scope: null
+                template: null
+                type: string
+              settings: {}
+              tool_label: 获取时间戳
+              tool_name: localtime_to_timestamp
+              type: builtin
+        agent_strategy_label: MCP FunctionCalling
+        agent_strategy_name: function_calling
+        agent_strategy_provider_name: hjlarry/agent/mcp_agent
+        desc: LeetCode(力扣)Agent每日一题
+        output_schema: null
+        plugin_unique_identifier: hjlarry/agent:0.0.1@f42a5a80b1c77fd0655c755b70ad08da47ceb1acc3638cf13a0eb9ed42b3a128
+        selected: false
+        title: LeetCode(力扣)Agent
+        type: agent
+      height: 225
+      id: '1745645830732'
+      position:
+        x: 283
+        y: 984.4360436628081
+      positionAbsolute:
+        x: 283
+        y: 984.4360436628081
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1745645830732.text#}}'
+        desc: ''
+        selected: false
+        title: 直接回复 4
+        type: answer
+        variables: []
+      height: 105
+      id: '1745645919618'
+      position:
+        x: 679.8393800126044
+        y: 998.9086410267598
+      positionAbsolute:
+        x: 679.8393800126044
+        y: 998.9086410267598
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 149.12801626955707
+      y: -414.8137310399154
+      zoom: 0.857243982853072

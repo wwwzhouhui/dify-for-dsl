@@ -74,6 +74,7 @@
 | 软件开发类合同审查chatflow.yml | ![image-20250423120822891](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250423120822891.png) | llm、文档提取器、markdown转换器、企业微信 | 2025年4月23日 | wwwzhouhui | 1.1.3 |
 | 基于知识库+agent实现text2sqlchatflow工作流.yml | ![image-20250424115545595](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250424115545595.png) | 知识检索、AGNET策略工具、database插件 | 2025年4月24日 | wwwzhouhui | 1.1.3 |
 | 基于表结构的agent text2sql.yml | ![image-20250424115715194](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250424115715194.png) | AGNET | 2025年4月24日 | wwwzhouhui | 1.1.3 |
+| 魔搭社区MCP-Server.yml | ![image-20250426162356017](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250426162356017.png) | 问题分类器、AGNET策略工具、魔搭社区MCP-server(高德MCP 、好吃的、Tavily、LeetCode(力扣)) | 2025年4月26日 | wwwzhouhui | 1.1.3 |
 
 ### 部分视频链接地址
 
@@ -98,6 +99,8 @@
 
 
 ## 更新说明
+2025年4月26 日-version 0.0.3.10：增加基于魔搭社区MCP-Server.yml（包含魔搭社区MCP-server(高德MCP 、好吃的、Tavily、LeetCode(力扣) 4个MCP-Server）
+
 2025年4月24 日-version 0.0.3.09：增加基于知识库+agent实现text2sqlchatflow工作流.yml、基于表结构的agent text2sql.yml
 
 2025年4月23 日-version 0.0.3.08：增加软件开发类合同审查chatflow.yml
@@ -293,7 +296,7 @@ https://aqma351r01f.feishu.cn/wiki/HF5FwMDQkiHoCokvbQAcZLu3nAg?table=tbleOWb4WgX
 
 ## 技术交流群
 
-![image-20250419131859224](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250419131859224.png)
+![image-20250426162647838](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250426162647838.png)
 
 ## Star History
 
