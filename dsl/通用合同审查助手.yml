@@ -1,0 +1,448 @@
+app:
+  description: ''
+  icon: 📖
+  icon_background: '#D1E9FF'
+  mode: workflow
+  name: 通用合同审查助手
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/ollama:0.0.6@7d66a960a68cafdcdf5589fdf5d01a995533f956853c69c54eddcf797006fa37
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: bowenliang123/md_exporter:0.5.1@a577f215826426f34b5c4ed9c7b90695298470c885d1a925ea2af584374bf002
+kind: app
+version: 0.2.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions: []
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - remote_url
+      - local_file
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 1
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: document-extractor
+        targetType: llm
+      id: 1740449932117-source-1740449990918-target
+      selected: false
+      source: '1740449932117'
+      sourceHandle: source
+      target: '1740449990918'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: tool
+      id: 1740449990918-source-1741836622032-target
+      selected: false
+      source: '1740449990918'
+      sourceHandle: source
+      target: '1741836622032'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: llm
+      id: 1740449748004-source-1743587468289-target
+      source: '1740449748004'
+      sourceHandle: source
+      target: '1743587468289'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: document-extractor
+      id: 1743587468289-source-1740449932117-target
+      source: '1743587468289'
+      sourceHandle: source
+      target: '1740449932117'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: tool
+      id: 1741836622032-source-1743686474768-target
+      source: '1741836622032'
+      sourceHandle: source
+      target: '1743686474768'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: end
+      id: 1743686474768-source-1740550550848-target
+      source: '1743686474768'
+      sourceHandle: source
+      target: '1740550550848'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          label: 请上传需要审查的文本，如为扫描版需OCR后上传
+          max_length: 1
+          options: []
+          required: true
+          type: file-list
+          variable: upload
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - image
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: 请选择合同审查主体
+          max_length: 48
+          options: []
+          required: true
+          type: text-input
+          variable: Apart
+        - label: 工作领域
+          max_length: 48
+          options: []
+          required: true
+          type: text-input
+          variable: workfield
+        - label: 合同审查要点
+          max_length: 4096
+          options: []
+          required: true
+          type: paragraph
+          variable: attention
+      height: 167
+      id: '1740449748004'
+      position:
+        x: 30
+        y: 283.5
+      positionAbsolute:
+        x: 30
+        y: 283.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_array_file: true
+        selected: false
+        title: 文档提取器
+        type: document-extractor
+        variable_selector:
+        - '1740449748004'
+        - upload
+      height: 91
+      id: '1740449932117'
+      position:
+        x: 638
+        y: 283.5
+      positionAbsolute:
+        x: 638
+        y: 283.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1740449932117'
+          - text
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: qwen3:30b-a3b
+          provider: langgenius/ollama/ollama
+        prompt_template:
+        - id: 0a0ee45c-1b2c-4703-8f02-d1508755ded5
+          role: system
+          text: " ## Role: \n律师（{{#1740449748004.workfield#}}）\n \n## Profile:\n-\
+            \ language: 中文\n- description: 你是一个律师，以{{#1740449748004.Apart#}}利益最大化为原则，对{{#context#}}进行审查分析,\
+            \ 给出评分和改进建议，帮助用户改进和完善合同。\n \n## Goals:\n- 对输入的合同文本审查分析后，指出合同的问题和存在的风险\n\
+            - 对于改进和完善合同，给出建议\n- 根据建议，修改具体的条款\n- 给提供专业的法律服务\n\n \n## Constrains:\n\
+            - 要依据正在适用的法律，不能引用废止的法律条文\n- 合同条款约定应当符合最新法律法规及相关政策要求\n- 专用名称地点应当准确\n- 要结合建筑工程的行业，不能随意\n\
+            - 要结合{{#1740449748004.Apart#}}的要求，站在{{#1740449748004.Apart#}}的立场\n- 要做出有利于{{#1740449748004.Apart#}}的条款\n\
+            - 对于{{#1740449748004.Apart#}}不利的条款，要及时指出\n- 对于显著偏向于{{#1740449748004.Apart#}}的不公平条款，需要与对方充分协商\n\
+            \ \n## Skills:\n- 熟悉中国的法律，并能熟练引用法律\n- 法律专业技能非常强，熟悉诉讼的程序和流程\n- 经验非常丰富，擅长处理各种纠纷\n\
+            - 对于建筑行业非常了解\n- 团队配合能力强，组织团队为{{#1740449748004.upload#}}服务\n- 熟练使用各种软件，效率非常高\n\
+            \ \n## attention\n{{#1740449748004.attention#}}\n\n## example\n该份合同存在的问题：\n\
+            -1.\n-2.\n对客户不利的条款：\n-1. { }；解释原因：\n-2. { }；解释原因：\n \n修改的建议：\n-1.\n-2.\n\
+            -3.\n-4.\nN\n \n \n修改的具体条款：\n-将“xxx条款”修改为“ ”\n-将“xxx条款”修改为“ ”\n-将“xxx条款”修改为“\
+            \ ”\n \n \n## output format：\n该份合同存在的问题：\n-1.\n-2.\n对客户不利的条款：\n-1. { }；解释原因：\n\
+            -2. { }；解释原因：\n \n修改的建议：\n-1.\n-2.\n-3.\n-4.\nN\n \n \n修改的具体条款：\n-将“xxx条款”修改为“\
+            \ ”\n-将“xxx条款”修改为“ ”\n-将“xxx条款”修改为“ ”\n \n "
+        - id: db34e3b5-fccc-497a-ae76-fc5162bb113a
+          role: user
+          text: ''
+        selected: false
+        title: 合同审查LLM
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - '17404498426540'
+            - last_record
+          enabled: false
+      height: 89
+      id: '1740449990918'
+      position:
+        x: 942
+        y: 283.5
+      positionAbsolute:
+        x: 942
+        y: 283.5
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1740449990918'
+          - text
+          variable: 审查意见
+        - value_selector:
+          - '1741836622032'
+          - files
+          variable: PDF
+        - value_selector:
+          - '1743686474768'
+          - files
+          variable: DOCX
+        selected: false
+        title: 结束
+        type: end
+      height: 141
+      id: '1740550550848'
+      position:
+        x: 1854
+        y: 283.5
+      positionAbsolute:
+        x: 1854
+        y: 283.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Markdown text
+            ja_JP: Markdown text
+            pt_BR: Markdown text
+            zh_Hans: Markdown格式文本
+          label:
+            en_US: Markdown text
+            ja_JP: Markdown text
+            pt_BR: Markdown text
+            zh_Hans: Markdown格式文本
+          llm_description: ''
+          max: null
+          min: null
+          name: md_text
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        params:
+          md_text: ''
+        provider_id: bowenliang123/md_exporter/md_exporter
+        provider_name: bowenliang123/md_exporter/md_exporter
+        provider_type: builtin
+        selected: false
+        title: Markdown转PDF文件
+        tool_configurations: {}
+        tool_label: Markdown转PDF文件
+        tool_name: md_to_pdf
+        tool_parameters:
+          md_text:
+            type: mixed
+            value: '{{#1740449990918.text#}}'
+        type: tool
+      height: 53
+      id: '1741836622032'
+      position:
+        x: 1246
+        y: 283.5
+      positionAbsolute:
+        x: 1246
+        y: 283.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: qwen3:30b-a3b
+          provider: langgenius/ollama/ollama
+        prompt_template:
+        - id: 23057863-f112-4828-a650-6eb196856028
+          role: system
+          text: '{{#1740449748004.attention#}}将用户的要求细化为合同审查要点，并输出为提示词中的attention段'
+        selected: false
+        title: 合同审查要点生成
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1743587468289'
+      position:
+        x: 334
+        y: 283.5
+      positionAbsolute:
+        x: 334
+        y: 283.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Markdown text
+            ja_JP: Markdown text
+            pt_BR: Markdown text
+            zh_Hans: Markdown格式文本
+          label:
+            en_US: Markdown text
+            ja_JP: Markdown text
+            pt_BR: Markdown text
+            zh_Hans: Markdown格式文本
+          llm_description: ''
+          max: null
+          min: null
+          name: md_text
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        params:
+          md_text: ''
+        provider_id: bowenliang123/md_exporter/md_exporter
+        provider_name: bowenliang123/md_exporter/md_exporter
+        provider_type: builtin
+        selected: false
+        title: Markdown转Docx文件
+        tool_configurations: {}
+        tool_label: Markdown转Docx文件
+        tool_name: md_to_docx
+        tool_parameters:
+          md_text:
+            type: mixed
+            value: '{{#1740449990918.text#}}'
+        type: tool
+      height: 53
+      id: '1743686474768'
+      position:
+        x: 1550
+        y: 283.5
+      positionAbsolute:
+        x: 1550
+        y: 283.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 74.80000000000018
+      y: 157.7
+      zoom: 0.7

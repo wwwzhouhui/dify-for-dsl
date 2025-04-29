@@ -75,6 +75,7 @@
 | 基于知识库+agent实现text2sqlchatflow工作流.yml | ![image-20250424115545595](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250424115545595.png) | 知识检索、AGNET策略工具、database插件 | 2025年4月24日 | wwwzhouhui | 1.1.3 |
 | 基于表结构的agent text2sql.yml | ![image-20250424115715194](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250424115715194.png) | AGNET | 2025年4月24日 | wwwzhouhui | 1.1.3 |
 | 魔搭社区MCP-Server.yml | ![image-20250426162356017](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250426162356017.png) | 问题分类器、AGNET策略工具、魔搭社区MCP-server(高德MCP 、好吃的、Tavily、LeetCode(力扣)) | 2025年4月26日 | wwwzhouhui | 1.1.3 |
+| 通用合同审查助手.yml | ![image-20250429145121654](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250429145121654.png) | qwen3最新模型、文档提取器、markdown转换器 | 2025年4月29日 | 堕落奶酪、wwwzhouhui | 1.3.1 |
 
 ### 部分视频链接地址
 
@@ -99,6 +100,8 @@
 
 
 ## 更新说明
+2025年4月29 日-version 0.0.3.11：增加通用合同审查助手.yml
+
 2025年4月26 日-version 0.0.3.10：增加基于魔搭社区MCP-Server.yml（包含魔搭社区MCP-server(高德MCP 、好吃的、Tavily、LeetCode(力扣) 4个MCP-Server）
 
 2025年4月24 日-version 0.0.3.09：增加基于知识库+agent实现text2sqlchatflow工作流.yml、基于表结构的agent text2sql.yml
@@ -292,6 +295,18 @@ https://aqma351r01f.feishu.cn/wiki/HF5FwMDQkiHoCokvbQAcZLu3nAg?table=tbleOWb4WgX
     如果用户输入doc 文件上传会报错<br>
     <img src="https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250423110443749.png" >
     建议用wps或者office 转一下变成docx文件<br>
+</details>
+<details>
+<summary>插件和模型下载慢</summary>
+     默认dify 配置什么都不该的情况下 安装模型非常慢（国内网络环境）<br>
+<img src="https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250429133213256.png" ><br>
+    点击安装模型或则工具后半天没反应。 这里主要的原因的目前模型插件和工具下载后都需要在容器内部实现python依赖包的安装，而python依赖包安装需要网络环境，所以下载非常慢。可以修改.env 文件中的配置（大概1041行）<br>
+    # PIP_MIRROR_URL=https://pypi.tuna.tsinghua.edu.cn/simple<br>
+PIP_MIRROR_URL=<br>
+    我们需要把上https://pypi.tuna.tsinghua.edu.cn/simple 配置填写，修改后的地址如下<br>
+    # PIP_MIRROR_URL=https://pypi.tuna.tsinghua.edu.cn/simple <br>
+PIP_MIRROR_URL=https://pypi.tuna.tsinghua.edu.cn/simple <br>
+    修改后重启dify  后面安装就非常快了。<br>
 </details>
 
 ## 技术交流群
