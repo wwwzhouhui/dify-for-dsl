@@ -76,6 +76,7 @@
 | 基于表结构的agent text2sql.yml | ![image-20250424115715194](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250424115715194.png) | AGNET | 2025年4月24日 | wwwzhouhui | 1.1.3 |
 | 魔搭社区MCP-Server.yml | ![image-20250426162356017](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250426162356017.png) | 问题分类器、AGNET策略工具、魔搭社区MCP-server(高德MCP 、好吃的、Tavily、LeetCode(力扣)) | 2025年4月26日 | wwwzhouhui | 1.1.3 |
 | 通用合同审查助手.yml | ![image-20250429145121654](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250429145121654.png) | qwen3最新模型、文档提取器、markdown转换器 | 2025年4月29日 | 堕落奶酪、wwwzhouhui | 1.3.1 |
+| 图片生成html,网页小游戏（1panel mcpsse）.yml | ![image-20250503124212089](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250503124212089.png.png) | 1panelmcp、问题分类器、AGNET策略工具、edgeone-pages-mcp-server | 2025年5月3日 | wwwzhouhui | 1.13 |
 
 ### 部分视频链接地址
 
@@ -100,6 +101,8 @@
 
 
 ## 更新说明
+2025年5月3 日-version 0.0.3.12：增加图片生成html,网页小游戏（1panel mcpsse）.yml 
+
 2025年4月29 日-version 0.0.3.11：增加通用合同审查助手.yml
 
 2025年4月26 日-version 0.0.3.10：增加基于魔搭社区MCP-Server.yml（包含魔搭社区MCP-server(高德MCP 、好吃的、Tavily、LeetCode(力扣) 4个MCP-Server）
@@ -311,7 +314,7 @@ PIP_MIRROR_URL=https://pypi.tuna.tsinghua.edu.cn/simple <br>
 
 ## 技术交流群
 
-![image-20250426162647838](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250426162647838.png)
+![image-20250503175428845](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250503175428845.png)
 
 ## Star History
 
