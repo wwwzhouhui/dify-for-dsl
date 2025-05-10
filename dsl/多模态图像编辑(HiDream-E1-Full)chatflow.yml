@@ -1,0 +1,731 @@
+app:
+  description: 使用gitee平台上提供的HiDream-E1-Full 实现多模态图片编辑功能（一句话PS）
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 多模态图像编辑(HiDream-E1-Full)chatflow
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: bowenliang123/base64_codec:0.3.0@bde22f1eb5e62a1bf7b115fbaa4bebb20c1ba756d3425c91bdfdd38d55cf2e43
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables:
+  - description: AI绘画生成的图片URL
+    id: 20e0f38e-aa5c-40bf-ab08-fa9350f2040d
+    name: picture_url
+    selector:
+    - conversation
+    - picture_url
+    value: ''
+    value_type: string
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 500
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 100
+        video_file_size_limit: 500
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: code
+      id: 1746806711924-source-1746843751923-target
+      source: '1746806711924'
+      sourceHandle: source
+      target: '1746843751923'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: tool
+      id: 1746843751923-source-1746850399850-target
+      source: '1746843751923'
+      sourceHandle: source
+      target: '1746850399850'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: code
+      id: 1746850399850-source-1746850419434-target
+      source: '1746850399850'
+      sourceHandle: source
+      target: '1746850419434'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: answer
+      id: 1746850419434-source-answer-target
+      source: '1746850419434'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: assigner
+      id: 1746850419434-source-1746850812091-target
+      source: '1746850419434'
+      sourceHandle: source
+      target: '1746850812091'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: if-else
+      id: 1746806580624-source-1746852321322-target
+      source: '1746806580624'
+      sourceHandle: source
+      target: '1746852321322'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: tool
+      id: 1746852321322-false-1746806711924-target
+      source: '1746852321322'
+      sourceHandle: 'false'
+      target: '1746806711924'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: tool
+      id: 1746852321322-true-1746859204198-target
+      source: '1746852321322'
+      sourceHandle: 'true'
+      target: '1746859204198'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: code
+      id: 1746859204198-source-1746859267150-target
+      source: '1746859204198'
+      sourceHandle: source
+      target: '1746859267150'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: answer
+      id: 1746859267150-source-1746859295512-target
+      source: '1746859267150'
+      sourceHandle: source
+      target: '1746859295512'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: assigner
+      id: 1746859267150-source-1746859321144-target
+      source: '1746859267150'
+      sourceHandle: source
+      target: '1746859321144'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - label: 提示词
+          max_length: 256
+          options: []
+          required: true
+          type: text-input
+          variable: prompt
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - image
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: 图片
+          max_length: 48
+          options: []
+          required: true
+          type: file
+          variable: imagefile
+      height: 115
+      id: '1746806580624'
+      position:
+        x: -232.01977804081687
+        y: 296.8139953965966
+      positionAbsolute:
+        x: -232.01977804081687
+        y: 296.8139953965966
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1746850419434.result#}}'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 105
+      id: answer
+      position:
+        x: 1595.2914101284305
+        y: 282
+      positionAbsolute:
+        x: 1595.2914101284305
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Input Image File
+            ja_JP: Input Image File
+            pt_BR: Input Image File
+            zh_Hans: 输入的图片文件
+          label:
+            en_US: Input Image File
+            ja_JP: Input Image File
+            pt_BR: Input Image File
+            zh_Hans: 输入的图片文件
+          llm_description: A tool for encoding image file to Base64-encoded text
+          max: null
+          min: null
+          name: input_image
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: file
+        params:
+          input_image: ''
+        provider_id: bowenliang123/base64_codec/base64_codec
+        provider_name: bowenliang123/base64_codec/base64_codec
+        provider_type: builtin
+        selected: false
+        title: 图片转Base64
+        tool_configurations: {}
+        tool_label: 图片转Base64
+        tool_name: base64_image_encoder
+        tool_parameters:
+          input_image:
+            type: variable
+            value:
+            - '1746806580624'
+            - imagefile
+        type: tool
+      height: 53
+      id: '1746806711924'
+      position:
+        x: 384
+        y: 282
+      positionAbsolute:
+        x: 384
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import json\ndef main(json_input_string: str) -> dict:\n    result_value\
+          \ = None\n    error_message = None\n\n    try:\n        text_field_value=json_input_string\n\
+          \        if not text_field_value:\n            error_message = \"错误：JSON\
+          \ 数据中未找到 'text' 字段。\"\n        elif not isinstance(text_field_value, str):\n\
+          \            error_message = \"错误：'text' 字段的值不是字符串类型。\"\n        elif \"\
+          base64,\" not in text_field_value:\n            error_message = \"错误：'text'\
+          \ 字段的值不包含 'base64,' 标记，格式不符合预期。\"\n        else:\n            parts = text_field_value.split(\"\
+          base64,\", 1)\n            # 确保 \"base64,\" 后面确实有内容\n            if len(parts)\
+          \ > 1 and parts[1]: \n                result_value = parts[1]\n        \
+          \    else:\n                error_message = \"错误：'text' 字段在 'base64,' 标记后没有数据。\"\
+          \n    \n    except json.JSONDecodeError:\n        error_message = \"错误：无法解析输入的\
+          \ JSON 字符串。\"\n    except Exception as e:\n        error_message = f\"处理过程中发生未知错误:\
+          \ {str(e)}\"\n\n    # 确保始终返回包含 \"result\" 和 \"error\" 键的字典\n    # Dify 平台可能会专门查找\
+          \ \"result\" 键。\n    # 如果发生错误，\"result\" 的值为 None，错误信息记录在 \"error\" 键中。\n\
+          \    return {\"result\": result_value, \"error\": error_message}"
+        code_language: python3
+        desc: ''
+        outputs:
+          error:
+            children: null
+            type: string
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行
+        type: code
+        variables:
+        - value_selector:
+          - '1746806711924'
+          - text
+          variable: json_input_string
+      height: 53
+      id: '1746843751923'
+      position:
+        x: 688
+        y: 282
+      positionAbsolute:
+        x: 688
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: 描述图像所需风格或转换的文本提示词。
+            ja_JP: 描述图像所需风格或转换的文本提示词。
+            pt_BR: 描述图像所需风格或转换的文本提示词。
+            zh_Hans: 描述图像所需风格或转换的文本提示词。
+          label:
+            en_US: prompt
+            ja_JP: prompt
+            pt_BR: prompt
+            zh_Hans: prompt
+          llm_description: 描述图像所需风格或转换的文本提示词。
+          max: null
+          min: null
+          name: prompt
+          options: []
+          placeholder:
+            en_US: 描述图像所需风格或转换的文本提示词。
+            ja_JP: 描述图像所需风格或转换的文本提示词。
+            pt_BR: 描述图像所需风格或转换的文本提示词。
+            zh_Hans: 描述图像所需风格或转换的文本提示词。
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: 源图像的 base64 编码字符串。
+            ja_JP: 源图像的 base64 编码字符串。
+            pt_BR: 源图像的 base64 编码字符串。
+            zh_Hans: 源图像的 base64 编码字符串。
+          label:
+            en_US: image_base64
+            ja_JP: image_base64
+            pt_BR: image_base64
+            zh_Hans: image_base64
+          llm_description: 源图像的 base64 编码字符串。
+          max: null
+          min: null
+          name: image_base64
+          options: []
+          placeholder:
+            en_US: 源图像的 base64 编码字符串。
+            ja_JP: 源图像的 base64 编码字符串。
+            pt_BR: 源图像的 base64 编码字符串。
+            zh_Hans: 源图像的 base64 编码字符串。
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        params:
+          image_base64: ''
+          prompt: ''
+        provider_id: c9a161d7-8a2e-4129-a2d0-d99f85402358
+        provider_name: gitee-generateHiDreamE1Image
+        provider_type: api
+        selected: false
+        title: HiDream E1图像生成_forbase64
+        tool_configurations: {}
+        tool_label: generateHiDreamE1Image
+        tool_name: generateHiDreamE1Image
+        tool_parameters:
+          image_base64:
+            type: mixed
+            value: '{{#1746843751923.result#}}'
+          prompt:
+            type: mixed
+            value: '{{#1746806580624.prompt#}}'
+        type: tool
+      height: 53
+      id: '1746850399850'
+      position:
+        x: 973.6389844388307
+        y: 282
+      positionAbsolute:
+        x: 973.6389844388307
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "def main(arg1: str) -> str:\n    import json\n    data = json.loads(arg1)\n\
+          \    filename=data['filename']\n    url=data['etag']\n    markdown_result\
+          \ = f\"![{filename}]({url})\"\n    return {\"result\": markdown_result,\"\
+          url\": url}"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+          url:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行 2
+        type: code
+        variables:
+        - value_selector:
+          - '1746850399850'
+          - text
+          variable: arg1
+      height: 53
+      id: '1746850419434'
+      position:
+        x: 1256.0377896609846
+        y: 282
+      positionAbsolute:
+        x: 1256.0377896609846
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        items:
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1746850419434'
+          - url
+          variable_selector:
+          - conversation
+          - picture_url
+          write_mode: over-write
+        selected: false
+        title: 变量赋值
+        type: assigner
+        version: '2'
+      height: 87
+      id: '1746850812091'
+      position:
+        x: 1595.2914101284305
+        y: 426
+      positionAbsolute:
+        x: 1595.2914101284305
+        y: 426
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: not empty
+            id: b88baa5d-adee-4b6b-9681-9c72c70a21c8
+            value: ''
+            varType: string
+            variable_selector:
+            - conversation
+            - picture_url
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 条件分支
+        type: if-else
+      height: 125
+      id: '1746852321322'
+      position:
+        x: 58.092101274873755
+        y: 141.60544721589008
+      positionAbsolute:
+        x: 58.092101274873755
+        y: 141.60544721589008
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: 风格转换提示词
+            ja_JP: 风格转换提示词
+            pt_BR: 风格转换提示词
+            zh_Hans: 风格转换提示词
+          label:
+            en_US: prompt
+            ja_JP: prompt
+            pt_BR: prompt
+            zh_Hans: prompt
+          llm_description: 风格转换提示词
+          max: null
+          min: null
+          name: prompt
+          options: []
+          placeholder:
+            en_US: 风格转换提示词
+            ja_JP: 风格转换提示词
+            pt_BR: 风格转换提示词
+            zh_Hans: 风格转换提示词
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: 待处理图片的URL
+            ja_JP: 待处理图片的URL
+            pt_BR: 待处理图片的URL
+            zh_Hans: 待处理图片的URL
+          label:
+            en_US: imageurl
+            ja_JP: imageurl
+            pt_BR: imageurl
+            zh_Hans: imageurl
+          llm_description: 待处理图片的URL
+          max: null
+          min: null
+          name: imageurl
+          options: []
+          placeholder:
+            en_US: 待处理图片的URL
+            ja_JP: 待处理图片的URL
+            pt_BR: 待处理图片的URL
+            zh_Hans: 待处理图片的URL
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        params:
+          imageurl: ''
+          prompt: ''
+        provider_id: 8aa68883-b92b-411e-bf08-afb1b6f174fc
+        provider_name: HiDream E1 图像生成_forimageurl
+        provider_type: api
+        selected: true
+        title: HiDream E1图像生成_forimageurl
+        tool_configurations: {}
+        tool_label: difyforgiteegenerate-HiDream-E1_post
+        tool_name: difyforgiteegenerate-HiDream-E1_post
+        tool_parameters:
+          imageurl:
+            type: mixed
+            value: '{{#conversation.picture_url#}}'
+          prompt:
+            type: mixed
+            value: '{{#sys.query#}}'
+        type: tool
+      height: 53
+      id: '1746859204198'
+      position:
+        x: 395.1104965474474
+        y: 161.0488161739232
+      positionAbsolute:
+        x: 395.1104965474474
+        y: 161.0488161739232
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "def main(arg1: str) -> str:\n    import json\n    data = json.loads(arg1)\n\
+          \    filename=data['filename']\n    url=data['etag']\n    markdown_result\
+          \ = f\"![{filename}]({url})\"\n    return {\"result\": markdown_result,\"\
+          url\": url}"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+          url:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行 3
+        type: code
+        variables:
+        - value_selector:
+          - '1746859204198'
+          - text
+          variable: arg1
+      height: 53
+      id: '1746859267150'
+      position:
+        x: 697.6407620551718
+        y: 161.0488161739232
+      positionAbsolute:
+        x: 697.6407620551718
+        y: 161.0488161739232
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1746859267150.result#}}'
+        desc: ''
+        selected: false
+        title: 直接回复 2
+        type: answer
+        variables: []
+      height: 105
+      id: '1746859295512'
+      position:
+        x: 1047.5524827372374
+        y: 51.79560012402294
+      positionAbsolute:
+        x: 1047.5524827372374
+        y: 51.79560012402294
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        items:
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1746859267150'
+          - url
+          variable_selector:
+          - conversation
+          - picture_url
+          write_mode: over-write
+        selected: false
+        title: 变量赋值 2
+        type: assigner
+        version: '2'
+      height: 87
+      id: '1746859321144'
+      position:
+        x: 1047.5524827372374
+        y: 184.6851035765755
+      positionAbsolute:
+        x: 1047.5524827372374
+        y: 184.6851035765755
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 176.3040567319772
+      y: 124.0909332931912
+      zoom: 0.7937005259840989

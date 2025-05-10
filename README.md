@@ -77,6 +77,7 @@
 | 魔搭社区MCP-Server.yml | ![image-20250426162356017](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250426162356017.png) | 问题分类器、AGNET策略工具、魔搭社区MCP-server(高德MCP 、好吃的、Tavily、LeetCode(力扣)) | 2025年4月26日 | wwwzhouhui | 1.1.3 |
 | 通用合同审查助手.yml | ![image-20250429145121654](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250429145121654.png) | qwen3最新模型、文档提取器、markdown转换器 | 2025年4月29日 | 堕落奶酪、wwwzhouhui | 1.3.1 |
 | 图片生成html,网页小游戏（1panel mcpsse）.yml | ![image-20250503124212089](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250503124212089.png.png) | 1panelmcp、问题分类器、AGNET策略工具、edgeone-pages-mcp-server | 2025年5月3日 | wwwzhouhui | 1.13 |
+| 多模态图像编辑(HiDream-E1-Full)chatflow.yml | ![image-20250510164614722](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250510164614722.png.png) | 图片转base64、条件分支、代码转换、变量赋值、2个自定义工具 | 2025年5月10日 | wwwzhouhui | 1.13 |
 
 ### 部分视频链接地址
 
@@ -101,6 +102,8 @@
 
 
 ## 更新说明
+2025年5月10 日-version 0.0.3.13：增加多模态图像编辑(HiDream-E1-Full)chatflow.yml以及代码等资料详见https://github.com/wwwzhouhui/dify-for-dsl/tree/main/dsl/difyforgitee
+
 2025年5月3 日-version 0.0.3.12：增加图片生成html,网页小游戏（1panel mcpsse）.yml 
 
 2025年4月29 日-version 0.0.3.11：增加通用合同审查助手.yml
@@ -311,6 +314,27 @@ PIP_MIRROR_URL=<br>
 PIP_MIRROR_URL=https://pypi.tuna.tsinghua.edu.cn/simple <br>
     修改后重启dify  后面安装就非常快了。<br>
 </details>
+<details>
+<summary>带文件的插件出现Request URL is missing an 'http://' or 'https://' protocol</summary>
+     我们配置第三方插件比如MinerU 、Base64 编解码器等支持文件的插件下载完成后使用报错<br>
+<img src="https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250510003529262.png" ><br>
+    出现上述错误如何解决？<br>
+    需要修改2个地方。<br>
+     1.env 文件中查找FILES_URL<br>
+    默认的FILES_URL是空的，我们需要修改使用 http://<your-ip>:5001 或 http://api:5001，在此情况下，确保外部可以访问端口 5001<br>
+    <img src="https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250510003900660.png" ><br>
+    2.docker-compose.yaml 对应的FILES_URL修改<br>
+     <img src="https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250510004029749.png" ><br>
+    此外dify-api容器镜像端口开放出来（默认情况是不开放的），增加如下代码<br>
+     ports: <br>
+   - '5001:5001' <br>
+    <img src="https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250510004232125.png" ><br>
+    我们也可以从docker容器看到端口开放情况（默认是不开启的） <br>
+ <img src="https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250510004416081.png" ><br>
+</details>
+
+
+
 
 ## 技术交流群
 

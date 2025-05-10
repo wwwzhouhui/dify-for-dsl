@@ -2,3 +2,5 @@ uvicorn== 0.34.0
 fastapi== 0.115.6
 cos-python-sdk-v5==1.9.33
 pydantic==2.8.2
+python-multipart
+openai==1.70.0
