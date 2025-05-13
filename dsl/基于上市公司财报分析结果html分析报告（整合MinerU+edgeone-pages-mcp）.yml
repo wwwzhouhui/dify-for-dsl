@@ -1,0 +1,728 @@
+app:
+  description: 本工作流主要是基于上市公司财报分析结果html分析报告（整合MinerU+edgeone-pages-mcp）通过使用MinerU实现PDF财报解析，结合google
+    gemini2.5pro 模型生成代码能力最后通过edgeone-pages-mcp生成精美的html图表
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 基于上市公司财报分析结果html分析报告（整合MinerU+edgeone-pages-mcp）
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.14@4e4b6c2e3080245d91e509ed44e62fb6e7886ffca9eede1d093ad47ad420d704
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/modelscope:0.0.4@5a3245e52b864fa8a20686baf5add2f5517eae5f11f94419bf46edbe170731e8
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/mineru:0.2.0@5ec4527d658becf0b3c0946c2a6f4328fa43fd270e2d1f1713af4a6748ac4b61
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables: []
+  environment_variables:
+  - description: ''
+    id: 86203c03-abd2-400b-9925-37a8253cbcb2
+    name: strtype
+    selector:
+    - env
+    - strtype
+    value: 上市公司
+    value_type: string
+  - description: ''
+    id: e3084611-2965-4372-8aca-89fe25fb7dd7
+    name: apikey
+    selector:
+    - env
+    - apikey
+    value: sk-zhouhui1122444
+    value_type: string
+  - description: ''
+    id: 6fa7c139-8fb0-4411-a7fa-41602fa2434d
+    name: apiurl
+    selector:
+    - env
+    - apiurl
+    value: http://14.103.204.132:8080/generate-html/
+    value_type: string
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 500
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 100
+        video_file_size_limit: 500
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: tool
+      id: 1747105418724-source-1747105471978-target
+      source: '1747105418724'
+      sourceHandle: source
+      target: '1747105471978'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: llm
+      id: 1747105471978-source-1747105630044-target
+      source: '1747105471978'
+      sourceHandle: source
+      target: '1747105630044'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: parameter-extractor
+      id: 1747105630044-source-1747108879039-target
+      source: '1747105630044'
+      sourceHandle: source
+      target: '1747108879039'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: parameter-extractor
+        targetType: code
+      id: 1747108879039-source-1747128616679-target
+      source: '1747108879039'
+      sourceHandle: source
+      target: '1747128616679'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: answer
+      id: 1747128616679-source-1747106481971-target
+      source: '1747128616679'
+      sourceHandle: source
+      target: '1747106481971'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: 上市公司财报
+          max_length: 48
+          options: []
+          required: true
+          type: file
+          variable: file
+      height: 89
+      id: '1747105418724'
+      position:
+        x: 80
+        y: 282
+      positionAbsolute:
+        x: 80
+        y: 282
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema:
+          properties:
+            full_zip_url:
+              description: The zip URL of the complete parsed result
+              type: string
+            images:
+              description: The images extracted from the file
+              items:
+                type: object
+              type: array
+          type: object
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: the file to be parsed(support pdf, ppt, pptx, doc, docx, png, jpg,
+              jpeg)
+            ja_JP: 解析するファイル(pdf、ppt、pptx、doc、docx、png、jpg、jpegをサポート)
+            pt_BR: the file to be parsed(support pdf, ppt, pptx, doc, docx, png, jpg,
+              jpeg)
+            zh_Hans: 用于解析的文件(支持 pdf, ppt, pptx, doc, docx, png, jpg, jpeg)
+          label:
+            en_US: file
+            ja_JP: file
+            pt_BR: file
+            zh_Hans: file
+          llm_description: the file to be parsed (support pdf, ppt, pptx, doc, docx,
+            png, jpg, jpeg)
+          max: null
+          min: null
+          name: file
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: file
+        - auto_generate: null
+          default: auto
+          form: form
+          human_description:
+            en_US: (For local deployment service)Parsing method, can be auto, ocr,
+              or txt. Default is auto. If results are not satisfactory, try ocr
+            ja_JP: （ローカルデプロイメントサービス用）解析方法は、auto、ocr、またはtxtのいずれかです。デフォルトはautoです。結果が満足できない場合は、ocrを試してください
+            pt_BR: (For local deployment service)Parsing method, can be auto, ocr,
+              or txt. Default is auto. If results are not satisfactory, try ocr
+            zh_Hans: （用于本地部署服务）解析方法，可以是auto, ocr, 或 txt。默认是auto。如果结果不理想，请尝试ocr
+          label:
+            en_US: parse method
+            ja_JP: 解析方法
+            pt_BR: parse method
+            zh_Hans: 解析方法
+          llm_description: Parsing method, can be auto, ocr, or txt. Default is auto.
+            If results are not satisfactory, try ocr
+          max: null
+          min: null
+          name: parse_method
+          options:
+          - label:
+              en_US: auto
+              ja_JP: auto
+              pt_BR: auto
+              zh_Hans: auto
+            value: auto
+          - label:
+              en_US: ocr
+              ja_JP: ocr
+              pt_BR: ocr
+              zh_Hans: ocr
+            value: ocr
+          - label:
+              en_US: txt
+              ja_JP: txt
+              pt_BR: txt
+              zh_Hans: txt
+            value: txt
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        - auto_generate: null
+          default: 1
+          form: form
+          human_description:
+            en_US: (For official API) Whether to enable formula recognition
+            ja_JP: （公式API用）数式認識を有効にするかどうか
+            pt_BR: (For official API) Whether to enable formula recognition
+            zh_Hans: （用于官方API）是否开启公式识别
+          label:
+            en_US: Enable formula recognition
+            ja_JP: 数式認識を有効にする
+            pt_BR: Enable formula recognition
+            zh_Hans: 开启公式识别
+          llm_description: (For official API) Whether to enable formula recognition
+          max: null
+          min: null
+          name: enable_formula
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: boolean
+        - auto_generate: null
+          default: 1
+          form: form
+          human_description:
+            en_US: (For official API) Whether to enable table recognition
+            ja_JP: （公式API用）表認識を有効にするかどうか
+            pt_BR: (For official API) Whether to enable table recognition
+            zh_Hans: （用于官方API）是否开启表格识别
+          label:
+            en_US: Enable table recognition
+            ja_JP: 表認識を有効にする
+            pt_BR: Enable table recognition
+            zh_Hans: 开启表格识别
+          llm_description: (For official API) Whether to enable table recognition
+          max: null
+          min: null
+          name: enable_table
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: boolean
+        - auto_generate: null
+          default: doclayout_yolo
+          form: form
+          human_description:
+            en_US: '(For official API) Optional values: doclayout_yolo, layoutlmv3,
+              default value is doclayout_yolo. doclayout_yolo is a self-developed
+              model with better effect'
+            ja_JP: （公式API用）オプション値：doclayout_yolo、layoutlmv3、デフォルト値は doclayout_yolo。doclayout_yolo
+              は自己開発モデルで、効果がより良い
+            pt_BR: '(For official API) Optional values: doclayout_yolo, layoutlmv3,
+              default value is doclayout_yolo. doclayout_yolo is a self-developed
+              model with better effect'
+            zh_Hans: （用于官方API）可选值：doclayout_yolo、layoutlmv3，默认值为 doclayout_yolo。doclayout_yolo
+              为自研模型，效果更好
+          label:
+            en_US: Layout model
+            ja_JP: レイアウト検出モデル
+            pt_BR: Layout model
+            zh_Hans: 布局检测模型
+          llm_description: '(For official API) Optional values: doclayout_yolo, layoutlmv3,
+            default value is doclayout_yolo. doclayout_yolo is a self-developed model
+            withbetter effect'
+          max: null
+          min: null
+          name: layout_model
+          options:
+          - label:
+              en_US: doclayout_yolo
+              ja_JP: doclayout_yolo
+              pt_BR: doclayout_yolo
+              zh_Hans: doclayout_yolo
+            value: doclayout_yolo
+          - label:
+              en_US: layoutlmv3
+              ja_JP: layoutlmv3
+              pt_BR: layoutlmv3
+              zh_Hans: layoutlmv3
+            value: layoutlmv3
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        - auto_generate: null
+          default: auto
+          form: form
+          human_description:
+            en_US: '(For official API) Specify document language, default ch, can
+              be set to auto, when auto, the model will automatically identify document
+              language, other optional value list see: https://paddlepaddle.github.io/PaddleOCR/latest/ppocr/blog/multi_languages.html#5'
+            ja_JP: （公式API用）ドキュメント言語を指定します。デフォルトはchで、autoに設定できます。autoの場合、モデルはドキュメント言語を自動的に識別します。他のオプション値リストについては、次を参照してください：https://paddlepaddle.github.io/PaddleOCR/latest/ppocr/blog/multi_languages.html#5
+            pt_BR: '(For official API) Specify document language, default ch, can
+              be set to auto, when auto, the model will automatically identify document
+              language, other optional value list see: https://paddlepaddle.github.io/PaddleOCR/latest/ppocr/blog/multi_languages.html#5'
+            zh_Hans: （用于官方API）指定文档语言，默认 ch，可以设置为auto，当为auto时模型会自动识别文档语言，其他可选值列表详见：https://paddlepaddle.github.io/PaddleOCR/latest/ppocr/blog/multi_languages.html#5
+          label:
+            en_US: Document language
+            ja_JP: ドキュメント言語
+            pt_BR: Document language
+            zh_Hans: 文档语言
+          llm_description: '(For official API) Specify document language, default
+            ch, can be set to auto, when auto, the model will automatically identify
+            document language, other optional value list see: https://paddlepaddle.github.io/PaddleOCR/latest/ppocr/blog/multi_languages.html#5'
+          max: null
+          min: null
+          name: language
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: 0
+          form: form
+          human_description:
+            en_US: (For official API) Whether to enable OCR recognition
+            ja_JP: （公式API用）OCR認識を有効にするかどうか
+            pt_BR: (For official API) Whether to enable OCR recognition
+            zh_Hans: （用于官方API）是否开启OCR识别
+          label:
+            en_US: Enable OCR recognition
+            ja_JP: OCR認識を有効にする
+            pt_BR: Enable OCR recognition
+            zh_Hans: 开启OCR识别
+          llm_description: (For official API) Whether to enable OCR recognition
+          max: null
+          min: null
+          name: enable_ocr
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: boolean
+        - auto_generate: null
+          default: '[]'
+          form: form
+          human_description:
+            en_US: '(For official API) Example: ["docx","html"], markdown, json are
+              the default export formats, no need to set, this parameter only supports
+              one or more of docx, html, latex'
+            ja_JP: （公式API用）例：["docx","html"]、markdown、jsonはデフォルトのエクスポート形式であり、設定する必要はありません。このパラメータは、docx、html、latexの3つの形式のいずれかまたは複数のみをサポートします
+            pt_BR: '(For official API) Example: ["docx","html"], markdown, json are
+              the default export formats, no need to set, this parameter only supports
+              one or more of docx, html, latex'
+            zh_Hans: （用于官方API）示例：["docx","html"],markdown、json为默认导出格式，无须设置，该参数仅支持docx、html、latex三种格式中的一个或多个
+          label:
+            en_US: Extra export formats
+            ja_JP: 追加のエクスポート形式
+            pt_BR: Extra export formats
+            zh_Hans: 额外导出格式
+          llm_description: '(For official API) Example: ["docx","html"], markdown,
+            json are the default export formats, no need to set, this parameter only
+            supports one or more of docx, html, latex'
+          max: null
+          min: null
+          name: extra_formats
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        params:
+          enable_formula: ''
+          enable_ocr: ''
+          enable_table: ''
+          extra_formats: ''
+          file: ''
+          language: ''
+          layout_model: ''
+          parse_method: ''
+        provider_id: langgenius/mineru/mineru
+        provider_name: langgenius/mineru/mineru
+        provider_type: builtin
+        selected: false
+        title: Parse File
+        tool_configurations:
+          enable_formula: 1
+          enable_ocr: 1
+          enable_table: 1
+          extra_formats: '[]'
+          language: auto
+          layout_model: doclayout_yolo
+          parse_method: ocr
+        tool_label: Parse File
+        tool_name: parse-file
+        tool_parameters:
+          file:
+            type: variable
+            value:
+            - '1747105418724'
+            - file
+        type: tool
+      height: 245
+      id: '1747105471978'
+      position:
+        x: 383
+        y: 282
+      positionAbsolute:
+        x: 383
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: Qwen/Qwen3-235B-A22B
+          provider: langgenius/modelscope/modelscope
+        prompt_template:
+        - id: 88f086b9-ac53-4dd3-b8d2-263eba8292a2
+          role: system
+          text: '# 角色：上市公司财报数据HTML页面生成专家
+
+            ## 简介：
+
+            - 作者：周辉
+
+            - 版本：3.0
+
+            - 语言：中文
+
+            - 描述：专业的财报数据分析师和HTML动态网页设计专家，擅长创建符合现代设计趋势和技术要求的财报展示页面。
+
+            ## 背景：
+
+            你是一位资深的财务分析师和网页设计专家，专门将上市公司财报数据转化为视觉吸引力强的HTML动态网页。你熟悉各种现代web技术和设计趋势，尤其擅长Bemto
+            Grid布局和GSAP动效。
+
+
+            ## 目标：
+
+            生成一个完整的、可直接使用的HTML页面，用于展示上市公司财报数据，该页面应符合所有技术和设计要求。
+
+
+            ## 技术要求：
+
+            1. 使用Bemto Grid布局系统
+
+            2. 集成GSAP动效和Framer Motion
+
+            3. 基于HTML5和TailwindCSS开发
+
+            4. 响应式设计和大小字体对比应用
+
+            ## 设计规范：
+
+            1. 根据公司特性选择适当的背景颜色和主题色调
+
+            2. 应用超大字体和视觉元素突出重点，创造视觉对比
+
+            3. 中英文混排，大字体为主，英文小字点题
+
+            4. 使用简洁的矩形元素进行数据可视化
+
+            5. 高亮色透明效果用于边框，避免不同高亮色互相覆盖
+
+            6. 所有数据图表采用脚注样式，保持主题一致性
+
+            7. 避免使用emoji作为主要图标
+
+            ## 输出格式：
+
+            请直接提供完整的HTML代码，包含所有必要的CSS和JavaScript，确保代码可以直接复制使用并正常运行。代码应包含：
+
+
+            1. 完整的HTML结构
+
+            2. 内联或外部引用的CSS（包括TailwindCSS）
+
+            3. 必要的JavaScript（包括GSAP和Framer Motion）
+
+            4. CDN引用和其他必要的资源链接
+
+            ## 初始化：
+
+            作为上市公司财报数据HTML页面生成专家，我已准备好为您创建一个完整的HTML页面。请提供您想要分析的上市公司及其最新财报的关键信息，我将直接为您生成可用的HTML代码。'
+        - id: 0641a429-68ec-49a2-9a50-f08a2b2cfc24
+          role: user
+          text: 根据{{#1747105471978.text#}}最新财报内容和补充内容以及财报数据分析内容，生成一个 HTML 动态网页
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1747105630044'
+      position:
+        x: 723.1615746404361
+        y: 282
+      positionAbsolute:
+        x: 723.1615746404361
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        answer: '{{#1747105471978.text#}}
+
+
+          {{#1747128616679.markdown_result#}}'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 122
+      id: '1747106481971'
+      position:
+        x: 1714.4137107987392
+        y: 287.59189067367566
+      positionAbsolute:
+        x: 1714.4137107987392
+        y: 287.59189067367566
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        instruction: 请提取大模输出的html部分代码，其他的不需要
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gemini-2.5-flash-preview-04-17
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        parameters:
+        - description: 大模型生成的html代码
+          name: html
+          required: false
+          type: string
+        query:
+        - '1747105630044'
+        - text
+        reasoning_mode: prompt
+        selected: false
+        title: 参数提取器
+        type: parameter-extractor
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1747108879039'
+      position:
+        x: 1026.9278299313792
+        y: 282
+      positionAbsolute:
+        x: 1026.9278299313792
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        code: "import json\nimport re\nimport time\nimport requests\n\ndef main(json_html:\
+          \ str, apikey: str,apiurl: str,strtype: str) -> dict:\n    try:\n      \
+          \  # 去除输入字符串中的 ```html 和 ``` 标记\n        html_content = re.sub(r'^```html\\\
+          s*|\\s*```$', '', json_html, flags=re.DOTALL).strip()\n        \n      \
+          \  # 生成时间戳，确保文件名唯一\n        timestamp = int(time.time())\n        filename\
+          \ = f\"{strtype}_{timestamp}.html\"\n        \n        # API端点（假设本地运行）\n\
+          \        url = f\"{apiurl}\"\n        \n        # 请求数据\n        payload\
+          \ = {\n            \"html_content\": html_content,\n            \"filename\"\
+          : filename  # 使用传入的文件名\n        }\n        \n        # 设置请求头（包含认证token）\n\
+          \        headers = {\n            \"Authorization\": f\"Bearer {apikey}\"\
+          ,  # 替换为实际的认证token\n            \"Content-Type\": \"application/json\"\n\
+          \        }\n        \n        try:\n            # 发送POST请求\n           \
+          \ response = requests.post(url, json=payload, headers=headers)\n       \
+          \     \n            # 检查响应状态\n            if response.status_code == 200:\n\
+          \                result = response.json()\n                html_url = result.get(\"\
+          html_url\", \"\")\n                generated_filename = result.get(\"filename\"\
+          , \"\")\n                \n                # 返回结果\n                return\
+          \ {\n                    \"html_url\": html_url,\n                    \"\
+          filename\": generated_filename,\n                    \"markdown_result\"\
+          :  f\"[点击查看]({html_url})\"\n                }\n            else:\n     \
+          \           raise Exception(f\"HTTP Error: {response.status_code}, Message:\
+          \ {response.text}\")\n        \n        except requests.exceptions.RequestException\
+          \ as e:\n            raise Exception(f\"Request failed: {str(e)}\")\n  \
+          \  \n    except Exception as e:\n        return {\n            \"error\"\
+          : f\"Error: {str(e)}\"\n        }"
+        code_language: python3
+        desc: ''
+        outputs:
+          filename:
+            children: null
+            type: string
+          html_url:
+            children: null
+            type: string
+          markdown_result:
+            children: null
+            type: string
+        selected: false
+        title: 代码处理生成html调用
+        type: code
+        variables:
+        - value_selector:
+          - '1747108879039'
+          - html
+          variable: json_html
+        - value_selector:
+          - env
+          - apikey
+          variable: apikey
+        - value_selector:
+          - env
+          - apiurl
+          variable: apiurl
+        - value_selector:
+          - env
+          - strtype
+          variable: strtype
+      height: 53
+      id: '1747128616679'
+      position:
+        x: 1368.7208399218582
+        y: 287.59189067367566
+      positionAbsolute:
+        x: 1368.7208399218582
+        y: 287.59189067367566
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    viewport:
+      x: -482.59123578704975
+      y: 59.56446590001502
+      zoom: 0.7198547666012437

@@ -78,6 +78,8 @@
 | 通用合同审查助手.yml | ![image-20250429145121654](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250429145121654.png) | qwen3最新模型、文档提取器、markdown转换器 | 2025年4月29日 | 堕落奶酪、wwwzhouhui | 1.3.1 |
 | 图片生成html,网页小游戏（1panel mcpsse）.yml | ![image-20250503124212089](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250503124212089.png.png) | 1panelmcp、问题分类器、AGNET策略工具、edgeone-pages-mcp-server | 2025年5月3日 | wwwzhouhui | 1.13 |
 | 多模态图像编辑(HiDream-E1-Full)chatflow.yml | ![image-20250510164614722](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250510164614722.png.png) | 图片转base64、条件分支、代码转换、变量赋值、2个自定义工具 | 2025年5月10日 | wwwzhouhui | 1.13 |
+| 基于上市公司财报分析结果html分析报告（整合MinerU+edgeone-pages-mcp）.yml | ![image-20250513221853568](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250513221853568.png) | mineru插件、LLM大语言模型、参数提取器、代码处理生成 | 2025年5月13日 | wwwzhouhui | 1.13 |
+|  |  |  |  |  |  |
 
 ### 部分视频链接地址
 
@@ -102,6 +104,8 @@
 
 
 ## 更新说明
+2025年5月13 日-version 0.0.3.14：增加基于上市公司财报分析结果html分析报告（整合MinerU+edgeone-pages-mcp）.yml后端代码复用之前的代码 https://github.com/wwwzhouhui/dify-for-dsl/tree/main/dsl/makehtml/makehtmlapi.py
+
 2025年5月10 日-version 0.0.3.13：增加多模态图像编辑(HiDream-E1-Full)chatflow.yml以及代码等资料详见https://github.com/wwwzhouhui/dify-for-dsl/tree/main/dsl/difyforgitee
 
 2025年5月3 日-version 0.0.3.12：增加图片生成html,网页小游戏（1panel mcpsse）.yml 
@@ -338,7 +342,7 @@ PIP_MIRROR_URL=https://pypi.tuna.tsinghua.edu.cn/simple <br>
 
 ## 技术交流群
 
-![image-20250507091516807](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250507091516807.png)
+![image-20250513223333027](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250513223333027.png)
 
 ## Star History
 
