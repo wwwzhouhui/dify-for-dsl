@@ -1,0 +1,477 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 52-dify案例分享-三步实现音视频转文字会议纪要从此无忧
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/volcengine_maas:0.0.14@287c49e4e33dea665c74e1f14692ac8b88d1b432864ee89d796b33f410bdaff0
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: stvlynn/ffmpeg:0.0.1@cdd0c760bac66f531e411557b92284fc2766d903123a383ef014c5902793c052
+kind: app
+version: 0.3.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 500
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 100
+        video_file_size_limit: 500
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: tool
+      id: 1747702103197-source-1747702133113-target
+      source: '1747702103197'
+      sourceHandle: source
+      target: '1747702133113'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: answer
+      id: 1747702133113-source-answer-target
+      source: '1747702133113'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: answer
+        targetType: tool
+      id: answer-source-1747705303679-target
+      source: answer
+      sourceHandle: source
+      target: '1747705303679'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: answer
+      id: 1747705303679-source-1747705329741-target
+      source: '1747705303679'
+      sourceHandle: source
+      target: '1747705329741'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: answer
+        targetType: llm
+      id: 1747705329741-source-1747708303472-target
+      source: '1747705329741'
+      sourceHandle: source
+      target: '1747708303472'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1747708303472-source-1747708390492-target
+      source: '1747708303472'
+      sourceHandle: source
+      target: '1747708390492'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - audio
+          - video
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: 视频文件
+          max_length: 48
+          options: []
+          required: true
+          type: file
+          variable: Video
+      height: 88
+      id: '1747702103197'
+      position:
+        x: 80
+        y: 282
+      positionAbsolute:
+        x: 80
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        answer: '{{#1747702133113.files#}}'
+        desc: ''
+        selected: false
+        title: 音频提取输出
+        type: answer
+        variables: []
+      height: 103
+      id: answer
+      position:
+        x: 765
+        y: 282
+      positionAbsolute:
+        x: 765
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: The video file to extract audio from
+            ja_JP: The video file to extract audio from
+            pt_BR: O arquivo de vídeo para extrair o áudio
+            zh_Hans: 要从中提取音频的视频文件
+          label:
+            en_US: Video File
+            ja_JP: Video File
+            pt_BR: Arquivo de Vídeo
+            zh_Hans: 视频文件
+          llm_description: The video file to extract audio from
+          max: null
+          min: null
+          name: video
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: file
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: The format of the extracted audio (mp3, aac, wav, ogg, flac)
+            ja_JP: The format of the extracted audio (mp3, aac, wav, ogg, flac)
+            pt_BR: O formato do áudio extraído (mp3, aac, wav, ogg, flac)
+            zh_Hans: 提取的音频格式（mp3、aac、wav、ogg、flac）
+          label:
+            en_US: Audio Format
+            ja_JP: Audio Format
+            pt_BR: Formato de Áudio
+            zh_Hans: 音频格式
+          llm_description: The format to save the extracted audio in. Options are
+            'mp3', 'aac', 'wav', 'ogg', 'flac'. Default is 'mp3'.
+          max: null
+          min: null
+          name: audio_format
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        params:
+          audio_format: ''
+          video: ''
+        provider_id: stvlynn/ffmpeg/ffmpeg
+        provider_name: stvlynn/ffmpeg/ffmpeg
+        provider_type: builtin
+        selected: false
+        title: 提取音频
+        tool_configurations: {}
+        tool_description: 从视频文件中提取音频轨道
+        tool_label: 提取音频
+        tool_name: extract_audio
+        tool_parameters:
+          audio_format:
+            type: mixed
+            value: mp3
+          video:
+            type: variable
+            value:
+            - '1747702103197'
+            - Video
+        type: tool
+      height: 52
+      id: '1747702133113'
+      position:
+        x: 383
+        y: 282
+      positionAbsolute:
+        x: 383
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: The audio file to be converted.
+            ja_JP: The audio file to be converted.
+            pt_BR: The audio file to be converted.
+            zh_Hans: 要转换的音频文件。
+          label:
+            en_US: Audio File
+            ja_JP: Audio File
+            pt_BR: Audio File
+            zh_Hans: 音频文件
+          llm_description: The audio file to be converted.
+          max: null
+          min: null
+          name: audio_file
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: file
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: All available ASR models. You can config model in the Model Provider
+              of Settings.
+            ja_JP: All available ASR models. You can config model in the Model Provider
+              of Settings.
+            pt_BR: All available ASR models. You can config model in the Model Provider
+              of Settings.
+            zh_Hans: 所有可用的 ASR 模型。你可以在设置中的模型供应商里配置。
+          label:
+            en_US: Model
+            ja_JP: Model
+            pt_BR: Model
+            zh_Hans: Model
+          llm_description: null
+          max: null
+          min: null
+          name: model
+          options:
+          - label:
+              en_US: FunAudioLLM/SenseVoiceSmall(langgenius/siliconflow/siliconflow)
+              ja_JP: FunAudioLLM/SenseVoiceSmall(langgenius/siliconflow/siliconflow)
+              pt_BR: FunAudioLLM/SenseVoiceSmall(langgenius/siliconflow/siliconflow)
+              zh_Hans: FunAudioLLM/SenseVoiceSmall(langgenius/siliconflow/siliconflow)
+            value: langgenius/siliconflow/siliconflow#FunAudioLLM/SenseVoiceSmall
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: select
+        params:
+          audio_file: ''
+          model: ''
+        provider_id: audio
+        provider_name: audio
+        provider_type: builtin
+        selected: false
+        title: Speech To Text
+        tool_configurations:
+          model: langgenius/siliconflow/siliconflow#FunAudioLLM/SenseVoiceSmall
+        tool_description: 将音频文件转换为文本。
+        tool_label: Speech To Text
+        tool_name: asr
+        tool_parameters:
+          audio_file:
+            type: variable
+            value:
+            - '1747702133113'
+            - files
+        type: tool
+      height: 88
+      id: '1747705303679'
+      position:
+        x: 1068
+        y: 282
+      positionAbsolute:
+        x: 1068
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        answer: '{{#1747705303679.files#}}'
+        desc: ''
+        selected: false
+        title: 音频转文字输出
+        type: answer
+        variables: []
+      height: 103
+      id: '1747705329741'
+      position:
+        x: 1371
+        y: 282
+      positionAbsolute:
+        x: 1371
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-V3
+          provider: langgenius/volcengine_maas/volcengine_maas
+        prompt_template:
+        - id: de1141db-6626-43d6-a55e-d18087ee2aba
+          role: system
+          text: "# Role: 音视频内容总结专家\n\n## Profile\n- 专业领域: 音视频内容分析、文本摘要、内容提炼\n- 专长:\
+            \ 从音视频转录文本中提取关键信息并生成简洁明了的总结\n- 经验: 10年媒体内容分析经验，5年AI辅助内容处理经验\n- 教育背景: 传播学硕士，计算机科学学士\n\
+            \n## Skills\n- 精通内容关键信息提取和主题识别\n- 擅长结构化分析叙事内容和情节发展\n- 熟练掌握多种总结技巧（摘要式、要点式、图表式等）\n\
+            - 能够识别和保留内容中的情感基调和核心观点\n- 具备跨领域知识，能够理解各类专业内容\n\n## Goals\n- 准确提取音视频内容中的核心信息和关键要点\n\
+            - 保留原始内容的主要情节和情感基调\n- 生成结构清晰、逻辑连贯的内容总结\n- 根据不同内容类型（教育、娱乐、新闻等）调整总结风格\n\
+            - 确保总结内容简洁且信息丰富，便于快速理解\n\n## Constraints\n- 总结长度应控制在原始内容的10-20%之间\n- 不添加原始内容中不存在的信息或个人观点\n\
+            - 避免使用过于主观的评价性语言\n- 保持内容的中立性，不偏向特定立场\n- 尊重原创内容，不歪曲原意\n\n## WorkFlow\n\
+            1. 仔细分析音视频转录文本，识别核心主题和关键信息\n2. 确定内容类型（故事、教程、访谈、新闻等）并选择适当的总结结构\n3. 提取主要情节、关键人物、重要事件和核心观点\n\
+            4. 按时间顺序或逻辑关系组织信息\n5. 撰写简洁明了的总结，保留原内容的核心价值\n6. 检查总结是否完整反映了原始内容的要点\n7.\
+            \ 根据需要调整总结格式（段落式、要点式或混合式）\n\n## OutputFormat\n{\n  \"内容类型\": \"故事/教程/访谈/新闻/其他\"\
+            ,\n  \"核心主题\": \"简明扼要的主题描述\",\n  \"总结正文\": \"详细的内容总结，可使用段落式或要点式\",\n \
+            \ \"关键要点\": [\n    \"要点1\",\n    \"要点2\",\n    \"要点3\"\n  ],\n  \"情感基调\"\
+            : \"内容的整体情感或氛围描述\"\n}\n\n## Examples\n### 例1: 故事类内容\n用户输入: \"在一个阳光明媚的午后，机器猫哆啦A梦躺在沙发上打盹，4次元口袋突然发出诡异的嗡鸣声。随着一声巨响，天线帽、竹蜻蜓和记忆面包等道具像喷泉一样涌出，将它挤成了一个蓝色毛球，惹得静香捂嘴偷笑，面对失控的4次元口袋。哆啦A梦紧急掏出时空缝合器。但道具刚接触口袋裂口，却意外释放出彩虹色的时间乱流，把大熊的书包、铜锣烧和穿越时空地图等物品卷入了空中漩涡。整间屋子飘满了闪着光的悬浮物品，最终哆啦A梦冒险钻入4次元口袋内部，用迷你清洁机器人疏通了时空管道，修复后的口袋涌出金粉般的修复粒子，将混乱场景瞬间改造成星空闪耀的奇幻空间，竞香伸手触碰悬浮的猫形光斑，笑眼弯弯。\"\
+            \n\n输出:\n{\n  \"内容类型\": \"故事\",\n  \"核心主题\": \"哆啦A梦的四次元口袋故障冒险\",\n  \"\
+            总结正文\": \"在一个阳光明媚的午后，哆啦A梦的四次元口袋突然失控，各种道具喷涌而出。尝试使用时空缝合器修复时，意外引发时间乱流，将更多物品卷入空中。最终，哆啦A梦进入口袋内部，用迷你清洁机器人修复了故障，将混乱场景转变为奇幻星空，让静香感到惊喜。\"\
+            ,\n  \"关键要点\": [\n    \"哆啦A梦的四次元口袋突然失控，道具喷涌而出\",\n    \"使用时空缝合器时意外引发更大混乱\"\
+            ,\n    \"哆啦A梦进入口袋内部成功修复故障\",\n    \"混乱场景转变为美丽的星空奇幻空间\"\n  ],\n  \"情感基调\"\
+            : \"轻松幽默，充满奇幻色彩\"\n}\n\n### 例2: 教育类内容\n用户输入: [教育视频转录文本]\n\n输出:\n{\n  \"\
+            内容类型\": \"教程\",\n  \"核心主题\": \"...\",\n  \"总结正文\": \"...\",\n  \"关键要点\"\
+            : [\n    \"...\",\n    \"...\",\n    \"...\"\n  ],\n  \"情感基调\": \"...\"\
+            \n}\n\n## Rules\n1. 始终保持客观中立，不添加个人观点\n2. 确保总结涵盖所有关键信息点\n3. 根据内容类型调整总结风格和结构\n\
+            4. 保持总结的简洁性和可读性\n5. 尊重原始内容的情感基调和核心观点\n6. 对于较长内容，适当增加关键要点数量\n7. 对于专业内容，保留必要的专业术语\n\
+            \n## Initialization\n作为音视频内容总结专家，我已准备好帮助您提取和总结音视频转录文本中的关键信息。请提供您需要总结的音视频转录文本，我将分析内容并生成一个结构清晰、信息丰富的总结。无论是故事、教程、访谈还是新闻报道，我都能够识别其核心主题和关键要点，并以适当的格式呈现给您。"
+        - id: 4e198cc6-f0d9-41da-9ebb-c18fed71cd66
+          role: user
+          text: 请根据{{#1747705303679.text#}}总结归纳
+        selected: false
+        title: 音频转文字总结LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 88
+      id: '1747708303472'
+      position:
+        x: 1674
+        y: 282
+      positionAbsolute:
+        x: 1674
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        answer: '{{#1747708303472.text#}}'
+        desc: ''
+        selected: false
+        title: 音频转文字总结回复
+        type: answer
+        variables: []
+      height: 103
+      id: '1747708390492'
+      position:
+        x: 1977
+        y: 282
+      positionAbsolute:
+        x: 1977
+        y: 282
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    viewport:
+      x: -326.6189034350223
+      y: 87.42177541311412
+      zoom: 0.7348672401405871
