@@ -1,0 +1,107 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: agent-chat
+  name: 53-dify案例分享-12306mcp火车票信息查询-AIagent
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/volcengine_maas:0.0.14@287c49e4e33dea665c74e1f14692ac8b88d1b432864ee89d796b33f410bdaff0
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: junjiem/mcp_sse:0.1.6@9a06a9ca016e1927fda272e4c364c74e7846759d79785f98d14fd073eceaf753
+kind: app
+model_config:
+  agent_mode:
+    enabled: true
+    max_iteration: 5
+    prompt: null
+    strategy: function_call
+    tools:
+    - enabled: true
+      notAuthor: false
+      provider_id: junjiem/mcp_sse/mcp_sse
+      provider_name: junjiem/mcp_sse/mcp_sse
+      provider_type: builtin
+      tool_label: 获取 MCP 工具列表
+      tool_name: mcp_sse_list_tools
+      tool_parameters: {}
+    - enabled: true
+      notAuthor: false
+      provider_id: junjiem/mcp_sse/mcp_sse
+      provider_name: junjiem/mcp_sse/mcp_sse
+      provider_type: builtin
+      tool_label: 调用 MCP 工具
+      tool_name: mcp_sse_call_tool
+      tool_parameters:
+        arguments: ''
+        tool_name: ''
+  annotation_reply:
+    enabled: false
+  chat_prompt_config: {}
+  completion_prompt_config: {}
+  dataset_configs:
+    datasets:
+      datasets: []
+    reranking_enable: false
+    retrieval_model: multiple
+    top_k: 4
+  dataset_query_variable: ''
+  external_data_tools: []
+  file_upload:
+    allowed_file_extensions:
+    - .JPG
+    - .JPEG
+    - .PNG
+    - .GIF
+    - .WEBP
+    - .SVG
+    - .MP4
+    - .MOV
+    - .MPEG
+    - .WEBM
+    allowed_file_types: []
+    allowed_file_upload_methods:
+    - remote_url
+    - local_file
+    enabled: false
+    image:
+      detail: high
+      enabled: false
+      number_limits: 3
+      transfer_methods:
+      - remote_url
+      - local_file
+    number_limits: 3
+  model:
+    completion_params:
+      stop: []
+    mode: chat
+    name: deepseek-V3
+    provider: langgenius/volcengine_maas/volcengine_maas
+  more_like_this:
+    enabled: false
+  opening_statement: ''
+  pre_prompt: ''
+  prompt_type: simple
+  retriever_resource:
+    enabled: true
+  sensitive_word_avoidance:
+    configs: []
+    enabled: false
+    type: ''
+  speech_to_text:
+    enabled: false
+  suggested_questions: []
+  suggested_questions_after_answer:
+    enabled: false
+  text_to_speech:
+    enabled: false
+    language: ''
+    voice: ''
+  user_input_form: []
+version: 0.3.0

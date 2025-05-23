@@ -1,0 +1,507 @@
+app:
+  description: 该工作流主要实现了dify工作流和阿里百炼平台提供的Wanx 文生图智能体实现多种风格的海报封面制作
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 54-dify案例分享-海报封面生成工作流-Wanx 文生图2
+  use_icon_as_answer_icon: false
+dependencies: []
+kind: app
+version: 0.3.0
+workflow:
+  conversation_variables: []
+  environment_variables:
+  - description: ''
+    id: 977b1f27-690f-4d69-8aa3-29f5d1507d12
+    name: app_id3
+    selector:
+    - env
+    - app_id3
+    value: 7704e9af735841b7b48361f62d7be68c
+    value_type: string
+  - description: ''
+    id: dd059517-921a-4016-bcb0-1b197c9afa74
+    name: app_id2
+    selector:
+    - env
+    - app_id2
+    value: 9e1eadb991d64515b6aff5ec14e00354
+    value_type: string
+  - description: ''
+    id: 3b4e8296-de1a-4811-8047-6d96c2421c88
+    name: app_id1
+    selector:
+    - env
+    - app_id1
+    value: 80d631de601c4962af69092d26fae110
+    value_type: string
+  - description: ''
+    id: 3da97e01-25d1-459c-b662-9f9df15ef593
+    name: apikey
+    selector:
+    - env
+    - apikey
+    value: sk-2e9e88fc3e174bb8aae12a0dac69929b
+    value_type: string
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 500
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 100
+        video_file_size_limit: 500
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: answer
+      id: 1747921778519-source-1747920429630-target
+      selected: false
+      source: '1747921778519'
+      sourceHandle: source
+      target: '1747920429630'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: if-else
+      id: 1747906738209-source-1747923486587-target
+      selected: false
+      source: '1747906738209'
+      sourceHandle: source
+      target: '1747923486587'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: template-transform
+      id: 1747923486587-6bc86bd1-31c0-4c12-8cfb-207763c4d1c2-1747923852098-target
+      selected: false
+      source: '1747923486587'
+      sourceHandle: 6bc86bd1-31c0-4c12-8cfb-207763c4d1c2
+      target: '1747923852098'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: template-transform
+      id: 1747923486587-221fd682-108e-4585-9c6d-31dfc2659be1-1747923889718-target
+      source: '1747923486587'
+      sourceHandle: 221fd682-108e-4585-9c6d-31dfc2659be1
+      target: '1747923889718'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: template-transform
+      id: 1747923486587-eec16a58-bc35-476a-b128-ec3c014d714f-1747923900094-target
+      source: '1747923486587'
+      sourceHandle: eec16a58-bc35-476a-b128-ec3c014d714f
+      target: '1747923900094'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: answer
+      id: 1747923486587-false-1747923939365-target
+      source: '1747923486587'
+      sourceHandle: 'false'
+      target: '1747923939365'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: template-transform
+        targetType: variable-aggregator
+      id: 1747923852098-source-1747923989290-target
+      source: '1747923852098'
+      sourceHandle: source
+      target: '1747923989290'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: template-transform
+        targetType: variable-aggregator
+      id: 1747923889718-source-1747923989290-target
+      source: '1747923889718'
+      sourceHandle: source
+      target: '1747923989290'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: template-transform
+        targetType: variable-aggregator
+      id: 1747923900094-source-1747923989290-target
+      source: '1747923900094'
+      sourceHandle: source
+      target: '1747923989290'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: variable-aggregator
+        targetType: code
+      id: 1747923989290-source-1747921778519-target
+      source: '1747923989290'
+      sourceHandle: source
+      target: '1747921778519'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - label: 海报风格
+          max_length: 48
+          options:
+          - 赛博科技风
+          - 治愈温暖风格
+          - 软萌可爱风
+          required: true
+          type: select
+          variable: type
+      height: 88
+      id: '1747906738209'
+      position:
+        x: -130.97522712370107
+        y: 294.98727203862387
+      positionAbsolute:
+        x: -130.97522712370107
+        y: 294.98727203862387
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        answer: '{{#1747921778519.result#}}'
+        desc: ''
+        selected: false
+        title: 回复
+        type: answer
+        variables: []
+      height: 103
+      id: '1747920429630'
+      position:
+        x: 1517.7806221576523
+        y: 294.98727203862387
+      positionAbsolute:
+        x: 1517.7806221576523
+        y: 294.98727203862387
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        code: "import requests\nimport json\ndef main(prompt: str, app_id: str, apikey:\
+          \ str) -> dict:\n    # 设置请求的URL和Headers\n    url = f\"https://dashscope.aliyuncs.com/api/v1/apps/{app_id}/completion\"\
+          \n    headers = {\n        'Authorization': f'Bearer {apikey}',\n      \
+          \  'Content-Type': 'application/json'\n    }\n\n    # 定义请求的payload数据\n \
+          \   payload = {\n        \"input\": {\n            \"prompt\": prompt\n\
+          \        },\n        \"parameters\": {},\n        \"debug\": {}\n    }\n\
+          \n    # 发送POST请求\n    response = requests.request(\"POST\", url, headers=headers,\
+          \ data=json.dumps(payload))\n\n    # 提取结果并返回\n    if response.status_code\
+          \ == 200:\n        result = response.json()\n        # 提取text字段内容\n    \
+          \    if \"output\" in result and \"text\" in result[\"output\"]:\n     \
+          \       text_content = result[\"output\"][\"text\"]\n            return\
+          \ {\"result\": text_content}\n        else:\n            return {\"result\"\
+          : result}\n    else:\n        return {\"error\": f\"Error: {response.status_code},\
+          \ {response.text}\"}"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行
+        type: code
+        variables:
+        - value_selector:
+          - sys
+          - query
+          variable: prompt
+        - value_selector:
+          - '1747923989290'
+          - output
+          variable: app_id
+        - value_selector:
+          - env
+          - apikey
+          variable: apikey
+      height: 52
+      id: '1747921778519'
+      position:
+        x: 1161.9488027223151
+        y: 294.98727203862387
+      positionAbsolute:
+        x: 1161.9488027223151
+        y: 294.98727203862387
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        cases:
+        - case_id: 6bc86bd1-31c0-4c12-8cfb-207763c4d1c2
+          conditions:
+          - comparison_operator: contains
+            id: 6b731e97-7903-403b-9fe3-cdb6ad658934
+            value: 赛博科技风
+            varType: string
+            variable_selector:
+            - '1747906738209'
+            - type
+          id: 6bc86bd1-31c0-4c12-8cfb-207763c4d1c2
+          logical_operator: and
+        - case_id: 221fd682-108e-4585-9c6d-31dfc2659be1
+          conditions:
+          - comparison_operator: contains
+            id: e4b80b3c-2ca1-4440-9b3b-4cd3d321e85f
+            value: 治愈温暖风格
+            varType: string
+            variable_selector:
+            - '1747906738209'
+            - type
+          id: 221fd682-108e-4585-9c6d-31dfc2659be1
+          logical_operator: and
+        - case_id: eec16a58-bc35-476a-b128-ec3c014d714f
+          conditions:
+          - comparison_operator: contains
+            id: 13c2c341-7b5e-4249-a0ab-2d5dcb093f4d
+            value: 软萌可爱风
+            varType: string
+            variable_selector:
+            - '1747906738209'
+            - type
+          id: eec16a58-bc35-476a-b128-ec3c014d714f
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 条件分支
+        type: if-else
+      height: 220
+      id: '1747923486587'
+      position:
+        x: 173.02477287629893
+        y: 294.98727203862387
+      positionAbsolute:
+        x: 173.02477287629893
+        y: 294.98727203862387
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        selected: false
+        template: '{{ arg1 }}'
+        title: 模板转换
+        type: template-transform
+        variables:
+        - value_selector:
+          - env
+          - app_id1
+          variable: arg1
+      height: 52
+      id: '1747923852098'
+      position:
+        x: 489.8565923116363
+        y: 284.4885106824388
+      positionAbsolute:
+        x: 489.8565923116363
+        y: 284.4885106824388
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        selected: false
+        template: '{{ arg2 }}'
+        title: 模板转换 2
+        type: template-transform
+        variables:
+        - value_selector:
+          - env
+          - app_id2
+          variable: arg2
+      height: 52
+      id: '1747923889718'
+      position:
+        x: 489.8565923116363
+        y: 372.8223945241344
+      positionAbsolute:
+        x: 489.8565923116363
+        y: 372.8223945241344
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        selected: false
+        template: '{{ arg3 }}'
+        title: 模板转换 3
+        type: template-transform
+        variables:
+        - value_selector:
+          - env
+          - app_id3
+          variable: arg3
+      height: 52
+      id: '1747923900094'
+      position:
+        x: 489.8565923116363
+        y: 452.99057508879713
+      positionAbsolute:
+        x: 489.8565923116363
+        y: 452.99057508879713
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        answer: 对不起？该风格的海报封面我不会制作，请使用其他风格封面设计比如：赛博科技风格、治愈温暖风格、软萌可爱风
+        desc: ''
+        selected: false
+        title: 直接回复 2
+        type: answer
+        variables: []
+      height: 148
+      id: '1747923939365'
+      position:
+        x: 489.8565923116363
+        y: 555.3228074054059
+      positionAbsolute:
+        x: 489.8565923116363
+        y: 555.3228074054059
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        output_type: string
+        selected: false
+        title: 变量聚合器
+        type: variable-aggregator
+        variables:
+        - - '1747923852098'
+          - output
+        - - '1747923889718'
+          - output
+        - - '1747923900094'
+          - output
+      height: 151
+      id: '1747923989290'
+      position:
+        x: 793.8565923116363
+        y: 284.4885106824388
+      positionAbsolute:
+        x: 793.8565923116363
+        y: 284.4885106824388
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        author: ' 周辉'
+        desc: ''
+        height: 153
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"本工作流是实现了阿里百联平台上MCP广场提供的
+          Wanx 文生图，实现了3个海报制作","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 324
+      height: 153
+      id: '1747967681572'
+      position:
+        x: -189.43666447500289
+        y: 420.93927858367937
+      positionAbsolute:
+        x: -189.43666447500289
+        y: 420.93927858367937
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 324
+    viewport:
+      x: 406.95218570726547
+      y: -194.31953862694843
+      zoom: 1.1442834470673888

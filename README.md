@@ -80,6 +80,8 @@
 | 多模态图像编辑(HiDream-E1-Full)chatflow.yml | ![image-20250510164614722](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250510164614722.png.png) | 图片转base64、条件分支、代码转换、变量赋值、2个自定义工具 | 2025年5月10日 | wwwzhouhui | 1.13 |
 | 基于上市公司财报分析结果html分析报告（整合MinerU+edgeone-pages-mcp）.yml | ![image-20250513221853568](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250513221853568.png) | mineru插件、LLM大语言模型、参数提取器、代码处理生成 | 2025年5月13日 | wwwzhouhui | 1.13 |
 | 三步实现音视频转文字会议纪要从此无忧.yml | ![image-20250520103737363](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250520103737363.png) | ffmpeg、Speech To Text、ASR模型、LLM大语言模型 | 2025年5月20日 | wwwzhouhui | 1.4.0 |
+| 12306mcp火车票信息查询-chatflow.yml | ![image-20250520164540255](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250520164540255.png) | AGNET策略工具、12306MCP、mcphub | 2025年5月21日 | wwwzhouhui | 1.4.0 |
+| 海报封面生成工作流-Wanx 文生图.yml | ![image-20250522225213393](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250522225213393.png) | 阿里云百炼MCP Agent（Wanx 文生图）、条件分支、变量聚合器、模版转换、代码执行 | 2025年5月23日 | wwwzhouhui | 1.4.0 |
 
 ### 部分视频链接地址
 
@@ -104,6 +106,10 @@
 
 
 ## 更新说明
+2025年5月23 日-version 0.0.3.17：增加海报封面生成工作流-Wanx 文生图.yml
+
+2025年5月21 日-version 0.0.3.16：增加12306mcp火车票信息查询-chatflow.yml、12306mcp火车票信息查询-AIAgent.yml
+
 2025年5月20 日-version 0.0.3.15：增加音视频转文字会议纪要.yml
 
 2025年5月13 日-version 0.0.3.14：增加基于上市公司财报分析结果html分析报告（整合MinerU+edgeone-pages-mcp）.yml后端代码复用之前的代码 https://github.com/wwwzhouhui/dify-for-dsl/tree/main/dsl/makehtml/makehtmlapi.py
