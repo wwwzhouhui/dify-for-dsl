@@ -1,0 +1,356 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 55-dify案例分享-英语单词口语练习
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.16@77274df8fe2632cac66bfd153fcc75aa5e96abbe92b5c611b8984ad9f4cd4457
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: bowenliang123/md_exporter:1.2.0@b18d95d19f25ed9c73d758048a69cf37c14c1f9f801b354aa7469db44f0df4d6
+kind: app
+version: 0.3.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 500
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 100
+        video_file_size_limit: 500
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: 1747991921941-source-1747996321194-target
+      source: '1747991921941'
+      sourceHandle: source
+      target: '1747996321194'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: parameter-extractor
+      id: 1747996321194-source-1748043544283-target
+      source: '1747996321194'
+      sourceHandle: source
+      target: '1748043544283'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: parameter-extractor
+        targetType: tool
+      id: 1748043544283-source-1748043739511-target
+      source: '1748043544283'
+      sourceHandle: source
+      target: '1748043739511'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: answer
+      id: 1748043739511-source-answer-target
+      source: '1748043739511'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: start
+        targetType: llm
+      id: 1747991890414-source-1747991921941-target
+      source: '1747991890414'
+      sourceHandle: source
+      target: '1747991921941'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - image
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: ' 图片'
+          max_length: 48
+          options: []
+          required: true
+          type: file
+          variable: file
+      height: 90
+      id: '1747991890414'
+      position:
+        x: -6.323149280871917
+        y: 282
+      positionAbsolute:
+        x: -6.323149280871917
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1747991921941.text#}}
+
+          {{#1747996321194.text#}}
+
+          {{#1748043739511.files#}}'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 143
+      id: answer
+      position:
+        x: 1753.809910845351
+        y: 282
+      positionAbsolute:
+        x: 1753.809910845351
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: gemini-2.5-flash-preview-04-17
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: e9b9ec0c-5498-4e17-a000-f3b06a59e0d0
+          role: system
+          text: 仅输出识别到的图片中的文字信息
+        - id: 872ff9fb-9771-4d30-8f21-28e9af5a22db
+          role: user
+          text: ''
+        selected: false
+        title: ocr识别
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - '1747991890414'
+            - file
+          enabled: true
+      height: 90
+      id: '1747991921941'
+      position:
+        x: 365.2813487399126
+        y: 282
+      positionAbsolute:
+        x: 365.2813487399126
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: gemini-2.5-flash-preview-05-20
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 70c2bf75-abc7-4be1-853e-5442bba62045
+          role: system
+          text: 分析英语单词，编写英语单词的互动网页动画小程序，要求点击时能发出单词声音，并读3次，然后还能对每一个单词能进行录音，校验读音是否准确，帮助记忆单词，仅输出html程序请使用中文，不要用英文
+        - id: 6d56cf5d-cc62-496f-941d-17d7b5701fe1
+          role: user
+          text: 请根据用户输入的信息{{#1747991921941.text#}}生成html
+        selected: false
+        title: 生成英语单词html
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1747996321194'
+      position:
+        x: 713.6273262629943
+        y: 282
+      positionAbsolute:
+        x: 713.6273262629943
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        instruction: 请提取大模输出的html部分代码，其他的不需要
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gemini-2.5-flash-preview-04-17
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        parameters:
+        - description: 只提取生成html页面部分内容
+          name: html
+          required: false
+          type: string
+        query:
+        - '1747996321194'
+        - text
+        reasoning_mode: prompt
+        selected: false
+        title: 参数提取器
+        type: parameter-extractor
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1748043544283'
+      position:
+        x: 1098.4413035235043
+        y: 282
+      positionAbsolute:
+        x: 1098.4413035235043
+        y: 282
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Markdown text
+            ja_JP: Markdown text
+            pt_BR: Markdown text
+            zh_Hans: Markdown格式文本
+          label:
+            en_US: Markdown text
+            ja_JP: Markdown text
+            pt_BR: Markdown text
+            zh_Hans: Markdown格式文本
+          llm_description: ''
+          max: null
+          min: null
+          name: md_text
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        params:
+          md_text: ''
+        provider_id: bowenliang123/md_exporter/md_exporter
+        provider_name: bowenliang123/md_exporter/md_exporter
+        provider_type: builtin
+        selected: false
+        title: Markdown转HTML文件
+        tool_configurations: {}
+        tool_description: 一个用于将Markdown转换为HTML文件的工具
+        tool_label: Markdown转HTML文件
+        tool_name: md_to_html
+        tool_parameters:
+          md_text:
+            type: mixed
+            value: '{{#1748043544283.html#}}'
+        type: tool
+      height: 54
+      id: '1748043739511'
+      position:
+        x: 1412.9400649225292
+        y: 282
+      positionAbsolute:
+        x: 1412.9400649225292
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: -555.1839317982444
+      y: 140.6783269045286
+      zoom: 0.7208533892375428

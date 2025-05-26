@@ -82,6 +82,8 @@
 | 三步实现音视频转文字会议纪要从此无忧.yml | ![image-20250520103737363](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250520103737363.png) | ffmpeg、Speech To Text、ASR模型、LLM大语言模型 | 2025年5月20日 | wwwzhouhui | 1.4.0 |
 | 12306mcp火车票信息查询-chatflow.yml | ![image-20250520164540255](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250520164540255.png) | AGNET策略工具、12306MCP、mcphub | 2025年5月21日 | wwwzhouhui | 1.4.0 |
 | 海报封面生成工作流-Wanx 文生图.yml | ![image-20250522225213393](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250522225213393.png) | 阿里云百炼MCP Agent（Wanx 文生图）、条件分支、变量聚合器、模版转换、代码执行 | 2025年5月23日 | wwwzhouhui | 1.4.0 |
+| 英语单词口语练习.yml | ![image-20250524093955804](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250524093955804.png.png) | llm大语言模型、参数提取器、Markdown转HTML文件 | 2025年5月24日 | wwwzhouhui | 1.4.0 |
+| 0 代码实现企业画像！16 种图表，解锁数据查询新姿势.yml | ![image-20250526175553744](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250526175553744.png.png) | 问题分类器、mcp-sse、mcp-server-chart、MCP Agent 策略工具、企业信息查询的MCP-Server | 2025年5月27日 | wwwzhouhui | 1.4.0 |
 
 ### 部分视频链接地址
 
@@ -106,6 +108,10 @@
 
 
 ## 更新说明
+2025年5月24 日-version 0.0.3.19：增加0 代码实现企业画像！16 种图表，解锁数据查询新姿势.yml
+
+2025年5月24 日-version 0.0.3.18：增加英语单词口语练习.yml
+
 2025年5月23 日-version 0.0.3.17：增加海报封面生成工作流-Wanx 文生图.yml
 
 2025年5月21 日-version 0.0.3.16：增加12306mcp火车票信息查询-chatflow.yml、12306mcp火车票信息查询-AIAgent.yml
@@ -350,7 +356,7 @@ PIP_MIRROR_URL=https://pypi.tuna.tsinghua.edu.cn/simple <br>
 
 ## 技术交流群
 
-![image-20250520134239062](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250520134239062.png)
+![image-20250527001332017](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250527001332017.png)
 
 ## Star History
 
