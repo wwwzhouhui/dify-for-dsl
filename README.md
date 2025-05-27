@@ -356,7 +356,7 @@ PIP_MIRROR_URL=https://pypi.tuna.tsinghua.edu.cn/simple <br>
 
 ## 技术交流群
 
-![image-20250527001332017](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250527001332017.png)
+![img](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Screenshot_20250527_145831_com.tencent.mm.jpg)
 
 ## Star History
 
