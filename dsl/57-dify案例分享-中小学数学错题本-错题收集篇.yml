@@ -1,0 +1,1093 @@
+app:
+  description: 可以通过该工作流实现中小学数学错题本收集整理，并结合错题本生成对应的错题进行练习和打印。由于篇幅有限，本工作流先实现错题本收集，后面再基于错题版实现AI
+    错题生成和练习功能。
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 57-dify案例分享-中小学数学错题本-错题收集篇
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: hjlarry/database:0.0.6@2f547ea4b80c5bbec2b953843a37de9aff7427d276b763a8e237c6b2188359b3
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.16@77274df8fe2632cac66bfd153fcc75aa5e96abbe92b5c611b8984ad9f4cd4457
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: kalochin/pdf_process:0.0.4@29c7b0927a11333044049de20657119779a06e0eb003b6c5cffaec07e5204332
+kind: app
+version: 0.3.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 500
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 100
+        video_file_size_limit: 500
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: 欢迎使用中小学生数学错题本，您可以使用它收集整理学生错题本并基于错题生成同类型题目
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: template-transform
+      id: 1742961448129-source-1742968539723-target
+      source: '1742961448129'
+      sourceHandle: source
+      target: '1742968539723'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: template-transform
+        targetType: if-else
+      id: 1742968539723-source-1742968594787-target
+      source: '1742968539723'
+      sourceHandle: source
+      target: '1742968594787'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: answer
+      id: 1742968594787-false-1742968639246-target
+      source: '1742968594787'
+      sourceHandle: 'false'
+      target: '1742968639246'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1742968594787-13435cdc-eeee-4ded-a218-0b17fe74d1b4-1742965550311-target
+      source: '1742968594787'
+      sourceHandle: 13435cdc-eeee-4ded-a218-0b17fe74d1b4
+      target: '1742965550311'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1747669709105'
+        sourceType: iteration-start
+        targetType: code
+      id: 1747669709105start-source-1747669724911-target
+      source: 1747669709105start
+      sourceHandle: source
+      target: '1747669724911'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1747669709105'
+        sourceType: code
+        targetType: tool
+      id: 1747669724911-source-1747670104835-target
+      source: '1747669724911'
+      sourceHandle: source
+      target: '1747670104835'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1747669709105'
+        sourceType: tool
+        targetType: answer
+      id: 1747670104835-source-1747670366921-target
+      source: '1747670104835'
+      sourceHandle: source
+      target: '1747670366921'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: iteration
+      id: 1747669573906-source-1747669709105-target
+      source: '1747669573906'
+      sourceHandle: source
+      target: '1747669709105'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: tool
+      id: 1742968594787-true-1748401687256-target
+      source: '1742968594787'
+      sourceHandle: 'true'
+      target: '1748401687256'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: llm
+      id: 1748401687256-source-1748401786521-target
+      source: '1748401687256'
+      sourceHandle: source
+      target: '1748401786521'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 1748401786521-source-1748401911432-target
+      source: '1748401786521'
+      sourceHandle: source
+      target: '1748401911432'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 1742965550311-source-1748401911432-target
+      source: '1742965550311'
+      sourceHandle: source
+      target: '1748401911432'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: variable-aggregator
+        targetType: code
+      id: 1748401911432-source-1747669573906-target
+      source: '1748401911432'
+      sourceHandle: source
+      target: '1747669573906'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - image
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: 错题本(pdf 或图片类型(png、jpeg、jpg、bmp、tiff)
+          max_length: 48
+          options: []
+          required: true
+          type: file
+          variable: file
+      height: 88
+      id: '1742961448129'
+      position:
+        x: -952.316238314301
+        y: 226.93949927835763
+      positionAbsolute:
+        x: -952.316238314301
+        y: 226.93949927835763
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1742961448129'
+          - file
+        desc: ''
+        memory:
+          query_prompt_template: '{{#sys.query#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params: {}
+          mode: chat
+          name: gemini-2.5-flash-preview-05-20
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: b7a48cbc-70dd-46de-8cf3-13d51b6c208f
+          role: system
+          text: ''
+        - id: da8aed39-02f6-4dad-a2ce-47f13a480f0a
+          role: user
+          text: '# 角色定义
+
+            你是一位中小学错题收集与整理专家，擅长从学生的考试题目中提取错误题目，并按照题型（选择题、填空题、判断题、问答题）进行分类归纳。你会为每道错题提供正确答案，并生成一份结构化的错题本，以JSON格式呈现，便于学生复习和存入数据库。
+
+
+
+            # 任务目标
+
+            根据用户提供的考试题目和错误信息，完成以下任务：
+
+            1. **提取错误题目**：识别并提取所有答错的题目。
+
+            2. **分类整理**：将错误题目按照以下四类进行分类：
+
+               - **选择题**
+
+               - **填空题**
+
+               - **判断题**
+
+               - **问答题**
+
+            3. **JSON格式输出**：
+
+               - 生成一个包含所有题目的JSON对象。
+
+               - 即使某类题型没有错题，也保留该类型的空数组。
+
+            4. **符合数据库结构**：确保输出的JSON格式符合给定的数据库表结构。
+
+
+
+            # 输入格式
+
+            请提供以下信息：
+
+            - 考试题目列表（包括题干、选项（如有）、学生答案和正确答案）。
+
+            - 学生的错误标记（哪些题目是错误的）。
+
+            - 学科信息。
+
+            - 难度等级（1-5）。
+
+
+
+            # 输出格式
+
+            生成一份JSON格式的错题本，结构如下：
+
+
+
+            ```json
+
+            {
+
+              "error_questions": [
+
+                {
+
+                  "question_text": "题目内容",
+
+                  "subject": "学科名称",
+
+                  "question_type": "题目类型",
+
+                  "difficulty": "难度等级",
+
+                  "answer": "正确答案",
+
+                  "user_answer": "用户答案",
+
+                  "explanation": "解析（如有）"
+
+                },
+
+                // ... 更多题目
+
+              ]
+
+            }
+
+            注意只需要返回json格式的内容信息，不要输出其他内容'
+        selected: false
+        title: 图片类错题本收集整理
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - '1742961448129'
+            - file
+          enabled: true
+      height: 88
+      id: '1742965550311'
+      position:
+        x: 138.40605007216425
+        y: 341.8853962474598
+      positionAbsolute:
+        x: 138.40605007216425
+        y: 341.8853962474598
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        selected: false
+        template: '{{ filetype }}'
+        title: 模板转换
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1742961448129'
+          - file
+          - mime_type
+          variable: filetype
+      height: 52
+      id: '1742968539723'
+      position:
+        x: -589.8665785808005
+        y: 226.93949927835763
+      positionAbsolute:
+        x: -589.8665785808005
+        y: 226.93949927835763
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: fb25ea2e-3464-46ee-9db5-57211a428420
+            value: application/pdf
+            varType: string
+            variable_selector:
+            - '1742968539723'
+            - output
+          id: 'true'
+          logical_operator: and
+        - case_id: 13435cdc-eeee-4ded-a218-0b17fe74d1b4
+          conditions:
+          - comparison_operator: contains
+            id: 8d6de332-86eb-4b9a-84c1-b67439d6864b
+            value: image
+            varType: string
+            variable_selector:
+            - '1742968539723'
+            - output
+          id: 13435cdc-eeee-4ded-a218-0b17fe74d1b4
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 条件分支
+        type: if-else
+      height: 172
+      id: '1742968594787'
+      position:
+        x: -288.316238314301
+        y: 226.93949927835763
+      positionAbsolute:
+        x: -288.316238314301
+        y: 226.93949927835763
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        answer: 您输入的文件类型不是pdf和图片，请重新上传
+        desc: ''
+        selected: false
+        title: 直接回复 3
+        type: answer
+        variables: []
+      height: 116
+      id: '1742968639246'
+      position:
+        x: 153.09684782377803
+        y: 507.16800267159215
+      positionAbsolute:
+        x: 153.09684782377803
+        y: 507.16800267159215
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        code: "import json\ndef main(arg1: str) -> dict:\n    try:\n        # 移除可能存在的Markdown代码块标记\n\
+          \        cleaned_json = arg1.strip()\n        if cleaned_json.startswith('```json'):\n\
+          \            cleaned_json = cleaned_json[7:]\n        if cleaned_json.endswith('```'):\n\
+          \            cleaned_json = cleaned_json[:-3]\n            \n        # 处理转义字符，并确保正确的编码处理\n\
+          \        # cleaned_json = cleaned_json.encode('utf-8').decode('unicode_escape').encode('latin1').decode('utf-8')\n\
+          \         # **替换转义符**：将 \\\\n 转为 \\n（适用于 JSON 中用双反斜杠表示换行的场景）\n        cleaned_json\
+          \ = cleaned_json.replace('\\\\\\\\n', '\\\\n')  # 将四个反斜杠转为两个（JSON 标准转义）\n\
+          \        # 将 JSON 字符串解析为 Python 字典\n        result_dict = json.loads(cleaned_json)\n\
+          \        return {\"error_questions\": result_dict[\"error_questions\"]}\
+          \ # 返回解析结果\n    except json.JSONDecodeError as e:\n        return {\"error\"\
+          : f\"JSON 解析失败: {e}\"}\n    except Exception as e:\n        return {\"error\"\
+          : f\"发生未知错误: {e}\"}"
+        code_language: python3
+        desc: ''
+        outputs:
+          error_questions:
+            children: null
+            type: array[object]
+        selected: false
+        title: 代码执行
+        type: code
+        variables:
+        - value_selector:
+          - '1748401911432'
+          - output
+          variable: arg1
+      height: 52
+      id: '1747669573906'
+      position:
+        x: 838.6782221995061
+        y: 253.9367604284539
+      positionAbsolute:
+        x: 838.6782221995061
+        y: 253.9367604284539
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        error_handle_mode: terminated
+        height: 248
+        is_parallel: false
+        iterator_selector:
+        - '1747669573906'
+        - error_questions
+        output_selector:
+        - '1747670104835'
+        - json
+        output_type: array[object]
+        parallel_nums: 10
+        selected: false
+        start_node_id: 1747669709105start
+        title: 迭代
+        type: iteration
+        width: 996
+      height: 248
+      id: '1747669709105'
+      position:
+        x: -345.933810808891
+        y: 739.3986602833129
+      positionAbsolute:
+        x: -345.933810808891
+        y: 739.3986602833129
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 996
+      zIndex: 1
+    - data:
+        desc: ''
+        isInIteration: true
+        selected: false
+        title: ''
+        type: iteration-start
+      draggable: false
+      height: 48
+      id: 1747669709105start
+      parentId: '1747669709105'
+      position:
+        x: 24
+        y: 68
+      positionAbsolute:
+        x: -321.933810808891
+        y: 807.3986602833129
+      selectable: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-iteration-start
+      width: 44
+      zIndex: 1002
+    - data:
+        code: "def main(arg1: dict) -> dict:\n    # 提取输入字典的字段\n    question_text =\
+          \ arg1.get(\"question_text\", \"\")\n    subject = arg1.get(\"subject\"\
+          , \"\")\n    question_type = arg1.get(\"question_type\", \"\")\n    \n \
+          \   # 确保 difficulty 是字符串类型\n    difficulty = arg1.get(\"difficulty\", \"\
+          \")\n    if not isinstance(difficulty, str):\n        difficulty = str(difficulty)\n\
+          \    \n    answer = arg1.get(\"answer\", \"\")\n    user_answer = arg1.get(\"\
+          user_answer\", \"\")\n    explanation = arg1.get(\"explanation\", \"\")\n\
+          \    \n    # 返回包含所有字段的字典\n    return {\n        \"question_text\": question_text,\n\
+          \        \"subject\": subject,\n        \"question_type\": question_type,\n\
+          \        \"difficulty\": difficulty,  # 确保此处为字符串\n        \"answer\": answer,\n\
+          \        \"user_answer\": user_answer,\n        \"explanation\": explanation\n\
+          \    }"
+        code_language: python3
+        desc: ''
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1747669709105'
+        outputs:
+          answer:
+            children: null
+            type: string
+          difficulty:
+            children: null
+            type: string
+          explanation:
+            children: null
+            type: string
+          question_text:
+            children: null
+            type: string
+          question_type:
+            children: null
+            type: string
+          subject:
+            children: null
+            type: string
+          user_answer:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行 2
+        type: code
+        variables:
+        - value_selector:
+          - '1747669709105'
+          - item
+          variable: arg1
+      height: 52
+      id: '1747669724911'
+      parentId: '1747669709105'
+      position:
+        x: 93.04814887672387
+        y: 73.30033199775221
+      positionAbsolute:
+        x: -252.88566193216712
+        y: 812.6989922810651
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+      zIndex: 1002
+    - data:
+        desc: ''
+        isInIteration: true
+        isInLoop: false
+        is_team_authorization: true
+        iteration_id: '1747669709105'
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: The SQL query string.
+            ja_JP: The SQL query string.
+            pt_BR: The SQL query string.
+            zh_Hans: SQL 查询语句。
+          label:
+            en_US: SQL Query
+            ja_JP: SQL Query
+            pt_BR: SQL Query
+            zh_Hans: SQL 查询语句
+          llm_description: The SQL query string.
+          max: null
+          min: null
+          name: query
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Optional, Filling in this field will overwrite the database connection
+              entered during authorization.
+            ja_JP: Optional, Filling in this field will overwrite the database connection
+              entered during authorization.
+            pt_BR: Optional, Filling in this field will overwrite the database connection
+              entered during authorization.
+            zh_Hans: 选填，填写后将覆盖授权时填写的数据库连接。
+          label:
+            en_US: DB URI
+            ja_JP: DB URI
+            pt_BR: DB URI
+            zh_Hans: DB URI
+          llm_description: ''
+          max: null
+          min: null
+          name: db_uri
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: json
+          form: form
+          human_description:
+            en_US: Choose the output format.
+            ja_JP: Choose the output format.
+            pt_BR: Choose the output format.
+            zh_Hans: 选择输出格式。
+          label:
+            en_US: Output format
+            ja_JP: Output format
+            pt_BR: Output format
+            zh_Hans: 输出格式
+          llm_description: ''
+          max: null
+          min: null
+          name: format
+          options:
+          - label:
+              en_US: JSON
+              ja_JP: JSON
+              pt_BR: JSON
+              zh_Hans: JSON
+            value: json
+          - label:
+              en_US: CSV
+              ja_JP: CSV
+              pt_BR: CSV
+              zh_Hans: CSV
+            value: csv
+          - label:
+              en_US: YAML
+              ja_JP: YAML
+              pt_BR: YAML
+              zh_Hans: YAML
+            value: yaml
+          - label:
+              en_US: Markdown
+              ja_JP: Markdown
+              pt_BR: Markdown
+              zh_Hans: Markdown
+            value: md
+          - label:
+              en_US: Excel
+              ja_JP: Excel
+              pt_BR: Excel
+              zh_Hans: Excel
+            value: xlsx
+          - label:
+              en_US: HTML
+              ja_JP: HTML
+              pt_BR: HTML
+              zh_Hans: HTML
+            value: html
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: 'Optional. For example {"connect_args": {"ssl": {"ca": "/path/to/ca.pem"}}}
+
+              More connection options can be found at https://docs.sqlalchemy.org/en/20/core/engines.html#sqlalchemy.create_engine
+
+              '
+            ja_JP: 'Optional. For example {"connect_args": {"ssl": {"ca": "/path/to/ca.pem"}}}
+
+              More connection options can be found at https://docs.sqlalchemy.org/en/20/core/engines.html#sqlalchemy.create_engine
+
+              '
+            pt_BR: 'Optional. For example {"connect_args": {"ssl": {"ca": "/path/to/ca.pem"}}}
+
+              More connection options can be found at https://docs.sqlalchemy.org/en/20/core/engines.html#sqlalchemy.create_engine
+
+              '
+            zh_Hans: '选填项。例如 {"connect_args": {"ssl": {"ca": "/path/to/ca.pem"}}}
+
+              更多连接选项可参考 https://docs.sqlalchemy.org/en/20/core/engines.html#sqlalchemy.create_engine
+
+              '
+          label:
+            en_US: DB Config Options
+            ja_JP: DB Config Options
+            pt_BR: DB Config Options
+            zh_Hans: 数据库连接配置选项
+          llm_description: ''
+          max: null
+          min: null
+          name: config_options
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        params:
+          config_options: ''
+          db_uri: ''
+          format: ''
+          query: ''
+        provider_id: hjlarry/database/database
+        provider_name: hjlarry/database/database
+        provider_type: builtin
+        selected: false
+        title: SQL Execute
+        tool_configurations:
+          config_options: null
+          format: json
+        tool_description: 此工具用于在已存在的数据库中执行 SQL 查询。
+        tool_label: SQL Execute
+        tool_name: sql_execute
+        tool_parameters:
+          db_uri:
+            type: mixed
+            value: ''
+          query:
+            type: mixed
+            value: "INSERT INTO error_questions \n(question_text, subject, question_type,\
+              \ difficulty, answer, user_answer, explanation)\nVALUES \n('{{#1747669724911.question_text#}}','{{#1747669724911.subject#}}','{{#1747669724911.question_type#}}','{{#1747669724911.difficulty#}}','{{#1747669724911.answer#}}','{{#1747669724911.user_answer#}}','{{#1747669724911.explanation#}}');"
+        type: tool
+      height: 114
+      id: '1747670104835'
+      parentId: '1747669709105'
+      position:
+        x: 432
+        y: 68
+      positionAbsolute:
+        x: 86.066189191109
+        y: 807.3986602833129
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+      zIndex: 1002
+    - data:
+        answer: '{{#1748401911432.output#}}
+
+          {{#1747670104835.text#}}'
+        desc: ''
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1747669709105'
+        selected: false
+        title: 数据库插入信息显示
+        type: answer
+        variables: []
+      height: 122
+      id: '1747670366921'
+      parentId: '1747669709105'
+      position:
+        x: 736
+        y: 68
+      positionAbsolute:
+        x: 390.066189191109
+        y: 807.3986602833129
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+      zIndex: 1002
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: PDF file to convert to PNG images
+            ja_JP: PDF file to convert to PNG images
+            pt_BR: PDF file to convert to PNG images
+            zh_Hans: 要转换为PNG图片的PDF文件
+          label:
+            en_US: PDF Content
+            ja_JP: PDF Content
+            pt_BR: PDF Content
+            zh_Hans: PDF 内容
+          llm_description: PDF file content to be converted to PNG images
+          max: null
+          min: null
+          name: pdf_content
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: file
+        - auto_generate: null
+          default: 2
+          form: llm
+          human_description:
+            en_US: Zoom factor for image quality (default is 2)
+            ja_JP: Zoom factor for image quality (default is 2)
+            pt_BR: Zoom factor for image quality (default is 2)
+            zh_Hans: 图像质量的缩放因子（默认为2）
+          label:
+            en_US: Zoom Factor
+            ja_JP: Zoom Factor
+            pt_BR: Zoom Factor
+            zh_Hans: 缩放因子
+          llm_description: Zoom factor to control the quality of output PNG images
+          max: null
+          min: null
+          name: zoom
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: number
+        params:
+          pdf_content: ''
+          zoom: ''
+        provider_id: kalochin/pdf_process/pdf_process
+        provider_name: kalochin/pdf_process/pdf_process
+        provider_type: builtin
+        selected: false
+        title: PDF转PNG转换器
+        tool_configurations: {}
+        tool_description: 一个将PDF文件转换为PNG图片的工具
+        tool_label: PDF转PNG转换器
+        tool_name: pdf_to_png
+        tool_parameters:
+          pdf_content:
+            type: variable
+            value:
+            - '1742961448129'
+            - file
+        type: tool
+      height: 52
+      id: '1748401687256'
+      position:
+        x: -95.22382071532121
+        y: 25.899418399291392
+      positionAbsolute:
+        x: -95.22382071532121
+        y: 25.899418399291392
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: gemini-2.5-flash-preview-05-20
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 97b04a02-869a-476d-878e-f5fe60ab0ef7
+          role: system
+          text: '# 角色定义
+
+            你是一位中小学错题收集与整理专家，擅长从学生的考试题目中提取错误题目，并按照题型（选择题、填空题、判断题、问答题）进行分类归纳。你会为每道错题提供正确答案，并生成一份结构化的错题本，以JSON格式呈现
+
+            ，便于学生复习和存入数据库。
+
+
+
+            # 任务目标
+
+            根据用户提供的考试题目和错误信息，完成以下任务：
+
+            1. **提取错误题目**：识别并提取所有答错的题目。
+
+            2. **分类整理**：将错误题目按照以下四类进行分类：
+
+               - **选择题**
+
+               - **填空题**
+
+               - **判断题**
+
+               - **问答题**
+
+            3. **JSON格式输出**：
+
+               - 生成一个包含所有题目的JSON对象。
+
+               - 即使某类题型没有错题，也保留该类型的空数组。
+
+            4. **符合数据库结构**：确保输出的JSON格式符合给定的数据库表结构。
+
+
+
+            # 输入格式
+
+            请提供以下信息：
+
+            - 考试题目列表（包括题干、选项（如有）、学生答案和正确答案）。
+
+            - 学生的错误标记（哪些题目是错误的）。
+
+            - 学科信息。
+
+            - 难度等级（1-5）。
+
+
+
+            # 输出格式
+
+            生成一份JSON格式的错题本，结构如下：
+
+
+
+            ```json
+
+            {
+
+              "error_questions": [
+
+                {
+
+                  "question_text": "题目内容",
+
+                  "subject": "学科名称",
+
+                  "question_type": "题目类型",
+
+                  "difficulty": "难度等级",
+
+                  "answer": "正确答案",
+
+                  "user_answer": "用户答案",
+
+                  "explanation": "解析（如有）"
+
+                },
+
+                // ... 更多题目
+
+              ]
+
+            }
+
+            注意只需要返回json格式的内容信息，不要输出其他内容'
+        selected: false
+        title: 图片类错题本收集整理(pdf转换过的图片）
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - '1748401687256'
+            - files
+          enabled: true
+      height: 88
+      id: '1748401786521'
+      position:
+        x: 153.09684782377803
+        y: 111.64655182661318
+      positionAbsolute:
+        x: 153.09684782377803
+        y: 111.64655182661318
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        output_type: string
+        selected: false
+        title: 变量聚合器
+        type: variable-aggregator
+        variables:
+        - - '1748401786521'
+          - text
+        - - '1742965550311'
+          - text
+      height: 129
+      id: '1748401911432'
+      position:
+        x: 489.6500739475125
+        y: 146.44249002900463
+      positionAbsolute:
+        x: 489.6500739475125
+        y: 146.44249002900463
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    viewport:
+      x: 427.576949690271
+      y: -108.06346962463601
+      zoom: 0.5913415124562521

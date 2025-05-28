@@ -30,60 +30,61 @@
 
 | DSL清单名称                              | 工作流显示                         | 用到技术                                                     | 更新时间                                                 | 作者                                       | 适用dify版本                               |
 | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------------------------------------- |
-| FLUX绘画机器人.yml                       | ![image-20250323090547121](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323090547121.png) | 调用FLUX绘画模型、文本模型、http接口请求                     | 2024年11月16日          | wwwzhouhui           | 0.15.3               |
-| 增值税发票提取小工具chatflow.yml         | ![image-20250323090514862](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323090514862.png) | 调用多模态模型、文本模型、文件提取器                         | 2024年11月16日              | wwwzhouhui               | 0.15.3                   |
-| 发票提取小工具整合版-变量聚合器.yml      | ![image-20250323090446623](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323090446623.png) | 调用多模态模型、文本模型、文件提取器、IF流程判断             | 2024年11月16日  | wwwzhouhui   | 0.15.3       |
-| 发票比对专家-新版客运火车票2.yml         | ![image-20250323090415346](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323090415346.png) | 调用多模态模型、文本模型                                     | 2024年11月16日                          | wwwzhouhui                           | 0.15.3                               |
-| 抓取获取36氪热榜文章内容 .yml            | ![image-20250323090341369](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323090341369.png) | 调用文本模型、http接口请求、jina-ai爬取网页信息、迭代        | 2024年11月16日 | wwwzhouhui | 0.15.3  |
-| 中国历史专家播客.yml                     | ![image-20250323090253917](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323090253917.png) | 调用文本模型、TEXT TO SPEECH工具组件使用                     | 2024年11月26日          | wwwzhouhui           | 0.15.3               |
-| giteeKolors工作流.yaml                   | ![image-20250323090209808](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323090209808.png) | 自定义第三方接口服务封装文生图、使用gitee Serverless API 接口+腾讯云OSS存储 | 2024年12月18日 | wwwzhouhui | 0.15.3 |
-| Fine-tune 语料构造器.yml                 | ![image-20250323085757187](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323085757187.png) | 调用文本模型                                                 | 2025年1月7日                                        | wwwzhouhui                                       | 0.15.3                                           |
-| FLUX绘画机器人+多模态识别+语音播放.yml   | ![image-20250323085720140](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323085720140.png) | 文本生成模型、多模态模型、文生图模型、文生语音模型           | 2025年1月12日 | wwwzhouhui | 0.15.3     |
-| 诗句封面+语音播报.yml                    | ![image-20250323085615684](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323085615684.png) | 文本生成模型、多模态模型、文生语音模型、http接口请求         | 2025年1月18日 | wwwzhouhui | 0.15.3   |
-| ai绘画整合comfyui_bizair.yml             |              | http接口请求、comfui_bizair                                  | 2025年1月22日                        | wwwzhouhui                        | 0.15.3                            |
-| YouTube博主和自媒体运营专家工作流.yml    | ![image-20250323085542505](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323085542505.png) | 文本生成模型                                                 | 2025年1月25日                                       | wwwzhouhui                                       | 0.15.3                                           |
-| AI资讯每日新闻+语音播报工作流.yml        | ![image-20250323085517148](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323085517148.png) | 文本生成模型、crawl4ai                                       | 2025年2月3日                              | wwwzhouhui                             | 0.15.3                                 |
-| 即梦AI绘画.yml                           | ![image-20250323085448044](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323085448044.png) | http接口请求、jimeng-free-api                                | 2025年2月4日                       | wwwzhouhui                      | 0.15.3                          |
-| 自定义edgetts工作流.yml | ![image-20250323085251381](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323085251381.png) | http接口请求、edgetts                                        | 2025年2月10日                              | wwwzhouhui                              | 0.15.3                                  |
-| 自带edgetts.yml | ![image-20250323085421648](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323085421648.png) | http接口请求、edgetts | 2025年2月10日 | wwwzhouhui | 0.15.3 |
-| 飞书表格.yml                             | ![image-20250323085225985](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323085225985.png) | 文本生成模型、dify内置工具、飞书表格                         | 2025年2月12日               | wwwzhouhui               | 0.15.3                   |
-| 儿童故事绘本.yml                         | ![image-20250323085154185](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323085154185.png) | 文本生成模型、http接口请求、jimeng-free-api、edgetts         | 2025年2月15日 | wwwzhouhui | 0.15.3   |
-| 文生视频+tts语音播报.yml                 | ![image-20250323085121044](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323085121044.png) | 文本生成模型、http接口请求、edgetts、文本生成视频模型（接口调用） | 2025年2月20 日 | wwwzhouhui | 0.15.3 |
-| ai agent智能体.yml                       | ![image-20250323085050777](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323085050777.png) | 文本生成模型、联网搜索、获取当前系统时间、AI绘画、语音播报等智能体功能组合。 | 2025年2月22 日 | wwwzhouhui | 0.15.3 |
-| excel表格提取+echarts展示.yml            | ![image-20250323085005332](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323085005332.png) | 文本生成模型、文档提取功能、echarts                          | 2025年2月25 日               | wwwzhouhui                | 0.15.3                    |
-| 学生成绩查询工作流（带数据库查询）.yml   | ![image-20250323084936593](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323084936593.png) | 文本生成模型、柱状图、数据库查询、http接口请求、table markdown | 2025年2月27 日 | wwwzhouhui | 0.15.3 |
-| 知识库检索工作流.yml                     | ![image-20250323084900900](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323084900900.png) | 文本生成模型、知识库RAG、知识检索                            | 2025年3月3 日                  | wwwzhouhui                  | 0.15.3                      |
-| AI绘画+飞书+企业微信整合.yml             | ![image-20250323084834734](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323084834734.png) | http接口请求、jimeng-free-api、飞书表格、企业微信            | 2025年3月7 日  | wwwzhouhui  | 0.15.3      |
-| API文档生成代码.yml                      | ![image-20250323084807347](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323084807347.png) | jina-ai、文档提取功能、文本生成模型                          | 2025年3月9 日                | wwwzhouhui                | 0.15.3                  |
-| 股票分析系统.yml                         | ![image-20250323084739019](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323084739019.png) | http接口请求、文本生成模型、Akshare股票数据接口、条件分支、变量聚合器 | 2025年3月11 日 | wwwzhouhui | 0.15.3 |
-| 股票分析系统-Gordon修改版.yml             | ![image-20250323084643251](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323084643251.png) | 增加用户输入文本参数提取 http接口请求、文本生成模型、Akshare股票数据接口、条件分支、变量聚合器 | 2025年3月18 | Gordon | 0.15.3 |
-| 大模型表格解析自动生成代码生成统计图.yml | ![image-20250323084556331](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323084556331.png) | http接口请求、文档提取功能、文本生成模型                     | 2025年3月13            | wwwzhouhui  | 0.15.3               |
-| 儿童故事绘本文生视频语音合成版 .yml      | ![image-20250323084414060](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323084414060.png) | http接口请求、文本生成模型、文生图模型、edgetts、ffmpeg      | 2025年3月18 | wwwzhouhui | 0.15.3 |
-| gemini-2.0-flash-exp-image-generation-文生图智能体.yml | ![image-20250323084256259](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323084256259.png) | 问题分类器、条件分支、自定义工具、变量赋值 | 2025年3月20日 | wwwzhouhui | 0.15.3 |
-| 中英文翻译工作流-AI辅助生成.yml | ![image-20250323180346219](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323180346219.png) | llm大语言模型 | 2025年3月23日 | wwwzhouhui+trae | 0.15.3 |
-| 文生Word_Http_Post.yml 、文生Word_Agent.yml | ![image-20250326223908260](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250326223908260.png) | ai agent、自定义workflow、http请求 | 2025年3月25日 | wwwzhouhui+jenal | 0.15.3 or 1.1.2 |
-| 大学生计算机专业简历美化工作流.yml | ![image-20250326223949931](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250326223949931.png) | 模版转换、文本模型、多模态模型、文档提取器 | 2025年3月26日 | wwwzhouhui | 0.15.3 |
-| 周易大师.yml | ![image-20250326223949931](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/%E5%91%A8%E6%98%93%E5%A4%A7%E5%B8%88..jpg) | 周易大师 | 2025年3月26日 | gordon | 0.0.1 |
-| 免费即梦文生视频.yml | ![image-20250401145310390](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250401145310390.png) | 文本模型、http接口请求、 逆向即梦文生视频fastapi接口实现 | 2025年4月1日 | wwwzhouhui | 0.15.3 |
-| 人物头像风格迁移工作流.yml | ![image-20250404205912304](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250404205912304.png) | http接口请求、逆向人物头像风格迁移fastapi接口实现 | 2025年4月4日 | wwwzhouhui | 1.1.3 |
-| dify-mcp-sse+Zapier MCP新闻检索邮件发送.yml | ![image-20250407220011943](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250407220011943.png) | mcp-sse、Zapier MCP | 2025年4月7日 | wwwzhouhui | 1.1.3 |
-| 学生成绩查询Chatflow支持text2sql.yml | ![image-20250409155549478](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250409155549478.png) | 时间工具、ECharts图表生成、database、llm | 2025年4月9日 | wwwzhouhui | 1.1.3 |
-| 儿童故事绘本-PPT Agent.yml | ![image-20250414220712520](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250414220712520.png) | llm、markdown转PPTX 转换器 | 2025年4月14日 | wwwzhouhui | 1.1.3 |
-| 儿童故事绘本-PPT chatflow.yml | ![image-20250414220809839](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250414220809839.png) | agent、markdown转换器 | 2025年4月14日 | wwwzhouhui | 1.1.3 |
-| 提示词生成器chatflow.yml | ![image-20250419131519060](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250419131519060.png) | llm、条件判断器 | 2025年4月19日 | wwwzhouhui | 1.1.3 |
-| 软件开发类合同审查chatflow.yml | ![image-20250423120822891](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250423120822891.png) | llm、文档提取器、markdown转换器、企业微信 | 2025年4月23日 | wwwzhouhui | 1.1.3 |
-| 基于知识库+agent实现text2sqlchatflow工作流.yml | ![image-20250424115545595](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250424115545595.png) | 知识检索、AGNET策略工具、database插件 | 2025年4月24日 | wwwzhouhui | 1.1.3 |
-| 基于表结构的agent text2sql.yml | ![image-20250424115715194](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250424115715194.png) | AGNET | 2025年4月24日 | wwwzhouhui | 1.1.3 |
-| 魔搭社区MCP-Server.yml | ![image-20250426162356017](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250426162356017.png) | 问题分类器、AGNET策略工具、魔搭社区MCP-server(高德MCP 、好吃的、Tavily、LeetCode(力扣)) | 2025年4月26日 | wwwzhouhui | 1.1.3 |
-| 通用合同审查助手.yml | ![image-20250429145121654](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250429145121654.png) | qwen3最新模型、文档提取器、markdown转换器 | 2025年4月29日 | 堕落奶酪、wwwzhouhui | 1.3.1 |
-| 图片生成html,网页小游戏（1panel mcpsse）.yml | ![image-20250503124212089](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250503124212089.png.png) | 1panelmcp、问题分类器、AGNET策略工具、edgeone-pages-mcp-server | 2025年5月3日 | wwwzhouhui | 1.13 |
-| 多模态图像编辑(HiDream-E1-Full)chatflow.yml | ![image-20250510164614722](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250510164614722.png.png) | 图片转base64、条件分支、代码转换、变量赋值、2个自定义工具 | 2025年5月10日 | wwwzhouhui | 1.13 |
-| 基于上市公司财报分析结果html分析报告（整合MinerU+edgeone-pages-mcp）.yml | ![image-20250513221853568](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250513221853568.png) | mineru插件、LLM大语言模型、参数提取器、代码处理生成 | 2025年5月13日 | wwwzhouhui | 1.13 |
-| 三步实现音视频转文字会议纪要从此无忧.yml | ![image-20250520103737363](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250520103737363.png) | ffmpeg、Speech To Text、ASR模型、LLM大语言模型 | 2025年5月20日 | wwwzhouhui | 1.4.0 |
-| 12306mcp火车票信息查询-chatflow.yml | ![image-20250520164540255](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250520164540255.png) | AGNET策略工具、12306MCP、mcphub | 2025年5月21日 | wwwzhouhui | 1.4.0 |
-| 海报封面生成工作流-Wanx 文生图.yml | ![image-20250522225213393](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250522225213393.png) | 阿里云百炼MCP Agent（Wanx 文生图）、条件分支、变量聚合器、模版转换、代码执行 | 2025年5月23日 | wwwzhouhui | 1.4.0 |
-| 英语单词口语练习.yml | ![image-20250524093955804](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250524093955804.png.png) | llm大语言模型、参数提取器、Markdown转HTML文件 | 2025年5月24日 | wwwzhouhui | 1.4.0 |
+| 中小学数学错题本-错题收集篇.yml | ![image-20250528153730875](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250528153730875.png) | 开始节点、模板转换、条件分支、pdf转png转换器（第三方工具）、基于多模态llm大语言模型、变量聚合器、代码执行、迭代、SQL Execute（第三方工具） | 2025年5月28日 | wwwzhouhui | 1.4.0 |
 | 0 代码实现企业画像！16 种图表，解锁数据查询新姿势.yml | ![image-20250526175553744](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250526175553744.png.png) | 问题分类器、mcp-sse、mcp-server-chart、MCP Agent 策略工具、企业信息查询的MCP-Server | 2025年5月27日 | wwwzhouhui | 1.4.0 |
+| 英语单词口语练习.yml | ![image-20250524093955804](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250524093955804.png.png) | llm大语言模型、参数提取器、Markdown转HTML文件 | 2025年5月24日 | wwwzhouhui | 1.4.0 |
+| 海报封面生成工作流-Wanx 文生图.yml | ![image-20250522225213393](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250522225213393.png) | 阿里云百炼MCP Agent（Wanx 文生图）、条件分支、变量聚合器、模版转换、代码执行 | 2025年5月23日 | wwwzhouhui | 1.4.0 |
+| 12306mcp火车票信息查询-chatflow.yml | ![image-20250520164540255](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250520164540255.png) | AGNET策略工具、12306MCP、mcphub | 2025年5月21日 | wwwzhouhui | 1.4.0 |
+| 3步实现音视频转文字会议纪要从此无忧.yml | ![image-20250520103737363](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250520103737363.png) | ffmpeg、Speech To Text、ASR模型、LLM大语言模型 | 2025年5月20日 | wwwzhouhui | 1.4.0 |
+| 基于上市公司财报分析结果html分析报告（整合MinerU+edgeone-pages-mcp）.yml | ![image-20250513221853568](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250513221853568.png) | mineru插件、LLM大语言模型、参数提取器、代码处理生成 | 2025年5月13日 | wwwzhouhui | 1.13 |
+| 多模态图像编辑(HiDream-E1-Full)chatflow.yml | ![image-20250510164614722](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250510164614722.png.png) | 图片转base64、条件分支、代码转换、变量赋值、2个自定义工具 | 2025年5月10日 | wwwzhouhui | 1.13 |
+| 图片生成html,网页小游戏（1panel mcpsse）.yml | ![image-20250503124212089](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250503124212089.png.png) | 1panelmcp、问题分类器、AGNET策略工具、edgeone-pages-mcp-server | 2025年5月3日 | wwwzhouhui | 1.13 |
+| 通用合同审查助手.yml | ![image-20250429145121654](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250429145121654.png) | qwen3最新模型、文档提取器、markdown转换器 | 2025年4月29日 | 堕落奶酪、wwwzhouhui | 1.3.1 |
+| 魔搭社区MCP-Server.yml | ![image-20250426162356017](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250426162356017.png) | 问题分类器、AGNET策略工具、魔搭社区MCP-server(高德MCP 、好吃的、Tavily、LeetCode(力扣)) | 2025年4月26日 | wwwzhouhui | 1.1.3 |
+| 基于表结构的agent text2sql.yml | ![image-20250424115715194](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250424115715194.png) | AGNET | 2025年4月24日 | wwwzhouhui | 1.1.3 |
+| 基于知识库+agent实现text2sqlchatflow工作流.yml | ![image-20250424115545595](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250424115545595.png) | 知识检索、AGNET策略工具、database插件 | 2025年4月24日 | wwwzhouhui | 1.1.3 |
+| 软件开发类合同审查chatflow.yml | ![image-20250423120822891](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250423120822891.png) | llm、文档提取器、markdown转换器、企业微信 | 2025年4月23日 | wwwzhouhui | 1.1.3 |
+| 提示词生成器chatflow.yml | ![image-20250419131519060](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250419131519060.png) | llm、条件判断器 | 2025年4月19日 | wwwzhouhui | 1.1.3 |
+| 儿童故事绘本-PPT chatflow.yml | ![image-20250414220809839](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250414220809839.png) | agent、markdown转换器 | 2025年4月14日 | wwwzhouhui | 1.1.3 |
+| 儿童故事绘本-PPT Agent.yml | ![image-20250414220712520](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250414220712520.png) | llm、markdown转PPTX 转换器 | 2025年4月14日 | wwwzhouhui | 1.1.3 |
+| 学生成绩查询Chatflow支持text2sql.yml | ![image-20250409155549478](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250409155549478.png) | 时间工具、ECharts图表生成、database、llm | 2025年4月9日 | wwwzhouhui | 1.1.3 |
+| dify-mcp-sse+Zapier MCP新闻检索邮件发送.yml | ![image-20250407220011943](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250407220011943.png) | mcp-sse、Zapier MCP | 2025年4月7日 | wwwzhouhui | 1.1.3 |
+| 物头像风格迁移工作流.yml | ![image-20250404205912304](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250404205912304.png) | http接口请求、逆向人物头像风格迁移fastapi接口实现 | 2025年4月4日 | wwwzhouhui | 1.1.3 |
+| 免费即梦文生视频.yml | ![image-20250401145310390](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250401145310390.png) | 文本模型、http接口请求、 逆向即梦文生视频fastapi接口实现 | 2025年4月1日 | wwwzhouhui | 0.15.3 |
+| 周易大师.yml | ![image-20250326223949931](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/%E5%91%A8%E6%98%93%E5%A4%A7%E5%B8%88..jpg) | 周易大师 | 2025年3月26日 | gordon | 0.0.1 |
+| 大学生计算机专业简历美化工作流.yml | ![image-20250326223949931](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250326223949931.png) | 模版转换、文本模型、多模态模型、文档提取器 | 2025年3月26日 | wwwzhouhui | 0.15.3 |
+| 文生Word_Http_Post.yml 、文生Word_Agent.yml | ![image-20250326223908260](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250326223908260.png) | ai agent、自定义workflow、http请求 | 2025年3月25日 | wwwzhouhui+jenal | 0.15.3 or 1.1.2 |
+| 中英文翻译工作流-AI辅助生成.yml | ![image-20250323180346219](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323180346219.png) | llm大语言模型 | 2025年3月23日 | wwwzhouhui+trae | 0.15.3 |
+| gemini-2.0-flash-exp-image-generation-文生图智能体.yml | ![image-20250323084256259](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323084256259.png) | 问题分类器、条件分支、自定义工具、变量赋值 | 2025年3月20日 | wwwzhouhui | 0.15.3 |
+| 儿童故事绘本文生视频语音合成版 .yml | ![image-20250323084414060](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323084414060.png) | http接口请求、文本生成模型、文生图模型、edgetts、ffmpeg | 2025年3月18 | wwwzhouhui | 0.15.3 |
+| 大模型表格解析自动生成代码生成统计图.yml | ![image-20250323084556331](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323084556331.png) | http接口请求、文档提取功能、文本生成模型 | 2025年3月13 | wwwzhouhui | 0.15.3 |
+| 股票分析系统-Gordon修改版.yml | ![image-20250323084643251](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323084643251.png) | 增加用户输入文本参数提取 http接口请求、文本生成模型、Akshare股票数据接口、条件分支、变量聚合器 | 2025年3月18 | Gordon | 0.15.3 |
+| 股票分析系统.yml | ![image-20250323084739019](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323084739019.png) | http接口请求、文本生成模型、Akshare股票数据接口、条件分支、变量聚合器 | 2025年3月11 日 | wwwzhouhui | 0.15.3 |
+| API文档生成代码.yml | ![image-20250323084807347](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323084807347.png) | jina-ai、文档提取功能、文本生成模型 | 2025年3月9 日 | wwwzhouhui | 0.15.3 |
+| AI绘画+飞书+企业微信整合.yml | ![image-20250323084834734](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323084834734.png) | http接口请求、jimeng-free-api、飞书表格、企业微信 | 2025年3月7 日 | wwwzhouhui | 0.15.3 |
+| 知识库检索工作流.yml | ![image-20250323084900900](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323084900900.png) | 文本生成模型、知识库RAG、知识检索 | 2025年3月3 日 | wwwzhouhui | 0.15.3 |
+| 生成绩查询工作流（带数据库查询）.yml | ![image-20250323084936593](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323084936593.png) | 文本生成模型、柱状图、数据库查询、http接口请求、table markdown | 2025年2月27 日 | wwwzhouhui | 0.15.3 |
+| excel表格提取+echarts展示.yml | ![image-20250323085005332](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323085005332.png) | 文本生成模型、文档提取功能、echarts | 2025年2月25 日 | wwwzhouhui | 0.15.3 |
+| ai agent智能体.yml | ![image-20250323085050777](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323085050777.png) | 文本生成模型、联网搜索、获取当前系统时间、AI绘画、语音播报等智能体功能组合。 | 2025年2月22 日 | wwwzhouhui | 0.15.3 |
+| 文生视频+tts语音播报.yml | ![image-20250323085121044](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323085121044.png) | 文本生成模型、http接口请求、edgetts、文本生成视频模型（接口调用） | 2025年2月20 日 | wwwzhouhui | 0.15.3 |
+| 儿童故事绘本.yml | ![image-20250323085154185](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323085154185.png) | 文本生成模型、http接口请求、jimeng-free-api、edgetts | 2025年2月15日 | wwwzhouhui | 0.15.3 |
+| 飞书表格.yml | ![image-20250323085225985](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323085225985.png) | 文本生成模型、dify内置工具、飞书表格 | 2025年2月12日 | wwwzhouhui | 0.15.3 |
+| 自带edgetts.yml | ![image-20250323085421648](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323085421648.png) | http接口请求、edgetts | 2025年2月10日 | wwwzhouhui | 0.15.3 |
+| 自定义edgetts工作流.yml | ![image-20250323085251381](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323085251381.png) | http接口请求、edgetts | 2025年2月10日 | wwwzhouhui | 0.15.3 |
+| 即梦AI绘画.yml | ![image-20250323085448044](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323085448044.png) | http接口请求、jimeng-free-api | 2025年2月4日 | wwwzhouhui | 0.15.3 |
+| AI资讯每日新闻+语音播报工作流.yml | ![image-20250323085517148](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323085517148.png) | 文本生成模型、crawl4ai | 2025年2月3日 | wwwzhouhui | 0.15.3 |
+| YouTube博主和自媒体运营专家工作流.yml | ![image-20250323085542505](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323085542505.png) | 文本生成模型 | 2025年1月25日 | wwwzhouhui | 0.15.3 |
+| ai绘画整合comfyui_bizair.yml |  | http接口请求、comfui_bizair | 2025年1月22日 | wwwzhouhui | 0.15.3 |
+| 诗句封面+语音播报.yml | ![image-20250323085615684](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323085615684.png) | 文本生成模型、多模态模型、文生语音模型、http接口请求 | 2025年1月18日 | wwwzhouhui | 0.15.3 |
+| FLUX绘画机器人+多模态识别+语音播放.yml | ![image-20250323085720140](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323085720140.png) | 文本生成模型、多模态模型、文生图模型、文生语音模型 | 2025年1月12日 | wwwzhouhui | 0.15.3 |
+| Fine-tune 语料构造器.yml | ![image-20250323085757187](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323085757187.png) | 调用文本模型 | 2025年1月7日 | wwwzhouhui | 0.15.3 |
+| giteeKolors工作流.yaml | ![image-20250323090209808](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323090209808.png) | 自定义第三方接口服务封装文生图、使用gitee Serverless API 接口+腾讯云OSS存储 | 2024年12月18日 | wwwzhouhui | 0.15.3 |
+| 中国历史专家播客.yml | ![image-20250323090253917](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323090253917.png) | 调用文本模型、TEXT TO SPEECH工具组件使用 | 2024年11月26日 | wwwzhouhui | 0.15.3 |
+| 抓取获取36氪热榜文章内容 .yml | ![image-20250323090341369](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323090341369.png) | 调用文本模型、http接口请求、jina-ai爬取网页信息、迭代 | 2024年11月16日 | wwwzhouhui | 0.15.3 |
+| 发票比对专家-新版客运火车票2.yml | ![image-20250323090415346](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323090415346.png) | 调用多模态模型、文本模型 | 2024年11月16日 | wwwzhouhui | 0.15.3 |
+| 发票提取小工具整合版-变量聚合器.yml | ![image-20250323090446623](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323090446623.png) | 调用多模态模型、文本模型、文件提取器、IF流程判断 | 2024年11月16日 | wwwzhouhui | 0.15.3 |
+| 增值税发票提取小工具chatflow.yml | ![image-20250323090514862](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323090514862.png) | 调用多模态模型、文本模型、文件提取器 | 2024年11月16日 | wwwzhouhui | 0.15.3 |
+| FLUX绘画机器人.yml                       | ![image-20250323090547121](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250323090547121.png) | 调用FLUX绘画模型、文本模型、http接口请求                     | 2024年11月16日          | wwwzhouhui           | 0.15.3               |
 
 ### 部分视频链接地址
 
@@ -108,7 +109,9 @@
 
 
 ## 更新说明
-2025年5月24 日-version 0.0.3.19：增加0 代码实现企业画像！16 种图表，解锁数据查询新姿势.yml
+2025年5月29日-version 0.0.3.20：增加中小学数学错题本-错题收集篇.yml
+
+2025年5月28日-version 0.0.3.19：增加0 代码实现企业画像！16 种图表，解锁数据查询新姿势.yml
 
 2025年5月24 日-version 0.0.3.18：增加英语单词口语练习.yml
 
@@ -356,7 +359,7 @@ PIP_MIRROR_URL=https://pypi.tuna.tsinghua.edu.cn/simple <br>
 
 ## 技术交流群
 
-![img](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/9aee8952-8aff-4ecf-864d-28afaaf22599.jpg)
+
 
 ![img](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Screenshot_20250527_145831_com.tencent.mm.jpg)
 
