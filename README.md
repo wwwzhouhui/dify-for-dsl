@@ -30,6 +30,7 @@
 
 | DSL清单名称                              | 工作流显示                         | 用到技术                                                     | 更新时间                                                 | 作者                                       | 适用dify版本                               |
 | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------------------------------------- |
+| 中小学数学错题本-生成同类型题.yml | ![image-20250529235930374](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250529235930374.png) | 问题分类器、模板转换、条件分支、代码处理、SQL Execute、变量赋值、迭代、获取当前时间、Markdown转PDF文件、LLM大语言模型等 | 2025年5月30日 | wwwzhouhui | 1.4.0 |
 | 中小学数学错题本-错题收集篇.yml | ![image-20250528153730875](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250528153730875.png) | 开始节点、模板转换、条件分支、pdf转png转换器（第三方工具）、基于多模态llm大语言模型、变量聚合器、代码执行、迭代、SQL Execute（第三方工具） | 2025年5月28日 | wwwzhouhui | 1.4.0 |
 | 0 代码实现企业画像！16 种图表，解锁数据查询新姿势.yml | ![image-20250526175553744](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250526175553744.png.png) | 问题分类器、mcp-sse、mcp-server-chart、MCP Agent 策略工具、企业信息查询的MCP-Server | 2025年5月27日 | wwwzhouhui | 1.4.0 |
 | 英语单词口语练习.yml | ![image-20250524093955804](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250524093955804.png.png) | llm大语言模型、参数提取器、Markdown转HTML文件 | 2025年5月24日 | wwwzhouhui | 1.4.0 |
@@ -109,6 +110,8 @@
 
 
 ## 更新说明
+2025年5月30日-version 0.0.3.21：增加中小学数学错题本-生成同类型题.yml
+
 2025年5月29日-version 0.0.3.20：增加中小学数学错题本-错题收集篇.yml
 
 2025年5月28日-version 0.0.3.19：增加0 代码实现企业画像！16 种图表，解锁数据查询新姿势.yml
@@ -353,9 +356,58 @@ PIP_MIRROR_URL=https://pypi.tuna.tsinghua.edu.cn/simple <br>
     我们也可以从docker容器看到端口开放情况（默认是不开启的） <br>
  <img src="https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250510004416081.png" ><br>
 </details>
+<details>
+<summary>自定义工具超时时间和超时重试次数设置</summary>
+     我们在.env文件找到<br>
+    API_TOOL_DEFAULT_CONNECT_TIMEOUT=10<br>
+    API_TOOL_DEFAULT_READ_TIMEOUT=60<br>
+</details>
 
+<details>
+<summary>dify-sandbox-py 项目如何自定义编译打包</summary>
+     1下载 https://github.com/svcvit/dify-sandbox-py项目<br>
+    git clone https://github.com/svcvit/dify-sandbox-py<br>
+    <img src="https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/QQ20250512-212041.png" ><br>
+    接下来我们输入如下命令实现自定义打包<br>
+    cd F:\temp\dify-sandbox-py<br>
+    docker build -t dify-sandbox-py:local .<br>
+</details>
 
+<details>
+<summary>sandbox 如何安装pandas这些第三方库？</summary>
+      打开dify  docker 文件夹里面docker-compose.yaml文件<br>
+    <img src="https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250512221641604.png" ><br>
+    打开docker-compose.yaml 搜索langgenius/dify-sandbox 添加python-requirements.txt 依赖包<br>
+    volumes:<br>
+        - ./volumes/sandbox/dependencies/python-requ<br>irements.txt:/dependencies<br>
+        - ./volumes/sandbox/conf:/conf<br>
+    我们添加pandas依赖包<br>
+     <img src="https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250512222233209.png" ><br>
+    以上添加完成后，重启dify<br>
+    docker compose up -d <br>
+</details>
 
+<details>
+<summary>如何把pg数据对外开启访问</summary>
+     由于安全性考虑dify使用docker 容器化部署的时候默认是不对外开启数据库访问的，如果你需要二次开发通过数据库连接整合对接这个时候是需要访问容器数据库，这个时候就需要把数据库开启对外访问。<br>
+    修改docker-compose.yaml 文件 image: postgres:15-alpine 将数据库端口开放出来<br>
+      原配置文件<br>
+    <img src="https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250530134120141.png" ><br>
+    修改后<br>
+    <img src="https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250530134203328.png" ><br>
+</details>    
+
+<details>
+<summary>容器内访问不了外部怎么办？</summary>
+     <img src="https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250525105728679.png" ><br>
+    遇到上面的问题主要是容器内部没办法通过127.0.0.1 访问局域网地址<br>
+    方法1 把模型请求地址换成局域网地址<br>
+    <img src="https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250525110133945.png" ><br>
+     方法2：改成http://host.docker.internal:11434<br>
+    `host.docker.internal` 是 Docker 提供的一个特殊域名，用于在 **容器内部访问宿主机（运行 Docker 的主机）的网络服务**。它的作用    是简化容器与宿主机之间的网络通信，尤其在开发场景中非常实用<br>
+    **适用场景**：当容器需要访问宿主机上运行的服务（如数据库、API 接口等）时，可直接使用 `host.docker.internal` 作为宿主机的地址，避免手动查找宿主机的 IP 地址（如 `192.168.x.x` 或 `localhost`）<br>
+    **本质**：Docker 会将该域名自动解析为宿主机的 IP 地址，实现容器与宿主机的网络互通。<br>
+</details>
 
 ## 技术交流群
 

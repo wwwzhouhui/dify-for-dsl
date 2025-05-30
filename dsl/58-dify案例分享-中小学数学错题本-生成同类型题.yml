@@ -1,0 +1,1439 @@
+app:
+  description: 可以通过该工作流实现中小学数学错题本收集整理，并结合错题本生成对应的错题进行练习和打印。由于篇幅有限，本工作流先实现错题本收集，后面再基于错题版实现AI
+    错题生成和练习功能。
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 58-dify案例分享-中小学数学错题本-生成同类型题
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: hjlarry/database:0.0.6@2f547ea4b80c5bbec2b953843a37de9aff7427d276b763a8e237c6b2188359b3
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/volcengine_maas:0.0.14@287c49e4e33dea665c74e1f14692ac8b88d1b432864ee89d796b33f410bdaff0
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: bowenliang123/md_exporter:1.2.0@b18d95d19f25ed9c73d758048a69cf37c14c1f9f801b354aa7469db44f0df4d6
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/modelscope:0.0.4@5a3245e52b864fa8a20686baf5add2f5517eae5f11f94419bf46edbe170731e8
+kind: app
+version: 0.3.0
+workflow:
+  conversation_variables:
+  - description: 基于数据库检索到的错题
+    id: 7a3583bf-a8da-42a4-a396-224fa7ae9ae5
+    name: error_questions_result
+    selector:
+    - conversation
+    - error_questions_result
+    value: []
+    value_type: array[string]
+  environment_variables:
+  - description: ''
+    id: 0046558d-88ec-45ea-9ff5-4b0655e71752
+    name: offset
+    selector:
+    - env
+    - offset
+    value: '0'
+    value_type: string
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 500
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 100
+        video_file_size_limit: 500
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: 欢迎使用中小学生数学错题本，您可以使用它收集整理学生错题本并基于错题生成同类型题目
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions:
+    - 查询错题本
+    - 生成同类型错题
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: code
+      id: 1748491186985-source-1748496112827-target
+      source: '1748491186985'
+      sourceHandle: source
+      target: '1748496112827'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: tool
+      id: 1748496112827-source-1748498500352-target
+      source: '1748496112827'
+      sourceHandle: source
+      target: '1748498500352'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: code
+      id: 1748500215899-false-1748491186985-target
+      source: '1748500215899'
+      sourceHandle: 'false'
+      target: '1748491186985'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: code
+      id: 1748498500352-source-1748512116726-target
+      source: '1748498500352'
+      sourceHandle: source
+      target: '1748512116726'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: assigner
+      id: 1748512116726-source-1748500405970-target
+      source: '1748512116726'
+      sourceHandle: source
+      target: '1748500405970'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: template-transform
+        targetType: if-else
+      id: 1748513490597-source-1748500215899-target
+      source: '1748513490597'
+      sourceHandle: source
+      target: '1748500215899'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: assigner
+        targetType: answer
+      id: 1748500405970-source-1748514553764-target
+      source: '1748500405970'
+      sourceHandle: source
+      target: '1748514553764'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1748523986796'
+        sourceType: iteration-start
+        targetType: code
+      id: 1748523986796start-source-1748525033636-target
+      source: 1748523986796start
+      sourceHandle: source
+      target: '1748525033636'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: iteration
+      id: 1748500215899-true-1748523986796-target
+      source: '1748500215899'
+      sourceHandle: 'true'
+      target: '1748523986796'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1748523986796'
+        sourceType: code
+        targetType: llm
+      id: 1748525033636-source-1748525345107-target
+      source: '1748525033636'
+      sourceHandle: source
+      target: '1748525345107'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: tool
+      id: 1748525958382-source-1748525975509-target
+      source: '1748525958382'
+      sourceHandle: source
+      target: '1748525975509'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: answer
+      id: 1748525975509-source-1748530637671-target
+      source: '1748525975509'
+      sourceHandle: source
+      target: '1748530637671'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: iteration
+        targetType: code
+      id: 1748523986796-source-1748531231325-target
+      source: '1748523986796'
+      sourceHandle: source
+      target: '1748531231325'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: tool
+      id: 1748531231325-source-1748525958382-target
+      source: '1748531231325'
+      sourceHandle: source
+      target: '1748525958382'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: question-classifier
+      id: 1742961448129-source-1748565481932-target
+      source: '1742961448129'
+      sourceHandle: source
+      target: '1748565481932'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: code
+      id: 1748565481932-1-1748491186985-target
+      source: '1748565481932'
+      sourceHandle: '1'
+      target: '1748491186985'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: template-transform
+      id: 1748565481932-2-1748513490597-target
+      source: '1748565481932'
+      sourceHandle: '2'
+      target: '1748513490597'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - image
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: 错题记录时间
+          max_length: 48
+          options:
+          - 今天
+          - 最近一周
+          - 最近一月
+          - 全部
+          required: true
+          type: select
+          variable: time
+        - label: 科目
+          max_length: 48
+          options:
+          - 数学
+          - 语文
+          - 英语
+          - 物理
+          - 化学
+          - 道德与法制
+          - 历史
+          - 地理
+          - 生物
+          required: true
+          type: select
+          variable: subject
+        - label: 题目类型
+          max_length: 48
+          options:
+          - 选择题
+          - 填空题
+          - 判断题
+          - 问答题
+          required: false
+          type: select
+          variable: question_type
+        - label: 难度等级(1-5)
+          max_length: 48
+          options:
+          - '1'
+          - '2'
+          - '3'
+          - '4'
+          - '5'
+          required: false
+          type: select
+          variable: difficulty
+        - label: 查询题目数量
+          max_length: 48
+          options:
+          - '1'
+          - '2'
+          - '3'
+          - '4'
+          required: true
+          type: select
+          variable: count
+        - label: 生成同类型题目的数据
+          max_length: 48
+          options:
+          - '1'
+          - '2'
+          - '3'
+          - '4'
+          - '5'
+          required: true
+          type: select
+          variable: questionsCount
+      height: 219
+      id: '1742961448129'
+      position:
+        x: -1735.834705993238
+        y: 105.99452934193752
+      positionAbsolute:
+        x: -1735.834705993238
+        y: 105.99452934193752
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import json\nfrom datetime import datetime, timedelta\n\ndef main(arg1:\
+          \ str) -> dict:\n    \"\"\"\n    根据输入的时间范围参数生成对应的开始时间和结束时间。\n    :param\
+          \ arg1: 时间范围参数，可选值为 \"今天\", \"最近一周\", \"最近一月\", \"全部\"\n    :return: 包含开始时间和结束时间的字典，如果参数无效则返回错误信息\n\
+          \    \"\"\"\n    try:\n        today = datetime.now()\n        \n      \
+          \  if arg1 == \"今天\":\n            start_time = today.replace(hour=0, minute=0,\
+          \ second=0, microsecond=0)\n            end_time = today.replace(hour=23,\
+          \ minute=59, second=59, microsecond=999999)\n        elif arg1 == \"最近一周\"\
+          :\n            end_time = today.replace(hour=23, minute=59, second=59, microsecond=999999)\n\
+          \            start_time = end_time - timedelta(days=6)  # 包含今天共7天\n    \
+          \        start_time = start_time.replace(hour=0, minute=0, second=0, microsecond=0)\n\
+          \        elif arg1 == \"最近一月\":\n            end_time = today.replace(hour=23,\
+          \ minute=59, second=59, microsecond=999999)\n            # 计算一个月前的日期\n \
+          \           month = today.month - 1 or 12\n            year = today.year\
+          \ - (today.month == 1)\n            # 获取该月的最后一天\n            last_day =\
+          \ 31\n            while True:\n                try:\n                  \
+          \  start_time = datetime(year, month, last_day)\n                    break\n\
+          \                except ValueError:\n                    last_day -= 1\n\
+          \            start_time = start_time.replace(hour=0, minute=0, second=0,\
+          \ microsecond=0)\n        elif arg1 == \"全部\":\n            start_time =\
+          \ datetime(2000, 1, 1, 0, 0, 0)\n            end_time = datetime(2035, 1,\
+          \ 1, 0, 0, 0)  # 修改结束时间为2035-01-01\n        else:\n            raise ValueError(\"\
+          无效的时间范围参数\")\n        \n        # 格式化时间为字符串\n        start_time_str = start_time.strftime(\"\
+          %Y-%m-%d %H:%M:%S\")\n        end_time_str = end_time.strftime(\"%Y-%m-%d\
+          \ %H:%M:%S\")\n        \n        return {\"start_time\": start_time_str,\
+          \ \"end_time\": end_time_str}\n    \n    except ValueError as e:\n     \
+          \   return {\"error\": f\"参数错误: {e}\"}\n    except Exception as e:\n   \
+          \     return {\"error\": f\"发生未知错误: {e}\"}"
+        code_language: python3
+        desc: ''
+        outputs:
+          end_time:
+            children: null
+            type: string
+          start_time:
+            children: null
+            type: string
+        selected: false
+        title: 时间转换
+        type: code
+        variables:
+        - value_selector:
+          - '1742961448129'
+          - time
+          variable: arg1
+      height: 53
+      id: '1748491186985'
+      position:
+        x: -349.316238314301
+        y: 226.93949927835763
+      positionAbsolute:
+        x: -349.316238314301
+        y: 226.93949927835763
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "def main(subject: str, count: str = None, offset: str = \"0\", question_type:\
+          \ str = None, \n         difficulty: str = None, start_time: str = None,\
+          \ end_time: str = None) -> dict:\n    \"\"\"\n    动态生成错误问题表的SQL查询语句\n  \
+          \  :param subject: 学科(必填)\n    :param count: 问题数量(选填，默认为None表示不限制)\n   \
+          \ :param offset: 偏移量(选填，默认为0)\n    :param question_type: 题目类型(选填)\n    :param\
+          \ difficulty: 难度等级(选填)\n    :param start_time: 开始时间(选填)\n    :param end_time:\
+          \ 结束时间(选填)\n    :return: 包含生成的SQL查询字符串或错误信息的字典\n    \"\"\"\n    try:\n \
+          \       # 验证必填参数\n        if not subject:\n            raise ValueError(\"\
+          subject参数是必需的\")\n\n        # 内部SQL转义函数（合并进main）\n        def _escape_sql(value):\n\
+          \            \"\"\"防止SQL注入，简单处理单引号\"\"\"\n            if value is None:\n\
+          \                return None\n            if isinstance(value, str):\n \
+          \               return value.replace(\"'\", \"''\")\n            return\
+          \ str(value)\n\n        # 初始化查询组件\n        conditions = [f\"subject = '{_escape_sql(subject)}'\"\
+          ]\n\n        # 添加可选参数条件\n        if question_type:\n            conditions.append(f\"\
+          question_type = '{_escape_sql(question_type)}'\")\n\n        if difficulty:\n\
+          \            conditions.append(f\"difficulty = '{_escape_sql(difficulty)}'\"\
+          )\n\n        # 处理时间范围条件\n        if start_time and end_time:\n         \
+          \   conditions.append(\n                f\"created_at BETWEEN '{_escape_sql(start_time)}'\
+          \ AND '{_escape_sql(end_time)}'\")\n        elif start_time:\n         \
+          \   conditions.append(f\"created_at >= '{_escape_sql(start_time)}'\")\n\
+          \        elif end_time:\n            conditions.append(f\"created_at <=\
+          \ '{_escape_sql(end_time)}'\")\n\n        # 构建完整SQL\n        sql = f\"SELECT\
+          \ question_text, `subject`,question_type,created_at FROM error_questions\
+          \ WHERE {' AND '.join(conditions)} ORDER BY created_at DESC\"\n        \n\
+          \        # 添加LIMIT和OFFSET\n        if count:\n            # 验证count是否为正整数\n\
+          \            if not count.isdigit() or int(count) <= 0:\n              \
+          \  raise ValueError(\"count必须是正整数\")\n            sql += f\" LIMIT {count}\"\
+          \n            \n            # 验证offset是否为非负整数\n            if not offset.isdigit():\n\
+          \                raise ValueError(\"offset必须是非负整数\")\n            sql +=\
+          \ f\" OFFSET {offset}\"\n\n        return {\"query\": sql}\n\n    except\
+          \ ValueError as e:\n        return {\"error\": f\"参数错误: {str(e)}\"}\n  \
+          \  except Exception as e:\n        return {\"error\": f\"发生未知错误: {str(e)}\"\
+          }"
+        code_language: python3
+        default_value:
+        - key: query
+          type: string
+          value: ''
+        desc: ''
+        error_strategy: default-value
+        outputs:
+          query:
+            children: null
+            type: string
+        selected: false
+        title: sql语句拼接
+        type: code
+        variables:
+        - value_selector:
+          - '1742961448129'
+          - subject
+          variable: subject
+        - value_selector:
+          - '1742961448129'
+          - question_type
+          variable: question_type
+        - value_selector:
+          - '1742961448129'
+          - difficulty
+          variable: difficulty
+        - value_selector:
+          - '1748491186985'
+          - start_time
+          variable: start_time
+        - value_selector:
+          - '1748491186985'
+          - end_time
+          variable: end_time
+        - value_selector:
+          - '1742961448129'
+          - count
+          variable: count
+        - value_selector:
+          - env
+          - offset
+          variable: offset
+      height: 89
+      id: '1748496112827'
+      position:
+        x: -50.04437455027153
+        y: 226.93949927835763
+      positionAbsolute:
+        x: -50.04437455027153
+        y: 226.93949927835763
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: The SQL query string.
+            ja_JP: The SQL query string.
+            pt_BR: The SQL query string.
+            zh_Hans: SQL 查询语句。
+          label:
+            en_US: SQL Query
+            ja_JP: SQL Query
+            pt_BR: SQL Query
+            zh_Hans: SQL 查询语句
+          llm_description: The SQL query string.
+          max: null
+          min: null
+          name: query
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Optional, Filling in this field will overwrite the database connection
+              entered during authorization.
+            ja_JP: Optional, Filling in this field will overwrite the database connection
+              entered during authorization.
+            pt_BR: Optional, Filling in this field will overwrite the database connection
+              entered during authorization.
+            zh_Hans: 选填，填写后将覆盖授权时填写的数据库连接。
+          label:
+            en_US: DB URI
+            ja_JP: DB URI
+            pt_BR: DB URI
+            zh_Hans: DB URI
+          llm_description: ''
+          max: null
+          min: null
+          name: db_uri
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: json
+          form: form
+          human_description:
+            en_US: Choose the output format.
+            ja_JP: Choose the output format.
+            pt_BR: Choose the output format.
+            zh_Hans: 选择输出格式。
+          label:
+            en_US: Output format
+            ja_JP: Output format
+            pt_BR: Output format
+            zh_Hans: 输出格式
+          llm_description: ''
+          max: null
+          min: null
+          name: format
+          options:
+          - label:
+              en_US: JSON
+              ja_JP: JSON
+              pt_BR: JSON
+              zh_Hans: JSON
+            value: json
+          - label:
+              en_US: CSV
+              ja_JP: CSV
+              pt_BR: CSV
+              zh_Hans: CSV
+            value: csv
+          - label:
+              en_US: YAML
+              ja_JP: YAML
+              pt_BR: YAML
+              zh_Hans: YAML
+            value: yaml
+          - label:
+              en_US: Markdown
+              ja_JP: Markdown
+              pt_BR: Markdown
+              zh_Hans: Markdown
+            value: md
+          - label:
+              en_US: Excel
+              ja_JP: Excel
+              pt_BR: Excel
+              zh_Hans: Excel
+            value: xlsx
+          - label:
+              en_US: HTML
+              ja_JP: HTML
+              pt_BR: HTML
+              zh_Hans: HTML
+            value: html
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: 'Optional. For example {"connect_args": {"ssl": {"ca": "/path/to/ca.pem"}}}
+
+              More connection options can be found at https://docs.sqlalchemy.org/en/20/core/engines.html#sqlalchemy.create_engine
+
+              '
+            ja_JP: 'Optional. For example {"connect_args": {"ssl": {"ca": "/path/to/ca.pem"}}}
+
+              More connection options can be found at https://docs.sqlalchemy.org/en/20/core/engines.html#sqlalchemy.create_engine
+
+              '
+            pt_BR: 'Optional. For example {"connect_args": {"ssl": {"ca": "/path/to/ca.pem"}}}
+
+              More connection options can be found at https://docs.sqlalchemy.org/en/20/core/engines.html#sqlalchemy.create_engine
+
+              '
+            zh_Hans: '选填项。例如 {"connect_args": {"ssl": {"ca": "/path/to/ca.pem"}}}
+
+              更多连接选项可参考 https://docs.sqlalchemy.org/en/20/core/engines.html#sqlalchemy.create_engine
+
+              '
+          label:
+            en_US: DB Config Options
+            ja_JP: DB Config Options
+            pt_BR: DB Config Options
+            zh_Hans: 数据库连接配置选项
+          llm_description: ''
+          max: null
+          min: null
+          name: config_options
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        params:
+          config_options: ''
+          db_uri: ''
+          format: ''
+          query: ''
+        provider_id: hjlarry/database/database
+        provider_name: hjlarry/database/database
+        provider_type: builtin
+        selected: false
+        title: SQL Execute
+        tool_configurations:
+          config_options: null
+          format: md
+        tool_description: 此工具用于在已存在的数据库中执行 SQL 查询。
+        tool_label: SQL Execute
+        tool_name: sql_execute
+        tool_parameters:
+          query:
+            type: mixed
+            value: '{{#1748496112827.query#}}'
+        type: tool
+      height: 115
+      id: '1748498500352'
+      position:
+        x: 317.43145030751856
+        y: 226.93949927835763
+      positionAbsolute:
+        x: 317.43145030751856
+        y: 226.93949927835763
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: 3cfc8212-1acf-44e1-bd49-c16fb0af5373
+            value: '{{#1742961448129.count#}}'
+            varType: string
+            variable_selector:
+            - '1748513490597'
+            - output
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 条件分支
+        type: if-else
+      height: 125
+      id: '1748500215899'
+      position:
+        x: -672.5903588849121
+        y: 74.72522726080535
+      positionAbsolute:
+        x: -672.5903588849121
+        y: 74.72522726080535
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        items:
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1748512116726'
+          - error_questions
+          variable_selector:
+          - conversation
+          - error_questions_result
+          write_mode: over-write
+        selected: false
+        title: 变量赋值
+        type: assigner
+        version: '2'
+      height: 87
+      id: '1748500405970'
+      position:
+        x: 239.94946214524273
+        y: 485.6858644143282
+      positionAbsolute:
+        x: 239.94946214524273
+        y: 485.6858644143282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "\ndef main(markdown_table: str) -> dict:\n    try:\n        # 去除首尾空白，分割每一行\n\
+          \        lines = markdown_table.strip().split('\\n')\n\n        # 提取表头\n\
+          \        headers = [h.strip() for h in lines[0].split('|')]\n\n        #\
+          \ 获取 question_text 所在列索引\n        try:\n            question_index = headers.index('question_text')\n\
+          \        except ValueError:\n            return {\"error\": \"缺少 question_text\
+          \ 列\"}\n\n        # 提取 question_text 内容\n        questions = []\n      \
+          \  for line in lines[2:]:  # 跳过表头和分隔线\n            if not line.strip():\n\
+          \                continue\n            columns = [col.strip() for col in\
+          \ line.split('|')]\n            if len(columns) > question_index:\n    \
+          \            questions.append(columns[question_index])\n\n        return\
+          \ {\"error_questions\": questions}\n\n    except Exception as e:\n     \
+          \   return {\"error\": f\"发生错误: {str(e)}\"}\n"
+        code_language: python3
+        default_value:
+        - key: error_questions
+          type: array[string]
+          value: '[]'
+        desc: ''
+        error_strategy: default-value
+        outputs:
+          error_questions:
+            children: null
+            type: array[string]
+        selected: false
+        title: 提取markdown数据
+        type: code
+        variables:
+        - value_selector:
+          - '1748498500352'
+          - text
+          variable: markdown_table
+      height: 89
+      id: '1748512116726'
+      position:
+        x: -202.5964752205698
+        y: 485.6858644143282
+      positionAbsolute:
+        x: -202.5964752205698
+        y: 485.6858644143282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        selected: false
+        template: '{{ error_questions_result | length }}'
+        title: 模板转换
+        type: template-transform
+        variables:
+        - value_selector:
+          - conversation
+          - error_questions_result
+          variable: error_questions_result
+      height: 53
+      id: '1748513490597'
+      position:
+        x: -994.9146479851429
+        y: 74.72522726080535
+      positionAbsolute:
+        x: -994.9146479851429
+        y: 74.72522726080535
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1748512116726.error_questions#}}'
+        desc: ''
+        selected: false
+        title: 直接回复 2
+        type: answer
+        variables: []
+      height: 103
+      id: '1748514553764'
+      position:
+        x: 623.9069138135525
+        y: 461.8748492177665
+      positionAbsolute:
+        x: 623.9069138135525
+        y: 461.8748492177665
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        error_handle_mode: terminated
+        height: 285
+        is_parallel: false
+        iterator_selector:
+        - conversation
+        - error_questions_result
+        output_selector:
+        - '1748525345107'
+        - text
+        output_type: array[string]
+        parallel_nums: 10
+        selected: false
+        start_node_id: 1748523986796start
+        title: 迭代
+        type: iteration
+        width: 688
+      height: 285
+      id: '1748523986796'
+      position:
+        x: -375.7160824380053
+        y: -290.32841438567897
+      positionAbsolute:
+        x: -375.7160824380053
+        y: -290.32841438567897
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 688
+      zIndex: 1
+    - data:
+        desc: ''
+        isInIteration: true
+        selected: false
+        title: ''
+        type: iteration-start
+      draggable: false
+      height: 48
+      id: 1748523986796start
+      parentId: '1748523986796'
+      position:
+        x: 24
+        y: 68
+      positionAbsolute:
+        x: -351.7160824380053
+        y: -222.32841438567897
+      selectable: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-iteration-start
+      width: 44
+      zIndex: 1002
+    - data:
+        code: "\ndef main(arg1: str) -> dict:\n    return {\n        \"result\": arg1\n\
+          \    }\n"
+        code_language: python3
+        desc: ''
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1748523986796'
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 获取数据查询错题
+        type: code
+        variables:
+        - value_selector:
+          - '1748523986796'
+          - item
+          variable: arg1
+      height: 53
+      id: '1748525033636'
+      parentId: '1748523986796'
+      position:
+        x: 16
+        y: 65
+      positionAbsolute:
+        x: -359.7160824380053
+        y: -225.32841438567897
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1748523986796'
+        model:
+          completion_params: {}
+          mode: chat
+          name: deepseek-V3
+          provider: langgenius/volcengine_maas/volcengine_maas
+        prompt_template:
+        - id: 1bfba2c1-7f17-48f8-a5ba-167c03d33375
+          role: system
+          text: "# Role: 错题同类型生成专家\n\n## Profile\n\n- Author: 周辉\n- Version: 1.1\n\
+            - Language: 中文\n- Description: 我是一位专门生成同类型错题的AI助手。我能根据给定的原始题目生成多个相似的新题目，涵盖多种题型和学科。\n\
+            \n## Background\n\n在教育领域，练习相似题目对于巩固知识点和提高解题能力至关重要。本专家旨在帮助教育工作者和学生快速生成与原题相似的多个新题目，以便进行更有效的学习和复习。\n\
+            \n## Skills\n\n- 深入理解各学科知识点和题型特征\n- 能够准确分析原始题目的结构、难度和考察重点\n- 具备创造性思维，能够灵活变换题目场景和数值\n\
+            - 熟练掌握多种题型的出题技巧\n- 能够提供清晰、详细的答案和解析\n- 能够批量生成多个相似题目\n\n## Goals\n\n- 根据用户提供的原始题目生成{{#1742961448129.questionsCount#}}\n\
+            相似的新题目\n\n- 保持与原题相同的题型和难度级别\n- 确保新生成的题目在数值、场景或具体内容上有所变化\n- 为每个新题目提供准确的答案和详细的解析\n\
+            \n## Constraints\n\n- 严格遵守教育伦理，不生成具有争议或不适当的内容\n- 确保生成的题目难度适中，符合原题的难度水平\n\
+            - 不得直接复制原题，必须进行创造性的改编\n- 生成的题目必须有明确的答案和合理的解析\n- 生成的多个题目之间应有足够的差异性\n\n\
+            ## Skills\n\n- 中小学各学科知识储备\n- 题目分析与结构化能力\n- 创意思维和灵活应用能力\n- 清晰的文字表达能力\n\
+            - 批量生成相似题目的能力\n\n## Workflows\n\n1. 接收并分析用户输入的原始题目\n2. 识别题目的类型、学科和难度级别\n\
+            3. 提取题目的核心知识点和考察重点\n4. 确定要生成的新题目数量{{#1742961448129.questionsCount#}}\n\
+            \n5. 对每个新题目：\n   a. 创造性地设计新的题目场景或更换数值\n   b. 生成新的题目，确保与原题类型和难度相当\n   c.\
+            \ 编写详细的答案和解析\n6. 检查所有生成的题目，确保它们之间有足够的差异性\n7. 将生成的多个题目整理为指定的JSON格式\n8.\
+            \ 输出最终结果\n\n## Output Format\n生成一份JSON格式的题目，结构如下：\n```json\n{\n  \"original_question\"\
+            : \"用户输入的原始题目\",\n  \"generated_questions\": [\n    {\n      \"question_text\"\
+            : \"新生成的题目文本1\",\n      \"question_type\": \"题目类型（如：选择题、填空题等）\",\n   \
+            \   \"subject\": \"学科\",\n      \"difficulty_level\": \"难度等级（1-5）\",\n\
+            \      \"answer\": \"正确答案\",\n      \"explanation\": \"详细的解答过程和解析\"\n\
+            \    },\n    {\n      \"question_text\": \"新生成的题目文本2\",\n      \"question_type\"\
+            : \"题目类型（如：选择题、填空题等）\",\n      \"subject\": \"学科\",\n      \"difficulty_level\"\
+            : \"难度等级（1-5）\",\n      \"answer\": \"正确答案\",\n      \"explanation\":\
+            \ \"详细的解答过程和解析\"\n    },\n    {\n      \"question_text\": \"新生成的题目文本3\"\
+            ,\n      \"question_type\": \"题目类型（如：选择题、填空题等）\",\n      \"subject\":\
+            \ \"学科\",\n      \"difficulty_level\": \"难度等级（1-5）\",\n      \"answer\"\
+            : \"正确答案\",\n      \"explanation\": \"详细的解答过程和解析\"\n    }\n  ]\n}\n```json"
+        - id: 3f4d94db-fc0d-4b1d-b500-11d811f2ceea
+          role: user
+          text: '请根据用户选择的错题{{#1748525033636.result#}}
+
+            生成{{#1742961448129.questionsCount#}}个同类型题'
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1748525345107'
+      parentId: '1748523986796'
+      position:
+        x: 431.05612571042707
+        y: 68
+      positionAbsolute:
+        x: 55.34004327242178
+        y: -222.32841438567897
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: '%Y-%m-%d %H:%M:%S'
+          form: form
+          human_description:
+            en_US: Time format in strftime standard.
+            ja_JP: Time format in strftime standard.
+            pt_BR: Time format in strftime standard.
+            zh_Hans: strftime 标准的时间格式。
+          label:
+            en_US: Format
+            ja_JP: Format
+            pt_BR: Format
+            zh_Hans: 格式
+          llm_description: null
+          max: null
+          min: null
+          name: format
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: UTC
+          form: form
+          human_description:
+            en_US: Timezone
+            ja_JP: Timezone
+            pt_BR: Timezone
+            zh_Hans: 时区
+          label:
+            en_US: Timezone
+            ja_JP: Timezone
+            pt_BR: Timezone
+            zh_Hans: 时区
+          llm_description: null
+          max: null
+          min: null
+          name: timezone
+          options:
+          - label:
+              en_US: UTC
+              ja_JP: UTC
+              pt_BR: UTC
+              zh_Hans: UTC
+            value: UTC
+          - label:
+              en_US: America/New_York
+              ja_JP: America/New_York
+              pt_BR: America/New_York
+              zh_Hans: 美洲/纽约
+            value: America/New_York
+          - label:
+              en_US: America/Los_Angeles
+              ja_JP: America/Los_Angeles
+              pt_BR: America/Los_Angeles
+              zh_Hans: 美洲/洛杉矶
+            value: America/Los_Angeles
+          - label:
+              en_US: America/Chicago
+              ja_JP: America/Chicago
+              pt_BR: America/Chicago
+              zh_Hans: 美洲/芝加哥
+            value: America/Chicago
+          - label:
+              en_US: America/Sao_Paulo
+              ja_JP: America/Sao_Paulo
+              pt_BR: América/São Paulo
+              zh_Hans: 美洲/圣保罗
+            value: America/Sao_Paulo
+          - label:
+              en_US: Asia/Shanghai
+              ja_JP: Asia/Shanghai
+              pt_BR: Asia/Shanghai
+              zh_Hans: 亚洲/上海
+            value: Asia/Shanghai
+          - label:
+              en_US: Asia/Ho_Chi_Minh
+              ja_JP: Asia/Ho_Chi_Minh
+              pt_BR: Ásia/Ho Chi Minh
+              zh_Hans: 亚洲/胡志明市
+            value: Asia/Ho_Chi_Minh
+          - label:
+              en_US: Asia/Tokyo
+              ja_JP: Asia/Tokyo
+              pt_BR: Asia/Tokyo
+              zh_Hans: 亚洲/东京
+            value: Asia/Tokyo
+          - label:
+              en_US: Asia/Dubai
+              ja_JP: Asia/Dubai
+              pt_BR: Asia/Dubai
+              zh_Hans: 亚洲/迪拜
+            value: Asia/Dubai
+          - label:
+              en_US: Asia/Kolkata
+              ja_JP: Asia/Kolkata
+              pt_BR: Asia/Kolkata
+              zh_Hans: 亚洲/加尔各答
+            value: Asia/Kolkata
+          - label:
+              en_US: Asia/Seoul
+              ja_JP: Asia/Seoul
+              pt_BR: Asia/Seoul
+              zh_Hans: 亚洲/首尔
+            value: Asia/Seoul
+          - label:
+              en_US: Asia/Singapore
+              ja_JP: Asia/Singapore
+              pt_BR: Asia/Singapore
+              zh_Hans: 亚洲/新加坡
+            value: Asia/Singapore
+          - label:
+              en_US: Europe/London
+              ja_JP: Europe/London
+              pt_BR: Europe/London
+              zh_Hans: 欧洲/伦敦
+            value: Europe/London
+          - label:
+              en_US: Europe/Berlin
+              ja_JP: Europe/Berlin
+              pt_BR: Europe/Berlin
+              zh_Hans: 欧洲/柏林
+            value: Europe/Berlin
+          - label:
+              en_US: Europe/Moscow
+              ja_JP: Europe/Moscow
+              pt_BR: Europe/Moscow
+              zh_Hans: 欧洲/莫斯科
+            value: Europe/Moscow
+          - label:
+              en_US: Australia/Sydney
+              ja_JP: Australia/Sydney
+              pt_BR: Australia/Sydney
+              zh_Hans: 澳大利亚/悉尼
+            value: Australia/Sydney
+          - label:
+              en_US: Pacific/Auckland
+              ja_JP: Pacific/Auckland
+              pt_BR: Pacific/Auckland
+              zh_Hans: 太平洋/奥克兰
+            value: Pacific/Auckland
+          - label:
+              en_US: Africa/Cairo
+              ja_JP: Africa/Cairo
+              pt_BR: Africa/Cairo
+              zh_Hans: 非洲/开罗
+            value: Africa/Cairo
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        params:
+          format: ''
+          timezone: ''
+        provider_id: time
+        provider_name: time
+        provider_type: builtin
+        selected: false
+        title: 获取当前时间
+        tool_configurations:
+          format: '%Y-%m-%d %H:%M:%S'
+          timezone: Asia/Shanghai
+        tool_description: 一个用于获取当前时间的工具。
+        tool_label: 获取当前时间
+        tool_name: current_time
+        tool_parameters: {}
+        type: tool
+      height: 115
+      id: '1748525958382'
+      position:
+        x: -242.25936289803872
+        y: 35.37869943296732
+      positionAbsolute:
+        x: -242.25936289803872
+        y: 35.37869943296732
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Markdown text
+            ja_JP: Markdown text
+            pt_BR: Markdown text
+            zh_Hans: Markdown格式文本
+          label:
+            en_US: Markdown text
+            ja_JP: Markdown text
+            pt_BR: Markdown text
+            zh_Hans: Markdown格式文本
+          llm_description: ''
+          max: null
+          min: null
+          name: md_text
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Filename of the output file
+            ja_JP: Filename of the output file
+            pt_BR: Filename of the output file
+            zh_Hans: 输出文件名
+          label:
+            en_US: Filename of the output file
+            ja_JP: Filename of the output file
+            pt_BR: Filename of the output file
+            zh_Hans: 输出文件名
+          llm_description: ''
+          max: null
+          min: null
+          name: output_filename
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        params:
+          md_text: ''
+          output_filename: ''
+        provider_id: bowenliang123/md_exporter/md_exporter
+        provider_name: bowenliang123/md_exporter/md_exporter
+        provider_type: builtin
+        selected: false
+        title: Markdown转PDF文件
+        tool_configurations: {}
+        tool_description: 一个用于将Markdown转换为PDF文件的工具
+        tool_label: Markdown转PDF文件
+        tool_name: md_to_pdf
+        tool_parameters:
+          md_text:
+            type: mixed
+            value: '{{#1748531231325.markdown_text#}}'
+          output_filename:
+            type: mixed
+            value: 同类型错题练习{{#1748525958382.text#}}
+        type: tool
+      height: 53
+      id: '1748525975509'
+      position:
+        x: 190.33464526827953
+        y: 59.81005963806638
+      positionAbsolute:
+        x: 190.33464526827953
+        y: 59.81005963806638
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1748525975509.files#}}'
+        desc: ''
+        selected: false
+        title: 同类型题型生成
+        type: answer
+        variables: []
+      height: 103
+      id: '1748530637671'
+      position:
+        x: 605.2754131635365
+        y: 35.37869943296732
+      positionAbsolute:
+        x: 605.2754131635365
+        y: 35.37869943296732
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import json\nimport re\n\ndef main(arg1) -> dict:\n    try:\n     \
+          \   # 检查arg1的类型，如果已经是列表，直接使用；如果是字符串，尝试解析JSON\n        if isinstance(arg1,\
+          \ list):\n            markdown_json_list = arg1\n        elif isinstance(arg1,\
+          \ str):\n            # 尝试解析为JSON对象\n            outer_dict = json.loads(arg1)\n\
+          \            markdown_json_list = outer_dict.get(\"arg1\", [])\n       \
+          \ elif isinstance(arg1, dict):\n            # 如果是字典，直接获取arg1字段\n       \
+          \     markdown_json_list = arg1.get(\"arg1\", [])\n        else:\n     \
+          \       # 不支持的类型\n            return {\"markdown_text\": f\"输入类型不支持：{type(arg1)}\"\
+          }\n        \n        markdown_text = \"\"\n        original_questions_processed\
+          \ = {}\n        question_counter = {}\n        \n        for markdown_json_str\
+          \ in markdown_json_list:\n            # 提取内层JSON字符串（去除```json和```标记）\n \
+          \           match = re.search(r'```json\\s*(.*?)\\s*```', markdown_json_str,\
+          \ re.DOTALL)\n            if not match:\n                continue\n    \
+          \        inner_json_str = match.group(1).strip()\n            \n       \
+          \     try:\n                # 解析内层JSON数据\n                question_data\
+          \ = json.loads(inner_json_str)\n                original_question = question_data.get(\"\
+          original_question\", \"\")\n                generated_questions = question_data.get(\"\
+          generated_questions\", [])\n                \n                # 为每个原题分配一个编号\n\
+          \                if original_question not in original_questions_processed:\n\
+          \                    original_questions_processed[original_question] = len(original_questions_processed)\
+          \ + 1\n                    question_counter[original_question] = 0\n   \
+          \             \n                original_question_num = original_questions_processed[original_question]\n\
+          \                \n                # 只有第一次遇到原题时才添加原题信息\n               \
+          \ if question_counter[original_question] == 0:\n                    markdown_text\
+          \ += f\"## 原题{original_question_num}：{original_question}\\n\\n\"\n     \
+          \           \n                for i, question in enumerate(generated_questions,\
+          \ 1):\n                    # 更新同类型题的计数\n                    question_counter[original_question]\
+          \ += 1\n                    current_question_num = question_counter[original_question]\n\
+          \                    \n                    # 处理转义换行符（将JSON中的\\n转换为实际换行）\n\
+          \                    explanation = question.get(\"explanation\", \"\").replace(\"\
+          \\\\n\", \"\\n\")\n                    \n                    # 如果不是第一个同类型题，再次显示原题信息\n\
+          \                    if i > 1 or current_question_num > 1:\n           \
+          \             markdown_text += f\"## 原题{original_question_num}：{original_question}\\\
+          n\\n\"\n                    \n                    markdown_text += f\"###\
+          \ 同类型题{current_question_num}：{question.get('question_text', '')}\\n\\n\"\
+          \n                    markdown_text += f\"**题目类型**：{question.get('question_type',\
+          \ '')}\\n\\n\"\n                    markdown_text += f\"**学科**：{question.get('subject',\
+          \ '')}\\n\\n\"\n                    markdown_text += f\"**难度等级(1-5)**：{question.get('difficulty_level',\
+          \ '')}\\n\\n\"\n                    markdown_text += f\"**题目答案**：{question.get('answer',\
+          \ '')}\\n\\n\"\n                    markdown_text += f\"**题目详解**：\\n\\n{explanation}\\\
+          n\\n---\\n\\n\"\n            except json.JSONDecodeError:\n            \
+          \    continue\n        \n        return {\"markdown_text\": markdown_text}\n\
+          \    except Exception as e:\n        return {\"markdown_text\": f\"处理过程中出错：{str(e)}\"\
+          }"
+        code_language: python3
+        default_value:
+        - key: markdown_text
+          type: string
+          value: ''
+        desc: ''
+        error_strategy: default-value
+        outputs:
+          markdown_text:
+            children: null
+            type: string
+        selected: false
+        title: JSON转markdown
+        type: code
+        variables:
+        - value_selector:
+          - '1748523986796'
+          - output
+          variable: arg1
+      height: 89
+      id: '1748531231325'
+      position:
+        x: 357.42103753673274
+        y: -223.22359797617204
+      positionAbsolute:
+        x: 357.42103753673274
+        y: -223.22359797617204
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        classes:
+        - id: '1'
+          name: 查询错题本
+        - id: '2'
+          name: 生成同类型错题
+        desc: ''
+        instructions: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Qwen/Qwen3-32B
+          provider: langgenius/modelscope/modelscope
+        query_variable_selector:
+        - '1742961448129'
+        - sys.query
+        selected: false
+        title: 问题分类器
+        topics: []
+        type: question-classifier
+        vision:
+          enabled: false
+      height: 171
+      id: '1748565481932'
+      position:
+        x: -1326.9508037008877
+        y: 91.99830057527319
+      positionAbsolute:
+        x: -1326.9508037008877
+        y: 91.99830057527319
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 221.61422555009398
+      y: 406.1708080239371
+      zoom: 0.5505284067122375
