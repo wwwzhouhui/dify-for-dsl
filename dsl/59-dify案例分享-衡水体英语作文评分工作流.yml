@@ -1,0 +1,621 @@
+app:
+  description: 本工作流主要是学生可以通过上传英语作文，通过该工作流检查一下书写的英语作文是否符合衡水体规范，避免在中考高考的时候因为卷面分而失分的小小工具
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 59-dify案例分享-衡水体英语作文评分工作流
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.16@77274df8fe2632cac66bfd153fcc75aa5e96abbe92b5c611b8984ad9f4cd4457
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/modelscope:0.0.4@5a3245e52b864fa8a20686baf5add2f5517eae5f11f94419bf46edbe170731e8
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: kalochin/pdf_process:0.0.4@29c7b0927a11333044049de20657119779a06e0eb003b6c5cffaec07e5204332
+kind: app
+version: 0.3.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 500
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 100
+        video_file_size_limit: 500
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: template-transform
+      id: 1748759390938-source-1748759736345-target
+      source: '1748759390938'
+      sourceHandle: source
+      target: '1748759736345'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: template-transform
+        targetType: if-else
+      id: 1748759736345-source-1748759775244-target
+      source: '1748759736345'
+      sourceHandle: source
+      target: '1748759775244'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: answer
+      id: 1748759775244-false-1748759826270-target
+      source: '1748759775244'
+      sourceHandle: 'false'
+      target: '1748759826270'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1748759775244-e0791876-6819-4908-b272-a46d57cdcc98-llm-target
+      source: '1748759775244'
+      sourceHandle: e0791876-6819-4908-b272-a46d57cdcc98
+      target: llm
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: tool
+      id: 1748759775244-true-1748759877060-target
+      source: '1748759775244'
+      sourceHandle: 'true'
+      target: '1748759877060'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: llm
+      id: 1748759877060-source-17487598836230-target
+      source: '1748759877060'
+      sourceHandle: source
+      target: '17487598836230'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1748760896775-source-answer-target
+      source: '1748760896775'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 17487598836230-source-1748761316621-target
+      source: '17487598836230'
+      sourceHandle: source
+      target: '1748761316621'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: variable-aggregator
+      id: llm-source-1748761316621-target
+      source: llm
+      sourceHandle: source
+      target: '1748761316621'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: variable-aggregator
+        targetType: llm
+      id: 1748761316621-source-1748760896775-target
+      source: '1748761316621'
+      sourceHandle: source
+      target: '1748760896775'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - image
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: 上传的PDF文件和图片(pdf 或图片类型(png、jpeg、jpg、bmp、tiff)
+          max_length: 48
+          options: []
+          required: true
+          type: file
+          variable: file
+      height: 90
+      id: '1748759390938'
+      position:
+        x: 84.24264068711932
+        y: 411
+      positionAbsolute:
+        x: 84.24264068711932
+        y: 411
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: '{{#sys.query#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 10
+        model:
+          completion_params: {}
+          mode: chat
+          name: gemini-2.5-flash-preview-05-20
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: da610f82-6ea4-4ca0-8016-b6af948afd33
+          role: system
+          text: "# Role: 衡水体英语作文评分专家\n\n## Profile\n- Author: 周辉\n- Version: 1.0\n\
+            - Language: 中文\n- Description: 专业评估英语作文的书写规范性和内容质量，提供详细的评分依据和建议\n\n##\
+            \ Background\n你是一位专门评估衡水体英语作文的专家，精通衡水体书写规范和英语写作要求。你的主要职责是对学生的英语作文进行全方位评估，包括书写规范和内容质量两个维度。\n\
+            \n## Constraints\n- 严格遵循衡水体书写规范进行评分\n- 保持评分标准的一致性和客观性\n- 提供具体、可操作的改进建议\n\
+            - 评分范围：0-100分\n- 必须同时评估书写规范（50分）和内容质量（50分）\n\n## Skills\n- 精准识别字母书写的规范性\n\
+            - 评估作文结构和内容的完整性\n- 分析语言运用的准确性和流畅度\n- 提供有针对性的改进建议\n\n## Goals\n- 对英语作文进行全面评估\n\
+            - 给出详细的评分依据\n- 提供具体的改进建议\n\n## Workflows\n1. 书写规范评估（50分）\n   - 字母大小一致性（15分）\n\
+            \   - 间距均匀度（10分）\n   - 笔画连接规范性（10分）\n   - 字形圆润度（10分）\n   - 整体美观度（5分）\n\
+            \n2. 内容质量评估（50分）\n   - 主题明确性（10分）\n   - 结构完整性（10分）\n   - 语言流畅度（10分）\n\
+            \   - 词汇运用（10分）\n   - 句型多样性（10分）\n\n3. 评分等级划分\n   - 优秀：90-100分\n   - 良好：80-89分\n\
+            \   - 中等：70-79分\n   - 及格：60-69分\n   - 不及格：60分以下\n\n## OutputFormat\n{\n\
+            \    \"总分\": \"数字\",\n    \"书写规范得分\": {\n        \"得分\": \"数字\",\n   \
+            \     \"字母大小一致性\": \"得分 + 评价\",\n        \"间距均匀度\": \"得分 + 评价\",\n   \
+            \     \"笔画连接规范性\": \"得分 + 评价\",\n        \"字形圆润度\": \"得分 + 评价\",\n   \
+            \     \"整体美观度\": \"得分 + 评价\"\n    },\n    \"内容质量得分\": {\n        \"得分\"\
+            : \"数字\",\n        \"主题明确性\": \"得分 + 评价\",\n        \"结构完整性\": \"得分 +\
+            \ 评价\",\n        \"语言流畅度\": \"得分 + 评价\",\n        \"词汇运用\": \"得分 + 评价\"\
+            ,\n        \"句型多样性\": \"得分 + 评价\"\n    },\n    \"等级\": \"优秀/良好/中等/及格/不及格\"\
+            ,\n    \"总体评价\": \"综合评价和建议\"\n}\n\n## Rules\n1. 评分必须客观公正，有理有据\n2. 每个评分项目都需要给出具体的评分依据\n\
+            3. 建议必须具体且可操作\n4. 评分需要考虑到电子阅卷的要求\n5. 对于不同等级的作文，给出针对性的提升建议\n\n## Example\n\
+            Human: 请评价这篇英语作文的书写规范和内容质量。"
+        - id: 42116f32-71a3-44d1-89a6-d90c133af012
+          role: user
+          text: ''
+        selected: false
+        title: 衡水体英语作文评分(图片OCR)
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - '1748759390938'
+            - file
+          enabled: true
+      height: 90
+      id: llm
+      position:
+        x: 984.1591035847464
+        y: 466
+      positionAbsolute:
+        x: 984.1591035847464
+        y: 466
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1748760896775.text#}}'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 105
+      id: answer
+      position:
+        x: 2184.632467631853
+        y: 319
+      positionAbsolute:
+        x: 2184.632467631853
+        y: 319
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        selected: false
+        template: '{{ filetype }}'
+        title: 模板转换
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1748759390938'
+          - file
+          - mime_type
+          variable: filetype
+      height: 54
+      id: '1748759736345'
+      position:
+        x: 380
+        y: 411
+      positionAbsolute:
+        x: 380
+        y: 411
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: contains
+            id: 7f3a3f53-1909-4a47-906b-333716373025
+            value: application/pdf
+            varType: string
+            variable_selector:
+            - '1748759736345'
+            - output
+          id: 'true'
+          logical_operator: and
+        - case_id: e0791876-6819-4908-b272-a46d57cdcc98
+          conditions:
+          - comparison_operator: contains
+            id: db17272a-2de5-4f80-938c-ecc6cf2d41b3
+            value: image
+            varType: string
+            variable_selector:
+            - '1748759736345'
+            - output
+          id: e0791876-6819-4908-b272-a46d57cdcc98
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 条件分支
+        type: if-else
+      height: 174
+      id: '1748759775244'
+      position:
+        x: 684
+        y: 411
+      positionAbsolute:
+        x: 684
+        y: 411
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: 您输入的文件类型不是pdf和图片，请重新上传
+        desc: ''
+        selected: false
+        title: 直接回复 2
+        type: answer
+        variables: []
+      height: 118
+      id: '1748759826270'
+      position:
+        x: 972
+        y: 632
+      positionAbsolute:
+        x: 972
+        y: 632
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: PDF file to convert to PNG images
+            ja_JP: PDF file to convert to PNG images
+            pt_BR: PDF file to convert to PNG images
+            zh_Hans: 要转换为PNG图片的PDF文件
+          label:
+            en_US: PDF Content
+            ja_JP: PDF Content
+            pt_BR: PDF Content
+            zh_Hans: PDF 内容
+          llm_description: PDF file content to be converted to PNG images
+          max: null
+          min: null
+          name: pdf_content
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: file
+        - auto_generate: null
+          default: 2
+          form: llm
+          human_description:
+            en_US: Zoom factor for image quality (default is 2)
+            ja_JP: Zoom factor for image quality (default is 2)
+            pt_BR: Zoom factor for image quality (default is 2)
+            zh_Hans: 图像质量的缩放因子（默认为2）
+          label:
+            en_US: Zoom Factor
+            ja_JP: Zoom Factor
+            pt_BR: Zoom Factor
+            zh_Hans: 缩放因子
+          llm_description: Zoom factor to control the quality of output PNG images
+          max: null
+          min: null
+          name: zoom
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: number
+        params:
+          pdf_content: ''
+          zoom: ''
+        provider_id: kalochin/pdf_process/pdf_process
+        provider_name: kalochin/pdf_process/pdf_process
+        provider_type: builtin
+        selected: false
+        title: PDF转PNG转换器
+        tool_configurations: {}
+        tool_description: 一个将PDF文件转换为PNG图片的工具
+        tool_label: PDF转PNG转换器
+        tool_name: pdf_to_png
+        tool_parameters:
+          pdf_content:
+            type: variable
+            value:
+            - '1748759390938'
+            - file
+        type: tool
+      height: 54
+      id: '1748759877060'
+      position:
+        x: 948
+        y: 282
+      positionAbsolute:
+        x: 948
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: '{{#sys.query#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 10
+        model:
+          completion_params: {}
+          mode: chat
+          name: gemini-2.5-flash-preview-05-20
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: da610f82-6ea4-4ca0-8016-b6af948afd33
+          role: system
+          text: "# Role: 衡水体英语作文评分专家\n\n## Profile\n- Author: 周辉\n- Version: 1.0\n\
+            - Language: 中文\n- Description: 专业评估英语作文的书写规范性和内容质量，提供详细的评分依据和建议\n\n##\
+            \ Background\n你是一位专门评估衡水体英语作文的专家，精通衡水体书写规范和英语写作要求。你的主要职责是对学生的英语作文进行全方位评估，包括书写规范和内容质量两个维度。\n\
+            \n## Constraints\n- 严格遵循衡水体书写规范进行评分\n- 保持评分标准的一致性和客观性\n- 提供具体、可操作的改进建议\n\
+            - 评分范围：0-100分\n- 必须同时评估书写规范（50分）和内容质量（50分）\n\n## Skills\n- 精准识别字母书写的规范性\n\
+            - 评估作文结构和内容的完整性\n- 分析语言运用的准确性和流畅度\n- 提供有针对性的改进建议\n\n## Goals\n- 对英语作文进行全面评估\n\
+            - 给出详细的评分依据\n- 提供具体的改进建议\n\n## Workflows\n1. 书写规范评估（50分）\n   - 字母大小一致性（15分）\n\
+            \   - 间距均匀度（10分）\n   - 笔画连接规范性（10分）\n   - 字形圆润度（10分）\n   - 整体美观度（5分）\n\
+            \n2. 内容质量评估（50分）\n   - 主题明确性（10分）\n   - 结构完整性（10分）\n   - 语言流畅度（10分）\n\
+            \   - 词汇运用（10分）\n   - 句型多样性（10分）\n\n3. 评分等级划分\n   - 优秀：90-100分\n   - 良好：80-89分\n\
+            \   - 中等：70-79分\n   - 及格：60-69分\n   - 不及格：60分以下\n\n## OutputFormat\n{\n\
+            \    \"总分\": \"数字\",\n    \"书写规范得分\": {\n        \"得分\": \"数字\",\n   \
+            \     \"字母大小一致性\": \"得分 + 评价\",\n        \"间距均匀度\": \"得分 + 评价\",\n   \
+            \     \"笔画连接规范性\": \"得分 + 评价\",\n        \"字形圆润度\": \"得分 + 评价\",\n   \
+            \     \"整体美观度\": \"得分 + 评价\"\n    },\n    \"内容质量得分\": {\n        \"得分\"\
+            : \"数字\",\n        \"主题明确性\": \"得分 + 评价\",\n        \"结构完整性\": \"得分 +\
+            \ 评价\",\n        \"语言流畅度\": \"得分 + 评价\",\n        \"词汇运用\": \"得分 + 评价\"\
+            ,\n        \"句型多样性\": \"得分 + 评价\"\n    },\n    \"等级\": \"优秀/良好/中等/及格/不及格\"\
+            ,\n    \"总体评价\": \"综合评价和建议\"\n}\n\n## Rules\n1. 评分必须客观公正，有理有据\n2. 每个评分项目都需要给出具体的评分依据\n\
+            3. 建议必须具体且可操作\n4. 评分需要考虑到电子阅卷的要求\n5. 对于不同等级的作文，给出针对性的提升建议\n\n## Example\n\
+            Human: 请评价这篇英语作文的书写规范和内容质量。"
+        - id: 42116f32-71a3-44d1-89a6-d90c133af012
+          role: user
+          text: ''
+        selected: false
+        title: 衡水体英语作文评分(pdf转图片OCR)
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - '1748759877060'
+            - files
+          enabled: true
+      height: 90
+      id: '17487598836230'
+      position:
+        x: 1237
+        y: 294
+      positionAbsolute:
+        x: 1237
+        y: 294
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: Qwen/Qwen3-32B
+          provider: langgenius/modelscope/modelscope
+        prompt_template:
+        - id: a88c8a60-81ba-4428-a175-2ff72be55e35
+          role: system
+          text: "衡水体英语作文批阅提示词专家\n核心指令：\n你是一位英语作文批阅专家，专注衡水体书写规范与内容质量评估。请根据用户提交的英语作文，从书写规范（字母大小一致性、间距均匀度、笔画连接规范性、字形圆润度、整体美观度）和内容质量（主题明确性、结构完整性、语言流畅度、词汇运用、句型多样性）两方面，按\
+            \ LangGPT 语法规范输出评分与详细分析。\n评估维度与输出要求：\n书写规范：\n需精确指出字母书写（如升部 / 降部字母高度、大小写一致性）、间距控制（单词内\
+            \ / 单词间 / 行间距）、笔画连接（连笔规范、标点符号书写）、字形风格（圆润度、工整度）的具体问题，并提供对应衡水体字帖练习建议。\n\
+            示例输出：\n**字母大小一致性**：大写字母'H'超出升部高度标准20%，与小写字母高度差过大，建议临摹衡水体大写字母比例示范页，重点练习\"\
+            H, M, N\"等字母书写。\n\n内容质量：\n从主题表达、段落结构、语法错误（时态 / 冠词 / 介词 / 从句使用等）、词汇准确性与多样性、句型复杂度等维度进行诊断，提供错误修正方案与提升技巧。\n\
+            示例输出：\n**语言流畅度**：存在3处主谓不一致错误（如\"She like...\"应改为\"She likes...\"），建议复习第三人称单数动词变化规则，可尝试使用语法检查工具辅助练习。\n\
+            \n输出格式：\n**总分**：XX\n- **书写规范得分**：XX\n  - 字母大小一致性：得分/标准分 - 具体问题分析与改进建议\n\
+            \  - 间距均匀度：得分/标准分 - 具体问题分析与改进建议\n  - ...\n- **内容质量得分**：XX\n  - 主题明确性：得分/标准分\
+            \ - 具体问题分析与改进建议\n  - 结构完整性：得分/标准分 - 具体问题分析与改进建议\n  - ...\n**等级**：XX\n\
+            **总体评价**：总结作文优缺点，提出系统性提升策略\n\n输出约束：\n每个评估维度至少提供 2 个具体错误案例\n改进建议需包含练习资源（如推荐字帖、语法书籍、学习网站）\n\
+            避免使用模糊表述，确保评分依据可量化、可操作"
+        - id: 10963b83-504d-45d3-b497-a049792ada66
+          role: user
+          text: 请根据{{#1748761316621.output#}}对这个英语作文进行评价打分
+        selected: false
+        title: 衡水体英语作文评分(基于json)
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1748760896775'
+      position:
+        x: 1852.9878066911801
+        y: 319
+      positionAbsolute:
+        x: 1852.9878066911801
+        y: 319
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        output_type: string
+        selected: false
+        title: 变量聚合器
+        type: variable-aggregator
+        variables:
+        - - '17487598836230'
+          - text
+        - - llm
+          - text
+      height: 130
+      id: '1748761316621'
+      position:
+        x: 1553
+        y: 319
+      positionAbsolute:
+        x: 1553
+        y: 319
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: -1604.5637422040845
+      y: -44.29044322351095
+      zoom: 1.1892071150027212
