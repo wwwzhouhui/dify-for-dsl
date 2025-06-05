@@ -1,0 +1,638 @@
+app:
+  description: 本工作流主要是为财务工作人员提供一种批量识别PDF电子发票信息生成 excel表格的台账的工作流。
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 61-dify案例分享-批量识别PDF电子发票信息生成excle表格
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.16@77274df8fe2632cac66bfd153fcc75aa5e96abbe92b5c611b8984ad9f4cd4457
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/feishu_spreadsheet:0.0.1@6b4da2c3bcab1aace954e92a8120bf09692951bc68c993debbd64cfb398fd30d
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: kalochin/pdf_process:0.0.4@29c7b0927a11333044049de20657119779a06e0eb003b6c5cffaec07e5204332
+kind: app
+version: 0.3.0
+workflow:
+  conversation_variables: []
+  environment_variables:
+  - description: ''
+    id: 63306689-c9ef-4ae7-881e-db346ed6cb9b
+    name: fenshuurl
+    selector:
+    - env
+    - fenshuurl
+    value: https://aqma351r01f.feishu.cn/wiki/K1X3wxHldihn8vkwt5xcsdSVn5c
+    value_type: string
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 500
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 100
+        video_file_size_limit: 500
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: iteration
+      id: 1749095874754-source-1749100792674-target
+      source: '1749095874754'
+      sourceHandle: source
+      target: '1749100792674'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1749100792674'
+        sourceType: iteration-start
+        targetType: tool
+      id: 1749100792674start-source-1749100819958-target
+      source: 1749100792674start
+      sourceHandle: source
+      target: '1749100819958'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: iteration
+        targetType: llm
+      id: 1749100792674-source-1749105824146-target
+      source: '1749100792674'
+      sourceHandle: source
+      target: '1749105824146'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1749105824146-source-1749115381294-target
+      source: '1749105824146'
+      sourceHandle: source
+      target: '1749115381294'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: tool
+      id: 1749115381294-source-1749116054395-target
+      source: '1749115381294'
+      sourceHandle: source
+      target: '1749116054395'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: answer
+      id: 1749115381294-source-answer-target
+      source: '1749115381294'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: pdf发票文件
+          max_length: 5
+          options: []
+          required: true
+          type: file-list
+          variable: file
+      height: 90
+      id: '1749095874754'
+      position:
+        x: 80
+        y: 282
+      positionAbsolute:
+        x: 80
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1749100792674.output#}}
+
+          {{#1749105824146.text#}}'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 124
+      id: answer
+      position:
+        x: 1461.0206812890367
+        y: 172.2067702850245
+      positionAbsolute:
+        x: 1461.0206812890367
+        y: 172.2067702850245
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        error_handle_mode: terminated
+        height: 206
+        is_parallel: false
+        iterator_selector:
+        - '1749095874754'
+        - file
+        output_selector:
+        - '1749100819958'
+        - files
+        output_type: array[file]
+        parallel_nums: 10
+        selected: false
+        start_node_id: 1749100792674start
+        title: 迭代
+        type: iteration
+        width: 398
+      height: 206
+      id: '1749100792674'
+      position:
+        x: 399.81079288499745
+        y: 282
+      positionAbsolute:
+        x: 399.81079288499745
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 398
+      zIndex: 1
+    - data:
+        desc: ''
+        isInIteration: true
+        selected: false
+        title: ''
+        type: iteration-start
+      draggable: false
+      height: 48
+      id: 1749100792674start
+      parentId: '1749100792674'
+      position:
+        x: 24
+        y: 68
+      positionAbsolute:
+        x: 423.81079288499745
+        y: 350
+      selectable: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-iteration-start
+      width: 44
+      zIndex: 1002
+    - data:
+        desc: ''
+        isInIteration: true
+        isInLoop: false
+        is_team_authorization: true
+        iteration_id: '1749100792674'
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: PDF file to convert to PNG images
+            ja_JP: PDF file to convert to PNG images
+            pt_BR: PDF file to convert to PNG images
+            zh_Hans: 要转换为PNG图片的PDF文件
+          label:
+            en_US: PDF Content
+            ja_JP: PDF Content
+            pt_BR: PDF Content
+            zh_Hans: PDF 内容
+          llm_description: PDF file content to be converted to PNG images
+          max: null
+          min: null
+          name: pdf_content
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: file
+        - auto_generate: null
+          default: 2
+          form: llm
+          human_description:
+            en_US: Zoom factor for image quality (default is 2)
+            ja_JP: Zoom factor for image quality (default is 2)
+            pt_BR: Zoom factor for image quality (default is 2)
+            zh_Hans: 图像质量的缩放因子（默认为2）
+          label:
+            en_US: Zoom Factor
+            ja_JP: Zoom Factor
+            pt_BR: Zoom Factor
+            zh_Hans: 缩放因子
+          llm_description: Zoom factor to control the quality of output PNG images
+          max: null
+          min: null
+          name: zoom
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: number
+        params:
+          pdf_content: ''
+          zoom: ''
+        provider_id: kalochin/pdf_process/pdf_process
+        provider_name: kalochin/pdf_process/pdf_process
+        provider_type: builtin
+        selected: false
+        title: PDF转PNG转换器
+        tool_configurations: {}
+        tool_description: 一个将PDF文件转换为PNG图片的工具
+        tool_label: PDF转PNG转换器
+        tool_name: pdf_to_png
+        tool_parameters:
+          pdf_content:
+            type: variable
+            value:
+            - '1749100792674'
+            - item
+        type: tool
+      height: 54
+      id: '1749100819958'
+      parentId: '1749100792674'
+      position:
+        x: 128
+        y: 68
+      positionAbsolute:
+        x: 527.8107928849975
+        y: 350
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: gemini-2.5-flash-preview-05-20
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 5dc7034f-b1bb-4939-b644-f7eefa0c0c29
+          role: system
+          text: "# Role: 财务发票整理专家\n\n## Profile\n\n- 专业领域: 财务管理、发票处理\n- 专长: 电子发票信息提取、数据整理、JSON格式输出、特殊发票处理\n\
+            - 工作经验: 10年以上财务发票处理经验，包括各类特殊发票\n\n## Background\n\n你是一位经验丰富的财务发票整理专家，擅长处理各类电子发票，并能够准确提取关键信息。你的工作涉及大量发票数据的处理和整理，需要高度的准确性和一致性。你了解最新的发票格式变化，包括某些发票将发票代码和发票号码合并的情况，以及航空电子客运发票的特殊格式，以及新版火车票的税额计算方法。\n\
+            \n## Goals\n\n1. 准确提取电子发票中的关键信息\n2. 将提取的信息整理成统一的数据格式\n3. 以JSON格式输出处理后的发票数据\n\
+            4. 确保所有必要字段都被正确识别和填充\n5. 正确处理发票代码和发票号码合并的情况\n6. 适当处理航空电子客运发票的特殊格式\n7.\
+            \ 对于新版火车票，在无法直接提取税额时进行准确计算\n\n## Skills\n\n- 精通各类电子发票结构和内容，包括最新的格式变化和特殊发票类型\n\
+            - 熟练使用图像识别技术提取发票信息\n- 擅长数据整理和格式化\n- 熟悉JSON数据格式\n- 注重细节，保证数据的准确性和完整性\n\
+            - 能够灵活处理不同格式的发票信息，包括航空电子客运发票\n- 熟悉特殊发票的税额计算方法\n\n## Workflows\n\n1. 接收电子发票图像链接\n\
+            2. 使用图像识别工具提取发票信息\n3. 识别发票类型和格式\n4. 根据发票类型采取相应的信息提取策略：\n   - 普通发票：正常提取所有字段\n\
+            \   - 合并格式发票：将完整号码放入\"发票号码\"字段\n   - 航空电子客运发票：将电子客票号码放入\"发票号码\"字段\n  \
+            \ - 新版火车票：尝试提取税额，如果无法提取则根据金额计算\n5. 整理提取的信息，确保包含所有必要字段\n6. 对于新版火车票，如果税额未提取到，进行税额计算\n\
+            7. 将整理后的信息转换为JSON格式\n8. 检查输出数据的完整性和准确性\n9. 返回最终的JSON格式数据\n\n## Rules\n\
+            \n1. 必须提取的字段包括: \"发票代码\"、\"发票号码\"、\"开票日期\"、\"开票类目\"、\"金额\"、\"税额\"、\"发票类型\"\
+            \n2. 所有提取的信息必须准确无误\n3. 输出必须使用JSON格式\n4. 如果某个字段在发票中不存在，应在JSON中将该字段值设为\"\
+            \"\n5. 对于发票代码和发票号码合并的新格式发票：\n   - 将完整的合并号码填入\"发票号码\"字段\n   - \"发票代码\"\
+            字段应设置为\"\"\n6. 对于航空电子客运发票：\n   - 将电子客票号码填入\"发票号码\"字段\n   - \"发票代码\"字段应设置为\"\
+            \"\n7. 对于新版火车票：\n   - 如果无法直接提取税额，使用以下公式计算：\n     税额 = 票面金额 ÷ (1 + 9%)\
+            \ × 9%\n   - 计算结果保留两位小数\n8. \"发票类型\"字段应准确反映发票的类型，如\"增值税电子普通发票\"、\"航空电子客运发票\"\
+            、\"铁路电子客票\"等\n9. 保持数据格式的一致性，即使处理多张不同类型的发票\n\n## Output Format\n\n{\n \
+            \ \"发票代码\": \"string or  \",\n  \"发票号码\": \"string\",\n  \"开票日期\": \"\
+            string\",\n  \"开票类目\": \"string\",\n  \"金额\": \"number\",\n  \"税额\": \"\
+            number\",\n  \"发票类型\": \"string\"\n}\n\n## Initialization\n\n作为财务发票整理专家，我已准备好协助您处理各种类型的电子发票信息。我了解不同发票格式的特点，包括新格式发票将发票代码和发票号码合并的情况，以及航空电子客运发票只有电子客票号码的特殊情况。我会根据实际情况灵活处理这些信息，确保输出的JSON数据格式统一且准确。请提供需要处理的电子发票图像链接，我将为您提取关键信息并以JSON格式输出。如果您有任何特殊要求或额外的处理需求，请告诉我。让我们开始工作吧！"
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - '1749100792674'
+            - output
+          enabled: true
+      height: 90
+      id: '1749105824146'
+      position:
+        x: 837.4810370391729
+        y: 282
+      positionAbsolute:
+        x: 837.4810370391729
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import json\n\ndef main(arg1: str) -> dict:\n    # 按 ```json 分割，取后半部分\n\
+          \    part = arg1.split('```json', 1)[-1]\n    # 再按 ``` 分割，取第一部分并去除首尾空白\n\
+          \    json_content = part.split('```', 1)[0].strip()\n    \n    try:\n  \
+          \      # 解析JSON内容\n        data = json.loads(json_content)\n        # 转换为表格格式\n\
+          \        table = []\n        for item in data:\n            # 为每个发票创建记录，包含所有字段\n\
+          \            invoice_data = [\n                item.get('发票代码', ''),\n \
+          \               item.get('发票号码', ''),\n                item.get('开票日期',\
+          \ ''),\n                item.get('开票类目', ''),\n                str(item.get('金额',\
+          \ '')),\n                str(item.get('税额', '')),\n                item.get('发票类型',\
+          \ '')\n            ]\n            table.append(invoice_data)\n\n       \
+          \ return {\n            \"result\": str(table).replace(\"'\", '\"')\n  \
+          \      }\n    except json.JSONDecodeError:\n        # 若JSON解析失败，返回原始内容\n\
+          \        return {\n            \"result\": [[\"错误\", \"JSON解析失败\"]]\n  \
+          \      }"
+        code_language: python3
+        default_value:
+        - key: result
+          type: string
+          value: ''
+        desc: ''
+        error_strategy: default-value
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行
+        type: code
+        variables:
+        - value_selector:
+          - '1749105824146'
+          - text
+          variable: arg1
+      height: 90
+      id: '1749115381294'
+      position:
+        x: 1127.1871440690966
+        y: 282
+      positionAbsolute:
+        x: 1127.1871440690966
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        default_value:
+        - key: text
+          type: string
+          value: ''
+        - key: json
+          type: array[object]
+          value: '[]'
+        desc: ''
+        error_strategy: default-value
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Spreadsheet token, supports input of spreadsheet URL.
+            ja_JP: Spreadsheet token, supports input of spreadsheet URL.
+            pt_BR: Spreadsheet token, supports input of spreadsheet URL.
+            zh_Hans: 电子表格 token，支持输入电子表格 url。
+          label:
+            en_US: spreadsheet_token
+            ja_JP: spreadsheet_token
+            pt_BR: spreadsheet_token
+            zh_Hans: 电子表格 token
+          llm_description: 电子表格 token，支持输入电子表格 url。
+          max: null
+          min: null
+          name: spreadsheet_token
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Sheet ID, either sheet_id or sheet_name must be filled.
+            ja_JP: Sheet ID, either sheet_id or sheet_name must be filled.
+            pt_BR: Sheet ID, either sheet_id or sheet_name must be filled.
+            zh_Hans: 工作表 ID，与 sheet_name 二者其一必填。
+          label:
+            en_US: sheet_id
+            ja_JP: sheet_id
+            pt_BR: sheet_id
+            zh_Hans: 工作表 ID
+          llm_description: 工作表 ID，与 sheet_name 二者其一必填。
+          max: null
+          min: null
+          name: sheet_id
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Sheet name, either sheet_id or sheet_name must be filled.
+            ja_JP: Sheet name, either sheet_id or sheet_name must be filled.
+            pt_BR: Sheet name, either sheet_id or sheet_name must be filled.
+            zh_Hans: 工作表名称，与 sheet_id 二者其一必填。
+          label:
+            en_US: sheet_name
+            ja_JP: sheet_name
+            pt_BR: sheet_name
+            zh_Hans: 工作表名称
+          llm_description: 工作表名称，与 sheet_id 二者其一必填。
+          max: null
+          min: null
+          name: sheet_name
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: Number of rows to add, range (0-5000].
+            ja_JP: Number of rows to add, range (0-5000].
+            pt_BR: Number of rows to add, range (0-5000].
+            zh_Hans: 要增加行数，范围(0-5000]。
+          label:
+            en_US: length
+            ja_JP: length
+            pt_BR: length
+            zh_Hans: 要增加行数
+          llm_description: 要增加行数，范围(0-5000]。
+          max: null
+          min: null
+          name: length
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: number
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: 'Content of the new rows, array of objects in string format, each
+              array represents a row of table data, format like: [ [ "ID","Name","Age"
+              ],[ 1,"Zhang San",10 ],[ 2,"Li Si",11 ] ].
+
+              '
+            ja_JP: 'Content of the new rows, array of objects in string format, each
+              array represents a row of table data, format like: [ [ "ID","Name","Age"
+              ],[ 1,"Zhang San",10 ],[ 2,"Li Si",11 ] ].
+
+              '
+            pt_BR: 'Content of the new rows, array of objects in string format, each
+              array represents a row of table data, format like: [ [ "ID","Name","Age"
+              ],[ 1,"Zhang San",10 ],[ 2,"Li Si",11 ] ].
+
+              '
+            zh_Hans: 新增行的表格内容，数组对象字符串，每个数组一行表格数据，格式,如：[["编号","姓名","年龄"],[1,"张三",10],[2,"李四",11]]。
+          label:
+            en_US: values
+            ja_JP: values
+            pt_BR: values
+            zh_Hans: 新增行的表格内容
+          llm_description: 新增行的表格内容，数组对象字符串，每个数组一行表格数据，格式,如：[["编号","姓名","年龄"],[1,"张三",10],[2,"李四",11]]。
+          max: null
+          min: null
+          name: values
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        params:
+          length: ''
+          sheet_id: ''
+          sheet_name: ''
+          spreadsheet_token: ''
+          values: ''
+        provider_id: langgenius/feishu_spreadsheet/feishu_spreadsheet
+        provider_name: langgenius/feishu_spreadsheet/feishu_spreadsheet
+        provider_type: builtin
+        selected: false
+        title: 新增多行至工作表最后
+        tool_configurations:
+          length: 1
+        tool_description: 新增多行至工作表最后
+        tool_label: 新增多行至工作表最后
+        tool_name: add_rows
+        tool_parameters:
+          spreadsheet_token:
+            type: mixed
+            value: '{{#env.fenshuurl#}}'
+          values:
+            type: mixed
+            value: '{{#1749115381294.result#}}'
+        type: tool
+      height: 126
+      id: '1749116054395'
+      position:
+        x: 1455.1286101390099
+        y: 348.09817817995105
+      positionAbsolute:
+        x: 1455.1286101390099
+        y: 348.09817817995105
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: -709.1564161684444
+      y: 224.55636643917265
+      zoom: 0.8408964152537148
