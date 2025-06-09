@@ -30,6 +30,7 @@
 
 | DSL清单名称                              | 工作流显示                         | 用到技术                                                     | 更新时间                                                 | 作者                                       | 适用dify版本                               |
 | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------------------------------------- |
+| Dify+RSS 聚合 8 大平台实时热点，新闻获取效率飙升 300%.yml | ![image-20250609171838135](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250609171838135.png.png) | 条件分支、rookie_rss(第三方工具)、变量聚合器、代码执行、llm文本模型、获取时间（第三方工具） | 2025年6月9日 | wwwzhouhui | 1.4.0 |
 | 批量识别PDF电子发票信息生成excle表格.yml | ![image-20250605222058323](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250605222058323.png.png) | 迭代、pdf转png转换器（第三方工具）、多模态大语言模型、代码执行、飞书表格 | 2025年6月6日 | wwwzhouhui | 1.4.0 |
 | 豆包文本生成图像、文本生成视频以及图像转视频.yml | ![image-20250603140834839](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250603140834839.png.png) | 条件分支、llm大语言模型、Doubao Image and Video Generator 的插件 | 2025年6月3日 | wwwzhouhui | 1.4.0 |
 | 衡水体英语作文评分工作流.yml | ![image-20250601154019415](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250601154019415.png.png) | 模板转换、条件分支、pdf转png转换器（第三方工具）、基于多模态llm大语言模型、变量聚合器、基于文本大语言模型 | 2025年6月2日 | wwwzhouhui | 1.4.0 |
@@ -113,6 +114,8 @@
 
 
 ## 更新说明
+
+2025年6月9日-version 0.0.3.25：增加Dify+RSS 聚合 8 大平台实时热点，新闻获取效率飙升 300%.yml
 
 2025年6月6日-version 0.0.3.24：增加批量识别PDF电子发票信息生成excle表格.yml
 
@@ -421,9 +424,9 @@ PIP_MIRROR_URL=https://pypi.tuna.tsinghua.edu.cn/simple <br>
 
 ## 技术交流群
 
+![image-20250609233010644](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250609233010644.png)
 
 
-![image-20250602202623019](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250602202623019.png)
 
 ## Star History
 
