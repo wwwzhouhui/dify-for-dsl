@@ -1,0 +1,2698 @@
+app:
+  description: 本工作流主要是使用RSS聚合新闻实现实时热点新闻，借用N8N定时任务从而实现定时发送热点新闻到邮件。
+  icon: 40402f6a-a7bc-4214-95eb-d9a81f284ac2
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 63-dify案例分享-独家揭秘：N8N+Dify 打造新闻定时推送流
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: package
+  value:
+    plugin_unique_identifier: langgenius/tongyi:0.0.14@8cf00feb266b4afcfb344df28eba85c6e20ac8f1c5cd755ce74aa69c92fc7550
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: wjdsg/163-smtp-send-mail:0.0.1@2d82d59b1bc83d80fcfd414dee8771295ab84a30704322fa53752703e5862e61
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: jaguarliuu/rookie_rss:0.0.1@77247c73a3a4ca3e9dd3831e2063f858d2eba64ba5f2dd1ee65b1383489d5920
+kind: app
+version: 0.3.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 500
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 100
+        video_file_size_limit: 500
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: if-else
+      id: 1749448556847-source-1749456497750-target
+      source: '1749448556847'
+      sourceHandle: source
+      target: '1749456497750'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: code
+      id: 17494569389000-source-17494577308300-target
+      source: '17494569389000'
+      sourceHandle: source
+      target: '17494577308300'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: code
+      id: 17494569627420-source-17494577662390-target
+      source: '17494569627420'
+      sourceHandle: source
+      target: '17494577662390'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: code
+      id: 17494569748970-source-17494577806740-target
+      source: '17494569748970'
+      sourceHandle: source
+      target: '17494577806740'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: code
+      id: 17494569871550-source-17494577932030-target
+      source: '17494569871550'
+      sourceHandle: source
+      target: '17494577932030'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: code
+      id: 17494569986520-source-17494578075360-target
+      source: '17494569986520'
+      sourceHandle: source
+      target: '17494578075360'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: code
+      id: 17494570150800-source-17494578218320-target
+      source: '17494570150800'
+      sourceHandle: source
+      target: '17494578218320'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: code
+      id: 17494570406760-source-17494578335950-target
+      source: '17494570406760'
+      sourceHandle: source
+      target: '17494578335950'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: code
+      id: 17494570570600-source-17494579749080-target
+      source: '17494570570600'
+      sourceHandle: source
+      target: '17494579749080'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: variable-aggregator
+      id: 17494577308300-source-1749458027152-target
+      source: '17494577308300'
+      sourceHandle: source
+      target: '1749458027152'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: variable-aggregator
+      id: 17494577662390-source-1749458027152-target
+      source: '17494577662390'
+      sourceHandle: source
+      target: '1749458027152'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: variable-aggregator
+      id: 17494577806740-source-1749458027152-target
+      source: '17494577806740'
+      sourceHandle: source
+      target: '1749458027152'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: variable-aggregator
+      id: 17494577932030-source-1749458027152-target
+      source: '17494577932030'
+      sourceHandle: source
+      target: '1749458027152'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: variable-aggregator
+      id: 17494578075360-source-1749458027152-target
+      source: '17494578075360'
+      sourceHandle: source
+      target: '1749458027152'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: variable-aggregator
+      id: 17494578218320-source-1749458027152-target
+      source: '17494578218320'
+      sourceHandle: source
+      target: '1749458027152'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: variable-aggregator
+      id: 17494578335950-source-1749458027152-target
+      source: '17494578335950'
+      sourceHandle: source
+      target: '1749458027152'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: variable-aggregator
+      id: 17494579749080-source-1749458027152-target
+      source: '17494579749080'
+      sourceHandle: source
+      target: '1749458027152'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: variable-aggregator
+        targetType: llm
+      id: 1749458027152-source-1749453881785-target
+      source: '1749458027152'
+      sourceHandle: source
+      target: '1749453881785'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: variable-aggregator
+        targetType: tool
+      id: 1749458027152-source-1749458610637-target
+      source: '1749458027152'
+      sourceHandle: source
+      target: '1749458610637'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: tool
+      id: 1749456497750-true-17494569389000-target
+      source: '1749456497750'
+      sourceHandle: 'true'
+      target: '17494569389000'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: tool
+      id: 1749456497750-c3da012a-61fe-47e0-ac59-d9000214fce4-17494569627420-target
+      source: '1749456497750'
+      sourceHandle: c3da012a-61fe-47e0-ac59-d9000214fce4
+      target: '17494569627420'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: tool
+      id: 1749456497750-c6502d14-7f11-4fcc-828e-2464e781c46b-17494569748970-target
+      source: '1749456497750'
+      sourceHandle: c6502d14-7f11-4fcc-828e-2464e781c46b
+      target: '17494569748970'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: tool
+      id: 1749456497750-fa2cfbd7-22c4-4a9e-86e3-9098a5ceb4d5-17494569871550-target
+      source: '1749456497750'
+      sourceHandle: fa2cfbd7-22c4-4a9e-86e3-9098a5ceb4d5
+      target: '17494569871550'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: tool
+      id: 1749456497750-b4b16364-46f1-4f64-afe5-934f8351dfd9-17494570150800-target
+      source: '1749456497750'
+      sourceHandle: b4b16364-46f1-4f64-afe5-934f8351dfd9
+      target: '17494570150800'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: tool
+      id: 1749456497750-ac8bfbbe-b163-45ae-97fe-dfbd616c16f6-17494570406760-target
+      source: '1749456497750'
+      sourceHandle: ac8bfbbe-b163-45ae-97fe-dfbd616c16f6
+      target: '17494570406760'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: tool
+      id: 1749456497750-8f174eff-98a3-4d0d-858a-232c07d80874-17494569986520-target
+      source: '1749456497750'
+      sourceHandle: 8f174eff-98a3-4d0d-858a-232c07d80874
+      target: '17494569986520'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: tool
+      id: 1749456497750-9dd0dadf-3897-451a-97cf-8254045a981d-17494570570600-target
+      source: '1749456497750'
+      sourceHandle: 9dd0dadf-3897-451a-97cf-8254045a981d
+      target: '17494570570600'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: template-transform
+      id: 1749453881785-source-1749527972200-target
+      source: '1749453881785'
+      sourceHandle: source
+      target: '1749527972200'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: template-transform
+      id: 1749458610637-source-1749527972200-target
+      source: '1749458610637'
+      sourceHandle: source
+      target: '1749527972200'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: template-transform
+        targetType: answer
+      id: 1749527972200-source-answer-target
+      source: '1749527972200'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: template-transform
+        targetType: tool
+      id: 1749527972200-source-1749535875639-target
+      source: '1749527972200'
+      sourceHandle: source
+      target: '1749535875639'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - label: 热点新闻类型
+          max_length: 48
+          options:
+          - 掘金
+          - bilibili
+          - ac_fun
+          - 微博
+          - 今日头条
+          - 36kr
+          - 虎嗅
+          - hellogithub
+          required: true
+          type: select
+          variable: type
+      height: 89
+      id: '1749448556847'
+      position:
+        x: -342
+        y: 282
+      positionAbsolute:
+        x: -342
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1749527972200.output#}}'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 103
+      id: answer
+      position:
+        x: 2273.6887719781475
+        y: 389.5752299805337
+      positionAbsolute:
+        x: 2273.6887719781475
+        y: 389.5752299805337
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: deepseek-v3
+          provider: langgenius/tongyi/tongyi
+        prompt_template:
+        - id: f2978539-e311-4ba9-ae7e-b17ea6374d60
+          role: system
+          text: ' 请将输出的表格{{#1749458027152.output#}}转换成markdown表格输出'
+        selected: false
+        title: 数组转markdown(LLM)
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1749453881785'
+      position:
+        x: 1568.866746752858
+        y: 346.47265570470717
+      positionAbsolute:
+        x: 1568.866746752858
+        y: 346.47265570470717
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: contains
+            id: 94267d30-86a7-4019-bf62-ca5f35cfae19
+            value: 掘金
+            varType: string
+            variable_selector:
+            - '1749448556847'
+            - type
+          id: 'true'
+          logical_operator: and
+        - case_id: c3da012a-61fe-47e0-ac59-d9000214fce4
+          conditions:
+          - comparison_operator: contains
+            id: 7886cf2c-ca71-44e7-ae12-6dbb1dd38bc5
+            value: bilibili
+            varType: string
+            variable_selector:
+            - '1749448556847'
+            - type
+          id: c3da012a-61fe-47e0-ac59-d9000214fce4
+          logical_operator: and
+        - case_id: c6502d14-7f11-4fcc-828e-2464e781c46b
+          conditions:
+          - comparison_operator: contains
+            id: 5af582fd-7161-4131-8960-3928b2cdd779
+            value: ac_fun
+            varType: string
+            variable_selector:
+            - '1749448556847'
+            - type
+          id: c6502d14-7f11-4fcc-828e-2464e781c46b
+          logical_operator: and
+        - case_id: fa2cfbd7-22c4-4a9e-86e3-9098a5ceb4d5
+          conditions:
+          - comparison_operator: contains
+            id: a5fd5aae-9524-421c-86a0-0e6d3bee65ea
+            value: 微博
+            varType: string
+            variable_selector:
+            - '1749448556847'
+            - type
+          id: fa2cfbd7-22c4-4a9e-86e3-9098a5ceb4d5
+          logical_operator: and
+        - case_id: b4b16364-46f1-4f64-afe5-934f8351dfd9
+          conditions:
+          - comparison_operator: contains
+            id: 203f0cf9-2b41-44c6-9e11-00ef2ebad0b0
+            value: 今日头条
+            varType: string
+            variable_selector:
+            - '1749448556847'
+            - type
+          id: b4b16364-46f1-4f64-afe5-934f8351dfd9
+          logical_operator: and
+        - case_id: ac8bfbbe-b163-45ae-97fe-dfbd616c16f6
+          conditions:
+          - comparison_operator: contains
+            id: 5315ebec-198f-4043-a61d-b359ef5c137a
+            value: 36kr
+            varType: string
+            variable_selector:
+            - '1749448556847'
+            - type
+          id: ac8bfbbe-b163-45ae-97fe-dfbd616c16f6
+          logical_operator: and
+        - case_id: 8f174eff-98a3-4d0d-858a-232c07d80874
+          conditions:
+          - comparison_operator: contains
+            id: b6be9beb-3526-4f08-926a-ebccdf7534e0
+            value: 虎嗅
+            varType: string
+            variable_selector:
+            - '1749448556847'
+            - type
+          id: 8f174eff-98a3-4d0d-858a-232c07d80874
+          logical_operator: and
+        - case_id: 9dd0dadf-3897-451a-97cf-8254045a981d
+          conditions:
+          - comparison_operator: contains
+            id: 01e5542c-d3c6-4c73-8d84-c27255e6646c
+            value: hellogithub
+            varType: string
+            variable_selector:
+            - '1749448556847'
+            - type
+          id: 9dd0dadf-3897-451a-97cf-8254045a981d
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 条件分支
+        type: if-else
+      height: 461
+      id: '1749456497750'
+      position:
+        x: 38
+        y: 184.58578644493042
+      positionAbsolute:
+        x: 38
+        y: 184.58578644493042
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: platform name
+            ja_JP: platform name
+            pt_BR: platform name
+            zh_Hans: 平台名称
+          label:
+            en_US: platform
+            ja_JP: platform
+            pt_BR: platform
+            zh_Hans: 平台名称
+          llm_description: 平台名称
+          max: null
+          min: null
+          name: platform
+          options:
+          - label:
+              en_US: zhihu
+              ja_JP: zhihu
+              pt_BR: zhihu
+              zh_Hans: 知乎
+            value: zhihu
+          - label:
+              en_US: juejin
+              ja_JP: juejin
+              pt_BR: juejin
+              zh_Hans: 掘金
+            value: juejin
+          - label:
+              en_US: bilibili
+              ja_JP: bilibili
+              pt_BR: bilibili
+              zh_Hans: bilibili
+            value: bilibili
+          - label:
+              en_US: ac_fun
+              ja_JP: ac_fun
+              pt_BR: ac_fun
+              zh_Hans: ac_fun
+            value: acfun
+          - label:
+              en_US: weibo
+              ja_JP: weibo
+              pt_BR: weibo
+              zh_Hans: 微博
+            value: weibo
+          - label:
+              en_US: toutiao
+              ja_JP: toutiao
+              pt_BR: toutiao
+              zh_Hans: 今日头条
+            value: toutiao
+          - label:
+              en_US: 36kr
+              ja_JP: 36kr
+              pt_BR: 36kr
+              zh_Hans: 36kr
+            value: 36kr
+          - label:
+              en_US: huxiu
+              ja_JP: huxiu
+              pt_BR: huxiu
+              zh_Hans: 虎嗅
+            value: huxiu
+          - label:
+              en_US: hellogithub
+              ja_JP: hellogithub
+              pt_BR: hellogithub
+              zh_Hans: hellogithub
+            value: hellogithub
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: select
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: result number
+            ja_JP: result number
+            pt_BR: result number
+            zh_Hans: 返回结果数量
+          label:
+            en_US: result number
+            ja_JP: result number
+            pt_BR: result number
+            zh_Hans: 返回结果数量
+          llm_description: 返回结果数量
+          max: 10
+          min: 1
+          name: result_num
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: number
+        params:
+          platform: ''
+          result_num: ''
+        provider_id: jaguarliuu/rookie_rss/rookie_rss
+        provider_name: jaguarliuu/rookie_rss/rookie_rss
+        provider_type: builtin
+        selected: false
+        title: 掘金
+        tool_configurations:
+          platform: juejin
+          result_num: 5
+        tool_description: rookie rss 多平台新闻聚合插件
+        tool_label: rookie_rss
+        tool_name: rookie_rss
+        tool_parameters: {}
+        type: tool
+      height: 115
+      id: '17494569389000'
+      position:
+        x: 390
+        y: -30.99609375
+      positionAbsolute:
+        x: 390
+        y: -30.99609375
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: platform name
+            ja_JP: platform name
+            pt_BR: platform name
+            zh_Hans: 平台名称
+          label:
+            en_US: platform
+            ja_JP: platform
+            pt_BR: platform
+            zh_Hans: 平台名称
+          llm_description: 平台名称
+          max: null
+          min: null
+          name: platform
+          options:
+          - label:
+              en_US: zhihu
+              ja_JP: zhihu
+              pt_BR: zhihu
+              zh_Hans: 知乎
+            value: zhihu
+          - label:
+              en_US: juejin
+              ja_JP: juejin
+              pt_BR: juejin
+              zh_Hans: 掘金
+            value: juejin
+          - label:
+              en_US: bilibili
+              ja_JP: bilibili
+              pt_BR: bilibili
+              zh_Hans: bilibili
+            value: bilibili
+          - label:
+              en_US: ac_fun
+              ja_JP: ac_fun
+              pt_BR: ac_fun
+              zh_Hans: ac_fun
+            value: acfun
+          - label:
+              en_US: weibo
+              ja_JP: weibo
+              pt_BR: weibo
+              zh_Hans: 微博
+            value: weibo
+          - label:
+              en_US: toutiao
+              ja_JP: toutiao
+              pt_BR: toutiao
+              zh_Hans: 今日头条
+            value: toutiao
+          - label:
+              en_US: 36kr
+              ja_JP: 36kr
+              pt_BR: 36kr
+              zh_Hans: 36kr
+            value: 36kr
+          - label:
+              en_US: huxiu
+              ja_JP: huxiu
+              pt_BR: huxiu
+              zh_Hans: 虎嗅
+            value: huxiu
+          - label:
+              en_US: hellogithub
+              ja_JP: hellogithub
+              pt_BR: hellogithub
+              zh_Hans: hellogithub
+            value: hellogithub
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: select
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: result number
+            ja_JP: result number
+            pt_BR: result number
+            zh_Hans: 返回结果数量
+          label:
+            en_US: result number
+            ja_JP: result number
+            pt_BR: result number
+            zh_Hans: 返回结果数量
+          llm_description: 返回结果数量
+          max: 10
+          min: 1
+          name: result_num
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: number
+        params:
+          platform: ''
+          result_num: ''
+        provider_id: jaguarliuu/rookie_rss/rookie_rss
+        provider_name: jaguarliuu/rookie_rss/rookie_rss
+        provider_type: builtin
+        selected: false
+        title: bilibili
+        tool_configurations:
+          platform: bilibili
+          result_num: 5
+        tool_description: rookie rss 多平台新闻聚合插件
+        tool_label: rookie_rss
+        tool_name: rookie_rss
+        tool_parameters: {}
+        type: tool
+      height: 115
+      id: '17494569627420'
+      position:
+        x: 390
+        y: 98.00390625
+      positionAbsolute:
+        x: 390
+        y: 98.00390625
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: platform name
+            ja_JP: platform name
+            pt_BR: platform name
+            zh_Hans: 平台名称
+          label:
+            en_US: platform
+            ja_JP: platform
+            pt_BR: platform
+            zh_Hans: 平台名称
+          llm_description: 平台名称
+          max: null
+          min: null
+          name: platform
+          options:
+          - label:
+              en_US: zhihu
+              ja_JP: zhihu
+              pt_BR: zhihu
+              zh_Hans: 知乎
+            value: zhihu
+          - label:
+              en_US: juejin
+              ja_JP: juejin
+              pt_BR: juejin
+              zh_Hans: 掘金
+            value: juejin
+          - label:
+              en_US: bilibili
+              ja_JP: bilibili
+              pt_BR: bilibili
+              zh_Hans: bilibili
+            value: bilibili
+          - label:
+              en_US: ac_fun
+              ja_JP: ac_fun
+              pt_BR: ac_fun
+              zh_Hans: ac_fun
+            value: acfun
+          - label:
+              en_US: weibo
+              ja_JP: weibo
+              pt_BR: weibo
+              zh_Hans: 微博
+            value: weibo
+          - label:
+              en_US: toutiao
+              ja_JP: toutiao
+              pt_BR: toutiao
+              zh_Hans: 今日头条
+            value: toutiao
+          - label:
+              en_US: 36kr
+              ja_JP: 36kr
+              pt_BR: 36kr
+              zh_Hans: 36kr
+            value: 36kr
+          - label:
+              en_US: huxiu
+              ja_JP: huxiu
+              pt_BR: huxiu
+              zh_Hans: 虎嗅
+            value: huxiu
+          - label:
+              en_US: hellogithub
+              ja_JP: hellogithub
+              pt_BR: hellogithub
+              zh_Hans: hellogithub
+            value: hellogithub
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: select
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: result number
+            ja_JP: result number
+            pt_BR: result number
+            zh_Hans: 返回结果数量
+          label:
+            en_US: result number
+            ja_JP: result number
+            pt_BR: result number
+            zh_Hans: 返回结果数量
+          llm_description: 返回结果数量
+          max: 10
+          min: 1
+          name: result_num
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: number
+        params:
+          platform: ''
+          result_num: ''
+        provider_id: jaguarliuu/rookie_rss/rookie_rss
+        provider_name: jaguarliuu/rookie_rss/rookie_rss
+        provider_type: builtin
+        selected: false
+        title: ac_fun
+        tool_configurations:
+          platform: acfun
+          result_num: 5
+        tool_description: rookie rss 多平台新闻聚合插件
+        tool_label: rookie_rss
+        tool_name: rookie_rss
+        tool_parameters: {}
+        type: tool
+      height: 115
+      id: '17494569748970'
+      position:
+        x: 390
+        y: 219.00390625
+      positionAbsolute:
+        x: 390
+        y: 219.00390625
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: platform name
+            ja_JP: platform name
+            pt_BR: platform name
+            zh_Hans: 平台名称
+          label:
+            en_US: platform
+            ja_JP: platform
+            pt_BR: platform
+            zh_Hans: 平台名称
+          llm_description: 平台名称
+          max: null
+          min: null
+          name: platform
+          options:
+          - label:
+              en_US: zhihu
+              ja_JP: zhihu
+              pt_BR: zhihu
+              zh_Hans: 知乎
+            value: zhihu
+          - label:
+              en_US: juejin
+              ja_JP: juejin
+              pt_BR: juejin
+              zh_Hans: 掘金
+            value: juejin
+          - label:
+              en_US: bilibili
+              ja_JP: bilibili
+              pt_BR: bilibili
+              zh_Hans: bilibili
+            value: bilibili
+          - label:
+              en_US: ac_fun
+              ja_JP: ac_fun
+              pt_BR: ac_fun
+              zh_Hans: ac_fun
+            value: acfun
+          - label:
+              en_US: weibo
+              ja_JP: weibo
+              pt_BR: weibo
+              zh_Hans: 微博
+            value: weibo
+          - label:
+              en_US: toutiao
+              ja_JP: toutiao
+              pt_BR: toutiao
+              zh_Hans: 今日头条
+            value: toutiao
+          - label:
+              en_US: 36kr
+              ja_JP: 36kr
+              pt_BR: 36kr
+              zh_Hans: 36kr
+            value: 36kr
+          - label:
+              en_US: huxiu
+              ja_JP: huxiu
+              pt_BR: huxiu
+              zh_Hans: 虎嗅
+            value: huxiu
+          - label:
+              en_US: hellogithub
+              ja_JP: hellogithub
+              pt_BR: hellogithub
+              zh_Hans: hellogithub
+            value: hellogithub
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: select
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: result number
+            ja_JP: result number
+            pt_BR: result number
+            zh_Hans: 返回结果数量
+          label:
+            en_US: result number
+            ja_JP: result number
+            pt_BR: result number
+            zh_Hans: 返回结果数量
+          llm_description: 返回结果数量
+          max: 10
+          min: 1
+          name: result_num
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: number
+        params:
+          platform: ''
+          result_num: ''
+        provider_id: jaguarliuu/rookie_rss/rookie_rss
+        provider_name: jaguarliuu/rookie_rss/rookie_rss
+        provider_type: builtin
+        selected: false
+        title: 微博
+        tool_configurations:
+          platform: weibo
+          result_num: 5
+        tool_description: rookie rss 多平台新闻聚合插件
+        tool_label: rookie_rss
+        tool_name: rookie_rss
+        tool_parameters: {}
+        type: tool
+      height: 115
+      id: '17494569871550'
+      position:
+        x: 390
+        y: 360.00390625
+      positionAbsolute:
+        x: 390
+        y: 360.00390625
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: platform name
+            ja_JP: platform name
+            pt_BR: platform name
+            zh_Hans: 平台名称
+          label:
+            en_US: platform
+            ja_JP: platform
+            pt_BR: platform
+            zh_Hans: 平台名称
+          llm_description: 平台名称
+          max: null
+          min: null
+          name: platform
+          options:
+          - label:
+              en_US: zhihu
+              ja_JP: zhihu
+              pt_BR: zhihu
+              zh_Hans: 知乎
+            value: zhihu
+          - label:
+              en_US: juejin
+              ja_JP: juejin
+              pt_BR: juejin
+              zh_Hans: 掘金
+            value: juejin
+          - label:
+              en_US: bilibili
+              ja_JP: bilibili
+              pt_BR: bilibili
+              zh_Hans: bilibili
+            value: bilibili
+          - label:
+              en_US: ac_fun
+              ja_JP: ac_fun
+              pt_BR: ac_fun
+              zh_Hans: ac_fun
+            value: acfun
+          - label:
+              en_US: weibo
+              ja_JP: weibo
+              pt_BR: weibo
+              zh_Hans: 微博
+            value: weibo
+          - label:
+              en_US: toutiao
+              ja_JP: toutiao
+              pt_BR: toutiao
+              zh_Hans: 今日头条
+            value: toutiao
+          - label:
+              en_US: 36kr
+              ja_JP: 36kr
+              pt_BR: 36kr
+              zh_Hans: 36kr
+            value: 36kr
+          - label:
+              en_US: huxiu
+              ja_JP: huxiu
+              pt_BR: huxiu
+              zh_Hans: 虎嗅
+            value: huxiu
+          - label:
+              en_US: hellogithub
+              ja_JP: hellogithub
+              pt_BR: hellogithub
+              zh_Hans: hellogithub
+            value: hellogithub
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: select
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: result number
+            ja_JP: result number
+            pt_BR: result number
+            zh_Hans: 返回结果数量
+          label:
+            en_US: result number
+            ja_JP: result number
+            pt_BR: result number
+            zh_Hans: 返回结果数量
+          llm_description: 返回结果数量
+          max: 10
+          min: 1
+          name: result_num
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: number
+        params:
+          platform: ''
+          result_num: ''
+        provider_id: jaguarliuu/rookie_rss/rookie_rss
+        provider_name: jaguarliuu/rookie_rss/rookie_rss
+        provider_type: builtin
+        selected: false
+        title: 虎嗅
+        tool_configurations:
+          platform: huxiu
+          result_num: 5
+        tool_description: rookie rss 多平台新闻聚合插件
+        tool_label: rookie_rss
+        tool_name: rookie_rss
+        tool_parameters: {}
+        type: tool
+      height: 115
+      id: '17494569986520'
+      position:
+        x: 376.86475732840813
+        y: 769.5215419943555
+      positionAbsolute:
+        x: 376.86475732840813
+        y: 769.5215419943555
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: platform name
+            ja_JP: platform name
+            pt_BR: platform name
+            zh_Hans: 平台名称
+          label:
+            en_US: platform
+            ja_JP: platform
+            pt_BR: platform
+            zh_Hans: 平台名称
+          llm_description: 平台名称
+          max: null
+          min: null
+          name: platform
+          options:
+          - label:
+              en_US: zhihu
+              ja_JP: zhihu
+              pt_BR: zhihu
+              zh_Hans: 知乎
+            value: zhihu
+          - label:
+              en_US: juejin
+              ja_JP: juejin
+              pt_BR: juejin
+              zh_Hans: 掘金
+            value: juejin
+          - label:
+              en_US: bilibili
+              ja_JP: bilibili
+              pt_BR: bilibili
+              zh_Hans: bilibili
+            value: bilibili
+          - label:
+              en_US: ac_fun
+              ja_JP: ac_fun
+              pt_BR: ac_fun
+              zh_Hans: ac_fun
+            value: acfun
+          - label:
+              en_US: weibo
+              ja_JP: weibo
+              pt_BR: weibo
+              zh_Hans: 微博
+            value: weibo
+          - label:
+              en_US: toutiao
+              ja_JP: toutiao
+              pt_BR: toutiao
+              zh_Hans: 今日头条
+            value: toutiao
+          - label:
+              en_US: 36kr
+              ja_JP: 36kr
+              pt_BR: 36kr
+              zh_Hans: 36kr
+            value: 36kr
+          - label:
+              en_US: huxiu
+              ja_JP: huxiu
+              pt_BR: huxiu
+              zh_Hans: 虎嗅
+            value: huxiu
+          - label:
+              en_US: hellogithub
+              ja_JP: hellogithub
+              pt_BR: hellogithub
+              zh_Hans: hellogithub
+            value: hellogithub
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: select
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: result number
+            ja_JP: result number
+            pt_BR: result number
+            zh_Hans: 返回结果数量
+          label:
+            en_US: result number
+            ja_JP: result number
+            pt_BR: result number
+            zh_Hans: 返回结果数量
+          llm_description: 返回结果数量
+          max: 10
+          min: 1
+          name: result_num
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: number
+        params:
+          platform: ''
+          result_num: ''
+        provider_id: jaguarliuu/rookie_rss/rookie_rss
+        provider_name: jaguarliuu/rookie_rss/rookie_rss
+        provider_type: builtin
+        selected: false
+        title: 今日头条
+        tool_configurations:
+          platform: toutiao
+          result_num: 5
+        tool_description: rookie rss 多平台新闻聚合插件
+        tool_label: rookie_rss
+        tool_name: rookie_rss
+        tool_parameters: {}
+        type: tool
+      height: 115
+      id: '17494570150800'
+      position:
+        x: 384
+        y: 490.4882599300943
+      positionAbsolute:
+        x: 384
+        y: 490.4882599300943
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: platform name
+            ja_JP: platform name
+            pt_BR: platform name
+            zh_Hans: 平台名称
+          label:
+            en_US: platform
+            ja_JP: platform
+            pt_BR: platform
+            zh_Hans: 平台名称
+          llm_description: 平台名称
+          max: null
+          min: null
+          name: platform
+          options:
+          - label:
+              en_US: zhihu
+              ja_JP: zhihu
+              pt_BR: zhihu
+              zh_Hans: 知乎
+            value: zhihu
+          - label:
+              en_US: juejin
+              ja_JP: juejin
+              pt_BR: juejin
+              zh_Hans: 掘金
+            value: juejin
+          - label:
+              en_US: bilibili
+              ja_JP: bilibili
+              pt_BR: bilibili
+              zh_Hans: bilibili
+            value: bilibili
+          - label:
+              en_US: ac_fun
+              ja_JP: ac_fun
+              pt_BR: ac_fun
+              zh_Hans: ac_fun
+            value: acfun
+          - label:
+              en_US: weibo
+              ja_JP: weibo
+              pt_BR: weibo
+              zh_Hans: 微博
+            value: weibo
+          - label:
+              en_US: toutiao
+              ja_JP: toutiao
+              pt_BR: toutiao
+              zh_Hans: 今日头条
+            value: toutiao
+          - label:
+              en_US: 36kr
+              ja_JP: 36kr
+              pt_BR: 36kr
+              zh_Hans: 36kr
+            value: 36kr
+          - label:
+              en_US: huxiu
+              ja_JP: huxiu
+              pt_BR: huxiu
+              zh_Hans: 虎嗅
+            value: huxiu
+          - label:
+              en_US: hellogithub
+              ja_JP: hellogithub
+              pt_BR: hellogithub
+              zh_Hans: hellogithub
+            value: hellogithub
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: select
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: result number
+            ja_JP: result number
+            pt_BR: result number
+            zh_Hans: 返回结果数量
+          label:
+            en_US: result number
+            ja_JP: result number
+            pt_BR: result number
+            zh_Hans: 返回结果数量
+          llm_description: 返回结果数量
+          max: 10
+          min: 1
+          name: result_num
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: number
+        params:
+          platform: ''
+          result_num: ''
+        provider_id: jaguarliuu/rookie_rss/rookie_rss
+        provider_name: jaguarliuu/rookie_rss/rookie_rss
+        provider_type: builtin
+        selected: false
+        title: 36kr
+        tool_configurations:
+          platform: 36kr
+          result_num: 5
+        tool_description: rookie rss 多平台新闻聚合插件
+        tool_label: rookie_rss
+        tool_name: rookie_rss
+        tool_parameters: {}
+        type: tool
+      height: 115
+      id: '17494570406760'
+      position:
+        x: 376.86475732840813
+        y: 648.326366609074
+      positionAbsolute:
+        x: 376.86475732840813
+        y: 648.326366609074
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: platform name
+            ja_JP: platform name
+            pt_BR: platform name
+            zh_Hans: 平台名称
+          label:
+            en_US: platform
+            ja_JP: platform
+            pt_BR: platform
+            zh_Hans: 平台名称
+          llm_description: 平台名称
+          max: null
+          min: null
+          name: platform
+          options:
+          - label:
+              en_US: zhihu
+              ja_JP: zhihu
+              pt_BR: zhihu
+              zh_Hans: 知乎
+            value: zhihu
+          - label:
+              en_US: juejin
+              ja_JP: juejin
+              pt_BR: juejin
+              zh_Hans: 掘金
+            value: juejin
+          - label:
+              en_US: bilibili
+              ja_JP: bilibili
+              pt_BR: bilibili
+              zh_Hans: bilibili
+            value: bilibili
+          - label:
+              en_US: ac_fun
+              ja_JP: ac_fun
+              pt_BR: ac_fun
+              zh_Hans: ac_fun
+            value: acfun
+          - label:
+              en_US: weibo
+              ja_JP: weibo
+              pt_BR: weibo
+              zh_Hans: 微博
+            value: weibo
+          - label:
+              en_US: toutiao
+              ja_JP: toutiao
+              pt_BR: toutiao
+              zh_Hans: 今日头条
+            value: toutiao
+          - label:
+              en_US: 36kr
+              ja_JP: 36kr
+              pt_BR: 36kr
+              zh_Hans: 36kr
+            value: 36kr
+          - label:
+              en_US: huxiu
+              ja_JP: huxiu
+              pt_BR: huxiu
+              zh_Hans: 虎嗅
+            value: huxiu
+          - label:
+              en_US: hellogithub
+              ja_JP: hellogithub
+              pt_BR: hellogithub
+              zh_Hans: hellogithub
+            value: hellogithub
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: select
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: result number
+            ja_JP: result number
+            pt_BR: result number
+            zh_Hans: 返回结果数量
+          label:
+            en_US: result number
+            ja_JP: result number
+            pt_BR: result number
+            zh_Hans: 返回结果数量
+          llm_description: 返回结果数量
+          max: 10
+          min: 1
+          name: result_num
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: number
+        params:
+          platform: ''
+          result_num: ''
+        provider_id: jaguarliuu/rookie_rss/rookie_rss
+        provider_name: jaguarliuu/rookie_rss/rookie_rss
+        provider_type: builtin
+        selected: false
+        title: hellogithub
+        tool_configurations:
+          platform: hellogithub
+          result_num: 5
+        tool_description: rookie rss 多平台新闻聚合插件
+        tool_label: rookie_rss
+        tool_name: rookie_rss
+        tool_parameters: {}
+        type: tool
+      height: 115
+      id: '17494570570600'
+      position:
+        x: 384
+        y: 910.679456466476
+      positionAbsolute:
+        x: 384
+        y: 910.679456466476
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import json\nfrom datetime import datetime, timezone, timedelta\n\n\
+          def main(arg1: str) -> dict:\n    try:\n        # 如果已经是 dict 或 list，直接用，不再\
+          \ loads\n        if isinstance(arg1, (dict, list)):\n            parsed_data\
+          \ = arg1\n        else:\n            parsed_data = json.loads(arg1)\n  \
+          \      \n        # 后续逻辑保持不变\n        if isinstance(parsed_data, dict) and\
+          \ \"arg1\" in parsed_data:\n            data = parsed_data[\"arg1\"]\n \
+          \       else:\n            data = parsed_data\n        \n        articles\
+          \ = []\n        if isinstance(data, list):\n            for item in data:\n\
+          \                articles.extend(item.get(\"articles\", []))\n        elif\
+          \ isinstance(data, dict):\n            articles = data.get(\"articles\"\
+          , [])\n            \n        table = []\n        \n        # 添加表头\n    \
+          \    table.append([\"标题\", \"热门评分\", \"新闻链接-手机端\", \"新闻链接-PC端\", \"更新时间\"\
+          ])\n        \n        for item in articles:\n            title = item.get('title',\
+          \ '')\n            hot_score = item.get('hot_score', '')\n            mobile_link\
+          \ = item.get('links', {}).get('mobile', '')\n            pc_link = item.get('links',\
+          \ {}).get('pc', '')\n            update_time_raw = item.get('metadata',\
+          \ {}).get('update_time', '')\n            \n            update_time = ''\n\
+          \            if update_time_raw:\n                try:\n               \
+          \     # 先尝试按 ISO8601 带毫秒Z格式解析\n                    dt_utc = datetime.strptime(update_time_raw,\
+          \ \"%Y-%m-%dT%H:%M:%S.%fZ\")\n                    dt_utc = dt_utc.replace(tzinfo=timezone.utc)\n\
+          \                    # 转换为上海时间（UTC+8）\n                    shanghai_tz =\
+          \ timezone(timedelta(hours=8))\n                    dt_shanghai = dt_utc.astimezone(shanghai_tz)\n\
+          \                    update_time = dt_shanghai.strftime(\"%Y-%m-%d %H:%M:%S\"\
+          )\n                except Exception:\n                    try:\n       \
+          \                 # 不带毫秒的ISO8601格式\n                        dt_utc = datetime.strptime(update_time_raw,\
+          \ \"%Y-%m-%dT%H:%M:%SZ\")\n                        dt_utc = dt_utc.replace(tzinfo=timezone.utc)\n\
+          \                        shanghai_tz = timezone(timedelta(hours=8))\n  \
+          \                      dt_shanghai = dt_utc.astimezone(shanghai_tz)\n  \
+          \                      update_time = dt_shanghai.strftime(\"%Y-%m-%d %H:%M:%S\"\
+          )\n                    except Exception:\n                        try:\n\
+          \                            # 如果是时间戳（秒级或毫秒级）\n                        \
+          \    ts = int(update_time_raw)\n                            if len(str(update_time_raw))\
+          \ == 13:\n                                ts = ts / 1000\n             \
+          \               dt = datetime.fromtimestamp(ts, tz=timezone.utc)\n     \
+          \                       dt_shanghai = dt.astimezone(timezone(timedelta(hours=8)))\n\
+          \                            update_time = dt_shanghai.strftime(\"%Y-%m-%d\
+          \ %H:%M:%S\")\n                        except Exception:\n             \
+          \               # 直接使用原始字符串\n                            update_time = str(update_time_raw)\n\
+          \            \n            table.append([title, hot_score, mobile_link,\
+          \ pc_link, update_time])\n\n        return {\n            \"result\": str(table).replace(\"\
+          '\", '\"')\n        }\n    except Exception as e:\n        return {\n  \
+          \          \"result\": [[\"错误\", f\"{type(e).__name__}: {e}\"]]\n      \
+          \  }"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行-掘金
+        type: code
+        variables:
+        - value_selector:
+          - '17494569389000'
+          - json
+          variable: arg1
+      height: 53
+      id: '17494577308300'
+      position:
+        x: 796
+        y: -13.01953124999983
+      positionAbsolute:
+        x: 796
+        y: -13.01953124999983
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import json\nfrom datetime import datetime, timezone, timedelta\n\n\
+          def main(arg1: str) -> dict:\n    try:\n        # 如果已经是 dict 或 list，直接用，不再\
+          \ loads\n        if isinstance(arg1, (dict, list)):\n            parsed_data\
+          \ = arg1\n        else:\n            parsed_data = json.loads(arg1)\n  \
+          \      \n        # 后续逻辑保持不变\n        if isinstance(parsed_data, dict) and\
+          \ \"arg1\" in parsed_data:\n            data = parsed_data[\"arg1\"]\n \
+          \       else:\n            data = parsed_data\n        \n        articles\
+          \ = []\n        if isinstance(data, list):\n            for item in data:\n\
+          \                articles.extend(item.get(\"articles\", []))\n        elif\
+          \ isinstance(data, dict):\n            articles = data.get(\"articles\"\
+          , [])\n            \n        table = []\n        \n        # 添加表头\n    \
+          \    table.append([\"标题\", \"热门评分\", \"新闻链接-手机端\", \"新闻链接-PC端\", \"更新时间\"\
+          ])\n        \n        for item in articles:\n            title = item.get('title',\
+          \ '')\n            hot_score = item.get('hot_score', '')\n            mobile_link\
+          \ = item.get('links', {}).get('mobile', '')\n            pc_link = item.get('links',\
+          \ {}).get('pc', '')\n            update_time_raw = item.get('metadata',\
+          \ {}).get('update_time', '')\n            \n            update_time = ''\n\
+          \            if update_time_raw:\n                try:\n               \
+          \     # 先尝试按 ISO8601 带毫秒Z格式解析\n                    dt_utc = datetime.strptime(update_time_raw,\
+          \ \"%Y-%m-%dT%H:%M:%S.%fZ\")\n                    dt_utc = dt_utc.replace(tzinfo=timezone.utc)\n\
+          \                    # 转换为上海时间（UTC+8）\n                    shanghai_tz =\
+          \ timezone(timedelta(hours=8))\n                    dt_shanghai = dt_utc.astimezone(shanghai_tz)\n\
+          \                    update_time = dt_shanghai.strftime(\"%Y-%m-%d %H:%M:%S\"\
+          )\n                except Exception:\n                    try:\n       \
+          \                 # 不带毫秒的ISO8601格式\n                        dt_utc = datetime.strptime(update_time_raw,\
+          \ \"%Y-%m-%dT%H:%M:%SZ\")\n                        dt_utc = dt_utc.replace(tzinfo=timezone.utc)\n\
+          \                        shanghai_tz = timezone(timedelta(hours=8))\n  \
+          \                      dt_shanghai = dt_utc.astimezone(shanghai_tz)\n  \
+          \                      update_time = dt_shanghai.strftime(\"%Y-%m-%d %H:%M:%S\"\
+          )\n                    except Exception:\n                        try:\n\
+          \                            # 如果是时间戳（秒级或毫秒级）\n                        \
+          \    ts = int(update_time_raw)\n                            if len(str(update_time_raw))\
+          \ == 13:\n                                ts = ts / 1000\n             \
+          \               dt = datetime.fromtimestamp(ts, tz=timezone.utc)\n     \
+          \                       dt_shanghai = dt.astimezone(timezone(timedelta(hours=8)))\n\
+          \                            update_time = dt_shanghai.strftime(\"%Y-%m-%d\
+          \ %H:%M:%S\")\n                        except Exception:\n             \
+          \               # 直接使用原始字符串\n                            update_time = str(update_time_raw)\n\
+          \            \n            table.append([title, hot_score, mobile_link,\
+          \ pc_link, update_time])\n\n        return {\n            \"result\": str(table).replace(\"\
+          '\", '\"')\n        }\n    except Exception as e:\n        return {\n  \
+          \          \"result\": [[\"错误\", f\"{type(e).__name__}: {e}\"]]\n      \
+          \  }"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行-bilibili
+        type: code
+        variables:
+        - value_selector:
+          - '17494569627420'
+          - json
+          variable: arg1
+      height: 53
+      id: '17494577662390'
+      position:
+        x: 802.00390625
+        y: 117.98046875000017
+      positionAbsolute:
+        x: 802.00390625
+        y: 117.98046875000017
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import json\nfrom datetime import datetime, timezone, timedelta\n\n\
+          def main(arg1: str) -> dict:\n    try:\n        # 如果已经是 dict 或 list，直接用，不再\
+          \ loads\n        if isinstance(arg1, (dict, list)):\n            parsed_data\
+          \ = arg1\n        else:\n            parsed_data = json.loads(arg1)\n  \
+          \      \n        # 后续逻辑保持不变\n        if isinstance(parsed_data, dict) and\
+          \ \"arg1\" in parsed_data:\n            data = parsed_data[\"arg1\"]\n \
+          \       else:\n            data = parsed_data\n        \n        articles\
+          \ = []\n        if isinstance(data, list):\n            for item in data:\n\
+          \                articles.extend(item.get(\"articles\", []))\n        elif\
+          \ isinstance(data, dict):\n            articles = data.get(\"articles\"\
+          , [])\n            \n        table = []\n        \n        # 添加表头\n    \
+          \    table.append([\"标题\", \"热门评分\", \"新闻链接-手机端\", \"新闻链接-PC端\", \"更新时间\"\
+          ])\n        \n        for item in articles:\n            title = item.get('title',\
+          \ '')\n            hot_score = item.get('hot_score', '')\n            mobile_link\
+          \ = item.get('links', {}).get('mobile', '')\n            pc_link = item.get('links',\
+          \ {}).get('pc', '')\n            update_time_raw = item.get('metadata',\
+          \ {}).get('update_time', '')\n            \n            update_time = ''\n\
+          \            if update_time_raw:\n                try:\n               \
+          \     # 先尝试按 ISO8601 带毫秒Z格式解析\n                    dt_utc = datetime.strptime(update_time_raw,\
+          \ \"%Y-%m-%dT%H:%M:%S.%fZ\")\n                    dt_utc = dt_utc.replace(tzinfo=timezone.utc)\n\
+          \                    # 转换为上海时间（UTC+8）\n                    shanghai_tz =\
+          \ timezone(timedelta(hours=8))\n                    dt_shanghai = dt_utc.astimezone(shanghai_tz)\n\
+          \                    update_time = dt_shanghai.strftime(\"%Y-%m-%d %H:%M:%S\"\
+          )\n                except Exception:\n                    try:\n       \
+          \                 # 不带毫秒的ISO8601格式\n                        dt_utc = datetime.strptime(update_time_raw,\
+          \ \"%Y-%m-%dT%H:%M:%SZ\")\n                        dt_utc = dt_utc.replace(tzinfo=timezone.utc)\n\
+          \                        shanghai_tz = timezone(timedelta(hours=8))\n  \
+          \                      dt_shanghai = dt_utc.astimezone(shanghai_tz)\n  \
+          \                      update_time = dt_shanghai.strftime(\"%Y-%m-%d %H:%M:%S\"\
+          )\n                    except Exception:\n                        try:\n\
+          \                            # 如果是时间戳（秒级或毫秒级）\n                        \
+          \    ts = int(update_time_raw)\n                            if len(str(update_time_raw))\
+          \ == 13:\n                                ts = ts / 1000\n             \
+          \               dt = datetime.fromtimestamp(ts, tz=timezone.utc)\n     \
+          \                       dt_shanghai = dt.astimezone(timezone(timedelta(hours=8)))\n\
+          \                            update_time = dt_shanghai.strftime(\"%Y-%m-%d\
+          \ %H:%M:%S\")\n                        except Exception:\n             \
+          \               # 直接使用原始字符串\n                            update_time = str(update_time_raw)\n\
+          \            \n            table.append([title, hot_score, mobile_link,\
+          \ pc_link, update_time])\n\n        return {\n            \"result\": str(table).replace(\"\
+          '\", '\"')\n        }\n    except Exception as e:\n        return {\n  \
+          \          \"result\": [[\"错误\", f\"{type(e).__name__}: {e}\"]]\n      \
+          \  }"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行-ac_fun
+        type: code
+        variables:
+        - value_selector:
+          - '17494569748970'
+          - json
+          variable: arg1
+      height: 53
+      id: '17494577806740'
+      position:
+        x: 802.00390625
+        y: 244.98046875000017
+      positionAbsolute:
+        x: 802.00390625
+        y: 244.98046875000017
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import json\nfrom datetime import datetime, timezone, timedelta\n\n\
+          def main(arg1: str) -> dict:\n    try:\n        # 如果已经是 dict 或 list，直接用，不再\
+          \ loads\n        if isinstance(arg1, (dict, list)):\n            parsed_data\
+          \ = arg1\n        else:\n            parsed_data = json.loads(arg1)\n  \
+          \      \n        # 后续逻辑保持不变\n        if isinstance(parsed_data, dict) and\
+          \ \"arg1\" in parsed_data:\n            data = parsed_data[\"arg1\"]\n \
+          \       else:\n            data = parsed_data\n        \n        articles\
+          \ = []\n        if isinstance(data, list):\n            for item in data:\n\
+          \                articles.extend(item.get(\"articles\", []))\n        elif\
+          \ isinstance(data, dict):\n            articles = data.get(\"articles\"\
+          , [])\n            \n        table = []\n        \n        # 添加表头\n    \
+          \    table.append([\"标题\", \"热门评分\", \"新闻链接-手机端\", \"新闻链接-PC端\", \"更新时间\"\
+          ])\n        \n        for item in articles:\n            title = item.get('title',\
+          \ '')\n            hot_score = item.get('hot_score', '')\n            mobile_link\
+          \ = item.get('links', {}).get('mobile', '')\n            pc_link = item.get('links',\
+          \ {}).get('pc', '')\n            update_time_raw = item.get('metadata',\
+          \ {}).get('update_time', '')\n            \n            update_time = ''\n\
+          \            if update_time_raw:\n                try:\n               \
+          \     # 先尝试按 ISO8601 带毫秒Z格式解析\n                    dt_utc = datetime.strptime(update_time_raw,\
+          \ \"%Y-%m-%dT%H:%M:%S.%fZ\")\n                    dt_utc = dt_utc.replace(tzinfo=timezone.utc)\n\
+          \                    # 转换为上海时间（UTC+8）\n                    shanghai_tz =\
+          \ timezone(timedelta(hours=8))\n                    dt_shanghai = dt_utc.astimezone(shanghai_tz)\n\
+          \                    update_time = dt_shanghai.strftime(\"%Y-%m-%d %H:%M:%S\"\
+          )\n                except Exception:\n                    try:\n       \
+          \                 # 不带毫秒的ISO8601格式\n                        dt_utc = datetime.strptime(update_time_raw,\
+          \ \"%Y-%m-%dT%H:%M:%SZ\")\n                        dt_utc = dt_utc.replace(tzinfo=timezone.utc)\n\
+          \                        shanghai_tz = timezone(timedelta(hours=8))\n  \
+          \                      dt_shanghai = dt_utc.astimezone(shanghai_tz)\n  \
+          \                      update_time = dt_shanghai.strftime(\"%Y-%m-%d %H:%M:%S\"\
+          )\n                    except Exception:\n                        try:\n\
+          \                            # 如果是时间戳（秒级或毫秒级）\n                        \
+          \    ts = int(update_time_raw)\n                            if len(str(update_time_raw))\
+          \ == 13:\n                                ts = ts / 1000\n             \
+          \               dt = datetime.fromtimestamp(ts, tz=timezone.utc)\n     \
+          \                       dt_shanghai = dt.astimezone(timezone(timedelta(hours=8)))\n\
+          \                            update_time = dt_shanghai.strftime(\"%Y-%m-%d\
+          \ %H:%M:%S\")\n                        except Exception:\n             \
+          \               # 直接使用原始字符串\n                            update_time = str(update_time_raw)\n\
+          \            \n            table.append([title, hot_score, mobile_link,\
+          \ pc_link, update_time])\n\n        return {\n            \"result\": str(table).replace(\"\
+          '\", '\"')\n        }\n    except Exception as e:\n        return {\n  \
+          \          \"result\": [[\"错误\", f\"{type(e).__name__}: {e}\"]]\n      \
+          \  }"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行-微博
+        type: code
+        variables:
+        - value_selector:
+          - '17494569871550'
+          - json
+          variable: arg1
+      height: 53
+      id: '17494577932030'
+      position:
+        x: 802.00390625
+        y: 368.98046875000017
+      positionAbsolute:
+        x: 802.00390625
+        y: 368.98046875000017
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import json\nfrom datetime import datetime, timezone, timedelta\n\n\
+          def main(arg1: str) -> dict:\n    try:\n        # 如果已经是 dict 或 list，直接用，不再\
+          \ loads\n        if isinstance(arg1, (dict, list)):\n            parsed_data\
+          \ = arg1\n        else:\n            parsed_data = json.loads(arg1)\n  \
+          \      \n        # 后续逻辑保持不变\n        if isinstance(parsed_data, dict) and\
+          \ \"arg1\" in parsed_data:\n            data = parsed_data[\"arg1\"]\n \
+          \       else:\n            data = parsed_data\n        \n        articles\
+          \ = []\n        if isinstance(data, list):\n            for item in data:\n\
+          \                articles.extend(item.get(\"articles\", []))\n        elif\
+          \ isinstance(data, dict):\n            articles = data.get(\"articles\"\
+          , [])\n            \n        table = []\n        \n        # 添加表头\n    \
+          \    table.append([\"标题\", \"热门评分\", \"新闻链接-手机端\", \"新闻链接-PC端\", \"更新时间\"\
+          ])\n        \n        for item in articles:\n            title = item.get('title',\
+          \ '')\n            hot_score = item.get('hot_score', '')\n            mobile_link\
+          \ = item.get('links', {}).get('mobile', '')\n            pc_link = item.get('links',\
+          \ {}).get('pc', '')\n            update_time_raw = item.get('metadata',\
+          \ {}).get('update_time', '')\n            \n            update_time = ''\n\
+          \            if update_time_raw:\n                try:\n               \
+          \     # 先尝试按 ISO8601 带毫秒Z格式解析\n                    dt_utc = datetime.strptime(update_time_raw,\
+          \ \"%Y-%m-%dT%H:%M:%S.%fZ\")\n                    dt_utc = dt_utc.replace(tzinfo=timezone.utc)\n\
+          \                    # 转换为上海时间（UTC+8）\n                    shanghai_tz =\
+          \ timezone(timedelta(hours=8))\n                    dt_shanghai = dt_utc.astimezone(shanghai_tz)\n\
+          \                    update_time = dt_shanghai.strftime(\"%Y-%m-%d %H:%M:%S\"\
+          )\n                except Exception:\n                    try:\n       \
+          \                 # 不带毫秒的ISO8601格式\n                        dt_utc = datetime.strptime(update_time_raw,\
+          \ \"%Y-%m-%dT%H:%M:%SZ\")\n                        dt_utc = dt_utc.replace(tzinfo=timezone.utc)\n\
+          \                        shanghai_tz = timezone(timedelta(hours=8))\n  \
+          \                      dt_shanghai = dt_utc.astimezone(shanghai_tz)\n  \
+          \                      update_time = dt_shanghai.strftime(\"%Y-%m-%d %H:%M:%S\"\
+          )\n                    except Exception:\n                        try:\n\
+          \                            # 如果是时间戳（秒级或毫秒级）\n                        \
+          \    ts = int(update_time_raw)\n                            if len(str(update_time_raw))\
+          \ == 13:\n                                ts = ts / 1000\n             \
+          \               dt = datetime.fromtimestamp(ts, tz=timezone.utc)\n     \
+          \                       dt_shanghai = dt.astimezone(timezone(timedelta(hours=8)))\n\
+          \                            update_time = dt_shanghai.strftime(\"%Y-%m-%d\
+          \ %H:%M:%S\")\n                        except Exception:\n             \
+          \               # 直接使用原始字符串\n                            update_time = str(update_time_raw)\n\
+          \            \n            table.append([title, hot_score, mobile_link,\
+          \ pc_link, update_time])\n\n        return {\n            \"result\": str(table).replace(\"\
+          '\", '\"')\n        }\n    except Exception as e:\n        return {\n  \
+          \          \"result\": [[\"错误\", f\"{type(e).__name__}: {e}\"]]\n      \
+          \  }"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行-虎嗅
+        type: code
+        variables:
+        - value_selector:
+          - '17494569986520'
+          - json
+          variable: arg1
+      height: 53
+      id: '17494578075360'
+      position:
+        x: 790.1118351306802
+        y: 691.6047070920695
+      positionAbsolute:
+        x: 790.1118351306802
+        y: 691.6047070920695
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import json\nfrom datetime import datetime, timezone, timedelta\n\n\
+          def main(arg1: str) -> dict:\n    try:\n        # 如果已经是 dict 或 list，直接用，不再\
+          \ loads\n        if isinstance(arg1, (dict, list)):\n            parsed_data\
+          \ = arg1\n        else:\n            parsed_data = json.loads(arg1)\n  \
+          \      \n        # 后续逻辑保持不变\n        if isinstance(parsed_data, dict) and\
+          \ \"arg1\" in parsed_data:\n            data = parsed_data[\"arg1\"]\n \
+          \       else:\n            data = parsed_data\n        \n        articles\
+          \ = []\n        if isinstance(data, list):\n            for item in data:\n\
+          \                articles.extend(item.get(\"articles\", []))\n        elif\
+          \ isinstance(data, dict):\n            articles = data.get(\"articles\"\
+          , [])\n            \n        table = []\n        \n        # 添加表头\n    \
+          \    table.append([\"标题\", \"热门评分\", \"新闻链接-手机端\", \"新闻链接-PC端\", \"更新时间\"\
+          ])\n        \n        for item in articles:\n            title = item.get('title',\
+          \ '')\n            hot_score = item.get('hot_score', '')\n            mobile_link\
+          \ = item.get('links', {}).get('mobile', '')\n            pc_link = item.get('links',\
+          \ {}).get('pc', '')\n            update_time_raw = item.get('metadata',\
+          \ {}).get('update_time', '')\n            \n            update_time = ''\n\
+          \            if update_time_raw:\n                try:\n               \
+          \     # 先尝试按 ISO8601 带毫秒Z格式解析\n                    dt_utc = datetime.strptime(update_time_raw,\
+          \ \"%Y-%m-%dT%H:%M:%S.%fZ\")\n                    dt_utc = dt_utc.replace(tzinfo=timezone.utc)\n\
+          \                    # 转换为上海时间（UTC+8）\n                    shanghai_tz =\
+          \ timezone(timedelta(hours=8))\n                    dt_shanghai = dt_utc.astimezone(shanghai_tz)\n\
+          \                    update_time = dt_shanghai.strftime(\"%Y-%m-%d %H:%M:%S\"\
+          )\n                except Exception:\n                    try:\n       \
+          \                 # 不带毫秒的ISO8601格式\n                        dt_utc = datetime.strptime(update_time_raw,\
+          \ \"%Y-%m-%dT%H:%M:%SZ\")\n                        dt_utc = dt_utc.replace(tzinfo=timezone.utc)\n\
+          \                        shanghai_tz = timezone(timedelta(hours=8))\n  \
+          \                      dt_shanghai = dt_utc.astimezone(shanghai_tz)\n  \
+          \                      update_time = dt_shanghai.strftime(\"%Y-%m-%d %H:%M:%S\"\
+          )\n                    except Exception:\n                        try:\n\
+          \                            # 如果是时间戳（秒级或毫秒级）\n                        \
+          \    ts = int(update_time_raw)\n                            if len(str(update_time_raw))\
+          \ == 13:\n                                ts = ts / 1000\n             \
+          \               dt = datetime.fromtimestamp(ts, tz=timezone.utc)\n     \
+          \                       dt_shanghai = dt.astimezone(timezone(timedelta(hours=8)))\n\
+          \                            update_time = dt_shanghai.strftime(\"%Y-%m-%d\
+          \ %H:%M:%S\")\n                        except Exception:\n             \
+          \               # 直接使用原始字符串\n                            update_time = str(update_time_raw)\n\
+          \            \n            table.append([title, hot_score, mobile_link,\
+          \ pc_link, update_time])\n\n        return {\n            \"result\": str(table).replace(\"\
+          '\", '\"')\n        }\n    except Exception as e:\n        return {\n  \
+          \          \"result\": [[\"错误\", f\"{type(e).__name__}: {e}\"]]\n      \
+          \  }"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行-今日头条
+        type: code
+        variables:
+        - value_selector:
+          - '17494570150800'
+          - json
+          variable: arg1
+      height: 53
+      id: '17494578218320'
+      position:
+        x: 802.00390625
+        y: 452.7073308408833
+      positionAbsolute:
+        x: 802.00390625
+        y: 452.7073308408833
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import json\nfrom datetime import datetime, timezone, timedelta\n\n\
+          def main(arg1: str) -> dict:\n    try:\n        # 如果已经是 dict 或 list，直接用，不再\
+          \ loads\n        if isinstance(arg1, (dict, list)):\n            parsed_data\
+          \ = arg1\n        else:\n            parsed_data = json.loads(arg1)\n  \
+          \      \n        # 后续逻辑保持不变\n        if isinstance(parsed_data, dict) and\
+          \ \"arg1\" in parsed_data:\n            data = parsed_data[\"arg1\"]\n \
+          \       else:\n            data = parsed_data\n        \n        articles\
+          \ = []\n        if isinstance(data, list):\n            for item in data:\n\
+          \                articles.extend(item.get(\"articles\", []))\n        elif\
+          \ isinstance(data, dict):\n            articles = data.get(\"articles\"\
+          , [])\n            \n        table = []\n        \n        # 添加表头\n    \
+          \    table.append([\"标题\", \"热门评分\", \"新闻链接-手机端\", \"新闻链接-PC端\", \"更新时间\"\
+          ])\n        \n        for item in articles:\n            title = item.get('title',\
+          \ '')\n            hot_score = item.get('hot_score', '')\n            mobile_link\
+          \ = item.get('links', {}).get('mobile', '')\n            pc_link = item.get('links',\
+          \ {}).get('pc', '')\n            update_time_raw = item.get('metadata',\
+          \ {}).get('update_time', '')\n            \n            update_time = ''\n\
+          \            if update_time_raw:\n                try:\n               \
+          \     # 先尝试按 ISO8601 带毫秒Z格式解析\n                    dt_utc = datetime.strptime(update_time_raw,\
+          \ \"%Y-%m-%dT%H:%M:%S.%fZ\")\n                    dt_utc = dt_utc.replace(tzinfo=timezone.utc)\n\
+          \                    # 转换为上海时间（UTC+8）\n                    shanghai_tz =\
+          \ timezone(timedelta(hours=8))\n                    dt_shanghai = dt_utc.astimezone(shanghai_tz)\n\
+          \                    update_time = dt_shanghai.strftime(\"%Y-%m-%d %H:%M:%S\"\
+          )\n                except Exception:\n                    try:\n       \
+          \                 # 不带毫秒的ISO8601格式\n                        dt_utc = datetime.strptime(update_time_raw,\
+          \ \"%Y-%m-%dT%H:%M:%SZ\")\n                        dt_utc = dt_utc.replace(tzinfo=timezone.utc)\n\
+          \                        shanghai_tz = timezone(timedelta(hours=8))\n  \
+          \                      dt_shanghai = dt_utc.astimezone(shanghai_tz)\n  \
+          \                      update_time = dt_shanghai.strftime(\"%Y-%m-%d %H:%M:%S\"\
+          )\n                    except Exception:\n                        try:\n\
+          \                            # 如果是时间戳（秒级或毫秒级）\n                        \
+          \    ts = int(update_time_raw)\n                            if len(str(update_time_raw))\
+          \ == 13:\n                                ts = ts / 1000\n             \
+          \               dt = datetime.fromtimestamp(ts, tz=timezone.utc)\n     \
+          \                       dt_shanghai = dt.astimezone(timezone(timedelta(hours=8)))\n\
+          \                            update_time = dt_shanghai.strftime(\"%Y-%m-%d\
+          \ %H:%M:%S\")\n                        except Exception:\n             \
+          \               # 直接使用原始字符串\n                            update_time = str(update_time_raw)\n\
+          \            \n            table.append([title, hot_score, mobile_link,\
+          \ pc_link, update_time])\n\n        return {\n            \"result\": str(table).replace(\"\
+          '\", '\"')\n        }\n    except Exception as e:\n        return {\n  \
+          \          \"result\": [[\"错误\", f\"{type(e).__name__}: {e}\"]]\n      \
+          \  }"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行-36kr
+        type: code
+        variables:
+        - value_selector:
+          - '17494570406760'
+          - json
+          variable: arg1
+      height: 53
+      id: '17494578335950'
+      position:
+        x: 796
+        y: 542.5714250278082
+      positionAbsolute:
+        x: 796
+        y: 542.5714250278082
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import json\nfrom datetime import datetime, timezone, timedelta\n\n\
+          def main(arg1: str) -> dict:\n    try:\n        # 如果已经是 dict 或 list，直接用，不再\
+          \ loads\n        if isinstance(arg1, (dict, list)):\n            parsed_data\
+          \ = arg1\n        else:\n            parsed_data = json.loads(arg1)\n  \
+          \      \n        # 后续逻辑保持不变\n        if isinstance(parsed_data, dict) and\
+          \ \"arg1\" in parsed_data:\n            data = parsed_data[\"arg1\"]\n \
+          \       else:\n            data = parsed_data\n        \n        articles\
+          \ = []\n        if isinstance(data, list):\n            for item in data:\n\
+          \                articles.extend(item.get(\"articles\", []))\n        elif\
+          \ isinstance(data, dict):\n            articles = data.get(\"articles\"\
+          , [])\n            \n        table = []\n        \n        # 添加表头\n    \
+          \    table.append([\"标题\", \"热门评分\", \"新闻链接-手机端\", \"新闻链接-PC端\", \"更新时间\"\
+          ])\n        \n        for item in articles:\n            title = item.get('title',\
+          \ '')\n            hot_score = item.get('hot_score', '')\n            mobile_link\
+          \ = item.get('links', {}).get('mobile', '')\n            pc_link = item.get('links',\
+          \ {}).get('pc', '')\n            update_time_raw = item.get('metadata',\
+          \ {}).get('update_time', '')\n            \n            update_time = ''\n\
+          \            if update_time_raw:\n                try:\n               \
+          \     # 先尝试按 ISO8601 带毫秒Z格式解析\n                    dt_utc = datetime.strptime(update_time_raw,\
+          \ \"%Y-%m-%dT%H:%M:%S.%fZ\")\n                    dt_utc = dt_utc.replace(tzinfo=timezone.utc)\n\
+          \                    # 转换为上海时间（UTC+8）\n                    shanghai_tz =\
+          \ timezone(timedelta(hours=8))\n                    dt_shanghai = dt_utc.astimezone(shanghai_tz)\n\
+          \                    update_time = dt_shanghai.strftime(\"%Y-%m-%d %H:%M:%S\"\
+          )\n                except Exception:\n                    try:\n       \
+          \                 # 不带毫秒的ISO8601格式\n                        dt_utc = datetime.strptime(update_time_raw,\
+          \ \"%Y-%m-%dT%H:%M:%SZ\")\n                        dt_utc = dt_utc.replace(tzinfo=timezone.utc)\n\
+          \                        shanghai_tz = timezone(timedelta(hours=8))\n  \
+          \                      dt_shanghai = dt_utc.astimezone(shanghai_tz)\n  \
+          \                      update_time = dt_shanghai.strftime(\"%Y-%m-%d %H:%M:%S\"\
+          )\n                    except Exception:\n                        try:\n\
+          \                            # 如果是时间戳（秒级或毫秒级）\n                        \
+          \    ts = int(update_time_raw)\n                            if len(str(update_time_raw))\
+          \ == 13:\n                                ts = ts / 1000\n             \
+          \               dt = datetime.fromtimestamp(ts, tz=timezone.utc)\n     \
+          \                       dt_shanghai = dt.astimezone(timezone(timedelta(hours=8)))\n\
+          \                            update_time = dt_shanghai.strftime(\"%Y-%m-%d\
+          \ %H:%M:%S\")\n                        except Exception:\n             \
+          \               # 直接使用原始字符串\n                            update_time = str(update_time_raw)\n\
+          \            \n            table.append([title, hot_score, mobile_link,\
+          \ pc_link, update_time])\n\n        return {\n            \"result\": str(table).replace(\"\
+          '\", '\"')\n        }\n    except Exception as e:\n        return {\n  \
+          \          \"result\": [[\"错误\", f\"{type(e).__name__}: {e}\"]]\n      \
+          \  }"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行-hellogithub
+        type: code
+        variables:
+        - value_selector:
+          - '17494570570600'
+          - json
+          variable: arg1
+      height: 53
+      id: '17494579749080'
+      position:
+        x: 790.1118351306802
+        y: 903.1269154777735
+      positionAbsolute:
+        x: 790.1118351306802
+        y: 903.1269154777735
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        output_type: string
+        selected: false
+        title: 变量聚合器
+        type: variable-aggregator
+        variables:
+        - - '17494579749080'
+          - result
+        - - '17494578335950'
+          - result
+        - - '17494578218320'
+          - result
+        - - '17494578075360'
+          - result
+        - - '17494577932030'
+          - result
+        - - '17494577806740'
+          - result
+        - - '17494577662390'
+          - result
+        - - '17494577308300'
+          - result
+      height: 261
+      id: '1749458027152'
+      position:
+        x: 1230.1279172700993
+        y: 346.47265570470717
+      positionAbsolute:
+        x: 1230.1279172700993
+        y: 346.47265570470717
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: '%Y-%m-%d %H:%M:%S'
+          form: form
+          human_description:
+            en_US: Time format in strftime standard.
+            ja_JP: Time format in strftime standard.
+            pt_BR: Time format in strftime standard.
+            zh_Hans: strftime 标准的时间格式。
+          label:
+            en_US: Format
+            ja_JP: Format
+            pt_BR: Format
+            zh_Hans: 格式
+          llm_description: null
+          max: null
+          min: null
+          name: format
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: UTC
+          form: form
+          human_description:
+            en_US: Timezone
+            ja_JP: Timezone
+            pt_BR: Timezone
+            zh_Hans: 时区
+          label:
+            en_US: Timezone
+            ja_JP: Timezone
+            pt_BR: Timezone
+            zh_Hans: 时区
+          llm_description: null
+          max: null
+          min: null
+          name: timezone
+          options:
+          - label:
+              en_US: UTC
+              ja_JP: UTC
+              pt_BR: UTC
+              zh_Hans: UTC
+            value: UTC
+          - label:
+              en_US: America/New_York
+              ja_JP: America/New_York
+              pt_BR: America/New_York
+              zh_Hans: 美洲/纽约
+            value: America/New_York
+          - label:
+              en_US: America/Los_Angeles
+              ja_JP: America/Los_Angeles
+              pt_BR: America/Los_Angeles
+              zh_Hans: 美洲/洛杉矶
+            value: America/Los_Angeles
+          - label:
+              en_US: America/Chicago
+              ja_JP: America/Chicago
+              pt_BR: America/Chicago
+              zh_Hans: 美洲/芝加哥
+            value: America/Chicago
+          - label:
+              en_US: America/Sao_Paulo
+              ja_JP: America/Sao_Paulo
+              pt_BR: América/São Paulo
+              zh_Hans: 美洲/圣保罗
+            value: America/Sao_Paulo
+          - label:
+              en_US: Asia/Shanghai
+              ja_JP: Asia/Shanghai
+              pt_BR: Asia/Shanghai
+              zh_Hans: 亚洲/上海
+            value: Asia/Shanghai
+          - label:
+              en_US: Asia/Ho_Chi_Minh
+              ja_JP: Asia/Ho_Chi_Minh
+              pt_BR: Ásia/Ho Chi Minh
+              zh_Hans: 亚洲/胡志明市
+            value: Asia/Ho_Chi_Minh
+          - label:
+              en_US: Asia/Tokyo
+              ja_JP: Asia/Tokyo
+              pt_BR: Asia/Tokyo
+              zh_Hans: 亚洲/东京
+            value: Asia/Tokyo
+          - label:
+              en_US: Asia/Dubai
+              ja_JP: Asia/Dubai
+              pt_BR: Asia/Dubai
+              zh_Hans: 亚洲/迪拜
+            value: Asia/Dubai
+          - label:
+              en_US: Asia/Kolkata
+              ja_JP: Asia/Kolkata
+              pt_BR: Asia/Kolkata
+              zh_Hans: 亚洲/加尔各答
+            value: Asia/Kolkata
+          - label:
+              en_US: Asia/Seoul
+              ja_JP: Asia/Seoul
+              pt_BR: Asia/Seoul
+              zh_Hans: 亚洲/首尔
+            value: Asia/Seoul
+          - label:
+              en_US: Asia/Singapore
+              ja_JP: Asia/Singapore
+              pt_BR: Asia/Singapore
+              zh_Hans: 亚洲/新加坡
+            value: Asia/Singapore
+          - label:
+              en_US: Europe/London
+              ja_JP: Europe/London
+              pt_BR: Europe/London
+              zh_Hans: 欧洲/伦敦
+            value: Europe/London
+          - label:
+              en_US: Europe/Berlin
+              ja_JP: Europe/Berlin
+              pt_BR: Europe/Berlin
+              zh_Hans: 欧洲/柏林
+            value: Europe/Berlin
+          - label:
+              en_US: Europe/Moscow
+              ja_JP: Europe/Moscow
+              pt_BR: Europe/Moscow
+              zh_Hans: 欧洲/莫斯科
+            value: Europe/Moscow
+          - label:
+              en_US: Australia/Sydney
+              ja_JP: Australia/Sydney
+              pt_BR: Australia/Sydney
+              zh_Hans: 澳大利亚/悉尼
+            value: Australia/Sydney
+          - label:
+              en_US: Pacific/Auckland
+              ja_JP: Pacific/Auckland
+              pt_BR: Pacific/Auckland
+              zh_Hans: 太平洋/奥克兰
+            value: Pacific/Auckland
+          - label:
+              en_US: Africa/Cairo
+              ja_JP: Africa/Cairo
+              pt_BR: Africa/Cairo
+              zh_Hans: 非洲/开罗
+            value: Africa/Cairo
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        params:
+          format: ''
+          timezone: ''
+        provider_id: time
+        provider_name: time
+        provider_type: builtin
+        selected: false
+        title: 获取当前时间
+        tool_configurations:
+          format: '%Y-%m-%d %H:%M:%S'
+          timezone: Asia/Shanghai
+        tool_description: 一个用于获取当前时间的工具。
+        tool_label: 获取当前时间
+        tool_name: current_time
+        tool_parameters: {}
+        type: tool
+      height: 115
+      id: '1749458610637'
+      position:
+        x: 1568.866746752858
+        y: 474.47265570470717
+      positionAbsolute:
+        x: 1568.866746752858
+        y: 474.47265570470717
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        selected: false
+        template: '{{ arg3 }}|热榜新闻|{{ arg1 }}|{{ arg2 }}'
+        title: 模板转换
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1749458610637'
+          - text
+          variable: arg1
+        - value_selector:
+          - '1749453881785'
+          - text
+          variable: arg2
+        - value_selector:
+          - '1749448556847'
+          - type
+          variable: arg3
+      height: 53
+      id: '1749527972200'
+      position:
+        x: 1917.8871118350476
+        y: 394.62060844599995
+      positionAbsolute:
+        x: 1917.8871118350476
+        y: 394.62060844599995
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Email username
+            ja_JP: Email username
+            pt_BR: Email username
+            zh_Hans: 邮箱用户名
+          label:
+            en_US: Email username
+            ja_JP: Email username
+            pt_BR: Email username
+            zh_Hans: 邮箱用户名
+          llm_description: Email username
+          max: null
+          min: null
+          name: username_send
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: AUTHORIZE CODE
+            ja_JP: AUTHORIZE CODE
+            pt_BR: CODE DE AUTORIZAÇÃO
+            zh_Hans: 授权码
+          label:
+            en_US: AUTHORIZE CODE
+            ja_JP: AUTHORIZE CODE
+            pt_BR: CODE DE AUTORIZAÇÃO
+            zh_Hans: 授权码
+          llm_description: AUTHORIZE CODE
+          max: null
+          min: null
+          name: authorization_code
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Recipient mailbox, multiple mailboxes separated by commas
+            ja_JP: Recipient mailbox, multiple mailboxes separated by commas
+            pt_BR: Recipiente de correio electrónico, endereços de correio electrónico
+              múltiplos separados por vírgulas
+            zh_Hans: 收件人邮箱，多个邮箱逗号隔开
+          label:
+            en_US: Recipient mailbox, multiple mailboxes separated by commas
+            ja_JP: Recipient mailbox, multiple mailboxes separated by commas
+            pt_BR: Recipiente de correio electrónico, endereços de correio electrónico
+              múltiplos separados por vírgulas
+            zh_Hans: 收件人邮箱，多个邮箱逗号隔开
+          llm_description: Recipient mailbox, multiple mailboxes separated by commas
+          max: null
+          min: null
+          name: username_recv
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: subject
+            ja_JP: subject
+            pt_BR: tema
+            zh_Hans: 主题
+          label:
+            en_US: subject
+            ja_JP: subject
+            pt_BR: tema
+            zh_Hans: 主题
+          llm_description: subject
+          max: null
+          min: null
+          name: subject
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: content
+            ja_JP: content
+            pt_BR: conteúdo
+            zh_Hans: 内容
+          label:
+            en_US: content
+            ja_JP: content
+            pt_BR: conteúdo
+            zh_Hans: 内容
+          llm_description: 内容
+          max: null
+          min: null
+          name: content
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        params:
+          authorization_code: ''
+          content: ''
+          subject: ''
+          username_recv: ''
+          username_send: ''
+        provider_id: wjdsg/163-smtp-send-mail/163-smtp-send-mail
+        provider_name: wjdsg/163-smtp-send-mail/163-smtp-send-mail
+        provider_type: builtin
+        selected: true
+        title: 163SMTP邮件发送
+        tool_configurations: {}
+        tool_description: 163SMTP邮件发送
+        tool_label: 163SMTP邮件发送
+        tool_name: 163-smtp-send-mail
+        tool_parameters:
+          authorization_code:
+            type: mixed
+            value: xxxxxxxxxx
+          content:
+            type: mixed
+            value: '{{#1749527972200.output#}}'
+          subject:
+            type: mixed
+            value: 每日实时热点新闻
+          username_recv:
+            type: mixed
+            value: 75271002@qq.com
+          username_send:
+            type: mixed
+            value: wwwzhouhui@163.com
+        type: tool
+      height: 53
+      id: '1749535875639'
+      position:
+        x: 2282.0977360872575
+        y: 542.5714250278082
+      positionAbsolute:
+        x: 2282.0977360872575
+        y: 542.5714250278082
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: -679.9780930046354
+      y: 131.08385488895294
+      zoom: 0.5946035605721007
