@@ -1,0 +1,2013 @@
+app:
+  description: 本工作流主要介绍使用了豆包文本生成图像、文本生成视频以及图像转视频功能
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 64-dify案例分享-豆包文本生成图、文生视频+小支付功能
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: hjlarry/small_pay:0.0.2@24833b7e2d028dfd73b30062ad221796a6ce8b3928daed450cd8ead78e0dbf53
+kind: app
+version: 0.3.0
+workflow:
+  conversation_variables:
+  - description: 默认支付成功后可以拥有三次文生视频、图片视频调用
+    id: 4395ca63-af9c-4b80-9b1f-3a73348f8559
+    name: paycount
+    selector:
+    - conversation
+    - paycount
+    value: 0
+    value_type: number
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 500
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 100
+        video_file_size_limit: 500
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: if-else
+      id: 1748874215740-source-1748876787141-target
+      source: '1748874215740'
+      sourceHandle: source
+      target: '1748876787141'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: answer
+      id: 1748876787141-false-1748877833989-target
+      source: '1748876787141'
+      sourceHandle: 'false'
+      target: '1748877833989'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: agent
+      id: 1748876787141-true-1749805551292-target
+      source: '1748876787141'
+      sourceHandle: 'true'
+      target: '1749805551292'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: agent
+        targetType: answer
+      id: 1749805551292-source-answer-target
+      source: '1749805551292'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: agent
+        targetType: answer
+      id: 17498061130260-source-17498062846900-target
+      source: '17498061130260'
+      sourceHandle: source
+      target: '17498062846900'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: agent
+        targetType: answer
+      id: 17498064656760-source-1748879492779-target
+      source: '17498064656760'
+      sourceHandle: source
+      target: '1748879492779'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: answer
+      id: 1749880213564-source-1749880285917-target
+      source: '1749880213564'
+      sourceHandle: source
+      target: '1749880285917'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: answer
+        targetType: tool
+      id: 1749880285917-source-1749880352819-target
+      source: '1749880285917'
+      sourceHandle: source
+      target: '1749880352819'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: if-else
+      id: 1749880352819-source-1749880389568-target
+      source: '1749880352819'
+      sourceHandle: source
+      target: '1749880389568'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: assigner
+      id: 1749880389568-true-1749880449416-target
+      source: '1749880389568'
+      sourceHandle: 'true'
+      target: '1749880449416'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: assigner
+        targetType: answer
+      id: 1749880449416-source-1749880508134-target
+      source: '1749880449416'
+      sourceHandle: source
+      target: '1749880508134'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: if-else
+      id: 1748876787141-53fef812-a8d0-4986-b4ad-94d8b614ed05-1749880623831-target
+      source: '1748876787141'
+      sourceHandle: 53fef812-a8d0-4986-b4ad-94d8b614ed05
+      target: '1749880623831'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: tool
+      id: 1749880623831-true-1749880213564-target
+      source: '1749880623831'
+      sourceHandle: 'true'
+      target: '1749880213564'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: agent
+      id: 1749880623831-false-17498064656760-target
+      source: '1749880623831'
+      sourceHandle: 'false'
+      target: '17498064656760'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: agent
+        targetType: code
+      id: 17498061130260-source-1749884771528-target
+      source: '17498061130260'
+      sourceHandle: source
+      target: '1749884771528'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: assigner
+      id: 1749884771528-source-1749883667850-target
+      source: '1749884771528'
+      sourceHandle: source
+      target: '1749883667850'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: agent
+        targetType: code
+      id: 17498064656760-source-1749884821786-target
+      source: '17498064656760'
+      sourceHandle: source
+      target: '1749884821786'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: assigner
+      id: 1749884821786-source-1749884892364-target
+      source: '1749884821786'
+      sourceHandle: source
+      target: '1749884892364'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: if-else
+      id: 1748876787141-9c31fe18-ce4d-4618-a3ec-1e166f773645-1749885007254-target
+      source: '1748876787141'
+      sourceHandle: 9c31fe18-ce4d-4618-a3ec-1e166f773645
+      target: '1749885007254'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: agent
+      id: 1749885007254-true-17498061130260-target
+      source: '1749885007254'
+      sourceHandle: 'true'
+      target: '17498061130260'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: tool
+      id: 1749885007254-false-1749880213564-target
+      source: '1749885007254'
+      sourceHandle: 'false'
+      target: '1749880213564'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - label: 提示词
+          max_length: 256
+          options: []
+          required: true
+          type: text-input
+          variable: prompt
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - image
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: 图片
+          max_length: 48
+          options: []
+          required: false
+          type: file
+          variable: picture
+        - label: 选择类型（文本生成图像、文本生成视频、图像转视频）
+          max_length: 48
+          options:
+          - ''
+          - 文生图像
+          - 文生视频
+          - 图生视频
+          required: true
+          type: select
+          variable: type
+      height: 141
+      id: '1748874215740'
+      position:
+        x: 55
+        y: 348
+      positionAbsolute:
+        x: 55
+        y: 348
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: '{{#1749805551292.text#}}
+
+          {{#1749805551292.files#}}'
+        desc: ''
+        selected: false
+        title: 文生图回复
+        type: answer
+        variables: []
+      height: 123
+      id: answer
+      position:
+        x: 1090.6715713675765
+        y: 190.6649399527434
+      positionAbsolute:
+        x: 1090.6715713675765
+        y: 190.6649399527434
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: dbb313e1-9d68-4c34-aa3d-5b4b81408447
+            value: 文生图像
+            varType: string
+            variable_selector:
+            - '1748874215740'
+            - type
+          id: 'true'
+          logical_operator: and
+        - case_id: 9c31fe18-ce4d-4618-a3ec-1e166f773645
+          conditions:
+          - comparison_operator: contains
+            id: 71d50791-8fbc-4bb7-b1f8-f54da5fd3cb3
+            value: 文生视频
+            varType: string
+            variable_selector:
+            - '1748874215740'
+            - type
+          id: 9c31fe18-ce4d-4618-a3ec-1e166f773645
+          logical_operator: and
+        - case_id: 53fef812-a8d0-4986-b4ad-94d8b614ed05
+          conditions:
+          - comparison_operator: contains
+            id: 52d0f3a1-7131-4684-94f6-394f69ed9718
+            value: 图生视频
+            varType: string
+            variable_selector:
+            - '1748874215740'
+            - type
+          - comparison_operator: exists
+            id: f99ada8f-2ef0-466b-9988-525575747457
+            value: ''
+            varType: file
+            variable_selector:
+            - '1748874215740'
+            - picture
+          id: 53fef812-a8d0-4986-b4ad-94d8b614ed05
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 条件分支
+        type: if-else
+      height: 247
+      id: '1748876787141'
+      position:
+        x: 378
+        y: 348
+      positionAbsolute:
+        x: 378
+        y: 348
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: 对不起出现错误，请重新输入。图生视频需要上传图片，请重新上传。
+        desc: ''
+        selected: false
+        title: 直接回复 3
+        type: answer
+        variables: []
+      height: 117
+      id: '1748877833989'
+      position:
+        x: 681.675550216476
+        y: 870.677539640926
+      positionAbsolute:
+        x: 681.675550216476
+        y: 870.677539640926
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: '{{#17498064656760.text#}}
+
+          {{#17498064656760.files#}}'
+        desc: ''
+        selected: false
+        title: 图生视频回复
+        type: answer
+        variables: []
+      height: 123
+      id: '1748879492779'
+      position:
+        x: 1436.2829464623849
+        y: 733.2091434109943
+      positionAbsolute:
+        x: 1436.2829464623849
+        y: 733.2091434109943
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        agent_parameters:
+          instruction:
+            type: constant
+            value: 请根据用输入的信息{{#1748874215740.prompt#}}调用text_to_image 方法
+          mcp_server:
+            type: constant
+            value: http://14.103.204.132:8002/sse
+          model:
+            type: constant
+            value:
+              completion_params: {}
+              mode: chat
+              model: Qwen/Qwen3-8B
+              model_type: llm
+              provider: langgenius/siliconflow/siliconflow
+              type: model-selector
+          query:
+            type: constant
+            value: '{{#1748874215740.prompt#}}'
+          tools:
+            type: constant
+            value:
+            - enabled: true
+              extra:
+                description: 通过HTTP with SSE传输来列出MCP服务端工具。
+              parameters:
+                headers:
+                  auto: 1
+                  value: null
+                server_url:
+                  auto: 1
+                  value: null
+                sse_read_timeout:
+                  auto: 1
+                  value: null
+                timeout:
+                  auto: 1
+                  value: null
+              provider_name: arrenxxxxx/mcp_config_during_use/mcp_config
+              schemas:
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: The URL of the MCP Server with SSE endpoint.
+                  ja_JP: The URL of the MCP Server with SSE endpoint.
+                  pt_BR: The URL of the MCP Server with SSE endpoint.
+                  zh_Hans: MCP服务器的SSE端点URL。
+                label:
+                  en_US: Server URL
+                  ja_JP: Server URL
+                  pt_BR: Server URL
+                  zh_Hans: 服务器地址
+                llm_description: The URL of the MCP Server with SSE endpoint.
+                max: null
+                min: null
+                name: server_url
+                options: []
+                placeholder: null
+                precision: null
+                required: true
+                scope: null
+                template: null
+                type: string
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: HTTP headers in JSON format (e.g. {"Authorization":"Bearer
+                    token"}).
+                  ja_JP: HTTP headers in JSON format (e.g. {"Authorization":"Bearer
+                    token"}).
+                  pt_BR: HTTP headers in JSON format (e.g. {"Authorization":"Bearer
+                    token"}).
+                  zh_Hans: HTTP请求头，JSON格式（例如：{"Authorization":"Bearer token"}）。
+                label:
+                  en_US: Headers
+                  ja_JP: Headers
+                  pt_BR: Headers
+                  zh_Hans: 请求头
+                llm_description: HTTP headers in JSON format (e.g. {"Authorization":"Bearer
+                  token"}).
+                max: null
+                min: null
+                name: headers
+                options: []
+                placeholder: null
+                precision: null
+                required: false
+                scope: null
+                template: null
+                type: string
+              - auto_generate: null
+                default: 60
+                form: llm
+                human_description:
+                  en_US: HTTP request timeout in seconds.
+                  ja_JP: HTTP request timeout in seconds.
+                  pt_BR: HTTP request timeout in seconds.
+                  zh_Hans: HTTP请求超时时间（秒）。
+                label:
+                  en_US: Timeout
+                  ja_JP: Timeout
+                  pt_BR: Timeout
+                  zh_Hans: 超时时间
+                llm_description: HTTP request timeout in seconds.
+                max: null
+                min: null
+                name: timeout
+                options: []
+                placeholder: null
+                precision: null
+                required: false
+                scope: null
+                template: null
+                type: number
+              - auto_generate: null
+                default: 300
+                form: llm
+                human_description:
+                  en_US: SSE read timeout in seconds (time to wait for SSE events).
+                  ja_JP: SSE read timeout in seconds (time to wait for SSE events).
+                  pt_BR: SSE read timeout in seconds (time to wait for SSE events).
+                  zh_Hans: SSE读取超时时间（秒）（等待SSE事件的时间）。
+                label:
+                  en_US: SSE Read Timeout
+                  ja_JP: SSE Read Timeout
+                  pt_BR: SSE Read Timeout
+                  zh_Hans: SSE读取超时
+                llm_description: SSE read timeout in seconds (time to wait for SSE
+                  events).
+                max: null
+                min: null
+                name: sse_read_timeout
+                options: []
+                placeholder: null
+                precision: null
+                required: false
+                scope: null
+                template: null
+                type: number
+              settings: {}
+              tool_description: 通过HTTP with SSE传输来列出MCP服务端工具。
+              tool_label: 列出MCP工具
+              tool_name: mcp_list_tools
+              type: builtin
+            - enabled: true
+              extra:
+                description: 通过HTTP with SSE传输来调用MCP服务端工具。
+              parameters:
+                arguments:
+                  auto: 1
+                  value: null
+                headers:
+                  auto: 1
+                  value: null
+                server_url:
+                  auto: 1
+                  value: null
+                sse_read_timeout:
+                  auto: 1
+                  value: null
+                timeout:
+                  auto: 1
+                  value: null
+                tool_name:
+                  auto: 1
+                  value: null
+              provider_name: arrenxxxxx/mcp_config_during_use/mcp_config
+              schemas:
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: The URL of the MCP Server with SSE endpoint.
+                  ja_JP: The URL of the MCP Server with SSE endpoint.
+                  pt_BR: The URL of the MCP Server with SSE endpoint.
+                  zh_Hans: MCP服务器的SSE端点URL。
+                label:
+                  en_US: Server URL
+                  ja_JP: Server URL
+                  pt_BR: Server URL
+                  zh_Hans: 服务器地址
+                llm_description: The URL of the MCP Server with SSE endpoint.
+                max: null
+                min: null
+                name: server_url
+                options: []
+                placeholder: null
+                precision: null
+                required: true
+                scope: null
+                template: null
+                type: string
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: HTTP headers in JSON format (e.g. {"Authorization":"Bearer
+                    token"}).
+                  ja_JP: HTTP headers in JSON format (e.g. {"Authorization":"Bearer
+                    token"}).
+                  pt_BR: HTTP headers in JSON format (e.g. {"Authorization":"Bearer
+                    token"}).
+                  zh_Hans: HTTP请求头，JSON格式（例如：{"Authorization":"Bearer token"}）。
+                label:
+                  en_US: Headers
+                  ja_JP: Headers
+                  pt_BR: Headers
+                  zh_Hans: 请求头
+                llm_description: HTTP headers in JSON format (e.g. {"Authorization":"Bearer
+                  token"}).
+                max: null
+                min: null
+                name: headers
+                options: []
+                placeholder: null
+                precision: null
+                required: false
+                scope: null
+                template: null
+                type: string
+              - auto_generate: null
+                default: 60
+                form: llm
+                human_description:
+                  en_US: HTTP request timeout in seconds.
+                  ja_JP: HTTP request timeout in seconds.
+                  pt_BR: HTTP request timeout in seconds.
+                  zh_Hans: HTTP请求超时时间（秒）。
+                label:
+                  en_US: Timeout
+                  ja_JP: Timeout
+                  pt_BR: Timeout
+                  zh_Hans: 超时时间
+                llm_description: HTTP request timeout in seconds.
+                max: null
+                min: null
+                name: timeout
+                options: []
+                placeholder: null
+                precision: null
+                required: false
+                scope: null
+                template: null
+                type: number
+              - auto_generate: null
+                default: 300
+                form: llm
+                human_description:
+                  en_US: SSE read timeout in seconds (time to wait for SSE events).
+                  ja_JP: SSE read timeout in seconds (time to wait for SSE events).
+                  pt_BR: SSE read timeout in seconds (time to wait for SSE events).
+                  zh_Hans: SSE读取超时时间（秒）（等待SSE事件的时间）。
+                label:
+                  en_US: SSE Read Timeout
+                  ja_JP: SSE Read Timeout
+                  pt_BR: SSE Read Timeout
+                  zh_Hans: SSE读取超时
+                llm_description: SSE read timeout in seconds (time to wait for SSE
+                  events).
+                max: null
+                min: null
+                name: sse_read_timeout
+                options: []
+                placeholder: null
+                precision: null
+                required: false
+                scope: null
+                template: null
+                type: number
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: Name of the tool to execute.
+                  ja_JP: Name of the tool to execute.
+                  pt_BR: Name of the tool to execute.
+                  zh_Hans: 要执行的工具的名称。
+                label:
+                  en_US: Tool Name
+                  ja_JP: Tool Name
+                  pt_BR: Tool Name
+                  zh_Hans: 工具名称
+                llm_description: Name of the tool to execute.
+                max: null
+                min: null
+                name: tool_name
+                options: []
+                placeholder: null
+                precision: null
+                required: true
+                scope: null
+                template: null
+                type: string
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: Tool arguments (JSON string in the python dict[str, Any]
+                    format).
+                  ja_JP: Tool arguments (JSON string in the python dict[str, Any]
+                    format).
+                  pt_BR: Tool arguments (JSON string in the python dict[str, Any]
+                    format).
+                  zh_Hans: 工具的参数，JSON格式的字符串（Python dict[str, Any]格式）。
+                label:
+                  en_US: Arguments
+                  ja_JP: Arguments
+                  pt_BR: Arguments
+                  zh_Hans: 参数
+                llm_description: Tool arguments (JSON string in the python dict[str,
+                  Any] format).
+                max: null
+                min: null
+                name: arguments
+                options: []
+                placeholder: null
+                precision: null
+                required: false
+                scope: null
+                template: null
+                type: string
+              settings: {}
+              tool_description: 通过HTTP with SSE传输来调用MCP服务端工具。
+              tool_label: 调用MCP工具
+              tool_name: mcp_call_tool
+              type: builtin
+        agent_strategy_label: MCP FunctionCalling
+        agent_strategy_name: function_calling
+        agent_strategy_provider_name: hjlarry/agent/mcp_agent
+        desc: ''
+        output_schema: null
+        plugin_unique_identifier: hjlarry/agent:0.0.1@f42a5a80b1c77fd0655c755b70ad08da47ceb1acc3638cf13a0eb9ed42b3a128
+        selected: false
+        title: 文生图片Agent
+        type: agent
+      height: 197
+      id: '1749805551292'
+      position:
+        x: 690
+        y: 190.6649399527434
+      positionAbsolute:
+        x: 690
+        y: 190.6649399527434
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        agent_parameters:
+          instruction:
+            type: constant
+            value: 请根据用输入的信息{{#1748874215740.prompt#}}调用text_to_video 方法
+          mcp_server:
+            type: constant
+            value: http://14.103.204.132:8002/sse
+          model:
+            type: constant
+            value:
+              completion_params: {}
+              mode: chat
+              model: Qwen/Qwen3-8B
+              model_type: llm
+              provider: langgenius/siliconflow/siliconflow
+              type: model-selector
+          query:
+            type: constant
+            value: '{{#1748874215740.prompt#}}'
+          tools:
+            type: constant
+            value:
+            - enabled: true
+              extra:
+                description: 通过HTTP with SSE传输来列出MCP服务端工具。
+              parameters:
+                headers:
+                  auto: 1
+                  value: null
+                server_url:
+                  auto: 1
+                  value: null
+                sse_read_timeout:
+                  auto: 1
+                  value: null
+                timeout:
+                  auto: 1
+                  value: null
+              provider_name: arrenxxxxx/mcp_config_during_use/mcp_config
+              schemas:
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: The URL of the MCP Server with SSE endpoint.
+                  ja_JP: The URL of the MCP Server with SSE endpoint.
+                  pt_BR: The URL of the MCP Server with SSE endpoint.
+                  zh_Hans: MCP服务器的SSE端点URL。
+                label:
+                  en_US: Server URL
+                  ja_JP: Server URL
+                  pt_BR: Server URL
+                  zh_Hans: 服务器地址
+                llm_description: The URL of the MCP Server with SSE endpoint.
+                max: null
+                min: null
+                name: server_url
+                options: []
+                placeholder: null
+                precision: null
+                required: true
+                scope: null
+                template: null
+                type: string
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: HTTP headers in JSON format (e.g. {"Authorization":"Bearer
+                    token"}).
+                  ja_JP: HTTP headers in JSON format (e.g. {"Authorization":"Bearer
+                    token"}).
+                  pt_BR: HTTP headers in JSON format (e.g. {"Authorization":"Bearer
+                    token"}).
+                  zh_Hans: HTTP请求头，JSON格式（例如：{"Authorization":"Bearer token"}）。
+                label:
+                  en_US: Headers
+                  ja_JP: Headers
+                  pt_BR: Headers
+                  zh_Hans: 请求头
+                llm_description: HTTP headers in JSON format (e.g. {"Authorization":"Bearer
+                  token"}).
+                max: null
+                min: null
+                name: headers
+                options: []
+                placeholder: null
+                precision: null
+                required: false
+                scope: null
+                template: null
+                type: string
+              - auto_generate: null
+                default: 60
+                form: llm
+                human_description:
+                  en_US: HTTP request timeout in seconds.
+                  ja_JP: HTTP request timeout in seconds.
+                  pt_BR: HTTP request timeout in seconds.
+                  zh_Hans: HTTP请求超时时间（秒）。
+                label:
+                  en_US: Timeout
+                  ja_JP: Timeout
+                  pt_BR: Timeout
+                  zh_Hans: 超时时间
+                llm_description: HTTP request timeout in seconds.
+                max: null
+                min: null
+                name: timeout
+                options: []
+                placeholder: null
+                precision: null
+                required: false
+                scope: null
+                template: null
+                type: number
+              - auto_generate: null
+                default: 300
+                form: llm
+                human_description:
+                  en_US: SSE read timeout in seconds (time to wait for SSE events).
+                  ja_JP: SSE read timeout in seconds (time to wait for SSE events).
+                  pt_BR: SSE read timeout in seconds (time to wait for SSE events).
+                  zh_Hans: SSE读取超时时间（秒）（等待SSE事件的时间）。
+                label:
+                  en_US: SSE Read Timeout
+                  ja_JP: SSE Read Timeout
+                  pt_BR: SSE Read Timeout
+                  zh_Hans: SSE读取超时
+                llm_description: SSE read timeout in seconds (time to wait for SSE
+                  events).
+                max: null
+                min: null
+                name: sse_read_timeout
+                options: []
+                placeholder: null
+                precision: null
+                required: false
+                scope: null
+                template: null
+                type: number
+              settings: {}
+              tool_description: 通过HTTP with SSE传输来列出MCP服务端工具。
+              tool_label: 列出MCP工具
+              tool_name: mcp_list_tools
+              type: builtin
+            - enabled: true
+              extra:
+                description: 通过HTTP with SSE传输来调用MCP服务端工具。
+              parameters:
+                arguments:
+                  auto: 1
+                  value: null
+                headers:
+                  auto: 1
+                  value: null
+                server_url:
+                  auto: 1
+                  value: null
+                sse_read_timeout:
+                  auto: 1
+                  value: null
+                timeout:
+                  auto: 1
+                  value: null
+                tool_name:
+                  auto: 1
+                  value: null
+              provider_name: arrenxxxxx/mcp_config_during_use/mcp_config
+              schemas:
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: The URL of the MCP Server with SSE endpoint.
+                  ja_JP: The URL of the MCP Server with SSE endpoint.
+                  pt_BR: The URL of the MCP Server with SSE endpoint.
+                  zh_Hans: MCP服务器的SSE端点URL。
+                label:
+                  en_US: Server URL
+                  ja_JP: Server URL
+                  pt_BR: Server URL
+                  zh_Hans: 服务器地址
+                llm_description: The URL of the MCP Server with SSE endpoint.
+                max: null
+                min: null
+                name: server_url
+                options: []
+                placeholder: null
+                precision: null
+                required: true
+                scope: null
+                template: null
+                type: string
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: HTTP headers in JSON format (e.g. {"Authorization":"Bearer
+                    token"}).
+                  ja_JP: HTTP headers in JSON format (e.g. {"Authorization":"Bearer
+                    token"}).
+                  pt_BR: HTTP headers in JSON format (e.g. {"Authorization":"Bearer
+                    token"}).
+                  zh_Hans: HTTP请求头，JSON格式（例如：{"Authorization":"Bearer token"}）。
+                label:
+                  en_US: Headers
+                  ja_JP: Headers
+                  pt_BR: Headers
+                  zh_Hans: 请求头
+                llm_description: HTTP headers in JSON format (e.g. {"Authorization":"Bearer
+                  token"}).
+                max: null
+                min: null
+                name: headers
+                options: []
+                placeholder: null
+                precision: null
+                required: false
+                scope: null
+                template: null
+                type: string
+              - auto_generate: null
+                default: 60
+                form: llm
+                human_description:
+                  en_US: HTTP request timeout in seconds.
+                  ja_JP: HTTP request timeout in seconds.
+                  pt_BR: HTTP request timeout in seconds.
+                  zh_Hans: HTTP请求超时时间（秒）。
+                label:
+                  en_US: Timeout
+                  ja_JP: Timeout
+                  pt_BR: Timeout
+                  zh_Hans: 超时时间
+                llm_description: HTTP request timeout in seconds.
+                max: null
+                min: null
+                name: timeout
+                options: []
+                placeholder: null
+                precision: null
+                required: false
+                scope: null
+                template: null
+                type: number
+              - auto_generate: null
+                default: 300
+                form: llm
+                human_description:
+                  en_US: SSE read timeout in seconds (time to wait for SSE events).
+                  ja_JP: SSE read timeout in seconds (time to wait for SSE events).
+                  pt_BR: SSE read timeout in seconds (time to wait for SSE events).
+                  zh_Hans: SSE读取超时时间（秒）（等待SSE事件的时间）。
+                label:
+                  en_US: SSE Read Timeout
+                  ja_JP: SSE Read Timeout
+                  pt_BR: SSE Read Timeout
+                  zh_Hans: SSE读取超时
+                llm_description: SSE read timeout in seconds (time to wait for SSE
+                  events).
+                max: null
+                min: null
+                name: sse_read_timeout
+                options: []
+                placeholder: null
+                precision: null
+                required: false
+                scope: null
+                template: null
+                type: number
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: Name of the tool to execute.
+                  ja_JP: Name of the tool to execute.
+                  pt_BR: Name of the tool to execute.
+                  zh_Hans: 要执行的工具的名称。
+                label:
+                  en_US: Tool Name
+                  ja_JP: Tool Name
+                  pt_BR: Tool Name
+                  zh_Hans: 工具名称
+                llm_description: Name of the tool to execute.
+                max: null
+                min: null
+                name: tool_name
+                options: []
+                placeholder: null
+                precision: null
+                required: true
+                scope: null
+                template: null
+                type: string
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: Tool arguments (JSON string in the python dict[str, Any]
+                    format).
+                  ja_JP: Tool arguments (JSON string in the python dict[str, Any]
+                    format).
+                  pt_BR: Tool arguments (JSON string in the python dict[str, Any]
+                    format).
+                  zh_Hans: 工具的参数，JSON格式的字符串（Python dict[str, Any]格式）。
+                label:
+                  en_US: Arguments
+                  ja_JP: Arguments
+                  pt_BR: Arguments
+                  zh_Hans: 参数
+                llm_description: Tool arguments (JSON string in the python dict[str,
+                  Any] format).
+                max: null
+                min: null
+                name: arguments
+                options: []
+                placeholder: null
+                precision: null
+                required: false
+                scope: null
+                template: null
+                type: string
+              settings: {}
+              tool_description: 通过HTTP with SSE传输来调用MCP服务端工具。
+              tool_label: 调用MCP工具
+              tool_name: mcp_call_tool
+              type: builtin
+        agent_strategy_label: MCP FunctionCalling
+        agent_strategy_name: function_calling
+        agent_strategy_provider_name: hjlarry/agent/mcp_agent
+        desc: ''
+        output_schema: null
+        plugin_unique_identifier: hjlarry/agent:0.0.1@f42a5a80b1c77fd0655c755b70ad08da47ceb1acc3638cf13a0eb9ed42b3a128
+        selected: false
+        title: 文生视频Agent
+        type: agent
+      height: 197
+      id: '17498061130260'
+      position:
+        x: 1037.4252645253553
+        y: 342.4047535684233
+      positionAbsolute:
+        x: 1037.4252645253553
+        y: 342.4047535684233
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: '{{#17498061130260.text#}}
+
+          {{#17498061130260.files#}}'
+        desc: ''
+        selected: false
+        title: 文生视频回复
+        type: answer
+        variables: []
+      height: 123
+      id: '17498062846900'
+      position:
+        x: 1467.0633307513958
+        y: 337.8576038238046
+      positionAbsolute:
+        x: 1467.0633307513958
+        y: 337.8576038238046
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        agent_parameters:
+          instruction:
+            type: constant
+            value: 请根据用输入的信息{{#1748874215740.prompt#}}调用image_to_video 方法
+          mcp_server:
+            type: constant
+            value: http://14.103.204.132:8002/sse
+          model:
+            type: constant
+            value:
+              completion_params: {}
+              mode: chat
+              model: Qwen/Qwen3-8B
+              model_type: llm
+              provider: langgenius/siliconflow/siliconflow
+              type: model-selector
+          query:
+            type: constant
+            value: '{{#1748874215740.prompt#}}'
+          tools:
+            type: constant
+            value:
+            - enabled: true
+              extra:
+                description: 通过HTTP with SSE传输来列出MCP服务端工具。
+              parameters:
+                headers:
+                  auto: 1
+                  value: null
+                server_url:
+                  auto: 1
+                  value: null
+                sse_read_timeout:
+                  auto: 1
+                  value: null
+                timeout:
+                  auto: 1
+                  value: null
+              provider_name: arrenxxxxx/mcp_config_during_use/mcp_config
+              schemas:
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: The URL of the MCP Server with SSE endpoint.
+                  ja_JP: The URL of the MCP Server with SSE endpoint.
+                  pt_BR: The URL of the MCP Server with SSE endpoint.
+                  zh_Hans: MCP服务器的SSE端点URL。
+                label:
+                  en_US: Server URL
+                  ja_JP: Server URL
+                  pt_BR: Server URL
+                  zh_Hans: 服务器地址
+                llm_description: The URL of the MCP Server with SSE endpoint.
+                max: null
+                min: null
+                name: server_url
+                options: []
+                placeholder: null
+                precision: null
+                required: true
+                scope: null
+                template: null
+                type: string
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: HTTP headers in JSON format (e.g. {"Authorization":"Bearer
+                    token"}).
+                  ja_JP: HTTP headers in JSON format (e.g. {"Authorization":"Bearer
+                    token"}).
+                  pt_BR: HTTP headers in JSON format (e.g. {"Authorization":"Bearer
+                    token"}).
+                  zh_Hans: HTTP请求头，JSON格式（例如：{"Authorization":"Bearer token"}）。
+                label:
+                  en_US: Headers
+                  ja_JP: Headers
+                  pt_BR: Headers
+                  zh_Hans: 请求头
+                llm_description: HTTP headers in JSON format (e.g. {"Authorization":"Bearer
+                  token"}).
+                max: null
+                min: null
+                name: headers
+                options: []
+                placeholder: null
+                precision: null
+                required: false
+                scope: null
+                template: null
+                type: string
+              - auto_generate: null
+                default: 60
+                form: llm
+                human_description:
+                  en_US: HTTP request timeout in seconds.
+                  ja_JP: HTTP request timeout in seconds.
+                  pt_BR: HTTP request timeout in seconds.
+                  zh_Hans: HTTP请求超时时间（秒）。
+                label:
+                  en_US: Timeout
+                  ja_JP: Timeout
+                  pt_BR: Timeout
+                  zh_Hans: 超时时间
+                llm_description: HTTP request timeout in seconds.
+                max: null
+                min: null
+                name: timeout
+                options: []
+                placeholder: null
+                precision: null
+                required: false
+                scope: null
+                template: null
+                type: number
+              - auto_generate: null
+                default: 300
+                form: llm
+                human_description:
+                  en_US: SSE read timeout in seconds (time to wait for SSE events).
+                  ja_JP: SSE read timeout in seconds (time to wait for SSE events).
+                  pt_BR: SSE read timeout in seconds (time to wait for SSE events).
+                  zh_Hans: SSE读取超时时间（秒）（等待SSE事件的时间）。
+                label:
+                  en_US: SSE Read Timeout
+                  ja_JP: SSE Read Timeout
+                  pt_BR: SSE Read Timeout
+                  zh_Hans: SSE读取超时
+                llm_description: SSE read timeout in seconds (time to wait for SSE
+                  events).
+                max: null
+                min: null
+                name: sse_read_timeout
+                options: []
+                placeholder: null
+                precision: null
+                required: false
+                scope: null
+                template: null
+                type: number
+              settings: {}
+              tool_description: 通过HTTP with SSE传输来列出MCP服务端工具。
+              tool_label: 列出MCP工具
+              tool_name: mcp_list_tools
+              type: builtin
+            - enabled: true
+              extra:
+                description: 通过HTTP with SSE传输来调用MCP服务端工具。
+              parameters:
+                arguments:
+                  auto: 1
+                  value: null
+                headers:
+                  auto: 1
+                  value: null
+                server_url:
+                  auto: 1
+                  value: null
+                sse_read_timeout:
+                  auto: 1
+                  value: null
+                timeout:
+                  auto: 1
+                  value: null
+                tool_name:
+                  auto: 1
+                  value: null
+              provider_name: arrenxxxxx/mcp_config_during_use/mcp_config
+              schemas:
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: The URL of the MCP Server with SSE endpoint.
+                  ja_JP: The URL of the MCP Server with SSE endpoint.
+                  pt_BR: The URL of the MCP Server with SSE endpoint.
+                  zh_Hans: MCP服务器的SSE端点URL。
+                label:
+                  en_US: Server URL
+                  ja_JP: Server URL
+                  pt_BR: Server URL
+                  zh_Hans: 服务器地址
+                llm_description: The URL of the MCP Server with SSE endpoint.
+                max: null
+                min: null
+                name: server_url
+                options: []
+                placeholder: null
+                precision: null
+                required: true
+                scope: null
+                template: null
+                type: string
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: HTTP headers in JSON format (e.g. {"Authorization":"Bearer
+                    token"}).
+                  ja_JP: HTTP headers in JSON format (e.g. {"Authorization":"Bearer
+                    token"}).
+                  pt_BR: HTTP headers in JSON format (e.g. {"Authorization":"Bearer
+                    token"}).
+                  zh_Hans: HTTP请求头，JSON格式（例如：{"Authorization":"Bearer token"}）。
+                label:
+                  en_US: Headers
+                  ja_JP: Headers
+                  pt_BR: Headers
+                  zh_Hans: 请求头
+                llm_description: HTTP headers in JSON format (e.g. {"Authorization":"Bearer
+                  token"}).
+                max: null
+                min: null
+                name: headers
+                options: []
+                placeholder: null
+                precision: null
+                required: false
+                scope: null
+                template: null
+                type: string
+              - auto_generate: null
+                default: 60
+                form: llm
+                human_description:
+                  en_US: HTTP request timeout in seconds.
+                  ja_JP: HTTP request timeout in seconds.
+                  pt_BR: HTTP request timeout in seconds.
+                  zh_Hans: HTTP请求超时时间（秒）。
+                label:
+                  en_US: Timeout
+                  ja_JP: Timeout
+                  pt_BR: Timeout
+                  zh_Hans: 超时时间
+                llm_description: HTTP request timeout in seconds.
+                max: null
+                min: null
+                name: timeout
+                options: []
+                placeholder: null
+                precision: null
+                required: false
+                scope: null
+                template: null
+                type: number
+              - auto_generate: null
+                default: 300
+                form: llm
+                human_description:
+                  en_US: SSE read timeout in seconds (time to wait for SSE events).
+                  ja_JP: SSE read timeout in seconds (time to wait for SSE events).
+                  pt_BR: SSE read timeout in seconds (time to wait for SSE events).
+                  zh_Hans: SSE读取超时时间（秒）（等待SSE事件的时间）。
+                label:
+                  en_US: SSE Read Timeout
+                  ja_JP: SSE Read Timeout
+                  pt_BR: SSE Read Timeout
+                  zh_Hans: SSE读取超时
+                llm_description: SSE read timeout in seconds (time to wait for SSE
+                  events).
+                max: null
+                min: null
+                name: sse_read_timeout
+                options: []
+                placeholder: null
+                precision: null
+                required: false
+                scope: null
+                template: null
+                type: number
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: Name of the tool to execute.
+                  ja_JP: Name of the tool to execute.
+                  pt_BR: Name of the tool to execute.
+                  zh_Hans: 要执行的工具的名称。
+                label:
+                  en_US: Tool Name
+                  ja_JP: Tool Name
+                  pt_BR: Tool Name
+                  zh_Hans: 工具名称
+                llm_description: Name of the tool to execute.
+                max: null
+                min: null
+                name: tool_name
+                options: []
+                placeholder: null
+                precision: null
+                required: true
+                scope: null
+                template: null
+                type: string
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: Tool arguments (JSON string in the python dict[str, Any]
+                    format).
+                  ja_JP: Tool arguments (JSON string in the python dict[str, Any]
+                    format).
+                  pt_BR: Tool arguments (JSON string in the python dict[str, Any]
+                    format).
+                  zh_Hans: 工具的参数，JSON格式的字符串（Python dict[str, Any]格式）。
+                label:
+                  en_US: Arguments
+                  ja_JP: Arguments
+                  pt_BR: Arguments
+                  zh_Hans: 参数
+                llm_description: Tool arguments (JSON string in the python dict[str,
+                  Any] format).
+                max: null
+                min: null
+                name: arguments
+                options: []
+                placeholder: null
+                precision: null
+                required: false
+                scope: null
+                template: null
+                type: string
+              settings: {}
+              tool_description: 通过HTTP with SSE传输来调用MCP服务端工具。
+              tool_label: 调用MCP工具
+              tool_name: mcp_call_tool
+              type: builtin
+        agent_strategy_label: MCP FunctionCalling
+        agent_strategy_name: function_calling
+        agent_strategy_provider_name: hjlarry/agent/mcp_agent
+        desc: ''
+        output_schema: null
+        plugin_unique_identifier: hjlarry/agent:0.0.1@f42a5a80b1c77fd0655c755b70ad08da47ceb1acc3638cf13a0eb9ed42b3a128
+        selected: false
+        title: '图生视频Agent '
+        type: agent
+      height: 197
+      id: '17498064656760'
+      position:
+        x: 1048.9122483031251
+        y: 738.9526352998793
+      positionAbsolute:
+        x: 1048.9122483031251
+        y: 738.9526352998793
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: The unit is Yuan, between 1 and 200.
+            ja_JP: The unit is Yuan, between 1 and 200.
+            pt_BR: The unit is Yuan, between 1 and 200.
+            zh_Hans: 以元为单位，1元至200元之间。例如1.25
+          label:
+            en_US: Order Price
+            ja_JP: Order Price
+            pt_BR: Order Price
+            zh_Hans: 订单价格
+          llm_description: the price of the order
+          max: 200
+          min: 1
+          name: money
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: number
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: Choose a friendly order title is helpful for pay
+            ja_JP: Choose a friendly order title is helpful for pay
+            pt_BR: Choose a friendly order title is helpful for pay
+            zh_Hans: 选择一个友好的订单标题，用户更容易付款
+          label:
+            en_US: Order Title
+            ja_JP: Order Title
+            pt_BR: Order Title
+            zh_Hans: 订单标题
+          llm_description: ''
+          max: null
+          min: null
+          name: title
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: The order's description
+            ja_JP: The order's description
+            pt_BR: The order's description
+            zh_Hans: 订单的详细信息描述
+          label:
+            en_US: Order Description
+            ja_JP: Order Description
+            pt_BR: Order Description
+            zh_Hans: 订单描述
+          llm_description: ''
+          max: null
+          min: null
+          name: desc
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        params:
+          desc: ''
+          money: ''
+          title: ''
+        provider_id: hjlarry/small_pay/small_pay
+        provider_name: hjlarry/small_pay/small_pay
+        provider_type: builtin
+        selected: false
+        title: 创建订单
+        tool_configurations:
+          desc: 小灰灰-文生视频订单产生费用
+          title: 小灰灰-文生视频订单
+        tool_description: 使用此工具创建订单并获取支付二维码
+        tool_label: 创建订单
+        tool_name: create_order
+        tool_parameters:
+          money:
+            type: constant
+            value: 1
+        type: tool
+      height: 115
+      id: '1749880213564'
+      position:
+        x: 1037.4252645253553
+        y: 577.6468952776535
+      positionAbsolute:
+        x: 1037.4252645253553
+        y: 577.6468952776535
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: '请使用微信扫描以下二维码，并在2分钟内完成支付，支付成功后即可开始对话。
+
+
+          {{#1749880213564.files#}}'
+        desc: ''
+        selected: false
+        title: 创建支付订单回复
+        type: answer
+        variables: []
+      height: 136
+      id: '1749880285917'
+      position:
+        x: 1340.940981106895
+        y: 572.5810537170545
+      positionAbsolute:
+        x: 1340.940981106895
+        y: 572.5810537170545
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Optional. If not filled, it will try to query the order number
+              according to the conversation ID.
+            ja_JP: Optional. If not filled, it will try to query the order number
+              according to the conversation ID.
+            pt_BR: Optional. If not filled, it will try to query the order number
+              according to the conversation ID.
+            zh_Hans: 选填。如果不填写，则会尝试根据会话ID查询订单号。
+          label:
+            en_US: Order Number
+            ja_JP: Order Number
+            pt_BR: Order Number
+            zh_Hans: 订单号
+          llm_description: ''
+          max: null
+          min: null
+          name: order_no
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        params:
+          order_no: ''
+        provider_id: hjlarry/small_pay/small_pay
+        provider_name: hjlarry/small_pay/small_pay
+        provider_type: builtin
+        selected: false
+        title: 查询订单
+        tool_configurations: {}
+        tool_description: 使用此工具查询订单状态
+        tool_label: 查询订单
+        tool_name: query_order
+        tool_parameters:
+          order_no:
+            type: mixed
+            value: '{{#1749880213564.text#}}'
+        type: tool
+      height: 53
+      id: '1749880352819'
+      position:
+        x: 1642.940981106895
+        y: 572.5810537170545
+      positionAbsolute:
+        x: 1642.940981106895
+        y: 572.5810537170545
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: contains
+            id: 1f8e45f9-08f3-4540-9ce4-a7d279bc7b2b
+            value: 支付成功
+            varType: string
+            variable_selector:
+            - '1749880352819'
+            - text
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 判断支付成功
+        type: if-else
+      height: 125
+      id: '1749880389568'
+      position:
+        x: 1970.4113420158774
+        y: 585.0896999946543
+      positionAbsolute:
+        x: 1970.4113420158774
+        y: 585.0896999946543
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        desc: ''
+        items:
+        - input_type: constant
+          operation: set
+          value: 1
+          variable_selector:
+          - conversation
+          - paycount
+          write_mode: over-write
+        selected: false
+        title: 变量赋值
+        type: assigner
+        version: '2'
+      height: 87
+      id: '1749880449416'
+      position:
+        x: 2287.810357643813
+        y: 612.6263919355151
+      positionAbsolute:
+        x: 2287.810357643813
+        y: 612.6263919355151
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: 支付成功，本次付款可以进行1次文生视频，尽情的使用吧！
+        desc: ''
+        selected: false
+        title: 支付成功
+        type: answer
+        variables: []
+      height: 117
+      id: '1749880508134'
+      position:
+        x: 2586.242790537326
+        y: 607.9612269084447
+      positionAbsolute:
+        x: 2586.242790537326
+        y: 607.9612269084447
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: '='
+            id: 95c87a03-0a2c-4bfa-8b41-293337983386
+            value: '0'
+            varType: number
+            variable_selector:
+            - conversation
+            - paycount
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 图生视频条件判断
+        type: if-else
+      height: 125
+      id: '1749880623831'
+      position:
+        x: 681.675550216476
+        y: 572.5810537170545
+      positionAbsolute:
+        x: 681.675550216476
+        y: 572.5810537170545
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        desc: ''
+        items:
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1749884771528'
+          - result
+          variable_selector:
+          - conversation
+          - paycount
+          write_mode: over-write
+        selected: true
+        title: 变量赋值文生视频
+        type: assigner
+        version: '2'
+      height: 87
+      id: '1749883667850'
+      position:
+        x: 1739.1359149708092
+        y: 487.4286818510247
+      positionAbsolute:
+        x: 1739.1359149708092
+        y: 487.4286818510247
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "def main(arg1: str) -> dict:\n    return {\n        \"result\": int(arg1)\
+          \ - 1,\n    }"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: number
+        selected: false
+        title: 文生视频代码执行
+        type: code
+        variables:
+        - value_selector:
+          - conversation
+          - paycount
+          variable: arg1
+      height: 53
+      id: '1749884771528'
+      position:
+        x: 1436.2829464623849
+        y: 482.4268631360997
+      positionAbsolute:
+        x: 1436.2829464623849
+        y: 482.4268631360997
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "def main(arg1: str) -> dict:\n    return {\n        \"result\": int(arg1)\
+          \ - 1,\n    }"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: number
+        selected: false
+        title: 图生视频代码执行
+        type: code
+        variables:
+        - value_selector:
+          - conversation
+          - paycount
+          variable: arg1
+      height: 53
+      id: '1749884821786'
+      position:
+        x: 1436.2829464623849
+        y: 893.6934268294548
+      positionAbsolute:
+        x: 1436.2829464623849
+        y: 893.6934268294548
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        desc: ''
+        items:
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1749884821786'
+          - result
+          variable_selector:
+          - conversation
+          - paycount
+          write_mode: over-write
+        selected: false
+        title: 变量赋值 3
+        type: assigner
+        version: '2'
+      height: 87
+      id: '1749884892364'
+      position:
+        x: 1738.2829464623849
+        y: 893.6934268294548
+      positionAbsolute:
+        x: 1738.2829464623849
+        y: 893.6934268294548
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: '>'
+            id: 33a9fb21-28ed-4f06-bf33-204fdab9a50d
+            value: '0'
+            varType: number
+            variable_selector:
+            - conversation
+            - paycount
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 文生视频条件判断
+        type: if-else
+      height: 125
+      id: '1749885007254'
+      position:
+        x: 690
+        y: 399.4882253746906
+      positionAbsolute:
+        x: 690
+        y: 399.4882253746906
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: -602.178101072961
+      y: -317.5992829525071
+      zoom: 1.0717734465954576
