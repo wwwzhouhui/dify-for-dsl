@@ -30,6 +30,7 @@
 
 | DSL清单名称                              | 工作流显示                         | 用到技术                                                     | 更新时间                                                 | 作者                                       | 适用dify版本                               |
 | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------------------------------------- |
+| 中药科普知识工作流.yml | ![image-20250617225402249](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250617225402249.png.png) | 开始节点、AGENT、直接回复、自定义MCP-Server | 2025年6月18日 | wwwzhouhui | 1.4.0 |
 | 豆包文本生成图、文生视频+小支付功能 | ![image-20250614151812492](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250614151812492.png.png) | 开始节点、条件分支、AGENT、小支付、直接回复 | 2025年6月14日 | wwwzhouhui | 1.4.0 |
 | N8N+Dify 打造新闻定时推送流.yml | ![image-20250610152751289](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250610152751289.png) | 条件分支、rookie_rss(第三方工具)、变量聚合器、代码执行、llm文本模型、获取时间（第三方工具）、163SMTP邮件发送 | 2025年6月10日 | wwwzhouhui | 1.4.0 |
 | Dify+RSS 聚合 8 大平台实时热点，新闻获取效率飙升 300%.yml | ![image-20250609171838135](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250609171838135.png.png) | 条件分支、rookie_rss(第三方工具)、变量聚合器、代码执行、llm文本模型、获取时间（第三方工具） | 2025年6月9日 | wwwzhouhui | 1.4.0 |
@@ -116,6 +117,8 @@
 
 
 ## 更新说明
+
+2025年6月18日-version 0.0.3.28：增加中药科普知识工作流.yml 后端代码https://github.com/wwwzhouhui/dify-for-dsl/tree/main/mcp/FastMCP/zhongyao-mcp-server.py
 
 2025年6月14日-version 0.0.3.27：增加豆包文本生成图、文生视频+小支付功能.yml 后端代码https://github.com/wwwzhouhui/dify-for-dsl/tree/main/mcp/FastMCP/doubao_mcp_ai_server2.py
 
