@@ -433,7 +433,7 @@ PIP_MIRROR_URL=https://pypi.tuna.tsinghua.edu.cn/simple <br>
 
 ## 技术交流群
 
-![image-20250614204108952](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250614204108952.png)
+![image-20250618133659289](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250618133659289.png)
 
 
 
