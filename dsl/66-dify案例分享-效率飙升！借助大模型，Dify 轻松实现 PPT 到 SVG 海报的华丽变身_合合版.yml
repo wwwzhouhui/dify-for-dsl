@@ -1,0 +1,390 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 66-dify案例分享-效率飙升！借助大模型，Dify 轻松实现 PPT 到 SVG 海报的华丽变身_合合版
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.16@77274df8fe2632cac66bfd153fcc75aa5e96abbe92b5c611b8984ad9f4cd4457
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: textin/pdf2markdown:1.1.0@b07a97720ff1f7bac9595eef5febbffd3a1cc6514e86d2d91d1d8cee927758a8
+kind: app
+version: 0.3.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions: []
+      allowed_file_types:
+      - document
+      allowed_file_upload_methods:
+      - remote_url
+      - local_file
+      enabled: true
+      fileUploadConfig:
+        audio_file_size_limit: 500
+        batch_count_limit: 10
+        file_size_limit: 100
+        image_file_size_limit: 100
+        video_file_size_limit: 500
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1750402968238-source-1750554197380-target
+      source: '1750402968238'
+      sourceHandle: source
+      target: '1750554197380'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: tool
+      id: 1744785564443-source-1750558752576-target
+      source: '1744785564443'
+      sourceHandle: source
+      target: '1750558752576'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: code
+      id: 1750558752576-source-1750559733255-target
+      source: '1750558752576'
+      sourceHandle: source
+      target: '1750559733255'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: llm
+      id: 1750559733255-source-1750402968238-target
+      source: '1750559733255'
+      sourceHandle: source
+      target: '1750402968238'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: file
+          max_length: 48
+          options: []
+          required: true
+          type: file
+          variable: file
+      height: 89
+      id: '1744785564443'
+      position:
+        x: -31.341962120695257
+        y: 223.38017555061964
+      positionAbsolute:
+        x: -31.341962120695257
+        y: 223.38017555061964
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: gemini-2.5-flash-preview-05-20
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 50266a16-5614-423c-9641-9f63e5754699
+          role: system
+          text: "# Role: SVG海报设计专家\n\n## Profile\n- Author: 周辉\n- Version: 1.0\n-\
+            \ Language: 中文\n- Description: 我是一位专业的平面设计师和SVG技术专家，擅长将结构化的商业演示文稿（PPT）内容，提炼并转化为专业、信息丰富且视觉美观的多页A4宣传海报。我能够直接输出高质量、可直接使用的SVG代码。\n\
+            \n## Skills\n1.  **内容提炼与结构化**: 深度理解用户提供的PPT文字内容[1]，精准捕捉并梳理其核心逻辑，如：客户痛点、产品优势、解决方案、应用场景等。\n\
+            2.  **视觉与布局设计**:\n    -   根据内容进行专业的视觉布局，设计符合商业场景的、多页A4尺寸海报。\n    -   确保信息层次分明，使用标题、副标题、正文、列表等元素，实现良好的可读性。\n\
+            \    -   采用统一的商务色调（如蓝、灰、白），营造专业、稳重的视觉风格。\n3.  **SVG代码生成**:\n    -   精通SVG语法，能够生成结构清晰、代码简洁且符合W3C标准的SVG代码。\n\
+            \    -   代码中应包含字体、颜色、尺寸等样式定义，方便后续修改和维护。\n    -   能够将多页内容分别生成为独立的、完整的SVG代码块[previous_conversation]。\n\
+            4.  **图标设计与嵌入**: 能够根据场景内容（如“安全”、“数据”、“权限”），智能设计并嵌入简洁、表意明确的SVG路径图标，提升海报的视觉表现力。\n\
+            5.  **迭代与定制**: 支持根据用户的具体要求进行迭代修改，例如更新联系方式、调整某个模块的布局或文案。\n\n## Rules\n\
+            1.  **最终产出**: 最终交付物**必须**是完整的、可以直接保存为 `.svg` 文件的代码块。\n2.  **禁止额外解释**:\
+            \ 除了SVG代码本身，不要生成任何额外的解释、前言或总结性文字。\n3.  **严格遵循标准**:\n    -   严格遵循A4纸张尺寸（`width=\"\
+            210mm\" height=\"297mm\"`）和对应的 `viewBox` 比例。\n    -   字体应使用通用、跨平台的安全字体（如\
+            \ `Arial, 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif`）。\n4.  **分页处理**:\
+            \ 若内容需要多页展示，**必须**为每一页生成一个独立的、完整的SVG代码块，并明确标注页码，如在代码注释或标题中注明“第1页”、“第2页”[previous_conversation]。\n\
+            5.  **保持角色**: 始终以专业设计师的身份进行沟通和创作，确保产出物的专业性。\n\n## Workflow\n1.  **接收需求**:\
+            \ 首先，我会请用户提供PPT的核心文字内容[1]。用户可以分点、分段或直接粘贴相关页面的文本。\n2.  **信息确认**: 如果信息不足或不清晰，我会主动提问以确认设计要点，例如：\n\
+            \    -   \"海报的核心目标是什么？（是突出痛点，还是展示应用场景？）\"\n    -   \"是否有特定的品牌色调或Logo需要整合？\"\
+            \n    -   \"最终需要生成几页海报？\"\n3.  **设计与生成**:\n    -   **第一步**: 根据提炼的信息，进行整体构思和布局设计。\n\
+            \    -   **第二步**: 生成第一页（通常是痛点与核心优势）的SVG代码。\n    -   **第三步**: 按顺序生成后续页面（如应用场景、联系方式）的SVG代码。\n\
+            4.  **交付与反馈**: 交付所有页面的SVG代码，并等待用户的反馈。如果用户提出修改意见，我将基于`Skills-5`进行快速迭代。\n\
+            \n## Initialization\n作为一名<Role>，我将严格遵守<Rules>，并使用默认的<Language>与您交流。现在，请开始吧。\n\
+            你好，我是您的专属SVG海报设计专家。请将您的PPT核心内容或关键要点告诉我，我将为您把它转换成专业、精美的SVG宣传海报。您可以指定海报的页数、风格和需要突出的信息，让我们即刻开始创作！"
+        - id: c49795e9-f6f3-4338-957e-a99efd848077
+          role: user
+          text: 请根据这个{{#1750559733255.result#}}帮我生成一个宣传海报，1-2页A4纸张内容覆盖内容即可，可以使用SVG方式生成
+        selected: true
+        title: 生成 SVG海报设计专家
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1750402968238'
+      position:
+        x: 857.2560767600751
+        y: 223.38017555061964
+      positionAbsolute:
+        x: 857.2560767600751
+        y: 223.38017555061964
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: ' {{#1750402968238.text#}}'
+        desc: ''
+        selected: false
+        title: ' SVG海报'
+        type: answer
+        variables: []
+      height: 104
+      id: '1750554197380'
+      position:
+        x: 1169.324583090553
+        y: 218.833025806001
+      positionAbsolute:
+        x: 1169.324583090553
+        y: 218.833025806001
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Image or PDF URL
+            ja_JP: Image or PDF URL
+            pt_BR: Image or PDF URL
+            zh_Hans: 图片、PDF等文件在线链接地址
+          label:
+            en_US: Image or PDF URL
+            ja_JP: Image or PDF URL
+            pt_BR: Image or PDF URL
+            zh_Hans: 图片、PDF等文件在线链接地址
+          llm_description: Image or PDF URL
+          max: null
+          min: null
+          name: url
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: x-ti-app-id
+            ja_JP: x-ti-app-id
+            pt_BR: x-ti-app-id
+            zh_Hans: textin开发者账号的 x-ti-app-id
+          label:
+            en_US: x-ti-app-id
+            ja_JP: x-ti-app-id
+            pt_BR: x-ti-app-id
+            zh_Hans: textin开发者账号的 x-ti-app-id
+          llm_description: x-ti-app-id
+          max: null
+          min: null
+          name: app_id
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: x-ti-secret-code
+            ja_JP: x-ti-secret-code
+            pt_BR: x-ti-secret-code
+            zh_Hans: textin开发者账号的 x-ti-secret-code
+          label:
+            en_US: x-ti-secret-code
+            ja_JP: x-ti-secret-code
+            pt_BR: x-ti-secret-code
+            zh_Hans: textin开发者账号的 x-ti-secret-code
+          llm_description: x-ti-secret-code
+          max: null
+          min: null
+          name: secret_code
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: Additional options (JSON string)
+            ja_JP: Additional options (JSON string)
+            pt_BR: Additional options (JSON string)
+            zh_Hans: 更多自定义参数，以 JSON 字符串传入，参考 textin 官方应用示例，如 '{"page_count":1}'
+          label:
+            en_US: Additional options (JSON string)
+            ja_JP: Additional options (JSON string)
+            pt_BR: Additional options (JSON string)
+            zh_Hans: 更多自定义参数，以 JSON 字符串传入，参考 textin 官方应用示例，如 '{"page_count":1}'
+          llm_description: Additional options (JSON string)
+          max: null
+          min: null
+          name: options
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        params:
+          app_id: ''
+          options: ''
+          secret_code: ''
+          url: ''
+        provider_id: textin/pdf2markdown/pdf2markdown
+        provider_name: textin/pdf2markdown/pdf2markdown
+        provider_type: builtin
+        selected: false
+        title: 通用文档解析
+        tool_configurations:
+          app_id: 
+          options: null
+          secret_code: 
+        tool_description: 专为大语言模型（LLM）下游任务设计，能够识别文档或图片中的文字信息，并智能还原文档的阅读顺序，输出标准化的Markdown格式。服务支持OCR识别，覆盖10+种常见文档版式，支持52+种语言，助力各类大模型在理解、生成、问答等场景中更高效地利用文档内容。
+        tool_label: 通用文档解析
+        tool_name: pdf2markdown
+        tool_parameters:
+          url:
+            type: mixed
+            value: '{{#1744785564443.file.url#}}'
+        type: tool
+      height: 141
+      id: '1750558752576'
+      position:
+        x: 289.6044951485494
+        y: 223.38017555061964
+      positionAbsolute:
+        x: 289.6044951485494
+        y: 223.38017555061964
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "import json\ndef main(arg1: str) -> dict: # 修改返回类型为 str\n    # 如果传入的是字典，直接使用；如果是字符串，则解析\n\
+          \    if isinstance(arg1, str):\n        data = json.loads(arg1)\n    elif\
+          \ isinstance(arg1, list):\n            # 如果是列表，取第一个元素\n        data = arg1[0]\
+          \ if arg1 else {}\n    elif isinstance(arg1, dict):\n            # 如果已经是字典，直接使用\n\
+          \        data = arg1\n    else:\n        # 其他类型，返回错误\n        return {\"\
+          result\": \"\", \"error\": f\"不支持的输入类型: {type(arg1)}\"}\n    markdown =\
+          \ data['markdown']\n    \n    return {\n        \"result\": markdown,\n\
+          \    }"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行
+        type: code
+        variables:
+        - value_selector:
+          - '1750558752576'
+          - json
+          variable: arg1
+      height: 53
+      id: '1750559733255'
+      position:
+        x: 571.5435011398671
+        y: 223.38017555061964
+      positionAbsolute:
+        x: 571.5435011398671
+        y: 223.38017555061964
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: 10.406522029430562
+      y: 57.13368349390612
+      zoom: 1.319507897689247

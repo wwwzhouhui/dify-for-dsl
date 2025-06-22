@@ -30,6 +30,8 @@
 
 | DSL清单名称                              | 工作流显示                         | 用到技术                                                     | 更新时间                                                 | 作者                                       | 适用dify版本                               |
 | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------------------------------------- |
+| Dify 轻松实现 PPT 到 SVG 海报的华丽变身_合合版.yml | ![image-20250622174547135](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250622174547135.png) | 开始、合合通用文档解析、LLM大语言模型、直接回复 | 2025年6月22日 | wwwzhouhui | 1.4.3 |
+| Dify 轻松实现 PPT 到 SVG 海报的华丽变身-MinerU版.yml | ![image-20250622174454713](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250622174454713.png) | 开始、MinerU、LLM大语言模型、直接回复 | 2025年6月22日 | wwwzhouhui | 1.4.3 |
 | 中药科普知识工作流.yml | ![image-20250617225402249](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250617225402249.png.png) | 开始节点、AGENT、直接回复、自定义MCP-Server | 2025年6月18日 | 醒醒、wwwzhouhui | 1.4.0 |
 | 豆包文本生成图、文生视频+小支付功能 | ![image-20250614151812492](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250614151812492.png.png) | 开始节点、条件分支、AGENT、小支付、直接回复 | 2025年6月14日 | wwwzhouhui | 1.4.0 |
 | N8N+Dify 打造新闻定时推送流.yml | ![image-20250610152751289](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250610152751289.png) | 条件分支、rookie_rss(第三方工具)、变量聚合器、代码执行、llm文本模型、获取时间（第三方工具）、163SMTP邮件发送 | 2025年6月10日 | wwwzhouhui | 1.4.0 |
@@ -117,6 +119,8 @@
 
 
 ## 更新说明
+
+2025年6月22日-version 0.0.3.29：增加Dify 轻松实现 PPT 到 SVG 海报的华丽变身_合合版.yml,Dify 轻松实现 PPT 到 SVG 海报的华丽变身-MinerU版.yml
 
 2025年6月18日-version 0.0.3.28：增加中药科普知识工作流.yml 后端代码https://github.com/wwwzhouhui/dify-for-dsl/tree/main/mcp/FastMCP/zhongyao-mcp-server.py
 
@@ -430,10 +434,35 @@ PIP_MIRROR_URL=https://pypi.tuna.tsinghua.edu.cn/simple <br>
     **适用场景**：当容器需要访问宿主机上运行的服务（如数据库、API 接口等）时，可直接使用 `host.docker.internal` 作为宿主机的地址，避免手动查找宿主机的 IP 地址（如 `192.168.x.x` 或 `localhost`）<br>
     **本质**：Docker 会将该域名自动解析为宿主机的 IP 地址，实现容器与宿主机的网络互通。<br>
 </details>
+<details>
+<summary>字符串内容超过80000限制</summary>
+      Run failed: The length of output variable result must be less than 80000 characters<br>
+    修改.env 配置文件<br>
+    CODE MAX STRING LENGTH=800000<br>
+    TEMPLATE TRANSFORM MX LENGTH-800000<br>
+      可以参考下面图<br>
+    <img src="https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250531113229275.png" ><br>
+</details>    
+
+<details>
+<summary>文件上传超过15MB的限制</summary>
+<img src="https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250620143908372.png" ><br>
+我们需要修改.env 文件里面<br>
+UPLOAD_FILE_SIZE_LIMIT=15<br>
+把它修改成 100 <br>
+UPLOAD_FILE_SIZE_LIMIT=100<br>
+另外 Nginx 反向代理配置部分修改<br>
+NGINX_CLIENT_MAX_BODY_SIZE=15M<br>
+修改 <br>
+NGINX_CLIENT_MAX_BODY_SIZE=100M<br>
+修改后记得重启。<br>
+</details>
+
+
 
 ## 技术交流群
 
-![image-20250618133659289](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250618133659289.png)
+![image-20250622184451699](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250622184451699.png)
 
 
 
