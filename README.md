@@ -30,6 +30,7 @@
 
 | DSL清单名称                              | 工作流显示                         | 用到技术                                                     | 更新时间                                                 | 作者                                       | 适用dify版本                               |
 | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------------------------------------- |
+| 用 Dify 一键生成 长安的荔枝金句 HTML 页面，三步搞定！.yml | ![image-20250626211532393](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250626211532393.png) | 开始、Agent、LLM大语言模型、代码执行、直接回复 | 2025年6月27日 | wwwzhouhui | 1.4.3 |
 | Dify 轻松实现 PPT 到 SVG 海报的华丽变身_合合版.yml | ![image-20250622174547135](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250622174547135.png) | 开始、合合通用文档解析、LLM大语言模型、直接回复 | 2025年6月22日 | wwwzhouhui | 1.4.3 |
 | Dify 轻松实现 PPT 到 SVG 海报的华丽变身-MinerU版.yml | ![image-20250622174454713](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250622174454713.png) | 开始、MinerU、LLM大语言模型、直接回复 | 2025年6月22日 | wwwzhouhui | 1.4.3 |
 | 中药科普知识工作流.yml | ![image-20250617225402249](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250617225402249.png.png) | 开始节点、AGENT、直接回复、自定义MCP-Server | 2025年6月18日 | 醒醒、wwwzhouhui | 1.4.0 |
@@ -119,6 +120,8 @@
 
 
 ## 更新说明
+
+2025年6月27日-version 0.0.3.30：增加用 Dify 一键生成 长安的荔枝金句 HTML 页面，三步搞定！.yml后端代码复用之前的代码 https://github.com/wwwzhouhui/dify-for-dsl/tree/main/dsl/makehtml/makehtmlapi.py
 
 2025年6月22日-version 0.0.3.29：增加Dify 轻松实现 PPT 到 SVG 海报的华丽变身_合合版.yml,Dify 轻松实现 PPT 到 SVG 海报的华丽变身-MinerU版.yml
 
