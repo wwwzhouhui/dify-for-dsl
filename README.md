@@ -465,7 +465,7 @@ NGINX_CLIENT_MAX_BODY_SIZE=100M<br>
 
 ## 技术交流群
 
-![image-20250622184451699](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250622184451699.png)
+![Screenshot_20250630_142843_com.tencent.mm](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Screenshot_20250630_142843_com.tencent.mm.jpg)
 
 
 
