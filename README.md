@@ -470,9 +470,7 @@ NGINX_CLIENT_MAX_BODY_SIZE=100M<br>
 
 ## 技术交流群
 
-![Screenshot_20250630_142843_com.tencent.mm](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Screenshot_20250630_142843_com.tencent.mm.jpg)
-
-
+![Screenshot_20250708_164428_com.tencent.mm](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Screenshot_20250708_164428_com.tencent.mm.jpg)
 
 ## Star History
 
