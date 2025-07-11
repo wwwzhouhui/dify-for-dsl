@@ -123,8 +123,8 @@
 
 ## 更新说明
 2025年7月11日-version 0.0.3.32：增加数学公式识别工作流，输入pdf或图片，识别出里面的数学公式，并且输出支持latex格式的可编辑word，需要安装pandoc（ https://github.com/jgm/pandoc/releases/tag/3.7.0.2 ）和laTex（ https://miktex.org/download ） 环境。
-
 https://github.com/wwwzhouhui/dify-for-dsl/tree/main/dsl/69-数学公式识别工作流.yml
+
 2025年7月3日-version 0.0.3.31：增加用 Dify 一键搭建中药科普工作流，文字 + 图片 + 视频全搞定.使用到第三方MCP_Server代码地址
 
 https://github.com/zhouqyu666/zhongyao-mcp-server
