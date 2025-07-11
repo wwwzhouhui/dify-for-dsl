@@ -1,0 +1,849 @@
+app:
+  description: 69-数学公式识别工作流
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 69-数学公式识别工作流
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/tongyi:0.0.25@2b6f549753c8fe1b8d0bda620eb0611b549d6d809da691baf0692ee75f6c507f
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.16@d41b09aca46cdd3876f70b4c91d464c4588fc0bdc844ced6ee426283ead6ce8e
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: kalochin/pdf_process:0.0.4@1fe29eabc04f0a11e79671d18adb8daa9b2ecc6dec6fdbc19e6825a15f7a236a
+kind: app
+version: 0.3.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: '你可以使用以下示例：
+
+      http://syng8gt03.hn-bkt.clouddn.com/lQLPJwPs1uWTd0HNC1rNBf-w1wU4CI8ELfwHcziGPmDRAA_1535_2906.png'
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: template-transform
+      id: 1748759390938-source-1748759736345-target
+      source: '1748759390938'
+      sourceHandle: source
+      target: '1748759736345'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: template-transform
+        targetType: if-else
+      id: 1748759736345-source-1748759775244-target
+      source: '1748759736345'
+      sourceHandle: source
+      target: '1748759775244'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: answer
+      id: 1748759775244-false-1748759826270-target
+      source: '1748759775244'
+      sourceHandle: 'false'
+      target: '1748759826270'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1748759775244-e0791876-6819-4908-b272-a46d57cdcc98-llm-target
+      source: '1748759775244'
+      sourceHandle: e0791876-6819-4908-b272-a46d57cdcc98
+      target: llm
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: tool
+      id: 1748759775244-true-1748759877060-target
+      source: '1748759775244'
+      sourceHandle: 'true'
+      target: '1748759877060'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: llm
+      id: 1748759877060-source-17487598836230-target
+      source: '1748759877060'
+      sourceHandle: source
+      target: '17487598836230'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 17487598836230-source-1748761316621-target
+      source: '17487598836230'
+      sourceHandle: source
+      target: '1748761316621'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: variable-aggregator
+      id: llm-source-1748761316621-target
+      source: llm
+      sourceHandle: source
+      target: '1748761316621'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: variable-aggregator
+        targetType: llm
+      id: 1748761316621-source-1748760896775-target
+      source: '1748761316621'
+      sourceHandle: source
+      target: '1748760896775'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: http-request
+        targetType: answer
+      id: 1752139426629-source-answer-target
+      source: '1752139426629'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: http-request
+      id: 1748760896775-source-1752139426629-target
+      source: '1748760896775'
+      sourceHandle: source
+      target: '1752139426629'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - image
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: 上传的PDF文件和图片(pdf 或图片类型(png、jpeg、jpg、bmp、tiff)
+          max_length: 48
+          options: []
+          required: true
+          type: file
+          variable: file
+      height: 90
+      id: '1748759390938'
+      position:
+        x: 84.24264068711932
+        y: 411
+      positionAbsolute:
+        x: 84.24264068711932
+        y: 411
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: '{{#sys.query#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 10
+        model:
+          completion_params: {}
+          mode: chat
+          name: qwen-vl-max-latest
+          provider: langgenius/tongyi/tongyi
+        prompt_template:
+        - id: da610f82-6ea4-4ca0-8016-b6af948afd33
+          role: system
+          text: '# Role: OCR数学公式识别专家
+
+
+            ## Profile
+
+            - Author: geek
+
+            - Version: 1.0
+
+            - Language: 中文
+
+            - Description: 完整的识别出数学公式，保留题目的完整性
+
+
+            ## Rules
+
+            1. 保证识别出题目完整
+
+            2. 公式要保留原样输出
+
+            3. 只对内容还原，不做深度题目解析
+
+
+
+            ## Example
+
+            数学领域广泛，公式众多，以下按不同分支为你列举一些常见数学公式：
+
+            算术与代数
+
+            ​乘法分配律​：a(b+c)=ab+aca(b + c)=ab + aca(b+c)=ab+ac
+
+            ​完全平方公式​：(a±b)2=a2±2ab+b2(a\pm b)^2=a^2\pm 2ab + b^2(a±b)2=a2±2ab+b2
+
+            ​平方差公式​：a2−b2=(a+b)(a−b)a^2 - b^2=(a + b)(a - b)a2−b2=(a+b)(a−b)
+
+            ​一元二次方程求根公式​：对于一元二次方程ax2+bx+c=0(a≠0)ax^{2}+bx + c = 0(a\neq0)ax2+bx+c=0(a=0)，其根为x=−b±b2−4ac2ax=\frac{-b\pm\sqrt{b^{2}-4ac}}{2a}x=2a−b±b2−4ac​​，其中Δ=b2−4ac\Delta=b^{2}-4acΔ=b2−4ac称为判别式
+
+            几何
+
+            平面几何
+
+            ​三角形面积公式​：S=12ahS=\frac{1}{2}ahS=21​ah（aaa为底边长，hhh为这条底边对应的高）
+
+            ​圆的周长公式​：C=2πrC = 2\pi rC=2πr（rrr为圆的半径）
+
+            ​圆的面积公式​：S=πr2S=\pi r^{2}S=πr2
+
+            ​勾股定理​：在直角三角形中，两直角边aaa、bbb和斜边ccc满足a2+b2=c2a^{2}+b^{2}=c^{2}a2+b2=c2
+
+            立体几何
+
+            ​长方体体积公式​：V=abcV = abcV=abc（aaa、bbb、ccc分别为长方体的长、宽、高）
+
+            ​圆柱体积公式​：V=πr2hV=\pi r^{2}hV=πr2h（rrr为底面半径，hhh为高）
+
+            ​球体体积公式​：V=43πr3V=\frac{4}{3}\pi r^{3}V=34​πr3
+
+            ​球体表面积公式​：S=4πr2S = 4\pi r^{2}S=4πr2
+
+            三角函数
+
+            ​正弦函数定义​：在直角三角形中，sin⁡α=对边斜边\sin\alpha=\frac{对边}{斜边}sinα=斜边对边​；两角和公式sin⁡(α+β)=sin⁡αcos⁡β+cos⁡αsin⁡β\sin(\alpha+\beta)=\sin\alpha\cos\beta+\cos\alpha\sin\betasin(α+β)=sinαcosβ+cosαsinβ
+
+            ​余弦函数定义​：在直角三角形中，cos⁡α=邻边斜边\cos\alpha=\frac{邻边}{斜边}cosα=斜边邻边​；两角和公式cos⁡(α+β)=cos⁡αcos⁡β−sin⁡αsin⁡β\cos(\alpha
+            + \beta)=\cos\alpha\cos\beta-\sin\alpha\sin\betacos(α+β)=cosαcosβ−sinαsinβ
+
+            ​正切函数定义​：tan⁡α=sin⁡αcos⁡α\tan\alpha=\frac{\sin\alpha}{\cos\alpha}tanα=cosαsinα​；两角和公式tan⁡(α+β)=tan⁡α+tan⁡β1−tan⁡αtan⁡β\tan(\alpha+\beta)=\frac{\tan\alpha+\tan\beta}{1
+            - \tan\alpha\tan\beta}tan(α+β)=1−tanαtanβtanα+tanβ​
+
+            解析几何
+
+            ​直线的斜截式方程​：y=kx+by = kx + by=kx+b（kkk为斜率，bbb为直线在yyy轴上的截距）
+
+            ​圆的标准方程​：(x−a)2+(y−b)2=r2(x - a)^{2}+(y - b)^{2}=r^{2}(x−a)2+(y−b)2=r2（(a,b)(a,b)(a,b)为圆心坐标，rrr为半径）
+
+            ​椭圆的标准方程​：焦点在xxx轴上时x2a2+y2b2=1(a>b>0)\frac{x^{2}}{a^{2}}+\frac{y^{2}}{b^{2}}
+            = 1(a\gt b\gt0)a2x2​+b2y2​=1(a>b>0)；焦点在yyy轴上时y2a2+x2b2=1(a>b>0)\frac{y^{2}}{a^{2}}+\frac{x^{2}}{b^{2}}
+            = 1(a\gt b\gt0)a2y2​+b2x2​=1(a>b>0)
+
+            微积分
+
+            ​导数的定义​：函数y=f(x)y = f(x)y=f(x)在x=x0x = x_0x=x0​处的导数f′(x0)=lim⁡Δx→0f(x0+Δx)−f(x0)Δxf^\prime(x_0)=\lim\limits_{\Delta
+            x\to0}\frac{f(x_0+\Delta x)-f(x_0)}{\Delta x}f′(x0​)=Δx→0lim​Δxf(x0​+Δx)−f(x0​)​
+
+            ​基本求导公式​：(xn)′=nxn−1(x^n)^\prime=nx^{n - 1}(xn)′=nxn−1，(sin⁡x)′=cos⁡x(\sin
+            x)^\prime=\cos x(sinx)′=cosx，(cos⁡x)′=−sin⁡x(\cos x)^\prime=-\sin x(cosx)′=−sinx
+
+            ​不定积分公式​：∫xndx=1n+1xn+1+C(n≠−1)\int x^n dx=\frac{1}{n + 1}x^{n+1}+C(n\neq
+            - 1)∫xndx=n+11​xn+1+C(n=−1)，∫sin⁡xdx=−cos⁡x+C\int\sin xdx=-\cos x + C∫sinxdx=−cosx+C，∫cos⁡xdx=sin⁡x+C\int\cos
+            xdx=\sin x + C∫cosxdx=sinx+C
+
+            ​定积分定义​：∫abf(x)dx=lim⁡λ→0∑i=1nf(ξi)Δxi\int_{a}^{b}f(x)dx=\lim\limits_{\lambda\to0}\sum_{i
+            = 1}^{n}f(\xi_i)\Delta x_i∫ab​f(x)dx=λ→0lim​∑i=1n​f(ξi​)Δxi​，牛顿 - 莱布尼茨公式∫abf(x)dx=F(b)−F(a)\int_{a}^{b}f(x)dx=F(b)-F(a)∫ab​f(x)dx=F(b)−F(a)，其中F(x)F(x)F(x)是f(x)f(x)f(x)的一个原函数
+
+            概率论与数理统计
+
+            ​古典概型概率公式​：P(A)=mnP(A)=\frac{m}{n}P(A)=nm​，其中nnn是基本事件总数，mmm是事件AAA所包含的基本事件数
+
+            ​期望公式​：离散型随机变量XXX的期望E(X)=∑ixipiE(X)=\sum_{i}x_ip_iE(X)=∑i​xi​pi​，连续型随机变量XXX的期望E(X)=∫−∞+∞xf(x)dxE(X)=\int_{-\infty}^{+\infty}xf(x)dxE(X)=∫−∞+∞​xf(x)dx
+
+            ​方差公式​：D(X)=E[(X−E(X))2]=E(X2)−[E(X)]2D(X)=E[(X - E(X))^2]=E(X^2)-[E(X)]^2D(X)=E[(X−E(X))2]=E(X2)−[E(X)]2'
+        - id: 42116f32-71a3-44d1-89a6-d90c133af012
+          role: user
+          text: ''
+        selected: false
+        title: (图片OCR)
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - '1748759390938'
+            - file
+          enabled: true
+      height: 96
+      id: llm
+      position:
+        x: 1014.0448207626857
+        y: 487.0224103813431
+      positionAbsolute:
+        x: 1014.0448207626857
+        y: 487.0224103813431
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '
+
+          {{#1748760896775.text#}}
+
+          {{#1752139426629.body#}}
+
+
+          '
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 124
+      id: answer
+      position:
+        x: 2875.2492602336783
+        y: 218.09243016955423
+      positionAbsolute:
+        x: 2875.2492602336783
+        y: 218.09243016955423
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        selected: false
+        template: '{{ filetype }}'
+        title: 模板转换
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1748759390938'
+          - file
+          - mime_type
+          variable: filetype
+      height: 54
+      id: '1748759736345'
+      position:
+        x: 380
+        y: 411
+      positionAbsolute:
+        x: 380
+        y: 411
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: contains
+            id: 7f3a3f53-1909-4a47-906b-333716373025
+            value: application/pdf
+            varType: string
+            variable_selector:
+            - '1748759736345'
+            - output
+          id: 'true'
+          logical_operator: and
+        - case_id: e0791876-6819-4908-b272-a46d57cdcc98
+          conditions:
+          - comparison_operator: contains
+            id: db17272a-2de5-4f80-938c-ecc6cf2d41b3
+            value: image
+            varType: string
+            variable_selector:
+            - '1748759736345'
+            - output
+          id: e0791876-6819-4908-b272-a46d57cdcc98
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 条件分支
+        type: if-else
+      height: 174
+      id: '1748759775244'
+      position:
+        x: 684
+        y: 411
+      positionAbsolute:
+        x: 684
+        y: 411
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: 您输入的文件类型不是pdf和图片，请重新上传
+        desc: ''
+        selected: false
+        title: 直接回复 2
+        type: answer
+        variables: []
+      height: 118
+      id: '1748759826270'
+      position:
+        x: 1014.0448207626857
+        y: 721.9759164321474
+      positionAbsolute:
+        x: 1014.0448207626857
+        y: 721.9759164321474
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: PDF file to convert to PNG images
+            ja_JP: PDF file to convert to PNG images
+            pt_BR: PDF file to convert to PNG images
+            zh_Hans: 要转换为PNG图片的PDF文件
+          label:
+            en_US: PDF Content
+            ja_JP: PDF Content
+            pt_BR: PDF Content
+            zh_Hans: PDF 内容
+          llm_description: PDF file content to be converted to PNG images
+          max: null
+          min: null
+          name: pdf_content
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: file
+        - auto_generate: null
+          default: 2
+          form: llm
+          human_description:
+            en_US: Zoom factor for image quality (default is 2)
+            ja_JP: Zoom factor for image quality (default is 2)
+            pt_BR: Zoom factor for image quality (default is 2)
+            zh_Hans: 图像质量的缩放因子（默认为2）
+          label:
+            en_US: Zoom Factor
+            ja_JP: Zoom Factor
+            pt_BR: Zoom Factor
+            zh_Hans: 缩放因子
+          llm_description: Zoom factor to control the quality of output PNG images
+          max: null
+          min: null
+          name: zoom
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: number
+        params:
+          pdf_content: ''
+          zoom: ''
+        provider_id: kalochin/pdf_process/pdf_process
+        provider_name: kalochin/pdf_process/pdf_process
+        provider_type: builtin
+        selected: false
+        title: PDF转PNG转换器
+        tool_configurations: {}
+        tool_description: 一个将PDF文件转换为PNG图片的工具
+        tool_label: PDF转PNG转换器
+        tool_name: pdf_to_png
+        tool_parameters:
+          pdf_content:
+            type: variable
+            value:
+            - '1748759390938'
+            - file
+        type: tool
+      height: 54
+      id: '1748759877060'
+      position:
+        x: 1014.0448207626857
+        y: 254.47786848307544
+      positionAbsolute:
+        x: 1014.0448207626857
+        y: 254.47786848307544
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: '{{#sys.query#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 10
+        model:
+          completion_params: {}
+          mode: chat
+          name: gemini-2.5-pro-preview-05-06
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: da610f82-6ea4-4ca0-8016-b6af948afd33
+          role: system
+          text: "# Role: 衡水体英语作文评分专家\n\n## Profile\n- Author: geek\n- Version: 1.0\n\
+            - Language: 中文\n- Description: 专业评估英语作文的书写规范性和内容质量，提供详细的评分依据和建议\n\n##\
+            \ Background\n你是一位专门评估衡水体英语作文的专家，精通衡水体书写规范和英语写作要求。你的主要职责是对学生的英语作文进行全方位评估，包括书写规范和内容质量两个维度。\n\
+            \n## Constraints\n- 严格遵循衡水体书写规范进行评分\n- 保持评分标准的一致性和客观性\n- 提供具体、可操作的改进建议\n\
+            - 评分范围：0-100分\n- 必须同时评估书写规范（50分）和内容质量（50分）\n\n## Skills\n- 精准识别字母书写的规范性\n\
+            - 评估作文结构和内容的完整性\n- 分析语言运用的准确性和流畅度\n- 提供有针对性的改进建议\n\n## Goals\n- 对英语作文进行全面评估\n\
+            - 给出详细的评分依据\n- 提供具体的改进建议\n\n## Workflows\n1. 书写规范评估（50分）\n   - 字母大小一致性（15分）\n\
+            \   - 间距均匀度（10分）\n   - 笔画连接规范性（10分）\n   - 字形圆润度（10分）\n   - 整体美观度（5分）\n\
+            \n2. 内容质量评估（50分）\n   - 主题明确性（10分）\n   - 结构完整性（10分）\n   - 语言流畅度（10分）\n\
+            \   - 词汇运用（10分）\n   - 句型多样性（10分）\n\n3. 评分等级划分\n   - 优秀：90-100分\n   - 良好：80-89分\n\
+            \   - 中等：70-79分\n   - 及格：60-69分\n   - 不及格：60分以下\n\n## OutputFormat\n{\n\
+            \    \"总分\": \"数字\",\n    \"书写规范得分\": {\n        \"得分\": \"数字\",\n   \
+            \     \"字母大小一致性\": \"得分 + 评价\",\n        \"间距均匀度\": \"得分 + 评价\",\n   \
+            \     \"笔画连接规范性\": \"得分 + 评价\",\n        \"字形圆润度\": \"得分 + 评价\",\n   \
+            \     \"整体美观度\": \"得分 + 评价\"\n    },\n    \"内容质量得分\": {\n        \"得分\"\
+            : \"数字\",\n        \"主题明确性\": \"得分 + 评价\",\n        \"结构完整性\": \"得分 +\
+            \ 评价\",\n        \"语言流畅度\": \"得分 + 评价\",\n        \"词汇运用\": \"得分 + 评价\"\
+            ,\n        \"句型多样性\": \"得分 + 评价\"\n    },\n    \"等级\": \"优秀/良好/中等/及格/不及格\"\
+            ,\n    \"总体评价\": \"综合评价和建议\"\n}\n\n## Rules\n1. 评分必须客观公正，有理有据\n2. 每个评分项目都需要给出具体的评分依据\n\
+            3. 建议必须具体且可操作\n4. 评分需要考虑到电子阅卷的要求\n5. 对于不同等级的作文，给出针对性的提升建议\n\n## Example\n\
+            Human: 请评价这篇英语作文的书写规范和内容质量。"
+        - id: 42116f32-71a3-44d1-89a6-d90c133af012
+          role: user
+          text: ''
+        selected: false
+        title: (pdf转图片OCR)
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - '1748759877060'
+            - files
+          enabled: true
+      height: 96
+      id: '17487598836230'
+      position:
+        x: 1403.4974902202355
+        y: 270.454900372896
+      positionAbsolute:
+        x: 1403.4974902202355
+        y: 270.454900372896
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: qwen2.5-14b-instruct
+          provider: langgenius/tongyi/tongyi
+        prompt_template:
+        - id: a88c8a60-81ba-4428-a175-2ff72be55e35
+          role: system
+          text: '数学公式识别专家
+
+            核心指令：
+
+            你是一位数学公式识别专家，专注数学公式的识别。请根据用户提交的内容，从两方面1.识别出内容的数学公式，2.并保证内容的完整性输出，不能只输出数学公式，要连题目描述一并输出。
+
+
+            书写规范：
+
+            Markdown格式返回即可
+
+            示例输出：
+
+            数学领域广泛，公式众多，以下按不同分支为你列举一些常见数学公式：
+
+            算术与代数
+
+            ​乘法分配律​：a(b+c)=ab+aca(b + c)=ab + aca(b+c)=ab+ac
+
+            ​完全平方公式​：(a±b)2=a2±2ab+b2(a\pm b)^2=a^2\pm 2ab + b^2(a±b)2=a2±2ab+b2
+
+            ​平方差公式​：a2−b2=(a+b)(a−b)a^2 - b^2=(a + b)(a - b)a2−b2=(a+b)(a−b)
+
+            ​一元二次方程求根公式​：对于一元二次方程ax2+bx+c=0(a≠0)ax^{2}+bx + c = 0(a\neq0)ax2+bx+c=0(a=0)，其根为x=−b±b2−4ac2ax=\frac{-b\pm\sqrt{b^{2}-4ac}}{2a}x=2a−b±b2−4ac​​，其中Δ=b2−4ac\Delta=b^{2}-4acΔ=b2−4ac称为判别式
+
+            几何
+
+            平面几何
+
+            ​三角形面积公式​：S=12ahS=\frac{1}{2}ahS=21​ah（aaa为底边长，hhh为这条底边对应的高）
+
+            ​圆的周长公式​：C=2πrC = 2\pi rC=2πr（rrr为圆的半径）
+
+            ​圆的面积公式​：S=πr2S=\pi r^{2}S=πr2
+
+            ​勾股定理​：在直角三角形中，两直角边aaa、bbb和斜边ccc满足a2+b2=c2a^{2}+b^{2}=c^{2}a2+b2=c2
+
+            立体几何
+
+            ​长方体体积公式​：V=abcV = abcV=abc（aaa、bbb、ccc分别为长方体的长、宽、高）
+
+            ​圆柱体积公式​：V=πr2hV=\pi r^{2}hV=πr2h（rrr为底面半径，hhh为高）
+
+            ​球体体积公式​：V=43πr3V=\frac{4}{3}\pi r^{3}V=34​πr3
+
+            ​球体表面积公式​：S=4πr2S = 4\pi r^{2}S=4πr2
+
+            三角函数
+
+            ​正弦函数定义​：在直角三角形中，sin⁡α=对边斜边\sin\alpha=\frac{对边}{斜边}sinα=斜边对边​；两角和公式sin⁡(α+β)=sin⁡αcos⁡β+cos⁡αsin⁡β\sin(\alpha+\beta)=\sin\alpha\cos\beta+\cos\alpha\sin\betasin(α+β)=sinαcosβ+cosαsinβ
+
+            ​余弦函数定义​：在直角三角形中，cos⁡α=邻边斜边\cos\alpha=\frac{邻边}{斜边}cosα=斜边邻边​；两角和公式cos⁡(α+β)=cos⁡αcos⁡β−sin⁡αsin⁡β\cos(\alpha
+            + \beta)=\cos\alpha\cos\beta-\sin\alpha\sin\betacos(α+β)=cosαcosβ−sinαsinβ
+
+            ​正切函数定义​：tan⁡α=sin⁡αcos⁡α\tan\alpha=\frac{\sin\alpha}{\cos\alpha}tanα=cosαsinα​；两角和公式tan⁡(α+β)=tan⁡α+tan⁡β1−tan⁡αtan⁡β\tan(\alpha+\beta)=\frac{\tan\alpha+\tan\beta}{1
+            - \tan\alpha\tan\beta}tan(α+β)=1−tanαtanβtanα+tanβ​
+
+            解析几何
+
+            ​直线的斜截式方程​：y=kx+by = kx + by=kx+b（kkk为斜率，bbb为直线在yyy轴上的截距）
+
+            ​圆的标准方程​：(x−a)2+(y−b)2=r2(x - a)^{2}+(y - b)^{2}=r^{2}(x−a)2+(y−b)2=r2（(a,b)(a,b)(a,b)为圆心坐标，rrr为半径）
+
+            ​椭圆的标准方程​：焦点在xxx轴上时x2a2+y2b2=1(a>b>0)\frac{x^{2}}{a^{2}}+\frac{y^{2}}{b^{2}}
+            = 1(a\gt b\gt0)a2x2​+b2y2​=1(a>b>0)；焦点在yyy轴上时y2a2+x2b2=1(a>b>0)\frac{y^{2}}{a^{2}}+\frac{x^{2}}{b^{2}}
+            = 1(a\gt b\gt0)a2y2​+b2x2​=1(a>b>0)
+
+            微积分
+
+            ​导数的定义​：函数y=f(x)y = f(x)y=f(x)在x=x0x = x_0x=x0​处的导数f′(x0)=lim⁡Δx→0f(x0+Δx)−f(x0)Δxf^\prime(x_0)=\lim\limits_{\Delta
+            x\to0}\frac{f(x_0+\Delta x)-f(x_0)}{\Delta x}f′(x0​)=Δx→0lim​Δxf(x0​+Δx)−f(x0​)​
+
+            ​基本求导公式​：(xn)′=nxn−1(x^n)^\prime=nx^{n - 1}(xn)′=nxn−1，(sin⁡x)′=cos⁡x(\sin
+            x)^\prime=\cos x(sinx)′=cosx，(cos⁡x)′=−sin⁡x(\cos x)^\prime=-\sin x(cosx)′=−sinx
+
+            ​不定积分公式​：∫xndx=1n+1xn+1+C(n≠−1)\int x^n dx=\frac{1}{n + 1}x^{n+1}+C(n\neq
+            - 1)∫xndx=n+11​xn+1+C(n=−1)，∫sin⁡xdx=−cos⁡x+C\int\sin xdx=-\cos x + C∫sinxdx=−cosx+C，∫cos⁡xdx=sin⁡x+C\int\cos
+            xdx=\sin x + C∫cosxdx=sinx+C
+
+            ​定积分定义​：∫abf(x)dx=lim⁡λ→0∑i=1nf(ξi)Δxi\int_{a}^{b}f(x)dx=\lim\limits_{\lambda\to0}\sum_{i
+            = 1}^{n}f(\xi_i)\Delta x_i∫ab​f(x)dx=λ→0lim​∑i=1n​f(ξi​)Δxi​，牛顿 - 莱布尼茨公式∫abf(x)dx=F(b)−F(a)\int_{a}^{b}f(x)dx=F(b)-F(a)∫ab​f(x)dx=F(b)−F(a)，其中F(x)F(x)F(x)是f(x)f(x)f(x)的一个原函数
+
+            概率论与数理统计
+
+            ​古典概型概率公式​：P(A)=mnP(A)=\frac{m}{n}P(A)=nm​，其中nnn是基本事件总数，mmm是事件AAA所包含的基本事件数
+
+            ​期望公式​：离散型随机变量XXX的期望E(X)=∑ixipiE(X)=\sum_{i}x_ip_iE(X)=∑i​xi​pi​，连续型随机变量XXX的期望E(X)=∫−∞+∞xf(x)dxE(X)=\int_{-\infty}^{+\infty}xf(x)dxE(X)=∫−∞+∞​xf(x)dx
+
+            ​方差公式​：D(X)=E[(X−E(X))2]=E(X2)−[E(X)]2D(X)=E[(X - E(X))^2]=E(X^2)-[E(X)]^2D(X)=E[(X−E(X))2]=E(X2)−[E(X)]2
+
+
+            输出约束：
+
+            1.不光输出数学公式，要连题目一起输出，保证题目的完整性
+
+            2.数学公式可在word或者pdf中编辑。'
+        - id: 10963b83-504d-45d3-b497-a049792ada66
+          role: user
+          text: 请根据{{#1748761316621.output#}}对这个数据内容进行完整的输出
+        selected: false
+        title: (基于json)
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 96
+      id: '1748760896775'
+      position:
+        x: 1845.4197389538967
+        y: 254.47786848307544
+      positionAbsolute:
+        x: 1845.4197389538967
+        y: 254.47786848307544
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        output_type: string
+        selected: false
+        title: 变量聚合器
+        type: variable-aggregator
+        variables:
+        - - '17487598836230'
+          - text
+        - - llm
+          - text
+      height: 130
+      id: '1748761316621'
+      position:
+        x: 1723.7019722965042
+        y: 469.363585661015
+      positionAbsolute:
+        x: 1723.7019722965042
+        y: 469.363585661015
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data:
+          - id: key-value-5873
+            key: ''
+            type: text
+            value: '{{#1748760896775.text#}}'
+          type: raw-text
+        desc: ''
+        headers: ''
+        method: post
+        params: ''
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 100
+        selected: false
+        ssl_verify: true
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: HTTP 请求
+        type: http-request
+        url: http://192.168.31.115:15001/api/latextword
+        variables: []
+      height: 140
+      id: '1752139426629'
+      position:
+        x: 2392.7702762929302
+        y: 411
+      positionAbsolute:
+        x: 2392.7702762929302
+        y: 411
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: -410.3654234024284
+      y: -187.8858689214502
+      zoom: 1.0352649238413776
