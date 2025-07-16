@@ -30,6 +30,8 @@
 
 | DSL清单名称                              | 工作流显示                         | 用到技术                                                     | 更新时间                                                 | 作者                                       | 适用dify版本                               |
 | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------------------------------------- |
+| 用 Dify 一键搭建七牛云oss工作流 | ![img](http://syng8gt03.hn-bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20250711140041.png) | 开始、Agent、LLM大语言模型、代码执行、直接回复 | 2025年7月11日 | wwwzhouhui | 1.4.3 |
+| 用 Dify 一键搭建数学公式识别工作流，支持laTex | ![img](https://dify-1305874767.cos.ap-nanjing.myqcloud.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20250711082331.png) | 开始、Agent、LLM大语言模型、代码执行、直接回复 | 2025年7月11日 | wwwzhouhui | 1.4.3 |
 | 用 Dify 一键搭建中药科普工作流，文字 + 图片 + 视频全搞定 | ![img](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/QQ_1751471812082.png) | 开始节点、AGENT、直接回复、自定义MCP-Server | 2025年7月3日 | wwwzhouhui | 1.4.3 |
 | 用 Dify 一键生成 长安的荔枝金句 HTML 页面，三步搞定！.yml | ![image-20250626211532393](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250626211532393.png) | 开始、Agent、LLM大语言模型、代码执行、直接回复 | 2025年6月27日 | wwwzhouhui | 1.4.3 |
 | Dify 轻松实现 PPT 到 SVG 海报的华丽变身_合合版.yml | ![image-20250622174547135](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250622174547135.png) | 开始、合合通用文档解析、LLM大语言模型、直接回复 | 2025年6月22日 | wwwzhouhui | 1.4.3 |
@@ -121,6 +123,12 @@
 
 
 ## 更新说明
+
+2025年7月11日-version 0.0.3.33：增加七牛云mcp工作流，需要https://github.com/qiniu/qiniu-mcp-server 环境。
+https://github.com/wwwzhouhui/dify-for-dsl/tree/main/dsl/70-dify案例分享-七牛云mcp.yml
+
+2025年7月11日-version 0.0.3.32：增加数学公式识别工作流，输入pdf或图片，识别出里面的数学公式，并且输出支持latex格式的可编辑word，需要安装pandoc（ https://github.com/jgm/pandoc/releases/tag/3.7.0.2 ）和laTex（ https://miktex.org/download ） 环境。
+https://github.com/wwwzhouhui/dify-for-dsl/tree/main/dsl/69-dify案例分享-数学公式识别工作流.yml
 
 2025年7月3日-version 0.0.3.31：增加用 Dify 一键搭建中药科普工作流，文字 + 图片 + 视频全搞定.使用到第三方MCP_Server代码地址
 
