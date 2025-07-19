@@ -1,0 +1,507 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 70-dify案例分享-用Kimi-K2+Mermaid 神器，一键生成系统架构图！小白也能秒会
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/moonshot:0.0.6@3d5b5c039fe7ebaf4a0a31950f7aa42ae593a730d7e3522c0d4f336fa50a6949
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: hjlarry/mermaid_converter:0.0.1@46e755f0d92566a1f7a6e85086eac02a735afaa41479e7a2277b150abda70b18
+kind: app
+version: 0.3.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 500
+        batch_count_limit: 10
+        file_size_limit: 100
+        image_file_size_limit: 100
+        video_file_size_limit: 500
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: document-extractor
+      id: 1752920047325-source-1752921505868-target
+      source: '1752920047325'
+      sourceHandle: source
+      target: '1752921505868'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: document-extractor
+        targetType: llm
+      id: 1752921505868-source-llm-target
+      source: '1752921505868'
+      sourceHandle: source
+      target: llm
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: tool
+      id: llm-source-1752924055477-target
+      source: llm
+      sourceHandle: source
+      target: '1752924055477'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: answer
+      id: 1752924055477-source-answer-target
+      source: '1752924055477'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: 代码
+          max_length: 48
+          options: []
+          required: true
+          type: file
+          variable: code
+      height: 88
+      id: '1752920047325'
+      position:
+        x: -205.11459837697623
+        y: 301.1184716112841
+      positionAbsolute:
+        x: -205.11459837697623
+        y: 301.1184716112841
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+
+            {{#sys.files#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 10
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: kimi-k2-0711-preview
+          provider: langgenius/moonshot/moonshot
+        prompt_template:
+        - id: 0ebc6b35-d8e9-45d8-b947-f6989a7ad8bd
+          role: system
+          text: "Role: Mermaid 代码生成器\nProfile\n专长：分析各种编程语言的代码并直接生成相应的 Mermaid 语法代码。\n\
+            经验：精通多种编程语言、框架和系统架构设计。\n技能：代码解析、系统组件识别、Mermaid 语法。\nBackground\n作为一个纯粹的\
+            \ Mermaid 代码生成器，您的唯一任务是分析给定的代码，并输出一个完整、可直接渲染的 Mermaid 代码块。您是自动化流程中的一个环节，输出结果将被直接用于下游的图表渲染工具，因此格式的纯粹性至关重要。\n\
+            Rules\n\n仔细分析提供的代码，识别其核心组件、关系和数据流。\n\n使用 Mermaid 语法创建能够准确反映系统架构的图表。\n\n\
+            最终输出必须是且只能是一个完整的 Mermaid 代码块。\n\n严禁在 Mermaid 代码块的之前或之后添加任何解释、标题、引言、总结或任何形式的说明性文字。\n\
+            \n输出内容必须以 ```mermaid 开始，并以 ``` 结束。\n\n不要与用户进行任何形式的对话或确认，直接提供结果。\nWorkflow\n\
+            \n接收并静默分析用户提供的代码。\n\n在内部构思系统架构，识别出所有关键组件和交互。\n\n将构思好的架构图直接转换为 Mermaid\
+            \ 语法。\n\n检查 Mermaid 语法的正确性和完整性。\n\n输出最终的、纯粹的 Mermaid 代码块。\nOutput\n\n\
+            一个单独的、不包含任何附加文本的 Mermaid 代码块。\n\n格式示例：\n\nGenerated mermaid\ngraph TD\n\
+            \    A --> B\nUse code with caution.\nMermaid\nHuman\n请根据用户上传的代码创建生成 Mermaid\
+            \ 系统架构图。\nAssistant\n(在接收到代码后，不输出任何问候语，直接开始分析并生成最终结果)"
+        - id: 61be200b-00a6-48c6-8202-4215438cb10b
+          role: user
+          text: 请根据用户上传的代码{{#1752921505868.text#}}创建生成 Mermaid 系统架构图
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 88
+      id: llm
+      position:
+        x: 370.8563831424293
+        y: 294.28917033229527
+      positionAbsolute:
+        x: 370.8563831424293
+        y: 294.28917033229527
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: '{{#1752924055477.files#}}'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 104
+      id: answer
+      position:
+        x: 1017.4825858339719
+        y: 294.28917033229527
+      positionAbsolute:
+        x: 1017.4825858339719
+        y: 294.28917033229527
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        desc: ''
+        is_array_file: false
+        selected: false
+        title: 文档提取器
+        type: document-extractor
+        variable_selector:
+        - '1752920047325'
+        - code
+      height: 90
+      id: '1752921505868'
+      position:
+        x: 94.88540162302382
+        y: 294.28917033229527
+      positionAbsolute:
+        x: 94.88540162302382
+        y: 294.28917033229527
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: The Mermaid diagram syntax code to convert to an image
+            ja_JP: The Mermaid diagram syntax code to convert to an image
+            pt_BR: O código de sintaxe do diagrama Mermaid para converter em imagem
+            zh_Hans: 要转换为图像的Mermaid图表语法代码
+          label:
+            en_US: Mermaid Code
+            ja_JP: Mermaid Code
+            pt_BR: Código Mermaid
+            zh_Hans: Mermaid代码
+          llm_description: Mermaid diagram syntax code that defines the structure
+            and content of the diagram to be converted to an image
+          max: null
+          min: null
+          name: mermaid_code
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: png
+          form: form
+          human_description:
+            en_US: The image format for the output file
+            ja_JP: The image format for the output file
+            pt_BR: O formato de imagem para o arquivo de saída
+            zh_Hans: 输出文件的图像格式
+          label:
+            en_US: Output Format
+            ja_JP: Output Format
+            pt_BR: Formato de Saída
+            zh_Hans: 输出格式
+          llm_description: 'Output image format: PNG for general use, JPG for photos,
+            SVG for scalable vector graphics, PDF for documents'
+          max: null
+          min: null
+          name: output_format
+          options:
+          - icon: ''
+            label:
+              en_US: PNG
+              ja_JP: PNG
+              pt_BR: PNG
+              zh_Hans: PNG
+            value: png
+          - icon: ''
+            label:
+              en_US: JPG
+              ja_JP: JPG
+              pt_BR: JPG
+              zh_Hans: JPG
+            value: jpg
+          - icon: ''
+            label:
+              en_US: SVG
+              ja_JP: SVG
+              pt_BR: SVG
+              zh_Hans: SVG
+            value: svg
+          - icon: ''
+            label:
+              en_US: PDF
+              ja_JP: PDF
+              pt_BR: PDF
+              zh_Hans: PDF
+            value: pdf
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        - auto_generate: null
+          default: default
+          form: form
+          human_description:
+            en_US: Visual theme for the diagram
+            ja_JP: Visual theme for the diagram
+            pt_BR: Tema visual para o diagrama
+            zh_Hans: 图表的视觉主题
+          label:
+            en_US: Theme
+            ja_JP: Theme
+            pt_BR: Tema
+            zh_Hans: 主题
+          llm_description: Visual theme that controls the color scheme and styling
+            of the diagram
+          max: null
+          min: null
+          name: theme
+          options:
+          - icon: ''
+            label:
+              en_US: Default
+              ja_JP: Default
+              pt_BR: Default
+              zh_Hans: Default
+            value: default
+          - icon: ''
+            label:
+              en_US: Dark
+              ja_JP: Dark
+              pt_BR: Dark
+              zh_Hans: Dark
+            value: dark
+          - icon: ''
+            label:
+              en_US: Neutral
+              ja_JP: Neutral
+              pt_BR: Neutral
+              zh_Hans: Neutral
+            value: neutral
+          - icon: ''
+            label:
+              en_US: Forest
+              ja_JP: Forest
+              pt_BR: Forest
+              zh_Hans: Forest
+            value: forest
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: Background color for the image (hex color code or transparent)
+            ja_JP: Background color for the image (hex color code or transparent)
+            pt_BR: Cor de fundo para a imagem (código de cor hexadecimal ou transparente)
+            zh_Hans: 图像的背景颜色（十六进制颜色代码或透明）
+          label:
+            en_US: Background Color
+            ja_JP: Background Color
+            pt_BR: Cor de Fundo
+            zh_Hans: 背景颜色
+          llm_description: Background color as hex code (e.g., FF0000 for red) or
+            named color with ! prefix (e.g., !white)
+          max: null
+          min: null
+          name: background_color
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: Image width in pixels
+            ja_JP: Image width in pixels
+            pt_BR: Largura da imagem em pixels
+            zh_Hans: 图像宽度（像素）
+          label:
+            en_US: Width
+            ja_JP: Width
+            pt_BR: Largura
+            zh_Hans: 宽度
+          llm_description: Width of the output image in pixels
+          max: null
+          min: null
+          name: width
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: number
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: Image height in pixels
+            ja_JP: Image height in pixels
+            pt_BR: Altura da imagem em pixels
+            zh_Hans: 图像高度（像素）
+          label:
+            en_US: Height
+            ja_JP: Height
+            pt_BR: Altura
+            zh_Hans: 高度
+          llm_description: Height of the output image in pixels
+          max: null
+          min: null
+          name: height
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: number
+        params:
+          background_color: ''
+          height: ''
+          mermaid_code: ''
+          output_format: ''
+          theme: ''
+          width: ''
+        provider_id: hjlarry/mermaid_converter/mermaid_converter
+        provider_name: hjlarry/mermaid_converter/mermaid_converter
+        provider_type: builtin
+        selected: false
+        title: Mermaid转换器
+        tool_configurations:
+          background_color:
+            type: mixed
+            value: ''
+          height:
+            type: constant
+            value: null
+          output_format:
+            type: constant
+            value: png
+          theme:
+            type: constant
+            value: default
+          width:
+            type: constant
+            value: null
+        tool_description: 将Mermaid图表代码转换为各种格式的图像（PNG、JPG、PDF、SVG）
+        tool_label: Mermaid转换器
+        tool_name: mermaid_converter
+        tool_parameters:
+          mermaid_code:
+            type: mixed
+            value: '{{#llm.text#}}'
+        type: tool
+        version: '2'
+      height: 224
+      id: '1752924055477'
+      position:
+        x: 689.9748547537135
+        y: 294.28917033229527
+      positionAbsolute:
+        x: 689.9748547537135
+        y: 294.28917033229527
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: -441.98258583397194
+      y: 75.21082966770473
+      zoom: 1
