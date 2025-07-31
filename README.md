@@ -30,6 +30,7 @@
 
 | DSL清单名称                              | 工作流显示                         | 用到技术                                                     | 更新时间                                                 | 作者                                       | 适用dify版本                               |
 | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------------------------------------- |
+| 用 Dify 实现多语言 PDF 文档原格式翻译.yml | ![img](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/QQ_1753889342965.png) | Agent、MCP-Server | 2025年7月30日 | wwwzhouhui | 1.6.0 |
 | 用Kimi-K2+Mermaid 神器，一键生成系统架构图！小白也能秒会.yml | ![img](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/QQ_1752924484923.png.png) | 开始、文档管理器、LLM大语言、Mermaid插件 | 2025年7月19日 | wwwzhouhui | 1.6.0 |
 | 用 Dify 一键搭建七牛云oss工作流 | ![img](http://syng8gt03.hn-bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20250711140041.png) | 开始、Agent、LLM大语言模型、代码执行、直接回复 | 2025年7月11日 | GeekAPP | 1.4.3 |
 | 用 Dify 一键搭建数学公式识别工作流，支持laTex | ![img](https://dify-1305874767.cos.ap-nanjing.myqcloud.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20250711082331.png) | 开始、Agent、LLM大语言模型、代码执行、直接回复 | 2025年7月11日 | GeekAPP | 1.4.3 |
@@ -124,6 +125,8 @@
 
 
 ## 更新说明
+
+2025年7月30 日-version 0.0.3.35：增加用 Dify 实现多语言 PDF 文档原格式翻译.yml ,使用到的MCP-Server 可以去我另外一个开源项目https://github.com/wwwzhouhui/pdftranslate_web 去查看。（代码部分开源）
 
 2025年7月19日-version 0.0.3.34：增加用Kimi-K2+Mermaid 神器，一键生成系统架构图！小白也能秒会.yml
 
@@ -312,6 +315,10 @@ https://aqma351r01f.feishu.cn/wiki/HF5FwMDQkiHoCokvbQAcZLu3nAg?table=tbleOWb4WgX
 
   一款提示词优化器，助力于编写高质量的提示词
 
+ 7.[BabelDOC](https://github.com/funstory-ai/BabelDOC)
+
+专注于 **PDF 文档的无损翻译与双语对照生成**，尤其针对学术论文、技术报告等复杂文档场景。其核心目标是解决传统 PDF 翻译中 **排版错乱、公式图表丢失**等痛点，通过技术创新实现 **翻译精准性与版式还原的双重突破**
+
 ## 问题反馈
 
 如有问题，请在GitHub Issue中提交，在提交问题之前，请先查阅以往的issue是否能解决你的问题
@@ -480,8 +487,6 @@ NGINX_CLIENT_MAX_BODY_SIZE=100M<br>
 
 
 ## 技术交流群
-
-![image-20250727225801199](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250727225801199.png)
 
 ![image-20250727225827000](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250727225827000.png)
 
