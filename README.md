@@ -30,6 +30,7 @@
 
 | DSL清单名称                              | 工作流显示                         | 用到技术                                                     | 更新时间                                                 | 作者                                       | 适用dify版本                               |
 | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------------------------------------- |
+| Dify 工作流一键生成发票申请预览，对接开票系统超简单.yml | ![img](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/QQ_1754435884189.png) | excel工具、LLM大语言模型、代码处理 | 2025年8月6日 | wwwzhouhui | 1.6.0 |
 | 用 Dify 实现多语言 PDF 文档原格式翻译.yml | ![img](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/QQ_1753889342965.png) | Agent、MCP-Server | 2025年7月30日 | wwwzhouhui | 1.6.0 |
 | 用Kimi-K2+Mermaid 神器，一键生成系统架构图！小白也能秒会.yml | ![img](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/QQ_1752924484923.png.png) | 开始、文档管理器、LLM大语言、Mermaid插件 | 2025年7月19日 | wwwzhouhui | 1.6.0 |
 | 用 Dify 一键搭建七牛云oss工作流 | ![img](http://syng8gt03.hn-bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20250711140041.png) | 开始、Agent、LLM大语言模型、代码执行、直接回复 | 2025年7月11日 | GeekAPP | 1.4.3 |
@@ -125,6 +126,8 @@
 
 
 ## 更新说明
+
+2025年8月6 日-version 0.0.3.36：增加Dify 工作流一键生成发票申请预览，对接开票系统超简单.yml，供第三方接口api源码 代码看 https://github.com/wwwzhouhui/dify-for-dsl/tree/main/dsl/makehtml/makehtmlapi.py
 
 2025年7月30 日-version 0.0.3.35：增加用 Dify 实现多语言 PDF 文档原格式翻译.yml ,使用到的MCP-Server 可以去我另外一个开源项目https://github.com/wwwzhouhui/pdftranslate_web 去查看。（代码部分开源）
 
