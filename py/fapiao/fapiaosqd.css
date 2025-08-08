@@ -1,0 +1,323 @@
+/* 发票预览样式增强 */
+.invoice-preview-container {
+    font-family: 'Microsoft YaHei', 'SimSun', Arial, sans-serif;
+    background: #f5f5f5;
+    padding: 20px;
+    min-height: 600px;
+}
+
+.invoice-card {
+    background: white;
+    border: 2px solid #2c3e50;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: none;
+}
+
+.invoice-header {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    position: relative;
+}
+
+.invoice-number {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.invoice-body {
+    padding: 25px;
+}
+
+.company-info-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+.company-info-card {
+    border: 1px solid #bdc3c7;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.company-info-header {
+    background: #ecf0f1;
+    padding: 12px 15px;
+    font-weight: bold;
+    color: #2c3e50;
+    border-bottom: 1px solid #bdc3c7;
+}
+
+.company-info-content {
+    padding: 15px;
+}
+
+.info-item {
+    display: flex;
+    margin-bottom: 10px;
+    align-items: flex-start;
+}
+
+.info-label {
+    font-weight: bold;
+    color: #34495e;
+    min-width: 100px;
+    margin-right: 10px;
+}
+
+.info-value {
+    flex: 1;
+    color: #2c3e50;
+    word-break: break-all;
+}
+
+.items-section {
+    margin-bottom: 25px;
+}
+
+.items-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid #2c3e50;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.items-table thead {
+    background: linear-gradient(135deg, #34495e, #2c3e50);
+    color: white;
+}
+
+.items-table th {
+    padding: 12px 8px;
+    text-align: center;
+    font-weight: bold;
+    border-right: 1px solid #34495e;
+}
+
+.items-table th:last-child {
+    border-right: none;
+}
+
+.items-table tbody tr:nth-child(even) {
+    background: #f8f9fa;
+}
+
+.items-table tbody tr:hover {
+    background: #e3f2fd;
+}
+
+.items-table td {
+    padding: 10px 8px;
+    border-right: 1px solid #bdc3c7;
+    border-bottom: 1px solid #bdc3c7;
+    text-align: center;
+}
+
+.items-table td:last-child {
+    border-right: none;
+}
+
+.items-table td.item-name {
+    text-align: left;
+    max-width: 200px;
+    word-break: break-word;
+}
+
+.item-category {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+.total-section {
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+    color: white;
+    padding: 20px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.total-details {
+    display: flex;
+    gap: 30px;
+}
+
+.total-item {
+    text-align: center;
+}
+
+.total-label {
+    font-size: 14px;
+    opacity: 0.9;
+    margin-bottom: 5px;
+}
+
+.total-value {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.grand-total {
+    text-align: center;
+    border-left: 2px solid rgba(255, 255, 255, 0.3);
+    padding-left: 30px;
+}
+
+.grand-total-label {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.grand-total-value {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.invoice-footer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.footer-item {
+    text-align: center;
+    padding: 15px;
+    border: 1px solid #bdc3c7;
+    border-radius: 6px;
+    background: #f8f9fa;
+}
+
+.footer-label {
+    font-weight: bold;
+    color: #34495e;
+    margin-bottom: 8px;
+}
+
+.footer-value {
+    color: #2c3e50;
+    font-size: 16px;
+}
+
+.no-data-message {
+    text-align: center;
+    padding: 60px 20px;
+    color: #7f8c8d;
+    font-size: 18px;
+    background: white;
+    border-radius: 8px;
+    border: 2px dashed #bdc3c7;
+}
+
+.no-data-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+
+.invoice-tabs {
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    background: #ecf0f1;
+    border: 1px solid #bdc3c7;
+    padding: 10px 20px;
+    margin-right: 5px;
+    border-radius: 6px 6px 0 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+    font-weight: normal;
+}
+
+/* 移除.active类，因为我们现在使用CSS选择器来控制活动状态 */
+
+.tab-button:hover {
+    background: #d5dbdb;
+}
+
+.tab-button.active:hover {
+    background: #2980b9;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .company-info-section {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .items-table {
+        font-size: 12px;
+    }
+    
+    .items-table th,
+    .items-table td {
+        padding: 6px 4px;
+    }
+    
+    .total-section {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .total-details {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+    
+    .grand-total {
+        border-left: none;
+        border-top: 2px solid rgba(255, 255, 255, 0.3);
+        padding-left: 0;
+        padding-top: 15px;
+    }
+    
+    .invoice-footer {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+}
+
+/* 打印样式 */
+@media print {
+    .invoice-preview-container {
+        background: white;
+        padding: 0;
+    }
+    
+    .invoice-card {
+        box-shadow: none;
+        border: 2px solid #000;
+        page-break-after: always;
+    }
+    
+    .invoice-header {
+        background: white !important;
+        color: black !important;
+        border-bottom: 2px solid #000;
+    }
+    
+    .total-section {
+        background: white !important;
+        color: black !important;
+        border: 2px solid #000;
+    }
+}
