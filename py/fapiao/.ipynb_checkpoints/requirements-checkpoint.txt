@@ -1,2 +1,0 @@
-gradio>=5.34.1
-typing-extensions>=4.0.0
