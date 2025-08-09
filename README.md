@@ -30,6 +30,7 @@
 
 | DSL清单名称                              | 工作流显示                         | 用到技术                                                     | 更新时间                                                 | 作者                                       | 适用dify版本                               |
 | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------------------------------------- |
+| Dify 秘塔搜索工作流搭建教程与效果展示.yml | ![3337](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/3337.gif.gif) | 条件分支、http请求、代码处理、秘搭API | 2025年8月9日 | 阿文 | 1.6.0 |
 | Dify 工作流一键生成发票申请预览，对接开票系统超简单.yml | ![img](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/QQ_1754435884189.png) | excel工具、LLM大语言模型、代码处理 | 2025年8月6日 | wwwzhouhui | 1.6.0 |
 | 用 Dify 实现多语言 PDF 文档原格式翻译.yml | ![img](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/QQ_1753889342965.png) | Agent、MCP-Server | 2025年7月30日 | wwwzhouhui | 1.6.0 |
 | 用Kimi-K2+Mermaid 神器，一键生成系统架构图！小白也能秒会.yml | ![img](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/QQ_1752924484923.png.png) | 开始、文档管理器、LLM大语言、Mermaid插件 | 2025年7月19日 | wwwzhouhui | 1.6.0 |
@@ -126,6 +127,10 @@
 
 
 ## 更新说明
+
+
+
+2025年8月9 日-version 0.0.3.37：增加Dify 秘塔搜索工作流搭建教程与效果展示.yml
 
 2025年8月6 日-version 0.0.3.36：增加Dify 工作流一键生成发票申请预览，对接开票系统超简单.yml，供第三方接口api源码 代码看 https://github.com/wwwzhouhui/dify-for-dsl/tree/main/dsl/makehtml/makehtmlapi.py
 
@@ -491,7 +496,7 @@ NGINX_CLIENT_MAX_BODY_SIZE=100M<br>
 
 ## 技术交流群
 
-![微信图片_20250803114943](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250803114943.jpg)
+![微信图片_20250809091637_14](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250809091637_14.jpg)
 
 ## Star History
 

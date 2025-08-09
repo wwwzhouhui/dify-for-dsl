@@ -1,0 +1,1514 @@
+app:
+  description: 测试搜索功能
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: 74-dify案例分享-解锁 AI 搜索新玩法：Dify 秘塔搜索工作流搭建教程与效果展示
+  use_icon_as_answer_icon: false
+dependencies: []
+kind: app
+version: 0.3.0
+workflow:
+  conversation_variables: []
+  environment_variables:
+  - description: ''
+    id: 4fad31ae-9252-48b0-948d-39a95e85ed88
+    name: key
+    selector:
+    - env
+    - key
+    value: mk-xxxxxxxx
+    value_type: string
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 500
+        batch_count_limit: 10
+        file_size_limit: 100
+        image_file_size_limit: 100
+        video_file_size_limit: 500
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInLoop: false
+        sourceType: http-request
+        targetType: code
+      id: 1753787179392-source-17544110151730-target
+      source: '1753787179392'
+      sourceHandle: source
+      target: '17544110151730'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: code
+      id: 17544110151730-source-1754620296021-target
+      source: '17544110151730'
+      sourceHandle: source
+      target: '1754620296021'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: end
+      id: 1754620296021-source-1754393041670-target
+      source: '1754620296021'
+      sourceHandle: source
+      target: '1754393041670'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: if-else
+      id: 1753787119287-source-1754622942727-target
+      source: '1753787119287'
+      sourceHandle: source
+      target: '1754622942727'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: http-request
+      id: 1754622942727-true-1753787179392-target
+      source: '1754622942727'
+      sourceHandle: 'true'
+      target: '1753787179392'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: http-request
+      id: 1754622942727-0a92d901-7c99-47cf-8d24-5f4744106007-17546230718560-target
+      source: '1754622942727'
+      sourceHandle: 0a92d901-7c99-47cf-8d24-5f4744106007
+      target: '17546230718560'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: http-request
+        targetType: code
+      id: 17546230718560-source-1754624654705-target
+      source: '17546230718560'
+      sourceHandle: source
+      target: '1754624654705'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: code
+      id: 1754624654705-source-1754624726617-target
+      source: '1754624654705'
+      sourceHandle: source
+      target: '1754624726617'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: end
+      id: 1754624726617-source-1754625083596-target
+      source: '1754624726617'
+      sourceHandle: source
+      target: '1754625083596'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: http-request
+      id: 1754622942727-36c2b74f-42bc-4ed5-a81c-367d01e549bc-17546252819640-target
+      source: '1754622942727'
+      sourceHandle: 36c2b74f-42bc-4ed5-a81c-367d01e549bc
+      target: '17546252819640'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: http-request
+      id: 1754622942727-e9882a46-cbeb-46e3-9d87-43468f71237e-17546253244800-target
+      source: '1754622942727'
+      sourceHandle: e9882a46-cbeb-46e3-9d87-43468f71237e
+      target: '17546253244800'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: http-request
+      id: 1754622942727-2a7803b0-61f3-4c62-b3ce-e5c56a695a6b-17546253440350-target
+      source: '1754622942727'
+      sourceHandle: 2a7803b0-61f3-4c62-b3ce-e5c56a695a6b
+      target: '17546253440350'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: http-request
+      id: 1754622942727-15e66a86-77e4-4e57-a16d-aa6e9b40d571-17546253491010-target
+      source: '1754622942727'
+      sourceHandle: 15e66a86-77e4-4e57-a16d-aa6e9b40d571
+      target: '17546253491010'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: http-request
+      id: 1754622942727-false-1753787179392-target
+      source: '1754622942727'
+      sourceHandle: 'false'
+      target: '1753787179392'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: http-request
+        targetType: code
+      id: 17546252819640-source-17546268421970-target
+      source: '17546252819640'
+      sourceHandle: source
+      target: '17546268421970'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: code
+      id: 17546268421970-source-17546269080300-target
+      source: '17546268421970'
+      sourceHandle: source
+      target: '17546269080300'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: end
+      id: 17546269080300-source-1754640497461-target
+      source: '17546269080300'
+      sourceHandle: source
+      target: '1754640497461'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: http-request
+        targetType: code
+      id: 17546253244800-source-1754640516327-target
+      source: '17546253244800'
+      sourceHandle: source
+      target: '1754640516327'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: code
+      id: 1754640516327-source-1754641206148-target
+      source: '1754640516327'
+      sourceHandle: source
+      target: '1754641206148'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: end
+      id: 1754641206148-source-1754641782445-target
+      source: '1754641206148'
+      sourceHandle: source
+      target: '1754641782445'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: http-request
+        targetType: code
+      id: 17546253440350-source-1754642078212-target
+      source: '17546253440350'
+      sourceHandle: source
+      target: '1754642078212'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: code
+      id: 1754642078212-source-1754642999884-target
+      source: '1754642078212'
+      sourceHandle: source
+      target: '1754642999884'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: http-request
+        targetType: code
+      id: 17546253491010-source-1754643102235-target
+      source: '17546253491010'
+      sourceHandle: source
+      target: '1754643102235'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: code
+      id: 1754643102235-source-1754643106088-target
+      source: '1754643102235'
+      sourceHandle: source
+      target: '1754643106088'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: end
+      id: 1754642999884-source-1754644020839-target
+      source: '1754642999884'
+      sourceHandle: source
+      target: '1754644020839'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: end
+      id: 1754643106088-source-1754646053648-target
+      source: '1754643106088'
+      sourceHandle: source
+      target: '1754646053648'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - label: 查询
+          max_length: 99999999
+          options: []
+          required: true
+          type: paragraph
+          variable: q
+        - label: 搜索范围
+          max_length: 99999
+          options:
+          - webpage
+          - document
+          - scholar
+          - image
+          - video
+          - podcast
+          required: true
+          type: select
+          variable: scope
+        - label: 结果数量
+          max_length: 48
+          options:
+          - '10'
+          - '20'
+          - '30'
+          - '40'
+          - '50'
+          required: true
+          type: select
+          variable: size
+        - label: 页码
+          max_length: 48
+          options:
+          - '1'
+          - '2'
+          - '3'
+          - '4'
+          - '5'
+          - '6'
+          - '7'
+          - '8'
+          - '9'
+          - '10'
+          required: false
+          type: select
+          variable: page
+        - label: 返回精简的原文匹配信息
+          max_length: 48
+          options:
+          - 'false'
+          - 'true'
+          required: true
+          type: select
+          variable: includeSummary
+        - label: 通过网页的摘要信息进行召回增强
+          max_length: 48
+          options:
+          - 'false'
+          - 'true'
+          required: true
+          type: select
+          variable: includeRawContent
+        - label: 抓取所有来源网页原文
+          max_length: 48
+          options:
+          - 'false'
+          - 'true'
+          required: true
+          type: select
+          variable: conciseSnippet
+      height: 244
+      id: '1753787119287'
+      position:
+        x: -1969.2948883631834
+        y: -2266.674718080848
+      positionAbsolute:
+        x: -1969.2948883631834
+        y: -2266.674718080848
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        authorization:
+          config:
+            api_key: mk-8C6A988ED61CAD222F8D1010724C5186
+            type: basic
+          type: no-auth
+        body:
+          data:
+          - id: key-value-1948
+            key: ''
+            type: text
+            value: "{\n  \"q\": \"{{#1753787119287.q#}}\",\n  \"scope\": \"{{#1753787119287.scope#}}\"\
+              ,\n  \"includeSummary\": {{#1753787119287.includeSummary#}},\n  \"size\"\
+              : \"{{#1753787119287.size#}}\",\n  \"includeRawContent\":{{#1753787119287.includeRawContent#}},\n\
+              \  \"conciseSnippet\": {{#1753787119287.conciseSnippet#}}\n}"
+          type: json
+        desc: ''
+        headers: 'Authorization:Bearer {{#env.key#}}
+
+          Accept:application/json
+
+          Content-Type:application/json'
+        method: post
+        params: ''
+        retry_config:
+          max_retries: 10
+          retry_enabled: true
+          retry_interval: '1000'
+        selected: false
+        ssl_verify: true
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: web搜索
+        type: http-request
+        url: https://metaso.cn/api/v1/search
+        variables: []
+      height: 138
+      id: '1753787179392'
+      position:
+        x: -1043.4827699419955
+        y: -2363.6914822273084
+      positionAbsolute:
+        x: -1043.4827699419955
+        y: -2363.6914822273084
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1754620296021'
+          - markdown
+          variable: result
+        selected: false
+        title: web搜索结果
+        type: end
+      height: 88
+      id: '1754393041670'
+      position:
+        x: -161.26152365425855
+        y: -2370.0817286592164
+      positionAbsolute:
+        x: -161.26152365425855
+        y: -2370.0817286592164
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "import json\n\ndef main(body: str) -> dict:\n    \"\"\"解析API响应体，提取所需字段（包含链接）\"\
+          \"\"\n    # 解析JSON响应\n    parsed = json.loads(body)\n    \n    # 构建内容字典\n\
+          \    content = {\n        \"q\": parsed[\"searchParameters\"][\"q\"],\n\
+          \        \"total\": parsed[\"total\"],\n        \"webpages\": []\n    }\n\
+          \    \n    # 处理每个网页\n    for item in parsed[\"webpages\"]:\n        page\
+          \ = {\n            \"title\": item[\"title\"],\n            \"link\": item[\"\
+          link\"],  # 添加链接字段\n            \"snippet\": item[\"snippet\"],\n      \
+          \      \"position\": item[\"position\"],\n            \"date\": item[\"\
+          date\"],\n            \"authors\": item.get(\"authors\", [])  # 安全处理缺失的字段\n\
+          \        }\n        content[\"webpages\"].append(page)\n    \n    # 将输出变量名改为\
+          \ input_data\n    return {\"input_data\": content}"
+        code_language: python3
+        desc: ''
+        outputs:
+          input_data:
+            children: null
+            type: object
+        selected: false
+        title: 结果解析
+        type: code
+        variables:
+        - value_selector:
+          - '1753787179392'
+          - body
+          variable: body
+      height: 52
+      id: '17544110151730'
+      position:
+        x: -740.424934191988
+        y: -2363.6914822273084
+      positionAbsolute:
+        x: -740.424934191988
+        y: -2363.6914822273084
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "import json\n\ndef main(input_data):\n    # 检查有效数据是否存在（直接检查input_data中的关键字段）\n\
+          \    if not input_data or not input_data.get(\"webpages\"):\n        return\
+          \ {\"markdown\": \"## 未找到有效数据\"}\n    \n    # 直接使用input_data作为数据源\n    data\
+          \ = input_data\n    markdown = f\"## 搜索结果：{data['q']}\\n\\n\"\n    markdown\
+          \ += f\"找到 **{data['total']}** 条相关结果\\n\\n---\\n\\n\"\n    \n    # 处理每个搜索结果项\n\
+          \    for item in data[\"webpages\"]:\n        markdown += f\"### [{item['title']}]({item['link']})\\\
+          n\"\n        markdown += f\"- **日期**: {item['date']}\\n\"\n        \n  \
+          \      if item.get(\"authors\"):\n            markdown += f\"- **作者**: {',\
+          \ '.join(item['authors'])}\\n\"\n        \n        # 清理摘要并截断\n        snippet\
+          \ = item['snippet'].replace('\\n', ' ').replace('![]', '')\n        markdown\
+          \ += f\"- **摘要**: {snippet[:240]}{'...' if len(snippet) > 240 else ''}\\\
+          n\\n\"\n    \n    return {\"markdown\": markdown}"
+        code_language: python3
+        desc: ''
+        outputs:
+          markdown:
+            children: null
+            type: string
+        selected: false
+        title: josn转md
+        type: code
+        variables:
+        - value_selector:
+          - '17544110151730'
+          - input_data
+          variable: input_data
+      height: 52
+      id: '1754620296021'
+      position:
+        x: -448.6412957816585
+        y: -2370.0817286592164
+      positionAbsolute:
+        x: -448.6412957816585
+        y: -2370.0817286592164
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: cabe017f-4efa-4226-bcea-b3d028803928
+            value: webpage
+            varType: string
+            variable_selector:
+            - '1753787119287'
+            - scope
+          id: 'true'
+          logical_operator: and
+        - case_id: 0a92d901-7c99-47cf-8d24-5f4744106007
+          conditions:
+          - comparison_operator: is
+            id: e7bdd788-8909-4c39-b7d0-c9abce2aa144
+            value: document
+            varType: string
+            variable_selector:
+            - '1753787119287'
+            - scope
+          id: 0a92d901-7c99-47cf-8d24-5f4744106007
+          logical_operator: and
+        - case_id: 36c2b74f-42bc-4ed5-a81c-367d01e549bc
+          conditions:
+          - comparison_operator: is
+            id: 1a265767-00ef-471c-b19e-deb0237261d0
+            value: scholar
+            varType: string
+            variable_selector:
+            - '1753787119287'
+            - scope
+          id: 36c2b74f-42bc-4ed5-a81c-367d01e549bc
+          logical_operator: and
+        - case_id: e9882a46-cbeb-46e3-9d87-43468f71237e
+          conditions:
+          - comparison_operator: is
+            id: e3508cd4-f433-43e7-a5e2-9ae33ea0e2d6
+            value: image
+            varType: string
+            variable_selector:
+            - '1753787119287'
+            - scope
+          id: e9882a46-cbeb-46e3-9d87-43468f71237e
+          logical_operator: and
+        - case_id: 2a7803b0-61f3-4c62-b3ce-e5c56a695a6b
+          conditions:
+          - comparison_operator: is
+            id: 3d57bda2-8017-423a-8c1e-95b6b1525904
+            value: video
+            varType: string
+            variable_selector:
+            - '1753787119287'
+            - scope
+          id: 2a7803b0-61f3-4c62-b3ce-e5c56a695a6b
+          logical_operator: and
+        - case_id: 15e66a86-77e4-4e57-a16d-aa6e9b40d571
+          conditions:
+          - comparison_operator: is
+            id: fb95f3a4-21c7-4d94-8a9b-e078b6b1a75f
+            value: podcast
+            varType: string
+            variable_selector:
+            - '1753787119287'
+            - scope
+          id: 15e66a86-77e4-4e57-a16d-aa6e9b40d571
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 条件分支
+        type: if-else
+      height: 364
+      id: '1754622942727'
+      position:
+        x: -1482.1593731284768
+        y: -2266.674718080848
+      positionAbsolute:
+        x: -1482.1593731284768
+        y: -2266.674718080848
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        authorization:
+          config:
+            api_key: mk-8C6A988ED61CAD222F8D1010724C5186
+            type: basic
+          type: no-auth
+        body:
+          data:
+          - id: key-value-1948
+            key: ''
+            type: text
+            value: "{\n  \"q\": \"{{#1753787119287.q#}}\",\n  \"scope\": \"{{#1753787119287.scope#}}\"\
+              ,\n  \"includeSummary\": {{#1753787119287.includeSummary#}},\n  \"size\"\
+              : \"{{#1753787119287.size#}}\",\n  \"includeRawContent\":{{#1753787119287.includeRawContent#}},\n\
+              \  \"conciseSnippet\": {{#1753787119287.conciseSnippet#}}\n}"
+          type: json
+        desc: ''
+        headers: 'Authorization:Bearer {{#env.key#}}
+
+          Accept:application/json
+
+          Content-Type:application/json'
+        method: post
+        params: ''
+        retry_config:
+          max_retries: 10
+          retry_enabled: true
+          retry_interval: '1000'
+        selected: false
+        ssl_verify: true
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: 文库搜索
+        type: http-request
+        url: https://metaso.cn/api/v1/search
+        variables: []
+      height: 138
+      id: '17546230718560'
+      position:
+        x: -1043.4827699419955
+        y: -2188.7128052106555
+      positionAbsolute:
+        x: -1043.4827699419955
+        y: -2188.7128052106555
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "import json\n\ndef main(body: str) -> dict:\n    \"\"\"解析JSON输入，提取指定字段（输入变量：body，输出变量：input_data）\"\
+          \"\"\n    try:\n        # 解析输入JSON字符串\n        data = json.loads(body)\n\
+          \        \n        # 提取搜索关键词（q）\n        q_value = data.get(\"searchParameters\"\
+          , {}).get(\"q\", \"\")\n        \n        # 提取文档列表\n        documents_list\
+          \ = []\n        for doc in data.get(\"documents\", []):\n            doc_info\
+          \ = {\n                \"title\": doc.get(\"title\", \"\"),\n          \
+          \      \"link\": doc.get(\"link\", \"\"),\n                \"score\": doc.get(\"\
+          score\", \"\"),\n                \"snippet\": doc.get(\"snippet\", \"\"\
+          ),\n                \"position\": doc.get(\"position\", \"\"),\n       \
+          \         \"authors\": doc.get(\"authors\", [])  # 安全获取作者列表\n          \
+          \  }\n            documents_list.append(doc_info)\n        \n        # 构建输出结构\n\
+          \        result = {\n            \"q\": q_value,\n            \"documents\"\
+          : documents_list,\n            \"total\": data.get(\"total\", 0)\n     \
+          \   }\n        \n        # 返回指定输出变量名\n        return {\"input_data\": result}\n\
+          \    \n    except Exception as e:\n        return {\n            \"error\"\
+          : f\"JSON解析失败: {str(e)}\",\n            \"input_data\": None\n        }"
+        code_language: python3
+        desc: ''
+        outputs:
+          input_data:
+            children: null
+            type: object
+        selected: false
+        title: 结果解析
+        type: code
+        variables:
+        - value_selector:
+          - '17546230718560'
+          - body
+          variable: body
+      height: 52
+      id: '1754624654705'
+      position:
+        x: -740.424934191988
+        y: -2188.7128052106555
+      positionAbsolute:
+        x: -740.424934191988
+        y: -2188.7128052106555
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "import json\n\ndef main(input_data):\n    # 提取查询词和文档列表\n    query =\
+          \ input_data[\"q\"]\n    total = input_data[\"total\"]\n    documents =\
+          \ input_data[\"documents\"]\n    \n    # 构建Markdown头部\n    markdown = f\"\
+          ## 搜索结果：{query}\\n\\n\"\n    markdown += f\"找到 **{total}** 条相关结果\\n\\n---\\\
+          n\\n\"\n    \n    # 处理每个搜索结果\n    for doc in documents:\n        markdown\
+          \ += f\"### {doc['position']}. [{doc['title']}]({doc['link']})\\n\"\n  \
+          \      \n        if doc.get(\"authors\"):\n            markdown += f\"-\
+          \ **作者**: {', '.join(doc['authors'])}\\n\"\n        \n        # 清理摘要并截断\n\
+          \        snippet = doc['snippet']\n        # 移除图片标记\n        snippet = snippet.replace('![]',\
+          \ '').replace('![](', '')\n        # 移除特殊字符和多余空格\n        snippet = ' '.join(snippet.split())\n\
+          \        # 截断摘要\n        markdown += f\"- **摘要**: {snippet[:220]}{'...'\
+          \ if len(snippet) > 220 else ''}\\n\\n\"\n    \n    return {\"markdown\"\
+          : markdown}\n\n# 示例调用（实际在工作流中会自动传入input_data）\nif __name__ == \"__main__\"\
+          :\n    # 这里仅用于本地测试，在工作流中会被覆盖\n    test_data = {\n        \"input_data\"\
+          : {\n            \"q\": \"测试查询\",\n            \"documents\": [{\n     \
+          \           \"title\": \"测试标题\",\n                \"link\": \"https://example.com\"\
+          ,\n                \"snippet\": \"测试摘要内容\",\n                \"position\"\
+          : 1,\n                \"authors\": [\"测试作者\"]\n            }],\n       \
+          \     \"total\": 1\n        }\n    }\n    result = main(test_data[\"input_data\"\
+          ])\n    print(result[\"markdown\"])"
+        code_language: python3
+        desc: ''
+        outputs:
+          markdown:
+            children: null
+            type: string
+        selected: false
+        title: josn转md
+        type: code
+        variables:
+        - value_selector:
+          - '1754624654705'
+          - input_data
+          variable: input_data
+      height: 52
+      id: '1754624726617'
+      position:
+        x: -448.6412957816585
+        y: -2180.994730037335
+      positionAbsolute:
+        x: -448.6412957816585
+        y: -2180.994730037335
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1754624726617'
+          - markdown
+          variable: markdown
+        selected: false
+        title: 文库搜索结果
+        type: end
+      height: 88
+      id: '1754625083596'
+      position:
+        x: -153.8062361503661
+        y: -2180.994730037335
+      positionAbsolute:
+        x: -153.8062361503661
+        y: -2180.994730037335
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        authorization:
+          config:
+            api_key: mk-8C6A988ED61CAD222F8D1010724C5186
+            type: basic
+          type: no-auth
+        body:
+          data:
+          - id: key-value-1948
+            key: ''
+            type: text
+            value: "{\n  \"q\": \"{{#1753787119287.q#}}\",\n  \"scope\": \"{{#1753787119287.scope#}}\"\
+              ,\n  \"includeSummary\": {{#1753787119287.includeSummary#}},\n  \"size\"\
+              : \"{{#1753787119287.size#}}\",\n  \"includeRawContent\":{{#1753787119287.includeRawContent#}},\n\
+              \  \"conciseSnippet\": {{#1753787119287.conciseSnippet#}}\n}"
+          type: json
+        desc: ''
+        headers: 'Authorization:Bearer {{#env.key#}}
+
+          Accept:application/json
+
+          Content-Type:application/json'
+        method: post
+        params: ''
+        retry_config:
+          max_retries: 10
+          retry_enabled: true
+          retry_interval: '1000'
+        selected: false
+        ssl_verify: true
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: 学术搜索
+        type: http-request
+        url: https://metaso.cn/api/v1/search
+        variables: []
+      height: 138
+      id: '17546252819640'
+      position:
+        x: -1043.4827699419955
+        y: -2021.559387481035
+      positionAbsolute:
+        x: -1043.4827699419955
+        y: -2021.559387481035
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        authorization:
+          config:
+            api_key: mk-8C6A988ED61CAD222F8D1010724C5186
+            type: basic
+          type: no-auth
+        body:
+          data:
+          - id: key-value-1948
+            key: ''
+            type: text
+            value: "{\n  \"q\": \"{{#1753787119287.q#}}\",\n  \"scope\": \"{{#1753787119287.scope#}}\"\
+              ,\n  \"includeSummary\": {{#1753787119287.includeSummary#}},\n  \"size\"\
+              : \"{{#1753787119287.size#}}\",\n  \"includeRawContent\":{{#1753787119287.includeRawContent#}},\n\
+              \  \"conciseSnippet\": {{#1753787119287.conciseSnippet#}}\n}"
+          type: json
+        desc: ''
+        headers: 'Authorization:Bearer {{#env.key#}}
+
+          Accept:application/json
+
+          Content-Type:application/json'
+        method: post
+        params: ''
+        retry_config:
+          max_retries: 10
+          retry_enabled: true
+          retry_interval: '1000'
+        selected: false
+        ssl_verify: true
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: 图片搜索
+        type: http-request
+        url: https://metaso.cn/api/v1/search
+        variables: []
+      height: 138
+      id: '17546253244800'
+      position:
+        x: -1043.4827699419955
+        y: -1853.3458238072835
+      positionAbsolute:
+        x: -1043.4827699419955
+        y: -1853.3458238072835
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        authorization:
+          config:
+            api_key: mk-8C6A988ED61CAD222F8D1010724C5186
+            type: basic
+          type: no-auth
+        body:
+          data:
+          - id: key-value-1948
+            key: ''
+            type: text
+            value: "{\n  \"q\": \"{{#1753787119287.q#}}\",\n  \"scope\": \"{{#1753787119287.scope#}}\"\
+              ,\n  \"includeSummary\": {{#1753787119287.includeSummary#}},\n  \"size\"\
+              : \"{{#1753787119287.size#}}\",\n  \"includeRawContent\":{{#1753787119287.includeRawContent#}},\n\
+              \  \"conciseSnippet\": {{#1753787119287.conciseSnippet#}}\n}"
+          type: json
+        desc: ''
+        headers: 'Authorization:Bearer {{#env.key#}}
+
+          Accept:application/json
+
+          Content-Type:application/json'
+        method: post
+        params: ''
+        retry_config:
+          max_retries: 10
+          retry_enabled: true
+          retry_interval: '1000'
+        selected: false
+        ssl_verify: true
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: 视频搜索
+        type: http-request
+        url: https://metaso.cn/api/v1/search
+        variables: []
+      height: 138
+      id: '17546253440350'
+      position:
+        x: -1043.4827699419955
+        y: -1693.41666008938
+      positionAbsolute:
+        x: -1043.4827699419955
+        y: -1693.41666008938
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        authorization:
+          config:
+            api_key: mk-8C6A988ED61CAD222F8D1010724C5186
+            type: basic
+          type: no-auth
+        body:
+          data:
+          - id: key-value-1948
+            key: ''
+            type: text
+            value: "{\n  \"q\": \"{{#1753787119287.q#}}\",\n  \"scope\": \"{{#1753787119287.scope#}}\"\
+              ,\n  \"includeSummary\": {{#1753787119287.includeSummary#}},\n  \"size\"\
+              : \"{{#1753787119287.size#}}\",\n  \"includeRawContent\":{{#1753787119287.includeRawContent#}},\n\
+              \  \"conciseSnippet\": {{#1753787119287.conciseSnippet#}}\n}"
+          type: json
+        desc: ''
+        headers: 'Authorization:Bearer {{#env.key#}}
+
+          Accept:application/json
+
+          Content-Type:application/json'
+        method: post
+        params: ''
+        retry_config:
+          max_retries: 10
+          retry_enabled: true
+          retry_interval: '1000'
+        selected: false
+        ssl_verify: true
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: 博客搜索
+        type: http-request
+        url: https://metaso.cn/api/v1/search
+        variables: []
+      height: 138
+      id: '17546253491010'
+      position:
+        x: -1043.4827699419955
+        y: -1514.2286015845405
+      positionAbsolute:
+        x: -1043.4827699419955
+        y: -1514.2286015845405
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "import json\n\ndef main(body: str) -> dict:\n    \"\"\"解析 JSON 输入，提取指定字段（输入变量：body，输出变量：input_data）\"\
+          \"\"\n    try:\n        data = json.loads(body)\n        \n        # 安全提取搜索参数（多层嵌套避免\
+          \ KeyError）\n        search_params = data.get(\"searchParameters\", {})\n\
+          \        q_value = search_params.get(\"q\", \"\")\n        \n        # 处理文档列表（含空值保护和类型转换）\n\
+          \        documents_list = []\n        for doc in data.get(\"scholars\",\
+          \ []):  # 注意字段名需与实际匹配\n            # 统一处理缺失字段，避免后续流程中断\n            doc_info\
+          \ = {\n                \"title\": doc.get(\"title\", \"无标题\"),\n       \
+          \         \"link\": doc.get(\"link\", \"#\"),\n                \"score\"\
+          : str(doc.get(\"score\", \"N/A\")),  # 确保字符串类型\n                \"position\"\
+          : int(doc.get(\"position\", 0)),  # 转换为数值\n                \"date\": doc.get(\"\
+          date\", \"\"),\n                \"authors\": doc.get(\"authors\", []), \
+          \ # 默认空列表\n                \"snippet\": doc.get(\"snippet\", \"\")[:500]\
+          \  # 截断长文本\n            }\n            documents_list.append(doc_info)\n\
+          \        \n        # 构建结构化输出（兼容异常分支）\n        return {\n            \"input_data\"\
+          : {  # 输出变量名必须与工作流定义一致\n                \"q\": q_value,\n              \
+          \  \"documents\": documents_list,\n                \"total\": int(data.get(\"\
+          total\", 0))  # 类型转换\n            }\n        }\n    \n    except json.JSONDecodeError\
+          \ as e:\n        return {\"error\": f\"JSON 格式错误: {str(e)}\"}\n    except\
+          \ KeyError as e:\n        return {\"error\": f\"缺失关键字段: {str(e)}\"}\n  \
+          \  except Exception as e:\n        return {\"error\": f\"解析失败: {str(e)}\"\
+          }"
+        code_language: python3
+        desc: ''
+        outputs:
+          input_data:
+            children: null
+            type: object
+        selected: false
+        title: 结果解析
+        type: code
+        variables:
+        - value_selector:
+          - '17546230718560'
+          - body
+          variable: body
+      height: 52
+      id: '17546268421970'
+      position:
+        x: -746.9582289732159
+        y: -2015.9061946143147
+      positionAbsolute:
+        x: -746.9582289732159
+        y: -2015.9061946143147
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "import logging\n\n# 配置日志\nlogging.basicConfig(level=logging.INFO)\n\
+          logger = logging.getLogger(__name__)\n\ndef main(input_data):\n    # 1.\
+          \ 验证输入数据是否存在\n    if not input_data:\n        logger.error(\"输入数据为空！\")\n\
+          \        input_data = {\"q\": \"默认搜索词\", \"documents\": []}  # 提供默认数据\n\
+          \    \n    # 2. 提取必要字段（带默认值）\n    query = input_data.get(\"q\", \"\")\n\
+          \    documents = input_data.get(\"documents\", [])\n    \n    # 3. 处理逻辑（示例：生成\
+          \ Markdown 结果）\n    markdown_output = f\"## 搜索结果\\n- **关键词**: {query}\\\
+          n\\n\"\n    for doc in documents:\n        title = doc.get(\"title\", \"\
+          无标题\")\n        link = doc.get(\"link\", \"#\")\n        markdown_output\
+          \ += f\"- [{title}]({link})\\n\"\n    \n    return {\"markdown\": markdown_output}\n\
+          \n# 调用入口（Dify 自动传入 input_data）\nif 'input_data' in locals():\n    result\
+          \ = main(input_data)\nelse:\n    result = {\"error\": \"输入数据未定义\"}"
+        code_language: python3
+        desc: ''
+        outputs:
+          markdown:
+            children: null
+            type: string
+        selected: false
+        title: josn转md
+        type: code
+        variables:
+        - value_selector:
+          - '17546268421970'
+          - input_data
+          variable: input_data
+      height: 52
+      id: '17546269080300'
+      position:
+        x: -436.424934191988
+        y: -2021.559387481035
+      positionAbsolute:
+        x: -436.424934191988
+        y: -2021.559387481035
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '17546269080300'
+          - markdown
+          variable: markdown
+        selected: false
+        title: 学术搜索结果
+        type: end
+      height: 88
+      id: '1754640497461'
+      position:
+        x: -153.8062361503661
+        y: -2026.3917451662537
+      positionAbsolute:
+        x: -153.8062361503661
+        y: -2026.3917451662537
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "import json\n\ndef main(body: str) -> dict:\n    \"\"\"解析API响应体，提取所需字段（含图片信息）\"\
+          \"\"\n    # 解析JSON响应\n    parsed = json.loads(body)\n    \n    # 构建内容字典\n\
+          \    content = {\n        \"q\": parsed[\"searchParameters\"][\"q\"],\n\
+          \        \"total\": parsed[\"total\"],\n        \"images\": []\n    }\n\
+          \    \n    # 遍历每个图片条目\n    for image in parsed[\"images\"]:\n        img_data\
+          \ = {\n            \"title\": image[\"title\"],\n            \"score\":\
+          \ image[\"score\"],\n            \"position\": image[\"position\"],\n  \
+          \          \"imageUrl\": image[\"imageUrl\"]\n        }\n        content[\"\
+          images\"].append(img_data)\n    \n    # 返回统一命名的输出变量\n    return {\"input_data\"\
+          : content}"
+        code_language: python3
+        desc: ''
+        outputs:
+          input_data:
+            children: null
+            type: object
+        selected: false
+        title: 结果解析
+        type: code
+        variables:
+        - value_selector:
+          - '17546253244800'
+          - body
+          variable: body
+      height: 52
+      id: '1754640516327'
+      position:
+        x: -740.424934191988
+        y: -1853.3458238072835
+      positionAbsolute:
+        x: -740.424934191988
+        y: -1853.3458238072835
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "import json\n\ndef main(input_data: dict) -> dict:\n    \"\"\"将图片搜索结果JSON转换为Markdown格式\"\
+          \"\"\n    # 检查有效数据是否存在\n    if not input_data or not input_data.get(\"images\"\
+          ):\n        return {\"markdown\": \"## 未找到有效图片数据\"}\n    \n    # 提取核心数据\n\
+          \    q = input_data.get(\"q\", \"未知搜索\")\n    total = input_data.get(\"\
+          total\", 0)\n    images = input_data[\"images\"]\n    \n    # 构建基础MD结构\n\
+          \    markdown = f\"# \U0001F50D 图片搜索结果: {q}\\n\\n\"\n    markdown += f\"\
+          **找到 {total} 条结果，显示前 {len(images)} 张图片**\\n\\n\"\n    \n    # 添加图片信息表\n\
+          \    markdown += \"## \U0001F4F8 图片列表\\n\"\n    markdown += \"| 位置 | 评分\
+          \ | 标题 | 预览 |\\n\"\n    markdown += \"|------|------|------|------|\\n\"\
+          \n    \n    for img in images:\n        # 简化标题（移除多余符号）\n        title =\
+          \ img[\"title\"].split('|')[0].split('_')[0].strip()\n        # 创建图片预览（限制高度）\n\
+          \        preview = f\"<img src='{img['imageUrl']}' height=100>\"\n     \
+          \   # 添加表格行\n        markdown += f\"| {img['position']} | {img['score']}\
+          \ | {title} | {preview} |\\n\"\n    \n    return {\"markdown\": markdown}"
+        code_language: python3
+        desc: ''
+        outputs:
+          markdown:
+            children: null
+            type: string
+        selected: false
+        title: josn转md
+        type: code
+        variables:
+        - value_selector:
+          - '1754640516327'
+          - input_data
+          variable: input_data
+      height: 52
+      id: '1754641206148'
+      position:
+        x: -436.424934191988
+        y: -1853.3458238072835
+      positionAbsolute:
+        x: -436.424934191988
+        y: -1853.3458238072835
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1754641206148'
+          - markdown
+          variable: markdown
+        selected: false
+        title: 图片搜索结果
+        type: end
+      height: 88
+      id: '1754641782445'
+      position:
+        x: -153.8062361503661
+        y: -1859.386270913807
+      positionAbsolute:
+        x: -153.8062361503661
+        y: -1859.386270913807
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "import json\n\ndef main(body: str) -> dict:\n    \"\"\"\n    解析视频搜索结果JSON，提取结构化字段\n\
+          \    输入: 包含视频搜索结果的JSON字符串\n    输出: 包含q和videos列表的字典\n    \"\"\"\n    # 解析JSON响应\n\
+          \    data = json.loads(body)\n    \n    # 构建结果字典\n    result = {\n     \
+          \   \"q\": data[\"searchParameters\"][\"q\"],  # 提取搜索关键词\n        \"videos\"\
+          : []  # 用于存储视频信息的列表\n    }\n    \n    # 遍历每个视频条目\n    for video in data[\"\
+          videos\"]:\n        # 提取指定字段\n        video_data = {\n            \"position\"\
+          : video[\"position\"],\n            \"title\": video[\"title\"],\n     \
+          \       \"link\": video[\"link\"],\n            \"score\": video[\"score\"\
+          ],\n            \"snippet\": video[\"snippet\"],\n            \"authors\"\
+          : video[\"authors\"],\n            \"date\": video[\"date\"],\n        \
+          \    \"duration\": video[\"duration\"],\n            \"coverImage\": video[\"\
+          coverImage\"]\n        }\n        result[\"videos\"].append(video_data)\n\
+          \    \n    # 返回变量名为 input_data 的输出\n    return {\"input_data\": result}\
+          \  # 已修改变量名"
+        code_language: python3
+        desc: ''
+        outputs:
+          input_data:
+            children: null
+            type: object
+        selected: false
+        title: 结果解析
+        type: code
+        variables:
+        - value_selector:
+          - '17546253440350'
+          - body
+          variable: body
+      height: 52
+      id: '1754642078212'
+      position:
+        x: -740.424934191988
+        y: -1693.41666008938
+      positionAbsolute:
+        x: -740.424934191988
+        y: -1693.41666008938
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "import json\n\ndef main(input_data: dict) -> dict:\n    \"\"\"\n  \
+          \  将视频搜索结果JSON转换为非表格Markdown格式\n    输入: 包含视频搜索结果的字典对象\n    输出: Markdown格式的内容（变量名：markdown）\n\
+          \    \"\"\"\n    # 直接使用 input_data 字典\n    videos = input_data[\"videos\"\
+          ]\n    \n    # 构建Markdown内容\n    md_content = f\"## \U0001F50D 搜索词: {input_data['q']}\\\
+          n\\n\"\n    \n    # 遍历每个视频条目\n    for video in videos:\n        # 处理作者信息\n\
+          \        author = video[\"authors\"][0] if video[\"authors\"] else \"未知\"\
+          \n        \n        # 处理摘要（截取前50字符）\n        snippet = video[\"snippet\"\
+          ].replace(\"\\n\", \" \").strip()\n        snippet_short = snippet[:50]\
+          \ + \"...\" if len(snippet) > 50 else snippet\n        \n        # 添加视频条目\n\
+          \        md_content += f\"### \U0001F4FA {video['position']}. [{video['title']}]({video['link']})\\\
+          n\"\n        md_content += f\"- **作者**: {author}\\n\"\n        md_content\
+          \ += f\"- **发布日期**: {video['date']}\\n\"\n        md_content += f\"- **视频时长**:\
+          \ {video['duration']}秒\\n\"\n        md_content += f\"- **摘要**: {snippet_short}\\\
+          n\"\n        md_content += f\"- **封面**: [查看图片]({video['coverImage']})\\\
+          n\\n\"\n    \n    # 返回Markdown结果\n    return {\"markdown\": md_content}"
+        code_language: python3
+        desc: ''
+        outputs:
+          markdown:
+            children: null
+            type: string
+        selected: false
+        title: josn转md
+        type: code
+        variables:
+        - value_selector:
+          - '1754642078212'
+          - input_data
+          variable: input_data
+      height: 52
+      id: '1754642999884'
+      position:
+        x: -436.424934191988
+        y: -1693.41666008938
+      positionAbsolute:
+        x: -436.424934191988
+        y: -1693.41666008938
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "import json\n\ndef main(body: str) -> dict:\n    \"\"\"\n    解析Dify工作流中的JSON响应，提取指定字段\n\
+          \    包含错误处理和字段缺失的默认值设置\n    \"\"\"\n    try:\n        # 解析JSON响应主体\n   \
+          \     parsed = json.loads(body)\n        \n        # 提取顶层字段（含错误处理）\n   \
+          \     input_data = {\n            \"q\": parsed.get(\"searchParameters\"\
+          , {}).get(\"q\", \"\"),\n            \"total\": parsed.get(\"total\", 0),\n\
+          \            \"podcasts\": []\n        }\n        \n        # 遍历每个播客条目\n\
+          \        for podcast in parsed.get(\"podcasts\", []):\n            podcast_data\
+          \ = {\n                \"title\": podcast.get(\"title\", \"\"),\n      \
+          \          \"link\": podcast.get(\"link\", \"\"),\n                \"score\"\
+          : podcast.get(\"score\", \"medium\"),  # 默认medium评分\n                \"\
+          snippet\": podcast.get(\"snippet\", \"\"),\n                \"position\"\
+          : podcast.get(\"position\", 0),\n                \"authors\": podcast.get(\"\
+          authors\", []),    # 作者是数组\n                \"date\": podcast.get(\"date\"\
+          , \"\"),\n                \"duration\": podcast.get(\"duration\", \"0\"\
+          ),\n                # coverImage可能不存在，提供默认空值\n                \"coverImage\"\
+          : podcast.get(\"coverImage\", \"\")  \n            }\n            input_data[\"\
+          podcasts\"].append(podcast_data)\n        \n        # 返回统一命名的输出变量\n    \
+          \    return {\"input_data\": input_data}\n    \n    except json.JSONDecodeError:\n\
+          \        # JSON解析失败时返回错误信息\n        return {\"input_data\": {\"error\":\
+          \ \"Invalid JSON format\"}}\n    except Exception as e:\n        # 通用错误处理\n\
+          \        return {\"input_data\": {\"error\": f\"Processing error: {str(e)}\"\
+          }}"
+        code_language: python3
+        desc: ''
+        outputs:
+          input_data:
+            children: null
+            type: object
+        selected: false
+        title: 结果解析
+        type: code
+        variables:
+        - value_selector:
+          - '17546253491010'
+          - body
+          variable: body
+      height: 52
+      id: '1754643102235'
+      position:
+        x: -740.424934191988
+        y: -1514.2286015845405
+      positionAbsolute:
+        x: -740.424934191988
+        y: -1514.2286015845405
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "import json\n\ndef main(input_data: dict) -> dict:\n    \"\"\"\n  \
+          \  修复版：兼容嵌套/非嵌套输入，强制完整输出\n    输入: 含videos/podcasts字段的字典（支持两种结构）\n    输出:\
+          \ 完整Markdown内容（强制包含markdown键）\n    \"\"\"\n    try:\n        # 兼容两种输入结构\n\
+          \        data = input_data.get(\"input_data\", input_data)  # 适配嵌套或非嵌套\n\
+          \        query = data.get(\"q\", \"未知搜索词\")\n        items = data.get(\"\
+          videos\", data.get(\"podcasts\", []))  # 兼容videos/podcasts字段\n        \n\
+          \        # 构建基础Markdown\n        md_content = f\"## \U0001F50D 搜索词: {query}\\\
+          n\\n\"\n        \n        # 处理条目（防御性编程）\n        for item in items:\n  \
+          \          title = item.get(\"title\", \"无标题\")\n            link = item.get(\"\
+          link\", \"#\")\n            \n            # 构建条目内容\n            md_content\
+          \ += f\"### \U0001F4FA {item.get('position', 0)}. [{title}]({link})\\n\"\
+          \n            md_content += f\"- **作者**: {'、'.join(item.get('authors', ['未知']))}\\\
+          n\"\n            md_content += f\"- **日期**: {item.get('date', '未知')}\\n\"\
+          \n            \n            # 处理可能缺失的字段\n            if \"duration\" in\
+          \ item:\n                md_content += f\"- **时长**: {item['duration']}秒\\\
+          n\"\n            if snippet := item.get(\"snippet\", \"\"):\n          \
+          \      md_content += f\"- **摘要**: {snippet[:100]}{'...' if len(snippet)>100\
+          \ else ''}\\n\"\n            if cover := item.get(\"coverImage\"):\n   \
+          \             md_content += f\"- **封面**: ![图片]({cover})\\n\"\n         \
+          \   md_content += \"\\n\"\n        \n        return {\"markdown\": md_content}\n\
+          \    \n    except Exception as e:\n        return {\"markdown\": f\"## ⚠️\
+          \ 处理异常\\n{str(e)}\"}"
+        code_language: python3
+        desc: ''
+        outputs:
+          markdown:
+            children: null
+            type: string
+        selected: false
+        title: josn转md
+        type: code
+        variables:
+        - value_selector:
+          - '1754643102235'
+          - input_data
+          variable: input_data
+      height: 52
+      id: '1754643106088'
+      position:
+        x: -436.424934191988
+        y: -1514.2286015845405
+      positionAbsolute:
+        x: -436.424934191988
+        y: -1514.2286015845405
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1754642999884'
+          - markdown
+          variable: markdown
+        selected: false
+        title: 视频搜索结果
+        type: end
+      height: 88
+      id: '1754644020839'
+      position:
+        x: -153.8062361503661
+        y: -1699.0502454764078
+      positionAbsolute:
+        x: -153.8062361503661
+        y: -1699.0502454764078
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1754643106088'
+          - markdown
+          variable: markdown
+        selected: false
+        title: 博客搜索结果
+        type: end
+      height: 88
+      id: '1754646053648'
+      position:
+        x: -153.8062361503661
+        y: -1514.2286015845405
+      positionAbsolute:
+        x: -153.8062361503661
+        y: -1514.2286015845405
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: 715.160207408867
+      y: 2225.7594670142516
+      zoom: 0.7739450617033755
