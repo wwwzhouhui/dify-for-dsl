@@ -1,0 +1,298 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 75-dify案例分享-AI 助力初中化学学习：用 Qwen Code+Dify 一键生成交互式元素周期表网页
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.16@77274df8fe2632cac66bfd153fcc75aa5e96abbe92b5c611b8984ad9f4cd4457
+kind: app
+version: 0.3.0
+workflow:
+  conversation_variables: []
+  environment_variables:
+  - description: ''
+    id: 451091a5-0858-45a8-bac5-32e0cf1dff3f
+    name: apikey
+    selector:
+    - env
+    - apikey
+    value: sk-zhouhui1122444
+    value_type: string
+  - description: ''
+    id: 822e397b-49b4-4329-82fe-88b639a8f7ed
+    name: apiurl
+    selector:
+    - env
+    - apiurl
+    value: http://14.103.204.132:8080/generate-html/
+    value_type: string
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 500
+        batch_count_limit: 10
+        file_size_limit: 100
+        image_file_size_limit: 100
+        video_file_size_limit: 500
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        sourceType: start
+        targetType: llm
+      id: 1754787959214-llm
+      source: '1754787959214'
+      sourceHandle: source
+      target: llm
+      targetHandle: target
+      type: custom
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: llm-source-1754804008914-target
+      source: llm
+      sourceHandle: source
+      target: '1754804008914'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: answer
+      id: 1754804008914-source-1754804162304-target
+      source: '1754804008914'
+      sourceHandle: source
+      target: '1754804162304'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables: []
+      height: 52
+      id: '1754787959214'
+      position:
+        x: 79.1687621038572
+        y: 282
+      positionAbsolute:
+        x: 79.1687621038572
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+
+            {{#sys.files#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 10
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: cerebras/qwen-3-coder-480b
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 030ebb73-cb0f-48f7-bb03-3989dffc14e6
+          role: system
+          text: "# Role: 初中化学元素周期表HTML页面生成专家\n\n## Profile\n- Author: 化学教育技术专家\n-\
+            \ Version: 1.0\n- Language: 中文\n- Description: 专门为初中化学教学设计的元素周期表HTML页面生成专家，能够创建符合初中化学教学大纲要求的交互式元素周期表网页\n\
+            \n## Skills\n1. 深度理解初中化学元素周期表知识点和教学要求\n2. 精通HTML5、CSS3和JavaScript前端技术\n\
+            3. 具备响应式网页设计能力\n4. 了解初中生的认知特点和学习习惯\n5. 掌握教育技术和可视化设计原理\n6. 熟悉无障碍网页设计标准\n\
+            \n## Rules\n1. 严格按照初中化学教学大纲要求，只包含初中阶段需要掌握的元素\n2. 页面设计必须简洁明了，符合初中生的认知水平\n\
+            3. 确保所有化学信息的准确性和科学性\n4. 代码结构清晰，注释详细，便于教师理解和修改\n5. 支持多种设备访问，具备良好的响应式设计\n\
+            6. 遵循网页无障碍设计原则，确保所有学生都能正常使用\n7. 颜色搭配要考虑色盲色弱学生的需求\n\n## Workflow\n1. **需求分析阶段**\n\
+            \   - 确认目标用户（初中生和化学教师）\n   - 明确教学目标和功能需求\n   - 了解技术限制和部署环境\n\n2. **内容规划阶段**\n\
+            \   - 确定需要展示的元素范围（通常为前20个元素）\n   - 规划元素信息展示内容（原子序数、元素符号、中文名称、原子量等）\n \
+            \  - 设计交互功能（点击查看详情、搜索、分类等）\n\n3. **界面设计阶段**\n   - 设计符合初中生审美的视觉风格\n   -\
+            \ 规划布局结构和颜色方案\n   - 设计交互效果和动画\n\n4. **代码实现阶段**\n   - 编写语义化的HTML结构\n  \
+            \ - 实现响应式CSS样式\n   - 添加JavaScript交互功能\n   - 进行跨浏览器兼容性处理\n\n5. **测试优化阶段**\n\
+            \   - 功能测试和兼容性测试\n   - 性能优化和代码优化\n   - 教学效果评估和改进\n\n## Initialization\n\
+            作为初中化学元素周期表HTML页面生成专家，我将为您创建一个专业、实用、符合教学需求的元素周期表网页。\n\n请告诉我您的具体需求：\n\n\
+            **基础信息收集：**\n1. 目标学段：初一/初二/初三？\n2. 元素范围：前18个元素/前20个元素/其他？\n3. 主要功能：基础展示/交互查询/练习测试？\n\
+            4. 设备支持：PC端/移动端/平板/全平台？\n5. 特殊要求：是否需要打印友好/离线使用/特定颜色主题？\n\n**技术偏好：**\n\
+            1. 复杂度：简单静态页面/中等交互/高级功能？\n2. 框架选择：原生HTML/Bootstrap/其他框架？\n3. 兼容性：现代浏览器/IE兼容/移动端优先？\n\
+            \n**教学需求：**\n1. 展示信息：元素符号、名称、原子序数、原子量、电子排布？\n2. 分类方式：金属/非金属/稀有气体的颜色区分？\n\
+            3. 交互功能：点击详情/搜索功能/记忆练习？\n4. 辅助功能：语音朗读/放大镜/高对比度模式？\n\n我将根据您的需求生成完整的HTML代码，包括：\n\
+            - 结构清晰的HTML文档\n- 美观实用的CSS样式\n- 流畅的JavaScript交互\n- 详细的代码注释\n- 使用说明文档\n\n\
+            现在请告诉我您的具体需求，我将为您量身定制最适合的初中化学元素周期表HTML页面！"
+        - id: ab82da82-0868-4627-9b27-b1d1be132c1c
+          role: user
+          text: 请根据用户输入的提示词{{#sys.query#}}生成初中化学元素周期表HTML
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 88
+      id: llm
+      position:
+        x: 375
+        y: 282
+      positionAbsolute:
+        x: 375
+        y: 282
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "import json\nimport re\nimport time\nimport requests\n\ndef main(json_html:\
+          \ str, apikey: str,apiurl: str) -> dict:\n    try:\n        # 去除输入字符串中的\
+          \ ```html 和 ``` 标记\n        match = re.search(r'```html\\s*([\\s\\S]*?)```',\
+          \ json_html, re.DOTALL)\n        \n        if match:\n            # group(1)\
+          \ 获取第一个捕获组的内容，即纯HTML代码\n            # .strip() 去除可能存在的前后空白\n           \
+          \ html_content = match.group(1).strip()\n        else:\n            # 如果在输入中找不到HTML代码块，则返回错误\n\
+          \            raise ValueError(\"未能在输入中找到 ```html ... ``` 代码块。\")\n     \
+          \   \n        # 生成时间戳，确保文件名唯一\n        timestamp = int(time.time())\n  \
+          \      filename = f\"makehtml_{timestamp}.html\"\n        \n        # API端点（假设本地运行）\n\
+          \        url = f\"{apiurl}\"\n        \n        # 请求数据\n        payload\
+          \ = {\n            \"html_content\": html_content,\n            \"filename\"\
+          : filename  # 使用传入的文件名\n        }\n        \n        # 设置请求头（包含认证token）\n\
+          \        headers = {\n            \"Authorization\": f\"Bearer {apikey}\"\
+          ,  # 替换为实际的认证token\n            \"Content-Type\": \"application/json\"\n\
+          \        }\n        \n        try:\n            # 发送POST请求\n           \
+          \ response = requests.post(url, json=payload, headers=headers)\n       \
+          \     \n            # 检查响应状态\n            if response.status_code == 200:\n\
+          \                result = response.json()\n                html_url = result.get(\"\
+          html_url\", \"\")\n                generated_filename = result.get(\"filename\"\
+          , \"\")\n                \n                # 返回结果\n                return\
+          \ {\n                    \"html_url\": html_url,\n                    \"\
+          filename\": generated_filename,\n                    \"markdown_result\"\
+          :  f\"[点击查看]({html_url})\"\n                }\n            else:\n     \
+          \           raise Exception(f\"HTTP Error: {response.status_code}, Message:\
+          \ {response.text}\")\n        \n        except requests.exceptions.RequestException\
+          \ as e:\n            raise Exception(f\"Request failed: {str(e)}\")\n  \
+          \  \n    except Exception as e:\n        return {\n            \"error\"\
+          : f\"Error: {str(e)}\"\n        }"
+        code_language: python3
+        desc: ''
+        outputs:
+          filename:
+            children: null
+            type: string
+          html_url:
+            children: null
+            type: string
+          markdown_result:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行
+        type: code
+        variables:
+        - value_selector:
+          - llm
+          - text
+          value_type: string
+          variable: json_html
+        - value_selector:
+          - env
+          - apikey
+          value_type: string
+          variable: apikey
+        - value_selector:
+          - env
+          - apiurl
+          value_type: string
+          variable: apiurl
+      height: 52
+      id: '1754804008914'
+      position:
+        x: 677
+        y: 282
+      positionAbsolute:
+        x: 677
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: '{{#1754804008914.html_url#}}
+
+          {{#1754804008914.markdown_result#}}'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 123
+      id: '1754804162304'
+      position:
+        x: 979
+        y: 282
+      positionAbsolute:
+        x: 979
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: -639.3275396903281
+      y: 36.26090010579304
+      zoom: 1.2030250360821164
