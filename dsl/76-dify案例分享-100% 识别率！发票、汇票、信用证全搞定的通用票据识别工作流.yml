@@ -1,0 +1,1058 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 76-dify案例分享-100% 识别率！发票、汇票、信用证全搞定的通用票据识别工作流
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/siliconflow:0.0.22@588c9f60178d37985626f1118347eb92bedcd8cb27d25bafc4ac929027ec51dc
+kind: app
+version: 0.3.0
+workflow:
+  conversation_variables: []
+  environment_variables:
+  - description: ''
+    id: 0813f226-61ad-4259-8e45-78a426ac25ca
+    name: apikey
+    selector:
+    - env
+    - apikey
+    value: sk-zhouhui1122444
+    value_type: string
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 500
+        batch_count_limit: 10
+        file_size_limit: 100
+        image_file_size_limit: 100
+        video_file_size_limit: 500
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: http-request
+        targetType: code
+      id: 1754984205380-source-1754985243952-target
+      source: '1754984205380'
+      sourceHandle: source
+      target: '1754985243952'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1754990293888-source-answer-target
+      source: '1754990293888'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1755015662910-source-1755015718694-target
+      source: '1755015662910'
+      sourceHandle: source
+      target: '1755015718694'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 17550156921690-source-1755015721479-target
+      source: '17550156921690'
+      sourceHandle: source
+      target: '1755015721479'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: start
+        targetType: if-else
+      id: 1754982121363-source-1755015549373-target
+      source: '1754982121363'
+      sourceHandle: source
+      target: '1755015549373'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: http-request
+      id: 1755015549373-true-1754984205380-target
+      source: '1755015549373'
+      sourceHandle: 'true'
+      target: '1754984205380'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: answer
+      id: 1755015549373-c252cda7-9889-4c06-95ed-f0546a9ed798-1755015753275-target
+      selected: false
+      source: '1755015549373'
+      sourceHandle: c252cda7-9889-4c06-95ed-f0546a9ed798
+      target: '1755015753275'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: llm
+      id: 1754985243952-source-1754990293888-target
+      source: '1754985243952'
+      sourceHandle: source
+      target: '1754990293888'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: http-request
+        targetType: code
+      id: 17550642968960-source-17550643012930-target
+      source: '17550642968960'
+      sourceHandle: source
+      target: '17550643012930'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: http-request
+      id: 1755015549373-1aeb57d6-1521-4bd8-aee1-1ae22af5df21-17550642968960-target
+      source: '1755015549373'
+      sourceHandle: 1aeb57d6-1521-4bd8-aee1-1ae22af5df21
+      target: '17550642968960'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: http-request
+      id: 1755015549373-6e72ca1a-2355-4aad-a03a-0e8aa46af9d3-17550643393220-target
+      source: '1755015549373'
+      sourceHandle: 6e72ca1a-2355-4aad-a03a-0e8aa46af9d3
+      target: '17550643393220'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: llm
+      id: 17550643012930-source-1755015662910-target
+      source: '17550643012930'
+      sourceHandle: source
+      target: '1755015662910'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: http-request
+        targetType: code
+      id: 17550643393220-source-17550643558470-target
+      source: '17550643393220'
+      sourceHandle: source
+      target: '17550643558470'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: llm
+      id: 17550643558470-source-17550156921690-target
+      source: '17550643558470'
+      sourceHandle: source
+      target: '17550156921690'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - image
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: 文件
+          max_length: 48
+          options: []
+          required: true
+          type: file
+          variable: file
+        - label: 票据种类
+          max_length: 48
+          options:
+          - 发票
+          - 银行凭证单据
+          - 银行信用证
+          - 增值税申报表等
+          required: true
+          type: select
+          variable: typebill
+      height: 115
+      id: '1754982121363'
+      position:
+        x: -62
+        y: 312
+      positionAbsolute:
+        x: -62
+        y: 312
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1754990293888.text#}}'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 104
+      id: answer
+      position:
+        x: 1727.0151251804105
+        y: 307
+      positionAbsolute:
+        x: 1727.0151251804105
+        y: 307
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data:
+          - type: text
+            value: "{\n    \"file_url\": \"{{#1754982121363.file.url#}}\",\n    \"\
+              mode\": \"gpu\",\n    \"preserve_layout\": true,\n    \"ocr_enabled\"\
+              : true\n  }"
+          type: raw-text
+        desc: ''
+        headers: 'Authorization:Bearer {{#env.apikey#}}
+
+          Content-Type:application/json'
+        method: POST
+        params: ''
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 100
+        selected: false
+        ssl_verify: true
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: HTTP 请求
+        type: http-request
+        url: https://pizhapi.duckcloud.fun/ocr-extract/
+        variables: []
+      height: 139
+      id: '1754984205380'
+      position:
+        x: 719
+        y: 307
+      positionAbsolute:
+        x: 719
+        y: 307
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import json\n\ndef main(body: str) -> dict:\n    try:\n        # 解析\
+          \ body 中的 JSON 数据\n        data = json.loads(body)\n    except json.JSONDecodeError\
+          \ as e:\n        return {\"error\": f\"body 内容不是有效的 JSON 格式。错误信息: {str(e)}\"\
+          }\n\n    # 检查解析后的数据格式\n    if not isinstance(data, dict):\n        return\
+          \ {\"error\": \"解析后的 body 内容不是 JSON 对象\"}\n\n    # 检查是否包含 markdown_content\
+          \ 字段\n    if \"markdown_content\" not in data:\n        return {\"error\"\
+          : \"数据中缺少 markdown_content 字段\"}\n\n    # 提取并处理 markdown_content\n    markdown_content\
+          \ = data[\"markdown_content\"]\n    markdown_content = markdown_content.replace(\"\
+          \\\\n\", \"\\n\")  # 处理转义换行符\n\n    # 去掉开头的 GPU 处理信息\n    lines = markdown_content.split(\"\
+          \\n\")\n    start_index = 0  # 默认从第0行开始\n    # 找到 \"## Page 1\" 所在行，从这一行开始保留内容\n\
+          \    for i, line in enumerate(lines):\n        if line.strip() == \"## Page\
+          \ 1\":\n            start_index = i\n            break\n\n    # 清理内容（去掉空行）\n\
+          \    cleaned_content = \"\\n\".join(lines[start_index:]).strip()\n\n   \
+          \ # 返回字典类型的结果，包含处理后的内容\n    return {\"result\": cleaned_content}"
+        code_language: python3
+        default_value:
+        - key: result
+          type: string
+          value: ''
+        desc: ''
+        error_strategy: default-value
+        outputs:
+          result:
+            children: null
+            type: string
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        title: 代码执行
+        type: code
+        variables:
+        - value_selector:
+          - '1754984205380'
+          - body
+          value_type: string
+          variable: body
+      height: 119
+      id: '1754985243952'
+      position:
+        x: 1031
+        y: 312
+      positionAbsolute:
+        x: 1031
+        y: 312
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-ai/DeepSeek-V3
+          provider: langgenius/siliconflow/siliconflow
+        prompt_template:
+        - id: 233f735d-c3cb-48ea-bf3b-ccb34028913c
+          role: system
+          text: "# Role: 发票信息提取专家\n\n## Profile\n\n- Author: 周辉\n- Version: 1.0\n\
+            - Language: 中文\n- Description: 专业的发票信息提取专家，能够准确识别并提取各种类型发票的关键信息，并以标准JSON格式返回结构化数据。\n\
+            \n## Skills\n\n1. 精准识别发票类型（增值税专用发票、普通发票、电子发票、出租车发票、火车票、通行费电子发票等）\n2. 准确提取发票中的所有关键字段信息\n\
+            3. 按照预定义的JSON格式规范输出结构化数据\n4. 处理各种发票格式和布局变化\n5. 确保数据提取的完整性和准确性\n\n## Rules\n\
+            \n1. 必须严格按照发票类型对应的字段格式进行信息提取\n2. 所有返回结果必须为有效的JSON格式\n3. 对于无法识别或缺失的字段，使用null值或空字符串\"\
+            \"\n4. 保持数字格式的准确性（金额、数量等）\n5. 日期格式统一为YYYY-MM-DD\n6. 时间格式统一为HH:MM\n\n##\
+            \ Workflow\n\n1. 首先识别发票类型\n2. 根据发票类型选择对应的字段提取模板\n3. 逐一提取所有必需字段\n4. 验证提取数据的完整性和格式正确性\n\
+            5. 输出标准JSON格式结果\n\n## JSON格式模板\n\n### 1. 增值税专用发票/普通发票\n```json\n{\n  \"\
+            invoice_type\": \"增值税专用发票\" | \"增值税普通发票\",\n  \"machine_number\": \"机器编号\"\
+            ,\n  \"invoice_code\": \"发票代码\",\n  \"invoice_number\": \"发票号码\",\n  \"\
+            issue_date\": \"开票日期\",\n  \"verification_code\": \"校验码\",\n  \"buyer_name\"\
+            : \"购买方名称\",\n  \"buyer_tax_id\": \"购买方纳税人识别号\",\n  \"buyer_address_phone\"\
+            : \"购买方地址、电话\",\n  \"buyer_bank_account\": \"开户行及账号\",\n  \"goods_service_name\"\
+            : \"货物或应税劳务、服务名称\",\n  \"specification\": \"规格型号\",\n  \"unit\": \"单位\"\
+            ,\n  \"quantity\": \"数量\",\n  \"unit_price\": \"单价\",\n  \"amount\": \"\
+            金额\",\n  \"tax_rate\": \"税率\",\n  \"tax_amount\": \"税额\",\n  \"total_amount_chinese\"\
+            : \"价税合计（大写）\",\n  \"total_amount_numeric\": \"价税合计（小写）\",\n  \"seller_name\"\
+            : \"销售方名称\",\n  \"seller_tax_id\": \"销售方纳税人识别号\",\n  \"seller_address_phone\"\
+            : \"销售方地址、电话\",\n  \"seller_bank_account\": \"开户行及账号\",\n  \"remarks\"\
+            : \"备注\",\n  \"payee\": \"收款人\",\n  \"reviewer\": \"复核\",\n  \"issuer\"\
+            : \"开票人\"\n}\n```\n\n### 2. 电子发票(全电发票)\n```json\n{\n  \"invoice_type\"\
+            : \"电子发票\",\n  \"invoice_number\": \"发票号码\",\n  \"issue_date\": \"开票日期\"\
+            ,\n  \"buyer_name\": \"购买方信息名称\",\n  \"buyer_credit_code\": \"购买方统一社会信用代码/纳税人识别号\"\
+            ,\n  \"seller_name\": \"销售方信息名称\",\n  \"seller_credit_code\": \"销售方统一社会信用代码/纳税人识别号\"\
+            ,\n  \"item_name\": \"项目名称\",\n  \"specification\": \"规格型号\",\n  \"unit\"\
+            : \"单位\",\n  \"quantity\": \"数量\",\n  \"unit_price\": \"单价\",\n  \"amount\"\
+            : \"金额\",\n  \"tax_rate\": \"税率/征收率\",\n  \"tax_amount\": \"税额\",\n  \"\
+            subtotal\": \"合计\",\n  \"total_amount_chinese\": \"价税合计（大写）\",\n  \"total_amount_numeric\"\
+            : \"价税合计（小写）\",\n  \"remarks\": \"备注\"\n}\n```\n\n### 3. 出租车发票\n```json\n\
+            {\n  \"invoice_type\": \"出租车发票\",\n  \"invoice_code\": \"发票代码\",\n  \"\
+            invoice_number\": \"发票号码\",\n  \"company\": \"单位\",\n  \"vehicle_number\"\
+            : \"车号\",\n  \"driver_id\": \"工号\",\n  \"date\": \"日期\",\n  \"time\":\
+            \ \"时间\",\n  \"unit_price\": \"单价\",\n  \"distance\": \"里程\",\n  \"waiting_time\"\
+            : \"等候\",\n  \"amount\": \"金额\"\n}\n```\n\n### 4. 火车票\n```json\n{\n  \"\
+            invoice_type\": \"火车票\",\n  \"departure_station\": \"始发站\",\n  \"arrival_station\"\
+            : \"终点站\",\n  \"train_number\": \"车次\",\n  \"departure_time\": \"出发时间\"\
+            ,\n  \"ticket_price\": \"票价\",\n  \"id_number\": \"身份证号\",\n  \"passenger_name\"\
+            : \"姓名\"\n}\n```\n\n### 5. 新版火车票-铁路电子客票\n```json\n{\n  \"invoice_type\"\
+            : \"铁路电子客票\",\n  \"invoice_number\": \"发票号码\",\n  \"issue_date\": \"开票日期\"\
+            ,\n  \"departure_time\": \"出发时间\",\n  \"departure_station\": \"始发站\",\n\
+            \  \"arrival_station\": \"终点站\",\n  \"train_number\": \"车次\",\n  \"ticket_price\"\
+            : \"票价\",\n  \"id_number\": \"身份证号\",\n  \"passenger_name\": \"姓名\",\n\
+            \  \"e_ticket_number\": \"电子客票号\",\n  \"buyer_name\": \"购买方名称\",\n  \"\
+            credit_code\": \"统一社会信用代码\"\n}\n```\n\n### 6. 通行费电子发票\n```json\n{\n  \"\
+            invoice_type\": \"通行费电子发票\",\n  \"invoice_code\": \"发票代码\",\n  \"invoice_number\"\
+            : \"发票号码\",\n  \"issue_date\": \"开票日期\",\n  \"buyer_name\": \"购买方名称\"\
+            ,\n  \"buyer_tax_id\": \"购买方纳税人识别号\",\n  \"buyer_address_phone\": \"购买方地址、电话\"\
+            ,\n  \"buyer_bank_account\": \"开户行及账号\",\n  \"goods_service_name\": \"\
+            货物或应税劳务、服务名称\",\n  \"quantity\": \"数量\",\n  \"unit_price\": \"单价\",\n\
+            \  \"amount\": \"金额\",\n  \"total_amount_chinese\": \"价税合计（大写）\",\n  \"\
+            total_amount_numeric\": \"价税合计（小写）\",\n  \"seller_name\": \"销售方名称\",\n\
+            \  \"seller_tax_id\": \"销售方纳税人识别号\",\n  \"seller_address_phone\": \"销售方地址、电话\"\
+            ,\n  \"seller_bank_account\": \"开户行及账号\",\n  \"remarks\": \"备注\",\n  \"\
+            payee\": \"收款人\",\n  \"reviewer\": \"复核\",\n  \"issuer\": \"开票人\"\n}\n\
+            ```\n\n## Initialization\n\n作为发票信息提取专家，我将严格按照上述规范为您提取发票信息。请提供发票图片或文本内容，我将：\n\
+            \n1. 自动识别发票类型\n2. 提取所有相关字段信息\n3. 返回标准JSON格式的结构化数据\n\n请注意：\n- 所有金额保留原始格式和精度\n\
+            - 日期统一格式为YYYY-MM-DD\n- 缺失字段将标记为null或空字符串\n- 确保JSON格式的有效性和可解析性\n\n现在请提供您需要处理的发票信息。"
+        - id: e1b195e3-e7d8-4e79-b6ee-2da3b512085a
+          role: user
+          text: 请基于{{#1754985243952.result#}} 返回对应的发票json数据
+        selected: false
+        title: 基于发票的大模型生成票面信息
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1754990293888'
+      position:
+        x: 1376.8121001443285
+        y: 312
+      positionAbsolute:
+        x: 1376.8121001443285
+        y: 312
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: contains
+            id: 6edff569-2254-4388-a9e9-d3a2d6b0fee8
+            value: 发票
+            varType: string
+            variable_selector:
+            - '1754982121363'
+            - typebill
+          id: 'true'
+          logical_operator: and
+        - case_id: 1aeb57d6-1521-4bd8-aee1-1ae22af5df21
+          conditions:
+          - comparison_operator: contains
+            id: 42e499ab-13e6-44d9-9126-78194f59fdf3
+            value: 银行凭证单据
+            varType: string
+            variable_selector:
+            - '1754982121363'
+            - typebill
+          id: 1aeb57d6-1521-4bd8-aee1-1ae22af5df21
+          logical_operator: and
+        - case_id: 6e72ca1a-2355-4aad-a03a-0e8aa46af9d3
+          conditions:
+          - comparison_operator: contains
+            id: f91b80ba-eacf-475c-8526-0362c8d11d03
+            value: 银行信用证
+            varType: string
+            variable_selector:
+            - '1754982121363'
+            - typebill
+          id: 6e72ca1a-2355-4aad-a03a-0e8aa46af9d3
+          logical_operator: and
+        - case_id: c252cda7-9889-4c06-95ed-f0546a9ed798
+          conditions:
+          - comparison_operator: contains
+            id: 8c091615-8212-43d0-b8f5-f9b52f27fb5b
+            value: 增值税申报表等
+            varType: string
+            variable_selector:
+            - '1754982121363'
+            - typebill
+          id: c252cda7-9889-4c06-95ed-f0546a9ed798
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 条件分支
+        type: if-else
+      height: 269
+      id: '1755015549373'
+      position:
+        x: 242
+        y: 317
+      positionAbsolute:
+        x: 242
+        y: 317
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-ai/DeepSeek-V3
+          provider: langgenius/siliconflow/siliconflow
+        prompt_template:
+        - id: dd682774-7401-4b48-a800-3224eac91b52
+          role: system
+          text: "# Role: 银行凭证票据数据提取专家\n\n## Profile\n\n- Author: 周辉\n- Version: 1.0\n\
+            - Language: 中文\n- Description: 专门从银行承兑汇票、商业汇票等银行凭证票据中提取结构化数据，转换为标准JSON格式的专业助手\n\
+            \n## Skills\n\n1. 银行票据格式识别与解析\n2. 金融票据要素提取\n3. 数据标准化处理\n4. JSON格式输出\n\
+            5. 票据真伪性基础判断\n\n## Rules\n\n1. 严格按照标准JSON格式输出\n2. 确保所有提取的数据准确无误\n3. 对于缺失或不清晰的信息，标记为null或\"\
+            未知\"\n4. 保持数据的完整性和一致性\n5. 遵循银行票据的标准字段命名规范\n\n## Workflow\n\n1. 识别票据类型（电子银行承兑汇票、商业承兑汇票等）\n\
+            2. 提取基础票据信息\n3. 提取当事人信息\n4. 提取金额和期限信息\n5. 提取承兑和保证信息\n6. 提取流转记录信息\n7. 验证数据完整性\n\
+            8. 输出标准JSON格式\n\n## OutputFormat\n\n```json\n{\n  \"票据基础信息\": {\n    \"\
+            票据类型\": \"电子银行承兑汇票\",\n    \"票据号码\": \"\",\n    \"出票日期\": \"YYYY-MM-DD\"\
+            ,\n    \"汇票到期日\": \"YYYY-MM-DD\",\n    \"票据状态\": \"\",\n    \"显示日期\":\
+            \ \"YYYY-MM-DD\"\n  },\n  \"当事人信息\": {\n    \"出票人\": {\n      \"全称\":\
+            \ \"\",\n      \"账号\": \"\",\n      \"开户银行\": \"\",\n      \"开户行行号\":\
+            \ \"\"\n    },\n    \"收款人\": {\n      \"全称\": \"\",\n      \"账号\": \"\"\
+            ,\n      \"开户银行\": \"\",\n      \"开户行行号\": \"\"\n    },\n    \"承兑人\":\
+            \ {\n      \"全称\": \"\",\n      \"账号\": \"\",\n      \"开户银行\": \"\",\n\
+            \      \"开户行行号\": \"\"\n    }\n  },\n  \"金额信息\": {\n    \"票据金额_大写\": \"\
+            \",\n    \"票据金额_小写\": \"\",\n    \"币种\": \"人民币\"\n  },\n  \"承兑信息\": {\n\
+            \    \"交易合同号\": \"\",\n    \"出票人承诺\": \"\",\n    \"承兑人承兑\": \"\",\n  \
+            \  \"承兑日期\": \"YYYY-MM-DD\",\n    \"能否转让\": \"\"\n  },\n  \"保证信息\": {\n\
+            \    \"出票保证信息\": {\n      \"保证人名称\": \"\",\n      \"保证人地址\": \"\",\n \
+            \     \"保证日期\": \"\"\n    },\n    \"承兑保证信息\": {\n      \"保证人名称\": \"\"\
+            ,\n      \"保证人地址\": \"\",\n      \"保证日期\": \"\"\n    }\n  },\n  \"评级信息\"\
+            : {\n    \"出票人\": {\n      \"评级主体\": \"\",\n      \"信用等级\": \"\",\n  \
+            \    \"评级到期日\": \"\"\n    },\n    \"承兑人\": {\n      \"评级主体\": \"\",\n\
+            \      \"信用等级\": \"\",\n      \"评级到期日\": \"\"\n    }\n  }\n}\n```\n\n\
+            ## Constraints\n\n1. 必须严格按照上述JSON格式输出\n2. 日期格式统一为YYYY-MM-DD\n3. 金额信息必须同时包含大写和小写\n\
+            4. 对于空值使用null，对于未知信息使用\"未知\"\n\n## Examples\n\n### 输入示例\n\n```\n电子银行承兑汇票\n\
+            出票日期：2023-06-05\n汇票到期日：2023-12-05\n票据号码：130665300006220230605566535600\n\
+            出票人：重庆安信达供应链管理有限公司\n账号：9550880235474500161\n开户银行：广发银行股份有限公司重庆渝北支行\n收款人：河南济源钢铁（集团）有限公司\n\
+            票据金额：壹佰万元整 ¥1,000,000\n承兑人：广发银行股份有限公司重庆渝北支行\n```\n\n### 输出示例\n\n```json\n\
+            {\n  \"票据基础信息\": {\n    \"票据类型\": \"电子银行承兑汇票\",\n    \"票据号码\": \"130665300006220230605566535600\"\
+            ,\n    \"出票日期\": \"2023-06-05\",\n    \"汇票到期日\": \"2023-12-05\",\n   \
+            \ \"票据状态\": \"未知\",\n    \"显示日期\": null\n  },\n  \"当事人信息\": {\n    \"\
+            出票人\": {\n      \"全称\": \"重庆安信达供应链管理有限公司\",\n      \"账号\": \"9550880235474500161\"\
+            ,\n      \"开户银行\": \"广发银行股份有限公司重庆渝北支行\",\n      \"开户行行号\": null\n    },\n\
+            \    \"收款人\": {\n      \"全称\": \"河南济源钢铁（集团）有限公司\",\n      \"账号\": null,\n\
+            \      \"开户银行\": null,\n      \"开户行行号\": null\n    },\n    \"承兑人\": {\n\
+            \      \"全称\": \"广发银行股份有限公司重庆渝北支行\",\n      \"账号\": null,\n      \"开户银行\"\
+            : \"广发银行股份有限公司重庆渝北支行\",\n      \"开户行行号\": null\n    }\n  },\n  \"金额信息\"\
+            : {\n    \"票据金额_大写\": \"壹佰万元整\",\n    \"票据金额_小写\": \"1000000.00\",\n \
+            \   \"币种\": \"人民币\"\n  },\n  \"承兑信息\": {\n    \"交易合同号\": null,\n    \"\
+            出票人承诺\": \"本汇票请予以承兑，到期无条件付款\",\n    \"承兑人承兑\": \"本汇票已经承兑，到期无条件付款\",\n\
+            \    \"承兑日期\": null,\n    \"能否转让\": \"可再转让\"\n  },\n  \"保证信息\": {\n  \
+            \  \"出票保证信息\": {\n      \"保证人名称\": null,\n      \"保证人地址\": null,\n   \
+            \   \"保证日期\": null\n    },\n    \"承兑保证信息\": {\n      \"保证人名称\": null,\n\
+            \      \"保证人地址\": null,\n      \"保证日期\": null\n    }\n  },\n  \"评级信息\"\
+            : {\n    \"出票人\": {\n      \"评级主体\": null,\n      \"信用等级\": null,\n  \
+            \    \"评级到期日\": null\n    },\n    \"承兑人\": {\n      \"评级主体\": null,\n\
+            \      \"信用等级\": null,\n      \"评级到期日\": null\n    }\n  }\n}\n```\n\n\
+            ## Initialization\n\n作为银行凭证票据数据提取专家，我将帮助您从各种银行票据中提取结构化数据。请提供需要分析的银行票据内容，我将按照标准JSON格式为您输出完整的数据结构。我会确保数据的准确性和完整性，并对任何异常情况进行标记说明。"
+        - id: 35f359cd-63fb-406b-9e0c-0e7513c7a1ff
+          role: user
+          text: 请基于{{#17550643012930.result#}} 返回对应的银行json银行凭证票据
+        selected: false
+        title: 基于发票的大模型生成银行凭证票据
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1755015662910'
+      position:
+        x: 1376.8121001443285
+        y: 467.2951739978987
+      positionAbsolute:
+        x: 1376.8121001443285
+        y: 467.2951739978987
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-ai/DeepSeek-V3
+          provider: langgenius/siliconflow/siliconflow
+        prompt_template:
+        - id: dd682774-7401-4b48-a800-3224eac91b52
+          role: system
+          text: "# Role: 银行信用证数据提取专家\n\n## Profile\n- Author: 周辉\n- Version: 3.0\n\
+            - Language: 中文/英文\n- Description: 专业的银行信用证数据提取专家，精通兴业银行、浙商银行、中国银行等各大银行信用证格式，能够准确识别和提取国内外信用证的完整结构化数据，支持跟单信用证、备用信用证、循环信用证等各类信用证格式\n\
+            \n## Skills\n1. **多银行格式识别**: 精通兴业银行、浙商银行、中国银行等各大银行的信用证格式和模板\n2. **国内信用证专长**:\
+            \ 深度理解中国银行业信用证开证通知书的标准格式和要素\n3. **精准数据提取**: 准确识别信用证编号、开证日期、有效期、申请人、受益人等核心信息\n\
+            4. **金额处理专家**: 精确提取人民币大写、小写金额及各种外币金额表示\n5. **银行信息解析**: 准确识别开证行、通知行、议付行等银行机构信息和SWIFT代码\n\
+            6. **条款深度分析**: 理解付款条件、转让条款、保兑条款、交单期限等专业术语\n7. **货物贸易条款**: 提取货物描述、装运条件、运输方式、服务提供等贸易信息\n\
+            8. **单据要求识别**: 准确分析所需提交的各类单据及其具体要求\n9. **UCP600国际惯例**: 严格遵循《跟单信用证统一惯例》标准进行合规性检查\n\
+            10. **SWIFT标准应用**: 熟悉SWIFT MT700等国际报文格式\n11. **风险识别评估**: 识别软条款、陷阱条款等潜在风险点\n\
+            12. **多语言处理**: 支持中英文混合信用证内容的准确解析\n\n## Rules\n1. 严格按照UCP600国际惯例标准提取信用证要素\n\
+            2. 确保所有提取的数据准确无误\n3. 对于缺失或不清晰的信息，标记为null或\"未指定\"\n4. 保持数据的完整性和一致性\n5.\
+            \ 遵循SWIFT MT700格式标准\n6. 识别并标记信用证的关键风险点\n\n## Workflow\n1. **文档识别与分析**\n\
+            \   - 识别银行类型（兴业银行、浙商银行、中国银行等）\n   - 确定信用证格式（国内信用证、国际信用证）\n   - 识别信用证类型（跟单信用证、备用信用证、循环信用证等）\n\
+            \n2. **基础信息提取**\n   - 提取信用证编号（如：49101DCC20000089）\n   - 提取开证日期和有效期\n \
+            \  - 识别有效地点和到期地点\n\n3. **当事人信息解析**\n   - 开证行：银行名称、地址、联系方式、SWIFT代码\n  \
+            \ - 申请人：公司名称、详细地址、联系电话\n   - 受益人：公司名称、详细地址、联系方式\n   - 通知行、议付行、保兑行等相关银行信息\n\
+            \n4. **金额条款分析**\n   - 提取币种（人民币、美元等）\n   - 提取大写金额和数字金额\n   - 分析金额容差和数量容差\n\
+            \   - 识别付款条件和方式\n\n5. **贸易条款提取**\n   - 货物描述（如：壹佰随拾万陆仟伍佰拾元整）\n   - 装运条件和运输方式\n\
+            \   - 装运期限和地点\n   - 分批装运和转运条款\n\n6. **银行条款解析**\n   - 是否可议付、可转让、可保兑\n \
+            \  - 交单期限和交单地点\n   - 费用承担条款\n\n7. **单据要求整理**\n   - 识别所需提交的全部单据\n   - 分析单据的具体要求和份数\n\
+            \   - 提取特殊单据条款\n\n8. **风险评估与合规检查**\n   - 识别软条款和陷阱条款\n   - 进行UCP600合规性检查\n\
+            \   - 标记潜在操作风险\n\n9. **数据验证与输出**\n   - 验证数据完整性和准确性\n   - 生成标准化JSON格式输出\n\
+            \   - 提供置信度评估和风险提示\n\n## OutputFormat\n```json\n{\n  \"信用证基本信息\": {\n\
+            \    \"信用证号码\": \"\",\n    \"信用证类型\": \"跟单信用证/备用信用证/循环信用证/可转让信用证\",\n\
+            \    \"开证日期\": \"YYYY-MM-DD\",\n    \"有效期\": \"YYYY-MM-DD\",\n    \"到期地点\"\
+            : \"\",\n    \"适用规则\": \"UCP600/UCP500/ISP98\",\n    \"信用证状态\": \"有效/已使用/已过期/已撤销\"\
+            \n  },\n  \"当事人信息\": {\n    \"开证行\": {\n      \"银行名称\": \"\",\n      \"\
+            银行地址\": \"\",\n      \"SWIFT代码\": \"\",\n      \"联系信息\": \"\"\n    },\n\
+            \    \"通知行\": {\n      \"银行名称\": \"\",\n      \"银行地址\": \"\",\n      \"\
+            SWIFT代码\": \"\",\n      \"联系信息\": \"\"\n    },\n    \"受益人\": {\n     \
+            \ \"公司名称\": \"\",\n      \"地址\": \"\",\n      \"国家\": \"\",\n      \"\
+            联系信息\": \"\"\n    },\n    \"申请人\": {\n      \"公司名称\": \"\",\n      \"\
+            地址\": \"\",\n      \"国家\": \"\",\n      \"联系信息\": \"\"\n    },\n    \"\
+            议付行\": {\n      \"银行名称\": \"\",\n      \"银行地址\": \"\",\n      \"SWIFT代码\"\
+            : \"\",\n      \"限制条件\": \"\"\n    }\n  },\n  \"金额信息\": {\n    \"信用证金额\"\
+            : \"\",\n    \"币种\": \"\",\n    \"金额容差\": \"\",\n    \"数量容差\": \"\",\n\
+            \    \"部分装运\": \"允许/不允许\",\n    \"分批装运\": \"允许/不允许\"\n  },\n  \"货物信息\"\
+            : {\n    \"货物描述\": \"\",\n    \"商品编码\": \"\",\n    \"数量\": \"\",\n   \
+            \ \"单位\": \"\",\n    \"单价\": \"\",\n    \"总价\": \"\",\n    \"包装要求\": \"\
+            \",\n    \"标记和编号\": \"\"\n  },\n  \"贸易条款\": {\n    \"贸易术语\": \"FOB/CIF/CFR/EXW/FCA等\"\
+            ,\n    \"装运港\": \"\",\n    \"目的港\": \"\",\n    \"装运期\": \"\",\n    \"\
+            最迟装运日\": \"YYYY-MM-DD\",\n    \"运输方式\": \"海运/空运/陆运/多式联运\",\n    \"转运\"\
+            : \"允许/禁止\"\n  },\n  \"单据要求\": {\n    \"商业发票\": {\n      \"要求\": \"必须/可选\"\
+            ,\n      \"份数\": \"\",\n      \"特殊要求\": \"\"\n    },\n    \"运输单据\": {\n\
+            \      \"类型\": \"海运提单/空运单/铁路运单/公路运单\",\n      \"要求\": \"\",\n      \"\
+            份数\": \"\",\n      \"特殊条款\": \"\"\n    },\n    \"保险单据\": {\n      \"要求\"\
+            : \"必须/可选\",\n      \"保险类型\": \"\",\n      \"保险金额\": \"\",\n      \"特殊要求\"\
+            : \"\"\n    },\n    \"原产地证\": {\n      \"要求\": \"必须/可选\",\n      \"类型\"\
+            : \"一般原产地证/优惠原产地证\",\n      \"签发机构\": \"\"\n    },\n    \"检验证书\": {\n\
+            \      \"要求\": \"必须/可选\",\n      \"检验类型\": \"\",\n      \"检验机构\": \"\"\
+            \n    },\n    \"其他单据\": [\n      {\n        \"单据名称\": \"\",\n        \"\
+            要求\": \"\",\n        \"份数\": \"\",\n        \"特殊条件\": \"\"\n      }\n\
+            \    ]\n  },\n  \"交单条件\": {\n    \"交单期限\": \"\",\n    \"交单地点\": \"\",\n\
+            \    \"交单方式\": \"信使/邮寄/电子交单\",\n    \"单据不符处理\": \"\",\n    \"费用承担\": \"\
+            \"\n  },\n  \"特殊条款\": {\n    \"限制性条款\": [],\n    \"附加条件\": [],\n    \"\
+            禁止事项\": [],\n    \"特别指示\": []\n  },\n  \"费用信息\": {\n    \"开证费\": \"\"\
+            ,\n    \"通知费\": \"\",\n    \"议付费\": \"\",\n    \"修改费\": \"\",\n    \"\
+            费用承担方\": \"申请人/受益人/各自承担\"\n  },\n  \"修改记录\": [\n    {\n      \"修改序号\"\
+            : \"\",\n      \"修改日期\": \"YYYY-MM-DD\",\n      \"修改内容\": \"\",\n    \
+            \  \"修改原因\": \"\"\n    }\n  ],\n  \"风险提示\": {\n    \"软条款\": [],\n    \"\
+            陷阱条款\": [],\n    \"合规风险\": [],\n    \"操作风险\": []\n  },\n  \"提取元数据\": {\n\
+            \    \"提取时间\": \"YYYY-MM-DD HH:MM:SS\",\n    \"数据完整性\": \"完整/部分缺失/严重缺失\"\
+            ,\n    \"置信度\": \"高/中/低\",\n    \"语言\": \"中文/英文/其他\",\n    \"格式类型\": \"\
+            SWIFT MT700/纸质信用证/电子信用证\",\n    \"异常标记\": []\n  }\n}\n```\n\n## Constraints\n\
+            1. 必须严格按照上述JSON格式输出\n2. 日期格式统一为YYYY-MM-DD\n3. 金额信息必须包含币种\n4. 对于空值使用null，对于未指定信息使用\"\
+            未指定\"\n5. 单据要求按重要性排序\n6. 风险提示必须基于实际条款内容\n7. 支持中英文双语信用证\n\n## Examples\n\
+            \n### 输入示例1（兴业银行国内信用证）\n```\n兴业银行股份有限公司国内信用证（开证通知）\n第四联（申请人留存）       \
+            \             信用证编号：49101DCC20000089\n开证日期：2022年11月18日\n\n开证：\n全称：阳光xxx开发股份有限公司\
+            \        全称：仁草智能科技有限公司\n地址：安徽省合肥市天湖路2号            地址：安徽省合肥市蜀山区中国(安徽)\n\
+            \      230000                              自由贸易试验区合肥片区蜀山\n           \
+            \                              经济开发区井岗路68号自主创\n                      \
+            \                   新产业基地 230000\n邮编：                                \
+            \  邮编：\n电话：17700000000                      电话：1500000000\n\n信用证金额：人民币（大写）贰拾肆万壹仟陆佰陆拾元壹角整\n\
+            \         （小写）CNY24,168,660.10\n\n通知行名称、行号、地址及邮编：兴业银行股份有限公司合肥分行 309361001010\n\
+            \                        安徽省合肥市滨湖高速时代广场C2幢 230001\n\n有效日期及有效地点：2022年12月31日\
+            \ 安徽合肥\n\n是否可议付：■以下银行可议付  □任意银行可议付  □不可议付\n议付行名称及行号：兴业银行股份有限公司合肥分行 309361001010\n\
+            是否可转让：□可转让  ■不可转让\n是否可保兑：□可保兑  ■不可保兑\n\n交单期限：单据必须自运输单据签发日/货物收据日/服务提供日起\
+            \ 180 天内提交\n付款期限：□即期  ■远期\n转运：■允许  □不允许\n货物运输或交货方式/服务方式：陆运\n分批装运货物/分次提供服务：■允许\
+            \  □不允许\n货物装运地（港）：安徽省合肥市  货物目的地、交货地（港）：河南河北安徽等\n服务提供地点：\n最迟装运货物/服务提供日期：2001年12月15日\n\
+            分期装运/提供服务：\n\n货物/服务描述：支架（包括不锈钢U型钢等）\n\n受益人应提交的单据：\n1.（√）税务部门统一印制/监制的正本■增值税专用发票（包括发票联和抵扣联）。\n\
+            2.（√）正本货物收据，显示申请人为收货人，应由申请人出具。\n\n其他条款：\n1.（√）单据必须自运输单据签发日/货物收据日/服务提供日起\
+            \ 180 天内提交（不能晚于信用证有效期）。\n2.（√）开证行以外的所有银行费用由受益人承担。\n```\n\n### 输入示例2（浙商银行国内信用证）\n\
+            ```\n国内信用证(正本)\n信用证编号：DC28240220607005\n通知交易号：TZ37000220607021\n开证日期：2022-06-07\n\
+            \n申请人：阳光XXXXX开发股份有限公司        受益人：江苏城立新能源装备有限公司\n账号：361000001012010021842B\
+            \            账号：302000011012010005982\n地址：合肥市蜀山区天湖路2号230000        地址：江阴市镇澄路260B号214400\n\
+            开户行：浙商银行股份有限公司合肥分行      开户行：浙商银行股份有限公司江阴支行\n\n开证金额：人民币(大写)贰仟陆佰贰拾陆万贰仟贰佰贰拾元玖角捌分\
+            \    CNY26,263,220.98\n有效日期：2023年06月07日                通知行号：31636100019\n\
+            有效地点：合肥                          行名：浙商银行股份有限公司合肥分行\n\n是否可议付：任意银行可议付\n\
+            是否可转让：不可转让\n是否可保兑：不可保兑\n交单期：365天\n付款方式：远期\n\n货物运输或交货方式/服务方式：公路运输\n转运：不允许\n\
+            分批装运货物/分次提供服务：允许\n货物装运起止地：自江阴市至合肥\n最迟装运货物/服务提供日期：2023年06月07日\n服务提供地：\n\
+            存款期限：见单后远期付款天数：365天\n\n货物/服务描述：家庭光伏支架\n\n贸易合同号：DZGCWZ202105281S，DZGCWZ202107090S溢差比例：0.000000%\n\
+            \n受益人应提交的单据：\n1.税务部门统一印制-监制的正本增值税发票。\n2.货物收据，收货人应光新能源开发股份有限公司。\n\n其他条款：\n\
+            1.发票需注明信用证号和合同号。\n2.可接受发票金额大于开证金额。\n```\n\n### 输出示例\n```json\n{\n  \"\
+            信用证基本信息\": {\n    \"信用证号码\": \"LC2023001234\",\n    \"信用证类型\": \"跟单信用证\"\
+            ,\n    \"开证日期\": \"2023-06-15\",\n    \"有效期\": \"2023-12-15\",\n    \"\
+            到期地点\": \"中国\",\n    \"适用规则\": \"UCP600\",\n    \"信用证状态\": \"有效\"\n  },\n\
+            \  \"当事人信息\": {\n    \"开证行\": {\n      \"银行名称\": null,\n      \"银行地址\"\
+            : null,\n      \"SWIFT代码\": null,\n      \"联系信息\": null\n    },\n    \"\
+            通知行\": {\n      \"银行名称\": null,\n      \"银行地址\": null,\n      \"SWIFT代码\"\
+            : null,\n      \"联系信息\": null\n    },\n    \"受益人\": {\n      \"公司名称\"\
+            : \"XYZ Export Company\",\n      \"地址\": \"456 Export Road, New York,\
+            \ USA\",\n      \"国家\": \"美国\",\n      \"联系信息\": null\n    },\n    \"\
+            申请人\": {\n      \"公司名称\": \"ABC Trading Co., Ltd.\",\n      \"地址\": \"\
+            123 Business Street, Shanghai, China\",\n      \"国家\": \"中国\",\n     \
+            \ \"联系信息\": null\n    },\n    \"议付行\": {\n      \"银行名称\": null,\n    \
+            \  \"银行地址\": null,\n      \"SWIFT代码\": null,\n      \"限制条件\": null\n \
+            \   }\n  },\n  \"金额信息\": {\n    \"信用证金额\": \"500000.00\",\n    \"币种\"\
+            : \"USD\",\n    \"金额容差\": null,\n    \"数量容差\": null,\n    \"部分装运\": \"\
+            未指定\",\n    \"分批装运\": \"未指定\"\n  },\n  \"货物信息\": {\n    \"货物描述\": \"Electronic\
+            \ Components as per Proforma Invoice No. PI-2023-001\",\n    \"商品编码\"\
+            : null,\n    \"数量\": null,\n    \"单位\": null,\n    \"单价\": null,\n   \
+            \ \"总价\": \"500000.00\",\n    \"包装要求\": null,\n    \"标记和编号\": null\n \
+            \ },\n  \"贸易条款\": {\n    \"贸易术语\": null,\n    \"装运港\": \"上海港\",\n    \"\
+            目的港\": \"纽约港\",\n    \"装运期\": null,\n    \"最迟装运日\": \"2023-11-30\",\n\
+            \    \"运输方式\": \"海运\",\n    \"转运\": \"未指定\"\n  },\n  \"单据要求\": {\n   \
+            \ \"商业发票\": {\n      \"要求\": \"必须\",\n      \"份数\": \"3\",\n      \"特殊要求\"\
+            : null\n    },\n    \"运输单据\": {\n      \"类型\": \"海运提单\",\n      \"要求\"\
+            : \"全套清洁已装船海运提单\",\n      \"份数\": \"全套\",\n      \"特殊条款\": null\n    },\n\
+            \    \"保险单据\": {\n      \"要求\": \"必须\",\n      \"保险类型\": \"保险单\",\n  \
+            \    \"保险金额\": \"发票金额的110%\",\n      \"特殊要求\": null\n    },\n    \"原产地证\"\
+            : {\n      \"要求\": \"必须\",\n      \"类型\": \"一般原产地证\",\n      \"签发机构\"\
+            : null\n    },\n    \"检验证书\": {\n      \"要求\": \"可选\",\n      \"检验类型\"\
+            : null,\n      \"检验机构\": null\n    },\n    \"其他单据\": []\n  },\n  \"交单条件\"\
+            : {\n    \"交单期限\": null,\n    \"交单地点\": null,\n    \"交单方式\": null,\n \
+            \   \"单据不符处理\": null,\n    \"费用承担\": null\n  },\n  \"特殊条款\": {\n    \"\
+            限制性条款\": [],\n    \"附加条件\": [],\n    \"禁止事项\": [],\n    \"特别指示\": []\n\
+            \  },\n  \"费用信息\": {\n    \"开证费\": null,\n    \"通知费\": null,\n    \"议付费\"\
+            : null,\n    \"修改费\": null,\n    \"费用承担方\": null\n  },\n  \"修改记录\": [],\n\
+            \  \"风险提示\": {\n    \"软条款\": [],\n    \"陷阱条款\": [],\n    \"合规风险\": [],\n\
+            \    \"操作风险\": [\"缺少开证行信息\", \"贸易术语未明确\"]\n  },\n  \"提取元数据\": {\n    \"\
+            提取时间\": \"2023-08-18 16:00:00\",\n    \"数据完整性\": \"部分缺失\",\n    \"置信度\"\
+            : \"中\",\n    \"语言\": \"英文\",\n    \"格式类型\": \"纸质信用证\",\n    \"异常标记\"\
+            : [\"开证行信息缺失\", \"贸易术语不明确\", \"交单条件未指定\"]\n  }\n}\n```\n\n## SpecialInstructions\n\
+            1. **软条款识别**：自动识别可能的软条款，如\"货物检验合格后方可装运\"等\n2. **风险评估**：对信用证条款进行风险评估，标记潜在问题\n\
+            3. **合规检查**：检查是否符合UCP600等国际惯例\n4. **多语言支持**：支持中英文信用证的混合处理\n5. **SWIFT格式**：能够处理标准SWIFT\
+            \ MT700格式的信用证\n\n## Initialization\n作为银行信用证数据提取专家，我精通兴业银行、浙商银行、中国银行等各大银行的信用证格式，能够准确识别和提取国内外信用证的完整结构化数据。我熟悉UCP600国际惯例、SWIFT标准以及各种信用证类型，特别擅长处理中国银行业的信用证开证通知书格式。\n\
+            \n**我的专业能力包括：**\n- \U0001F3E6 多银行格式识别：兴业银行、浙商银行、中国银行等\n- \U0001F4CB 精准数据提取：信用证编号、金额、当事人信息等\n\
+            - \U0001F4B0 金额处理专家：人民币大写/小写、外币金额\n- ⚖️ 合规风险评估：UCP600标准、软条款识别\n- \U0001F50D\
+            \ 深度条款分析：付款条件、转让保兑、单据要求\n\n请提供需要分析的信用证内容，我将按照标准JSON格式为您输出完整的数据结构，并提供专业的风险提示和合规建议。"
+        - id: 6a8b930d-fdbb-4200-a53c-4a38b27679c7
+          role: user
+          text: 请基于{{#17550643558470.result#}}返回对应的银行json银行信用证
+        selected: false
+        title: 基于发票的大模型生成银行信用证
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '17550156921690'
+      position:
+        x: 1387.6393254690674
+        y: 668.200355023612
+      positionAbsolute:
+        x: 1387.6393254690674
+        y: 668.200355023612
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1755015662910.text#}}'
+        desc: ''
+        selected: false
+        title: 直接回复 2
+        type: answer
+        variables: []
+      height: 104
+      id: '1755015718694'
+      position:
+        x: 1727.0151251804105
+        y: 462.30890129895624
+      positionAbsolute:
+        x: 1727.0151251804105
+        y: 462.30890129895624
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#17550156921690.text#}}'
+        desc: ''
+        selected: false
+        title: 直接回复 3
+        type: answer
+        variables: []
+      height: 104
+      id: '1755015721479'
+      position:
+        x: 1727.0151251804105
+        y: 676.3478753347462
+      positionAbsolute:
+        x: 1727.0151251804105
+        y: 676.3478753347462
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: 还未开发，敬请期待,,,,,,,,,
+        desc: ''
+        selected: false
+        title: 直接回复 4
+        type: answer
+        variables: []
+      height: 101
+      id: '1755015753275'
+      position:
+        x: 711.5392551909177
+        y: 875.6645722037998
+      positionAbsolute:
+        x: 711.5392551909177
+        y: 875.6645722037998
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data:
+          - type: text
+            value: "{\n    \"file_url\": \"{{#1754982121363.file.url#}}\",\n    \"\
+              mode\": \"gpu\",\n    \"preserve_layout\": true,\n    \"ocr_enabled\"\
+              : true\n  }"
+          type: raw-text
+        desc: ''
+        headers: 'Authorization:Bearer {{#env.apikey#}}
+
+          Content-Type:application/json'
+        method: POST
+        params: ''
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 100
+        selected: false
+        ssl_verify: true
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: HTTP 请求 (1)
+        type: http-request
+        url: https://pizhapi.duckcloud.fun/ocr-extract/
+        variables: []
+      height: 139
+      id: '17550642968960'
+      position:
+        x: 719
+        y: 467.2951739978987
+      positionAbsolute:
+        x: 719
+        y: 467.2951739978987
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import json\n\ndef main(body: str) -> dict:\n    try:\n        # 解析\
+          \ body 中的 JSON 数据\n        data = json.loads(body)\n    except json.JSONDecodeError\
+          \ as e:\n        return {\"error\": f\"body 内容不是有效的 JSON 格式。错误信息: {str(e)}\"\
+          }\n\n    # 检查解析后的数据格式\n    if not isinstance(data, dict):\n        return\
+          \ {\"error\": \"解析后的 body 内容不是 JSON 对象\"}\n\n    # 检查是否包含 markdown_content\
+          \ 字段\n    if \"markdown_content\" not in data:\n        return {\"error\"\
+          : \"数据中缺少 markdown_content 字段\"}\n\n    # 提取并处理 markdown_content\n    markdown_content\
+          \ = data[\"markdown_content\"]\n    markdown_content = markdown_content.replace(\"\
+          \\\\n\", \"\\n\")  # 处理转义换行符\n\n    # 去掉开头的 GPU 处理信息\n    lines = markdown_content.split(\"\
+          \\n\")\n    start_index = 0  # 默认从第0行开始\n    # 找到 \"## Page 1\" 所在行，从这一行开始保留内容\n\
+          \    for i, line in enumerate(lines):\n        if line.strip() == \"## Page\
+          \ 1\":\n            start_index = i\n            break\n\n    # 清理内容（去掉空行）\n\
+          \    cleaned_content = \"\\n\".join(lines[start_index:]).strip()\n\n   \
+          \ # 返回字典类型的结果，包含处理后的内容\n    return {\"result\": cleaned_content}"
+        code_language: python3
+        default_value:
+        - key: result
+          type: string
+          value: ''
+        desc: ''
+        error_strategy: default-value
+        outputs:
+          result:
+            children: null
+            type: string
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        title: 代码执行 (1)
+        type: code
+        variables:
+        - value_selector:
+          - '17550642968960'
+          - body
+          value_type: string
+          variable: body
+      height: 119
+      id: '17550643012930'
+      position:
+        x: 1035.7702007889002
+        y: 467.2951739978987
+      positionAbsolute:
+        x: 1035.7702007889002
+        y: 467.2951739978987
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data:
+          - type: text
+            value: "{\n    \"file_url\": \"{{#1754982121363.file.url#}}\",\n    \"\
+              mode\": \"gpu\",\n    \"preserve_layout\": true,\n    \"ocr_enabled\"\
+              : true\n  }"
+          type: raw-text
+        desc: ''
+        headers: 'Authorization:Bearer {{#env.apikey#}}
+
+          Content-Type:application/json'
+        method: POST
+        params: ''
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 100
+        selected: false
+        ssl_verify: true
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: HTTP 请求 (2)
+        type: http-request
+        url: https://pizhapi.duckcloud.fun/ocr-extract/
+        variables: []
+      height: 139
+      id: '17550643393220'
+      position:
+        x: 719
+        y: 668.200355023612
+      positionAbsolute:
+        x: 719
+        y: 668.200355023612
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import json\n\ndef main(body: str) -> dict:\n    try:\n        # 解析\
+          \ body 中的 JSON 数据\n        data = json.loads(body)\n    except json.JSONDecodeError\
+          \ as e:\n        return {\"error\": f\"body 内容不是有效的 JSON 格式。错误信息: {str(e)}\"\
+          }\n\n    # 检查解析后的数据格式\n    if not isinstance(data, dict):\n        return\
+          \ {\"error\": \"解析后的 body 内容不是 JSON 对象\"}\n\n    # 检查是否包含 markdown_content\
+          \ 字段\n    if \"markdown_content\" not in data:\n        return {\"error\"\
+          : \"数据中缺少 markdown_content 字段\"}\n\n    # 提取并处理 markdown_content\n    markdown_content\
+          \ = data[\"markdown_content\"]\n    markdown_content = markdown_content.replace(\"\
+          \\\\n\", \"\\n\")  # 处理转义换行符\n\n    # 去掉开头的 GPU 处理信息\n    lines = markdown_content.split(\"\
+          \\n\")\n    start_index = 0  # 默认从第0行开始\n    # 找到 \"## Page 1\" 所在行，从这一行开始保留内容\n\
+          \    for i, line in enumerate(lines):\n        if line.strip() == \"## Page\
+          \ 1\":\n            start_index = i\n            break\n\n    # 清理内容（去掉空行）\n\
+          \    cleaned_content = \"\\n\".join(lines[start_index:]).strip()\n\n   \
+          \ # 返回字典类型的结果，包含处理后的内容\n    return {\"result\": cleaned_content}"
+        code_language: python3
+        default_value:
+        - key: result
+          type: string
+          value: ''
+        desc: ''
+        error_strategy: default-value
+        outputs:
+          result:
+            children: null
+            type: string
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        title: 代码执行 (2)
+        type: code
+        variables:
+        - value_selector:
+          - '17550643393220'
+          - body
+          value_type: string
+          variable: body
+      height: 119
+      id: '17550643558470'
+      position:
+        x: 1042.9883510053926
+        y: 668.200355023612
+      positionAbsolute:
+        x: 1042.9883510053926
+        y: 668.200355023612
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: -173.97144259115794
+      y: 52.5855952847392
+      zoom: 0.8312378961427878

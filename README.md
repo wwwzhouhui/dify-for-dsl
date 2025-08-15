@@ -30,12 +30,13 @@
 
 | DSL清单名称                              | 工作流显示                         | 用到技术                                                     | 更新时间                                                 | 作者                                       | 适用dify版本                               |
 | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------------------------------------- |
-| 用 Qwen Code+Dify 一键生成交互式元素周期表网页.yml | ![img](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/QQ_1754805706865.png.png) | LLM大语言模型、代码处理 | 2025年8月10日 | wwwzhouhui |  |
+| 100% 识别率！发票、汇票、信用证全搞定的通用票据识别工作流.yml | ![image-20250813135448522](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250813135448522.png) | 条件判断、http请求、LLM大语言模型、代码处理 | 2025年8月13日 | wwwzhouhui | 1.6.0 |
+| 用 Qwen Code+Dify 一键生成交互式元素周期表网页.yml | ![img](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/QQ_1754805706865.png.png) | LLM大语言模型、代码处理 | 2025年8月10日 | wwwzhouhui | 1.6.0 |
 | Dify 秘塔搜索工作流搭建教程与效果展示.yml | ![3337](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/3337.gif.gif) | 条件分支、http请求、代码处理、秘搭API | 2025年8月9日 | 阿文 | 1.6.0 |
 | Dify 工作流一键生成发票申请预览，对接开票系统超简单.yml | ![img](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/QQ_1754435884189.png) | excel工具、LLM大语言模型、代码处理 | 2025年8月6日 | wwwzhouhui | 1.6.0 |
 | 用 Dify 实现多语言 PDF 文档原格式翻译.yml | ![img](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/QQ_1753889342965.png) | Agent、MCP-Server | 2025年7月30日 | wwwzhouhui | 1.6.0 |
 | 用Kimi-K2+Mermaid 神器，一键生成系统架构图！小白也能秒会.yml | ![img](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/QQ_1752924484923.png.png) | 开始、文档管理器、LLM大语言、Mermaid插件 | 2025年7月19日 | wwwzhouhui | 1.6.0 |
-| 用 Dify 一键搭建七牛云oss工作流 | ![img](http://syng8gt03.hn-bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20250711140041.png) | 开始、Agent、LLM大语言模型、代码执行、直接回复 | 2025年7月11日 | GeekAPP | 1.4.3 |
+| 用 Dify 一键搭建七牛云oss工作流 | ![img](https://dify-1305874767.cos.ap-nanjing.myqcloud.com/a/%E4%B8%83%E7%89%9B%E4%BA%91mcp2.png) | 开始、Agent、LLM大语言模型、代码执行、直接回复 | 2025年7月11日 | GeekAPP | 1.4.3 |
 | 用 Dify 一键搭建数学公式识别工作流，支持laTex | ![img](https://dify-1305874767.cos.ap-nanjing.myqcloud.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20250711082331.png) | 开始、Agent、LLM大语言模型、代码执行、直接回复 | 2025年7月11日 | GeekAPP | 1.4.3 |
 | 用 Dify 一键搭建中药科普工作流，文字 + 图片 + 视频全搞定 | ![img](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/QQ_1751471812082.png) | 开始节点、AGENT、直接回复、自定义MCP-Server | 2025年7月3日 | wwwzhouhui | 1.4.3 |
 | 用 Dify 一键生成 长安的荔枝金句 HTML 页面，三步搞定！.yml | ![image-20250626211532393](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250626211532393.png) | 开始、Agent、LLM大语言模型、代码执行、直接回复 | 2025年6月27日 | wwwzhouhui | 1.4.3 |
@@ -129,7 +130,7 @@
 
 ## 更新说明
 
-
+2025年8月13 日-version 0.0.3.39：增加100% 识别率！发票、汇票、信用证全搞定的通用票据识别工作流.yml。
 
 2025年8月10 日-version 0.0.3.38：增加用 Qwen Code+Dify 一键生成交互式元素周期表网页.yml 供第三方接口api源码 代码看 https://github.com/wwwzhouhui/dify-for-dsl/tree/main/dsl/makehtml/makehtmlapi.py
 
@@ -504,3 +505,4 @@ NGINX_CLIENT_MAX_BODY_SIZE=100M<br>
 ## Star History
 
 ![dify-for-dsl](https://api.star-history.com/svg?repos=wwwzhouhui/dify-for-dsl&type=Date)
+
