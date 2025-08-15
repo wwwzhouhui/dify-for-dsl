@@ -1,0 +1,10 @@
+fastapi==0.104.1
+uvicorn==0.23.2
+python-multipart==0.0.6
+requests==2.31.0
+gradio==4.19.2
+Pillow==10.1.0
+qcloud-cos==5.1.9.9
+websocket-client==1.6.4
+pydantic==2.5.2
+python-dotenv==1.0.0

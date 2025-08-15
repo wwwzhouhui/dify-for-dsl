@@ -1,0 +1,40 @@
+所以
+\[ \int_{a}^{\frac{a+b}{2}}|f(x)f'(x)|\,\mathrm{d}x \leq \frac{1}{2}g^{2}\left(\frac{a+b}{2}\right) \]
+及
+\[ \int_{\frac{a+b}{2}}^{b}|f(x)f'(x)|\,\mathrm{d}x \leq \frac{1}{2}h^{2}\left(\frac{a+b}{2}\right). \]
+
+再由柯西—施瓦兹不等式，可得：
+\[ 
+\begin{aligned} 
+g^{2}\left(\frac{a+b}{2}\right) &= \left(\int_{a}^{\frac{a+b}{2}}|f'(t)|\,\mathrm{d}t\right)^{2} \\ 
+&\leq \left(\int_{a}^{\frac{a+b}{2}}1^{2}\,\mathrm{d}t\right)\left(\int_{a}^{\frac{a+b}{2}}|f'(t)|^{2}\,\mathrm{d}t\right) = \frac{b-a}{2}\int_{a}^{\frac{a+b}{2}}|f'(t)|^{2}\,\mathrm{d}t 
+\end{aligned} 
+\]
+以及
+\[ 
+\begin{aligned} 
+h^{2}\left(\frac{a+b}{2}\right) &= \left(\int_{\frac{a+b}{2}}^{b}|f'(t)|\,\mathrm{d}t\right)^{2} \\ 
+&\leq \left(\int_{\frac{a+b}{2}}^{b}1^{2}\,\mathrm{d}t\right)\left(\int_{\frac{a+b}{2}}^{b}|f'(t)|^{2}\,\mathrm{d}t\right) = \frac{b-a}{2}\int_{\frac{a+b}{2}}^{b}|f'(t)|^{2}\,\mathrm{d}t 
+\end{aligned} 
+\]
+
+因此
+\[ 
+\begin{aligned} 
+\int_{a}^{b}|f(x)f'(x)|\,\mathrm{d}x &= \int_{a}^{\frac{a+b}{2}}|f(x)f'(x)|\,\mathrm{d}x + \int_{\frac{a+b}{2}}^{b}|f(x)f'(x)|\,\mathrm{d}x \\ 
+&\leq \frac{1}{2}g^{2}\left(\frac{a+b}{2}\right) + \frac{1}{2}h^{2}\left(\frac{a+b}{2}\right) \\ 
+&\leq \frac{b-a}{4}\int_{a}^{\frac{a+b}{2}}|f'(t)|^{2}\,\mathrm{d}t + \frac{b-a}{4}\int_{\frac{a+b}{2}}^{b}|f'(t)|^{2}\,\mathrm{d}t \\ 
+&= \frac{b-a}{4}\int_{a}^{b}|f'(x)|^{2}\,\mathrm{d}x 
+\end{aligned} 
+\]
+
+即
+\[ \int_{a}^{b}|f(x)f'(x)|\,\mathrm{d}x \leq \frac{b-a}{4}\int_{a}^{b}|f'(x)|^{2}\,\mathrm{d}x, \]
+
+取 \(a=0, b=2\) 可得：
+\[ \int_{0}^{2}|f(x)f'(x)|\,\mathrm{d}x \leq \frac{1}{2}\int_{0}^{2}|f'(x)|^{2}\,\mathrm{d}x \leq \int_{0}^{2}|f'(x)|^{2}\,\mathrm{d}x. \]
+
+即证出：
+\[ \int_{0}^{2}|f(x)f'(x)|\,\mathrm{d}x \leq \int_{0}^{2}|f'(x)|^{2}\,\mathrm{d}x. \]
+
+1.【参考解答】：令 \(g(x) = \sum_{n=0}^{\infty}\frac{1}{n!}x^{n+2}\)，其中 \(x \in (-\infty, +\infty)\)，则利用幂级数的连续可微性可知：

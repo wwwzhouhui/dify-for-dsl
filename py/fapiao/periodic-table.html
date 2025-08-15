@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>化学元素周期表</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .periodic-table {
+            display: grid;
+            grid-template-columns: repeat(18, 1fr);
+            gap: 2px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .element {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 8px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .element:hover {
+            transform: scale(1.05);
+            z-index: 10;
+            position: relative;
+        }
+
+        .atomic-number {
+            font-size: 0.8em;
+            color: #666;
+        }
+
+        .symbol {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .name {
+            font-size: 0.7em;
+            color: #666;
+            margin-top: 4px;
+        }
+
+        .atomic-weight {
+            font-size: 0.6em;
+            color: #999;
+            margin-top: 4px;
+        }
+
+        /* 元素分类颜色 */
+        .nonmetal { background-color: #ffcccb; } /* 非金属 */
+        .noble-gas { background-color: #ffb6c1; } /* 惰性气体 */
+        .alkali-metal { background-color: #ffebcd; } /* 碱金属 */
+        .alkaline-earth-metal { background-color: #ffe4b5; } /* 碱土金属 */
+        .metalloid { background-color: #dda0dd; } /* 半金属 */
+        .halogen { background-color: #e0ffff; } /* 卤素 */
+        .transition-metal { background-color: #fff8dc; } /* 过渡金属 */
+        .post-transition-metal { background-color: #f5f5dc; } /* 后过渡金属 */
+        .lanthanide { background-color: #e6e6fa; } /* 镧系元素 */
+        .actinide { background-color: #ffe4e1; } /* 锕系元素 */
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .periodic-table {
+                grid-template-columns: repeat(9, 1fr);
+            }
+            
+            .element {
+                padding: 4px;
+            }
+            
+            .symbol {
+                font-size: 1em;
+            }
+            
+            .name, .atomic-weight {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .periodic-table {
+                grid-template-columns: repeat(6, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>化学元素周期表</h1>
+    <div class="periodic-table" id="periodicTable"></div>
+
+    <script>
+        // 元素数据
+        const elementsData = [{"atomic_number": 1, "symbol": "H", "name": "Hydrogen", "atomic_weight": "1.008"}, {"atomic_number": 2, "symbol": "He", "name": "Helium", "atomic_weight": "4.002602"}, {"atomic_number": 3, "symbol": "Li", "name": "Lithium", "atomic_weight": "6.94"}, {"atomic_number": 4, "symbol": "Be", "name": "Beryllium", "atomic_weight": "9.0121831"}, {"atomic_number": 5, "symbol": "B", "name": "Boron", "atomic_weight": "10.81"}, {"atomic_number": 6, "symbol": "C", "name": "Carbon", "atomic_weight": "12.011"}, {"atomic_number": 7, "symbol": "N", "name": "Nitrogen", "atomic_weight": "14.007"}, {"atomic_number": 8, "symbol": "O", "name": "Oxygen", "atomic_weight": "15.999"}, {"atomic_number": 9, "symbol": "F", "name": "Fluorine", "atomic_weight": "18.998403163"}, {"atomic_number": 10, "symbol": "Ne", "name": "Neon", "atomic_weight": "20.1797"}, {"atomic_number": 11, "symbol": "Na", "name": "Sodium", "atomic_weight": "22.98976928"}, {"atomic_number": 12, "symbol": "Mg", "name": "Magnesium", "atomic_weight": "24.305"}, {"atomic_number": 13, "symbol": "Al", "name": "Aluminum", "atomic_weight": "26.9815385"}, {"atomic_number": 14, "symbol": "Si", "name": "Silicon", "atomic_weight": "28.085"}, {"atomic_number": 15, "symbol": "P", "name": "Phosphorus", "atomic_weight": "30.973761998"}, {"atomic_number": 16, "symbol": "S", "name": "Sulfur", "atomic_weight": "32.06"}, {"atomic_number": 17, "symbol": "Cl", "name": "Chlorine", "atomic_weight": "35.45"}, {"atomic_number": 18, "symbol": "Ar", "name": "Argon", "atomic_weight": "39.948"}, {"atomic_number": 19, "symbol": "K", "name": "Potassium", "atomic_weight": "39.0983"}, {"atomic_number": 20, "symbol": "Ca", "name": "Calcium", "atomic_weight": "40.078"}, {"atomic_number": 21, "symbol": "Sc", "name": "Scandium", "atomic_weight": "44.955908"}, {"atomic_number": 22, "symbol": "Ti", "name": "Titanium", "atomic_weight": "47.867"}, {"atomic_number": 23, "symbol": "V", "name": "Vanadium", "atomic_weight": "50.9415"}, {"atomic_number": 24, "symbol": "Cr", "name": "Chromium", "atomic_weight": "51.9961"}, {"atomic_number": 25, "symbol": "Mn", "name": "Manganese", "atomic_weight": "54.938044"}, {"atomic_number": 26, "symbol": "Fe", "name": "Iron", "atomic_weight": "55.845"}, {"atomic_number": 27, "symbol": "Co", "name": "Cobalt", "atomic_weight": "58.933194"}, {"atomic_number": 28, "symbol": "Ni", "name": "Nickel", "atomic_weight": "58.6934"}, {"atomic_number": 29, "symbol": "Cu", "name": "Copper", "atomic_weight": "63.546"}, {"atomic_number": 30, "symbol": "Zn", "name": "Zinc", "atomic_weight": "65.38"}, {"atomic_number": 31, "symbol": "Ga", "name": "Gallium", "atomic_weight": "69.723"}, {"atomic_number": 32, "symbol": "Ge", "name": "Germanium", "atomic_weight": "72.63"}, {"atomic_number": 33, "symbol": "As", "name": "Arsenic", "atomic_weight": "74.921595"}, {"atomic_number": 34, "symbol": "Se", "name": "Selenium", "atomic_weight": "78.971"}, {"atomic_number": 35, "symbol": "Br", "name": "Bromine", "atomic_weight": "79.904"}, {"atomic_number": 36, "symbol": "Kr", "name": "Krypton", "atomic_weight": "83.798"}, {"atomic_number": 37, "symbol": "Rb", "name": "Rubidium", "atomic_weight": "85.4678"}, {"atomic_number": 38, "symbol": "Sr", "name": "Strontium", "atomic_weight": "87.62"}, {"atomic_number": 39, "symbol": "Y", "name": "Yttrium", "atomic_weight": "88.90584"}, {"atomic_number": 40, "symbol": "Zr", "name": "Zirconium", "atomic_weight": "91.224"}, {"atomic_number": 41, "symbol": "Nb", "name": "Niobium", "atomic_weight": "92.90637"}, {"atomic_number": 42, "symbol": "Mo", "name": "Molybdenum", "atomic_weight": "95.95"}, {"atomic_number": 43, "symbol": "Tc", "name": "Technetium", "atomic_weight": "97.90721"}, {"atomic_number": 44, "symbol": "Ru", "name": "Ruthenium", "atomic_weight": "101.07"}, {"atomic_number": 45, "symbol": "Rh", "name": "Rhodium", "atomic_weight": "102.9055"}, {"atomic_number": 46, "symbol": "Pd", "name": "Palladium", "atomic_weight": "106.42"}, {"atomic_number": 47, "symbol": "Ag", "name": "Silver", "atomic_weight": "107.8682"}, {"atomic_number": 48, "symbol": "Cd", "name": "Cadmium", "atomic_weight": "112.414"}, {"atomic_number": 49, "symbol": "In", "name": "Indium", "atomic_weight": "114.818"}, {"atomic_number": 50, "symbol": "Sn", "name": "Tin", "atomic_weight": "118.71"}, {"atomic_number": 51, "symbol": "Sb", "name": "Antimony", "atomic_weight": "121.76"}, {"atomic_number": 52, "symbol": "Te", "name": "Tellurium", "atomic_weight": "127.6"}, {"atomic_number": 53, "symbol": "I", "name": "Iodine", "atomic_weight": "126.90447"}, {"atomic_number": 54, "symbol": "Xe", "name": "Xenon", "atomic_weight": "131.293"}, {"atomic_number": 55, "symbol": "Cs", "name": "Cesium", "atomic_weight": "132.90545196"}, {"atomic_number": 56, "symbol": "Ba", "name": "Barium", "atomic_weight": "137.327"}, {"atomic_number": 57, "symbol": "La", "name": "Lanthanum", "atomic_weight": "138.90547"}, {"atomic_number": 58, "symbol": "Ce", "name": "Cerium", "atomic_weight": "140.116"}, {"atomic_number": 59, "symbol": "Pr", "name": "Praseodymium", "atomic_weight": "140.90766"}, {"atomic_number": 60, "symbol": "Nd", "name": "Neodymium", "atomic_weight": "144.242"}, {"atomic_number": 61, "symbol": "Pm", "name": "Promethium", "atomic_weight": "144.91276"}, {"atomic_number": 62, "symbol": "Sm", "name": "Samarium", "atomic_weight": "150.36"}, {"atomic_number": 63, "symbol": "Eu", "name": "Europium", "atomic_weight": "151.964"}, {"atomic_number": 64, "symbol": "Gd", "name": "Gadolinium", "atomic_weight": "157.25"}, {"atomic_number": 65, "symbol": "Tb", "name": "Terbium", "atomic_weight": "158.92535"}, {"atomic_number": 66, "symbol": "Dy", "name": "Dysprosium", "atomic_weight": "162.5"}, {"atomic_number": 67, "symbol": "Ho", "name": "Holmium", "atomic_weight": "164.93033"}, {"atomic_number": 68, "symbol": "Er", "name": "Erbium", "atomic_weight": "167.259"}, {"atomic_number": 69, "symbol": "Tm", "name": "Thulium", "atomic_weight": "168.93422"}, {"atomic_number": 70, "symbol": "Yb", "name": "Ytterbium", "atomic_weight": "173.045"}, {"atomic_number": 71, "symbol": "Lu", "name": "Lutetium", "atomic_weight": "174.9668"}, {"atomic_number": 72, "symbol": "Hf", "name": "Hafnium", "atomic_weight": "178.49"}, {"atomic_number": 73, "symbol": "Ta", "name": "Tantalum", "atomic_weight": "180.94788"}, {"atomic_number": 74, "symbol": "W", "name": "Tungsten", "atomic_weight": "183.84"}, {"atomic_number": 75, "symbol": "Re", "name": "Rhenium", "atomic_weight": "186.207"}, {"atomic_number": 76, "symbol": "Os", "name": "Osmium", "atomic_weight": "190.23"}, {"atomic_number": 77, "symbol": "Ir", "name": "Iridium", "atomic_weight": "192.217"}, {"atomic_number": 78, "symbol": "Pt", "name": "Platinum", "atomic_weight": "195.084"}, {"atomic_number": 79, "symbol": "Au", "name": "Gold", "atomic_weight": "196.966569"}, {"atomic_number": 80, "symbol": "Hg", "name": "Mercury", "atomic_weight": "200.592"}, {"atomic_number": 81, "symbol": "Tl", "name": "Thallium", "atomic_weight": "204.38"}, {"atomic_number": 82, "symbol": "Pb", "name": "Lead", "atomic_weight": "207.2"}, {"atomic_number": 83, "symbol": "Bi", "name": "Bismuth", "atomic_weight": "208.9804"}, {"atomic_number": 84, "symbol": "Po", "name": "Polonium", "atomic_weight": "209.0"}, {"atomic_number": 85, "symbol": "At", "name": "Astatine", "atomic_weight": "210.0"}, {"atomic_number": 86, "symbol": "Rn", "name": "Radon", "atomic_weight": "222.0"}, {"atomic_number": 87, "symbol": "Fr", "name": "Francium", "atomic_weight": "223.0"}, {"atomic_number": 88, "symbol": "Ra", "name": "Radium", "atomic_weight": "226.0"}, {"atomic_number": 89, "symbol": "Ac", "name": "Actinium", "atomic_weight": "227.0"}, {"atomic_number": 90, "symbol": "Th", "name": "Thorium", "atomic_weight": "232.0377"}, {"atomic_number": 91, "symbol": "Pa", "name": "Protactinium", "atomic_weight": "231.03588"}, {"atomic_number": 92, "symbol": "U", "name": "Uranium", "atomic_weight": "238.02891"}, {"atomic_number": 93, "symbol": "Np", "name": "Neptunium", "atomic_weight": "237.0"}, {"atomic_number": 94, "symbol": "Pu", "name": "Plutonium", "atomic_weight": "244.0"}, {"atomic_number": 95, "symbol": "Am", "name": "Americium", "atomic_weight": "243.0"}, {"atomic_number": 96, "symbol": "Cm", "name": "Curium", "atomic_weight": "247.0"}, {"atomic_number": 97, "symbol": "Bk", "name": "Berkelium", "atomic_weight": "247.0"}, {"atomic_number": 98, "symbol": "Cf", "name": "Californium", "atomic_weight": "251.0"}, {"atomic_number": 99, "symbol": "Es", "name": "Einsteinium", "atomic_weight": "252.0"}, {"atomic_number": 100, "symbol": "Fm", "name": "Fermium", "atomic_weight": "257.0"}, {"atomic_number": 101, "symbol": "Md", "name": "Mendelevium", "atomic_weight": "258.0"}, {"atomic_number": 102, "symbol": "No", "name": "Nobelium", "atomic_weight": "259.0"}, {"atomic_number": 103, "symbol": "Lr", "name": "Lawrencium", "atomic_weight": "262.0"}, {"atomic_number": 104, "symbol": "Rf", "name": "Rutherfordium", "atomic_weight": "267.0"}, {"atomic_number": 105, "symbol": "Db", "name": "Dubnium", "atomic_weight": "268.0"}, {"atomic_number": 106, "symbol": "Sg", "name": "Seaborgium", "atomic_weight": "271.0"}, {"atomic_number": 107, "symbol": "Bh", "name": "Bohrium", "atomic_weight": "274.0"}, {"atomic_number": 108, "symbol": "Hs", "name": "Hassium", "atomic_weight": "269.0"}, {"atomic_number": 109, "symbol": "Mt", "name": "Meitnerium", "atomic_weight": "276.0"}, {"atomic_number": 110, "symbol": "Ds", "name": "Darmstadtium", "atomic_weight": "281.0"}, {"atomic_number": 111, "symbol": "Rg", "name": "Roentgenium", "atomic_weight": "281.0"}, {"atomic_number": 112, "symbol": "Cn", "name": "Copernicium", "atomic_weight": "285.0"}, {"atomic_number": 113, "symbol": "Nh", "name": "Nihonium", "atomic_weight": "286.0"}, {"atomic_number": 114, "symbol": "Fl", "name": "Flerovium", "atomic_weight": "289.0"}, {"atomic_number": 115, "symbol": "Mc", "name": "Moscovium", "atomic_weight": "288.0"}, {"atomic_number": 116, "symbol": "Lv", "name": "Livermorium", "atomic_weight": "293.0"}, {"atomic_number": 117, "symbol": "Ts", "name": "Tennessine", "atomic_weight": "294.0"}, {"atomic_number": 118, "symbol": "Og", "name": "Oganesson", "atomic_weight": "294.0"}];
+
+        // 元素分类
+        const elementCategories = {
+            "H": "nonmetal",
+            "He": "noble-gas",
+            "Li": "alkali-metal",
+            "Be": "alkaline-earth-metal",
+            "B": "metalloid",
+            "C": "nonmetal",
+            "N": "nonmetal",
+            "O": "nonmetal",
+            "F": "halogen",
+            "Ne": "noble-gas",
+            "Na": "alkali-metal",
+            "Mg": "alkaline-earth-metal",
+            "Al": "post-transition-metal",
+            "Si": "metalloid",
+            "P": "nonmetal",
+            "S": "nonmetal",
+            "Cl": "halogen",
+            "Ar": "noble-gas",
+            "K": "alkali-metal",
+            "Ca": "alkaline-earth-metal",
+            "Sc": "transition-metal",
+            "Ti": "transition-metal",
+            "V": "transition-metal",
+            "Cr": "transition-metal",
+            "Mn": "transition-metal",
+            "Fe": "transition-metal",
+            "Co": "transition-metal",
+            "Ni": "transition-metal",
+            "Cu": "transition-metal",
+            "Zn": "transition-metal",
+            "Ga": "post-transition-metal",
+            "Ge": "metalloid",
+            "As": "metalloid",
+            "Se": "nonmetal",
+            "Br": "halogen",
+            "Kr": "noble-gas",
+            "Rb": "alkali-metal",
+            "Sr": "alkaline-earth-metal",
+            "Y": "transition-metal",
+            "Zr": "transition-metal",
+            "Nb": "transition-metal",
+            "Mo": "transition-metal",
+            "Tc": "transition-metal",
+            "Ru": "transition-metal",
+            "Rh": "transition-metal",
+            "Pd": "transition-metal",
+            "Ag": "transition-metal",
+            "Cd": "transition-metal",
+            "In": "post-transition-metal",
+            "Sn": "post-transition-metal",
+            "Sb": "metalloid",
+            "Te": "metalloid",
+            "I": "halogen",
+            "Xe": "noble-gas",
+            "Cs": "alkali-metal",
+            "Ba": "alkaline-earth-metal",
+            "La": "lanthanide",
+            "Ce": "lanthanide",
+            "Pr": "lanthanide",
+            "Nd": "lanthanide",
+            "Pm": "lanthanide",
+            "Sm": "lanthanide",
+            "Eu": "lanthanide",
+            "Gd": "lanthanide",
+            "Tb": "lanthanide",
+            "Dy": "lanthanide",
+            "Ho": "lanthanide",
+            "Er": "lanthanide",
+            "Tm": "lanthanide",
+            "Yb": "lanthanide",
+            "Lu": "lanthanide",
+            "Hf": "transition-metal",
+            "Ta": "transition-metal",
+            "W": "transition-metal",
+            "Re": "transition-metal",
+            "Os": "transition-metal",
+            "Ir": "transition-metal",
+            "Pt": "transition-metal",
+            "Au": "transition-metal",
+            "Hg": "transition-metal",
+            "Tl": "post-transition-metal",
+            "Pb": "post-transition-metal",
+            "Bi": "post-transition-metal",
+            "Po": "post-transition-metal",
+            "At": "halogen",
+            "Rn": "noble-gas",
+            "Fr": "alkali-metal",
+            "Ra": "alkaline-earth-metal",
+            "Ac": "actinide",
+            "Th": "actinide",
+            "Pa": "actinide",
+            "U": "actinide",
+            "Np": "actinide",
+            "Pu": "actinide",
+            "Am": "actinide",
+            "Cm": "actinide",
+            "Bk": "actinide",
+            "Cf": "actinide",
+            "Es": "actinide",
+            "Fm": "actinide",
+            "Md": "actinide",
+            "No": "actinide",
+            "Lr": "actinide",
+            "Rf": "transition-metal",
+            "Db": "transition-metal",
+            "Sg": "transition-metal",
+            "Bh": "transition-metal",
+            "Hs": "transition-metal",
+            "Mt": "transition-metal",
+            "Ds": "transition-metal",
+            "Rg": "transition-metal",
+            "Cn": "transition-metal",
+            "Nh": "post-transition-metal",
+            "Fl": "post-transition-metal",
+            "Mc": "post-transition-metal",
+            "Lv": "post-transition-metal",
+            "Ts": "halogen",
+            "Og": "noble-gas"
+        };
+
+        // 创建元素周期表
+        function createPeriodicTable() {
+            const periodicTable = document.getElementById('periodicTable');
+            
+            // 创建118个元素格子
+            for (let i = 1; i <= 118; i++) {
+                const elementDiv = document.createElement('div');
+                elementDiv.className = 'element';
+                elementDiv.id = `element-${i}`;
+                periodicTable.appendChild(elementDiv);
+            }
+            
+            // 填充元素数据
+            elementsData.forEach(element => {
+                const elementDiv = document.getElementById(`element-${element.atomic_number}`);
+                if (elementDiv) {
+                    // 添加分类类名
+                    const category = elementCategories[element.symbol] || 'transition-metal';
+                    elementDiv.classList.add(category);
+                    
+                    // 构建元素内容
+                    elementDiv.innerHTML = `
+                        <div class="atomic-number">${element.atomic_number}</div>
+                        <div class="symbol">${element.symbol}</div>
+                        <div class="name">${element.name}</div>
+                        <div class="atomic-weight">${element.atomic_weight}</div>
+                    `;
+                }
+            });
+            
+            // 处理特殊位置元素
+            positionSpecialElements();
+        }
+        
+        // 处理特殊位置元素（镧系和锕系）
+        function positionSpecialElements() {
+            // 镧系元素 (57-71) 放在第8行
+            for (let i = 57; i <= 71; i++) {
+                const elementDiv = document.getElementById(`element-${i}`);
+                if (elementDiv) {
+                    // 设置网格位置
+                    elementDiv.style.gridColumn = (i - 57 + 3) + ' / span 1';
+                    elementDiv.style.gridRow = '8 / span 1';
+                }
+            }
+            
+            // 锕系元素 (89-103) 放在第9行
+            for (let i = 89; i <= 103; i++) {
+                const elementDiv = document.getElementById(`element-${i}`);
+                if (elementDiv) {
+                    // 设置网格位置
+                    elementDiv.style.gridColumn = (i - 89 + 3) + ' / span 1';
+                    elementDiv.style.gridRow = '9 / span 1';
+                }
+            }
+        }
+        
+        // 页面加载完成后创建周期表
+        document.addEventListener('DOMContentLoaded', createPeriodicTable);
+    </script>
+</body>
+</html>

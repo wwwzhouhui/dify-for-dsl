@@ -1,0 +1,330 @@
+2025-08-13 16:18:35,601 - httpx - INFO - HTTP Request: GET http://localhost:16004/gradio_api/startup-events "HTTP/1.1 200 OK"
+2025-08-13 16:18:35,618 - httpx - INFO - HTTP Request: HEAD http://localhost:16004/ "HTTP/1.1 200 OK"
+2025-08-13 16:18:36,357 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-08-13 16:18:37,808 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2025-08-13 16:19:28,242 - config - INFO - 开始生成图像，提示词: 一只可爱的小猫咪坐在彩虹上...
+2025-08-13 16:19:28,243 - config - INFO - 尝试第 1 个URL: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-13 16:19:42,092 - config - INFO - API响应成功: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-13 16:19:42,092 - config - INFO - 获取到图像URL: https://p9-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/517976bfe67a49f7a47e14462658fa3b~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755079200&x-signature=NjYRq%2FEMrZRt1mG%2FjBgh1ObZfuI%3D&format=.png
+2025-08-13 16:22:47,712 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-08-13 16:22:59,096 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-08-13 16:23:28,465 - httpx - INFO - HTTP Request: GET http://localhost:16004/gradio_api/startup-events "HTTP/1.1 200 OK"
+2025-08-13 16:23:28,485 - httpx - INFO - HTTP Request: HEAD http://localhost:16004/ "HTTP/1.1 200 OK"
+2025-08-13 16:23:29,418 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-08-13 16:23:31,117 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2025-08-13 16:24:05,705 - config - INFO - 开始生成图像，提示词: 未来科技城市的夜景，霓虹灯闪烁...
+2025-08-13 16:24:05,705 - config - INFO - 尝试第 1 个URL: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-13 16:24:21,800 - config - INFO - API响应成功: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-13 16:24:21,800 - config - INFO - 获取到图像URL: https://p9-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/b6a5a251a35a40c3a01fadee4134c479~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755079200&x-signature=Rs%2B8PFsP5sGATjTgF9%2B08kHWa1c%3D&format=.png
+2025-08-13 16:26:28,070 - httpx - INFO - HTTP Request: GET http://localhost:16004/gradio_api/startup-events "HTTP/1.1 200 OK"
+2025-08-13 16:26:28,087 - httpx - INFO - HTTP Request: HEAD http://localhost:16004/ "HTTP/1.1 200 OK"
+2025-08-13 16:26:29,856 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-08-13 16:26:30,205 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2025-08-13 16:26:52,902 - config - INFO - 开始生成图像，提示词: 古代中国山水画风格的风景...
+2025-08-13 16:26:52,902 - config - INFO - 尝试第 1 个URL: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-13 16:27:08,261 - config - INFO - API响应成功: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-13 16:27:08,261 - config - INFO - 获取到图像URL: https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/6363ca8f49234204868147b738e2df9a~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755079200&x-signature=IfMvlb30WeTsVqsbHE7zUHLB%2FHg%3D&format=.png
+2025-08-13 16:29:36,534 - httpx - INFO - HTTP Request: GET http://localhost:16004/gradio_api/startup-events "HTTP/1.1 200 OK"
+2025-08-13 16:29:36,558 - httpx - INFO - HTTP Request: HEAD http://localhost:16004/ "HTTP/1.1 200 OK"
+2025-08-13 16:29:38,291 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-08-13 16:29:39,524 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2025-08-13 16:29:47,969 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-08-13 16:30:11,681 - httpx - INFO - HTTP Request: GET http://localhost:16005/gradio_api/startup-events "HTTP/1.1 200 OK"
+2025-08-13 16:30:11,698 - httpx - INFO - HTTP Request: HEAD http://localhost:16005/ "HTTP/1.1 200 OK"
+2025-08-13 16:30:12,605 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-08-13 16:30:13,526 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2025-08-13 16:31:38,526 - httpx - INFO - HTTP Request: GET http://localhost:16004/gradio_api/startup-events "HTTP/1.1 200 OK"
+2025-08-13 16:31:38,550 - httpx - INFO - HTTP Request: HEAD http://localhost:16004/ "HTTP/1.1 200 OK"
+2025-08-13 16:31:39,385 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-08-13 16:31:40,503 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2025-08-13 16:32:00,950 - config - INFO - 开始生成图像，提示词: 宇宙中的星云和行星...
+2025-08-13 16:32:00,950 - config - INFO - 尝试第 1 个URL: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-13 16:32:16,914 - config - INFO - API响应成功: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-13 16:32:16,914 - config - INFO - 获取到图像URL: https://p3-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/efda0bd81d174879b6485fcdd901a919~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755079200&x-signature=0kUI8bYGkc2F2qMmIByrsaAdXiw%3D&format=.png
+2025-08-13 16:32:17,869 - config - INFO - 获取到图像URL: https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/e9eea59314b040e8a5baf2abd7ac121e~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755079200&x-signature=jnel9i1xLMbmrS92%2FkBvpWKGmSY%3D&format=.png
+2025-08-13 16:32:19,000 - config - INFO - 获取到图像URL: https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/3ad34f985fd14b34898635f2f4ef1b9c~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755079200&x-signature=IIlUllzeX0AEQhoiM7rxdC3DDRE%3D&format=.png
+2025-08-13 16:32:19,737 - config - INFO - 获取到图像URL: https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/aaaac4c1852347498182f18f0b6d88f9~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755079200&x-signature=t%2FTVAUtv8SqKIVbVFq%2FHRmMmYWM%3D&format=.png
+2025-08-13 16:34:51,334 - httpx - INFO - HTTP Request: GET http://localhost:16004/gradio_api/startup-events "HTTP/1.1 200 OK"
+2025-08-13 16:34:51,380 - httpx - INFO - HTTP Request: HEAD http://localhost:16004/ "HTTP/1.1 200 OK"
+2025-08-13 16:34:52,057 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-08-13 16:34:53,243 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2025-08-13 16:35:03,300 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-08-13 16:35:23,142 - httpx - INFO - HTTP Request: GET http://localhost:16006/gradio_api/startup-events "HTTP/1.1 200 OK"
+2025-08-13 16:35:23,193 - httpx - INFO - HTTP Request: HEAD http://localhost:16006/ "HTTP/1.1 200 OK"
+2025-08-13 16:35:23,873 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-08-13 16:35:24,815 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2025-08-13 16:36:55,498 - config - INFO - 开始生成图像，提示词: 皮卡丘抱着埃菲尔铁塔...
+2025-08-13 16:36:55,498 - config - INFO - 尝试第 1 个URL: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-13 16:37:11,072 - config - INFO - API响应成功: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-13 16:37:11,072 - config - INFO - 获取到图像URL: https://p3-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/5b595ad08663438a93f9c68901b95844~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755079200&x-signature=w%2FS2iwYENFiYCB0%2BPYutz1xmrLQ%3D&format=.png
+2025-08-13 16:37:11,670 - config - INFO - 获取到图像URL: https://p3-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/708041a29e6c463b94e3d1bb1e41c6ac~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755079200&x-signature=cZyO9wJSMuNlfYqBcp71Qqo3NPQ%3D&format=.png
+2025-08-13 16:37:12,363 - config - INFO - 获取到图像URL: https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/f3f8748f09084412bf22d86f04d04f2b~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755079200&x-signature=Wxr1YUflHNtL7gEXOKspInf7O7I%3D&format=.png
+2025-08-13 16:37:13,010 - config - INFO - 获取到图像URL: https://p9-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/e41dbeb6093747bcacb48860ec4e974d~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755079200&x-signature=ZI2SFX66EP0YqAluMj2Bw7A8E48%3D&format=.png
+2025-08-13 16:39:22,588 - httpx - INFO - HTTP Request: GET http://localhost:16006/gradio_api/startup-events "HTTP/1.1 200 OK"
+2025-08-13 16:39:22,617 - httpx - INFO - HTTP Request: HEAD http://localhost:16006/ "HTTP/1.1 200 OK"
+2025-08-13 16:39:23,336 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-08-13 16:39:24,276 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2025-08-13 16:39:48,265 - config - INFO - 开始生成图像，提示词: 皮卡丘抱着埃菲尔铁塔...
+2025-08-13 16:39:48,265 - config - INFO - 尝试第 1 个URL: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-13 16:40:03,333 - config - INFO - API响应成功: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-13 16:40:03,333 - config - INFO - 获取到图像URL: https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/da8e84aa3ff444259dda66dcfb38c7ae~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755079200&x-signature=niJIKJqNp8KT%2BZVXLwMut2v1ObU%3D&format=.png
+2025-08-13 16:40:03,971 - config - INFO - 获取到图像URL: https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/072869ef9f0f4f4f9f6d2b7beaea5d6b~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755079200&x-signature=wQqqEVNWsLbFmy2D1atkkKYMQSU%3D&format=.png
+2025-08-13 16:40:04,572 - config - INFO - 获取到图像URL: https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/e2fd5ba5aade4c558a6ca0ed26b63d1b~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755079200&x-signature=fGj1IPRkvQah8aXaJmp37KGXkcQ%3D&format=.png
+2025-08-13 16:40:05,332 - config - INFO - 获取到图像URL: https://p9-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/91466aefde0d4fd99824f22d5b12064d~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755079200&x-signature=oXjHIx2FZFuYqGPHZWGkrrtU79Y%3D&format=.png
+2025-08-13 16:43:33,445 - httpx - INFO - HTTP Request: GET http://localhost:16006/gradio_api/startup-events "HTTP/1.1 200 OK"
+2025-08-13 16:43:33,464 - httpx - INFO - HTTP Request: HEAD http://localhost:16006/ "HTTP/1.1 200 OK"
+2025-08-13 16:43:34,179 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-08-13 16:43:35,231 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2025-08-13 16:44:01,074 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-08-13 16:44:32,087 - httpx - INFO - HTTP Request: GET http://localhost:16007/gradio_api/startup-events "HTTP/1.1 200 OK"
+2025-08-13 16:44:32,109 - httpx - INFO - HTTP Request: HEAD http://localhost:16007/ "HTTP/1.1 200 OK"
+2025-08-13 16:44:32,970 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-08-13 16:44:33,689 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2025-08-13 16:45:26,735 - httpx - INFO - HTTP Request: GET http://localhost:16007/gradio_api/startup-events "HTTP/1.1 200 OK"
+2025-08-13 16:45:26,781 - httpx - INFO - HTTP Request: HEAD http://localhost:16007/ "HTTP/1.1 200 OK"
+2025-08-13 16:45:27,566 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-08-13 16:45:28,348 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2025-08-13 16:46:30,783 - config - INFO - 开始生成图像，提示词: 皮卡丘抱着埃菲尔铁塔...
+2025-08-13 16:46:30,784 - config - INFO - 尝试第 1 个URL: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-13 16:46:45,294 - config - INFO - API响应成功: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-13 16:46:45,294 - config - INFO - 获取到图像URL: https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/cea938d3630b4a47bdc962e8b0c09e21~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755079200&x-signature=hRClrl5Zxn3IUFw0TU8bxD6DZew%3D&format=.png
+2025-08-13 16:46:46,012 - config - INFO - 获取到图像URL: https://p9-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/b7dce49b52d14917b1a1d74574830973~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755079200&x-signature=VUh8G3YR3X87oxBGPzXEuUg%2F3RA%3D&format=.png
+2025-08-13 16:46:46,827 - config - INFO - 获取到图像URL: https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/0ff5c8e740134d018697e4e79d5b01af~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755079200&x-signature=BeBIRblB%2FpG1fZS7WqRrJa4AaQQ%3D&format=.png
+2025-08-13 16:46:47,444 - config - INFO - 获取到图像URL: https://p3-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/4c7d4a0db1cb4118910e62053333121e~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755079200&x-signature=j3QLGSj13RiksI0nna0mSQjYWFY%3D&format=.png
+2025-08-13 16:49:07,792 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-08-13 16:49:34,340 - httpx - INFO - HTTP Request: GET http://localhost:16008/gradio_api/startup-events "HTTP/1.1 200 OK"
+2025-08-13 16:49:34,358 - httpx - INFO - HTTP Request: HEAD http://localhost:16008/ "HTTP/1.1 200 OK"
+2025-08-13 16:49:34,994 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-08-13 16:49:35,995 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2025-08-13 16:50:00,782 - config - INFO - 开始生成图像，提示词: 皮卡丘抱着埃菲尔铁塔...
+2025-08-13 16:50:00,782 - config - INFO - 尝试第 1 个URL: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-13 16:50:16,846 - config - INFO - API响应成功: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-13 16:50:16,847 - config - INFO - 获取到图像URL: https://p9-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/e70b8a792bc442a6a9df2e58b813b2ad~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755079200&x-signature=zYrBqpBFT4vtvFTeFAn5bQM4Ltc%3D&format=.png
+2025-08-13 16:50:17,848 - config - INFO - 获取到图像URL: https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/23858bd753dc4fff8b00c94f193c7b86~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755079200&x-signature=cYmEYMIRiwVyM%2BTWNIYh0VL4lJs%3D&format=.png
+2025-08-13 16:50:18,605 - config - INFO - 获取到图像URL: https://p3-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/78fb06f03e0b438da5410a1307d0f092~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755079200&x-signature=AWJ5NEBWOkJsjfdb6R9GR%2FnmiRw%3D&format=.png
+2025-08-13 16:50:19,550 - config - INFO - 获取到图像URL: https://p9-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/21a569c8e2524a9b8d13c784baeb5eb5~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755079200&x-signature=Y%2FRJ%2Faiw9q%2Bidvt29a4xPHIuMSw%3D&format=.png
+2025-08-13 16:52:38,091 - httpx - INFO - HTTP Request: GET http://localhost:16008/gradio_api/startup-events "HTTP/1.1 200 OK"
+2025-08-13 16:52:38,133 - httpx - INFO - HTTP Request: HEAD http://localhost:16008/ "HTTP/1.1 200 OK"
+2025-08-13 16:52:38,802 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-08-13 16:52:39,984 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2025-08-13 16:53:07,228 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-08-13 16:53:30,698 - httpx - INFO - HTTP Request: GET http://localhost:16009/gradio_api/startup-events "HTTP/1.1 200 OK"
+2025-08-13 16:53:30,734 - httpx - INFO - HTTP Request: HEAD http://localhost:16009/ "HTTP/1.1 200 OK"
+2025-08-13 16:53:31,739 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-08-13 16:53:32,347 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2025-08-13 16:53:45,407 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-08-13 16:54:06,728 - httpx - INFO - HTTP Request: GET http://localhost:16010/gradio_api/startup-events "HTTP/1.1 200 OK"
+2025-08-13 16:54:06,750 - httpx - INFO - HTTP Request: HEAD http://localhost:16010/ "HTTP/1.1 200 OK"
+2025-08-13 16:54:07,482 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-08-13 16:54:08,868 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2025-08-13 16:54:19,565 - httpx - INFO - HTTP Request: GET http://localhost:16010/gradio_api/startup-events "HTTP/1.1 200 OK"
+2025-08-13 16:54:19,582 - httpx - INFO - HTTP Request: HEAD http://localhost:16010/ "HTTP/1.1 200 OK"
+2025-08-13 16:54:20,225 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-08-13 16:54:21,104 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2025-08-13 16:54:44,009 - config - INFO - 开始生成图像，提示词: 皮卡丘抱着埃菲尔铁塔...
+2025-08-13 16:54:44,009 - config - INFO - 尝试第 1 个URL: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-13 16:55:00,429 - config - INFO - API响应成功: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-13 16:55:00,429 - config - INFO - 获取到图像URL: https://p3-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/483ce2f2280448078a30385cc2b1ac18~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755079200&x-signature=TDUgVWE5RVO8ym%2FLwIugqFtk2Cg%3D&format=.png
+2025-08-13 16:55:01,618 - config - INFO - 获取到图像URL: https://p9-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/5b71bedb80504c69a0300b0719744abd~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755079200&x-signature=uIHVQtzhgJKaEZzM%2BftD4%2BINPxs%3D&format=.png
+2025-08-13 16:55:03,561 - config - INFO - 获取到图像URL: https://p9-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/0ad6bad406e6494580fce5edf889744c~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755079200&x-signature=Pd6LZIsLThsoP%2Bvqd59gWCyiuwQ%3D&format=.png
+2025-08-13 16:55:04,380 - config - INFO - 获取到图像URL: https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/f20ff225ad4a4c58899436b33816dd7d~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755079200&x-signature=T%2Bc345G4Up8CZQ5PU4OTCEcoJdQ%3D&format=.png
+2025-08-13 16:59:17,537 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-08-13 16:59:41,688 - httpx - INFO - HTTP Request: GET http://localhost:16011/gradio_api/startup-events "HTTP/1.1 200 OK"
+2025-08-13 16:59:41,707 - httpx - INFO - HTTP Request: HEAD http://localhost:16011/ "HTTP/1.1 200 OK"
+2025-08-13 16:59:42,389 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-08-13 16:59:43,336 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2025-08-13 17:00:32,726 - config - INFO - 开始生成图像，提示词: 皮卡丘抱着埃菲尔铁塔...
+2025-08-13 17:00:32,727 - config - INFO - 尝试第 1 个URL: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-13 17:00:48,028 - config - INFO - API响应成功: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-13 17:00:48,028 - config - INFO - 获取到图像URL: https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/9396e99545714c049ccbfff32b6afd5d~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755082800&x-signature=6qD3R6853bxKGYj9YSURqJOwDoc%3D&format=.png
+2025-08-13 17:00:48,664 - config - INFO - 获取到图像URL: https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/891f8ded3df144c3bcf0c08f557a6fef~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755082800&x-signature=cnIXY8sj7xRPEY4hhpawQMVOy%2Fk%3D&format=.png
+2025-08-13 17:00:49,288 - config - INFO - 获取到图像URL: https://p3-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/0f4f680939284e5f8612e93fa48272ee~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755082800&x-signature=mtEcpH5HdkqEhLziVM4sG%2B%2FxAlU%3D&format=.png
+2025-08-13 17:00:49,980 - config - INFO - 获取到图像URL: https://p9-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/d7b8d883582c4b839a07b0a115978abe~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755082800&x-signature=1TLJzIEYmndFmKZfhKQymciUTTY%3D&format=.png
+2025-08-13 17:00:51,715 - config - INFO - 开始生成图像，提示词: 皮卡丘抱着埃菲尔铁塔...
+2025-08-13 17:00:51,715 - config - INFO - 尝试第 1 个URL: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-13 17:01:08,104 - config - INFO - API响应成功: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-13 17:01:08,104 - config - INFO - 获取到图像URL: https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/998c1089fef146b5bce7432c5f11c0fd~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755082800&x-signature=gbnzVUZJKqFigl7mQBZpZ1HC%2B0Y%3D&format=.png
+2025-08-13 17:01:09,089 - config - INFO - 获取到图像URL: https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/f10a8b47dbce4e78838de1d76ab3cb54~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755082800&x-signature=Pi4OCgtaaEE51h5xHDSFNKpFKOs%3D&format=.png
+2025-08-13 17:01:09,809 - config - INFO - 获取到图像URL: https://p3-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/5bc082b94c324086a4a617c7757faa62~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755082800&x-signature=IsMk09i8X4iwG7W3GNDvm763Ddo%3D&format=.png
+2025-08-13 17:01:10,548 - config - INFO - 获取到图像URL: https://p9-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/f3f5ceede2dd48a6b93a45f2faa21e07~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755082800&x-signature=h8dVwHaVxKlOk%2Bp%2FCUKuU5QcG7g%3D&format=.png
+2025-08-13 17:05:13,423 - httpx - INFO - HTTP Request: GET http://localhost:16011/gradio_api/startup-events "HTTP/1.1 200 OK"
+2025-08-13 17:05:13,444 - httpx - INFO - HTTP Request: HEAD http://localhost:16011/ "HTTP/1.1 200 OK"
+2025-08-13 17:05:14,312 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-08-13 17:05:14,987 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2025-08-13 17:06:23,095 - config - INFO - 开始生成图像，提示词: 皮卡丘抱着埃菲尔铁塔...
+2025-08-13 17:06:23,095 - config - INFO - 尝试第 1 个URL: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-13 17:06:39,633 - config - INFO - API响应成功: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-13 17:06:39,633 - config - INFO - 获取到图像URL: https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/1ac8b9fc69d74afe9ecf5ab815a9bbe2~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755082800&x-signature=fmLPUCfOwEHQv6oy2X0u96K1MI8%3D&format=.png
+2025-08-13 17:06:40,465 - config - INFO - 获取到图像URL: https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/c6484f405f7d4a47b2f899f84960e489~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755082800&x-signature=5M89Y2oEIZ0tbmA2k7AhuQP38xo%3D&format=.png
+2025-08-13 17:06:41,119 - config - INFO - 获取到图像URL: https://p9-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/58e0cd1ef6434ec0a5b31ba79b35d5cc~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755082800&x-signature=X5BBQnHHe3h7NS0KwSXZC4bQ5zw%3D&format=.png
+2025-08-13 17:06:41,946 - config - INFO - 获取到图像URL: https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/977c7b85c6f04667b46a8ad38d800aff~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755082800&x-signature=jrs54sEe4Z%2BACgFu%2FhTqczLPa4E%3D&format=.png
+2025-08-13 17:11:46,998 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-08-13 17:12:17,369 - httpx - INFO - HTTP Request: GET http://localhost:16012/gradio_api/startup-events "HTTP/1.1 200 OK"
+2025-08-13 17:12:17,390 - httpx - INFO - HTTP Request: HEAD http://localhost:16012/ "HTTP/1.1 200 OK"
+2025-08-13 17:12:18,236 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-08-13 17:12:19,230 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2025-08-13 17:12:40,641 - config - INFO - 开始生成图像，提示词: 皮卡丘抱着埃菲尔铁塔...
+2025-08-13 17:12:40,642 - config - INFO - 尝试第 1 个URL: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-13 17:12:56,376 - config - INFO - API响应成功: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-13 17:12:56,376 - config - INFO - 获取到图像URL: https://p3-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/ff57116215ad4c6f92bf76dc4ff60272~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755082800&x-signature=TsYXBxjiQaAU7qjxdz%2Fc2jRwhn4%3D&format=.png
+2025-08-13 17:12:57,081 - config - INFO - 获取到图像URL: https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/3eecf879d5a64cc3a512a96ae1a924e0~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755082800&x-signature=L%2FvlKS4MA32LbrB2U3ndUxZSJSE%3D&format=.png
+2025-08-13 17:12:57,793 - config - INFO - 获取到图像URL: https://p3-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/d1402f426e99400493b5b46bdb52bea4~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755082800&x-signature=TgX2Q6gxO36weHSNRHo4tfE%2Bh3A%3D&format=.png
+2025-08-13 17:12:58,463 - config - INFO - 获取到图像URL: https://p9-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/66ca25c800f44577a413f8c11ac6bf1f~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755082800&x-signature=NFkjmWdRUMpDJVTGiu%2BJ1TnNmgw%3D&format=.png
+2025-08-13 17:15:18,775 - httpx - INFO - HTTP Request: GET http://localhost:16012/gradio_api/startup-events "HTTP/1.1 200 OK"
+2025-08-13 17:15:18,792 - httpx - INFO - HTTP Request: HEAD http://localhost:16012/ "HTTP/1.1 200 OK"
+2025-08-13 17:15:19,858 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-08-13 17:15:20,373 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2025-08-13 17:15:47,658 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-08-13 17:16:17,818 - httpx - INFO - HTTP Request: GET http://localhost:16013/gradio_api/startup-events "HTTP/1.1 200 OK"
+2025-08-13 17:16:17,853 - httpx - INFO - HTTP Request: HEAD http://localhost:16013/ "HTTP/1.1 200 OK"
+2025-08-13 17:16:18,832 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-08-13 17:16:19,599 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2025-08-13 17:16:31,351 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-08-13 17:17:03,657 - httpx - INFO - HTTP Request: GET http://localhost:16014/gradio_api/startup-events "HTTP/1.1 200 OK"
+2025-08-13 17:17:03,673 - httpx - INFO - HTTP Request: HEAD http://localhost:16014/ "HTTP/1.1 200 OK"
+2025-08-13 17:17:04,457 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-08-13 17:17:05,260 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2025-08-13 17:17:25,971 - config - INFO - 开始生成图像，提示词: 皮卡丘抱着埃菲尔铁塔...
+2025-08-13 17:17:25,971 - config - INFO - 尝试第 1 个URL: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-13 17:17:41,270 - config - INFO - API响应成功: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-13 17:17:41,270 - config - INFO - 获取到图像URL: https://p3-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/e2c4d2ea4da64b83b1d7f8fefd4ece89~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755082800&x-signature=nPOGNKkUGt6LxznG8JJ3u6PKuw4%3D&format=.png
+2025-08-13 17:17:41,957 - config - INFO - 获取到图像URL: https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/5e9f77651dd84082b79d78bd10c3b183~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755082800&x-signature=pLc1%2BvCVuQCCCrJArmvGDt6O0mE%3D&format=.png
+2025-08-13 17:17:42,683 - config - INFO - 获取到图像URL: https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/571a3e84e6334bed88391cdaa92c6aa6~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755082800&x-signature=n4IhIdg1zaMYGk7S51TrutSArR0%3D&format=.png
+2025-08-13 17:17:43,365 - config - INFO - 获取到图像URL: https://p3-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/dcb6e751047d4d48b8c20a4037fdc948~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755082800&x-signature=e%2BN%2FBSgnvQPv457fl96qIUuYxU8%3D&format=.png
+2025-08-13 17:20:51,439 - httpx - INFO - HTTP Request: GET http://localhost:16014/gradio_api/startup-events "HTTP/1.1 200 OK"
+2025-08-13 17:20:51,458 - httpx - INFO - HTTP Request: HEAD http://localhost:16014/ "HTTP/1.1 200 OK"
+2025-08-13 17:20:52,271 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-08-13 17:20:53,033 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2025-08-13 17:31:26,814 - config - INFO - 开始生成图像，提示词: 皮卡丘抱着埃菲尔铁塔...
+2025-08-13 17:31:26,814 - config - INFO - 尝试第 1 个URL: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-13 17:31:42,626 - config - INFO - API响应成功: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-13 17:31:42,626 - config - INFO - 获取到图像URL: https://p9-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/4613bf281c26427c8d0ea20110913a32~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755082800&x-signature=eieGM%2FFUhaBap8Wn8z883jvohnY%3D&format=.png
+2025-08-13 17:31:43,747 - config - INFO - 获取到图像URL: https://p9-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/0b9cf73e07d04c49ace8e89b69bb2d8e~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755082800&x-signature=3H7cdGFjwXP856U4egKpb4Zwf3Q%3D&format=.png
+2025-08-13 17:31:45,039 - config - INFO - 获取到图像URL: https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/406e84c0ecc5412a8c6c377d9bbffaae~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755082800&x-signature=wIdSnC2AY%2F94OM6hUCUDBYGjSkE%3D&format=.png
+2025-08-13 17:31:45,880 - config - INFO - 获取到图像URL: https://p9-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/8e6e50b5d62847438a001506210d0d0c~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755082800&x-signature=8LX4tng1nOGbCtc9RBwF%2F6adK7k%3D&format=.png
+2025-08-14 14:12:05,369 - httpx - INFO - HTTP Request: GET http://localhost:16014/gradio_api/startup-events "HTTP/1.1 200 OK"
+2025-08-14 14:12:05,391 - httpx - INFO - HTTP Request: HEAD http://localhost:16014/ "HTTP/1.1 200 OK"
+2025-08-14 14:12:06,333 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-08-14 14:12:07,285 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2025-08-14 14:12:51,721 - config - INFO - 开始生成图像，提示词: 皮卡丘抱着埃菲尔铁塔...
+2025-08-14 14:12:51,721 - config - INFO - 尝试第 1 个URL: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-14 14:13:07,951 - config - INFO - API响应成功: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-14 14:13:07,951 - config - INFO - 获取到图像URL: https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/0aeffbd796d542159c7fabf7dcacd9f5~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=sZBK1ugZQWG%2FOMO7BejXKLUTxrg%3D&format=.png
+2025-08-14 14:13:08,668 - config - INFO - 获取到图像URL: https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/aec5c726fd1f4b00bfc392a888b19373~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=VlBV4bQ7hoAUfaNU4T7vc0YeDi8%3D&format=.png
+2025-08-14 14:13:09,396 - config - INFO - 获取到图像URL: https://p3-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/24bc8234744e4c74a96b780db42bec87~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=ykKchO8p8rt7XYzALJHx4Sm%2Bdak%3D&format=.png
+2025-08-14 14:13:10,678 - config - INFO - 获取到图像URL: https://p3-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/3f6a1466d90a4245a1952969a07242aa~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=L5O1ImoEv7Au9kUiqW%2BuOsubELk%3D&format=.png
+2025-08-14 14:13:52,298 - config - INFO - 开始生成图像，提示词: 皮卡丘抱着埃菲尔铁塔...
+2025-08-14 14:13:52,298 - config - INFO - 尝试第 1 个URL: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-14 14:14:08,492 - config - INFO - API响应成功: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-14 14:14:08,493 - config - INFO - 获取到图像URL: https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/3ee091d1bdb64aafa925e68f12879ed2~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=VP9QsEjW8QQx1zHT4u7wTMGCmkk%3D&format=.png
+2025-08-14 14:14:09,338 - config - INFO - 获取到图像URL: https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/54fdc04a89034f10a64c415a3fb41f7b~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=VMidmvsSN66Slk4A7sGt37ya7Uo%3D&format=.png
+2025-08-14 14:14:10,188 - config - INFO - 获取到图像URL: https://p9-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/2b22d765f4cb4566a7620cb8f1dc73b3~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=J8iR3ptr1ZRzElUxVdhE8waWXGQ%3D&format=.png
+2025-08-14 14:14:11,489 - config - INFO - 获取到图像URL: https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/b2f06ae5dffd41309740f3710e2993af~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=Z0PHNpRZ67hEDMbVpaqkMkAYnpM%3D&format=.png
+2025-08-14 14:15:40,391 - httpx - INFO - HTTP Request: GET http://localhost:16014/gradio_api/startup-events "HTTP/1.1 200 OK"
+2025-08-14 14:15:40,408 - httpx - INFO - HTTP Request: HEAD http://localhost:16014/ "HTTP/1.1 200 OK"
+2025-08-14 14:15:41,291 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-08-14 14:15:46,428 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2025-08-14 14:16:06,331 - config - INFO - 开始生成图像，提示词: 皮卡丘抱着埃菲尔铁塔...
+2025-08-14 14:16:06,331 - config - INFO - 尝试第 1 个URL: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-14 14:16:22,338 - config - INFO - API响应成功: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-14 14:16:22,338 - config - INFO - 获取到图像URL: https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/98c4ecee58e64819a661f1d9812d0862~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=JVOIMkxvYfENNfs5In8kXwtd4l4%3D&format=.png
+2025-08-14 14:16:23,113 - config - INFO - 获取到图像URL: https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/5501dfc28f6e4faa9516a3ba60d5b1ee~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=9sg615AR%2BMe3vyAaOTdPxkKqFxM%3D&format=.png
+2025-08-14 14:16:23,864 - config - INFO - 获取到图像URL: https://p9-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/a345b447c9514ae3aaaf9fea454718c4~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=P7CmkcnZRAS8EvDlL3pomvJbqkE%3D&format=.png
+2025-08-14 14:16:25,640 - config - INFO - 获取到图像URL: https://p9-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/ea9ed8d8a1634a4e8e604214616bd715~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=TQjJF9A2p6%2BZ26HxNCO5vSDxOBk%3D&format=.png
+2025-08-14 14:16:53,354 - config - INFO - 开始生成图像，提示词: 皮卡丘抱着埃菲尔铁塔...
+2025-08-14 14:16:53,354 - config - INFO - 尝试第 1 个URL: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-14 14:17:08,945 - config - INFO - API响应成功: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-14 14:17:08,945 - config - INFO - 获取到图像URL: https://p3-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/efbafe648aee44f193e7306e1de3e418~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=6NJTzQviYs1XwEfFkxucp6u%2FdqU%3D&format=.png
+2025-08-14 14:17:10,586 - config - INFO - 获取到图像URL: https://p3-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/0c10f2a63ba94d27b2d85f5e37e6a134~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=nqfZkFYOCL5H8MmZB1bWLuxPTVw%3D&format=.png
+2025-08-14 14:17:11,303 - config - INFO - 获取到图像URL: https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/be4d7973e9b74ba8afadeb442561e3a3~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=Ug98cm1BXSjrF61sYkMZ4Kcz8Sc%3D&format=.png
+2025-08-14 14:17:11,985 - config - INFO - 获取到图像URL: https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/391d92a553dc40c380dc7c8d8e680ddc~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=Gz8hacdHlxEXT4enTifnVZVAdtA%3D&format=.png
+2025-08-14 14:19:33,709 - httpx - INFO - HTTP Request: GET http://localhost:16014/gradio_api/startup-events "HTTP/1.1 200 OK"
+2025-08-14 14:19:33,751 - httpx - INFO - HTTP Request: HEAD http://localhost:16014/ "HTTP/1.1 200 OK"
+2025-08-14 14:19:34,265 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-08-14 14:19:35,381 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2025-08-14 14:20:15,133 - config - INFO - 开始生成图像，提示词: 皮卡丘抱着埃菲尔铁塔...
+2025-08-14 14:20:15,133 - config - INFO - 尝试第 1 个URL: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-14 14:20:31,220 - config - INFO - API响应成功: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-14 14:20:31,220 - config - INFO - 获取到图像URL: https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/39e1e8f2838b4f718b0b800a86fc4a62~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=FmZQ%2BMWKpIAwySixRqjJewdj8bQ%3D&format=.png
+2025-08-14 14:20:31,963 - config - INFO - 获取到图像URL: https://p9-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/1c6ee76c1ab44ab0846480099193ff4b~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=QRIt3DJlDWd3zmQijNuta5Elq9Y%3D&format=.png
+2025-08-14 14:20:33,893 - config - INFO - 获取到图像URL: https://p3-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/5c2f1981757040e88cb9bca7578e1217~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=04sokzv8aWa9MeHvGuWMi8XRzZc%3D&format=.png
+2025-08-14 14:20:34,767 - config - INFO - 获取到图像URL: https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/4a793c7fde96446581d87f00bdb38e87~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=qrUZgXex%2F8O0YUn5bEvjZqUoB7o%3D&format=.png
+2025-08-14 14:22:26,775 - httpx - INFO - HTTP Request: GET http://localhost:16014/gradio_api/startup-events "HTTP/1.1 200 OK"
+2025-08-14 14:22:26,800 - httpx - INFO - HTTP Request: HEAD http://localhost:16014/ "HTTP/1.1 200 OK"
+2025-08-14 14:22:27,592 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-08-14 14:22:28,590 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2025-08-14 14:22:44,149 - config - INFO - 开始生成图像，提示词: 皮卡丘抱着埃菲尔铁塔...
+2025-08-14 14:22:44,149 - config - INFO - 尝试第 1 个URL: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-14 14:23:00,364 - config - INFO - API响应成功: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-14 14:23:00,364 - config - INFO - 获取到图像URL: https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/31a332ade49c47f9887c9e0248c0858a~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=8t3sBi4Xv9PYXKxO1UJRHAtG8dk%3D&format=.png
+2025-08-14 14:23:01,812 - config - INFO - 获取到图像URL: https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/4c532527af904112bb2cad4cab097d74~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=%2FTCu7JLUW3lHGg3BU8YvLl3lYY8%3D&format=.png
+2025-08-14 14:23:02,824 - config - INFO - 获取到图像URL: https://p3-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/5407dc10251d46abbb26091998d968de~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=kE2ceawneVoYjcuB0LpFp%2Bbvz%2Fw%3D&format=.png
+2025-08-14 14:23:03,884 - config - INFO - 获取到图像URL: https://p3-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/2ef2ce160dd142fb9d05cab17520340f~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=bdRW1fjiuQTfxR93plaaoqMTr2c%3D&format=.png
+2025-08-14 14:34:30,525 - httpx - INFO - HTTP Request: GET http://localhost:16014/gradio_api/startup-events "HTTP/1.1 200 OK"
+2025-08-14 14:34:30,541 - httpx - INFO - HTTP Request: HEAD http://localhost:16014/ "HTTP/1.1 200 OK"
+2025-08-14 14:34:36,324 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2025-08-14 14:35:03,321 - config - INFO - 开始生成图像，提示词: 皮卡丘抱着埃菲尔铁塔...
+2025-08-14 14:35:03,321 - config - INFO - 尝试第 1 个URL: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-14 14:35:19,266 - config - INFO - API响应成功: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-14 14:35:19,266 - config - INFO - 获取到图像URL: https://p9-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/1f47438208d24c5484f698aff472d28d~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=IXNqMKWcDLrJy0AnV9g5coQoAv8%3D&format=.png
+2025-08-14 14:35:20,342 - config - INFO - 获取到图像URL: https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/ff6a5bc0a1d9439b980677a0f6cd04da~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=cI%2Bd8Jo0y0tgxd5nttbhz2sBsfk%3D&format=.png
+2025-08-14 14:35:21,290 - config - INFO - 获取到图像URL: https://p3-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/62cf3014b87a431a9b47c9bdc026cd25~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=kWI6ZktvZSmX1%2FvoCMJ7DKOR4TM%3D&format=.png
+2025-08-14 14:35:22,259 - config - INFO - 获取到图像URL: https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/36c287861bca44c69b075e1bbd702c6f~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=vJgGwfgBiAipF84iAWTmUhN85vY%3D&format=.png
+2025-08-14 14:36:42,082 - config - INFO - 开始生成图像，提示词: 未来科技城市的夜景，霓虹灯闪烁...
+2025-08-14 14:36:42,082 - config - INFO - 尝试第 1 个URL: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-14 14:36:59,110 - config - INFO - API响应成功: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-14 14:36:59,110 - config - INFO - 获取到图像URL: https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/56c9a1c4804b47ad9d3f1d927f34beb7~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=bz8mEEswlt5YXCdMJC5ETIHFrIs%3D&format=.png
+2025-08-14 14:36:59,780 - config - INFO - 获取到图像URL: https://p9-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/cb28b1328c8f4e7c86ca600f9e3580c3~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=ykK4PBP28W8nWCD3VpO7Mqd5obE%3D&format=.png
+2025-08-14 14:37:01,535 - config - INFO - 获取到图像URL: https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/427df36222fd480e9463d5d5474dd5a5~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=wv3xhaUAm586VDOtWej6egSCqh4%3D&format=.png
+2025-08-14 14:37:02,267 - config - INFO - 获取到图像URL: https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/408a7c59bfb74d74b7483a7e1de82f6e~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=%2Fvm8j8d579u%2BJRtjTmgjK81EWwo%3D&format=.png
+2025-08-14 14:38:37,299 - config - INFO - 开始生成图像，提示词: 一只可爱的小猫咪坐在彩虹上...
+2025-08-14 14:38:37,299 - config - INFO - 尝试第 1 个URL: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-14 14:38:52,723 - config - INFO - API响应成功: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-14 14:38:52,723 - config - INFO - 获取到图像URL: https://p9-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/bb199da317cc4f5f84429af01552ff37~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=edSq%2F7SATzsZZIBjtJqiXT5rQaY%3D&format=.png
+2025-08-14 14:38:53,917 - config - INFO - 获取到图像URL: https://p3-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/aba30647d2d1430fb1ff9f4c148ff374~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=FsVgic9onB5JAcxiw4V1j2ttfGo%3D&format=.png
+2025-08-14 14:38:54,674 - config - INFO - 获取到图像URL: https://p9-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/9315569230ac4334a1d42d0d86a181db~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=dq5BSb1bVwYthISFag2RbpIgKnw%3D&format=.png
+2025-08-14 14:38:55,408 - config - INFO - 获取到图像URL: https://p3-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/58a2f26dac92427594159072bc79c0a2~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=V16h2XHwJJPhUOctIblyQEMBrTQ%3D&format=.png
+2025-08-14 14:40:57,084 - httpx - INFO - HTTP Request: GET http://localhost:16014/gradio_api/startup-events "HTTP/1.1 200 OK"
+2025-08-14 14:40:57,102 - httpx - INFO - HTTP Request: HEAD http://localhost:16014/ "HTTP/1.1 200 OK"
+2025-08-14 14:40:58,084 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-08-14 14:40:58,640 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2025-08-14 14:41:17,036 - config - INFO - 开始生成图像，提示词: 皮卡丘抱着埃菲尔铁塔...
+2025-08-14 14:41:17,036 - config - INFO - 尝试第 1 个URL: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-14 14:41:32,776 - config - INFO - API响应成功: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-14 14:41:32,776 - config - INFO - 获取到图像URL: https://p3-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/4eaeac359f2b45fa9fd29845c00c79d3~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=636BN0KgTwVFPWMz%2Bl%2BTU%2F2cdtM%3D&format=.png
+2025-08-14 14:41:33,664 - config - INFO - 获取到图像URL: https://p9-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/9e1b1ac9ca46463f8d379604fb67b13b~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=1dIm%2F5A2iOnD%2FGWM9LAWgq%2B84%2F4%3D&format=.png
+2025-08-14 14:41:34,610 - config - INFO - 获取到图像URL: https://p9-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/a83086cce186441caf13094e2c546102~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=f8HADo1LmZ9pIe8Hb0ps6Pz%2BDeg%3D&format=.png
+2025-08-14 14:41:35,396 - config - INFO - 获取到图像URL: https://p9-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/2f1d5eb5e834428a8200972dc6983222~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=jO%2B4ujtKKJWX0HbYL3CTZh2beDw%3D&format=.png
+2025-08-14 14:44:34,830 - httpx - INFO - HTTP Request: GET http://localhost:16014/gradio_api/startup-events "HTTP/1.1 200 OK"
+2025-08-14 14:44:34,873 - httpx - INFO - HTTP Request: HEAD http://localhost:16014/ "HTTP/1.1 200 OK"
+2025-08-14 14:44:35,518 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-08-14 14:44:36,493 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2025-08-14 14:44:55,707 - config - INFO - 开始生成图像，提示词: 皮卡丘抱着埃菲尔铁塔...
+2025-08-14 14:44:55,707 - config - INFO - 尝试第 1 个URL: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-14 14:45:11,861 - config - INFO - API响应成功: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-14 14:45:11,862 - config - INFO - 获取到图像URL: https://p9-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/0caff3d69f754df38d98594a34ddd00f~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=RJ1xgi6xYrVzN5WBgGJAT9W17Fg%3D&format=.png
+2025-08-14 14:45:12,623 - config - INFO - 获取到图像URL: https://p3-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/1fcf0674ac98443a96efb60526ce1fd0~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=cmSiAY8hj6zkQM2ezsJQHfutfXk%3D&format=.png
+2025-08-14 14:45:13,572 - config - INFO - 获取到图像URL: https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/cb5925cbdbbb4b23890816ee75a73bb5~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=uWIvx%2FoXkXqmQKXZtfHqyqYO5Hk%3D&format=.png
+2025-08-14 14:45:14,360 - config - INFO - 获取到图像URL: https://p3-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/d877d48c59b04875ba320477b075ded5~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=sHq9LmuxGPiT4WwonrV5DzAgXPo%3D&format=.png
+2025-08-14 14:46:49,498 - httpx - INFO - HTTP Request: GET http://localhost:16014/gradio_api/startup-events "HTTP/1.1 200 OK"
+2025-08-14 14:46:49,514 - httpx - INFO - HTTP Request: HEAD http://localhost:16014/ "HTTP/1.1 200 OK"
+2025-08-14 14:46:50,434 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-08-14 14:46:51,622 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2025-08-14 14:47:23,029 - config - INFO - 开始生成图像，提示词: 皮卡丘抱着埃菲尔铁塔...
+2025-08-14 14:47:23,030 - config - INFO - 尝试第 1 个URL: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-14 14:47:39,149 - config - INFO - API响应成功: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-14 14:47:39,149 - config - INFO - 获取到图像URL: https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/71b337fb84194aed9859e7f6048e0775~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=j16lyNviRj8TKNyBUvqb9reRnTY%3D&format=.png
+2025-08-14 14:47:40,128 - config - INFO - 获取到图像URL: https://p9-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/3c90e2c178fa468ab9151b50e114b6a6~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=NFjrdBkgUfMbCPzMQsWDtgEB7EQ%3D&format=.png
+2025-08-14 14:47:40,877 - config - INFO - 获取到图像URL: https://p3-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/a428413b178a4a89984988b5513a1cac~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=ryWlU83ebuuMNp9ac5tjBOxiMKk%3D&format=.png
+2025-08-14 14:47:41,602 - config - INFO - 获取到图像URL: https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/65e1693c93b54d80924c4fbe2062d907~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=ETAAVb3QPc%2BCCKuQINBt5x7%2FiUc%3D&format=.png
+2025-08-14 14:49:35,608 - httpx - INFO - HTTP Request: GET http://localhost:16014/gradio_api/startup-events "HTTP/1.1 200 OK"
+2025-08-14 14:49:35,651 - httpx - INFO - HTTP Request: HEAD http://localhost:16014/ "HTTP/1.1 200 OK"
+2025-08-14 14:49:36,328 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-08-14 14:49:37,283 - httpx - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2025-08-14 14:49:47,883 - config - INFO - 开始生成图像，提示词: 皮卡丘抱着埃菲尔铁塔...
+2025-08-14 14:49:47,883 - config - INFO - 尝试第 1 个URL: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-14 14:50:03,252 - config - INFO - API响应成功: http://g10.geekaiapp.icu/v1/images/generations
+2025-08-14 14:50:03,252 - config - INFO - 获取到图像URL: https://p9-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/f94d25c44d71429ba756be9d3a697deb~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=Xq8csBlrHB4DC%2FVIwUr4Lo5qA4Q%3D&format=.png
+2025-08-14 14:50:03,961 - config - INFO - 获取到图像URL: https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/da1facec53774f62a230919be9c8faf9~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=q6qKf0%2FurfyszCSa0b4Y7NvjsTY%3D&format=.png
+2025-08-14 14:50:04,792 - config - INFO - 获取到图像URL: https://p9-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/bc22e4cbe2db4c5c84a70142ee66d8aa~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=unuuD4xB%2FC9zWXtTf%2FEVrL1Yi3s%3D&format=.png
+2025-08-14 14:50:05,426 - config - INFO - 获取到图像URL: https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/1dfa2321681f473e85f02dd3cb79c7f9~tplv-tb4s082cfz-aigc_resize_mark:0:0.png?lk3s=43402efa&x-expires=1755158400&x-signature=cVhWxCO3L2BvjYjLvKlmSAaKNi8%3D&format=.png

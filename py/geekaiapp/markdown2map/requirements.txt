@@ -1,0 +1,9 @@
+gradio>=4.0.0
+fastapi>=0.104.0
+uvicorn>=0.24.0
+openai>=1.0.0
+requests>=2.31.0
+Pillow>=10.0.0
+qcloud-cos-python-sdk-v5>=1.9.0
+websocket-client>=1.6.0
+pathlib

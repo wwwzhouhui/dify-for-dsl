@@ -52,7 +52,7 @@ mkdir -p uploads exports
 # 运行容器
 docker run -d \
   --name fapiaosqd-web \
-  -p 7860:7860 \
+  -p 15601:15601 \
   -v $(pwd)/uploads:/app/uploads \
   -v $(pwd)/exports:/app/exports \
   --restart unless-stopped \
@@ -62,7 +62,7 @@ docker run -d \
 #### 4. 访问应用
 
 部署完成后，在浏览器中访问：
-- **Web界面**: http://localhost:7860
+- **Web界面**: http://localhost:15601
 
 ### 本地开发部署
 
@@ -114,7 +114,7 @@ python fapiaosqd.py
 
 ### Docker 配置
 
-- **端口映射**: 7860 (Gradio Web界面)
+- **端口映射**: 15601 (Gradio Web界面)
 - **数据卷**:
   - `./uploads:/app/uploads` - 上传文件存储
   - `./exports:/app/exports` - 导出文件存储
