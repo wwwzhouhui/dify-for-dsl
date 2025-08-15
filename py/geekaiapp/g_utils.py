@@ -76,6 +76,11 @@ ip_md = os.getenv('IP_MD', 'static/markdown')
 ip_html = os.getenv('IP_HTML', 'static/html')
 ip_video = os.getenv('IP_VIDEO', 'static/video')
 ip_comfyui = os.getenv('IP_COMFYUI', 'static/comfyui')
+os.makedirs(ip_tts, exist_ok=True)
+os.makedirs(ip_img, exist_ok=True)
+os.makedirs(ip_md, exist_ok=True)  
+os.makedirs(ip_video, exist_ok=True)  # 确保tts目录存在
+os.makedirs(ip_comfyui, exist_ok=True)  # 确保tts目录存在
 
 # current_dir = os.path.dirname(os.path.abspath(__file__))
 # static_dir = os.path.join(current_dir, "static")
