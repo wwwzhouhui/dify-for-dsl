@@ -129,6 +129,23 @@
 
 
 ## 更新说明
+2025年8月15 日-version 0.0.3.40：增加gradio访问独立于dify限制，可自主根据配置运行：（大模型key自主配置方可运行）
+
+1.换脸：https://github.com/wwwzhouhui/dify-for-dsl/blob/main/py/geekaiapp/beartAIfaceswap1/bf_gradio.py
+
+2.单词纠错：https://github.com/wwwzhouhui/dify-for-dsl/blob/main/py/geekaiapp/danci1/danci1_gradio.py
+
+3.高数公式识别到word编辑：https://github.com/wwwzhouhui/dify-for-dsl/blob/main/py/geekaiapp/laTex1/latex_gradio.py
+
+4.marp思维导图：https://github.com/wwwzhouhui/dify-for-dsl/blob/main/py/geekaiapp/markdown2map/marp1_gradio.py
+
+5.tts文转音：https://github.com/wwwzhouhui/dify-for-dsl/blob/main/py/geekaiapp/tts1/tts1_gradio.py
+
+6.即梦文生图：https://github.com/wwwzhouhui/dify-for-dsl/blob/main/py/geekaiapp/wenshengtu1/jm1_gradio.py
+
+7.中药识别文生图：https://github.com/wwwzhouhui/dify-for-dsl/blob/main/py/geekaiapp/zhongyao1/zhongyao-gradio-app.py
+
+
 
 2025年8月13 日-version 0.0.3.39：增加100% 识别率！发票、汇票、信用证全搞定的通用票据识别工作流.yml。
 
@@ -505,4 +522,5 @@ NGINX_CLIENT_MAX_BODY_SIZE=100M<br>
 ## Star History
 
 ![dify-for-dsl](https://api.star-history.com/svg?repos=wwwzhouhui/dify-for-dsl&type=Date)
+
 
