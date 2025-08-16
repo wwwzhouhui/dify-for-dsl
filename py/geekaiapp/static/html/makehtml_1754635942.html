@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>发票预览 - 智能发票系统</title>
+    <style>
+        /* 内联CSS样式 */
+        :root {
+            --primary-color: #3498db;
+            --text-color: #2c3e50;
+            --border-color: #bdc3c7;
+            --background-color: #f5f5f5;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: var(--background-color);
+        }
+        .invoice-preview-container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .invoice-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .invoice-header h1 {
+            color: var(--primary-color);
+        }
+        .invoice-tabs {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+        .tab-button {
+            padding: 10px 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .tab-button.active {
+            background: var(--primary-color);
+            color: white;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background: var(--primary-color);
+            color: white;
+        }
+        .item-category {
+            font-weight: bold;
+            color: var(--success-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="invoice-preview-container">
+        <div class="invoice-header">
+            <h1>增值税专用发票</h1>
+        </div>
+        <div class="invoice-tabs">
+            <label class="tab-button active">发票 1</label>
+        </div>
+        <div class="invoice-card">
+            <table>
+                <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>应税劳务名称</th>
+                        <th>规格型号</th>
+                        <th>单位</th>
+                        <th>数量</th>
+                        <th>单价不含税</th>
+                        <th>金额不含税</th>
+                        <th>税率</th>
+                        <th>税额</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><span class="item-category">*公共安全设备*</span>援邦 干粉灭火器...</td>
+                        <td>YB-35KG</td>
+                        <td>个</td>
+                        <td>10</td>
+                        <td>¥460.18</td>
+                        <td>¥4,601.77</td>
+                        <td>13%</td>
+                        <td>¥598.23</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="invoice-summary">
+                <p><strong>不含税金额合计：</strong>¥52,389.38</p>
+                <p><strong>税额合计：</strong>¥6,810.62</p>
+                <p><strong>价税合计：</strong>¥59,200.00</p>
+                <p><strong>大写金额：</strong>伍万玖仟贰佰元整</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

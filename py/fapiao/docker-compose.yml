@@ -8,14 +8,14 @@ services:
     container_name: fapiaosqd-web
     restart: unless-stopped
     ports:
-      - "7860:7860"  # Gradio Web界面端口
+      - "15601:15601"  # Gradio Web界面端口
     volumes:
       # 上传文件挂载 (可选)
       - ./uploads:/app/uploads
       # 导出文件挂载 (可选)
       - ./exports:/app/exports
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:7860"]
+      test: ["CMD", "curl", "-f", "http://localhost:15601"]
       interval: 30s
       timeout: 10s
       retries: 3
