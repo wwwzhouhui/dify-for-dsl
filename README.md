@@ -500,7 +500,7 @@ NGINX_CLIENT_MAX_BODY_SIZE=100M<br>
 
 ## 技术交流群
 
-![微信图片_20250809091637_14](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250809091637_14.jpg)
+![微信图片_20250816233736_15_292](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250816233736_15_292.jpg)
 
 ## Star History
 
