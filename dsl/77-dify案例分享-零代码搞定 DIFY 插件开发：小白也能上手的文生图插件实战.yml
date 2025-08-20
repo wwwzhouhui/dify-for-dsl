@@ -1,0 +1,242 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 77-dify案例分享-零代码搞定 DIFY 插件开发：小白也能上手的文生图插件实战
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: package
+  value:
+    plugin_unique_identifier: wwwzhouhui/qwen_text2image:0.0.1@18eb2a22be7173a6bd806402b1748b3d7e9967acd87e1b4c5a6b794fa08fca0c
+kind: app
+version: 0.3.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 500
+        batch_count_limit: 10
+        file_size_limit: 100
+        image_file_size_limit: 100
+        video_file_size_limit: 500
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: tool
+      id: 1755656337314-source-1755657278812-target
+      source: '1755656337314'
+      sourceHandle: source
+      target: '1755657278812'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: answer
+      id: 1755657278812-source-answer-target
+      source: '1755657278812'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables: []
+      height: 53
+      id: '1755656337314'
+      position:
+        x: 80
+        y: 282
+      positionAbsolute:
+        x: 80
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1755657278812.text#}}
+
+          {{#1755657278812.files#}}
+
+          '
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 123
+      id: answer
+      position:
+        x: 740
+        y: 282
+      positionAbsolute:
+        x: 740
+        y: 282
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: The text prompt to generate image from. Describe what you want
+              to see in the image in detail. For example "A golden cat sitting on
+              a red sofa in a cozy living room".
+            ja_JP: The text prompt to generate image from. Describe what you want
+              to see in the image in detail. For example "A golden cat sitting on
+              a red sofa in a cozy living room".
+            pt_BR: The text prompt to generate image from. Describe what you want
+              to see in the image in detail. For example "A golden cat sitting on
+              a red sofa in a cozy living room".
+            zh_Hans: The text prompt to generate image from. Describe what you want
+              to see in the image in detail. For example "A golden cat sitting on
+              a red sofa in a cozy living room".
+          label:
+            en_US: Prompt
+            ja_JP: Prompt
+            pt_BR: Prompt
+            zh_Hans: Prompt
+          llm_description: Text prompt that describes the desired image content in
+            detail. The more specific and descriptive, the better the generated image
+            quality.
+          max: null
+          min: null
+          name: prompt
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: Qwen/Qwen-Image
+          form: form
+          human_description:
+            en_US: The AI model to use for image generation. Qwen-Image is the default
+              and recommended model.
+            ja_JP: The AI model to use for image generation. Qwen-Image is the default
+              and recommended model.
+            pt_BR: The AI model to use for image generation. Qwen-Image is the default
+              and recommended model.
+            zh_Hans: The AI model to use for image generation. Qwen-Image is the default
+              and recommended model.
+          label:
+            en_US: Model
+            ja_JP: Model
+            pt_BR: Model
+            zh_Hans: Model
+          llm_description: ''
+          max: null
+          min: null
+          name: model
+          options:
+          - icon: ''
+            label:
+              en_US: Qwen-Image (Recommended)
+              ja_JP: Qwen-Image (Recommended)
+              pt_BR: Qwen-Image (Recommended)
+              zh_Hans: Qwen-Image (Recommended)
+            value: Qwen/Qwen-Image
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        params:
+          model: ''
+          prompt: ''
+        provider_id: wwwzhouhui/qwen_text2image/modelscope
+        provider_name: wwwzhouhui/qwen_text2image/modelscope
+        provider_type: builtin
+        selected: false
+        title: Text to Image
+        tool_configurations:
+          model:
+            type: constant
+            value: Qwen/Qwen-Image
+        tool_description: Generate high-quality images from text prompts using ModelScope
+          Qwen-Image AI model. Support various image styles and detailed descriptions.
+        tool_label: Text to Image
+        tool_name: text2image
+        tool_parameters:
+          prompt:
+            type: mixed
+            value: '{{#sys.query#}}'
+        type: tool
+        version: '2'
+      height: 121
+      id: '1755657278812'
+      position:
+        x: 384
+        y: 282
+      positionAbsolute:
+        x: 384
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 115
+      y: 38.5
+      zoom: 1

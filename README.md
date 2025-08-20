@@ -30,6 +30,7 @@
 
 | DSL清单名称                              | 工作流显示                         | 用到技术                                                     | 更新时间                                                 | 作者                                       | 适用dify版本                               |
 | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------------------------------------- |
+| 零代码搞定 DIFY 插件开发：小白也能上手的文生图插件实战.yml | ![image-20250820104750679](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250820104750679.png) | qwen-image插件（自己开发的） | 2025年8月20日 | wwwzhouhui | 1.6.0 |
 | 100% 识别率！发票、汇票、信用证全搞定的通用票据识别工作流.yml | ![image-20250813135448522](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250813135448522.png) | 条件判断、http请求、LLM大语言模型、代码处理 | 2025年8月13日 | wwwzhouhui | 1.6.0 |
 | 用 Qwen Code+Dify 一键生成交互式元素周期表网页.yml | ![img](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/QQ_1754805706865.png.png) | LLM大语言模型、代码处理 | 2025年8月10日 | wwwzhouhui | 1.6.0 |
 | Dify 秘塔搜索工作流搭建教程与效果展示.yml | ![3337](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/3337.gif.gif) | 条件分支、http请求、代码处理、秘搭API | 2025年8月9日 | 阿文 | 1.6.0 |
@@ -129,6 +130,8 @@
 
 
 ## 更新说明
+2025年8月20 日-version 0.0.3.41：增加零代码搞定 DIFY 插件开发主要是基于qwen-image文生图，dify插件代码参考https://github.com/wwwzhouhui/qwen_text2image项目
+
 2025年8月15 日-version 0.0.3.40：增加gradio访问独立于dify限制，可自主根据配置运行：（大模型key自主配置方可运行）
 
 1.换脸：https://github.com/wwwzhouhui/dify-for-dsl/blob/main/py/geekaiapp/beartAIfaceswap1/bf_gradio.py
@@ -512,7 +515,14 @@ NGINX_CLIENT_MAX_BODY_SIZE=15M<br>
 NGINX_CLIENT_MAX_BODY_SIZE=100M<br>
 修改后记得重启。<br>
 </details>
-
+<details>
+<summary>Result must be a dict, got str</summary>
+<img src="https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250812171124379.png" ><br>
+这个问题出在代码执行里面 原代码<br>
+<img src="https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250820143143811.png" ><br>
+修改后的代码，需要字典 <br>
+<img src="https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250820143333517.png" ><br>
+</details>
 
 
 ## 技术交流群
@@ -522,5 +532,4 @@ NGINX_CLIENT_MAX_BODY_SIZE=100M<br>
 ## Star History
 
 ![dify-for-dsl](https://api.star-history.com/svg?repos=wwwzhouhui/dify-for-dsl&type=Date)
-
 
