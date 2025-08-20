@@ -130,7 +130,7 @@
 
 
 ## 更新说明
-2025年8月20 日-version 0.0.3.41：增加零代码搞定 DIFY 插件开发主要是基于qwen-image文生图，dify插件代码参考https://github.com/wwwzhouhui/qwen_text2image项目
+2025年8月20 日-version 0.0.3.41：增加零代码搞定 DIFY 插件开发主要是基于qwen-image文生图，dify插件代码参考https://github.com/wwwzhouhui/qwen_text2image  项目
 
 2025年8月15 日-version 0.0.3.40：增加gradio访问独立于dify限制，可自主根据配置运行：（大模型key自主配置方可运行）
 
