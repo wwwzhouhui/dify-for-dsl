@@ -523,11 +523,29 @@ NGINX_CLIENT_MAX_BODY_SIZE=100M<br>
 修改后的代码，需要字典 <br>
 <img src="https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250820143333517.png" ><br>
 </details>
-
+<details>
+<summary>文件上传10个限制</summary>
+dify文件上传有2个地方是控制文件上传的配置文件，通常在docker目录下的.env 文件 <br>
+<img src="https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/QQ_1755928634753.png" ><br>
+通用文件上传批次限制<br>
+# The maximum number of files that can be uploaded at a time, default 5.<br>
+UPLOAD_FILE_BATCH_LIMIT=10<br>
+**作用**：控制一次最多可上传的文件数量（通用场景，如知识库文件上传等）。<br>
+**生效场景**：适用于大多数文件上传操作（非工作流特定场景），默认值为 5，当前配置10<br>
+工作流中的文件上传限制<br>
+WORKFLOW_FILE_UPLOAD_LIMIT=10<br>
+**作用**：专门限制工作流（Workflow）中可上传的文件数量。<br>
+**生效场景**：仅在工作流相关的文件上传操作中生效，当前配置为 10。<br>
+我们所看到的workflow 、chatflow 文件上传就是指这个地方<br>
+<img src="https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250823135935700.png" ><br>
+默认是10，我们可以修改成50 <br>
+修改后记得重启dify，重启后的效果如下 <br>
+<img src="https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/QQ_1755928851955.png" ><br>
+</details>
 
 ## 技术交流群
 
-![微信图片_20250816233736_15_292](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250816233736_15_292.jpg)
+![image-20250823141501274](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250823141501274.png)
 
 ## Star History
 
