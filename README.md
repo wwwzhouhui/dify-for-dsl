@@ -30,6 +30,7 @@
 
 | DSL清单名称                              | 工作流显示                         | 用到技术                                                     | 更新时间                                                 | 作者                                       | 适用dify版本                               |
 | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------------------------------------- |
+| 零基础上手 Dify TTS 插件！从开发到部署免费文本转语音，测试 + 打包教程全有.yml | ![image-20250826152720039](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250826152720039.png) | free_edgetts插件（自己开发的） | 2025年8月26日 | wwwzhouhui | 1.6.0 |
 | 零代码搞定 DIFY 插件开发：小白也能上手的文生图插件实战.yml | ![image-20250820104750679](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250820104750679.png) | qwen-image插件（自己开发的） | 2025年8月20日 | wwwzhouhui | 1.6.0 |
 | 100% 识别率！发票、汇票、信用证全搞定的通用票据识别工作流.yml | ![image-20250813135448522](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250813135448522.png) | 条件判断、http请求、LLM大语言模型、代码处理 | 2025年8月13日 | wwwzhouhui | 1.6.0 |
 | 用 Qwen Code+Dify 一键生成交互式元素周期表网页.yml | ![img](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/QQ_1754805706865.png.png) | LLM大语言模型、代码处理 | 2025年8月10日 | wwwzhouhui | 1.6.0 |
@@ -130,6 +131,8 @@
 
 
 ## 更新说明
+2025年8月26 日-version 0.0.3.42：增加零基础上手 Dify TTS 插件！从开发到部署免费文本转语音，测试 + 打包教程全有.yml，dify插件代码https://github.com/wwwzhouhui/free_edgetts
+
 2025年8月20 日-version 0.0.3.41：增加零代码搞定 DIFY 插件开发主要是基于qwen-image文生图，dify插件代码参考https://github.com/wwwzhouhui/qwen_text2image  项目
 
 2025年8月15 日-version 0.0.3.40：增加gradio访问独立于dify限制，可自主根据配置运行：（大模型key自主配置方可运行）
