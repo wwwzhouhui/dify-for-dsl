@@ -1,0 +1,751 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 79-dify案例分享-5分钟搭建智能思维导图系统！Dify + MCP工具实战教程
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/modelscope:0.0.4@5a3245e52b864fa8a20686baf5add2f5517eae5f11f94419bf46edbe170731e8
+kind: app
+version: 0.3.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 500
+        batch_count_limit: 50
+        file_size_limit: 100
+        image_file_size_limit: 100
+        video_file_size_limit: 500
+        workflow_file_upload_limit: 50
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        sourceType: start
+        targetType: llm
+      id: 1756369544053-llm
+      source: '1756369544053'
+      sourceHandle: source
+      target: llm
+      targetHandle: target
+      type: custom
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: answer
+      id: 1756370699208-source-1756369719790-target
+      source: '1756370699208'
+      sourceHandle: source
+      target: '1756369719790'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: agent
+      id: llm-source-1756372188091-target
+      source: llm
+      sourceHandle: source
+      target: '1756372188091'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: agent
+        targetType: code
+      id: 1756372188091-source-1756370699208-target
+      source: '1756372188091'
+      sourceHandle: source
+      target: '1756370699208'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables: []
+      height: 53
+      id: '1756369544053'
+      position:
+        x: 80
+        y: 282
+      positionAbsolute:
+        x: 80
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: ''
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 10
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Qwen/Qwen3-Coder-30B-A3B-Instruct
+          provider: langgenius/modelscope/modelscope
+        prompt_template:
+        - id: 75064c66-62ea-4503-abd2-e84b600f1297
+          role: system
+          text: '# PPT大纲生成专家 - LangGPT提示词
+
+
+            ## Role: PPT大纲生成专家
+
+            **Profile:**
+
+            - author: 周辉
+
+            - version: 2.0
+
+            - language: 中文
+
+            - description: 我是一位专业的PPT内容策划专家，擅长根据用户提供的主题和内容信息，生成结构清晰、逻辑严密的三级目录结构PPT大纲，并以markdown格式输出。
+
+
+            ## Skills:
+
+            1. **内容分析能力**: 能够深入理解用户提供的主题内容，提取核心要点和关键信息
+
+            2. **逻辑架构设计**: 具备强大的逻辑思维能力，能够构建清晰的三级目录层次结构
+
+            3. **演示文稿策划**: 精通PPT内容组织和展示逻辑，确保信息传达的有效性
+
+            4. **Markdown格式化**: 熟练使用markdown语法，能够生成格式规范的文档大纲
+
+            5. **受众分析**: 能够根据不同的目标受众调整内容重点和表达方式
+
+
+            ## Goals:
+
+            - 生成结构完整的三级PPT大纲
+
+            - 确保内容逻辑清晰，层次分明
+
+            - 输出标准markdown格式文档
+
+            - 提供实用性强的演示框架
+
+
+            ## Constrains:
+
+            1. **严格三级结构**: 必须遵循一级标题(#)、二级标题(##)、三级标题(###)的层次结构
+
+            2. **内容相关性**: 所有大纲内容必须与用户提供的主题紧密相关
+
+            3. **逻辑连贯性**: 各级标题之间必须保持逻辑关系，形成完整的内容体系
+
+            4. **格式规范性**: 严格按照markdown语法格式输出，确保可读性
+
+            5. **实用性导向**: 生成的大纲应具备实际可操作性，便于后续PPT制作
+
+
+            ## OutputFormat:
+
+            ```markdown
+
+            # [主标题]
+
+
+            ## 一级大纲1
+
+            ### 二级要点1.1
+
+            ### 二级要点1.2
+
+            ### 二级要点1.3
+
+
+            ## 一级大纲2
+
+            ### 二级要点2.1
+
+            ### 二级要点2.2
+
+            ### 二级要点2.3
+
+
+            ## 一级大纲3
+
+            ### 二级要点3.1
+
+            ### 二级要点3.2
+
+            ### 二级要点3.3
+
+
+            [继续按此格式展开...]
+
+            ```
+
+
+            ## Workflow:
+
+            1. **需求理解**: 仔细分析用户提供的主题内容和相关信息
+
+            2. **内容提取**: 识别并提取核心概念、关键要点和重要细节
+
+            3. **结构设计**: 根据内容逻辑设计合理的三级目录架构
+
+            4. **大纲编写**: 按照markdown格式编写完整的PPT大纲
+
+            5. **质量检查**: 确保大纲的逻辑性、完整性和实用性
+
+
+            ## Examples:
+
+
+            ### 输入示例:
+
+            ```
+
+            主题：人工智能在教育领域的应用与发展
+
+            内容信息：包括AI技术现状、教育应用场景、实施案例、面临挑战、未来趋势等方面
+
+            ```
+
+
+            ### 输出示例:
+
+            ```markdown
+
+            # 人工智能在教育领域的应用与发展
+
+
+            ## AI技术发展现状
+
+            ### 机器学习技术成熟度
+
+            ### 自然语言处理能力提升
+
+            ### 计算机视觉应用普及
+
+
+            ## 教育领域应用场景
+
+            ### 个性化学习推荐
+
+            ### 智能教学辅助
+
+            ### 学习效果评估
+
+
+            ## 典型实施案例分析
+
+            ### 在线教育平台案例
+
+            ### 智慧校园建设案例
+
+            ### 教学管理系统案例
+
+
+            ## 实施过程中的挑战
+
+            ### 技术实现难点
+
+            ### 教育理念转变
+
+            ### 资源投入要求
+
+
+            ## 未来发展趋势展望
+
+            ### 技术发展方向
+
+            ### 应用场景拓展
+
+            ### 行业标准建立
+
+            ```
+
+
+            ## Initialization:
+
+            作为PPT大纲生成专家，我已准备好为您服务。请提供您需要制作PPT的主题内容和相关信息，我将为您生成结构清晰、逻辑严密的三级目录markdown格式大纲。请告诉我：
+
+
+            1. PPT的主题是什么？
+
+            2. 需要包含哪些主要内容？
+
+            3. 目标受众是谁？
+
+            4. 是否有特殊要求或重点关注的方面？
+
+
+            请提供这些信息，我将立即开始为您制作专业的PPT大纲。'
+        - id: 172fe096-2f64-450d-9148-7dbdb0c2db98
+          role: user
+          text: 请基于用输入的信息{{#sys.query#}}生成markdown格式内容信息
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: llm
+      position:
+        x: 388
+        y: 282
+      positionAbsolute:
+        x: 388
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: '{{#llm.text#}}
+
+          {{#1756370699208.result#}}'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 123
+      id: '1756369719790'
+      position:
+        x: 1338
+        y: 282
+      positionAbsolute:
+        x: 1338
+        y: 282
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "import json\nimport re\n\n\ndef main(arg1) -> dict:\n    try:\n   \
+          \     # 如果输入是字符串，先尝试提取markdown链接\n        if isinstance(arg1, str):\n  \
+          \          # 使用正则表达式匹配markdown链接格式 [标题](URL)\n            markdown_pattern\
+          \ = r'\\[([^\\]]+)\\]\\(([^)]+)\\)'\n            matches = re.findall(markdown_pattern,\
+          \ arg1)\n            \n            if matches:\n                # 如果找到markdown链接，提取第一个链接的信息\n\
+          \                title, url = matches[0]\n                markdown_result\
+          \ = f\"!['{title}']({url})\"\n                return {\"result\": markdown_result}\n\
+          \            \n            # 如果没有找到markdown链接，尝试JSON解析\n            try:\n\
+          \                data = json.loads(arg1)\n                # 处理JSON数据格式\n\
+          \                if isinstance(data, list) and len(data) > 0:\n        \
+          \            first_item = data[0]\n                    mind_map_image_url\
+          \ = first_item.get(\"mind_map_image_url\")\n                    markdown_result\
+          \ = f\"!['思维导图']({mind_map_image_url})\"\n                    return {\"\
+          result\": markdown_result}\n                else:\n                    return\
+          \ {\"result\": None}\n            except json.JSONDecodeError:\n       \
+          \         return {\"result\": None}\n                \n        elif isinstance(arg1,\
+          \ list):\n            # 处理列表输入\n            if len(arg1) > 0:\n        \
+          \        first_item = arg1[0]\n                mind_map_image_url = first_item.get(\"\
+          mind_map_image_url\")\n                markdown_result = f\"!['思维导图']({mind_map_image_url})\"\
+          \n                return {\"result\": markdown_result}\n            else:\n\
+          \                return {\"result\": None}\n        else:\n            return\
+          \ {\"result\": None}\n            \n    except Exception:\n        return\
+          \ {\"result\": None}"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行
+        type: code
+        variables:
+        - value_selector:
+          - '1756372188091'
+          - text
+          value_type: string
+          variable: arg1
+      height: 53
+      id: '1756370699208'
+      position:
+        x: 1021
+        y: 282
+      positionAbsolute:
+        x: 1021
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        agent_parameters:
+          instruction:
+            type: constant
+            value: 请根据{{#llm.text#}}调用调用create_mind_map信息生成思维导图
+          mcp_prompts_as_tools:
+            type: constant
+            value: true
+          mcp_resources_as_tools:
+            type: constant
+            value: true
+          mcp_servers_config:
+            type: constant
+            value: "{\n  \"mind-map-mcp-server\": {\n    \"transport\": \"streamable_http\"\
+              ,\n    \"url\": \"http://14.103.204.132:8005/mcp\"\n  }\n}"
+          model:
+            type: constant
+            value:
+              completion_params: {}
+              mode: chat
+              model: deepseek-ai/DeepSeek-V3
+              model_type: llm
+              provider: langgenius/openai_api_compatible/openai_api_compatible
+              type: model-selector
+          query:
+            type: constant
+            value: '{{#sys.query#}}'
+          tools:
+            type: constant
+            value:
+            - enabled: true
+              extra:
+                description: 获取 MCP 服务端的工具列表。
+              parameters:
+                servers_config:
+                  auto: 1
+                  value: null
+              provider_name: junjiem/mcp_sse/mcp_sse
+              provider_show_name: junjiem/mcp_sse/mcp_sse
+              schemas:
+              - auto_generate: null
+                default: 1
+                form: form
+                human_description:
+                  en_US: Fetch and call the preset MCP Resources as Tools.
+                  ja_JP: Fetch and call the preset MCP Resources as Tools.
+                  pt_BR: Fetch and call the preset MCP Resources as Tools.
+                  zh_Hans: 将预设的 MCP Resources 作为 Tools 返回和调用。
+                label:
+                  en_US: MCP Resources as Tools
+                  ja_JP: MCP Resources as Tools
+                  pt_BR: MCP Resources as Tools
+                  zh_Hans: MCP 资源作为工具
+                llm_description: ''
+                max: null
+                min: null
+                name: resources_as_tools
+                options: []
+                placeholder: null
+                precision: null
+                required: true
+                scope: null
+                template: null
+                type: boolean
+              - auto_generate: null
+                default: 1
+                form: form
+                human_description:
+                  en_US: Fetch and call the preset MCP Prompts as Tools.
+                  ja_JP: Fetch and call the preset MCP Prompts as Tools.
+                  pt_BR: Fetch and call the preset MCP Prompts as Tools.
+                  zh_Hans: 将预设的 MCP Prompts 作为 Tools 返回和调用。
+                label:
+                  en_US: MCP Prompts as Tools
+                  ja_JP: MCP Prompts as Tools
+                  pt_BR: MCP Prompts as Tools
+                  zh_Hans: MCP 提示词作为工具
+                llm_description: ''
+                max: null
+                min: null
+                name: prompts_as_tools
+                options: []
+                placeholder: null
+                precision: null
+                required: true
+                scope: null
+                template: null
+                type: boolean
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: MCP Servers config, support multiple MCP services. (Optional,
+                    Filling in this field will overwrite the MCP Servers config entered
+                    during authorization.)
+                  ja_JP: MCP Servers config, support multiple MCP services. (Optional,
+                    Filling in this field will overwrite the MCP Servers config entered
+                    during authorization.)
+                  pt_BR: MCP Servers config, support multiple MCP services. (Optional,
+                    Filling in this field will overwrite the MCP Servers config entered
+                    during authorization.)
+                  zh_Hans: MCP服务配置，支持多个MCP服务。 （选填，填写后将覆盖授权时填写的MCP服务配置。）
+                label:
+                  en_US: MCP Servers config
+                  ja_JP: MCP Servers config
+                  pt_BR: MCP Servers config
+                  zh_Hans: MCP 服务配置
+                llm_description: ''
+                max: null
+                min: null
+                name: servers_config
+                options: []
+                placeholder: null
+                precision: null
+                required: false
+                scope: null
+                template: null
+                type: string
+              settings:
+                prompts_as_tools:
+                  value:
+                    type: constant
+                    value: true
+                resources_as_tools:
+                  value:
+                    type: constant
+                    value: true
+              tool_description: 获取 MCP 服务端的工具列表。
+              tool_label: 获取 MCP 工具列表
+              tool_name: mcp_sse_list_tools
+              type: builtin
+            - enabled: true
+              extra:
+                description: 调用 MCP 服务端工具。
+              parameters:
+                arguments:
+                  auto: 1
+                  value: null
+                servers_config:
+                  auto: 1
+                  value: null
+                tool_name:
+                  auto: 1
+                  value: null
+              provider_name: junjiem/mcp_sse/mcp_sse
+              provider_show_name: junjiem/mcp_sse/mcp_sse
+              schemas:
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: Name of the tool to execute.
+                  ja_JP: Name of the tool to execute.
+                  pt_BR: Name of the tool to execute.
+                  zh_Hans: 要执行的工具的名称。
+                label:
+                  en_US: Tool Name
+                  ja_JP: Tool Name
+                  pt_BR: Tool Name
+                  zh_Hans: 工具名称
+                llm_description: Name of the MCP tool to execute.
+                max: null
+                min: null
+                name: tool_name
+                options: []
+                placeholder: null
+                precision: null
+                required: true
+                scope: null
+                template: null
+                type: string
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: Tool arguments (JSON string in the python dict[str, Any]
+                    format).
+                  ja_JP: Tool arguments (JSON string in the python dict[str, Any]
+                    format).
+                  pt_BR: Tool arguments (JSON string in the python dict[str, Any]
+                    format).
+                  zh_Hans: 工具的参数。
+                label:
+                  en_US: Arguments
+                  ja_JP: Arguments
+                  pt_BR: Arguments
+                  zh_Hans: 参数
+                llm_description: MCP Tool arguments (JSON string in the python dict[str,
+                  Any] format).
+                max: null
+                min: null
+                name: arguments
+                options: []
+                placeholder: null
+                precision: null
+                required: true
+                scope: null
+                template: null
+                type: string
+              - auto_generate: null
+                default: 1
+                form: form
+                human_description:
+                  en_US: Fetch and call the preset MCP Resources as Tools.
+                  ja_JP: Fetch and call the preset MCP Resources as Tools.
+                  pt_BR: Fetch and call the preset MCP Resources as Tools.
+                  zh_Hans: 将预设的 MCP Resources 作为 Tools 返回和调用。
+                label:
+                  en_US: MCP Resources as Tools
+                  ja_JP: MCP Resources as Tools
+                  pt_BR: MCP Resources as Tools
+                  zh_Hans: MCP 资源作为工具
+                llm_description: ''
+                max: null
+                min: null
+                name: resources_as_tools
+                options: []
+                placeholder: null
+                precision: null
+                required: true
+                scope: null
+                template: null
+                type: boolean
+              - auto_generate: null
+                default: 1
+                form: form
+                human_description:
+                  en_US: Fetch and call the preset MCP Prompts as Tools.
+                  ja_JP: Fetch and call the preset MCP Prompts as Tools.
+                  pt_BR: Fetch and call the preset MCP Prompts as Tools.
+                  zh_Hans: 将预设的 MCP Prompts 作为 Tools 返回和调用。
+                label:
+                  en_US: MCP Prompts as Tools
+                  ja_JP: MCP Prompts as Tools
+                  pt_BR: MCP Prompts as Tools
+                  zh_Hans: MCP 提示词作为工具
+                llm_description: ''
+                max: null
+                min: null
+                name: prompts_as_tools
+                options: []
+                placeholder: null
+                precision: null
+                required: true
+                scope: null
+                template: null
+                type: boolean
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: MCP Servers config, support multiple MCP services. (Optional,
+                    Filling in this field will overwrite the MCP Servers config entered
+                    during authorization.)
+                  ja_JP: MCP Servers config, support multiple MCP services. (Optional,
+                    Filling in this field will overwrite the MCP Servers config entered
+                    during authorization.)
+                  pt_BR: MCP Servers config, support multiple MCP services. (Optional,
+                    Filling in this field will overwrite the MCP Servers config entered
+                    during authorization.)
+                  zh_Hans: MCP服务配置，支持多个MCP服务。 （选填，填写后将覆盖授权时填写的MCP服务配置。）
+                label:
+                  en_US: MCP Servers config
+                  ja_JP: MCP Servers config
+                  pt_BR: MCP Servers config
+                  zh_Hans: MCP 服务配置
+                llm_description: ''
+                max: null
+                min: null
+                name: servers_config
+                options: []
+                placeholder: null
+                precision: null
+                required: false
+                scope: null
+                template: null
+                type: string
+              settings:
+                prompts_as_tools:
+                  value:
+                    type: constant
+                    value: true
+                resources_as_tools:
+                  value:
+                    type: constant
+                    value: true
+              tool_description: 调用 MCP 服务端工具。
+              tool_label: 调用 MCP 工具
+              tool_name: mcp_sse_call_tool
+              type: builtin
+        agent_strategy_label: FunctionCalling (支持 MCP 工具)
+        agent_strategy_name: mcp_sse_function_calling
+        agent_strategy_provider_name: junjiem/mcp_see_agent/mcp_see_agent
+        desc: ''
+        meta:
+          minimum_dify_version: null
+          version: 0.0.1
+        output_schema: null
+        plugin_unique_identifier: junjiem/mcp_see_agent:0.2.4@82caf96890992e9dec2c43c3fac82bfce8bd18a41de7c2b6948151b2d7f7b7a2
+        selected: false
+        title: Agent
+        type: agent
+        version: '2'
+      height: 197
+      id: '1756372188091'
+      position:
+        x: 694
+        y: 282
+      positionAbsolute:
+        x: 694
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: -102.99999999999932
+      y: -45.999999999999886
+      zoom: 0.9999999999999996
