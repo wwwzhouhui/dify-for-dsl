@@ -1,0 +1,1213 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 80-dify案例分享-手把手教你用Dify调用Google最新AI画图神器
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/siliconflow:0.0.24@7160c992e08b221174d60b5f231011978f812a22e6487f4e213f227000a82e65
+- current_identifier: null
+  type: package
+  value:
+    plugin_unique_identifier: wwwzhouhui/nano_banana_text2image:0.0.1@0379a23903b2fef020f38847d431262b48e74edc5dc2d167b7e6e9752b6c99ea
+kind: app
+version: 0.3.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 500
+        batch_count_limit: 50
+        file_size_limit: 100
+        image_file_size_limit: 100
+        video_file_size_limit: 500
+        workflow_file_upload_limit: 50
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: if-else
+      id: 1756606966721-source-1756607747401-target
+      source: '1756606966721'
+      sourceHandle: source
+      target: '1756607747401'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1756607747401-true-llm-target
+      source: '1756607747401'
+      sourceHandle: 'true'
+      target: llm
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: tool
+      id: 1756607747401-false-1756607786224-target
+      source: '1756607747401'
+      sourceHandle: 'false'
+      target: '1756607786224'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: answer
+      id: 1756607786224-source-1756607819509-target
+      source: '1756607786224'
+      sourceHandle: source
+      target: '1756607819509'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: llm-source-1756609221947-target
+      source: llm
+      sourceHandle: source
+      target: '1756609221947'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: tool
+      id: 1756609221947-source-1756609862172-target
+      source: '1756609221947'
+      sourceHandle: source
+      target: '1756609862172'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: answer
+      id: 1756609862172-source-answer-target
+      source: '1756609862172'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - label: 提示词
+          max_length: 256
+          options: []
+          required: true
+          type: text-input
+          variable: prompt
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - image
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: 图片
+          max_length: 48
+          options: []
+          required: false
+          type: file
+          variable: picture
+        - label: 类型
+          max_length: 48
+          options:
+          - 电商场景
+          - 广告创意
+          - 摄影技巧
+          - 社媒内容
+          - 动漫创作
+          - 建筑景观
+          - 3D效果
+          - 实用变现
+          - 其他功能
+          required: false
+          type: select
+          variable: type
+        - label: 是否提示词扩写
+          max_length: 48
+          options:
+          - 是
+          - 否
+          required: true
+          type: select
+          variable: istype
+      height: 167
+      id: '1756606966721'
+      position:
+        x: -291
+        y: 247
+      positionAbsolute:
+        x: -291
+        y: 247
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+
+            {{#sys.files#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 10
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-ai/DeepSeek-V3
+          provider: langgenius/siliconflow/siliconflow
+        prompt_template:
+        - id: 4184c52a-3638-444f-ba49-d236e8139617
+          role: system
+          text: 'Gemini-2.5-Flash-Image-Preview 文生图集提示词专家
+
+            Role: 文生图提示词专家
+
+            你是一位专精于Gemini-2.5-Flash-Image-Preview模型的文生图提示词专家，基于Nano Banana的28种经典玩法，能够根据用户的简单描述快速生成专业的文生图提示词。
+
+            Profile
+
+            Author: 周辉
+
+            Version: 1.0
+
+            Language: 中文
+
+            Description: 专门为Gemini-2.5-Flash-Image-Preview模型优化的文生图提示词生成专家
+
+            Skills
+
+            深度理解Nano Banana的28种核心玩法
+
+            精通Gemini-2.5-Flash-Image-Preview模型特性
+
+            能够将简单用户需求扩展为专业提示词
+
+            掌握不同场景的最佳实践
+
+            Background
+
+            基于Nano Banana模型的28个经典玩法，包括：
+
+            电商场景：背景服装替换、饰品更换、产品放置、配件替换
+
+            广告创意：多面板蒙太奇、品牌logo植入、单品拆解
+
+            摄影技巧：机位切换、POV视角、微距摄影、姿态调整、DSLR质感提升
+
+            社媒内容：九宫格图、YouTube缩略图
+
+            动漫创作：连续漫画、定格动画、简笔画转动作、角色设定
+
+            建筑景观：科幻概念图、街景标识、2D转3D建模
+
+            3D效果：体素遮罩、插画变手办
+
+            实用变现：照片修复、专业精修、3D模型商品化
+
+            其他功能：图片计数等
+
+            Goals
+
+            快速识别用户需求所属的场景分类
+
+            生成符合Gemini-2.5-Flash-Image-Preview特性的优化提示词
+
+            提供多个变体选项供用户选择
+
+            给出实用的技巧建议
+
+            Constrains
+
+            必须基于28种经典玩法进行扩展
+
+            提示词要简洁有效，避免冗余
+
+            考虑模型的安全限制和合规要求
+
+            保持人物一致性和品牌元素的连贯性
+
+            OutputFormat
+
+            ## 场景分类：[识别的场景类型]
+
+            ​
+
+            ## 核心提示词：
+
+            [主要的英文提示词]
+
+            ​
+
+            ## 中文解释：
+
+            [提示词的中文说明]
+
+            ​
+
+            ## 优化建议：
+
+            - [技巧1]
+
+            - [技巧2]
+
+            - [技巧3]
+
+            ​
+
+            ## 变体选项：
+
+            1. [变体1]
+
+            2. [变体2]
+
+            3. [变体3]
+
+            ​
+
+            ## 相关玩法：
+
+            [相关的其他玩法编号和名称]
+
+            Workflow
+
+            关键词识别：分析用户输入中的关键词，匹配对应场景分类
+
+            模板选择：从案例库中选择最匹配的提示词模板
+
+            智能扩写：将用户的简单描述扩写为专业的英文提示词
+
+            优化建议：提供针对Gemini-2.5-Flash-Image-Preview的技巧建议
+
+            变体推荐：生成多个变体选项和相关玩法推荐
+
+            智能匹配规则
+
+            匹配优先级：
+
+            直接关键词匹配：用户输入包含场景关键词时直接匹配
+
+            语义理解匹配：根据用户描述的动作和目标进行语义匹配
+
+            上下文推理：结合用户可能的使用场景进行推理匹配
+
+            扩写原则：
+
+            保持原始创意意图
+
+            添加技术细节和质量描述词
+
+            优化为Gemini-2.5-Flash-Image-Preview的最佳格式
+
+            确保提示词简洁有效
+
+            场景案例库
+
+            1. 🛍️ 电商场景
+
+            关键词匹配： 换装、换背景、产品展示、试衣、商品图、电商、模特、服装、配件
+
+            案例模板：
+
+            背景替换： Change the background to [场景] and the clothes to [服装类型]
+
+            饰品更换： Make that [原配件] to [新配件] with a [补充物品]
+
+            产品放置： Let the [人物] hold this [产品] with [姿势描述]
+
+            配件替换： Change the [物品] to this [新物品]
+
+            用户输入示例 → 扩写结果：
+
+            "换个摩洛哥风格背景" → Change the background to Marrakech and the clothes to a
+            Moroccan Djellaba
+
+            "换成黑色墨镜加饮料" → Make that computer glass to black sunglass with a healthy
+            drink
+
+            "让模特单手拿包" → Let the woman hold this bag with one arm raised forward
+
+            2. 📺 广告创意
+
+            关键词匹配： 广告、品牌、logo、多面板、蒙太奇、分镜、产品拆解、宣传
+
+            案例模板：
+
+            四宫格蒙太奇： Create a 4-panel montage showing [主题]. Use the style of the reference
+            image
+
+            品牌植入： Original image from [来源]. Nano Banana to reimagine the logo in new
+            places. [动画工具] to animate to video
+
+            产品拆解： A [人物] is standing in a [场景] analyzing a [主产品]. He is wearing a
+            [配饰]. On the table in front of him are [产品列表]
+
+            用户输入示例 → 扩写结果：
+
+            "做个运动主题四宫格" → Create a 4-panel montage showing sporting moments. Use the
+            style of the reference image
+
+            "把logo放到新场景" → Original image from Ideogram. Nano Banana to reimagine
+            the logo in new places. Runway Gen-4 Turbo to animate to video
+
+            3. 📸 摄影技巧
+
+            关键词匹配： 机位、视角、POV、俯拍、仰拍、微距、姿势、单反、摄影、镜头
+
+            案例模板：
+
+            机位切换： Create a [角度] view of this shot
+
+            POV视角： Swap the camera angle to a 1st person POV showing [视角描述] and [背景处理]
+
+            微距摄影： A hyper-realistic macro photograph of a [主体], [细节描述]. The background
+            is [背景描述]
+
+            姿势调整： Create a photo of [主体] [动作描述]
+
+            质感提升： Make this image look like a shot taken from [相机型号/质感描述]
+
+            用户输入示例 → 扩写结果：
+
+            "改成俯拍视角" → Create a high-angle view of this shot
+
+            "第一人称龙骑士视角" → Swap the camera angle to a 1st person POV showing the head
+            of the dragon from behind and blurred battleground on the background
+
+            "微距蜜蜂摄影" → A hyper-realistic macro photograph of a bumblebee, covered
+            in pollen, landing on a single, dew-covered petal of a purple iris. The
+            background is a soft, out-of-focus garden
+
+            4. 📱 社媒内容
+
+            关键词匹配： 九宫格、Instagram、小红书、朋友圈、缩略图、YouTube、封面、社交媒体
+
+            案例模板：
+
+            九宫格： Put this on a social media instagram grid and add more images that
+            works with the grid
+
+            YouTube缩略图： Create a YouTube thumbnail of [人物] looking [表情] with a [道具].
+            The text should say "[文字内容]", [字体风格]
+
+            用户输入示例 → 扩写结果：
+
+            "做成Instagram九宫格" → Put this on a social media instagram grid and add more
+            images that works with the grid
+
+            "YouTube惊讶表情封面" → Create a YouTube thumbnail of this guy looking surprise
+            with a tiny banana in his hand. The text should say "Nano Banana is WILD",
+            modern style font
+
+            5. 🎨 动漫创作
+
+            关键词匹配： 动漫、漫画、角色、分镜、续集、定格动画、简笔画、人设、表情包
+
+            案例模板：
+
+            连续漫画： Try continue prompts in Gemini 2.5 Flash image generation (nano
+            banana)
+
+            定格动画： Ultra detailed stop-motion animation frame, [场景描述], felt and fabric
+            textures, visible stitching, slightly imperfect shapes, soft cinematic
+            lighting with gentle shadows, shallow depth of field, colorful handcrafted
+            props, subtle dust and wear for realism, expressions made with sewn buttons
+            and embroidered mouths, reminiscent of Coraline and Laika Studios style,
+            whimsical and tactile atmosphere
+
+            角色设定： 为我生成人物的角色设定（Character Design）比例设定（不同身高对比、头身比等）三视图（正面、侧面、背面）表情设定（Expression
+            Sheet）动作设定（Pose Sheet）服装设定（Costume Design）
+
+            用户输入示例 → 扩写结果：
+
+            "续写漫画下一格" → Try continue prompts in Gemini 2.5 Flash image generation
+            (nano banana)
+
+            "定格动画风格" → Ultra detailed stop-motion animation frame, two handmade toys
+            interacting on a miniature set, felt and fabric textures, visible stitching,
+            slightly imperfect shapes, soft cinematic lighting with gentle shadows,
+            shallow depth of field, colorful handcrafted props, subtle dust and wear
+            for realism, expressions made with sewn buttons and embroidered mouths,
+            reminiscent of Coraline and Laika Studios style, whimsical and tactile
+            atmosphere
+
+            6. 🏙️ 建筑景观
+
+            关键词匹配： 建筑、城市、科幻、外星、街景、标注、2D转3D、等距视图、建模
+
+            案例模板：
+
+            科幻景观： A hyper-realistic sci-fi landscape of a [场景描述] with [天空元素]. The
+            ground is covered in [地面描述], and a [建筑/载具] is [位置描述]
+
+            街景标注： You are a location-based AR experience generator. Highlight [point
+            of interest] in this image and annotate relevant information about it
+
+            2D转3D： Make Image [时间转换] and Isometric ([主体] Only)
+
+            用户输入示例 → 扩写结果：
+
+            "外星科幻景观" → A hyper-realistic sci-fi landscape of a vibrant alien planet
+            with multiple moons in the sky. The ground is covered in bioluminescent
+            flora, and a sleek, futuristic starship is landed in the foreground
+
+            "街景AR标注" → You are a location-based AR experience generator. Highlight
+            [point of interest] in this image and annotate relevant information about
+            it
+
+            7. 🎭 3D效果
+
+            关键词匹配： 3D、立体、遮罩、手办、模型、体积、网格、建模
+
+            案例模板：
+
+            3D遮罩： Mask the 3D volume of specific parts of this figure with a grid
+            UI. Make [主体] [动作] in the same pose, and mark those moved parts with an
+            orange grid. The unchanged parts should be marked with a light-blue grid
+
+            插画变手办： Turn this photo into a character figure. Behind it, place a box
+            with the character''s image printed on it, and a computer showing the
+            Blender modeling process on its screen. In front of the box, add a round
+            plastic base with the character figure standing on it. Set the scene indoors
+            if possible
+
+            用户输入示例 → 扩写结果：
+
+            "3D网格遮罩编辑" → Mask the 3D volume of specific parts of this figure with
+            a grid UI. Make her wave her right hand in the same pose, and mark those
+            moved parts with an orange grid. The unchanged parts should be marked
+            with a light-blue grid
+
+            "角色变手办" → Turn this photo into a character figure. Behind it, place a
+            box with the character''s image printed on it, and a computer showing
+            the Blender modeling process on its screen. In front of the box, add a
+            round plastic base with the character figure standing on it. Set the scene
+            indoors if possible
+
+            8. 💰 实用变现
+
+            关键词匹配： 修复、精修、老照片、上色、去痘、美颜、商业、赚钱
+
+            案例模板：
+
+            照片修复： 帮我处理一下这样照片，要求是：1. 只截取照片内容部分，移除桌面的背景、边框 2. 修复照片里面的污损 3. 把照片做成彩色的
+            4. 高清放大照片
+
+            专业精修： Clean the face by removing acne, pimples, blemishes, and temporary
+            spots from the skin (face, nose, forehead, neck, back of the head, throat).
+            Smooth and correct the skin texture for a realistic and natural look.
+            Preserve all permanent marks such as scars, moles, or birthmarks without
+            altering them
+
+            用户输入示例 → 扩写结果：
+
+            "修复老照片" → 帮我处理一下这样照片，要求是：1. 只截取照片内容部分，移除桌面的背景、边框 2. 修复照片里面的污损 3. 把照片做成彩色的
+            4. 高清放大照片
+
+            "专业美颜精修" → Clean the face by removing acne, pimples, blemishes, and temporary
+            spots from the skin (face, nose, forehead, neck, back of the head, throat).
+            Smooth and correct the skin texture for a realistic and natural look.
+            Preserve all permanent marks such as scars, moles, or birthmarks without
+            altering them
+
+            9. 🔧 其他功能
+
+            关键词匹配： 计数、数学、运算、分析、特殊效果
+
+            案例模板：
+
+            图片计数： Count the number of [物品A] in this image than multiply that by [数字]
+            and add as many [物品B] at same size as the [物品A] but put [物品B] on [位置]
+            of the [物品A] for the new image
+
+            用户输入示例 → 扩写结果：
+
+            "数草莓加香蕉" → Count the number of strawberries in this image than multiply
+            that by two and add as many bananas at same size as the strawberries but
+            put bananas on top of the strawberries for the new image
+
+            Initialization
+
+            欢迎使用Gemini-2.5-Flash-Image-Preview文生图提示词专家！
+
+            我基于Nano Banana的28个经典玩法，为您提供专业的文生图提示词生成服务。现在包含了详细的案例库，能够精准匹配您的需求并生成专业提示词。
+
+            使用方法：
+
+            输入简单的需求描述（如"换个背景"、"做成手办"、"修复照片"）
+
+            系统自动识别场景分类
+
+            匹配最佳案例模板
+
+            生成优化的专业提示词
+
+            请告诉我您想要实现什么效果，我会为您生成最适合的提示词！
+
+            智能扩写示例
+
+            示例1：用户输入 "换个日式背景"
+
+            ## 场景分类：🛍️ 电商场景 - 背景替换
+
+            ​
+
+            ## 核心提示词：
+
+            Change the background to a traditional Japanese garden with cherry blossoms
+            and the clothes to a elegant kimono
+
+            ​
+
+            ## 中文解释：
+
+            将背景更换为传统的日式花园（带樱花），并将服装改为优雅的和服
+
+            ​
+
+            ## 优化建议：
+
+            - 可以指定具体的日式元素：茶室、竹林、枯山水等
+
+            - 添加光线描述：soft morning light, golden hour lighting
+
+            - 考虑季节特色：春季樱花、秋季红叶、冬季雪景
+
+            ​
+
+            ## 变体选项：
+
+            1. Change the background to a minimalist Japanese tea room and the clothes
+            to a modern yukata
+
+            2. Change the background to a bamboo forest path and the clothes to a
+            traditional hakama
+
+            3. Change the background to a zen garden with stone lanterns and the clothes
+            to a formal kimono
+
+            ​
+
+            ## 相关玩法：
+
+            #1 背景和服装替换、#4 物品换配件
+
+            示例2：用户输入 "做个游戏角色表情包"
+
+            ## 场景分类：🎨 动漫创作 - 角色设定
+
+            ​
+
+            ## 核心提示词：
+
+            为我生成人物的角色设定（Character Design）表情设定（Expression Sheet）- showing happy, sad,
+            angry, surprised, confused, excited, sleepy, and determined expressions
+            in anime style
+
+            ​
+
+            ## 中文解释：
+
+            生成游戏角色的表情设定图，包含开心、悲伤、愤怒、惊讶、困惑、兴奋、困倦、坚定等表情，采用动漫风格
+
+            ​
+
+            ## 优化建议：
+
+            - 保持角色一致性：相同的发型、服装、配色
+
+            - 表情要夸张明显：符合游戏UI需求
+
+            - 可以添加特效：汗滴、爱心、星星等装饰元素
+
+            ​
+
+            ## 变体选项：
+
+            1. Create a 3x3 grid showing 9 different facial expressions for this game
+            character in chibi style
+
+            2. Generate an emotion wheel showing 8 different expressions radiating
+            from center in anime art style
+
+            3. Create a sticker pack layout with 12 different expressions and reactions
+            for messaging apps
+
+            ​
+
+            ## 相关玩法：
+
+            #16 连续漫画续集、#19 生成一套角色设定、#15 社媒内容创作
+
+            示例3：用户输入 "修复这张老照片"
+
+            ## 场景分类：💰 实用变现 - 照片修复
+
+            ​
+
+            ## 核心提示词：
+
+            帮我处理一下这张照片，要求是：1. 只截取照片内容部分，移除桌面的背景、边框 2. 修复照片里面的污损、划痕和褪色 3. 把黑白照片做成自然的彩色
+            4. 高清放大并增强细节清晰度
+
+            ​
+
+            ## 中文解释：
+
+            全面修复老照片：裁剪边框、修复损伤、智能上色、高清放大，让老照片重现生机
+
+            ​
+
+            ## 优化建议：
+
+            - 上色要自然：根据时代背景选择合适的色彩
+
+            - 保留历史感：不要过度现代化处理
+
+            - 细节增强：注意面部特征和服装纹理的还原
+
+            ​
+
+            ## 变体选项：
+
+            1. Restore this vintage photo by removing damage, colorizing naturally,
+            and enhancing to 4K resolution
+
+            2. Clean and repair this old photograph, add realistic colors based on
+            the era, upscale to high definition
+
+            3. Professional photo restoration: fix tears and stains, apply period-appropriate
+            coloring, sharpen details
+
+            ​
+
+            ## 相关玩法：
+
+            #25 旧照片修复和增强、#26 专业级照片精修
+
+            '
+        - id: a6016a5c-248f-4815-9a75-46acaa0e3828
+          role: user
+          text: 请根据用输入的{{#1756606966721.prompt#}} 并根据它选择的分类{{#1756606966721.type#}}进行提示词扩写
+        selected: false
+        title: LLM提示词扩写
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: llm
+      position:
+        x: 379
+        y: 254
+      positionAbsolute:
+        x: 379
+        y: 254
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: '{{#1756609221947.result#}}
+
+          {{#1756609862172.text#}}
+
+          {{#1756609862172.files#}}'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 142
+      id: answer
+      position:
+        x: 1354
+        y: 254
+      positionAbsolute:
+        x: 1354
+        y: 254
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: 0ce3c31c-9998-4eed-8c50-7a5a02da58e5
+            value: 是
+            varType: string
+            variable_selector:
+            - '1756606966721'
+            - istype
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 条件分支
+        type: if-else
+      height: 125
+      id: '1756607747401'
+      position:
+        x: 36
+        y: 247
+      positionAbsolute:
+        x: 36
+        y: 247
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: The text prompt to generate image from. Describe what you want
+              to see in the image in detail. For example "A golden cat sitting on
+              a red sofa in a cozy living room with warm lighting".
+            ja_JP: The text prompt to generate image from. Describe what you want
+              to see in the image in detail. For example "A golden cat sitting on
+              a red sofa in a cozy living room with warm lighting".
+            pt_BR: The text prompt to generate image from. Describe what you want
+              to see in the image in detail. For example "A golden cat sitting on
+              a red sofa in a cozy living room with warm lighting".
+            zh_Hans: 用于生成图像的文本提示。详细描述您希望在图像中看到的内容。例如"一只金色的猫坐在温暖灯光下舒适客厅的红色沙发上"。
+          label:
+            en_US: Image Prompt
+            ja_JP: Image Prompt
+            pt_BR: Image Prompt
+            zh_Hans: 图像提示词
+          llm_description: Text prompt that describes the desired image content in
+            detail. The more specific and descriptive, the better the generated image
+            quality.
+          max: null
+          min: null
+          name: prompt
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: google/gemini-2.5-flash-image-preview:free
+          form: form
+          human_description:
+            en_US: The AI model to use for image generation. Different models have
+              different capabilities, quality, and costs. Free models are great for
+              testing, premium models offer higher quality.
+            ja_JP: The AI model to use for image generation. Different models have
+              different capabilities, quality, and costs. Free models are great for
+              testing, premium models offer higher quality.
+            pt_BR: The AI model to use for image generation. Different models have
+              different capabilities, quality, and costs. Free models are great for
+              testing, premium models offer higher quality.
+            zh_Hans: 用于图像生成的 AI 模型。不同模型具有不同的能力、质量和成本。免费模型适合测试，付费模型提供更高质量。
+          label:
+            en_US: AI Model
+            ja_JP: AI Model
+            pt_BR: AI Model
+            zh_Hans: AI 模型
+          llm_description: ''
+          max: null
+          min: null
+          name: model
+          options:
+          - icon: ''
+            label:
+              en_US: Gemini 2.5 Flash (Free) - Fast & Good Quality
+              ja_JP: Gemini 2.5 Flash (Free) - Fast & Good Quality
+              pt_BR: Gemini 2.5 Flash (Free) - Fast & Good Quality
+              zh_Hans: Gemini 2.5 Flash (免费) - 快速且质量良好
+            value: google/gemini-2.5-flash-image-preview:free
+          - icon: ''
+            label:
+              en_US: DALL-E 3 (Premium) - Highest Quality
+              ja_JP: DALL-E 3 (Premium) - Highest Quality
+              pt_BR: DALL-E 3 (Premium) - Highest Quality
+              zh_Hans: DALL-E 3 (付费) - 最高质量
+            value: openai/dall-e-3
+          - icon: ''
+            label:
+              en_US: Claude 3.5 Sonnet (Premium) - Creative & Artistic
+              ja_JP: Claude 3.5 Sonnet (Premium) - Creative & Artistic
+              pt_BR: Claude 3.5 Sonnet (Premium) - Creative & Artistic
+              zh_Hans: Claude 3.5 Sonnet (付费) - 创意艺术风格
+            value: anthropic/claude-3-5-sonnet-20241022
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: Optional input image URL for image-to-image generation. Provide
+              an image URL to transform or modify an existing image based on your
+              prompt. Leave empty for text-only generation.
+            ja_JP: Optional input image URL for image-to-image generation. Provide
+              an image URL to transform or modify an existing image based on your
+              prompt. Leave empty for text-only generation.
+            pt_BR: Optional input image URL for image-to-image generation. Provide
+              an image URL to transform or modify an existing image based on your
+              prompt. Leave empty for text-only generation.
+            zh_Hans: 可选的输入图像URL，用于图像到图像生成。提供图像URL以基于您的提示词转换或修改现有图像。留空则仅使用文本生成。
+          label:
+            en_US: Input Image URL (Optional)
+            ja_JP: Input Image URL (Optional)
+            pt_BR: Input Image URL (Optional)
+            zh_Hans: 输入图像URL（可选）
+          llm_description: ''
+          max: null
+          min: null
+          name: input_image_url
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        params:
+          input_image_url: ''
+          model: ''
+          prompt: ''
+        provider_id: wwwzhouhui/nano_banana_text2image/nano_banana
+        provider_name: wwwzhouhui/nano_banana_text2image/nano_banana
+        provider_type: builtin
+        selected: false
+        title: Nano Banana 文生图
+        tool_configurations:
+          input_image_url:
+            type: mixed
+            value: '{{#1756606966721.picture.url#}}'
+          model:
+            type: constant
+            value: google/gemini-2.5-flash-image-preview:free
+        tool_description: 使用 OpenRouter API 从文本提示生成高质量图像，支持多种 AI 模型（Gemini、DALL-E、Claude）。由
+          Nano Banana 技术驱动。
+        tool_label: Nano Banana 文生图
+        tool_name: text2image
+        tool_parameters:
+          prompt:
+            type: mixed
+            value: '{{#1756606966721.prompt#}}'
+        type: tool
+        version: '2'
+      height: 147
+      id: '1756607786224'
+      position:
+        x: 379
+        y: 382
+      positionAbsolute:
+        x: 379
+        y: 382
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: '{{#1756607786224.text#}}
+
+          {{#1756607786224.files#}}'
+        desc: ''
+        selected: false
+        title: 直接回复 2
+        type: answer
+        variables: []
+      height: 123
+      id: '1756607819509'
+      position:
+        x: 675
+        y: 394
+      positionAbsolute:
+        x: 675
+        y: 394
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "def main(arg1: str) -> dict:  # 修正返回类型：原定义str但返回dict，此处改为dict\n   \
+          \ import re\n    # 新正则：匹配\"## 核心提示词：\"后所有内容，直到下一个\"##\"或文本结束\n    # 关键优化：用\\\
+          s*匹配冒号后任意空白（空格/换行），而非固定的\\n\\n，适配文本格式\n    pattern = r'## 核心提示词：\\s*(.*?)(?=\\\
+          n##|\\Z)'\n    # re.DOTALL确保.能匹配换行符，re.MULTILINE辅助多行匹配\n    match = re.search(pattern,\
+          \ arg1, re.DOTALL | re.MULTILINE)\n    # 提取后strip()去除前后多余空白（如换行/空格）\n  \
+          \  core_prompt = match.group(1).strip() if match else \"\"\n    return {\"\
+          result\": core_prompt}"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行
+        type: code
+        variables:
+        - value_selector:
+          - llm
+          - text
+          value_type: string
+          variable: arg1
+      height: 53
+      id: '1756609221947'
+      position:
+        x: 682
+        y: 254
+      positionAbsolute:
+        x: 682
+        y: 254
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: The text prompt to generate image from. Describe what you want
+              to see in the image in detail. For example "A golden cat sitting on
+              a red sofa in a cozy living room with warm lighting".
+            ja_JP: The text prompt to generate image from. Describe what you want
+              to see in the image in detail. For example "A golden cat sitting on
+              a red sofa in a cozy living room with warm lighting".
+            pt_BR: The text prompt to generate image from. Describe what you want
+              to see in the image in detail. For example "A golden cat sitting on
+              a red sofa in a cozy living room with warm lighting".
+            zh_Hans: 用于生成图像的文本提示。详细描述您希望在图像中看到的内容。例如"一只金色的猫坐在温暖灯光下舒适客厅的红色沙发上"。
+          label:
+            en_US: Image Prompt
+            ja_JP: Image Prompt
+            pt_BR: Image Prompt
+            zh_Hans: 图像提示词
+          llm_description: Text prompt that describes the desired image content in
+            detail. The more specific and descriptive, the better the generated image
+            quality.
+          max: null
+          min: null
+          name: prompt
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: google/gemini-2.5-flash-image-preview:free
+          form: form
+          human_description:
+            en_US: The AI model to use for image generation. Different models have
+              different capabilities, quality, and costs. Free models are great for
+              testing, premium models offer higher quality.
+            ja_JP: The AI model to use for image generation. Different models have
+              different capabilities, quality, and costs. Free models are great for
+              testing, premium models offer higher quality.
+            pt_BR: The AI model to use for image generation. Different models have
+              different capabilities, quality, and costs. Free models are great for
+              testing, premium models offer higher quality.
+            zh_Hans: 用于图像生成的 AI 模型。不同模型具有不同的能力、质量和成本。免费模型适合测试，付费模型提供更高质量。
+          label:
+            en_US: AI Model
+            ja_JP: AI Model
+            pt_BR: AI Model
+            zh_Hans: AI 模型
+          llm_description: ''
+          max: null
+          min: null
+          name: model
+          options:
+          - icon: ''
+            label:
+              en_US: Gemini 2.5 Flash (Free) - Fast & Good Quality
+              ja_JP: Gemini 2.5 Flash (Free) - Fast & Good Quality
+              pt_BR: Gemini 2.5 Flash (Free) - Fast & Good Quality
+              zh_Hans: Gemini 2.5 Flash (免费) - 快速且质量良好
+            value: google/gemini-2.5-flash-image-preview:free
+          - icon: ''
+            label:
+              en_US: DALL-E 3 (Premium) - Highest Quality
+              ja_JP: DALL-E 3 (Premium) - Highest Quality
+              pt_BR: DALL-E 3 (Premium) - Highest Quality
+              zh_Hans: DALL-E 3 (付费) - 最高质量
+            value: openai/dall-e-3
+          - icon: ''
+            label:
+              en_US: Claude 3.5 Sonnet (Premium) - Creative & Artistic
+              ja_JP: Claude 3.5 Sonnet (Premium) - Creative & Artistic
+              pt_BR: Claude 3.5 Sonnet (Premium) - Creative & Artistic
+              zh_Hans: Claude 3.5 Sonnet (付费) - 创意艺术风格
+            value: anthropic/claude-3-5-sonnet-20241022
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: Optional input image URL for image-to-image generation. Provide
+              an image URL to transform or modify an existing image based on your
+              prompt. Leave empty for text-only generation.
+            ja_JP: Optional input image URL for image-to-image generation. Provide
+              an image URL to transform or modify an existing image based on your
+              prompt. Leave empty for text-only generation.
+            pt_BR: Optional input image URL for image-to-image generation. Provide
+              an image URL to transform or modify an existing image based on your
+              prompt. Leave empty for text-only generation.
+            zh_Hans: 可选的输入图像URL，用于图像到图像生成。提供图像URL以基于您的提示词转换或修改现有图像。留空则仅使用文本生成。
+          label:
+            en_US: Input Image URL (Optional)
+            ja_JP: Input Image URL (Optional)
+            pt_BR: Input Image URL (Optional)
+            zh_Hans: 输入图像URL（可选）
+          llm_description: ''
+          max: null
+          min: null
+          name: input_image_url
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        params:
+          input_image_url: ''
+          model: ''
+          prompt: ''
+        provider_id: wwwzhouhui/nano_banana_text2image/nano_banana
+        provider_name: wwwzhouhui/nano_banana_text2image/nano_banana
+        provider_type: builtin
+        selected: false
+        title: Nano Banana 文生图
+        tool_configurations:
+          input_image_url:
+            type: mixed
+            value: '{{#1756606966721.picture.url#}}'
+          model:
+            type: constant
+            value: google/gemini-2.5-flash-image-preview:free
+        tool_description: 使用 OpenRouter API 从文本提示生成高质量图像，支持多种 AI 模型（Gemini、DALL-E、Claude）。由
+          Nano Banana 技术驱动。
+        tool_label: Nano Banana 文生图
+        tool_name: text2image
+        tool_parameters:
+          prompt:
+            type: mixed
+            value: '{{#1756609221947.result#}}'
+        type: tool
+        version: '2'
+      height: 147
+      id: '1756609862172'
+      position:
+        x: 986
+        y: 254
+      positionAbsolute:
+        x: 986
+        y: 254
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: -667
+      y: 157.5
+      zoom: 1
