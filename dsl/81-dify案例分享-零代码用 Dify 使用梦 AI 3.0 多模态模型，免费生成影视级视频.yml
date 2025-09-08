@@ -1,0 +1,745 @@
+app:
+  description: '本工作流主要是实现即梦AI逆向API 通过http请求整合实现dify工作流上即梦AI文生图、文生视频，支持最新文生图即梦3.1和文生视频3.0
+
+    常用的文生图、文生视频比例提供如下三种
+
+    1:1   width：1024，height：1024
+
+    16:9   width：1536，height：864
+
+    9:16    width：864，height：1536'
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 81-dify案例分享-零代码用 Dify 使用梦 AI 3.0 多模态模型，免费生成影视级视频
+  use_icon_as_answer_icon: false
+dependencies: []
+kind: app
+version: 0.3.0
+workflow:
+  conversation_variables: []
+  environment_variables:
+  - description: ''
+    id: 79f456ae-bdfb-48f2-88b5-fd4ed87dbbba
+    name: jimengsessionid
+    selector:
+    - env
+    - jimengsessionid
+    value: bb20bd50f4b928eb7df3f9bbd9c0db27
+    value_type: string
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 500
+        batch_count_limit: 50
+        file_size_limit: 100
+        image_file_size_limit: 100
+        video_file_size_limit: 500
+        workflow_file_upload_limit: 50
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: if-else
+      id: 1756864683426-source-1756864928121-target
+      source: '1756864683426'
+      sourceHandle: source
+      target: '1756864928121'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: http-request
+      id: 1756864928121-true-1756865047041-target
+      source: '1756864928121'
+      sourceHandle: 'true'
+      target: '1756865047041'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: http-request
+        targetType: code
+      id: 1756865047041-source-1756865210521-target
+      source: '1756865047041'
+      sourceHandle: source
+      target: '1756865210521'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: answer
+      id: 1756865210521-source-answer-target
+      source: '1756865210521'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: http-request
+      id: 1756864928121-f3e06ee6-8378-4d0a-81a4-486a26890636-17568652991000-target
+      source: '1756864928121'
+      sourceHandle: f3e06ee6-8378-4d0a-81a4-486a26890636
+      target: '17568652991000'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: http-request
+        targetType: code
+      id: 17568652991000-source-1756865364032-target
+      source: '17568652991000'
+      sourceHandle: source
+      target: '1756865364032'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: answer
+      id: 1756865364032-source-1756865391917-target
+      source: '1756865364032'
+      sourceHandle: source
+      target: '1756865391917'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: http-request
+      id: 1756864928121-bcb4d8e9-cbb6-4486-ac8f-641673f53a79-17568654058890-target
+      source: '1756864928121'
+      sourceHandle: bcb4d8e9-cbb6-4486-ac8f-641673f53a79
+      target: '17568654058890'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: http-request
+        targetType: code
+      id: 17568654058890-source-1756865460236-target
+      source: '17568654058890'
+      sourceHandle: source
+      target: '1756865460236'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: answer
+      id: 1756865460236-source-1756865483306-target
+      source: '1756865460236'
+      sourceHandle: source
+      target: '1756865483306'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: answer
+      id: 1756864928121-false-1756865493137-target
+      source: '1756864928121'
+      sourceHandle: 'false'
+      target: '1756865493137'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - label: 提示词
+          max_length: 256
+          options: []
+          required: true
+          type: text-input
+          variable: prompt
+        - label: 类型
+          max_length: 48
+          options:
+          - 文生图
+          - 文生视频
+          - 图生视频
+          required: true
+          type: select
+          variable: type
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - image
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: 图片
+          max_length: 48
+          options: []
+          required: false
+          type: file
+          variable: picture
+        - label: 文生图模型
+          max_length: 48
+          options:
+          - jimeng-3.1
+          - jimeng-2.1
+          - jimeng-2.0-pro
+          - jimeng-2.0
+          - jimeng-1.4
+          - jimeng-xl-pro
+          required: false
+          type: select
+          variable: pmodel
+        - label: 视频模型
+          max_length: 48
+          options:
+          - jimeng-video-3.0
+          - jimeng-video-2.0
+          required: false
+          type: select
+          variable: vmodel
+      height: 193
+      id: '1756864683426'
+      position:
+        x: 80
+        y: 282
+      positionAbsolute:
+        x: 80
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1756865210521.result#}}'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 104
+      id: answer
+      position:
+        x: 1326
+        y: 271
+      positionAbsolute:
+        x: 1326
+        y: 271
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: cecd6444-e31d-4c36-abb4-c3b06b517892
+            value: 文生图
+            varType: string
+            variable_selector:
+            - '1756864683426'
+            - type
+          - comparison_operator: not empty
+            id: 423731c2-69ec-439b-9edd-c5d4bdb4423d
+            value: ''
+            varType: string
+            variable_selector:
+            - '1756864683426'
+            - pmodel
+          id: 'true'
+          logical_operator: and
+        - case_id: f3e06ee6-8378-4d0a-81a4-486a26890636
+          conditions:
+          - comparison_operator: is
+            id: 70654f8e-c422-41dd-aec7-88f1ab3295da
+            value: 文生视频
+            varType: string
+            variable_selector:
+            - '1756864683426'
+            - type
+          - comparison_operator: not empty
+            id: 8805125d-1085-47ce-aeec-79f945b31749
+            value: ''
+            varType: string
+            variable_selector:
+            - '1756864683426'
+            - vmodel
+          id: f3e06ee6-8378-4d0a-81a4-486a26890636
+          logical_operator: and
+        - case_id: bcb4d8e9-cbb6-4486-ac8f-641673f53a79
+          conditions:
+          - comparison_operator: is
+            id: f6639489-6f47-438d-ba62-77479d45151d
+            value: 图生视频
+            varType: string
+            variable_selector:
+            - '1756864683426'
+            - type
+          - comparison_operator: not empty
+            id: 1811acdb-5764-48d7-8235-d52d62785e05
+            value: ''
+            varType: string
+            variable_selector:
+            - '1756864683426'
+            - vmodel
+          - comparison_operator: not empty
+            id: 3d880164-1400-4791-8fd3-5c17bd72e750
+            value: ''
+            varType: file
+            variable_selector:
+            - '1756864683426'
+            - picture
+            - url
+          id: bcb4d8e9-cbb6-4486-ac8f-641673f53a79
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 条件分支
+        type: if-else
+      height: 325
+      id: '1756864928121'
+      position:
+        x: 395
+        y: 282
+      positionAbsolute:
+        x: 395
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data:
+          - id: key-value-100
+            key: ''
+            type: text
+            value: '{
+
+              "model":"{{#1756864683426.pmodel#}}",
+
+              "prompt":"{{#1756864683426.prompt#}}"
+
+              "negativePrompt":"",
+
+              "width":1536 ,
+
+              "height":864,
+
+              "sample_strength":0.5
+
+              }'
+          type: json
+        desc: ''
+        headers: Authorization:{{#env.jimengsessionid#}}
+        method: post
+        params: ''
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 100
+        selected: false
+        ssl_verify: true
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: HTTP 请求（文生图）
+        type: http-request
+        url: https://jimeng.duckcloud.fun/v1/images/generations
+        variables: []
+      height: 139
+      id: '1756865047041'
+      position:
+        x: 704
+        y: 271
+      positionAbsolute:
+        x: 704
+        y: 271
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "def main(arg1: str) -> str:\n    import json\n\n    # 解析输入的 JSON 数据\n\
+          \    try:\n        data = json.loads(arg1)\n    except json.JSONDecodeError:\n\
+          \        return \"输入的字符串不是有效的 JSON 格式，请检查输入数据。\"\n\n    # 确保解析后的数据包含 'data'\
+          \ 键\n    if not isinstance(data, dict) or 'data' not in data:\n        return\
+          \ \"输入的数据格式不正确，请确保输入是一个包含 'data' 键的 JSON 对象。\"\n\n    # 获取 'data' 键对应的数组数据\n\
+          \    image_data = data.get('data', [])\n\n    # 确保 'data' 键的值是一个列表\n   \
+          \ if not isinstance(image_data, list):\n        return \"输入的数据中 'data' 键的值不是一个数组，请确保其值是一个\
+          \ JSON 数组对象。\"\n\n    # 初始化结果字符串\n    markdown_result = \"\"\n\n    # 遍历每条图片数据\n\
+          \    for index, item in enumerate(image_data, start=1):\n        # 检查每条数据是否是字典，并且包含\
+          \ 'url' 字段\n        if not isinstance(item, dict) or 'url' not in item:\n\
+          \            markdown_result += f\"图片第{index}条内容：无法提取 URL（缺少 'url' 字段）\\\
+          n\"\n            continue\n\n        # 提取 URL 并生成 Markdown 格式的图片链接\n   \
+          \     url = item['url']\n        markdown_result += f\"![图片{index}]({url})\\\
+          n\"\n\n    # 返回最终的 Markdown 字符串\n    return {\"result\": markdown_result}"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行文生图
+        type: code
+        variables:
+        - value_selector:
+          - '1756865047041'
+          - body
+          value_type: string
+          variable: arg1
+      height: 53
+      id: '1756865210521'
+      position:
+        x: 1003
+        y: 271
+      positionAbsolute:
+        x: 1003
+        y: 271
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data:
+          - id: key-value-100
+            key: ''
+            type: text
+            value: '{
+
+              "model":"{{#1756864683426.vmodel#}}",
+
+              "prompt":"{{#1756864683426.prompt#}}"
+
+              "negativePrompt":"",
+
+              "width":1536 ,
+
+              "height":864,
+
+              "resolution": "720p"
+
+              }'
+          type: json
+        desc: ''
+        headers: Authorization:{{#env.jimengsessionid#}}
+        method: post
+        params: ''
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 100
+        selected: false
+        ssl_verify: true
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: HTTP 请求 (文生视频)
+        type: http-request
+        url: https://jimeng.duckcloud.fun/v1/videos/generations
+        variables: []
+      height: 139
+      id: '17568652991000'
+      position:
+        x: 704
+        y: 420
+      positionAbsolute:
+        x: 704
+        y: 420
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "def main(arg1: str) -> dict:\n      import json\n\n      # 解析输入的 JSON\
+          \ 数据\n      try:\n          data = json.loads(arg1)\n      except json.JSONDecodeError:\n\
+          \          return {\"result\": \"输入的字符串不是有效的 JSON 格式，请检查输入数据。\"}\n\n   \
+          \   # 确保解析后的数据包含 'data' 键\n      if not isinstance(data, dict) or 'data'\
+          \ not in data:\n          return {\"result\": \"输入的数据格式不正确，请确保输入是一个包含 'data'\
+          \ 键的 JSON 对象。\"}\n\n      # 获取 'data' 键对应的数组数据\n      video_data = data.get('data',\
+          \ [])\n\n      # 确保 'data' 键的值是一个列表\n      if not isinstance(video_data,\
+          \ list):\n          return {\"result\": \"输入的数据中 'data' 键的值不是一个数组，请确保其值是一个\
+          \ JSON 数组对象。\"}\n\n      # 初始化结果字符串\n      video_html = \"\"\n\n      #\
+          \ 遍历每条视频数据\n      for index, item in enumerate(video_data, start=1):\n \
+          \         # 检查每条数据是否是字典，并且包含 'url' 字段\n          if not isinstance(item,\
+          \ dict) or 'url' not in item:\n              video_html += f\"<p>视频第{index}条内容：无法提取\
+          \ URL（缺少 'url' 字段）</p>\\n\"\n              continue\n\n          # 提取 URL\n\
+          \          url = item['url']\n\n          # 生成 HTML5 video 标签（Dify支持HTML显示）\n\
+          \          video_html += f'''\n  <div style=\"margin-bottom: 20px;\">\n\
+          \      <h3>视频 {index}</h3>\n      <video width=\"400\" controls>\n     \
+          \     <source src=\"{url}\" type=\"video/mp4\">\n          您的浏览器不支持视频播放。\n\
+          \      </video>\n      \n      **视频链接：** {url}\n  </div>\n  '''\n\n    \
+          \  # 返回最终的视频显示内容\n      return {\"result\": video_html}"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行文生视频
+        type: code
+        variables:
+        - value_selector:
+          - '17568652991000'
+          - body
+          value_type: string
+          variable: arg1
+      height: 53
+      id: '1756865364032'
+      position:
+        x: 1003
+        y: 420
+      positionAbsolute:
+        x: 1003
+        y: 420
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1756865364032.result#}}'
+        desc: ''
+        selected: false
+        title: 直接回复 2
+        type: answer
+        variables: []
+      height: 104
+      id: '1756865391917'
+      position:
+        x: 1326
+        y: 420
+      positionAbsolute:
+        x: 1326
+        y: 420
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data:
+          - id: key-value-100
+            key: ''
+            type: text
+            value: '{
+
+              "model":"{{#1756864683426.vmodel#}}",
+
+              "prompt":"{{#1756864683426.prompt#}}"
+
+              "negativePrompt":"",
+
+              "width":1536 ,
+
+              "height":864,
+
+              "resolution": "720p",
+
+              "filePaths": ["{{#1756864683426.picture.url#}}"]
+
+              }'
+          type: json
+        desc: ''
+        headers: Authorization:{{#env.jimengsessionid#}}
+        method: post
+        params: ''
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 100
+        selected: false
+        ssl_verify: true
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: HTTP 请求 (图生视频）
+        type: http-request
+        url: https://jimeng.duckcloud.fun/v1/videos/generations
+        variables: []
+      height: 139
+      id: '17568654058890'
+      position:
+        x: 704
+        y: 584
+      positionAbsolute:
+        x: 704
+        y: 584
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "    def main(arg1: str) -> dict:\n        import json\n\n        #\
+          \ 解析输入的 JSON 数据\n        try:\n            data = json.loads(arg1)\n   \
+          \     except json.JSONDecodeError:\n            return {\"result\": \"输入的字符串不是有效的\
+          \ JSON 格式，请检查输入数据。\"}\n\n        # 确保解析后的数据包含 'data' 键\n        if not isinstance(data,\
+          \ dict) or 'data' not in data:\n            return {\"result\": \"输入的数据格式不正确，请确保输入是一个包含\
+          \ 'data' 键的 JSON 对象。\"}\n\n        # 获取 'data' 键对应的数组数据\n        video_data\
+          \ = data.get('data', [])\n\n        # 确保 'data' 键的值是一个列表\n        if not\
+          \ isinstance(video_data, list):\n            return {\"result\": \"输入的数据中\
+          \ 'data' 键的值不是一个数组，请确保其值是一个 JSON 数组对象。\"}\n\n        # 初始化结果字符串\n      \
+          \  video_html = \"\"\n\n        # 遍历每条视频数据\n        for index, item in enumerate(video_data,\
+          \ start=1):\n            # 检查每条数据是否是字典，并且包含 'url' 字段\n            if not\
+          \ isinstance(item, dict) or 'url' not in item:\n                video_html\
+          \ += f\"<p>视频第{index}条内容：无法提取 URL（缺少 'url' 字段）</p>\\n\"\n              \
+          \  continue\n\n            # 提取 URL\n            url = item['url']\n\n \
+          \           # 生成 HTML5 video 标签（Dify支持HTML显示）\n            video_html +=\
+          \ f'''\n    <div style=\"margin-bottom: 20px;\">\n        <h3>视频 {index}</h3>\n\
+          \        <video width=\"400\" controls>\n            <source src=\"{url}\"\
+          \ type=\"video/mp4\">\n            您的浏览器不支持视频播放。\n        </video>\n   \
+          \     \n        **视频链接：** {url}\n    </div>\n    '''\n\n        # 返回最终的视频显示内容\n\
+          \        return {\"result\": video_html}"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行图生视频首帧
+        type: code
+        variables:
+        - value_selector:
+          - '17568654058890'
+          - body
+          value_type: string
+          variable: arg1
+      height: 53
+      id: '1756865460236'
+      position:
+        x: 1008
+        y: 584
+      positionAbsolute:
+        x: 1008
+        y: 584
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1756865460236.result#}}'
+        desc: ''
+        selected: false
+        title: 直接回复 3
+        type: answer
+        variables: []
+      height: 104
+      id: '1756865483306'
+      position:
+        x: 1326
+        y: 584
+      positionAbsolute:
+        x: 1326
+        y: 584
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: 对不请，您输入错误，请重新输入
+        desc: ''
+        selected: false
+        title: 直接回复 4
+        type: answer
+        variables: []
+      height: 101
+      id: '1756865493137'
+      position:
+        x: 704
+        y: 777
+      positionAbsolute:
+        x: 704
+        y: 777
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: -294
+      y: -53
+      zoom: 1
