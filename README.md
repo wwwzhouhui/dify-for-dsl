@@ -564,6 +564,16 @@ WORKFLOW_FILE_UPLOAD_LIMIT=10<br>
 
 ![Screenshot_20250910_081256_com.tencent.mm](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Screenshot_20250910_081256_com.tencent.mm.jpg)
 
+##  打赏
+
+   支付宝
+
+![image-20250914152823776](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250914152823776.png)
+
+  微信
+
+![image-20250914152855543](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250914152855543.png)
+
 ## Star History
 
 ![dify-for-dsl](https://api.star-history.com/svg?repos=wwwzhouhui/dify-for-dsl&type=Date)
