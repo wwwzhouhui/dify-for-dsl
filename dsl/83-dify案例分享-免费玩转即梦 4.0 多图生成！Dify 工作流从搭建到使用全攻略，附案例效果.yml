@@ -1,0 +1,509 @@
+app:
+  description: 本工作流主要是实现即梦AI逆向API 使用梦 AI 4.0 文生图、图生图模型
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 83-dify案例分享-免费玩转即梦 4.0 多图生成！Dify 工作流从搭建到使用全攻略，附案例效果
+  use_icon_as_answer_icon: false
+dependencies: []
+kind: app
+version: 0.4.0
+workflow:
+  conversation_variables: []
+  environment_variables:
+  - description: ''
+    id: 70dcbaf8-d37c-4884-b342-2177f1a32872
+    name: url
+    selector:
+    - env
+    - url
+    value: https://jimeng.duckcloud.fun/v1/images/compositions
+    value_type: string
+  - description: ''
+    id: 79f456ae-bdfb-48f2-88b5-fd4ed87dbbba
+    name: jimengsessionid
+    selector:
+    - env
+    - jimengsessionid
+    value: 你的即梦cookies 可以支持多个
+    value_type: string
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 500
+        batch_count_limit: 50
+        file_size_limit: 100
+        image_file_size_limit: 100
+        video_file_size_limit: 500
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: "欢迎使用最新的即梦4.0文生图，图生图工作流（请参考下面的提示词复制prompt中）\n 1 单个文生图（提示词参考：给我画一个小狗在球场上跑步）\n\
+      \ 2 多个文生图（提示词参考：请给我生成4张连续的儿童故事绘本-小松鼠和小花猫）\n 3 图生图 （提示词参考：请把这个2个图片进行合成）"
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: if-else
+      id: 1756864683426-source-1756864928121-target
+      source: '1756864683426'
+      sourceHandle: source
+      target: '1756864928121'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: http-request
+      id: 1756864928121-true-1756865047041-target
+      source: '1756864928121'
+      sourceHandle: 'true'
+      target: '1756865047041'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: http-request
+        targetType: code
+      id: 1756865047041-source-1756865210521-target
+      source: '1756865047041'
+      sourceHandle: source
+      target: '1756865210521'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: answer
+      id: 1756865210521-source-answer-target
+      source: '1756865210521'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: answer
+      id: 1756864928121-false-1756865493137-target
+      source: '1756864928121'
+      sourceHandle: 'false'
+      target: '1756865493137'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: code
+      id: 1756864928121-f3e06ee6-8378-4d0a-81a4-486a26890636-1757431303396-target
+      source: '1756864928121'
+      sourceHandle: f3e06ee6-8378-4d0a-81a4-486a26890636
+      target: '1757431303396'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: answer
+      id: 1757431303396-source-1757430002530-target
+      source: '1757431303396'
+      sourceHandle: source
+      target: '1757430002530'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - label: 提示词
+          max_length: 256
+          options: []
+          required: true
+          type: text-input
+          variable: prompt
+        - label: 类型
+          max_length: 48
+          options:
+          - 文生图
+          - 图生图
+          required: true
+          type: select
+          variable: type
+        - label: 文生图模型
+          max_length: 48
+          options:
+          - jimeng-4.0
+          - jimeng-3.1
+          - jimeng-2.1
+          - jimeng-2.0-pro
+          - jimeng-2.0
+          - jimeng-1.4
+          - jimeng-xl-pro
+          required: true
+          type: select
+          variable: pmodel
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - image
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: 图片
+          max_length: 5
+          options: []
+          required: false
+          type: file-list
+          variable: picture
+      height: 167
+      id: '1756864683426'
+      position:
+        x: 80
+        y: 282
+      positionAbsolute:
+        x: 80
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: '{{#1756865210521.result#}}'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 104
+      id: answer
+      position:
+        x: 1326
+        y: 271
+      positionAbsolute:
+        x: 1326
+        y: 271
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: cecd6444-e31d-4c36-abb4-c3b06b517892
+            value: 文生图
+            varType: string
+            variable_selector:
+            - '1756864683426'
+            - type
+          id: 'true'
+          logical_operator: and
+        - case_id: f3e06ee6-8378-4d0a-81a4-486a26890636
+          conditions:
+          - comparison_operator: is
+            id: 70654f8e-c422-41dd-aec7-88f1ab3295da
+            value: 图生图
+            varType: string
+            variable_selector:
+            - '1756864683426'
+            - type
+          - comparison_operator: not empty
+            id: 8805125d-1085-47ce-aeec-79f945b31749
+            value: ''
+            varType: array[file]
+            variable_selector:
+            - '1756864683426'
+            - picture
+          id: f3e06ee6-8378-4d0a-81a4-486a26890636
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 条件分支
+        type: if-else
+      height: 199
+      id: '1756864928121'
+      position:
+        x: 395.6597539488446
+        y: 282
+      positionAbsolute:
+        x: 395.6597539488446
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data:
+          - id: key-value-100
+            key: ''
+            type: text
+            value: '{
+
+              "model":"{{#1756864683426.pmodel#}}",
+
+              "prompt":"{{#1756864683426.prompt#}}"
+
+              "negativePrompt":"",
+
+              "width":1536 ,
+
+              "height":864,
+
+              "sample_strength":0.5
+
+              }'
+          type: json
+        desc: ''
+        headers: Authorization:{{#env.jimengsessionid#}}
+        method: post
+        params: ''
+        retry_config:
+          max_retries: 1
+          retry_enabled: true
+          retry_interval: 100
+        selected: false
+        ssl_verify: true
+        timeout:
+          connect: 300
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+          read: 300
+          write: 300
+        title: HTTP 请求（文生图）
+        type: http-request
+        url: https://jimeng.duckcloud.fun/v1/images/generations
+        variables: []
+      height: 139
+      id: '1756865047041'
+      position:
+        x: 704
+        y: 271
+      positionAbsolute:
+        x: 704
+        y: 271
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "def main(arg1: str) -> str:\n    import json\n\n    # 解析输入的 JSON 数据\n\
+          \    try:\n        data = json.loads(arg1)\n    except json.JSONDecodeError:\n\
+          \        return \"输入的字符串不是有效的 JSON 格式，请检查输入数据。\"\n\n    # 确保解析后的数据包含 'data'\
+          \ 键\n    if not isinstance(data, dict) or 'data' not in data:\n        return\
+          \ \"输入的数据格式不正确，请确保输入是一个包含 'data' 键的 JSON 对象。\"\n\n    # 获取 'data' 键对应的数组数据\n\
+          \    image_data = data.get('data', [])\n\n    # 确保 'data' 键的值是一个列表\n   \
+          \ if not isinstance(image_data, list):\n        return \"输入的数据中 'data' 键的值不是一个数组，请确保其值是一个\
+          \ JSON 数组对象。\"\n\n    # 初始化结果字符串\n    markdown_result = \"\"\n\n    # 遍历每条图片数据\n\
+          \    for index, item in enumerate(image_data, start=1):\n        # 检查每条数据是否是字典，并且包含\
+          \ 'url' 字段\n        if not isinstance(item, dict) or 'url' not in item:\n\
+          \            markdown_result += f\"图片第{index}条内容：无法提取 URL（缺少 'url' 字段）\\\
+          n\"\n            continue\n\n        # 提取 URL 并生成 Markdown 格式的图片链接\n   \
+          \     url = item['url']\n        markdown_result += f\"![图片{index}]({url})\\\
+          n\"\n\n    # 返回最终的 Markdown 字符串\n    return {\"result\": markdown_result}"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行文生图
+        type: code
+        variables:
+        - value_selector:
+          - '1756865047041'
+          - body
+          value_type: string
+          variable: arg1
+      height: 53
+      id: '1756865210521'
+      position:
+        x: 1005.4367571769878
+        y: 271
+      positionAbsolute:
+        x: 1005.4367571769878
+        y: 271
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: 对不请，您输入错误，请重新输入
+        desc: ''
+        selected: false
+        title: 直接回复 4
+        type: answer
+        variables: []
+      height: 101
+      id: '1756865493137'
+      position:
+        x: 704
+        y: 612.1127643571581
+      positionAbsolute:
+        x: 704
+        y: 612.1127643571581
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: '{{#1757431303396.result#}}'
+        desc: ''
+        selected: false
+        title: 直接回复 2
+        type: answer
+        variables: []
+      height: 104
+      id: '1757430002530'
+      position:
+        x: 1046.7037392392917
+        y: 441.9308145928902
+      positionAbsolute:
+        x: 1046.7037392392917
+        y: 441.9308145928902
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "import requests\nimport json\nfrom typing import List\n\n\ndef main(pictures:\
+          \ List[str], apikey: str, model: str, prompt: str, url: str) -> dict:\n\
+          \    # 设置请求的URL和Headers (使用bb.py的API端点)\n    surl = url\n    headers = {\n\
+          \        \"Authorization\": f\"Bearer {apikey}\",\n        \"Content-Type\"\
+          : \"application/json\"\n    }\n\n    # 定义请求的payload数据 (基于bb.py的逻辑)\n   \
+          \ payload = {\n        \"model\": model,\n        \"prompt\": prompt,\n\
+          \        \"images\": pictures,  # 使用传入的pictures数组\n        \"width\": 1536,\n\
+          \        \"height\": 864,\n        \"sample_strength\": 0.5\n    }\n\n \
+          \   # 打印payload用于调试\n    print(\"Payload:\", json.dumps(payload, indent=2))\n\
+          \    \n    # 发送POST请求\n    response = requests.post(surl, headers=headers,\
+          \ data=json.dumps(payload))\n\n    # 提取结果并返回\n    if response.status_code\
+          \ == 200:\n        response_data = response.json()\n        \n        #\
+          \ 集成cc.py的处理逻辑\n        def process_image_urls(data):\n            # 确保解析后的数据包含\
+          \ 'data' 键\n            if not isinstance(data, dict) or 'data' not in data:\n\
+          \                return \"输入的数据格式不正确，请确保输入是一个包含 'data' 键的 JSON 对象。\"\n\n\
+          \            # 获取 'data' 键对应的数组数据\n            image_data = data.get('data',\
+          \ [])\n\n            # 确保 'data' 键的值是一个列表\n            if not isinstance(image_data,\
+          \ list):\n                return \"输入的数据中 'data' 键的值不是一个数组，请确保其值是一个 JSON\
+          \ 数组对象。\"\n\n            # 初始化结果字符串\n            markdown_result = \"\"\n\
+          \n            # 遍历每条图片数据\n            for index, item in enumerate(image_data,\
+          \ start=1):\n                # 检查每条数据是否是字典，并且包含 'url' 字段\n             \
+          \   if not isinstance(item, dict) or 'url' not in item:\n              \
+          \      markdown_result += f\"图片第{index}条内容：无法提取 URL（缺少 'url' 字段）\\n\"\n\
+          \                    continue\n\n                # 提取 URL 并生成 Markdown 格式的图片链接\n\
+          \                url = item['url']\n                markdown_result += f\"\
+          ![图片{index}]({url})\\n\"\n\n            # 返回最终的 Markdown 字符串\n         \
+          \   return markdown_result\n        \n        # 处理响应数据并生成Markdown结果\n  \
+          \      markdown_result = process_image_urls(response_data)\n        return\
+          \ {\"result\": markdown_result}\n    else:\n        return {\"error\": f\"\
+          Error: {response.status_code}, {response.text}\"}"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行图生图接口
+        type: code
+        variables:
+        - value_selector:
+          - '1756864683426'
+          - picture
+          value_type: array[file]
+          variable: pictures
+        - value_selector:
+          - env
+          - jimengsessionid
+          value_type: string
+          variable: apikey
+        - value_selector:
+          - '1756864683426'
+          - pmodel
+          value_type: string
+          variable: model
+        - value_selector:
+          - '1756864683426'
+          - prompt
+          value_type: string
+          variable: prompt
+        - value_selector:
+          - env
+          - url
+          value_type: string
+          variable: url
+      height: 53
+      id: '1757431303396'
+      position:
+        x: 704
+        y: 441.9308145928902
+      positionAbsolute:
+        x: 704
+        y: 441.9308145928902
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: -476.61194213377917
+      y: -73.60016597976414
+      zoom: 1.2311444194486532

@@ -30,6 +30,7 @@
 
 | DSL清单名称                              | 工作流显示                         | 用到技术                                                     | 更新时间                                                 | 作者                                       | 适用dify版本                               |
 | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------------------------------------- |
+| 免费玩转即梦 4.0 多图生成！Dify 工作流从搭建到使用全攻略，附案例效果.yml | ![img](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/QQ_1757435159234.png) | http请求，即梦逆向API | 2025年9月10日 | wwwzhouhui | 1.8.1 |
 | 零代码用 Dify 使用梦 AI 3.0 多模态模型，免费生成影视级视频.yml | ![image-20250903101226356](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250903101226356.png) | http请求，即梦逆向API | 2025年9月3日 | wwwzhouhui | 1.6.0 |
 | 手把手教你用Dify调用Google最新AI画图神器.yml | ![img](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/QQ_1756611137642.png) | LLM、代码处理、Nano-Banana插件（自己开发的） | 2025年8月31日 | wwwzhouhui | 1.6.0 |
 | 5分钟搭建智能思维导图系统！Dify + MCP工具实战教程.yml | ![img](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/QQ_1756384000747.png) | LLM、Agent、代码处理、MCP-SSE插件 | 2025年8月28日 | wwwzhouhui | 1.6.0 |
@@ -134,6 +135,8 @@
 
 
 ## 更新说明
+2025年9月10 日-version 0.0.3.46：增加 免费玩转即梦 4.0 多图生成！Dify 工作流从搭建到使用全攻略，附案例效果.yml
+
 2025年9月3 日-version 0.0.3.45：增加 零代码用 Dify 使用梦 AI 3.0 多模态模型，免费生成影视级视频.yml
 
 2025年8月31 日-version 0.0.3.44：增加之前开发的3款dify 插件free_edgetts、nano_banana、qwen_text2image。
@@ -559,9 +562,17 @@ WORKFLOW_FILE_UPLOAD_LIMIT=10<br>
 
 ## 技术交流群
 
-![image-20250828221957554](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250828221957554.png)
+![Screenshot_20250910_081256_com.tencent.mm](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Screenshot_20250910_081256_com.tencent.mm.jpg)
 
-![img](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Screenshot_20250903_135638_com.tencent.mm.jpg)
+##  打赏
+
+   支付宝
+
+![image-20250914152823776](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250914152823776.png)
+
+  微信
+
+![image-20250914152855543](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250914152855543.png)
 
 ## Star History
 
