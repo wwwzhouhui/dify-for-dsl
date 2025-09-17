@@ -562,7 +562,7 @@ WORKFLOW_FILE_UPLOAD_LIMIT=10<br>
 
 ## 技术交流群
 
-![Screenshot_20250910_081256_com.tencent.mm](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Screenshot_20250910_081256_com.tencent.mm.jpg)
+![image-20250917210417696](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250917210417696.png)
 
 ##  打赏
 
