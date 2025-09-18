@@ -1,0 +1,676 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 84-dify案例分享-零代码搞定 DIFY 插件开发：小白也能上手的文生图+图生图插件实战
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: package
+  value:
+    plugin_unique_identifier: wwwzhouhui/qwen_text2image:0.0.2@38fce818d770ed6553ef3f675cc03080e5d24d2350f9de69a7c5f1e06750bb46
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/modelscope:0.0.4@5a3245e52b864fa8a20686baf5add2f5517eae5f11f94419bf46edbe170731e8
+kind: app
+version: 0.4.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 500
+        batch_count_limit: 50
+        file_size_limit: 100
+        image_file_size_limit: 100
+        video_file_size_limit: 500
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: answer
+      id: 1755657278812-source-answer-target
+      source: '1755657278812'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: if-else
+      id: 1755656337314-source-1758013994341-target
+      source: '1755656337314'
+      sourceHandle: source
+      target: '1758013994341'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: tool
+      id: 1758013994341-1c99ba47-4ec8-4204-9e78-dfd5ee8a0649-1758014170342-target
+      source: '1758013994341'
+      sourceHandle: 1c99ba47-4ec8-4204-9e78-dfd5ee8a0649
+      target: '1758014170342'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: answer
+      id: 1758014170342-source-1758014210056-target
+      source: '1758014170342'
+      sourceHandle: source
+      target: '1758014210056'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1758013994341-true-1758121786438-target
+      source: '1758013994341'
+      sourceHandle: 'true'
+      target: '1758121786438'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: tool
+      id: 1758121786438-source-1755657278812-target
+      source: '1758121786438'
+      sourceHandle: source
+      target: '1755657278812'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - label: 类型
+          max_length: 48
+          options:
+          - 文生图
+          - 图生图
+          required: true
+          type: select
+          variable: type
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - image
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: 图片
+          max_length: 48
+          options: []
+          required: false
+          type: file
+          variable: picture
+      height: 115
+      id: '1755656337314'
+      position:
+        x: -350
+        y: 282
+      positionAbsolute:
+        x: -350
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1755657278812.text#}}
+
+          {{#1755657278812.files#}}
+
+          '
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 123
+      id: answer
+      position:
+        x: 1022
+        y: 100
+      positionAbsolute:
+        x: 1022
+        y: 100
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: The text prompt to generate image from. Describe what you want
+              to see in the image in detail. For example "A golden cat sitting on
+              a red sofa in a cozy living room".
+            ja_JP: The text prompt to generate image from. Describe what you want
+              to see in the image in detail. For example "A golden cat sitting on
+              a red sofa in a cozy living room".
+            pt_BR: The text prompt to generate image from. Describe what you want
+              to see in the image in detail. For example "A golden cat sitting on
+              a red sofa in a cozy living room".
+            zh_Hans: The text prompt to generate image from. Describe what you want
+              to see in the image in detail. For example "A golden cat sitting on
+              a red sofa in a cozy living room".
+          label:
+            en_US: Prompt
+            ja_JP: Prompt
+            pt_BR: Prompt
+            zh_Hans: Prompt
+          llm_description: Text prompt that describes the desired image content in
+            detail. The more specific and descriptive, the better the generated image
+            quality.
+          max: null
+          min: null
+          name: prompt
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: Qwen/Qwen-Image
+          form: form
+          human_description:
+            en_US: The AI model to use for image generation. Qwen-Image is the default
+              and recommended model.
+            ja_JP: The AI model to use for image generation. Qwen-Image is the default
+              and recommended model.
+            pt_BR: The AI model to use for image generation. Qwen-Image is the default
+              and recommended model.
+            zh_Hans: The AI model to use for image generation. Qwen-Image is the default
+              and recommended model.
+          label:
+            en_US: Model
+            ja_JP: Model
+            pt_BR: Model
+            zh_Hans: Model
+          llm_description: ''
+          max: null
+          min: null
+          name: model
+          options:
+          - icon: ''
+            label:
+              en_US: Qwen-Image (Recommended)
+              ja_JP: Qwen-Image (Recommended)
+              pt_BR: Qwen-Image (Recommended)
+              zh_Hans: Qwen-Image (Recommended)
+            value: Qwen/Qwen-Image
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        params:
+          model: ''
+          prompt: ''
+        provider_id: wwwzhouhui/qwen_text2image/modelscope
+        provider_name: wwwzhouhui/qwen_text2image/modelscope
+        provider_type: builtin
+        selected: false
+        title: Text to Image
+        tool_configurations:
+          model:
+            type: constant
+            value: Qwen/Qwen-Image
+        tool_description: Generate high-quality images from text prompts using ModelScope
+          Qwen-Image AI model. Support various image styles and detailed descriptions.
+        tool_label: Text to Image
+        tool_name: text2image
+        tool_parameters:
+          prompt:
+            type: mixed
+            value: '{{#1758121786438.text#}}'
+        type: tool
+        version: '2'
+      height: 89
+      id: '1755657278812'
+      position:
+        x: 647
+        y: 100
+      positionAbsolute:
+        x: 647
+        y: 100
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: 3c826b80-6c30-48c9-86b6-69c5de3f02af
+            value: 文生图
+            varType: string
+            variable_selector:
+            - '1755656337314'
+            - type
+          id: 'true'
+          logical_operator: and
+        - case_id: 1c99ba47-4ec8-4204-9e78-dfd5ee8a0649
+          conditions:
+          - comparison_operator: is
+            id: 7d74d3c6-b6db-40b8-bdb3-ef84652ed86b
+            value: 图生图
+            varType: string
+            variable_selector:
+            - '1755656337314'
+            - type
+          - comparison_operator: not empty
+            id: 2217fabb-742c-4226-9b0f-f3cc9df9063e
+            value: ''
+            varType: file
+            variable_selector:
+            - '1755656337314'
+            - picture
+            - url
+          id: 1c99ba47-4ec8-4204-9e78-dfd5ee8a0649
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 条件分支
+        type: if-else
+      height: 199
+      id: '1758013994341'
+      position:
+        x: 37
+        y: 273
+      positionAbsolute:
+        x: 37
+        y: 273
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: The text prompt describing the changes you want to make to the
+              image. For example "turn the girl's hair blue" or "change the background
+              to a beach scene".
+            ja_JP: The text prompt describing the changes you want to make to the
+              image. For example "turn the girl's hair blue" or "change the background
+              to a beach scene".
+            pt_BR: The text prompt describing the changes you want to make to the
+              image. For example "turn the girl's hair blue" or "change the background
+              to a beach scene".
+            zh_Hans: 描述您想要对图像进行的更改的文本提示。例如"把女孩的头发变成蓝色"或"将背景改为海滩场景"。
+          label:
+            en_US: Edit Prompt
+            ja_JP: Edit Prompt
+            pt_BR: Edit Prompt
+            zh_Hans: 编辑提示词
+          llm_description: Text prompt that describes the specific changes or edits
+            to apply to the input image. Be specific about what elements to modify.
+          max: null
+          min: null
+          name: prompt
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: The URL of the image to edit. This should be a publicly accessible
+              image URL (http/https).
+            ja_JP: The URL of the image to edit. This should be a publicly accessible
+              image URL (http/https).
+            pt_BR: The URL of the image to edit. This should be a publicly accessible
+              image URL (http/https).
+            zh_Hans: 要编辑的图像URL。这应该是一个公开可访问的图像URL（http/https）。
+          label:
+            en_US: Image URL
+            ja_JP: Image URL
+            pt_BR: Image URL
+            zh_Hans: 图像URL
+          llm_description: The URL of the source image that will be edited according
+            to the prompt. Must be a valid HTTP/HTTPS URL pointing to an image file.
+          max: null
+          min: null
+          name: image_url
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: Qwen/Qwen-Image-Edit
+          form: form
+          human_description:
+            en_US: The AI model to use for image editing. Qwen-Image-Edit is specialized
+              for image editing tasks.
+            ja_JP: The AI model to use for image editing. Qwen-Image-Edit is specialized
+              for image editing tasks.
+            pt_BR: The AI model to use for image editing. Qwen-Image-Edit is specialized
+              for image editing tasks.
+            zh_Hans: 用于图像编辑的 AI 模型。Qwen-Image-Edit 专门用于图像编辑任务。
+          label:
+            en_US: Model
+            ja_JP: Model
+            pt_BR: Model
+            zh_Hans: 模型
+          llm_description: ''
+          max: null
+          min: null
+          name: model
+          options:
+          - icon: ''
+            label:
+              en_US: Qwen-Image-Edit (Recommended)
+              ja_JP: Qwen-Image-Edit (Recommended)
+              pt_BR: Qwen-Image-Edit (Recommended)
+              zh_Hans: Qwen-Image-Edit (推荐)
+            value: Qwen/Qwen-Image-Edit
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        params:
+          image_url: ''
+          model: ''
+          prompt: ''
+        provider_id: wwwzhouhui/qwen_text2image/modelscope
+        provider_name: wwwzhouhui/qwen_text2image/modelscope
+        provider_type: builtin
+        selected: false
+        title: 图生图
+        tool_configurations:
+          model:
+            type: constant
+            value: Qwen/Qwen-Image-Edit
+        tool_description: 使用 ModelScope Qwen-Image-Edit AI 模型基于文本提示编辑和修改现有图像。上传图像并描述您想要的更改。
+        tool_label: 图生图
+        tool_name: image2image
+        tool_node_version: '2'
+        tool_parameters:
+          image_url:
+            type: mixed
+            value: '{{#1755656337314.picture.url#}}'
+          prompt:
+            type: mixed
+            value: '{{#sys.query#}}'
+        type: tool
+      height: 89
+      id: '1758014170342'
+      position:
+        x: 476
+        y: 383
+      positionAbsolute:
+        x: 476
+        y: 383
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1758014170342.text#}}
+
+          {{#1758014170342.files#}}'
+        desc: ''
+        selected: false
+        title: 直接回复 2
+        type: answer
+        variables: []
+      height: 123
+      id: '1758014210056'
+      position:
+        x: 826
+        y: 383
+      positionAbsolute:
+        x: 826
+        y: 383
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Qwen/Qwen3-Coder-30B-A3B-Instruct
+          provider: langgenius/modelscope/modelscope
+        prompt_template:
+        - id: ddbd9b9f-72e3-45a6-8904-3b7b185b3fdd
+          role: system
+          text: '# Role: Qwen-Image文生图提示词专家
+
+
+            ## Profile
+
+            - Author: 周辉
+
+            - Version: 1.0
+
+            - Language: 中文
+
+            - Description: 专业的Qwen-Image文生图提示词编写专家，擅长根据用户需求生成高质量、结构化的图像生成提示词
+
+
+            ## Skills
+
+            1. 熟练掌握Qwen-Image模型的提示词规则和特点
+
+            2. 能够将用户模糊描述转化为精确的结构化提示词
+
+            3. 擅长运用万能模版骨架进行提示词构建
+
+            4. 精通正向表达技巧，避免否定词使用
+
+            5. 熟悉各种艺术风格和拍摄技法的专业术语
+
+
+            ## Rules
+
+            1. 严格遵循"抓重点、补特征、写文字、定风格、理空间、正向写、去赘余"七大核心要点
+
+            2. 必须使用万能模版骨架：[主体] + [环境/背景] + [构图/镜头] + [风格/质感] + [光线/色调] + [空间/关系] +
+            [需生成文字]
+
+            3. 所有否定表达必须转换为正向表达
+
+            4. 人物描述必须包含姿态和表情
+
+            5. 物体描述必须包含材质和颜色
+
+            6. 文字内容用引号标明，并说明位置和字体
+
+            7. 空间关系要明确（左上右下、前后层级）
+
+            8. 避免描述画面中不存在的元素
+
+
+            ## Workflow
+
+            1. **需求分析**：理解用户的图像需求，识别关键元素
+
+            2. **要素提取**：从用户描述中提取主体、背景、风格等核心要素
+
+            3. **结构构建**：按照万能模版骨架组织提示词结构
+
+            4. **正向优化**：将所有否定表达转换为正向描述
+
+            5. **细节补充**：为人物补充姿态表情，为物体补充材质颜色
+
+            6. **质量检查**：确保提示词符合七大核心要点
+
+
+            ## OutputFormat
+
+            ```
+
+            【提示词】：[按万能模版骨架生成的完整提示词]
+
+
+            【解析说明】：
+
+            - 主体：[说明主体描述要点]
+
+            - 环境背景：[说明背景设定]
+
+            - 构图镜头：[说明拍摄角度和构图]
+
+            - 风格质感：[说明艺术风格]
+
+            - 光线色调：[说明光影效果]
+
+            - 空间关系：[说明元素位置布局]
+
+            - 文字要求：[如有文字需求，说明内容和样式]
+
+            ```
+
+
+            ## Example
+
+            用户需求：我想要一张可爱的小女孩在花园里的照片
+
+
+            【提示词】：一位5岁小女孩，扎着双马尾，灿烂笑容，穿粉色连衣裙，站在五彩花园中，中景竖构图，童趣插画风格，温暖金色阳光，女孩居中偏右，花朵环绕四周，"Happy
+            Garden"文字位于左上角，手写体、浅蓝色
+
+
+            【解析说明】：
+
+            - 主体：5岁小女孩，补充了发型、表情、服装等特征
+
+            - 环境背景：五彩花园，明确了背景元素
+
+            - 构图镜头：中景竖构图，适合人物拍摄
+
+            - 风格质感：童趣插画风格，符合主题调性
+
+            - 光线色调：温暖金色阳光，营造愉悦氛围
+
+            - 空间关系：女孩居中偏右，花朵环绕，层次清晰
+
+            - 文字要求：指定了文字内容、位置、字体和颜色
+
+
+            ## Initialization
+
+            你好！我是Qwen-Image文生图提示词专家。我将根据Qwen-Image的特点和最佳实践，为您生成高质量的文生图提示词。
+
+
+            请告诉我您想要生成什么样的图像，我会运用专业的结构化方法，为您量身定制精准的提示词。无论是人物、风景、静物还是抽象艺术，我都能帮您转化为Qwen-Image能够完美理解的描述语言。'
+        - id: 61e4b080-6246-4a56-bc48-58ea3b14e87f
+          role: user
+          text: 请根据用户输入的{{#sys.query#}}扩展这个文生图提示词
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1758121786438'
+      position:
+        x: 308
+        y: 100
+      positionAbsolute:
+        x: 308
+        y: 100
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 245
+      y: 117
+      zoom: 1
