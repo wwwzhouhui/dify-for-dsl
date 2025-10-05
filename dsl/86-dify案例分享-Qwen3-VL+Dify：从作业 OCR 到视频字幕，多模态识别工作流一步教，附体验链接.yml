@@ -1,0 +1,460 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 86-dify案例分享-Qwen3-VL+Dify：从作业 OCR 到视频字幕，多模态识别工作流一步教，附体验链接
+  use_icon_as_answer_icon: false
+dependencies: []
+kind: app
+version: 0.4.0
+workflow:
+  conversation_variables: []
+  environment_variables:
+  - description: ''
+    id: f0a01507-2ccc-4d18-8a7f-51576ac1c27c
+    name: apikey
+    selector:
+    - env
+    - apikey
+    value: sk-zhouhui1122444
+    value_type: string
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 500
+        batch_count_limit: 50
+        file_size_limit: 100
+        image_file_size_limit: 100
+        video_file_size_limit: 500
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: http-request
+        targetType: code
+      id: 1759550367488-source-1759579779803-target
+      source: '1759550367488'
+      sourceHandle: source
+      target: '1759579779803'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: answer
+      id: 1759579779803-source-answer-target
+      source: '1759579779803'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: if-else
+      id: 1759550301577-source-1759580723856-target
+      source: '1759550301577'
+      sourceHandle: source
+      target: '1759580723856'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: http-request
+      id: 1759580723856-true-1759550367488-target
+      source: '1759580723856'
+      sourceHandle: 'true'
+      target: '1759550367488'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: http-request
+      id: 1759580723856-false-1759580771575-target
+      source: '1759580723856'
+      sourceHandle: 'false'
+      target: '1759580771575'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: http-request
+        targetType: code
+      id: 1759580771575-source-1759581319855-target
+      source: '1759580771575'
+      sourceHandle: source
+      target: '1759581319855'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: answer
+      id: 1759581319855-source-1759581134675-target
+      source: '1759581319855'
+      sourceHandle: source
+      target: '1759581134675'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - image
+          - audio
+          - video
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: 文件
+          max_length: 48
+          options: []
+          required: true
+          type: file
+          variable: file
+        - default: ''
+          hint: ''
+          label: 类型
+          max_length: 48
+          options:
+          - 文件、图片
+          - 视频
+          placeholder: ''
+          required: true
+          type: select
+          variable: type
+      height: 115
+      id: '1759550301577'
+      position:
+        x: -256
+        y: 282
+      positionAbsolute:
+        x: -256
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: '{{#1759579779803.result#}}'
+        desc: ''
+        selected: true
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 104
+      id: answer
+      position:
+        x: 1059
+        y: 259
+      positionAbsolute:
+        x: 1059
+        y: 259
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data:
+          - file:
+            - '1759550301577'
+            - file
+            id: key-value-149
+            key: video
+            type: file
+            value: ''
+          - id: key-value-166
+            key: model
+            type: text
+            value: qwen3-vl-plus
+          - id: key-value-185
+            key: prompt
+            type: text
+            value: '{{#sys.query#}}'
+          - id: key-value-204
+            key: stream
+            type: text
+            value: 'false'
+          - id: key-value-231
+            key: enable_thinking
+            type: text
+            value: 'false'
+          - id: key-value-9
+            key: ''
+            type: text
+            value: ''
+          type: form-data
+        desc: ''
+        headers: Authorization:Bearer {{#env.apikey#}}
+        method: POST
+        params: ''
+        retry_config:
+          max_retries: '1'
+          retry_enabled: false
+          retry_interval: 100
+        selected: false
+        ssl_verify: true
+        timeout:
+          connect: 300
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+          read: 300
+          write: 300
+        title: HTTP 请求
+        type: http-request
+        url: http://14.103.204.132:8005/v1/video/upload_and_chat
+        variables: []
+      height: 109
+      id: '1759550367488'
+      position:
+        x: 413
+        y: 259
+      positionAbsolute:
+        x: 413
+        y: 259
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "def main(arg1: str) -> str:\n    import json\n    data = json.loads(arg1)\n\
+          \    content = data['choices'][0]['message']['content']\n    return {\"\
+          result\": content}"
+        code_language: python3
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行
+        type: code
+        variables:
+        - value_selector:
+          - '1759550367488'
+          - body
+          value_type: string
+          variable: arg1
+      height: 53
+      id: '1759579779803'
+      position:
+        x: 744
+        y: 259
+      positionAbsolute:
+        x: 744
+        y: 259
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: 82ba9a40-674d-42fa-ae70-81b78e226abe
+            value: 视频
+            varType: string
+            variable_selector:
+            - '1759550301577'
+            - type
+          id: 'true'
+          logical_operator: and
+        selected: false
+        title: 条件分支
+        type: if-else
+      height: 125
+      id: '1759580723856'
+      position:
+        x: 73
+        y: 277
+      positionAbsolute:
+        x: 73
+        y: 277
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data:
+          - file:
+            - '1759550301577'
+            - file
+            id: key-value-562
+            key: image
+            type: file
+            value: ''
+          - id: key-value-593
+            key: model
+            type: text
+            value: qwen3-vl-plus
+          - id: key-value-628
+            key: prompt
+            type: text
+            value: '{{#sys.query#}}'
+          - id: key-value-679
+            key: stream
+            type: text
+            value: 'false'
+          - id: key-value-777
+            key: enable_thinking
+            type: text
+            value: 'false'
+          - id: key-value-149
+            key: ''
+            type: text
+            value: ''
+          type: form-data
+        headers: Authorization:Bearer {{#env.apikey#}}
+        method: POST
+        params: ''
+        retry_config:
+          max_retries: 3
+          retry_enabled: false
+          retry_interval: 100
+        selected: false
+        ssl_verify: true
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: HTTP 请求 2
+        type: http-request
+        url: http://14.103.204.132:8005/v1/image/upload_and_chat
+        variables: []
+      height: 109
+      id: '1759580771575'
+      position:
+        x: 413
+        y: 406
+      positionAbsolute:
+        x: 413
+        y: 406
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: '{{#1759581319855.result#}}'
+        selected: false
+        title: 直接回复 2
+        type: answer
+        variables: []
+      height: 104
+      id: '1759581134675'
+      position:
+        x: 1059
+        y: 406
+      positionAbsolute:
+        x: 1059
+        y: 406
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "def main(arg1: str) -> str:\n    import json\n    data = json.loads(arg1)\n\
+          \    content = data['choices'][0]['message']['content']\n    return {\"\
+          result\": content}"
+        code_language: python3
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行2
+        type: code
+        variables:
+        - value_selector:
+          - '1759580771575'
+          - body
+          value_type: string
+          variable: arg1
+      height: 53
+      id: '1759581319855'
+      position:
+        x: 744
+        y: 406
+      positionAbsolute:
+        x: 744
+        y: 406
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: -218
+      y: 30.5
+      zoom: 1
+  rag_pipeline_variables: []
