@@ -30,7 +30,9 @@
 
 | DSL清单名称                              | 工作流显示                         | 用到技术                                                     | 更新时间                                                 | 作者                                       | 适用dify版本                               |
 | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------------------------------------- |
-| 免费玩转 AI 绘图！Dify 整合 Qwen-Image，文生图  图生图一步到位.yml | ![image-20250918160207497](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250918160207497.png) | 条件判断、qwen-image插件、LLM大语言模型 | 2025年9月17日 | wwwzhouhui | 1.8.1 |
+| Qwen3-VL+Dify：从作业 OCR 到视频字幕，多模态识别工作流一步教.yml | ![img](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/QQ_1759591072414.png) | http请求，代码处理，qwen-reverse逆向接口 | 2025年10月5日 | wwwzhouhui | 1.9.1 |
+| 不用等 OpenAI 邀请，Dify+Sora2工作流实测：写实动漫视频随手做，插件+教程全送.yml | ![img](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/QQ_1759380654355.png) | sora2插件（自己开发的）、代码处理 | 2025年10月2日 | wwwzhouhui | 1.8.1 |
+| 免费玩转 AI 绘图！Dify 整合 Qwen-Image，文生图  图生图一步到位.yml | ![image-20250918160207497](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250918160207497.png) | 条件判断、qw接口en-image插件、LLM大语言模型 | 2025年9月17日 | wwwzhouhui | 1.8.1 |
 | 免费玩转即梦 4.0 多图生成！Dify 工作流从搭建到使用全攻略，附案例效果.yml | ![img](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/QQ_1757435159234.png) | http请求，即梦逆向API | 2025年9月10日 | wwwzhouhui | 1.8.1 |
 | 零代码用 Dify 使用梦 AI 3.0 多模态模型，免费生成影视级视频.yml | ![image-20250903101226356](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250903101226356.png) | http请求，即梦逆向API | 2025年9月3日 | wwwzhouhui | 1.6.0 |
 | 手把手教你用Dify调用Google最新AI画图神器.yml | ![img](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/QQ_1756611137642.png) | LLM、代码处理、Nano-Banana插件（自己开发的） | 2025年8月31日 | wwwzhouhui | 1.6.0 |
@@ -136,6 +138,11 @@
 
 
 ## 更新说明
+
+2025年10月5 日-version 0.0.3.47：增加 Qwen3-VL+Dify：从作业 OCR 到视频字幕，多模态识别工作流一步教，附体验链接.yml 使用到的第三方源码可以参考我另外项目https://github.com/wwwzhouhui/qwen3-reverse
+
+2025年10月2 日-version 0.0.3.46：增加 Dify+Sora2工作流实测：写实动漫视频随手做，插件+教程全送.yml 使用到的第三方插件源码可以参考我另外项https://github.com/wwwzhouhui/sora2
+
 2025年9月18 日-version 0.0.3.45：增加 免费玩转 AI 绘图！Dify 整合 Qwen-Image，文生图  图生图一步到位.yml
 
 2025年9月10 日-version 0.0.3.46：增加 免费玩转即梦 4.0 多图生成！Dify 工作流从搭建到使用全攻略，附案例效果.yml
@@ -565,7 +572,7 @@ WORKFLOW_FILE_UPLOAD_LIMIT=10<br>
 
 ## 技术交流群
 
-![image-20250917210417696](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250917210417696.png)
+![image-20251002155137889](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20251002155137889.png)
 
 ##  打赏
 

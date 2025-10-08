@@ -1,0 +1,298 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 85-dify案例分享-不用等 OpenAI 邀请，Dify+Sora2工作流实测：写实动漫视频随手做，插件+教程全送
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: package
+  value:
+    plugin_unique_identifier: wwwzhouhui/sora2_text2video:0.0.1@18c39a33deb7075f65a2e06673a30283aa7955147a4d94b14b71e9e88f35f0aa
+kind: app
+version: 0.4.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 500
+        batch_count_limit: 50
+        file_size_limit: 100
+        image_file_size_limit: 100
+        video_file_size_limit: 500
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: tool
+      id: 1755656337314-source-1759375946052-target
+      source: '1755656337314'
+      sourceHandle: source
+      target: '1759375946052'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: code
+      id: 1759375946052-source-1759377397508-target
+      source: '1759375946052'
+      sourceHandle: source
+      target: '1759377397508'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: answer
+      id: 1759377397508-source-1758014210056-target
+      source: '1759377397508'
+      sourceHandle: source
+      target: '1758014210056'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables: []
+      height: 53
+      id: '1755656337314'
+      position:
+        x: -387
+        y: 276
+      positionAbsolute:
+        x: -387
+        y: 276
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: '{{#1759375946052.text#}}
+
+          {{#1759377397508.result#}}'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 123
+      id: '1758014210056'
+      position:
+        x: 612
+        y: 276
+      positionAbsolute:
+        x: 612
+        y: 276
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: The text prompt to generate video from. Describe the scene, actions,
+              and visual details you want to see in the video. For example "A golden
+              retriever playing in a sunny park with children running around".
+            ja_JP: The text prompt to generate video from. Describe the scene, actions,
+              and visual details you want to see in the video. For example "A golden
+              retriever playing in a sunny park with children running around".
+            pt_BR: The text prompt to generate video from. Describe the scene, actions,
+              and visual details you want to see in the video. For example "A golden
+              retriever playing in a sunny park with children running around".
+            zh_Hans: 用于生成视频的文本提示。详细描述您希望在视频中看到的场景、动作和视觉细节。例如"一只金毛犬在阳光明媚的公园里玩耍,周围有孩子们在奔跑"。
+          label:
+            en_US: Prompt
+            ja_JP: Prompt
+            pt_BR: Prompt
+            zh_Hans: 提示词
+          llm_description: Text prompt that describes the desired video content in
+            detail. The more specific and descriptive about scenes, actions, camera
+            movements, lighting, and atmosphere, the better the generated video quality.
+          max: null
+          min: null
+          name: prompt
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: landscape
+          form: form
+          human_description:
+            en_US: Video orientation format. Landscape (16:9) is suitable for computer
+              viewing, portrait for mobile devices.
+            ja_JP: Video orientation format. Landscape (16:9) is suitable for computer
+              viewing, portrait for mobile devices.
+            pt_BR: Video orientation format. Landscape (16:9) is suitable for computer
+              viewing, portrait for mobile devices.
+            zh_Hans: 视频方向格式。横屏(16:9)适合电脑观看,竖屏适合移动设备。
+          label:
+            en_US: Orientation
+            ja_JP: Orientation
+            pt_BR: Orientation
+            zh_Hans: 视频方向
+          llm_description: ''
+          max: null
+          min: null
+          name: orientation
+          options:
+          - icon: ''
+            label:
+              en_US: Landscape (16:9)
+              ja_JP: Landscape (16:9)
+              pt_BR: Landscape (16:9)
+              zh_Hans: 横屏 (16:9)
+            value: landscape
+          - icon: ''
+            label:
+              en_US: Portrait (9:16)
+              ja_JP: Portrait (9:16)
+              pt_BR: Portrait (9:16)
+              zh_Hans: 竖屏 (9:16)
+            value: portrait
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        params:
+          orientation: ''
+          prompt: ''
+        provider_id: wwwzhouhui/sora2_text2video/sora2
+        provider_name: wwwzhouhui/sora2_text2video/sora2
+        provider_type: builtin
+        selected: false
+        title: 文生视频
+        tool_configurations:
+          orientation:
+            type: constant
+            value: portrait
+        tool_description: 使用 302.AI Sora-2 AI 模型从文本提示生成高质量视频。支持各种视频风格和详细场景描述。
+        tool_label: 文生视频
+        tool_name: text2video
+        tool_node_version: '2'
+        tool_parameters:
+          prompt:
+            type: mixed
+            value: '{{#sys.query#}}'
+        type: tool
+      height: 89
+      id: '1759375946052'
+      position:
+        x: -42
+        y: 276
+      positionAbsolute:
+        x: -42
+        y: 276
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "import re\n\ndef main(arg1: str) -> dict:\n    \"\"\"\n    从插件返回的字符串中提取视频URL并返回markdown格式\n\
+          \n    Args:\n        arg1: 插件返回的包含视频URL的字符串\n\n    Returns:\n        包含markdown视频链接的字符串\n\
+          \    \"\"\"\n    # 使用正则表达式提取视频URL\n    # 匹配 https://filesystem.site/...src.mp4?...\
+          \ 格式的URL\n    url_pattern = r'https://filesystem\\.site/[^\\s]+src\\.mp4\\\
+          ?[^\\s\U0001F389\U0001F4A1\\n]+'\n    url_match = re.search(url_pattern,\
+          \ arg1)\n\n    if url_match:\n        video_url = url_match.group(0)\n \
+          \       # 返回markdown格式的视频链接\n        markdown_result = f\"[![视频预览]({video_url})]({video_url})\\\
+          n\\n[\U0001F3AC 点击观看视频]({video_url})\"\n        return {\"result\": markdown_result}\n\
+          \    else:\n        return {\"result\": \"❌ 未找到视频URL\"}"
+        code_language: python3
+        default_value:
+        - key: result
+          type: string
+          value: ''
+        desc: ''
+        error_strategy: default-value
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行
+        type: code
+        variables:
+        - value_selector:
+          - '1759375946052'
+          - text
+          value_type: string
+          variable: arg1
+      height: 89
+      id: '1759377397508'
+      position:
+        x: 291
+        y: 276
+      positionAbsolute:
+        x: 291
+        y: 276
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: 571
+      y: 105
+      zoom: 1
