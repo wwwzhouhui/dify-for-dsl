@@ -30,6 +30,7 @@
 
 | DSL清单名称                              | 工作流显示                         | 用到技术                                                     | 更新时间                                                 | 作者                                       | 适用dify版本                               |
 | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------------------------------------- |
+| 用 Dify 一键生成教学动画 HTML！AI 助力，3 分钟搞定专业级课件.yml | ![img](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/QQ_1761561917533.png.png) | 开始、LLM大语言模型、代码执行、直接回复 | 2025年10月27日 | wwwzhouhui | 1.9.2 |
 | Qwen3-VL+Dify：从作业 OCR 到视频字幕，多模态识别工作流一步教.yml | ![img](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/QQ_1759591072414.png) | http请求，代码处理，qwen-reverse逆向接口 | 2025年10月5日 | wwwzhouhui | 1.9.1 |
 | 不用等 OpenAI 邀请，Dify+Sora2工作流实测：写实动漫视频随手做，插件+教程全送.yml | ![img](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/QQ_1759380654355.png) | sora2插件（自己开发的）、代码处理 | 2025年10月2日 | wwwzhouhui | 1.8.1 |
 | 免费玩转 AI 绘图！Dify 整合 Qwen-Image，文生图  图生图一步到位.yml | ![image-20250918160207497](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/image-20250918160207497.png) | 条件判断、qw接口en-image插件、LLM大语言模型 | 2025年9月17日 | wwwzhouhui | 1.8.1 |
@@ -138,6 +139,8 @@
 
 
 ## 更新说明
+
+2025年10月27 日-version 0.0.3.48：增加 用 Dify 一键生成教学动画 HTML！AI 助力，3 分钟搞定专业级课件.yml
 
 2025年10月5 日-version 0.0.3.47：增加 Qwen3-VL+Dify：从作业 OCR 到视频字幕，多模态识别工作流一步教，附体验链接.yml 使用到的第三方源码可以参考我另外项目https://github.com/wwwzhouhui/qwen3-reverse
 
@@ -572,7 +575,7 @@ WORKFLOW_FILE_UPLOAD_LIMIT=10<br>
 
 ## 技术交流群
 
-![微信图片_20251021221955_58_292](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20251021221955_58_292.jpg)
+
 
 ##  打赏
 

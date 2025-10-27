@@ -1,0 +1,321 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 87-dify案例分享-用 Dify 一键生成教学动画 HTML！AI 助力，3 分钟搞定专业级课件
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.16@77274df8fe2632cac66bfd153fcc75aa5e96abbe92b5c611b8984ad9f4cd4457
+    version: null
+kind: app
+version: 0.4.0
+workflow:
+  conversation_variables: []
+  environment_variables:
+  - description: ''
+    id: 37c0fd7e-ba1f-4417-9cb6-2e719b9238c0
+    name: apiurl
+    selector:
+    - env
+    - apiurl
+    value: http://14.103.204.132:8080/generate-html/
+    value_type: string
+  - description: ''
+    id: 7149dc92-db46-4db9-bb7a-f46830becdac
+    name: apikey
+    selector:
+    - env
+    - apikey
+    value: sk-zhouhui1122444
+    value_type: string
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 500
+        batch_count_limit: 50
+        file_size_limit: 100
+        image_file_size_limit: 100
+        video_file_size_limit: 500
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: answer
+      id: 1750930181769-source-1750931224218-target
+      source: '1750930181769'
+      sourceHandle: source
+      target: '1750931224218'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1750772983167-source-1750930181769-target
+      source: '1750772983167'
+      sourceHandle: source
+      target: '1750930181769'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: start
+        targetType: llm
+      id: 1750771695281-source-1750772983167-target
+      source: '1750771695281'
+      sourceHandle: source
+      target: '1750772983167'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables: []
+      height: 53
+      id: '1750771695281'
+      position:
+        x: 201.00000000000006
+        y: 299.00000000000006
+      positionAbsolute:
+        x: 201.00000000000006
+        y: 299.00000000000006
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: gemini-2.5-pro
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 6cd19724-8b18-43bd-a927-e6364ba97815
+          role: system
+          text: "# Role: 精美动态动画生成专家\n\n## Profile\n- author: 周辉\n- version: 2.0\n\
+            - language: 中文\n- description: 专注于生成符合2K分辨率标准的、视觉精美的、自动播放的教育动画HTML页面，确保所有元素正确布局且无视觉缺陷\n\
+            \n## Skills\n1. 精通HTML5、CSS3、JavaScript和SVG技术栈\n2. 擅长响应式布局和固定分辨率容器设计\n\
+            3. 熟练掌握动画时间轴编排和视觉叙事\n4. 精通浅色配色方案和现代UI设计美学\n5. 能够实现双语字幕和旁白式文字解说系统\n\n##\
+            \ Background\n用户需要生成一个完整的单文件HTML动画，用于知识点讲解。该动画必须在固定的2K分辨率容器（1280px × 720px）中完美呈现，避免任何布局错误、元素穿模或字幕遮挡问题。\n\
+            \n## Goals\n1. 生成视觉精美、设计感强的动态动画页面\n2. 确保所有元素在1280px × 720px容器内正确定位\n3.\
+            \ 实现清晰的开场、讲解过程和收尾结构\n4. 提供双语字幕和旁白式解说\n5. 在动画结束时插入完结标记供录制判断\n\n## Constraints\n\
+            1. 分辨率约束：所有内容必须在固定的1280px宽 × 720px高的容器内呈现\n2. 视觉完整性：禁止出现元素穿模、字幕遮挡、图形位置错误\n\
+            3. 技术栈：仅使用HTML + CSS + JS + SVG，不依赖外部库，资源尽量内嵌\n4. 自动播放：页面加载后立即开始播放，无交互按钮\n\
+            5. 单文件输出：所有资源内嵌在一个HTML文件中\n6. 完结标记：动画结束时必须执行指定的JavaScript完结逻辑\n\n## OutputFormat\n\
+            请严格输出以下结构的完整HTML文档，并使用代码块包裹（```html 开头，``` 结尾）：\n```html\n<!DOCTYPE html>\n\
+            <html lang=\\\"zh-CN\\\">\n<head>\n  <meta charset=\\\"UTF-8\\\"> \n \
+            \ <meta name=\\\"viewport\\\" content=\\\"width=device-width, initial-scale=1.0\\\
+            \">\n  <title>{{{{主题标题}}}}</title>\n  <style>\n    /* 确保容器固定为2K分辨率 */\n\
+            \    :root {{\n      --bg: #f6f7fb;\n      --panel: #ffffff;\n      --text:\
+            \ #223;\n      --accent: #4a90e2;\n      --sub: #7b8ba8;\n    }}\n   \
+            \ html, body {{ height: 100%; }}\n    body {{\n      margin: 0; padding:\
+            \ 0; display: flex; justify-content: center; align-items: center;\n  \
+            \    min-height: 100vh; background: var(--bg); overflow: hidden; color:\
+            \ var(--text);\n      font-family: -apple-system, BlinkMacSystemFont,\
+            \ 'Inter', 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft\
+            \ YaHei', sans-serif;\n    }}\n    #animation-container {{\n      position:\
+            \ relative; width: 1280px; height: 720px; background: var(--panel); overflow:\
+            \ hidden;\n      box-shadow: 0 0 50px rgba(0,0,0,0.08); border-radius:\
+            \ 20px;\n    }}\n    /* 建议的字幕区域（底部居中，150-200px 高） */\n    .subtitles {{\
+            \ position: absolute; left: 0; right: 0; bottom: 40px; height: 180px;\
+            \ display: flex; align-items: center; justify-content: center; pointer-events:\
+            \ none; }}\n    .subtitles .line {{\n      background: rgba(255,255,255,0.85);\
+            \ color: #111; border-radius: 12px; padding: 18px 24px; font-size: 40px;\
+            \ line-height: 1.3; max-width: 80%; text-align: center; box-shadow: 0\
+            \ 8px 24px rgba(0,0,0,.08);\n    }}\n    /* 其他样式... */\n  </style>\n \
+            \ </head>\n  <body>\n    <div id=\\\"animation-container\\\">\n      <!--\
+            \ 在此放置SVG/图形/讲解元素，确保关键视觉位于中心区域的60-70%，保留20-30px安全边距 -->\n      <div class=\\\
+            \"subtitles\\\"><div id=\\\"sub-cn\\\" class=\\\"line\\\"></div></div>\n\
+            \      <div class=\\\"subtitles\\\" style=\\\"bottom: 240px;\\\"><div\
+            \ id=\\\"sub-en\\\" class=\\\"line\\\"></div></div>\n    </div>\n    <script>\n\
+            \      // 动画逻辑示例：请在此实现开场(5-10s) → 讲解(30-60s) → 收尾(5-10s) 的时间轴\n      //\
+            \ 并确保元素动画流畅、无穿模，与字幕同步。\n\n      function setSubtitles(cn, en) {{\n   \
+            \     const cnEl = document.getElementById('sub-cn');\n        const enEl\
+            \ = document.getElementById('sub-en');\n        if (cnEl) cnEl.textContent\
+            \ = cn || '';\n        if (enEl) enEl.textContent = en || '';\n      }}\n\
+            \n      // 动画结束时的完结标记（必须包含）\n      function markAnimationFinished() {{\n\
+            \        try {{\n          window.playFinished = true;\n          window.dispatchEvent(new\
+            \ Event('recording:finished'));\n          var flag = document.createElement('div');\n\
+            \          flag.id = 'finished-flag';\n          flag.style.display =\
+            \ 'none';\n          document.body.appendChild(flag);\n        }} catch\
+            \ (e) {{ /* no-op */ }}\n      }}\n\n      // 请在最后一个动画结束后调用 markAnimationFinished();\n\
+            \      // markAnimationFinished();\n    </script>\n  </body>\n</html>\n\
+            ```\n\n## Workflows\n1. 接收主题：获取用户指定的知识点主题（本次主题：{{#sys.query#}}）。\n2. 结构规划：设计开场（5-10秒）→\
+            \ 核心讲解（30-60秒）→ 收尾（5-10秒）的时间轴。\n3. 视觉设计：选择和谐浅色配色，精准布局到 1280×720 容器，字幕区域底部居中。\n\
+            4. 动画编排：用CSS动画/JS控制时间轴，保证流畅与无穿模，字幕与视觉同步。\n5. 完结逻辑：在最后一个动画完成后必须调用 markAnimationFinished()。\n\
+            6. 质量检查：元素不越界、字幕不遮挡关键视觉、配色和谐易读。\n7. 输出交付：仅输出完整单文件HTML，并用 ```html 代码块包裹。\n\
+            \n## Suggestions\n1. 使用CSS Grid或Flexbox精确控制1280×720容器内的布局。\n2. 字幕字号建议32-48px，确保2K分辨率下清晰可读。\n\
+            3. 关键视觉元素应占据容器中心区域的60-70%。\n4. 使用CSS变量统一管理配色方案。\n5. 动画总时长建议40-90秒。\n6.\
+            \ 关键内容保持20-30px安全边距，防止溢出。\n\n## Output Rule\n- 仅输出完整、可直接保存为 .html 的单文件源码。\n\
+            - 必须使用 ```html 代码块包裹；不得输出说明文字或多余内容。"
+        - id: 1d7c7040-80b2-46a2-b6c9-acc6c75ac119
+          role: user
+          text: 请根据用户输入的信息{{#sys.query#}}生成HTML代码
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1750772983167'
+      position:
+        x: 573.0198086136584
+        y: 299.00000000000006
+      positionAbsolute:
+        x: 573.0198086136584
+        y: 299.00000000000006
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "import json\nimport re\nimport time\nimport requests\n\ndef main(json_html:\
+          \ str, apikey: str,apiurl: str) -> dict:\n    try:\n        # 去除输入字符串中的\
+          \ ```html 和 ``` 标记\n        match = re.search(r'```html\\s*([\\s\\S]*?)```',\
+          \ json_html, re.DOTALL)\n        \n        if match:\n            # group(1)\
+          \ 获取第一个捕获组的内容，即纯HTML代码\n            # .strip() 去除可能存在的前后空白\n           \
+          \ html_content = match.group(1).strip()\n        else:\n            # 如果在输入中找不到HTML代码块，则返回错误\n\
+          \            raise ValueError(\"未能在输入中找到 ```html ... ``` 代码块。\")\n     \
+          \   \n        # 生成时间戳，确保文件名唯一\n        timestamp = int(time.time())\n  \
+          \      filename = f\"makehtml_{timestamp}.html\"\n        \n        # API端点（假设本地运行）\n\
+          \        url = f\"{apiurl}\"\n        \n        # 请求数据\n        payload\
+          \ = {\n            \"html_content\": html_content,\n            \"filename\"\
+          : filename  # 使用传入的文件名\n        }\n        \n        # 设置请求头（包含认证token）\n\
+          \        headers = {\n            \"Authorization\": f\"Bearer {apikey}\"\
+          ,  # 替换为实际的认证token\n            \"Content-Type\": \"application/json\"\n\
+          \        }\n        \n        try:\n            # 发送POST请求\n           \
+          \ response = requests.post(url, json=payload, headers=headers)\n       \
+          \     \n            # 检查响应状态\n            if response.status_code == 200:\n\
+          \                result = response.json()\n                html_url = result.get(\"\
+          html_url\", \"\")\n                generated_filename = result.get(\"filename\"\
+          , \"\")\n                \n                # 返回结果\n                return\
+          \ {\n                    \"html_url\": html_url,\n                    \"\
+          filename\": generated_filename,\n                    \"markdown_result\"\
+          :  f\"[点击查看]({html_url})\"\n                }\n            else:\n     \
+          \           raise Exception(f\"HTTP Error: {response.status_code}, Message:\
+          \ {response.text}\")\n        \n        except requests.exceptions.RequestException\
+          \ as e:\n            raise Exception(f\"Request failed: {str(e)}\")\n  \
+          \  \n    except Exception as e:\n        return {\n            \"error\"\
+          : f\"Error: {str(e)}\"\n        }"
+        code_language: python3
+        desc: ''
+        outputs:
+          filename:
+            children: null
+            type: string
+          html_url:
+            children: null
+            type: string
+          markdown_result:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行
+        type: code
+        variables:
+        - value_selector:
+          - '1750772983167'
+          - text
+          variable: json_html
+        - value_selector:
+          - env
+          - apikey
+          variable: apikey
+        - value_selector:
+          - env
+          - apiurl
+          variable: apiurl
+      height: 53
+      id: '1750930181769'
+      position:
+        x: 911.1758624394756
+        y: 299.00000000000006
+      positionAbsolute:
+        x: 911.1758624394756
+        y: 299.00000000000006
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: ' {{#1750930181769.html_url#}}
+
+          {{#1750930181769.markdown_result#}}'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 123
+      id: '1750931224218'
+      position:
+        x: 1264.144168657622
+        y: 299.00000000000006
+      positionAbsolute:
+        x: 1264.144168657622
+        y: 299.00000000000006
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: -613.2153203500561
+      y: -22.735268852778944
+      zoom: 1.5157165815395615
+  rag_pipeline_variables: []
