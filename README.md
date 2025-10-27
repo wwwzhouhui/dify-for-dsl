@@ -575,7 +575,7 @@ WORKFLOW_FILE_UPLOAD_LIMIT=10<br>
 
 ## 技术交流群
 
-
+![image-20251027223530664](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20251027223530664.png)
 
 ##  打赏
 
