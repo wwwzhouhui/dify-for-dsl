@@ -3,13 +3,14 @@ app:
   icon: 🤖
   icon_background: '#FFEAD5'
   mode: advanced-chat
-  name: 85-dify案例分享-不用等 OpenAI 邀请，Dify+Sora2工作流实测：写实动漫视频随手做，插件+教程全送
+  name: 85-dify案例分享-不用等 OpenAI 邀请，Dify+Sora2工作流实测：写实动漫视频随手做，插件+教程全送2
   use_icon_as_answer_icon: false
 dependencies:
 - current_identifier: null
   type: package
   value:
-    plugin_unique_identifier: wwwzhouhui/sora2_text2video:0.0.1@18c39a33deb7075f65a2e06673a30283aa7955147a4d94b14b71e9e88f35f0aa
+    plugin_unique_identifier: wwwzhouhui/sora2_text2video:0.0.3@3c5bac1546d3a6f8d2138d4d41ef3e59ad9475f45023a382149dd713a7628784
+    version: null
 kind: app
 version: 0.4.0
 workflow:
@@ -73,23 +74,11 @@ workflow:
       type: custom
       zIndex: 0
     - data:
-        isInIteration: false
         isInLoop: false
         sourceType: tool
-        targetType: code
-      id: 1759375946052-source-1759377397508-target
-      source: '1759375946052'
-      sourceHandle: source
-      target: '1759377397508'
-      targetHandle: target
-      type: custom
-      zIndex: 0
-    - data:
-        isInLoop: false
-        sourceType: code
         targetType: answer
-      id: 1759377397508-source-1758014210056-target
-      source: '1759377397508'
+      id: 1759375946052-source-1758014210056-target
+      source: '1759375946052'
       sourceHandle: source
       target: '1758014210056'
       targetHandle: target
@@ -101,8 +90,26 @@ workflow:
         selected: false
         title: 开始
         type: start
-        variables: []
-      height: 53
+        variables:
+        - default: ''
+          hint: ''
+          label: 图片
+          max_length: 256
+          options: []
+          placeholder: ''
+          required: false
+          type: text-input
+          variable: picturs
+        - default: ''
+          hint: ''
+          label: 提示词
+          max_length: 256
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: prompt
+      height: 115
       id: '1755656337314'
       position:
         x: -387
@@ -110,29 +117,27 @@ workflow:
       positionAbsolute:
         x: -387
         y: 276
-      selected: false
+      selected: true
       sourcePosition: right
       targetPosition: left
       type: custom
       width: 242
     - data:
-        answer: '{{#1759375946052.text#}}
-
-          {{#1759377397508.result#}}'
+        answer: '{{#1759375946052.text#}}'
         desc: ''
         selected: false
         title: 直接回复
         type: answer
         variables: []
-      height: 123
+      height: 104
       id: '1758014210056'
       position:
-        x: 612
+        x: 358
         y: 276
       positionAbsolute:
-        x: 612
+        x: 358
         y: 276
-      selected: true
+      selected: false
       sourcePosition: right
       targetPosition: left
       type: custom
@@ -224,68 +229,46 @@ workflow:
         selected: false
         title: 文生视频
         tool_configurations:
+          duration:
+            type: constant
+            value: '15'
+          input_reference:
+            type: constant
+            value: null
+          model:
+            type: constant
+            value: sora-2
           orientation:
             type: constant
-            value: portrait
-        tool_description: 使用 302.AI Sora-2 AI 模型从文本提示生成高质量视频。支持各种视频风格和详细场景描述。
+            value: landscape
+          private:
+            type: constant
+            value: 'true'
+          size:
+            type: constant
+            value: large
+          watermark:
+            type: constant
+            value: 'false'
+        tool_description: 使用 3模型从文本提示生成高质量视频。支持各种视频风格和详细场景描述。
         tool_label: 文生视频
         tool_name: text2video
         tool_node_version: '2'
         tool_parameters:
+          image_urls:
+            type: mixed
+            value: '{{#1755656337314.picturs#}}'
           prompt:
             type: mixed
-            value: '{{#sys.query#}}'
+            value: '{{#1755656337314.prompt#}}'
         type: tool
-      height: 89
+      height: 245
       id: '1759375946052'
       position:
-        x: -42
+        x: -31
         y: 276
       positionAbsolute:
-        x: -42
-        y: 276
-      selected: false
-      sourcePosition: right
-      targetPosition: left
-      type: custom
-      width: 242
-    - data:
-        code: "import re\n\ndef main(arg1: str) -> dict:\n    \"\"\"\n    从插件返回的字符串中提取视频URL并返回markdown格式\n\
-          \n    Args:\n        arg1: 插件返回的包含视频URL的字符串\n\n    Returns:\n        包含markdown视频链接的字符串\n\
-          \    \"\"\"\n    # 使用正则表达式提取视频URL\n    # 匹配 https://filesystem.site/...src.mp4?...\
-          \ 格式的URL\n    url_pattern = r'https://filesystem\\.site/[^\\s]+src\\.mp4\\\
-          ?[^\\s\U0001F389\U0001F4A1\\n]+'\n    url_match = re.search(url_pattern,\
-          \ arg1)\n\n    if url_match:\n        video_url = url_match.group(0)\n \
-          \       # 返回markdown格式的视频链接\n        markdown_result = f\"[![视频预览]({video_url})]({video_url})\\\
-          n\\n[\U0001F3AC 点击观看视频]({video_url})\"\n        return {\"result\": markdown_result}\n\
-          \    else:\n        return {\"result\": \"❌ 未找到视频URL\"}"
-        code_language: python3
-        default_value:
-        - key: result
-          type: string
-          value: ''
-        desc: ''
-        error_strategy: default-value
-        outputs:
-          result:
-            children: null
-            type: string
-        selected: false
-        title: 代码执行
-        type: code
-        variables:
-        - value_selector:
-          - '1759375946052'
-          - text
-          value_type: string
-          variable: arg1
-      height: 89
-      id: '1759377397508'
-      position:
-        x: 291
-        y: 276
-      positionAbsolute:
-        x: 291
+        x: -31
         y: 276
       selected: false
       sourcePosition: right
@@ -293,6 +276,7 @@ workflow:
       type: custom
       width: 242
     viewport:
-      x: 571
-      y: 105
+      x: 499
+      y: 111.5
       zoom: 1
+  rag_pipeline_variables: []
