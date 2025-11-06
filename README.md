@@ -572,8 +572,9 @@ WORKFLOW_FILE_UPLOAD_LIMIT=10<br>
 修改后记得重启dify，重启后的效果如下 <br>
 <img src="https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/QQ_1755928851955.png" ><br>
 </details>
-
 ## 技术交流群
+
+![微信图片_20251106202546_65_292](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20251106202546_65_292.jpg)
 
 ![微信图片_20251103212128_63_292](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20251103212128_63_292.jpg)
 
