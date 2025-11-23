@@ -1,0 +1,420 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 88-dify案例分享-国内首发！手把手教你用Dify调用Nano Banana2AI画图
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: package
+  value:
+    plugin_unique_identifier: wwwzhouhui/nano_banana2_text2image:0.0.1@4069e9bfe87735fcd0276e08b84eefdd87fb05e82aa5228ef44df17390a8239b
+    version: null
+kind: app
+version: 0.4.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 500
+        batch_count_limit: 50
+        file_size_limit: 100
+        image_file_size_limit: 100
+        video_file_size_limit: 500
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: tool
+      id: 1763885255660-source-1763885273656-target
+      source: '1763885255660'
+      sourceHandle: source
+      target: '1763885273656'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: answer
+      id: 1763885273656-source-answer-target
+      source: '1763885273656'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        selected: false
+        title: 开始
+        type: start
+        variables: []
+      height: 53
+      id: '1763885255660'
+      position:
+        x: 80
+        y: 282
+      positionAbsolute:
+        x: 80
+        y: 282
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: '{{#1763885273656.text#}}
+
+          {{#1763885273656.files#}}'
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 123
+      id: answer
+      position:
+        x: 740
+        y: 282
+      positionAbsolute:
+        x: 740
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        is_team_authorization: true
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: The text prompt to generate image from. Describe what you want
+              to see in the image in detail. For example "A golden cat sitting on
+              a red sofa in a cozy living room with warm lighting".
+            ja_JP: The text prompt to generate image from. Describe what you want
+              to see in the image in detail. For example "A golden cat sitting on
+              a red sofa in a cozy living room with warm lighting".
+            pt_BR: The text prompt to generate image from. Describe what you want
+              to see in the image in detail. For example "A golden cat sitting on
+              a red sofa in a cozy living room with warm lighting".
+            zh_Hans: 用于生成图像的文本提示。详细描述您希望在图像中看到的内容。例如"一只金色的猫坐在温暖灯光下舒适客厅的红色沙发上"。
+          label:
+            en_US: Image Prompt
+            ja_JP: Image Prompt
+            pt_BR: Image Prompt
+            zh_Hans: 图像提示词
+          llm_description: Text prompt that describes the desired image content in
+            detail. The more specific and descriptive, the better the generated image
+            quality.
+          max: null
+          min: null
+          name: prompt
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: Optional negative prompt describing what you don't want in the
+              image. For example "blurry, low quality, distorted".
+            ja_JP: Optional negative prompt describing what you don't want in the
+              image. For example "blurry, low quality, distorted".
+            pt_BR: Optional negative prompt describing what you don't want in the
+              image. For example "blurry, low quality, distorted".
+            zh_Hans: 可选的负向提示词,描述您不想在图像中出现的内容。例如"模糊,低质量,扭曲"。
+          label:
+            en_US: Negative Prompt (Optional)
+            ja_JP: Negative Prompt (Optional)
+            pt_BR: Negative Prompt (Optional)
+            zh_Hans: 负向提示词(可选)
+          llm_description: Negative prompt to specify what should not appear in the
+            generated image.
+          max: null
+          min: null
+          name: negative_prompt
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: 1
+          form: form
+          human_description:
+            en_US: Number of images to generate (1-4). Higher numbers will take more
+              time and consume more credits.
+            ja_JP: Number of images to generate (1-4). Higher numbers will take more
+              time and consume more credits.
+            pt_BR: Number of images to generate (1-4). Higher numbers will take more
+              time and consume more credits.
+            zh_Hans: 生成图像的数量(1-4)。数量越多,耗时越长,消耗的额度也越多。
+          label:
+            en_US: Number of Images
+            ja_JP: Number of Images
+            pt_BR: Number of Images
+            zh_Hans: 图像数量
+          llm_description: How many images to generate from the prompt.
+          max: 4
+          min: 1
+          name: num_images
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: number
+        - auto_generate: null
+          default: 0.7
+          form: form
+          human_description:
+            en_US: Creativity level (0.0-1.0). Higher values produce more creative
+              and diverse results.
+            ja_JP: Creativity level (0.0-1.0). Higher values produce more creative
+              and diverse results.
+            pt_BR: Creativity level (0.0-1.0). Higher values produce more creative
+              and diverse results.
+            zh_Hans: 创造力水平(0.0-1.0)。数值越高,生成的结果越有创意和多样性。
+          label:
+            en_US: Temperature
+            ja_JP: Temperature
+            pt_BR: Temperature
+            zh_Hans: 创造力参数
+          llm_description: Controls the randomness/creativity of generation. 0.0 is
+            most deterministic, 1.0 is most creative.
+          max: 1
+          min: 0
+          name: temperature
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: number
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: Image aspect ratio. Choose the ratio that best fits your needs.
+            ja_JP: Image aspect ratio. Choose the ratio that best fits your needs.
+            pt_BR: Image aspect ratio. Choose the ratio that best fits your needs.
+            zh_Hans: 图像宽高比。选择最适合您需求的比例。
+          label:
+            en_US: Aspect Ratio (Optional)
+            ja_JP: Aspect Ratio (Optional)
+            pt_BR: Aspect Ratio (Optional)
+            zh_Hans: 宽高比(可选)
+          llm_description: The aspect ratio of the generated image.
+          max: null
+          min: null
+          name: aspect_ratio
+          options:
+          - icon: ''
+            label:
+              en_US: Square (1:1)
+              ja_JP: Square (1:1)
+              pt_BR: Square (1:1)
+              zh_Hans: 正方形 (1:1)
+            value: '1:1'
+          - icon: ''
+            label:
+              en_US: Landscape (16:9)
+              ja_JP: Landscape (16:9)
+              pt_BR: Landscape (16:9)
+              zh_Hans: 横向 (16:9)
+            value: '16:9'
+          - icon: ''
+            label:
+              en_US: Portrait (9:16)
+              ja_JP: Portrait (9:16)
+              pt_BR: Portrait (9:16)
+              zh_Hans: 纵向 (9:16)
+            value: '9:16'
+          - icon: ''
+            label:
+              en_US: Standard (4:3)
+              ja_JP: Standard (4:3)
+              pt_BR: Standard (4:3)
+              zh_Hans: 标准 (4:3)
+            value: '4:3'
+          - icon: ''
+            label:
+              en_US: Portrait Standard (3:4)
+              ja_JP: Portrait Standard (3:4)
+              pt_BR: Portrait Standard (3:4)
+              zh_Hans: 纵向标准 (3:4)
+            value: '3:4'
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: Image style. Different styles produce different artistic effects.
+            ja_JP: Image style. Different styles produce different artistic effects.
+            pt_BR: Image style. Different styles produce different artistic effects.
+            zh_Hans: 图像风格。不同的风格产生不同的艺术效果。
+          label:
+            en_US: Style (Optional)
+            ja_JP: Style (Optional)
+            pt_BR: Style (Optional)
+            zh_Hans: 风格(可选)
+          llm_description: The artistic style to apply to the generated image.
+          max: null
+          min: null
+          name: style
+          options:
+          - icon: ''
+            label:
+              en_US: Realistic
+              ja_JP: Realistic
+              pt_BR: Realistic
+              zh_Hans: 写实风格
+            value: realistic
+          - icon: ''
+            label:
+              en_US: Anime
+              ja_JP: Anime
+              pt_BR: Anime
+              zh_Hans: 动漫风格
+            value: anime
+          - icon: ''
+            label:
+              en_US: Oil Painting
+              ja_JP: Oil Painting
+              pt_BR: Oil Painting
+              zh_Hans: 油画风格
+            value: oil-painting
+          - icon: ''
+            label:
+              en_US: Watercolor
+              ja_JP: Watercolor
+              pt_BR: Watercolor
+              zh_Hans: 水彩风格
+            value: watercolor
+          - icon: ''
+            label:
+              en_US: Sketch
+              ja_JP: Sketch
+              pt_BR: Sketch
+              zh_Hans: 素描风格
+            value: sketch
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        params:
+          aspect_ratio: ''
+          negative_prompt: ''
+          num_images: ''
+          prompt: ''
+          style: ''
+          temperature: ''
+        provider_id: wwwzhouhui/nano_banana2_text2image/nano_banana2
+        provider_name: wwwzhouhui/nano_banana2_text2image/nano_banana2
+        provider_type: builtin
+        selected: false
+        title: Nano Banana2 文生图
+        tool_configurations:
+          api_provider:
+            type: constant
+            value: gemai
+          aspect_ratio:
+            type: constant
+            value: '16:9'
+          negative_prompt:
+            type: mixed
+            value: null
+          num_images:
+            type: constant
+            value: 1
+          style:
+            type: constant
+            value: anime
+          temperature:
+            type: constant
+            value: 0.7
+        tool_description: 使用聚鑫 API 的 Gemini 3 Pro Image Preview 模型从文本提示生成高质量图像。支持负向提示词、宽高比和多种风格。
+        tool_label: Nano Banana2 文生图
+        tool_name: text2image
+        tool_node_version: '2'
+        tool_parameters:
+          prompt:
+            type: mixed
+            value: '{{#sys.query#}}'
+        type: tool
+      height: 219
+      id: '1763885273656'
+      position:
+        x: 382
+        y: 282
+      positionAbsolute:
+        x: 382
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: 290
+      y: -55
+      zoom: 1
+  rag_pipeline_variables: []
