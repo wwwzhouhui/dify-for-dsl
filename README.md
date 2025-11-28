@@ -577,13 +577,9 @@ WORKFLOW_FILE_UPLOAD_LIMIT=10<br>
 </details>
 ## 技术交流群
 
-![image-20251122214700783](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20251122214700783.png)
+![image-20251128204957278](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20251128204957278.png)
 
 ##  打赏
-
-   支付宝
-
-![image-20250914152823776](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250914152823776.png)
 
   微信
 
