@@ -4,23 +4,21 @@ app:
   icon: 🤖
   icon_background: '#FFEAD5'
   mode: advanced-chat
-  name: 基于上市公司财报分析结果html分析报告（整合MinerU+edgeone-pages-mcp）
+  name: 51-dify案例分享-探秘：AI 怎样颠覆财报分析，打造酷炫 HTML 可视化2
   use_icon_as_answer_icon: false
 dependencies:
 - current_identifier: null
   type: marketplace
   value:
-    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.14@4e4b6c2e3080245d91e509ed44e62fb6e7886ffca9eede1d093ad47ad420d704
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.16@77274df8fe2632cac66bfd153fcc75aa5e96abbe92b5c611b8984ad9f4cd4457
+    version: null
 - current_identifier: null
   type: marketplace
   value:
-    marketplace_plugin_unique_identifier: langgenius/modelscope:0.0.4@5a3245e52b864fa8a20686baf5add2f5517eae5f11f94419bf46edbe170731e8
-- current_identifier: null
-  type: marketplace
-  value:
-    marketplace_plugin_unique_identifier: langgenius/mineru:0.2.0@5ec4527d658becf0b3c0946c2a6f4328fa43fd270e2d1f1713af4a6748ac4b61
+    marketplace_plugin_unique_identifier: langgenius/mineru:0.5.1@ccf545b476c0771707ea21122f9342ebe24d2a44ae040268665b41a9ca9f37fe
+    version: null
 kind: app
-version: 0.1.5
+version: 0.5.0
 workflow:
   conversation_variables: []
   environment_variables:
@@ -65,8 +63,8 @@ workflow:
       enabled: false
       fileUploadConfig:
         audio_file_size_limit: 500
-        batch_count_limit: 5
-        file_size_limit: 15
+        batch_count_limit: 50
+        file_size_limit: 100
         image_file_size_limit: 100
         video_file_size_limit: 500
         workflow_file_upload_limit: 10
@@ -118,30 +116,6 @@ workflow:
       type: custom
       zIndex: 0
     - data:
-        isInIteration: false
-        isInLoop: false
-        sourceType: llm
-        targetType: parameter-extractor
-      id: 1747105630044-source-1747108879039-target
-      source: '1747105630044'
-      sourceHandle: source
-      target: '1747108879039'
-      targetHandle: target
-      type: custom
-      zIndex: 0
-    - data:
-        isInIteration: false
-        isInLoop: false
-        sourceType: parameter-extractor
-        targetType: code
-      id: 1747108879039-source-1747128616679-target
-      source: '1747108879039'
-      sourceHandle: source
-      target: '1747128616679'
-      targetHandle: target
-      type: custom
-      zIndex: 0
-    - data:
         isInLoop: false
         sourceType: code
         targetType: answer
@@ -149,6 +123,17 @@ workflow:
       source: '1747128616679'
       sourceHandle: source
       target: '1747106481971'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1747105630044-source-1747128616679-target
+      source: '1747105630044'
+      sourceHandle: source
+      target: '1747128616679'
       targetHandle: target
       type: custom
       zIndex: 0
@@ -171,7 +156,7 @@ workflow:
           required: true
           type: file
           variable: file
-      height: 89
+      height: 110
       id: '1747105418724'
       position:
         x: 80
@@ -179,11 +164,11 @@ workflow:
       positionAbsolute:
         x: 80
         y: 282
-      selected: true
+      selected: false
       sourcePosition: right
       targetPosition: left
       type: custom
-      width: 243
+      width: 242
     - data:
         desc: ''
         is_team_authorization: true
@@ -462,13 +447,27 @@ workflow:
         selected: false
         title: Parse File
         tool_configurations:
-          enable_formula: 1
-          enable_ocr: 1
-          enable_table: 1
-          extra_formats: '[]'
-          language: auto
-          layout_model: doclayout_yolo
-          parse_method: ocr
+          enable_formula:
+            type: constant
+            value: 1
+          enable_ocr:
+            type: constant
+            value: 1
+          enable_table:
+            type: constant
+            value: 1
+          extra_formats:
+            type: constant
+            value: '[]'
+          language:
+            type: constant
+            value: auto
+          layout_model:
+            type: constant
+            value: doclayout_yolo
+          parse_method:
+            type: constant
+            value: ocr
         tool_label: Parse File
         tool_name: parse-file
         tool_parameters:
@@ -478,29 +477,32 @@ workflow:
             - '1747105418724'
             - file
         type: tool
+        version: '2'
       height: 245
       id: '1747105471978'
       position:
-        x: 383
-        y: 282
+        x: 381.61083089756914
+        y: 293.00338911316544
       positionAbsolute:
-        x: 383
-        y: 282
+        x: 381.61083089756914
+        y: 293.00338911316544
       selected: false
       sourcePosition: right
       targetPosition: left
       type: custom
-      width: 243
+      width: 242
     - data:
         context:
           enabled: false
           variable_selector: []
         desc: ''
         model:
-          completion_params: {}
+          completion_params:
+            enable_thinking: false
+            max_tokens: 32768
           mode: chat
-          name: Qwen/Qwen3-235B-A22B
-          provider: langgenius/modelscope/modelscope
+          name: MiniMax-M2.1
+          provider: langgenius/openai_api_compatible/openai_api_compatible
         prompt_template:
         - id: 88f086b9-ac53-4dd3-b8d2-263eba8292a2
           role: system
@@ -581,16 +583,16 @@ workflow:
       height: 89
       id: '1747105630044'
       position:
-        x: 723.1615746404361
+        x: 771.1763634978852
         y: 282
       positionAbsolute:
-        x: 723.1615746404361
+        x: 771.1763634978852
         y: 282
       selected: false
       sourcePosition: right
       targetPosition: left
       type: custom
-      width: 243
+      width: 242
     - data:
         answer: '{{#1747105471978.text#}}
 
@@ -601,82 +603,67 @@ workflow:
         title: 直接回复
         type: answer
         variables: []
-      height: 122
+      height: 123
       id: '1747106481971'
       position:
-        x: 1714.4137107987392
-        y: 287.59189067367566
-      positionAbsolute:
-        x: 1714.4137107987392
-        y: 287.59189067367566
-      selected: false
-      sourcePosition: right
-      targetPosition: left
-      type: custom
-      width: 243
-    - data:
-        desc: ''
-        instruction: 请提取大模输出的html部分代码，其他的不需要
-        model:
-          completion_params:
-            temperature: 0.7
-          mode: chat
-          name: gemini-2.5-flash-preview-04-17
-          provider: langgenius/openai_api_compatible/openai_api_compatible
-        parameters:
-        - description: 大模型生成的html代码
-          name: html
-          required: false
-          type: string
-        query:
-        - '1747105630044'
-        - text
-        reasoning_mode: prompt
-        selected: false
-        title: 参数提取器
-        type: parameter-extractor
-        variables: []
-        vision:
-          enabled: false
-      height: 89
-      id: '1747108879039'
-      position:
-        x: 1026.9278299313792
+        x: 1720.762006936122
         y: 282
       positionAbsolute:
-        x: 1026.9278299313792
+        x: 1720.762006936122
         y: 282
       selected: false
       sourcePosition: right
       targetPosition: left
       type: custom
-      width: 243
+      width: 242
     - data:
         code: "import json\nimport re\nimport time\nimport requests\n\ndef main(json_html:\
           \ str, apikey: str,apiurl: str,strtype: str) -> dict:\n    try:\n      \
-          \  # 去除输入字符串中的 ```html 和 ``` 标记\n        html_content = re.sub(r'^```html\\\
-          s*|\\s*```$', '', json_html, flags=re.DOTALL).strip()\n        \n      \
-          \  # 生成时间戳，确保文件名唯一\n        timestamp = int(time.time())\n        filename\
-          \ = f\"{strtype}_{timestamp}.html\"\n        \n        # API端点（假设本地运行）\n\
-          \        url = f\"{apiurl}\"\n        \n        # 请求数据\n        payload\
-          \ = {\n            \"html_content\": html_content,\n            \"filename\"\
-          : filename  # 使用传入的文件名\n        }\n        \n        # 设置请求头（包含认证token）\n\
-          \        headers = {\n            \"Authorization\": f\"Bearer {apikey}\"\
-          ,  # 替换为实际的认证token\n            \"Content-Type\": \"application/json\"\n\
-          \        }\n        \n        try:\n            # 发送POST请求\n           \
-          \ response = requests.post(url, json=payload, headers=headers)\n       \
-          \     \n            # 检查响应状态\n            if response.status_code == 200:\n\
-          \                result = response.json()\n                html_url = result.get(\"\
-          html_url\", \"\")\n                generated_filename = result.get(\"filename\"\
-          , \"\")\n                \n                # 返回结果\n                return\
-          \ {\n                    \"html_url\": html_url,\n                    \"\
-          filename\": generated_filename,\n                    \"markdown_result\"\
-          :  f\"[点击查看]({html_url})\"\n                }\n            else:\n     \
-          \           raise Exception(f\"HTTP Error: {response.status_code}, Message:\
-          \ {response.text}\")\n        \n        except requests.exceptions.RequestException\
-          \ as e:\n            raise Exception(f\"Request failed: {str(e)}\")\n  \
-          \  \n    except Exception as e:\n        return {\n            \"error\"\
-          : f\"Error: {str(e)}\"\n        }"
+          \  # --- 整合提取逻辑：提取所有 HTML 部分并合并 ---\n        # 1. 移除 <think> 块及其内容\n   \
+          \     content = re.sub(r'<think>[\\s\\S]*?</think>', '', json_html)\n  \
+          \      \n        extracted_parts = []\n\n        # 2. 提取所有 ```html ... ```\
+          \ 块\n        html_blocks = re.findall(r'```html\\s*([\\s\\S]*?)```', content,\
+          \ re.DOTALL)\n        if html_blocks:\n            extracted_parts.extend([block.strip()\
+          \ for block in html_blocks])\n        \n        # 3. 如果没找到 html 块，尝试提取所有\
+          \ ``` ... ``` 块（检查是否包含 html 标签）\n        if not extracted_parts:\n     \
+          \       generic_blocks = re.findall(r'```\\s*([\\s\\S]*?)```', content,\
+          \ re.DOTALL)\n            for block in generic_blocks:\n               \
+          \ if '<html' in block.lower() or '<!doctype html' in block.lower():\n  \
+          \                  extracted_parts.append(block.strip())\n        \n   \
+          \     # 4. 如果还没找到，尝试提取所有 <html>...</html> 标签对\n        if not extracted_parts:\n\
+          \            tag_matches = re.findall(r'(<!DOCTYPE html|<html)[\\s\\S]*?</html>',\
+          \ content, re.IGNORECASE | re.DOTALL)\n            if tag_matches:\n   \
+          \             # findall 对带括号的正则会返回捕获组，这里我们需要完整匹配\n                # 重新用\
+          \ search 获取完整匹配项（或者改正则）\n                full_matches = re.findall(r'((?:<!DOCTYPE\
+          \ html|<html)[\\s\\S]*?</html>)', content, re.IGNORECASE | re.DOTALL)\n\
+          \                extracted_parts.extend([m.strip() for m in full_matches])\n\
+          \n        # 5. 最后兜底：检查整个内容是否包含 html\n        if not extracted_parts:\n \
+          \           if '<html' in content.lower() and '</html>' in content.lower():\n\
+          \                extracted_parts.append(content.strip())\n\n        if not\
+          \ extracted_parts:\n            raise ValueError(\"未能在输入中识别到任何有效的 HTML 代码。\"\
+          )\n\n        # 整合所有提取的部分\n        html_content = \"\\n\\n\".join(extracted_parts)\n\
+          \        # --- 提取结束 ---\n        \n        # 生成时间戳，确保文件名唯一\n        timestamp\
+          \ = int(time.time())\n        filename = f\"{strtype}_{timestamp}.html\"\
+          \n        \n        # API端点（假设本地运行）\n        url = f\"{apiurl}\"\n     \
+          \   \n        # 请求数据\n        payload = {\n            \"html_content\"\
+          : html_content,\n            \"filename\": filename  # 使用传入的文件名\n      \
+          \  }\n        \n        # 设置请求头（包含认证token）\n        headers = {\n      \
+          \      \"Authorization\": f\"Bearer {apikey}\",  # 替换为实际的认证token\n     \
+          \       \"Content-Type\": \"application/json\"\n        }\n        \n  \
+          \      try:\n            # 发送POST请求\n            response = requests.post(url,\
+          \ json=payload, headers=headers)\n            \n            # 检查响应状态\n \
+          \           if response.status_code == 200:\n                result = response.json()\n\
+          \                html_url = result.get(\"html_url\", \"\")\n           \
+          \     generated_filename = result.get(\"filename\", \"\")\n            \
+          \    \n                # 返回结果\n                return {\n              \
+          \      \"html_url\": html_url,\n                    \"filename\": generated_filename,\n\
+          \                    \"markdown_result\":  f\"[点击查看]({html_url})\"\n   \
+          \             }\n            else:\n                raise Exception(f\"\
+          HTTP Error: {response.status_code}, Message: {response.text}\")\n      \
+          \  \n        except requests.exceptions.RequestException as e:\n       \
+          \     raise Exception(f\"Request failed: {str(e)}\")\n    \n    except Exception\
+          \ as e:\n        return {\n            \"error\": f\"Error: {str(e)}\"\n\
+          \        }"
         code_language: python3
         desc: ''
         outputs:
@@ -694,8 +681,9 @@ workflow:
         type: code
         variables:
         - value_selector:
-          - '1747108879039'
-          - html
+          - '1747105630044'
+          - text
+          value_type: string
           variable: json_html
         - value_selector:
           - env
@@ -712,17 +700,18 @@ workflow:
       height: 53
       id: '1747128616679'
       position:
-        x: 1368.7208399218582
-        y: 287.59189067367566
+        x: 1207.7867181392314
+        y: 282
       positionAbsolute:
-        x: 1368.7208399218582
-        y: 287.59189067367566
-      selected: false
+        x: 1207.7867181392314
+        y: 282
+      selected: true
       sourcePosition: right
       targetPosition: left
       type: custom
-      width: 243
+      width: 242
     viewport:
-      x: -482.59123578704975
-      y: 59.56446590001502
-      zoom: 0.7198547666012437
+      x: 248.26450455190547
+      y: 281.94432064783473
+      zoom: 0.6595507404720969
+  rag_pipeline_variables: []

@@ -30,6 +30,7 @@
 
 | DSL清单名称                              | 工作流显示                         | 用到技术                                                     | 更新时间                                                 | 作者                                       | 适用dify版本                               |
 | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------------------------------------- |
+| 88-dify案例分享-国内首发！手把手教你用Dify调用Nano Banana2AI画图.yml | ![工作流演示](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20251123175653189.png) | Nano Banana2插件、文生图、负向提示词、多风格支持 | 2025年11月23日 | wwwzhouhui | 1.9.2 |
 | 用 Dify 一键生成教学动画 HTML！AI 助力，3 分钟搞定专业级课件.yml | ![img](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/QQ_1761561917533.png.png) | 开始、LLM大语言模型、代码执行、直接回复 | 2025年10月27日 | wwwzhouhui | 1.9.2 |
 | Qwen3-VL+Dify：从作业 OCR 到视频字幕，多模态识别工作流一步教.yml | ![img](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/QQ_1759591072414.png) | http请求，代码处理，qwen-reverse逆向接口 | 2025年10月5日 | wwwzhouhui | 1.9.1 |
 | 不用等 OpenAI 邀请，Dify+Sora2工作流实测：写实动漫视频随手做，插件+教程全送.yml | ![img](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/QQ_1759380654355.png) | sora2插件（自己开发的）、代码处理 | 2025年10月2日 | wwwzhouhui | 1.8.1 |
@@ -139,6 +140,8 @@
 
 
 ## 更新说明
+
+2025年11月23日-version 0.0.3.49：增加 88-dify案例分享-国内首发！手把手教你用Dify调用Nano Banana2AI画图.yml，使用Nano Banana2插件实现文生图功能，支持负向提示词、多种宽高比(1:1, 16:9, 9:16等)和多种艺术风格(写实、动漫、油画、水彩、素描)。
 
 2025年10月27 日-version 0.0.3.48：增加 用 Dify 一键生成教学动画 HTML！AI 助力，3 分钟搞定专业级课件.yml
 
@@ -572,16 +575,11 @@ WORKFLOW_FILE_UPLOAD_LIMIT=10<br>
 修改后记得重启dify，重启后的效果如下 <br>
 <img src="https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/QQ_1755928851955.png" ><br>
 </details>
-
 ## 技术交流群
 
-![image-20251027223530664](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20251027223530664.png)
+![Screenshot_20251230_102112_com.tencent.mm](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Screenshot_20251230_102112_com.tencent.mm.jpg)
 
 ##  打赏
-
-   支付宝
-
-![image-20250914152823776](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20250914152823776.png)
 
   微信
 
