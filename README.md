@@ -577,13 +577,9 @@ WORKFLOW_FILE_UPLOAD_LIMIT=10<br>
 </details>
 ## 技术交流群
 
-![image-20260112235837157](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20260112235837157.png)
+![微信图片_20260119225444_115_292](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260119225444_115_292.jpg)
 
-![image-20260112235918809](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20260112235918809.png)
-
-![image-20260112235955193](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20260112235955193.png)
-
-![image-20260113000010873](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20260113000010873.png)
+![微信图片_20260119225423_114_292](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260119225423_114_292.jpg)
 
 ##  打赏
 
