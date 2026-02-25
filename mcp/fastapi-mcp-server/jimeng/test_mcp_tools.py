@@ -313,7 +313,7 @@ async def test_mcp_tools(url=MCP_URL):
                                             print("\nCould not find generate_video_mcp tool")
                                     else:
                                         print("\nNo tools found")
-                                except:
+                                except Exception:
                                     print("\nInvalid tools/list response format")
             except Exception as e:
                 print(f"\nError occurred: {e}")
