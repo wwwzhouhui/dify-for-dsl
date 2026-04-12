@@ -41,7 +41,7 @@ class EnhancedInvoiceProcessor:
                             t = si.find('.//{http://schemas.openxmlformats.org/spreadsheetml/2006/main}t')
                             if t is not None:
                                 shared_strings.append(t.text)
-                except:
+                except Exception:
                     pass
                 
                 with zip_file.open('xl/worksheets/sheet1.xml') as f:
@@ -63,7 +63,7 @@ class EnhancedInvoiceProcessor:
                                             row_data.append(shared_strings[idx])
                                         else:
                                             row_data.append(v.text)
-                                    except:
+                                    except Exception:
                                         row_data.append(v.text)
                                 else:
                                     row_data.append(v.text)
@@ -162,7 +162,7 @@ class EnhancedInvoiceProcessor:
                             if len(row) > 0 and row[0] == "合计":
                                 try:
                                     current_app["合计金额"] = float(row[5]) if len(row) > 5 and row[5] else 0.0
-                                except:
+                                except Exception:
                                     pass
                                 break
                             
@@ -303,7 +303,7 @@ def create_enhanced_invoice_preview(applications: List[Dict]) -> str:
     try:
         with open("fapiaosqd.css", "r", encoding="utf-8") as f:
             css_content = f.read()
-    except:
+    except Exception:
         pass
     
     html_content = f"""

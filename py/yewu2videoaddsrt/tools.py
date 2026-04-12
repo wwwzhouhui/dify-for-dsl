@@ -51,7 +51,7 @@ def create_short_video(video_path, time_list="", srt_str="", role="", pitch="+0H
     create_tts(srt_file=srt_file, dirname=dirname, role=role, rate=rate, pitch=pitch, insert_srt=insert_srt)
     try:
         Path(f'{dirname}/file.txt').unlink(missing_ok=True)
-    except:
+    except Exception:
         pass
 
 
@@ -171,7 +171,7 @@ def create_tts(*, srt_file, dirname, role="", rate='+0%', pitch="+0Hz", insert_s
         tmp_wav])
     try:
         Path(yuan_wav).unlink(missing_ok=True)
-    except:
+    except Exception:
         pass
     if insert_srt:
         # 软字幕
@@ -266,7 +266,7 @@ def create_tts(*, srt_file, dirname, role="", rate='+0%', pitch="+0Hz", insert_s
     os.chdir(ROOT_DIR)
     try:
         Path(tmp_wav).unlink(missing_ok=True)
-    except:
+    except Exception:
         pass
 
 

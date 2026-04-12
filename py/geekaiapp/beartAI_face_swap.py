@@ -95,7 +95,7 @@ class FaceSwapService:
             ]):
                 return True
             return False
-        except:
+        except Exception:
             return False
 
     @staticmethod

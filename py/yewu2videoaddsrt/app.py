@@ -170,7 +170,7 @@ class Gemini():
             finally:
                 try:
                     Path(self.audio_file).unlink(missing_ok=True)
-                except:
+                except Exception:
                     pass
 
     # 总结视频
@@ -222,7 +222,7 @@ class Gemini():
             finally:
                 try:
                     Path(self.audio_file).unlink(missing_ok=True)
-                except:
+                except Exception:
                     pass
 
     def run_jieshuo(self):
@@ -286,7 +286,7 @@ class Gemini():
             finally:
                 try:
                     Path(self.audio_file).unlink(missing_ok=True)
-                except:
+                except Exception:
                     pass
 
     def _extract_text_from_tag(self, text):
@@ -385,14 +385,14 @@ def _checkparam(rate='0', pitch='0'):
     try:
         pitch = int(pitch)
         pitch = f'+{pitch}' if pitch >= 0 else pitch
-    except:
+    except Exception:
         pitch = '+0'
     pitch = f'{pitch}Hz'
 
     try:
         rate = int(rate)
         rate = f'+{rate}' if rate >= 0 else rate
-    except:
+    except Exception:
         rate = '+0'
     rate = f'{rate}%'
     return rate, pitch
@@ -553,7 +553,7 @@ def openurl(url):
         try:
 
             webbrowser.open_new_tab(url)
-        except:
+        except Exception:
             pass
 
     threading.Thread(target=op).start()
