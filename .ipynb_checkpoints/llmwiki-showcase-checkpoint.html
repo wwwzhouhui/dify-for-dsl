@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Wiki - AI驱动的知识库构建系统</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --primary-light: #818cf8;
+            --secondary: #10b981;
+            --secondary-dark: #059669;
+            --accent: #f59e0b;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --bg-card-hover: #334155;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border: #334155;
+            --gradient-1: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
+            --gradient-2: linear-gradient(135deg, #10b981 0%, #14b8a6 100%);
+            --gradient-3: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+            --shadow-glow: 0 0 40px rgba(99, 102, 241, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* 背景动画 */
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 20% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(245, 158, 11, 0.05) 0%, transparent 50%);
+        }
+
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background-image:
+                linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        /* 导航栏 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-light);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-1);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .github-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .github-btn:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-glow);
+        }
+
+        /* Hero区域 */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: var(--primary-light);
+            margin-bottom: 2rem;
+        }
+
+        .hero-badge span {
+            background: var(--gradient-2);
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--primary-light) 50%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 700px;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            max-width: 600px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: var(--gradient-1);
+            border-radius: 12px;
+            color: white;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.5);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--primary);
+        }
+
+        /* 架构图动画 */
+        .architecture-visual {
+            margin-top: 4rem;
+            position: relative;
+        }
+
+        .arch-flow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .arch-node {
+            padding: 1.5rem 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .arch-node:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .arch-node h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .arch-node p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .arch-arrow {
+            color: var(--primary);
+            font-size: 1.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* 内容区域 */
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--gradient-1);
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* 三层架构 */
+        .layers-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .layers-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .layer-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .layer-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+        }
+
+        .layer-card.source::before { background: var(--gradient-3); }
+        .layer-card.wiki::before { background: var(--gradient-1); }
+        .layer-card.tools::before { background: var(--gradient-2); }
+
+        .layer-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .layer-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .layer-card.source .layer-icon { background: rgba(245, 158, 11, 0.2); color: var(--accent); }
+        .layer-card.wiki .layer-icon { background: rgba(99, 102, 241, 0.2); color: var(--primary); }
+        .layer-card.tools .layer-icon { background: rgba(16, 185, 129, 0.2); color: var(--secondary); }
+
+        .layer-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .layer-card .layer-name {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .layer-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .layer-card ul {
+            margin-top: 1rem;
+            padding-left: 1.25rem;
+            color: var(--text-secondary);
+        }
+
+        .layer-card li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* 四大服务 */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        @media (max-width: 900px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .service-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            background: var(--gradient-1);
+        }
+
+        .service-card:nth-child(2) .service-icon { background: var(--gradient-2); }
+        .service-card:nth-child(3) .service-icon { background: var(--gradient-3); }
+        .service-card:nth-child(4) .service-icon { background: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%); }
+
+        .service-header h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .service-header .service-path {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.25rem 0.75rem;
+            border-radius: 6px;
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .service-tech {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tech-tag {
+            font-size: 0.8rem;
+            padding: 0.4rem 0.8rem;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 6px;
+            color: var(--primary-light);
+        }
+
+        /* 技术栈 */
+        .tech-stack-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 900px) {
+            .tech-stack-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .tech-stack-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .tech-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .tech-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .tech-logo {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-item h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-item p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* MCP工具 */
+        .mcp-tools {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .mcp-tool {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--primary-light);
+            transition: all 0.3s;
+        }
+
+        .mcp-tool:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--primary);
+        }
+
+        .mcp-tool::before {
+            content: '⚡';
+            color: var(--secondary);
+        }
+
+        /* 工作流程 */
+        .workflow {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .workflow-step {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            position: relative;
+        }
+
+        .workflow-step::after {
+            content: '→';
+            position: absolute;
+            right: -1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .workflow-step:last-child::after {
+            content: '';
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gradient-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin: 0 auto 1rem;
+        }
+
+        .workflow-step h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .workflow-step p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* 特性卡片 */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 900px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: rgba(99, 102, 241, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .feature-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* 快速开始 */
+        .quickstart {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .quickstart h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .quickstart h3::before {
+            content: '🚀';
+        }
+
+        .code-block {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+
+        .code-block pre {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .code-block .comment {
+            color: var(--text-muted);
+        }
+
+        .code-block .command {
+            color: var(--secondary);
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 600px) {
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .option-card {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .option-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .option-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* 页脚 */
+        footer {
+            padding: 4rem 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        footer .license {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 8px;
+            color: var(--secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--primary-light);
+            text-decoration: none;
+        }
+
+        /* 滚动动画 */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .arch-flow {
+                flex-direction: column;
+            }
+
+            .arch-arrow {
+                transform: rotate(90deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-pattern"></div>
+    <div class="bg-grid"></div>
+
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="logo">
+            <div class="logo-icon">📚</div>
+            <span>LLM Wiki</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#architecture">架构设计</a></li>
+            <li><a href="#services">服务组件</a></li>
+            <li><a href="#tech">技术栈</a></li>
+            <li><a href="#features">核心特性</a></li>
+            <li><a href="#quickstart">快速开始</a></li>
+        </ul>
+        <a href="https://github.com/lucasastorian/llmwiki" class="github-btn" target="_blank">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.835 1.305 3.51.99.105-.78.42-1.305.765-1.605-2.67-.3-5.47-1.35-5.47-5.955 0-1.32.465-2.4 1.23-3.24-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.24 0 4.62-2.82 5.655-5.49 5.955.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+            GitHub
+        </a>
+    </nav>
+
+    <!-- Hero区域 -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span>开源</span>
+                Karpathy's LLM Wiki 的开源实现
+            </div>
+            <h1>LLM Wiki</h1>
+            <p class="hero-subtitle">AI驱动的知识库构建系统</p>
+            <p class="hero-description">
+                上传原始文档，连接 Claude，让 AI 自动构建、维护和交叉引用你的维基知识库。
+                基于 MCP 协议，实现三层架构的智能知识管理。
+            </p>
+            <div class="hero-buttons">
+                <a href="https://llmwiki.app" class="btn-primary" target="_blank">
+                    🌐 访问在线版本
+                </a>
+                <a href="https://github.com/lucasastorian/llmwiki" class="btn-secondary" target="_blank">
+                    📖 查看源代码
+                </a>
+            </div>
+
+            <!-- 简化架构图 -->
+            <div class="architecture-visual fade-in">
+                <div class="arch-flow">
+                    <div class="arch-node">
+                        <h4>Next.js 前端</h4>
+                        <p>Web 界面</p>
+                    </div>
+                    <span class="arch-arrow">→</span>
+                    <div class="arch-node">
+                        <h4>FastAPI 后端</h4>
+                        <p>API 服务</p>
+                    </div>
+                    <span class="arch-arrow">→</span>
+                    <div class="arch-node">
+                        <h4>Supabase</h4>
+                        <p>数据库存储</p>
+                    </div>
+                    <span class="arch-arrow">↔</span>
+                    <div class="arch-node">
+                        <h4>MCP Server</h4>
+                        <p>Claude 连接</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 三层架构 -->
+    <section id="architecture">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>三层架构设计</h2>
+                <p>LLM Wiki 采用创新的三层架构理念，确保数据完整性、可维护性和智能交互</p>
+            </div>
+
+            <div class="layers-grid">
+                <div class="layer-card source fade-in">
+                    <div class="layer-icon">📁</div>
+                    <h3>Raw Sources</h3>
+                    <p class="layer-name">原始资料层</p>
+                    <p>不可变的真实来源，LLM 只读不改，确保数据可信度和溯源能力。</p>
+                    <ul>
+                        <li>PDF 文档</li>
+                        <li>转录文件</li>
+                        <li>笔记记录</li>
+                        <li>Office 文档</li>
+                    </ul>
+                </div>
+
+                <div class="layer-card wiki fade-in">
+                    <div class="layer-icon">📝</div>
+                    <h3>The Wiki</h3>
+                    <p class="layer-name">维基知识层</p>
+                    <p>LLM 生成的 Markdown 页面，包含摘要、实体页、可视化图表。</p>
+                    <ul>
+                        <li>智能摘要</li>
+                        <li>实体页面</li>
+                        <li>Mermaid 图表</li>
+                        <li>交叉引用</li>
+                    </ul>
+                </div>
+
+                <div class="layer-card tools fade-in">
+                    <div class="layer-icon">🔧</div>
+                    <h3>The Tools</h3>
+                    <p class="layer-name">MCP 工具层</p>
+                    <p>通过 MCP 接口，让 Claude 能够搜索、读取、写入其他两层内容。</p>
+                    <ul>
+                        <li>search - 搜索内容</li>
+                        <li>read - 读取文件</li>
+                        <li>write - 写入维基</li>
+                        <li>delete - 删除页面</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 四大服务组件 -->
+    <section id="services">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>四大服务组件</h2>
+                <p>模块化设计，每个组件独立部署，灵活扩展</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-header">
+                        <div class="service-icon">🌐</div>
+                        <h3>Web 前端</h3>
+                        <span class="service-path">web/</span>
+                    </div>
+                    <p>Next.js 16 前端应用，提供仪表板界面、文档查看器、维基渲染引擎。</p>
+                    <div class="service-tech">
+                        <span class="tech-tag">Next.js 16</span>
+                        <span class="tech-tag">React 19</span>
+                        <span class="tech-tag">Tailwind</span>
+                        <span class="tech-tag">Radix UI</span>
+                    </div>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-header">
+                        <div class="service-icon">⚡</div>
+                        <h3>API 后端</h3>
+                        <span class="service-path">api/</span>
+                    </div>
+                    <p>FastAPI 后端服务，处理认证、可恢复上传(TUS)、文档处理管道。</p>
+                    <div class="service-tech">
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">asyncpg</span>
+                        <span class="tech-tag">aioboto3</span>
+                        <span class="tech-tag">Python 3.11+</span>
+                    </div>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-header">
+                        <div class="service-icon">🔗</div>
+                        <h3>MCP Server</h3>
+                        <span class="service-path">mcp/</span>
+                    </div>
+                    <p>模型上下文协议服务器，向 Claude 暴露搜索、读取、写入工具，支持 Supabase OAuth。</p>
+                    <div class="service-tech">
+                        <span class="tech-tag">MCP SDK</span>
+                        <span class="tech-tag">Supabase OAuth</span>
+                        <span class="tech-tag">Claude API</span>
+                    </div>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-header">
+                        <div class="service-icon">🔄</div>
+                        <h3>Converter</h3>
+                        <span class="service-path">converter/</span>
+                    </div>
+                    <p>隔离微服务，使用 LibreOffice 将 Office 文档转换为 PDF，确保安全处理。</p>
+                    <div class="service-tech">
+                        <span class="tech-tag">LibreOffice</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Mistral OCR</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MCP工具展示 -->
+            <div class="mcp-tools fade-in">
+                <div class="mcp-tool">guide</div>
+                <div class="mcp-tool">search</div>
+                <div class="mcp-tool">read</div>
+                <div class="mcp-tool">write</div>
+                <div class="mcp-tool">delete</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 技术栈 -->
+    <section id="tech">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>技术栈</h2>
+                <p>采用现代化技术栈，确保高性能、可扩展性和开发效率</p>
+            </div>
+
+            <div class="tech-stack-grid fade-in">
+                <div class="tech-item">
+                    <div class="tech-logo">⚛️</div>
+                    <h4>React 19</h4>
+                    <p>最新前端框架</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-logo">🔷</div>
+                    <h4>TypeScript</h4>
+                    <p>类型安全开发</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-logo">🐍</div>
+                    <h4>FastAPI</h4>
+                    <p>高性能 Python API</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-logo">🐘</div>
+                    <h4>PostgreSQL</h4>
+                    <p>PGroonga 全文搜索</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-logo">⚡</div>
+                    <h4>Supabase</h4>
+                    <p>BaaS + RLS 安全</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-logo">📦</div>
+                    <h4>S3 Storage</h4>
+                    <p>可扩展文件存储</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-logo">🤖</div>
+                    <h4>Claude API</h4>
+                    <p>Anthropic AI</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-logo">🔗</div>
+                    <h4>MCP Protocol</h4>
+                    <p>模型上下文协议</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心特性 -->
+    <section id="features">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>核心特性</h2>
+                <p>强大的功能，让知识管理变得智能且高效</p>
+            </div>
+
+            <div class="features-grid fade-in">
+                <div class="feature-card">
+                    <div class="feature-icon">📄</div>
+                    <h4>多格式支持</h4>
+                    <p>支持 PDF、Office 文档、笔记、转录等多种格式上传</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h4>AI 自动生成</h4>
+                    <p>Claude 自动读取源文件并生成维基页面</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔗</div>
+                    <h4>交叉引用</h4>
+                    <p>自动维护页面间的引用关系和溯源链接</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h4>全文搜索</h4>
+                    <p>PGroonga 全文搜索，快速定位知识内容</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h4>安全隔离</h4>
+                    <p>Supabase RLS 行级安全，文档转换隔离处理</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h4>可视化图表</h4>
+                    <p>Mermaid 图表自动生成，直观展示关系</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h4>可恢复上传</h4>
+                    <p>TUS 协议支持大文件分片上传和断点续传</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h4>自托管支持</h4>
+                    <p>完全开源，可本地部署或使用托管版本</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h4>MCP 集成</h4>
+                    <p>通过 MCP 协议连接 Claude，智能交互</p>
+                </div>
+            </div>
+
+            <!-- 工作流程 -->
+            <div class="workflow fade-in">
+                <div class="workflow-step">
+                    <div class="step-number">1</div>
+                    <h4>上传文档</h4>
+                    <p>上传 PDF、Office 等源文件</p>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-number">2</div>
+                    <h4>连接 Claude</h4>
+                    <p>通过 MCP 连接 Claude 账户</p>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-number">3</div>
+                    <h4>AI 处理</h4>
+                    <p>Claude 自动分析和生成</p>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-number">4</div>
+                    <h4>维基构建</h4>
+                    <p>自动生成交叉引用的维基</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 快速开始 -->
+    <section id="quickstart">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>快速开始</h2>
+                <p>两种方式开始使用 LLM Wiki</p>
+            </div>
+
+            <div class="options-grid fade-in">
+                <div class="option-card">
+                    <h4>🌐 托管版本</h4>
+                    <p>访问 llmwiki.app，无需部署，立即开始使用。适合快速体验和个人使用。</p>
+                </div>
+                <div class="option-card">
+                    <h4>🔧 自托管版本</h4>
+                    <p>克隆源码，本地部署。适合团队使用、定制开发和数据隐私要求。</p>
+                </div>
+            </div>
+
+            <div class="quickstart fade-in">
+                <h3>本地部署步骤</h3>
+                <div class="code-block">
+                    <pre>
+<span class="comment"># 1. 克隆项目</span>
+<span class="command">git clone</span> https://github.com/lucasastorian/llmwiki.git
+<span class="command">cd</span> llmwiki
+
+<span class="comment"># 2. 安装依赖</span>
+<span class="command">pnpm</span> install
+
+<span class="comment"># 3. 配置环境变量</span>
+<span class="command">cp</span> .env.example .env
+
+<span class="comment"># 4. 启动服务</span>
+<span class="command">pnpm</span> dev
+                    </pre>
+                </div>
+                <p style="color: var(--text-muted); margin-top: 1rem;">
+                    环境要求：Python 3.11+、Node.js 20+、Supabase 项目、S3 存储配置
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="license fade-in">
+            📜 Apache 2.0 License
+        </div>
+        <p>
+            基于 <a href="https://github.com/lucasastorian/llmwiki" target="_blank">lucasastorian/llmwiki</a> 开源项目
+        </p>
+        <p style="margin-top: 0.5rem;">
+            本页面仅用于项目展示和技术介绍
+        </p>
+    </footer>
+
+    <!-- 滚动动画脚本 -->
+    <script>
+        // 滚动触发动画
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // 导航栏滚动效果
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll > 100) {
+                navbar.style.background = 'rgba(15, 23, 42, 0.95)';
+            } else {
+                navbar.style.background = 'rgba(15, 23, 42, 0.8)';
+            }
+
+            lastScroll = currentScroll;
+        });
+    </script>
+</body>
+</html>

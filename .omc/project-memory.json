@@ -1,0 +1,107 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1776130988159,
+  "projectRoot": "/mnt/f/work/code/github/wwwzhouhui/2025dify-dsl/dify-for-dsl",
+  "techStack": {
+    "languages": [],
+    "frameworks": [],
+    "packageManager": null,
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": null,
+    "testCommand": null,
+    "lintCommand": null,
+    "devCommand": null,
+    "scripts": {}
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [
+      "assets"
+    ],
+    "gitBranches": {
+      "defaultBranch": "main",
+      "branchingStrategy": null
+    }
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "assets": {
+      "path": "assets",
+      "purpose": "Static assets",
+      "fileCount": 1,
+      "lastAccessed": 1776130988089,
+      "keyFiles": [
+        "周易大师..jpg"
+      ]
+    },
+    "dsl": {
+      "path": "dsl",
+      "purpose": null,
+      "fileCount": 87,
+      "lastAccessed": 1776130988096,
+      "keyFiles": [
+        "51-dify案例分享-探秘：AI 怎样颠覆财报分析，打造酷炫 HTML 可视化.yml",
+        "52-dify案例分享-三步实现音视频转文字会议纪要从此无忧.yml",
+        "53-dify案例分享-12306mcp火车票信息查询-AIagent.yml",
+        "53-dify案例分享-12306mcp火车票信息查询-chatflow.yml",
+        "54-dify案例分享-海报封面生成工作流-Wanx 文生图.yml"
+      ]
+    },
+    "mcp": {
+      "path": "mcp",
+      "purpose": null,
+      "fileCount": 0,
+      "lastAccessed": 1776130988105,
+      "keyFiles": []
+    },
+    "plugin": {
+      "path": "plugin",
+      "purpose": null,
+      "fileCount": 3,
+      "lastAccessed": 1776130988116,
+      "keyFiles": [
+        "free_edgetts.difypkg",
+        "nano_bananav0.0.1.difypkg",
+        "qwen_text2image.difypkg"
+      ]
+    },
+    "py": {
+      "path": "py",
+      "purpose": null,
+      "fileCount": 7,
+      "lastAccessed": 1776130988125,
+      "keyFiles": [
+        "Dockerfile",
+        "cloudeflare.docx",
+        "docker-compose.yml",
+        "readme.txt",
+        "requirements.txt"
+      ]
+    },
+    "py/static": {
+      "path": "py/static",
+      "purpose": "Static files",
+      "fileCount": 0,
+      "lastAccessed": 1776130988159,
+      "keyFiles": []
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "llmwiki-showcase.html",
+      "accessCount": 1,
+      "lastAccessed": 1776159151201,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}
