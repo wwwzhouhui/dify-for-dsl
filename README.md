@@ -560,4 +560,4 @@ WORKFLOW_FILE_UPLOAD_LIMIT=10<br>
 
 ## Star History
 
-![dify-for-dsl](https://api.star-history.com/svg?repos=wwwzhouhui/dify-for-dsl&type=Date)
+![dify-for-dsl](https://star-history.dera.page/svg?repos=wwwzhouhui/dify-for-dsl&type=Date)
